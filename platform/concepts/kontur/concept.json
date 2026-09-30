@@ -114,22 +114,59 @@
           "id": "lab",
           "name": "Общая лаборатория",
           "identity": "Адрес и правила доступа",
-          "fields": ["название", "адрес", "часы работы", "правила"],
-          "relations": [{"kind": "has-many", "to": "resource"}, {"kind": "has-many", "to": "reservation"}]
+          "fields": [
+            "название",
+            "адрес",
+            "часы работы",
+            "правила"
+          ],
+          "relations": [
+            {
+              "kind": "has-many",
+              "to": "resource"
+            },
+            {
+              "kind": "has-many",
+              "to": "reservation"
+            }
+          ]
         },
         {
           "id": "resource",
           "name": "Ресурс лаборатории",
           "identity": "Тип и инвентарный номер",
-          "fields": ["тип", "состояние", "владелец слота"],
-          "relations": [{"kind": "belongs-to", "to": "lab"}]
+          "fields": [
+            "тип",
+            "состояние",
+            "владелец слота"
+          ],
+          "relations": [
+            {
+              "kind": "belongs-to",
+              "to": "lab"
+            }
+          ]
         },
         {
           "id": "reservation",
           "name": "Окно лаборатории",
           "identity": "Ресурс, время и фотограф",
-          "fields": ["начало", "конец", "статус", "оператор"],
-          "relations": [{"kind": "reserves", "to": "resource"}, {"kind": "for", "to": "batch"}]
+          "fields": [
+            "начало",
+            "конец",
+            "статус",
+            "оператор"
+          ],
+          "relations": [
+            {
+              "kind": "reserves",
+              "to": "resource"
+            },
+            {
+              "kind": "for",
+              "to": "batch"
+            }
+          ]
         },
         {
           "id": "handoff",
@@ -414,10 +451,11 @@
     ]
   },
   "brand": {
-    "accent": "#007A2A",
-    "accentDark": "#66E794",
+    "accent": "#0077FF",
+    "accentDark": "#0077FF",
     "authIcon": "camera",
-    "fonts": "Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600"
+    "fonts": "Inter:wght@400;500;600;700",
+    "theme": "vk-light"
   },
   "start": "phone",
   "tabs": [
@@ -621,7 +659,7 @@
         "text": "Открывать виджет и приложение с одной защищённой сессией."
       },
       "feature": "Общий вход приложения и виджета",
-      "gesture": "«Открыть виджет без повторного входа»",
+      "gesture": "«Открыть без повторного входа» на виджете",
       "screen": "widget",
       "target": "widget",
       "fallback": "Виджет попросит открыть приложение и войти",
@@ -831,44 +869,6 @@
           {
             "kind": "typical",
             "example": "Создать аккаунт и объяснить ценность сообщества: партия K-184, 36 кадров и статус 18:40"
-          },
-          {
-            "kind": "stress",
-            "example": "Длинное имя автора, несколько статусов и плотный список"
-          },
-          {
-            "kind": "failure",
-            "example": "Нет сети, пустой результат или отказ в доступе"
-          }
-        ]
-      }
-    },
-    {
-      "id": "code",
-      "title": "Аккаунт создан",
-      "type": "push",
-      "light": true,
-      "parent": "phone",
-      "meta": "Переход в продукт без OTP",
-      "ui": {
-        "pattern": "auth",
-        "navigation": "push",
-        "purpose": "Подтвердить создание аккаунта и открыть ленту",
-        "primaryAction": "Открыть Контур",
-        "hierarchy": {
-          "primary": "Подтвердить создание аккаунта и открыть ленту",
-          "secondary": "Контекст, состояние и безопасный следующий шаг"
-        },
-        "states": [
-          "default",
-          "loading",
-          "error"
-        ],
-        "density": "low",
-        "contentCases": [
-          {
-            "kind": "typical",
-            "example": "Подтвердить создание аккаунта и открыть ленту: партия K-184, 36 кадров и статус 18:40"
           },
           {
             "kind": "stress",
@@ -1552,7 +1552,7 @@
         "pattern": "settings",
         "navigation": "root",
         "purpose": "Собрать личную практику и управление аккаунтом",
-        "primaryAction": "Открыть доступы",
+        "primaryAction": "Новый контакт-лист",
         "hierarchy": {
           "primary": "Собрать личную практику и управление аккаунтом",
           "secondary": "Контекст, состояние и безопасный следующий шаг"
@@ -1690,7 +1690,7 @@
       "id": "widget",
       "title": "Виджет",
       "type": "system",
-      "light": true,
+      "light": false,
       "parent": "profile",
       "meta": "Следующая прогулка и передача",
       "ui": {
@@ -1793,42 +1793,6 @@
           }
         ]
       }
-    },
-    {
-      "id": "permissions",
-      "title": "Доступы",
-      "type": "push",
-      "light": true,
-      "parent": "profile",
-      "meta": "Все функции и точки запроса",
-      "ui": {
-        "pattern": "settings",
-        "navigation": "push",
-        "purpose": "Показать состояние каждой функции и путь к её жесту",
-        "primaryAction": "Открыть создание",
-        "hierarchy": {
-          "primary": "Показать состояние каждой функции и путь к её жесту",
-          "secondary": "Контекст, состояние и безопасный следующий шаг"
-        },
-        "states": [
-          "default"
-        ],
-        "density": "high",
-        "contentCases": [
-          {
-            "kind": "typical",
-            "example": "Показать состояние каждой функции и путь к её жесту: партия K-184, 36 кадров и статус 18:40"
-          },
-          {
-            "kind": "stress",
-            "example": "Длинное имя автора, несколько статусов и плотный список"
-          },
-          {
-            "kind": "failure",
-            "example": "Нет сети, пустой результат или отказ в доступе"
-          }
-        ]
-      }
     }
   ],
   "prototypes": [
@@ -1836,11 +1800,10 @@
       "id": "all",
       "hero": true,
       "label": "Весь продукт",
-      "note": "32 экрана, 4 вкладки и 19 честных доступов",
+      "note": "26 экранов и 19 доступов",
       "start": "phone",
       "screens": [
         "phone",
-        "code",
         "feed",
         "post",
         "photographer",
@@ -1865,9 +1828,9 @@
         "background",
         "widget",
         "security",
-        "ads",
-        "permissions"
-      ]
+        "ads"
+      ],
+      "stops": []
     },
     {
       "id": "sheet",
@@ -1990,7 +1953,6 @@
         "widget",
         "security",
         "ads",
-        "permissions",
         "compose"
       ],
       "stops": [
@@ -2000,7 +1962,6 @@
         "widget",
         "security",
         "ads",
-        "permissions",
         "compose"
       ]
     }

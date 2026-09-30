@@ -1098,6 +1098,7 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui-actions.is-row > .ui-square { flex:none; width:44px; padding:0; }
 .ui-actions.is-row { flex-direction:row; }
 .ui-actions.is-row > * { flex:1; }
+.ui-actions .ui-actions { padding:0; }
 
 /* Круглый play: белый круг, чёрный знак */
 .ui-play { width:56px; height:56px; flex:none; display:grid; place-items:center; border-radius:50%; background:var(--ui-play-bg); color:var(--ui-play-fg); }
@@ -1276,8 +1277,9 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui-post-who { display:flex; flex-direction:column; min-width:0; }
 .ui-post-who > strong { font:600 15px/20px var(--ui-face); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .ui-post-who > span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.ui-post-text { display:block; width:100%; padding:8px 16px 12px; font:400 15px/20px var(--ui-face); text-align:left; }
+.ui-post-text { display:block; width:100%; min-height:44px; padding:8px 16px 12px; font:400 15px/20px var(--ui-face); text-align:left; }
 .ui-post-media { display:block; }
+.ui-post-text strong { font-weight:600; font-size:17px; line-height:22px; }
 .ui-post-ava.is-initial { display:grid; place-items:center; background:var(--ui-accent-soft); color:var(--ui-link); font:600 14px/1 var(--ui-face); }
 /* «Что нового?» */
 .ui-prompt { display:flex; align-items:center; gap:4px; padding:8px 8px 8px 16px; background:var(--ui-card); }
