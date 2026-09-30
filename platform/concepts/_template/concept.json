@@ -23,8 +23,8 @@
     ],
     "verticalSlice": {
       "entry": "phone",
-      "action": "code",
-      "result": "home"
+      "action": "home",
+      "result": "settings"
     },
     "coreLoop": [
       "Шаг 1: триггер",
@@ -85,8 +85,8 @@
     ],
     "evidenceScreens": [
       "phone",
-      "code",
-      "home"
+      "home",
+      "settings"
     ],
     "referencePatterns": [
       "__REFERENCE_PATTERN_1__",
@@ -119,7 +119,8 @@
   "brand": {
     "accent": "__ACCENT__",
     "accentDark": "__ACCENT_DARK__",
-    "fonts": "Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600"
+    "theme": "__THEME__",
+    "fonts": "Inter:wght@400;500;600;700"
   },
   "start": "phone",
   "uiContractVersion": 3,
@@ -189,44 +190,6 @@
       }
     },
     {
-      "id": "code",
-      "title": "Код из SMS",
-      "type": "push",
-      "light": true,
-      "parent": "phone",
-      "meta": "OTP · автоподстановка",
-      "ui": {
-        "pattern": "auth",
-        "navigation": "push",
-        "purpose": "Подтвердить номер кодом из SMS",
-        "primaryAction": "Войти",
-        "hierarchy": {
-          "primary": "Код подтверждения и продолжение",
-          "secondary": "Повторная отправка и смена номера"
-        },
-        "states": [
-          "default",
-          "error",
-          "loading"
-        ],
-        "density": "low",
-        "contentCases": [
-          {
-            "kind": "typical",
-            "example": "Код автоматически подставлен из SMS"
-          },
-          {
-            "kind": "stress",
-            "example": "Повторная отправка с длинным таймером"
-          },
-          {
-            "kind": "failure",
-            "example": "Неверный или просроченный код"
-          }
-        ]
-      }
-    },
-    {
       "id": "home",
       "title": "Главная",
       "type": "tab (root)",
@@ -262,6 +225,44 @@
           }
         ]
       }
+    },
+    {
+      "id": "settings",
+      "title": "Настройки",
+      "type": "push",
+      "light": true,
+      "meta": "Аккаунт и настройки",
+      "ui": {
+        "pattern": "settings",
+        "navigation": "push",
+        "purpose": "Управлять аккаунтом",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Строка «Профиль и аккаунт» с номером телефона",
+          "secondary": "Группы настроек продукта под аккаунтом"
+        },
+        "states": [
+          "default",
+          "empty",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Три разных полезных объекта с реальными метаданными"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинные названия, плотный список и крупный Dynamic Type"
+          },
+          {
+            "kind": "failure",
+            "example": "Пустая коллекция или отказ в якорном доступе"
+          }
+        ]
+      },
+      "parent": "home"
     }
   ],
   "prototypes": [
@@ -273,9 +274,10 @@
       "start": "phone",
       "screens": [
         "phone",
-        "code",
-        "home"
-      ]
+        "home",
+        "settings"
+      ],
+      "stops": []
     },
     {
       "id": "signin",
@@ -284,8 +286,8 @@
       "start": "phone",
       "screens": [
         "phone",
-        "code",
-        "home"
+        "home",
+        "settings"
       ],
       "stops": [
         "home"
@@ -390,5 +392,10 @@
         "subtitle": "Пояснение"
       }
     ]
+  },
+  "auth": {
+    "mode": "phone",
+    "confirmation": false,
+    "entryTarget": "home"
   }
 }

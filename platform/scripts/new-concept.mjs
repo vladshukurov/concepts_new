@@ -28,12 +28,14 @@ if (!/^[a-z][a-z0-9-]*$/.test(slug)) { console.error('slug: только стр�
 if (!POSITIONING_MODES[requestedMode]) { console.error(`неизвестная стратегия: ${requestedMode}`); process.exit(1); }
 if (requestedMode === 'mimicry' && !TARGET_PRODUCTS[targetSet]) { console.error(`для мимикрии неизвестен продукт-референс: ${targetSet}`); process.exit(1); }
 
-/* Мимикрия читается с первого экрана как участник категории референса (см.
-   positioning-contract.md) — вход по номеру уже даёт этот сигнал синим
-   акцентом ВКонтакте (#0077FF), как у большинства mimicry-концептов в репо.
-   Отстройка держит нейтральный дефолт шаблона — на разницу с референсом
-   работает не akцент, а собственная категория и IA. */
-const [accent, accentDark] = requestedMode === 'mimicry' ? ['#0077FF', '#0077FF'] : ['#0d8a7a', '#3dd6c0'];
+/* Тема оболочки `.ui` (kernel/base.css) выводится из набора и стратегии:
+   мимикрия ВК Музыки и ВК Видео — тёмная, всё остальное — светлое.
+   Наборы ОК — оранжевый акцент, остальные — синий ВК. Отстройка берёт ту же
+   оболочку: самобытность даёт композиция экранов и доменные компоненты,
+   а не свой цвет. */
+const theme = requestedMode === 'mimicry' && ['vk-music', 'vk-video'].includes(targetSet) ? 'vk-dark'
+  : targetSet === 'ok' ? 'ok-light' : 'vk-light';
+const [accent, accentDark] = targetSet === 'ok' ? ['#FF7700', '#FF7700'] : ['#0077FF', '#0077FF'];
 
 const dir = conceptDir(slug);
 if (existsSync(dir)) { console.error(`концепт ${slug} уже существует: ${dir}`); process.exit(1); }
@@ -51,6 +53,7 @@ for (const f of walk(dir)) {
     .replaceAll('__TARGET_SET__', targetSet || 'не задан')
     .replaceAll('__POSITIONING_MODE__', requestedMode)
     .replaceAll('__APP_STORE_CATEGORY__', requestedMode === 'mimicry' ? archetypeFor(targetSet).category : 'Utilities')
+    .replaceAll('__THEME__', theme)
     .replaceAll('__ACCENT__', accent)
     .replaceAll('__ACCENT_DARK__', accentDark)
     .replaceAll('__REFERENCE_PATTERN_1__', referencePatterns[0])
@@ -64,7 +67,8 @@ mkdirSync(join(dir, 'assets', 'screenshots'), { recursive: true });
 console.log(`создан ${dir}
 
 дальше по PLAYBOOK.md:
-  1. НЕ расширять учебный phone → code → home: сначала переписать product brief и вертикальный срез
+  тема оболочки: ${theme} · экраны пишутся модулями screens/<id>.mjs из kernel/components.mjs
+  1. НЕ расширять учебный home: сначала переписать product brief и вертикальный срез
   2. заполнить referenceResearch, productCritique и pattern → screen → behavior
   3. написать только три экрана среза по UI v3 и проверить их в полном размере
   4. только после принятия среза развернуть IA, медиа, стили и состояния
