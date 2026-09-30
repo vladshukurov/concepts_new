@@ -12,6 +12,7 @@ import { join, dirname } from 'node:path';
 import { DIST, KERNEL, conceptDir, readSpec, readMarkup, listConcepts } from './lib.mjs';
 import { screenActions } from './screen-map.mjs';
 import { prepareEmailRegistration } from './build.mjs';
+import { renderScreens } from './render-screens.mjs';
 
 const read = (f) => readFileSync(f, 'utf8');
 
@@ -254,6 +255,16 @@ function lint(slug) {
     if (hasATT !== labelsTrack) P(`ATT в наборе (${hasATT}) и трекинг в privacy-лейблах (${labelsTrack}) расходятся`);
   }
 
+  /* —— жест доступа совпадает с кнопкой —— */
+  /* Спека обещает ревьюеру «нажмите «Проверить кадр»», а на экране кнопка
+     давно называется иначе — такой маршрут в review notes ведёт в никуда. */
+  for (const p of spec.permissions) {
+    const quoted = (p.gesture || '').match(/«([^»]+)»/)?.[1];
+    const html = effectiveMarkup[p.screen] || '';
+    const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+    if (quoted && html && !text.includes(quoted)) P(`${p.key}: жест «${quoted}» не найден на экране ${p.screen}`);
+  }
+
   /* —— коллизии имён с ядром —— */
   /* Класс, объявленный и в ядре, и в концепте, молча ломает страницу:
      кто последний в <style>, тот и выиграл. Ловим до того, как заметим глазами. */
@@ -308,6 +319,7 @@ if (args.includes('--kernel')) {
 
 for (const slug of (args.filter((a) => !a.startsWith('--')).length ? args.filter((a) => !a.startsWith('--')) : (args.includes('--kernel') ? [] : listConcepts()))) {
   const p = lint(slug);
+  for (const f of await renderScreens(slug, { check: true })) p.push(`${f} не совпадает со своим модулем — node scripts/render-screens.mjs ${slug}`);
   total += p.length;
   console.log(`\n=== ${slug} ===`);
   if (!p.length) console.log('  расхождений нет');

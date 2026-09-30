@@ -6,6 +6,7 @@
  *
  *   node scripts/build-all.mjs
  */
+import { renderScreens } from './render-screens.mjs';
 import { writeFileSync, mkdirSync, rmSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { DIST, conceptDir, listConcepts, esc, TARGET_PRODUCTS, POSITIONING_MODES } from './lib.mjs';
@@ -239,6 +240,7 @@ mkdirSync(DIST, { recursive: true });
 
 const items = [];
 for (const slug of slugs) {
+  await renderScreens(slug);
   const { spec, bytes } = build(slug);
   writeUxSpec(slug);
   const n = countKit(slug);

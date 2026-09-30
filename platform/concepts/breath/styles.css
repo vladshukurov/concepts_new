@@ -1,4 +1,4 @@
-/* «Дыхание» — мимикрия ВК Музыки. Оболочка, кегли и цвета — из слоя `.vkd`
+/* «Дыхание» — мимикрия ВК Музыки. Оболочка, кегли и цвета — из слоя `.ui`
    в ядре; здесь только своё: обложки сессий, дыхательный круг, камера,
    системный пикер и локскрин. */
 
@@ -14,26 +14,26 @@
 /* Главная: герой на фото уходит под статус-бар */
 .br-hero { min-height:340px; padding:0 16px 28px; background-size:300% auto; background-position:50% 30%; }
 .br-hero-top { position:absolute!important; left:0; right:0; top:var(--safe-top); padding-left:12px; text-align:left; }
-.br-hero .vkd-play { margin-bottom:20px; box-shadow:0 8px 32px rgba(0,0,0,.28); }
+.br-hero .ui-play { margin-bottom:20px; box-shadow:0 8px 32px rgba(0,0,0,.28); }
 .br-hero-copy { display:flex; flex-direction:column; align-items:center; gap:4px; min-height:44px; text-align:center!important; }
 .br-hero-copy > strong { color:#fff; }
-.br-hero-copy > span { font:400 16px/20px var(--vkd-face); color:rgba(255,255,255,.8); }
+.br-hero-copy > span { font:400 16px/20px var(--ui-face); color:rgba(255,255,255,.8); }
 .br-tiles { margin-top:4px; }
 .br-chips { margin-top:12px; }
 
 /* Карточка сессии: размытая обложка за навбаром */
 .br-detail-bg, .br-player-bg { position:absolute; left:0; right:0; top:0; height:420px; background-size:auto 200%; filter:blur(40px) saturate(1.2); opacity:.55; }
-.br-detail-bg::after, .br-player-bg::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 20%, var(--vkd-bg) 92%); }
+.br-detail-bg::after, .br-player-bg::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 20%, var(--ui-bg) 92%); }
 .br-detail-scroll { position:relative; padding-top:calc(var(--safe-top) + 44px); }
 .br-album { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 16px 20px; text-align:center; }
 .br-album-art { position:relative; width:232px; height:232px; margin-bottom:16px; border-radius:12px; box-shadow:0 16px 40px rgba(0,0,0,.5); }
 .br-breath-mark { position:absolute; left:50%; top:50%; width:104px; height:104px; margin:-52px 0 0 -52px; display:grid; place-items:center; border-radius:50%; border:1px solid rgba(255,255,255,.5); background:rgba(0,0,0,.16); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); }
 .br-breath-mark i { position:absolute; inset:14px; border-radius:50%; border:1px solid rgba(255,255,255,.24); }
-.br-breath-mark b { font:600 20px/24px var(--vkd-face); color:#fff; font-variant-numeric:tabular-nums; }
+.br-breath-mark b { font:600 20px/24px var(--ui-face); color:#fff; font-variant-numeric:tabular-nums; }
 .br-album-actions { gap:8px; }
-.br-album-actions > .vkd-btn:first-child { flex:1; }
+.br-album-actions > .ui-btn:first-child { flex:1; }
 .br-album-actions > .br-square { flex:none; width:44px; padding:0; }
-.br-phase-n { width:56px; height:56px; flex:none; display:grid; place-items:center; border-radius:8px; background:var(--vkd-card); font:600 17px/22px var(--vkd-face); color:var(--vkd-text-2); font-variant-numeric:tabular-nums; }
+.br-phase-n { width:56px; height:56px; flex:none; display:grid; place-items:center; border-radius:8px; background:var(--ui-card); font:600 17px/22px var(--ui-face); color:var(--ui-text-2); font-variant-numeric:tabular-nums; }
 
 /* Плеер */
 .br-player { overflow:hidden; }
@@ -43,34 +43,34 @@
 .br-breath { position:relative; width:168px; height:168px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
 .br-breath > span { position:absolute; inset:0; border-radius:50%; border:1px solid rgba(255,255,255,.55); background:rgba(0,0,0,.18); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
 .br-breath > span + span { inset:22px; background:none; border-color:rgba(255,255,255,.28); backdrop-filter:none; -webkit-backdrop-filter:none; }
-.br-breath strong { position:relative; font:600 24px/28px var(--vkd-face); color:#fff; }
-.br-breath small { position:relative; font:400 14px/18px var(--vkd-face); color:rgba(255,255,255,.8); }
+.br-breath strong { position:relative; font:600 24px/28px var(--ui-face); color:#fff; }
+.br-breath small { position:relative; font:400 14px/18px var(--ui-face); color:rgba(255,255,255,.8); }
 .br-now { display:flex; align-items:center; gap:12px; margin:24px 0 16px; }
-.br-now .vkd-row-text > strong { font:600 20px/24px var(--vkd-face); }
-.br-now .vkd-row-text > span { font-size:16px; line-height:20px; }
+.br-now .ui-row-text > strong { font:600 20px/24px var(--ui-face); }
+.br-now .ui-row-text > span { font-size:16px; line-height:20px; }
 .br-controls { display:flex; align-items:center; justify-content:space-around; margin:12px 0 auto; }
-.br-controls .vkd-icon-btn svg { width:30px; height:30px; }
+.br-controls .ui-icon-btn svg { width:30px; height:30px; }
 .br-player-actions { padding:0; gap:8px; margin-top:16px; }
-.br-player .vkd-note { margin:12px 0 0; }
+.br-player .ui-note { margin:12px 0 0; }
 
 /* Итог */
 .br-result-main { flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 0 calc(var(--safe-bottom) + 12px); text-align:center; }
 .br-result-art { position:relative; width:160px; height:160px; margin:24px 0 20px; border-radius:12px; display:grid; place-items:center; }
 .br-result-check { width:56px; height:56px; display:grid; place-items:center; border-radius:50%; background:rgba(255,255,255,.92); color:#000; }
 .br-result-check svg { width:28px; height:28px; stroke-width:2.4; }
-.br-result-main .vkd-stats { width:100%; margin-top:24px; text-align:left; }
+.br-result-main .ui-stats { width:100%; margin-top:24px; text-align:left; }
 .br-result-actions { width:100%; margin-top:auto; }
 
 /* Профиль */
 .br-me { display:flex; flex-direction:column; align-items:center; gap:4px; padding:12px 16px 24px; text-align:center; }
-.br-me .vkd-avatar { margin-bottom:8px; }
+.br-me .ui-avatar { margin-bottom:8px; }
 .br-version { padding:24px 16px 0; text-align:center; }
 
 /* Визуал сессии */
 .br-visual { position:relative; height:200px; background-size:300% auto; margin:8px 16px 0; border-radius:12px; display:grid; place-items:center; }
 .br-visual-breath { position:relative; width:112px; height:112px; display:grid; place-items:center; border-radius:50%; border:1px solid rgba(255,255,255,.55); background:rgba(0,0,0,.18); }
 .br-visual-breath i { position:absolute; inset:16px; border-radius:50%; border:1px solid rgba(255,255,255,.28); }
-.br-visual-breath strong { font:600 17px/22px var(--vkd-face); color:#fff; }
+.br-visual-breath strong { font:600 17px/22px var(--ui-face); color:#fff; }
 .br-studio-copy { display:flex; flex-direction:column; gap:6px; padding:20px 16px 16px; }
 .br-swatch { width:28px; height:28px; flex:none; border-radius:50%; box-shadow:inset 0 0 0 1px rgba(255,255,255,.16); }
 .br-swatch.is-dark { background:#10151c; }
@@ -81,41 +81,41 @@
 .br-camera { position:absolute; inset:0; background-size:auto 200%; }
 .br-camera-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.4), rgba(0,0,0,.05) 30%, rgba(0,0,0,.2) 60%, rgba(0,0,0,.82)); }
 .br-meter { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:4px; width:264px; margin:176px auto 0; padding:16px; border-radius:12px; background:rgba(20,20,22,.6); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); text-align:center; }
-.br-meter > strong { font:600 17px/22px var(--vkd-face); color:#fff; }
-.br-meter > span:not(.br-meter-ico) { font:400 14px/18px var(--vkd-face); color:rgba(255,255,255,.72); font-variant-numeric:tabular-nums; }
-.br-meter .vkd-progress { width:100%; margin-top:10px; }
+.br-meter > strong { font:600 17px/22px var(--ui-face); color:#fff; }
+.br-meter > span:not(.br-meter-ico) { font:400 14px/18px var(--ui-face); color:rgba(255,255,255,.72); font-variant-numeric:tabular-nums; }
+.br-meter .ui-progress { width:100%; margin-top:10px; }
 .br-meter-ico { width:40px; height:40px; margin-bottom:4px; display:grid; place-items:center; border-radius:50%; background:rgba(255,255,255,.14); color:#fff; }
 .br-meter-ico svg { width:20px; height:20px; }
 .br-capture-foot { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 12px); z-index:1; }
 
 /* Системный пикер фото — тёмная тема iOS */
 .br-pick { background:#000!important; }
-.br-pick .vkd-nav { margin-bottom:8px; }
+.br-pick .ui-nav { margin-bottom:8px; }
 .br-photo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; overflow:hidden; }
 .br-photo-grid > button { position:relative; width:100%; aspect-ratio:1; min-height:44px; }
-.br-photo-grid > .is-picked::after { content:""; position:absolute; inset:0; box-shadow:inset 0 0 0 3px var(--vkd-blue); }
-.br-photo-grid > .is-picked svg { position:absolute; right:6px; bottom:6px; width:22px; height:22px; padding:3px; border-radius:50%; background:var(--vkd-blue); color:#fff; stroke-width:3; box-shadow:0 0 0 2px #fff; }
+.br-photo-grid > .is-picked::after { content:""; position:absolute; inset:0; box-shadow:inset 0 0 0 3px var(--ui-accent); }
+.br-photo-grid > .is-picked svg { position:absolute; right:6px; bottom:6px; width:22px; height:22px; padding:3px; border-radius:50%; background:var(--ui-accent); color:#fff; stroke-width:3; box-shadow:0 0 0 2px #fff; }
 
 
 /* Локскрин iOS: системный виджет Now Playing */
 .br-lock { overflow:hidden; }
 .br-lock-wall { position:absolute; inset:0; background-size:auto 200%; filter:blur(24px); opacity:.75; }
 .br-lock-shade { position:absolute; inset:0; background:rgba(0,0,0,.34); }
-.br-lock-time { position:relative; margin-top:88px; text-align:center; font:300 80px/84px var(--vkd-face); letter-spacing:-.02em; color:#fff; }
-.br-lock-time small { display:block; margin-top:4px; font:500 18px/22px var(--vkd-face); letter-spacing:0; }
+.br-lock-time { position:relative; margin-top:88px; text-align:center; font:300 80px/84px var(--ui-face); letter-spacing:-.02em; color:#fff; }
+.br-lock-time small { display:block; margin-top:4px; font:500 18px/22px var(--ui-face); letter-spacing:0; }
 .br-now-card { position:absolute; left:12px; right:12px; bottom:calc(var(--safe-bottom) + 24px); padding:14px 16px 12px; border-radius:24px; background:rgba(40,40,44,.62); backdrop-filter:blur(30px) saturate(1.6); -webkit-backdrop-filter:blur(30px) saturate(1.6); }
 .br-now-top { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
-.br-now-top .vkd-thumb { width:48px; height:48px; }
-.br-now-top .vkd-row-text > span { color:rgba(255,255,255,.66); }
+.br-now-top .ui-thumb { width:48px; height:48px; }
+.br-now-top .ui-row-text > span { color:rgba(255,255,255,.66); }
 .br-now-app { color:rgba(255,255,255,.66); }
 .br-now-app svg { width:20px; height:20px; }
-.br-now-card .vkd-times { color:rgba(255,255,255,.66); }
+.br-now-card .ui-times { color:rgba(255,255,255,.66); }
 .br-lock-controls { display:flex; justify-content:space-around; margin-top:4px; }
-.br-lock-controls .vkd-icon-btn svg { width:28px; height:28px; }
+.br-lock-controls .ui-icon-btn svg { width:28px; height:28px; }
 .br-lock-pause svg { width:34px!important; height:34px!important; }
-.br-breath-status { display:flex; align-items:center; justify-content:center; gap:8px; margin-top:6px; font:500 13px/16px var(--vkd-face); color:rgba(255,255,255,.8); }
-.br-breath-status i { width:6px; height:6px; border-radius:50%; background:var(--vkd-blue); }
+.br-breath-status { display:flex; align-items:center; justify-content:center; gap:8px; margin-top:6px; font:500 13px/16px var(--ui-face); color:rgba(255,255,255,.8); }
+.br-breath-status i { width:6px; height:6px; border-radius:50%; background:var(--ui-accent); }
 
 /* «Любимое»: текущая сессия карточкой над разделами */
-.br-now-row { display:flex; align-items:center; gap:12px; margin:4px 16px 0; padding:8px; border-radius:16px; background:var(--vkd-card); }
-.br-now-row .vkd-thumb { width:56px; height:56px; }
+.br-now-row { display:flex; align-items:center; gap:12px; margin:4px 16px 0; padding:8px; border-radius:16px; background:var(--ui-card); }
+.br-now-row .ui-thumb { width:56px; height:56px; }

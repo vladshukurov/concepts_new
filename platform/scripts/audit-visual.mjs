@@ -206,6 +206,86 @@ function probe(scr, cfg) {
     }
   }
 
+  // 8–13. Правила интерфейса портфеля (CLAUDE.md → «Правила интерфейса»).
+  //       Раньше жили только в голове ревьюера; каждое уже стоило правки.
+  const EXPLAINER = /(кадр|фото|снимок|видео|данные|файл\S*)\s+не\s+(сохраня|отправля|загружа|покида|ухо)|(обработ\S*|хран\S*|оста[ёе]тся|анализ\S*)\s+на устройстве|как используются|доступ только к|по геопозиции|без отслеживания между|(камер\S*|фото|микрофон\S*|геопозиц\S*|доступ\S*)\s+(нужн\S*|требу\S*)|работают без н/i;
+  const CAPS_OK = /^(ВК|ОК|СМС|МКАД|РФ|США|ТВ|ИП|ООО|ВУЗ|ГИБДД|ЖКХ|МФЦ|ПДД|ЕГЭ|ОГЭ)$/;
+  const lumOf = (v) => {
+    const raw = (v.match(/[\d.]+/g) || []).map(Number);
+    const rgb = /^color\(/.test(v) ? raw.slice(0, 3).map((x) => x * 255) : raw.slice(0, 3);
+    const f = (c) => { c /= 255; return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; };
+    return { rgb, a: raw[3] ?? 1, l: 0.2126 * f(rgb[0]) + 0.7152 * f(rgb[1]) + 0.0722 * f(rgb[2]) };
+  };
+  const brandFill = (rgb) => Math.abs(rgb[0] - 0) < 3 && Math.abs(rgb[1] - 119) < 3 && Math.abs(rgb[2] - 255) < 3
+    || Math.abs(rgb[0] - 238) < 4 && Math.abs(rgb[1] - 130) < 4 && Math.abs(rgb[2] - 8) < 4;
+  for (const el of els) {
+    if (el.closest('.perm-hidden')) continue;
+    const r = el.getBoundingClientRect();
+    const cs = getComputedStyle(el);
+    if (cs.display === 'none' || cs.visibility === 'hidden' || !r.width || !r.height) continue;
+    const ownText = [...el.childNodes].filter((n) => n.nodeType === 3).map((n) => n.textContent).join(' ').replace(/\s+/g, ' ').trim();
+    const srOnly = r.width <= 2 || r.height <= 2 || cs.clip === 'rect(0px, 0px, 0px, 0px)';
+    if (ownText && !srOnly) {
+      // 8. капс: ни text-transform, ни набранный капсом текст
+      if (cs.textTransform === 'uppercase') out.push({ kind: 'caps', what: label(el), detail: 'text-transform' });
+      const caps = (ownText.match(/[А-ЯЁа-яё]{3,}/g) || []).filter((w) => w === w.toUpperCase() && !CAPS_OK.test(w));
+      if (caps.length) out.push({ kind: 'caps', what: label(el), detail: caps[0] });
+      // 9. точка в конце фразы
+      if (/[^.…]\.$/.test(ownText)) out.push({ kind: 'trailing-period', what: label(el) });
+      // 10. интерфейс объясняет доступы
+      if (EXPLAINER.test(ownText)) out.push({ kind: 'permission-explainer', what: label(el) });
+      // 13. контраст текста ниже AA (крупный текст — от 3:1)
+      const fg = lumOf(cs.color);
+      let bgColor = null, overMedia = cs.textShadow !== 'none';
+      for (let a = el; a && a !== s.parentElement; a = a.parentElement) {
+        const c = getComputedStyle(a);
+        if (c.backgroundImage && c.backgroundImage !== 'none') { overMedia = true; break; }
+        const b = lumOf(c.backgroundColor);
+        if (b.rgb.length === 3 && b.a >= 0.99) { bgColor = b; break; }
+      }
+      if (bgColor && !overMedia && fg.rgb.length === 3 && fg.a >= 0.99) {
+        const ratio = (Math.max(fg.l, bgColor.l) + 0.05) / (Math.min(fg.l, bgColor.l) + 0.05);
+        const px = parseFloat(cs.fontSize), bold = parseInt(cs.fontWeight, 10) >= 600;
+        const need = px >= 24 || (px >= 18.66 && bold) ? 3 : 4.5;
+        /* Белый на фирменной заливке (#0077FF ВК, #EE8208 ОК) — 4.1:1 и 2.9:1.
+           Это цвет бренда на главной кнопке, осознанное исключение. */
+        const whiteOnBrand = fg.l > 0.95 && brandFill(bgColor.rgb);
+        if (ratio < need && ratio >= 1.8 && !whiteOnBrand) out.push({ kind: 'contrast-aa', what: label(el), detail: ratio.toFixed(2) + ':1 < ' + need });
+      }
+    }
+    // 9б. точка в конце тоста и подписи для скринридера
+    for (const attr of ['data-toast', 'aria-label']) {
+      const v = (el.getAttribute(attr) || '').trim();
+      if (/[^.…]\.$/.test(v)) out.push({ kind: 'trailing-period', what: label(el), detail: attr });
+    }
+    // 11. контрол-пустышка: фильтр или чипс, который только показывает тост
+    if (el.matches('[class*="chip"],[class*="filter"],[class*="pill"],[class*="seg"]')
+        && el.hasAttribute('data-toast') && !el.matches('[data-go],[data-ask],[data-activate],[data-back]')) {
+      out.push({ kind: 'fake-control', what: label(el), detail: 'только тост' });
+    }
+    // 12. вложенные скругления: внешний радиус ≥ внутренний + зазор
+    const rin = parseFloat(cs.borderTopLeftRadius);
+    if (rin > 0 && rin < Math.min(r.width, r.height) / 2 - 1) {
+      for (let a = el.parentElement, depth = 0; a && a !== s && depth < 4; a = a.parentElement, depth++) {
+        const ac = getComputedStyle(a);
+        const rout = parseFloat(ac.borderTopLeftRadius);
+        if (!rout) continue;
+        const ar = a.getBoundingClientRect();
+        const gx = r.left - ar.left, gy = r.top - ar.top;
+        /* Считаем только «карточку с внутренним отступом»: ребёнок стоит ровно
+           на паддинге родителя, углы концентричны. */
+        const padOk = Math.abs(parseFloat(ac.paddingLeft) - gx) <= 1.5 && Math.abs(parseFloat(ac.paddingTop) - gy) <= 1.5;
+        if (padOk && gx >= 0 && gy >= 0 && gx <= 24 && Math.abs(gx - gy) <= 2 && ac.overflow !== 'hidden') {
+          const gap = Math.min(gx, gy);
+          /* Концентричность важна, пока зазор не больше внешнего радиуса:
+             дальше углы уже не читаются как пара. */
+          if (rin > rout + 0.5 || (gap > 0 && gap <= rout && rout + 3 < rin + gap)) out.push({ kind: 'radius-nesting', what: label(el), detail: `внутри ${rin}, снаружи ${rout}, зазор ${Math.round(gap)} → нужно ≈${Math.round(rin + gap)}` });
+        }
+        break;
+      }
+    }
+  }
+
   // 7. прижатый к низу блок перекрывает конец прокрутки
   const dock = s.querySelector('.rh-dock, .cta-col, .pt-dock, .state-foot, .sheet-footer');
   const scroll = s.querySelector('.body-scroll, .rh-scroll');
@@ -233,6 +313,12 @@ const KIND = {
   'root-layout-gap': 'разрыв между контентом и tabbar',
   'text-icon': 'текстовый символ вместо иконки',
   'empty-monolith': 'крупный малосодержательный блок',
+  caps: 'капс',
+  'trailing-period': 'точка в конце фразы',
+  'permission-explainer': 'интерфейс объясняет доступы',
+  'fake-control': 'контрол-пустышка',
+  'radius-nesting': 'вложенные скругления не по формуле',
+  'contrast-aa': 'контраст текста ниже AA',
 };
 
 const slugs = process.argv.slice(2).length ? process.argv.slice(2) : listConcepts();

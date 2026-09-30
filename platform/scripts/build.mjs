@@ -79,7 +79,7 @@ const registrationIcon = (spec) =>
 
 const authLegalFooter = (spec) => {
   const host = spec.domain || `${spec.slug}.app`;
-  return `<p class="auth-legal">Нажимая «Создать аккаунт», вы принимаете <button class="auth-legal-link" data-toast="Соглашение · ${host}/terms">пользовательское соглашение</button> и <button class="auth-legal-link" data-toast="Политика · ${host}/privacy">политику конфиденциальности</button>.</p><div class="auth-support"><button class="auth-support-link" data-toast="Справка · ${host}/help · support@${host}">Помощь и поддержка</button></div>`;
+  return `<p class="auth-legal">Нажимая «Создать аккаунт», вы принимаете <button class="auth-legal-link" data-toast="Соглашение · ${host}/terms">пользовательское соглашение</button> и <button class="auth-legal-link" data-toast="Политика · ${host}/privacy">политику конфиденциальности</button></p><div class="auth-support"><button class="auth-support-link" data-toast="Справка · ${host}/help · support@${host}">Помощь и поддержка</button></div>`;
 };
 
 const authUsageFooter = (spec) => {
@@ -171,9 +171,12 @@ const dvorAccountAuthScreens = (spec, target) => {
   };
 };
 
+/* Темы общего слоя `.ui` в kernel/base.css: вход рисуется в теме концепта. */
+const UI_THEMES = new Set(["vk-dark", "vk-light", "ok-light"]);
+
 const accountAuthScreens = (spec, target, light = true, sourceClasses = "") => {
   const surface =
-    spec.brand?.theme === "vk-dark" ? " vkd" : light ? " ios-surface" : "";
+    UI_THEMES.has(spec.brand?.theme) ? ` ui ${spec.brand.theme}` : light ? " ios-surface" : "";
   const inherited = sourceClasses
     .split(/\s+/)
     .filter((name) => name && !["screen", "is-on"].includes(name))
@@ -611,10 +614,10 @@ export function prepareEmailRegistration(sourceSpec, sourceMarkup) {
     "shellac",
     "strochka",
   ]);
-  const vkDark = spec.brand?.theme === "vk-dark";
-  const authLight = darkAuth.has(spec.slug) || vkDark
+  const uiTheme = UI_THEMES.has(spec.brand?.theme) ? spec.brand.theme : null;
+  const authLight = darkAuth.has(spec.slug) || uiTheme === "vk-dark"
     ? false
-    : (sourcePhone?.light ?? true);
+    : uiTheme ? true : (sourcePhone?.light ?? true);
   const sourceAuthClasses =
     sourceMarkup.phone?.match(/<div class="([^"]*)"[^>]*id="scr-phone"/)?.[1] ||
     "";
@@ -1652,6 +1655,8 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
     console.error("нужен slug. доступны:", listConcepts().join(", "));
     process.exit(1);
   }
+  const { renderScreens } = await import("./render-screens.mjs");
+  await renderScreens(slug);
   const r = build(slug);
   console.log(
     `собран ${slug}: ${r.out} · ${(r.bytes / 1024).toFixed(0)} КБ · ${r.spec.screens.length} экранов · ` +
