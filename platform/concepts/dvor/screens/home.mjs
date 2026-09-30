@@ -21,7 +21,7 @@ export default (ui) => ui.screen({
     ui.post({
       author: { initial: 'МК', name: 'Марина, кв. 48', meta: 'сегодня в 08:12 · 3 подъезд', action: { go: 'profile' } },
       text: 'Доводчик на второй двери сорвало, бьёт по коляскам. Если кто вызывает мастера, приложите к заявке',
-      media: 'ph', likes: 8, comments: 5, shares: 2, views: 96, open: { go: 'problem' }, discuss: { go: 'chat' },
+      likes: 8, comments: 5, shares: 2, views: 96, open: { go: 'problem' }, discuss: { go: 'chat' },
     }),
     ui.section({ title: 'Хроника двора', meta: '42 снимка за апрель', children: [
       `<div class="dv-grid">${Array.from({ length: 6 }, (_, i) => `<button class="ph" data-go="chronicle" aria-label="Снимок ${i + 1}"></button>`).join('')}</div>`,

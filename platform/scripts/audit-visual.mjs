@@ -289,6 +289,33 @@ function probe(scr, cfg) {
   // 14. в шапке экрана — только иконки и текстовые кнопки, не залитые кнопки
   for (const b of s.querySelectorAll(':is(.ui-large, .ui-top, .ui-nav) .ui-btn')) out.push({ kind: 'topbar-button', what: label(b) });
 
+  // 15. светлая тема: контент — белые секции на сером. Свой блок прямо на сером
+  // фоне страницы и серая плашка внутри белой секции читаются как «серые куски».
+  if (s.matches('.ui.vk-light, .ui.ok-light')) {
+    const bgOf = (el) => getComputedStyle(el).backgroundColor;
+    const clear = (c) => c === 'rgba(0, 0, 0, 0)' || c === 'transparent';
+    const white = (c) => c === 'rgb(255, 255, 255)';
+    for (const sc of s.querySelectorAll('.ui-scroll')) {
+      const full = sc.getBoundingClientRect().width;
+      for (const el of sc.children) {
+        const r = el.getBoundingClientRect();
+        if (r.height < 24 || el.matches('.ui-sec, .ui-large, .ui-top, .ui-stories, .ui-post, .ui-prompt, .perm-hidden, .ui-group-label, .ui-group, .ui-note, .ui-foot, .ui-chat')) continue;
+        if (!el.textContent.trim()) continue; // медиа во всю ширину — фото, сетка кадров
+        const bg = bgOf(el);
+        if (clear(bg) || (!white(bg) && r.width < full - 1)) out.push({ kind: 'on-gray', what: label(el), detail: clear(bg) ? 'без подложки' : 'цветная плашка на сером' });
+      }
+    }
+    const card2 = getComputedStyle(s).getPropertyValue('--ui-card-2').trim();
+    const probe = document.createElement('i'); probe.style.color = card2; s.append(probe);
+    const gray = getComputedStyle(probe).color; probe.remove();
+    for (const el of s.querySelectorAll('.ui-sec *, .ui-post *')) {
+      if (el.matches('button, .ui-btn, .ui-stat, .ui-search, .ui-chip, .ui-chips *, .ui-seg, .ui-seg *, .ui-thumb, .ph, [class*="ph "], .ui-lead, .ui-avatar, .ui-progress, .ui-progress *, .ui-switch, .ui-switch *, .ui-story-face, .ui-composer *, .ui-bubble, .ui-bubble *')) continue;
+      const r = el.getBoundingClientRect();
+      if (r.width < 120 || r.height < 40) continue;
+      if (bgOf(el) === gray && !el.closest('.ui-group')) out.push({ kind: 'gray-in-white', what: label(el) });
+    }
+  }
+
   // 7. прижатый к низу блок перекрывает конец прокрутки
   const dock = s.querySelector('.rh-dock, .cta-col, .pt-dock, .state-foot, .sheet-footer');
   const scroll = s.querySelector('.body-scroll, .rh-scroll');
@@ -323,6 +350,8 @@ const KIND = {
   'radius-nesting': 'вложенные скругления не по формуле',
   'contrast-aa': 'контраст текста ниже AA',
   'topbar-button': 'кнопка в шапке вместо иконки',
+  'on-gray': 'блок лежит на сером фоне, а не в белой секции',
+  'gray-in-white': 'серая плашка внутри белой секции',
 };
 
 const slugs = process.argv.slice(2).length ? process.argv.slice(2) : listConcepts();

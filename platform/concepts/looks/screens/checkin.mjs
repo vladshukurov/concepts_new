@@ -5,8 +5,8 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Отметка' }),
     ui.scroll([
-      `<div class="lk-swap"><small>Сейчас 14:06 · своп идёт третий час</small><strong>Новая Голландия</strong><span>Отметка по сети площадки у входа</span></div>`,
       ui.section({ children: [
+        `<div class="lk-swap"><small>Сейчас 14:06 · своп идёт третий час</small><strong>Новая Голландия</strong><span>Отметка по сети площадки у входа</span></div>`,
         ui.actions([ui.button({ label: 'Отметиться на свопе', icon: 'map-pin', block: true, activate: 'wifiinfo|checkin', primary: true })]),
         ui.granted('wifiinfo', 'Вы на свопе · отметка в 14:06'),
         ui.denied('wifiinfo', 'Отметка уйдёт организатору на подтверждение', ui.actions([ui.button({ label: 'Подключиться по QR', variant: 'secondary', block: true, go: 'netqr' })])),

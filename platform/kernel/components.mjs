@@ -216,9 +216,9 @@ export const tabBar = ({ items, active, mini = '' }) =>
 export const sheet = (children, className) => `<section class="${cls('ui-sheet', className)}"><span class="ui-sheet-grab"></span>${join(children)}</section>`;
 
 /* ── Соцсеть: истории и посты ── */
-/** Истории. items: [{ label, face (класс фото) | icon, seen, action }]. */
-export const stories = (items) => `<div class="ui-stories">${items.map(({ label, face, icon: ic, seen = false, ...a }) =>
-  `<button class="${cls('ui-story', seen && 'is-seen')}"${act(a)}><span class="ui-story-ring"><span class="${cls('ui-story-face', face)}">${ic ? icon(ic) : ''}</span></span><span>${label}</span></button>`).join('')}</div>`;
+/** Истории. items: [{ label, face (класс фото) | initial | icon, seen, action }]. Без фото — инициалы, не серая заглушка. */
+export const stories = (items) => `<div class="ui-stories">${items.map(({ label, face, initial, icon: ic, seen = false, ...a }) =>
+  `<button class="${cls('ui-story', seen && 'is-seen')}"${act({ label, ...a })}><span class="ui-story-ring"><span class="${cls('ui-story-face', face, initial && 'is-initial')}">${ic ? icon(ic) : initial || ''}</span></span><span>${label}</span></button>`).join('')}</div>`;
 
 /**
  * Пост ленты. author: { face, name, meta, action }. media — класс фото,

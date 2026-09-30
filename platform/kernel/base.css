@@ -1244,13 +1244,18 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui-hero > * { position:relative; z-index:1; }
 
 /* ── Светлые темы: контент — белые блоки на сером, как в ВК и ОК ── */
-.ui:is(.vk-light,.ok-light) .ui-sec { margin-top:8px; padding:12px 0; background:var(--ui-card); }
+.ui:is(.vk-light,.ok-light) .ui-sec { margin-top:8px; padding:16px 0; background:var(--ui-card); }
 .ui:is(.vk-light,.ok-light) .ui-sec-head { min-height:32px; margin-bottom:8px; }
+/* Воздух: действия отделены от содержимого секции и друг от друга */
+.ui:is(.vk-light,.ok-light) .ui-actions { gap:12px; }
+.ui:is(.vk-light,.ok-light) .ui-sec > * + .ui-actions { margin-top:16px; }
+/* Вторичная кнопка — голубая, как в VKUI (оранжевая в ОК): серое на белом читается как пустое место */
+.ui:where(.vk-light,.ok-light) .ui-btn.is-secondary { background:var(--ui-accent-soft); color:var(--ui-link); }
 .ui:is(.vk-light,.ok-light) .ui-large { margin-bottom:0; padding-top:10px; padding-bottom:10px; }
 .ui:is(.vk-light,.ok-light) .ui-stories { background:var(--ui-card); padding-top:4px; }
 .ui:is(.vk-light,.ok-light) .ui-story-face { background-color:var(--ui-card-2); }
 /* Значок и аватар в строке светлой темы — 48 в колонке 56: легче, линия текста та же */
-.ui:is(.vk-light,.ok-light) .ui-lead { width:48px; height:48px; margin:0 4px; border-radius:12px; }
+.ui:is(.vk-light,.ok-light) .ui-lead { width:48px; height:48px; margin:0 4px; border-radius:12px; background:var(--ui-accent-soft); color:var(--ui-link); }
 .ui:is(.vk-light,.ok-light) .ui-lead.is-round { border-radius:50%; }
 .ui:is(.vk-light,.ok-light) .ui-thumb:not(.is-wide) { width:48px; height:48px; margin:0 4px; border-radius:10px; }
 .ui:is(.vk-light,.ok-light) .ui-thumb.is-round { border-radius:50%; }
@@ -1293,6 +1298,7 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui-story.is-seen .ui-story-ring { box-shadow:inset 0 0 0 1px var(--ui-line); }
 .ui-story-face { display:grid; place-items:center; width:100%; height:100%; border-radius:50%; border:2px solid var(--ui-card); background-color:var(--ui-ph); background-size:cover; background-position:center; color:var(--ui-accent); }
 .ui-story-face svg { width:24px; height:24px; }
+.ui-story-face.is-initial, .ui:is(.vk-light,.ok-light) .ui-story-face.is-initial { background:var(--ui-accent-soft); color:var(--ui-link); font:600 20px/1 var(--ui-face); }
 
 /* Пост ленты: шапка автора · текст · медиа · действия */
 .ui-post { margin-top:8px; padding:12px 0 4px; background:var(--ui-card); }
@@ -1404,3 +1410,9 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui .ph.on-dark, .ui .ph { background-color:var(--ui-ph); color:var(--ui-text-3); }
 .ui.unified-auth [data-primary] { min-height:44px; border-radius:10px!important; font:500 16px/20px var(--ui-face); }
 .ui.unified-auth .auth-app-icon { border-radius:14px; }
+
+/* ── Светлые темы без фото: ни одного серого пятна ──
+   Аватар с инициалами и заглушка кадра — мягкий акцент темы, а не серый
+   (#e1e3e6): серое на белом читается как незагрузившаяся картинка. */
+.ui:is(.vk-light,.ok-light) :is(.ui-avatar, .ui-post-ava.is-initial, .ui-dialog-face.is-initial, .ui-chat-face.is-initial) { background:var(--ui-accent-soft); color:var(--ui-link); }
+.ui:is(.vk-light,.ok-light) .ph:not(.on-dark) { background:linear-gradient(160deg, color-mix(in srgb, var(--ui-accent) 7%, #fff), color-mix(in srgb, var(--ui-accent) 17%, #fff)); color:color-mix(in srgb, var(--ui-link) 45%, transparent); }

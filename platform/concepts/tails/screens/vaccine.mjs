@@ -23,7 +23,7 @@ export default (ui) => ui.screen({
       ui.row({ lead: `<span class="tl-date">${ui.icon('circle-check')}</span>`, title: 'Бешенство', sub: 'Сделано 6 марта · следующее в 2027', end: '<span class="tl-days">готово</span>' }),
     ]) }),
     ui.section({ title: 'Клиника и врач', children: ui.list([
-      ui.row({ thumb: 'ph is-round', title: 'Мария Тенищева', sub: 'Ведёт Трюфеля с восьми месяцев · каб. 3' }),
+      ui.row({ lead: ui.leadIcon('', { text: 'МТ', round: true }), title: 'Мария Тенищева', sub: 'Ведёт Трюфеля с восьми месяцев · каб. 3' }),
       ui.row({ lead: `<span class="tl-date">${ui.icon('map-pin')}</span>`, title: 'Большой проспект П. С., 74', sub: 'От парка 12 минут пешком' }),
       ui.row({ lead: `<span class="tl-date">${ui.icon('id-card')}</span>`, title: 'Чип 643094100128756', sub: 'AnimalID с 4 апреля 2024' }),
     ]) }),

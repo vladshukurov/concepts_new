@@ -11,7 +11,7 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'bookmark', title: 'Подборка «Осень»', sub: '18 вещей', toast: 'Выбрана подборка «Осень»' }),
         ui.cell({ icon: 'plus', title: 'Новая подборка', toast: 'Назовите подборку' }),
       ] }) }),
-      ui.section({ title: 'Заметка', children: '<p class="lk-share-note">Под серое пальто, померить рукав</p>' }),
+      ui.section({ title: 'Заметка', children: '<p class="lk-note-text">Под серое пальто, померить рукав</p>' }),
     ]),
   ],
 });

@@ -16,16 +16,11 @@
 .lk-tags svg { width:14px; height:14px; color:var(--ui-link); }
 
 /* Своп: карточка события */
-.lk-swap { display:flex; flex-direction:column; gap:4px; margin:0 16px; padding:14px; border-radius:14px; background:var(--ui-accent-soft); text-align:left; }
+.lk-swap { display:flex; flex-direction:column; gap:4px; padding:0 16px; text-align:left; }
 .lk-swap small { font:600 13px/16px var(--ui-face); color:var(--ui-link); }
-.lk-swap strong { font:600 20px/24px var(--ui-face); }
+.lk-swap strong { font:600 22px/28px var(--ui-face); }
 .lk-swap span { font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
 
-/* Проверка вещи на свопе */
-.lk-check { display:flex; gap:12px; margin:0 16px; padding:12px; border-radius:14px; background:var(--ui-card-2); }
-.lk-check .ui-thumb { width:64px; height:80px; border-radius:10px; }
-.lk-check strong { display:block; font:600 16px/20px var(--ui-face); }
-.lk-check span { display:block; font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
 
 /* Профиль автора */
 .lk-me { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 16px 16px; background:var(--ui-card); text-align:center; }
@@ -40,7 +35,7 @@
 .lk-ts { width:48px; flex:none; font:500 14px/18px var(--ui-face); color:var(--ui-link); font-variant-numeric:tabular-nums; }
 .lk-ts.is-gap { color:#c42b2b; }
 .lk-player { padding:0 16px; }
-.lk-player-cover { height:180px; border-radius:14px; }
+.lk-player-cover { height:200px; border-radius:14px; }
 .lk-player-copy { display:flex; flex-direction:column; gap:4px; padding:16px 0 8px; }
 .lk-player-copy h1 { font:600 20px/26px var(--ui-face); }
 .lk-controls { display:flex; align-items:center; justify-content:space-between; margin-top:12px; }
@@ -120,12 +115,7 @@
 .lk-quicktype { position:absolute; left:0; right:0; bottom:0; padding:8px 8px calc(var(--safe-bottom) + 8px); background:#d1d4d9; }
 .lk-quicktype > button { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; min-height:44px; border-radius:8px; background:#fff; font:500 15px/20px var(--ui-face); color:#000; }
 .lk-quicktype > button svg { width:18px; height:18px; color:var(--ui-accent); }
-.lk-share-note { margin:0 16px; padding:12px; border-radius:12px; background:var(--ui-card-2); font:400 15px/20px var(--ui-face); }
-.lk-qr { display:flex; gap:16px; align-items:center; margin:0 16px; padding:16px; border-radius:14px; background:var(--ui-card-2); }
-.lk-qr-code { width:64px; height:64px; flex:none; display:grid; place-items:center; border-radius:50%; background:var(--ui-card); }
-.lk-qr-code svg { width:36px; height:36px; }
-.lk-qr strong { display:block; font:600 16px/20px var(--ui-face); }
-.lk-qr span { display:block; font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
 .lk-gap { margin-top:12px; }
 .lk-author strong { white-space:nowrap; }
 .lk-clip .ui-btn.is-secondary { background:rgba(255,255,255,.2); color:#fff; }
+.lk-note-text { padding:0 16px; font:400 16px/22px var(--ui-face); }

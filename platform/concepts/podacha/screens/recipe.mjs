@@ -5,7 +5,6 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Рецепт', trailing: ui.iconButton({ icon: 'bookmark', label: 'Сохранить', toast: 'Сохранено в рецепты' }) }),
     ui.scroll([
-      '<div class="pd-cover ph"></div>',
       `<div class="pd-head"><small>Проверено 34 раза</small><h1>Суп с печёным перцем</h1><p class="ui-sub">Жанна Ким · 35 минут · 4 порции</p></div>`,
       ui.section({ title: 'Ингредиенты', children: ui.group({ cells: [
         ui.cell({ title: 'Красная чечевица', value: '180 г' }),

@@ -4,7 +4,7 @@
    и показ на экране. Фото нет — кадры `.ph`. */
 
 /* Карточка блюда под постом */
-.pd-dish { display:flex; align-items:center; gap:12px; width:100%; padding:10px 12px; border-radius:12px; background:var(--ui-card-2); text-align:left; }
+.pd-dish { display:flex; align-items:center; gap:12px; width:100%; padding:10px 12px; border-radius:12px; box-shadow:inset 0 0 0 1px var(--ui-line); text-align:left; }
 .pd-dish > span:first-child { width:40px; height:40px; flex:none; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent-soft); color:var(--ui-link); }
 .pd-dish svg { width:22px; height:22px; }
 .pd-dish strong { display:block; font:600 15px/20px var(--ui-face); }
@@ -21,7 +21,6 @@
 .pd-head { display:flex; flex-direction:column; gap:4px; padding:4px 16px 16px; background:var(--ui-card); }
 .pd-head > small { font:600 13px/16px var(--ui-face); color:var(--ui-link); }
 .pd-head h1 { font:600 24px/30px var(--ui-face); }
-.pd-cover { height:200px; }
 
 /* Профиль */
 .pd-me { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 16px 16px; background:var(--ui-card); text-align:center; }
@@ -70,9 +69,9 @@
 
 /* Приглашение: системный лист «Поделиться» */
 .pd-share { overflow:hidden; background:linear-gradient(180deg, #8f9398, #6c7075)!important; }
-.pd-link { display:flex; gap:12px; align-items:center; margin:0 16px; padding:12px; border-radius:12px; background:var(--ui-card-2); }
+.pd-link { display:flex; gap:12px; align-items:center; margin:0 16px 16px; }
 .pd-link .ui-avatar { background:var(--ui-accent-soft); color:var(--ui-link); }
 .pd-link strong { display:block; font:600 15px/20px var(--ui-face); }
 .pd-link small { display:block; font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
 .pd-gap { margin-top:12px; }
-.pd-text { padding:12px; border-radius:12px; background:var(--ui-card-2); font:400 16px/22px var(--ui-face); }
+.pd-text { padding:0 16px; font:400 17px/24px var(--ui-face); }

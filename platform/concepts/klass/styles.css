@@ -12,7 +12,7 @@
 .kl-event .ui-progress { margin-top:8px; }
 
 /* Эфир собрания правления */
-.kl-live { margin:0 16px; padding:12px; border-radius:12px; background:var(--ui-card-2); }
+.kl-live { padding:0 16px; }
 .kl-live > .kl-live-top { display:flex; align-items:center; gap:8px; font:600 13px/16px var(--ui-face); color:var(--ui-danger); }
 .kl-live-top i { width:8px; height:8px; border-radius:50%; background:var(--ui-danger); }
 .kl-live > strong { display:block; margin-top:6px; font:600 17px/22px var(--ui-face); }
@@ -84,3 +84,4 @@
 .kl-cast .ui-progress { margin:20px 16px 0; background:rgba(255,255,255,.2); }
 .kl-cast .kl-glass-controls { margin-top:16px; }
 .kl-cast .ui-actions { position:absolute; left:0; right:0; bottom:calc(var(--safe-bottom) + 16px); }
+.kl-cast .ui-btn.is-secondary { background:rgba(255,255,255,.14); color:#fff; }

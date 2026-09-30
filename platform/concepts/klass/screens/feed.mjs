@@ -18,7 +18,7 @@ export default (ui) => ui.screen({
     ui.post({
       author: { initial: 'ЕС', name: 'Елена Соколова', meta: 'участок 24 · сегодня, 09:12', action: { go: 'classroom' } },
       text: 'Ярмарка удалась: привезли саженцы для общей клумбы и договорились о доставке щебня. Наталья обещала выложить список сортов',
-      media: 'ph', likes: 26, comments: 11, views: 63, open: { go: 'post' }, discuss: { go: 'thread' }, menu: { toast: 'Пожаловаться · Скрыть · Копировать ссылку' },
+      likes: 26, comments: 11, views: 63, open: { go: 'post' }, discuss: { go: 'thread' }, menu: { toast: 'Пожаловаться · Скрыть · Копировать ссылку' },
     }),
     ui.post({
       author: { initial: 'ИМ', name: 'Илья Макаров', meta: 'участок 18 · 2 сентября', action: { go: 'classroom' } },

@@ -10,14 +10,14 @@ export default (ui) => ui.screen({
     ui.composerPrompt({ initial: 'СЛ', placeholder: 'Что получилось сегодня?', go: 'compose', trailing: ui.iconButton({ icon: 'camera', label: 'Снять блюдо', go: 'camera' }) }),
     ui.stories([
       { label: 'Моё', icon: 'plus', seen: true, go: 'compose' },
-      { label: 'Жанна', face: 'ph', go: 'post' },
+      { label: 'Жанна', initial: 'ЖК', go: 'post' },
       { label: 'Вместе 19:00', icon: 'chef-hat', go: 'cookalong' },
-      { label: 'Тимур', face: 'ph', seen: true, go: 'direct-timur' },
+      { label: 'Тимур', initial: 'ТС', seen: true, go: 'direct-timur' },
     ]),
     ui.post({
       author: { initial: 'ЖК', name: 'Жанна Ким', meta: 'сегодня, 12:14 · Алматы', action: { go: 'direct-zhanna' } },
       text: 'Тот самый чечевичный суп, но без сливок: запекла перец заранее и добавила ложку тахини',
-      media: 'ph', attach: dish(ui, 'Чечевичный суп', '35 минут · проверили 34 раза'),
+      attach: dish(ui, 'Чечевичный суп', '35 минут · проверили 34 раза'),
       likes: 126, comments: 18, shares: 9, open: { go: 'post' }, discuss: { go: 'post' },
       menu: { toast: 'Скрыть · Пожаловаться · Скопировать ссылку' },
     }),
@@ -29,7 +29,7 @@ export default (ui) => ui.screen({
     ui.post({
       author: { initial: 'ТС', name: 'Тимур Садыков', meta: 'вчера, 20:40', action: { go: 'direct-timur' } },
       text: 'Хачапури на обычной сковороде: 7 минут с каждой стороны, сулугуни можно заменить моцареллой с брынзой',
-      media: 'ph', attach: dish(ui, 'Хачапури на сковороде', '20 минут · 2 удачные замены'),
+      attach: dish(ui, 'Хачапури на сковороде', '20 минут · 2 удачные замены'),
       likes: 88, comments: 12, shares: 4, open: { go: 'post' },
     }),
   ], { root: true }),

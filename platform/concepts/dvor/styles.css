@@ -32,8 +32,8 @@
 .dv-floor > button.is-known { background:var(--ui-accent-soft); color:var(--ui-link); }
 
 /* Гостевая сеть */
-.dv-net { display:flex; gap:16px; align-items:center; margin:0 16px; padding:16px; border-radius:12px; background:var(--ui-card-2); }
-.dv-net-ico { width:56px; height:56px; flex:none; display:grid; place-items:center; border-radius:50%; background:var(--ui-card); color:var(--ui-link); }
+.dv-net { display:flex; gap:16px; align-items:center; padding:0 16px; }
+.dv-net .dv-net-ico { width:56px; height:56px; flex:none; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent-soft); color:var(--ui-link); }
 .dv-net strong { display:block; font:600 17px/22px var(--ui-face); }
 .dv-net span { display:block; font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
 
@@ -106,3 +106,4 @@
 .dv-scan-actions { position:absolute; left:0; right:0; bottom:calc(var(--safe-bottom) + 16px); }
 .dv-person { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 16px 16px; background:var(--ui-card); text-align:center; }
 .dv-person .ui-avatar { margin-bottom:8px; background:var(--ui-accent-soft); color:var(--ui-link); }
+.dv-net .dv-net-ico svg { width:28px; height:28px; }

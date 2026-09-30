@@ -12,7 +12,7 @@ export default (ui) => ui.screen({
     ui.post({
       author: { initial: 'СЛ', name: 'Саша Левина', meta: 'вчера, 18:40', action: { go: 'profile' } },
       text: 'Пирог с грушей на цельнозерновой муке. Сахара вдвое меньше, результат всё равно мягкий',
-      media: 'ph', attach: dish(ui, 'Грушевый пирог', '55 минут · повторили 6 раз'),
+      attach: dish(ui, 'Грушевый пирог', '55 минут · повторили 6 раз'),
       likes: 64, comments: 7, shares: 3, open: { go: 'post' }, menu: { toast: 'Изменить · Удалить · Скопировать ссылку' },
     }),
   ], { root: true }),

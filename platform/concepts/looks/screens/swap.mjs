@@ -4,15 +4,17 @@ export default (ui) => ui.screen({
   id: 'swap', theme: THEME,
   body: ui.scroll([
     ui.largeTitle('Свопы', ui.iconButton({ icon: 'calendar-plus', label: 'Добавить в Календарь', sr: 'Добавить в Календарь', ask: 'calendar|swap|swap' })),
-    `<div class="lk-swap"><small>Суббота, 24 мая · 14:00–19:00</small><strong>Своп в Новой Голландии</strong><span>Двор Бутылки, второй этаж · вход свободный</span></div>`,
-    ui.granted('calendar', 'Своп в Календаре · напомним за час'),
-    ui.denied('calendar', 'Дата остаётся в карточке свопа и в напоминании приложения'),
+    ui.section({ children: [
+      `<div class="lk-swap"><small>Суббота, 24 мая · 14:00–19:00</small><strong>Своп в Новой Голландии</strong><span>Двор Бутылки, второй этаж · вход свободный</span></div>`,
+      ui.granted('calendar', 'Своп в Календаре · напомним за час'),
+      ui.denied('calendar', 'Дата остаётся в карточке свопа и в напоминании приложения'),
+    ] }),
     ui.section({ title: 'Ваша вещь', children: [
-      `<div class="lk-check"><span class="ui-thumb ${P.marina}"></span><span><strong>Шерстяной жакет, 46</strong><span>Лера проверит состояние и подтвердит приём до 13:20</span></span></div>`,
+      ui.list([ui.row({ thumb: P.marina, title: 'Шерстяной жакет, 46', sub: 'Лера проверит и подтвердит приём до 13:20', subWrap: true })]),
       ui.actions([
         ui.button({ label: 'Ждать результат', block: true, activate: 'commnotif|swap', primary: true }),
         ui.button({ label: 'Показать жакет ведущей', icon: 'message-circle', variant: 'secondary', block: true, go: 'chat' }),
-      ], { className: 'lk-gap' }),
+      ]),
       ui.granted('commnotif', 'Лера напишет, как только проверит жакет'),
       ui.denied('commnotif', 'Результат появится в карточке свопа'),
     ] }),

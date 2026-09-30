@@ -115,14 +115,14 @@
 .tl-controls .ui-btn { flex:1; margin:0 12px; }
 
 /* QR сети площадки */
-.tl-qr { display:flex; gap:16px; align-items:center; margin:0 16px; padding:16px; border-radius:12px; background:var(--ui-card-2); }
-.tl-qr-code { width:72px; height:72px; flex:none; display:grid; place-items:center; border-radius:12px; background:var(--ui-card); color:var(--ui-text); }
+.tl-qr { display:flex; gap:16px; align-items:center; padding:0 16px; }
+.tl-qr-code { width:72px; height:72px; flex:none; display:grid; place-items:center; border-radius:12px; background:var(--ui-accent-soft); color:var(--ui-link); }
 .tl-qr-code svg { width:44px; height:44px; stroke-width:1.5; }
 .tl-qr strong { display:block; font:600 16px/20px var(--ui-face); }
 .tl-qr span { display:block; font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
 
 /* Поделиться в «Хвосты» — лист расширения */
-.tl-share-note { margin:0 16px; padding:12px; border-radius:12px; background:var(--ui-card-2); font:400 15px/20px var(--ui-face); }
+.tl-share-note { padding:0 16px; font:400 16px/22px var(--ui-face); }
 
 /* Автозаполнение в Safari — чужая страница, свой вид */
 .tl-web { background:#f2f2f7!important; color:#000; }

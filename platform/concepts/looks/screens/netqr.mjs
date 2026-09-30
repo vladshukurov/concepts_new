@@ -5,8 +5,8 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Сеть площадки' }),
     ui.scroll([
-      `<div class="lk-qr"><span class="lk-qr-code">${ui.icon('qr-code')}</span><span><strong>Novaya-Gollandia-Guest</strong><span>Код со стойки у входа · до 21:52</span></span></div>`,
       ui.section({ children: [
+        ui.list([ui.row({ lead: ui.leadIcon('qr-code', { round: true }), title: 'Novaya-Gollandia-Guest', sub: 'Код со стойки у входа · до 21:52' })]),
         ui.actions([ui.button({ label: 'Подключиться', icon: 'wifi', block: true, ask: 'hotspot|netqr|netqr', primary: true })]),
         ui.granted('hotspot', 'Вы в сети площадки'),
         ui.denied('hotspot', 'Сеть выбирается вручную в Настройках iPhone'),
