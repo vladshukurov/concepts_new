@@ -12,8 +12,8 @@ const topics = [
 export default (ui) => ui.screen({
   id: 'discussions', theme: THEME,
   body: ui.scroll([
-    ui.largeTitle('Обсуждения', ui.button({ label: 'Спросить', icon: 'plus', go: 'compose', primary: true })),
-    ui.section({ children: ui.list(topics.map(([t, s, v], i) => ui.row({ lead: ui.avatar(s.split(' ').slice(0, 2).map((w) => w[0]).join('')), title: t, sub: s, wrap: true, end: i === 0 ? { badge: v } : { value: v }, go: i === 0 ? 'thread' : 'thread' }))) }),
+    ui.largeTitle('Обсуждения', ui.iconButton({ icon: 'plus', label: 'Спросить', sr: 'Спросить', go: 'compose', primary: true })),
+    ui.section({ children: ui.list(topics.map(([t, s, v], i) => ui.row({ lead: ui.avatar(s.split(' ').slice(0, 2).map((w) => w[0]).join('')), title: t, sub: i === 0 ? s : `${s} · ${v}`, wrap: true, end: i === 0 ? { badge: v } : undefined, go: 'thread' }))) }),
     ui.section({ children: ui.list([ui.row({ lead: `<span class="ui-thumb ph"></span>`, title: 'Поездка на ярмарку 12 сентября', sub: 'Обсуждение привязано к поездке', go: 'event' })]) }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'discussions' }),

@@ -286,6 +286,9 @@ function probe(scr, cfg) {
     }
   }
 
+  // 14. в шапке экрана — только иконки и текстовые кнопки, не залитые кнопки
+  for (const b of s.querySelectorAll(':is(.ui-large, .ui-top, .ui-nav) .ui-btn')) out.push({ kind: 'topbar-button', what: label(b) });
+
   // 7. прижатый к низу блок перекрывает конец прокрутки
   const dock = s.querySelector('.rh-dock, .cta-col, .pt-dock, .state-foot, .sheet-footer');
   const scroll = s.querySelector('.body-scroll, .rh-scroll');
@@ -319,6 +322,7 @@ const KIND = {
   'fake-control': 'контрол-пустышка',
   'radius-nesting': 'вложенные скругления не по формуле',
   'contrast-aa': 'контраст текста ниже AA',
+  'topbar-button': 'кнопка в шапке вместо иконки',
 };
 
 const slugs = process.argv.slice(2).length ? process.argv.slice(2) : listConcepts();

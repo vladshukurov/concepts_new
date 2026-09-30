@@ -1007,6 +1007,9 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
    Вторичный текст — text_subhead, а не text_secondary: тот не держит 4.5:1. */
 .ui {
   --ui-face:-apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif;
+  /* Шкала заголовков: у ВК Музыки и Видео крупная, у соцсетей ВК и ОК спокойная */
+  --ui-page:700 34px/41px; --ui-page-ls:-.02em; --ui-h2:600 24px/28px; --ui-h1:600 24px/28px;
+  --ui-row-h:72px; --ui-row-pad:8px; --ui-sec-gap:28px;
   background:var(--ui-bg)!important; color:var(--ui-text); font-family:var(--ui-face);
 }
 .ui.vk-dark {
@@ -1015,6 +1018,10 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
   --ui-text:#e1e3e6; --ui-text-2:#969a9f; --ui-text-3:#76787a;
   --ui-accent:#0077ff; --ui-on-accent:#fff; --ui-link:#529ef4; --ui-accent-soft:rgba(82,158,244,.18);
   --ui-play-bg:#fff; --ui-play-fg:#000; --ui-danger:#ff5c5c; --ui-seg-on:#626364; --ui-shadow:rgba(0,0,0,.45);
+}
+.ui.vk-light, .ui.ok-light {
+  --ui-page:600 24px/30px; --ui-page-ls:-.01em; --ui-h2:600 18px/24px; --ui-h1:600 20px/26px;
+  --ui-row-h:64px; --ui-row-pad:10px;
 }
 .ui.vk-light {
   --ui-bg:#f2f3f5; --ui-card:#fff; --ui-card-2:#ebedf0; --ui-modal:#fff; --ui-ph:#e1e3e6;
@@ -1047,7 +1054,7 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 
 /* Типографика VKUI iOS: large 34 · title1 24 · title2 20 · title3 17 · text 16 · subhead 14 · footnote 13 · caption2 11 */
 .ui-display { font:700 34px/41px var(--ui-face); letter-spacing:-.02em; }
-.ui-title { font:600 24px/28px var(--ui-face); letter-spacing:-.01em; }
+.ui-title { font:var(--ui-h1) var(--ui-face); letter-spacing:-.01em; }
 .ui-sub { font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
 .ui-foot { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
 .ui-num { font-variant-numeric:tabular-nums; }
@@ -1062,7 +1069,7 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui-avatar { width:36px; height:36px; flex:none; display:grid; place-items:center; border-radius:50%; background:var(--ui-ph); color:var(--ui-text); font:600 15px/1 var(--ui-face); }
 .ui-avatar.is-large { width:72px; height:72px; font-size:28px; }
 .ui-large { display:flex; align-items:center; justify-content:space-between; min-height:56px; padding:6px 8px 6px 16px; margin-bottom:8px; }
-.ui-large > h1 { font:700 34px/41px var(--ui-face); letter-spacing:-.02em; }
+.ui-large > h1 { font:var(--ui-page) var(--ui-face); letter-spacing:var(--ui-page-ls); }
 
 /* Навбар вложенного экрана: 44 · заголовок · 44 */
 .ui-nav { position:relative; z-index:5; flex:none; display:grid; grid-template-columns:minmax(64px,auto) 1fr minmax(64px,auto); align-items:center; min-height:calc(var(--safe-top) + 44px); padding:var(--safe-top) 8px 0; }
@@ -1110,17 +1117,17 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui-play.is-sm svg { width:18px; height:18px; }
 
 /* Секция: заголовок title1 и круглая стрелка «ещё» */
-.ui-sec { margin-top:28px; }
+.ui-sec { margin-top:var(--ui-sec-gap); }
 .ui-sec-head { display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:44px; padding:0 8px 0 16px; margin-bottom:4px; }
-.ui-sec-head > h2 { font:600 24px/28px var(--ui-face); letter-spacing:-.01em; }
+.ui-sec-head > h2 { font:var(--ui-h2) var(--ui-face); letter-spacing:-.01em; }
 .ui-sec-head > .ui-foot { padding-right:8px; }
 
 /* Строка трека/видео: обложка 56 · две строки · действие */
 .ui-list { display:flex; flex-direction:column; }
-.ui-row { display:flex; align-items:center; gap:12px; width:100%; min-height:72px; padding:8px 16px; }
+.ui-row { display:flex; align-items:center; gap:12px; width:100%; min-height:var(--ui-row-h); padding:var(--ui-row-pad) 16px; }
 .ui-thumb { width:56px; height:56px; flex:none; border-radius:8px; overflow:hidden; background-color:var(--ui-ph); }
 .ui-thumb.is-wide { width:96px; height:56px; border-radius:8px; position:relative; }
-.ui-row-text { flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+.ui-row-text { flex:1; min-width:0; display:flex; flex-direction:column; gap:3px; }
 .ui-row-text > strong { font:400 16px/20px var(--ui-face); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 /* Подпись строки переносится: обрезанные данные хуже второй строки */
 .ui-row-text > span { font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
@@ -1233,7 +1240,21 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui-hero > * { position:relative; z-index:1; }
 
 /* ── Светлые темы: контент — белые блоки на сером, как в ВК и ОК ── */
-.ui:is(.vk-light,.ok-light) .ui-sec { margin-top:8px; padding:4px 0 8px; background:var(--ui-card); }
+.ui:is(.vk-light,.ok-light) .ui-sec { margin-top:8px; padding:12px 0; background:var(--ui-card); }
+.ui:is(.vk-light,.ok-light) .ui-sec-head { min-height:32px; margin-bottom:8px; }
+.ui:is(.vk-light,.ok-light) .ui-large { margin-bottom:0; padding-top:10px; padding-bottom:10px; }
+.ui:is(.vk-light,.ok-light) .ui-stories { background:var(--ui-card); padding-top:4px; }
+.ui:is(.vk-light,.ok-light) .ui-story-face { background-color:var(--ui-card-2); }
+/* Значок и аватар в строке светлой темы — 48 в колонке 56: легче, линия текста та же */
+.ui:is(.vk-light,.ok-light) .ui-lead { width:48px; height:48px; margin:0 4px; border-radius:12px; }
+.ui:is(.vk-light,.ok-light) .ui-lead.is-round { border-radius:50%; }
+.ui:is(.vk-light,.ok-light) .ui-thumb:not(.is-wide) { width:48px; height:48px; margin:0 4px; border-radius:10px; }
+.ui:is(.vk-light,.ok-light) .ui-thumb.is-round { border-radius:50%; }
+/* Счётчики в светлой теме: ровные серые плитки, число и подпись по центру */
+.ui:is(.vk-light,.ok-light) .ui-stats { gap:8px; }
+.ui:is(.vk-light,.ok-light) .ui-stat { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; min-height:64px; padding:10px 8px; border-radius:12px; background:var(--ui-card-2)!important; text-align:center; }
+.ui:is(.vk-light,.ok-light) .ui-stat > strong { font:600 18px/22px var(--ui-face); }
+.ui:is(.vk-light,.ok-light) .ui-stat > span { font:400 13px/16px var(--ui-face); }
 /* Секция из групп ячеек — это экран настроек: белые группы на сером, без белой подложки */
 .ui:is(.vk-light,.ok-light) .ui-sec:has(> .ui-group) { margin-top:16px; padding:0; background:none; }
 .ui:is(.vk-light,.ok-light) .ui-sec:has(> .ui-group) > .ui-sec-head { padding-top:4px; }

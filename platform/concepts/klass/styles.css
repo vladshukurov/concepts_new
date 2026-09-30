@@ -38,7 +38,6 @@
 .kl-me .ui-avatar { width:88px; height:88px; margin-bottom:8px; font-size:30px; background:var(--ui-accent-soft); color:var(--ui-link); }
 .kl-me h2 { font:600 24px/28px var(--ui-face); }
 .kl-me .ui-stats { width:100%; padding:12px 0 0; }
-.kl-me .ui-stat { background:var(--ui-card-2); text-align:left; }
 .kl-me .ui-actions { width:100%; padding:12px 0 0; }
 
 /* Товарищество: шапка сообщества */
@@ -47,7 +46,6 @@
 .kl-snt-logo svg { width:36px; height:36px; }
 .kl-snt h1 { font:600 24px/28px var(--ui-face); }
 .kl-snt .ui-stats { width:100%; padding:12px 0 0; }
-.kl-snt .ui-stat { background:var(--ui-card-2); text-align:left; }
 
 /* Съёмка */
 .kl-shoot { overflow:hidden; background:#000!important; }
