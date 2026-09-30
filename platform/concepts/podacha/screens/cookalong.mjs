@@ -16,9 +16,11 @@ export default (ui) => ui.screen({
       ui.section({ title: 'Не пропустить', children: [
         ui.group({ cells: [
           ui.cell({ icon: 'calendar-plus', title: 'Добавить в календарь', sub: '16 сентября · 19:00–19:45', ask: 'calendar|cookalong|cookalong' }),
+          ui.cell({ icon: 'download', title: 'Скачать шаги перед готовкой', sub: 'Таймеры и видео без сети', activate: 'bgtask|cookalong' }),
           ui.cell({ icon: 'bell', title: 'Напомнить за 15 минут', sub: 'Только об этой готовке', toggle: false, ask: 'push|cookalong|cookalong' }),
         ] }),
         ui.granted('calendar', 'Готовка в календаре'),
+        ui.granted('bgtask', 'Шаги и таймеры скачаны · 42 МБ'),
         ui.denied('calendar', 'Время остаётся в разделе «Готовим»'),
         ui.denied('push', 'Напоминание появится внутри приложения'),
       ] }),

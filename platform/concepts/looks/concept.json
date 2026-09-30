@@ -214,10 +214,10 @@
         "text": "Новая часть серии загрузится до открытия приложения."
       },
       "activate": true,
-      "feature": "Актуальная серия клипов",
-      "gesture": "«Тихое обновление клипов»",
-      "screen": "settings",
-      "target": "settings",
+      "feature": "Новые клипы подписок скачиваются до открытия",
+      "gesture": "«Скачивать клипы подписок заранее» в клипах",
+      "screen": "clip",
+      "target": "clip",
       "fallback": "Состав обновляется при открытии",
       "risk": "low",
       "anchor": false,
@@ -233,10 +233,10 @@
         "text": "Лента друзей готова к первому открытию."
       },
       "activate": true,
-      "feature": "Свежая лента к запуску",
-      "gesture": "«Обновлять ленту в фоне»",
-      "screen": "settings",
-      "target": "settings",
+      "feature": "Публикации подписок готовы к открытию ленты",
+      "gesture": "«Новые образы к утру» в ленте",
+      "screen": "home",
+      "target": "home",
       "fallback": "Лента обновится после открытия",
       "risk": "medium",
       "anchor": false,
@@ -605,7 +605,7 @@
       "ui": {
         "pattern": "collection",
         "purpose": "Найти своп или автора поблизости",
-        "primaryAction": "Смотреть подборку",
+        "primaryAction": "Петроградская сторона",
         "states": [
           "default",
           "loading",
@@ -661,7 +661,7 @@
       "ui": {
         "pattern": "editor",
         "purpose": "Опубликовать момент",
-        "primaryAction": null,
+        "primaryAction": "Снять",
         "states": [
           "default",
           "loading",
@@ -747,7 +747,7 @@
         "pattern": "collection",
         "navigation": "root",
         "purpose": "Переписка с авторами и ведущими свопов",
-        "primaryAction": null,
+        "primaryAction": "Лера Савина",
         "states": [
           "default",
           "loading",
@@ -857,7 +857,7 @@
       "ui": {
         "pattern": "settings",
         "purpose": "Держать доступы и системные функции под рукой",
-        "primaryAction": "Обновлять ленту в фоне",
+        "primaryAction": null,
         "states": [
           "default",
           "loading",
@@ -913,7 +913,7 @@
       "ui": {
         "pattern": "system",
         "purpose": "Войти на сайт марки сохранённым в «Образах» входом",
-        "primaryAction": "Войти",
+        "primaryAction": "Вернуться в «Образы»",
         "states": [
           "default",
           "loading",
@@ -1082,7 +1082,7 @@
       "ui": {
         "pattern": "player",
         "purpose": "Показать, что звук продолжается при погашенном экране",
-        "primaryAction": null,
+        "primaryAction": "Вернуться к разбору",
         "states": [
           "default",
           "loading",
@@ -1109,7 +1109,7 @@
       "ui": {
         "pattern": "detail",
         "purpose": "Собрать всё о свопе и положить дату в календарь",
-        "primaryAction": "Добавить в Календарь",
+        "primaryAction": "Ждать результат",
         "states": [
           "default",
           "loading",

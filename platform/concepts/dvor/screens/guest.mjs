@@ -11,6 +11,7 @@ export default (ui) => ui.screen({
           ui.button({ label: 'Подключиться к Dvor-Guest', icon: 'wifi', block: true, ask: 'hotspot|guest|guest' }),
           ui.button({ label: 'Сканировать QR с лавочки', icon: 'qr-code', variant: 'secondary', block: true, go: 'scan' }),
         ]),
+        ui.granted('hotspot', 'Вы в сети Dvor-Guest'),
         ui.denied('hotspot', 'Сеть придётся выбрать руками: Настройки → Wi-Fi → Dvor-Guest'),
         ui.denied('camera', 'Без камеры — имя и пароль ниже'),
       ] }),

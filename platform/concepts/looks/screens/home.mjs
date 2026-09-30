@@ -18,6 +18,10 @@ export default (ui) => ui.screen({
       likes: 428, comments: 31, shares: 12, views: '4,1K', open: { go: 'post' }, discuss: { go: 'post' },
       menu: { toast: 'Скрыть · Пожаловаться' },
     }),
+    ui.section({ children: [
+      ui.list([ui.row({ lead: ui.leadIcon('repeat-2'), title: 'Новые образы к утру', sub: 'Публикации подписок без ожидания загрузки', activate: 'fetch|home' })]),
+      ui.granted('fetch', 'Лента обновлена в 04:12 · 37 новых образов'),
+    ] }),
     ui.section({ title: 'Разбор гардероба', more: { go: 'talk', label: 'Все разборы' }, children: ui.list([
       ui.row({ lead: ui.leadIcon('headphones', { accent: true }), title: 'Разобрать шкаф за один вечер', sub: 'Аня Дёмина · пауза на 12:04', go: 'talk' }),
       ui.row({ lead: ui.leadIcon('headphones'), title: 'Три пары брюк на осень', sub: '34:06 · вышел вчера', end: '<span class="ui-row-end is-value"><span class="dl is-busy"><svg><use href="#i-loader-circle"/></svg>62 %</span></span>', go: 'talk' }),

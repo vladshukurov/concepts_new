@@ -1,0 +1,208 @@
+{
+  "$comment": "Модель доступов iOS: что доступ даёт, чем он заслужен, что пользователь видит после разрешения. Источник для генерации идей (сильные паттерны), для проверки силы фич (scripts/access-strength.mjs) и для review notes. settingsOk — жест в настройках допустим сам по себе; result — что обязано появиться на экране после разрешения; weakPhrases — формулировки, по которым видно, что фича придумана под доступ.",
+  "version": 1,
+  "keys": {
+    "camera": {
+      "plist": "NSCameraUsageDescription", "kind": "privacy", "prompt": true, "risk": "low",
+      "gives": "съёмка фото и видео в момент действия",
+      "strong": ["снять результат, который и есть единица контента (блюдо, образ, кадр заявки)", "скан кода или документа прямо в сценарии"],
+      "weak": ["камера для аватарки как единственное применение"],
+      "result": "кадр появляется в черновике, заявке или сообщении", "settingsOk": false
+    },
+    "mic": {
+      "plist": "NSMicrophoneUsageDescription", "kind": "privacy", "prompt": true, "risk": "low",
+      "gives": "запись звука",
+      "strong": ["голосовое в чате", "звук у видео", "запись разговора или репетиции, которая становится объектом продукта"],
+      "weak": ["микрофон «на будущее» без записи в сценарии"],
+      "result": "запись видна: волна, длительность, голосовое в ленте чата", "settingsOk": false
+    },
+    "photos": {
+      "aliases": ["photo"], "plist": "NSPhotoLibraryUsageDescription", "kind": "privacy", "prompt": true, "risk": "low",
+      "gives": "выбор готовых снимков из медиатеки",
+      "strong": ["публикация из готовых кадров", "вложение в сообщение"],
+      "weak": ["полный доступ к медиатеке там, где хватает PHPicker без промпта"],
+      "result": "выбранные кадры в черновике или сообщении", "settingsOk": false
+    },
+    "photosadd": {
+      "aliases": ["photoadd"], "plist": "NSPhotoLibraryAddUsageDescription", "kind": "privacy", "prompt": true, "risk": "low",
+      "gives": "сохранение созданного в Фото",
+      "strong": ["сохранить карточку, обложку или клип, которые продукт сам собрал"],
+      "weak": ["«скачать» чужое фото из ленты"],
+      "result": "подтверждение «Сохранено в Фото» на том же экране", "settingsOk": false
+    },
+    "location": {
+      "plist": "NSLocationWhenInUseUsageDescription", "kind": "privacy", "prompt": true, "risk": "medium",
+      "gives": "где человек сейчас",
+      "strong": ["что происходит рядом прямо сейчас", "отметка места в публикации", "маршрут от текущей точки"],
+      "weak": ["город для рекламы", "геопозиция при запуске без действия"],
+      "result": "расстояния, карта или список «рядом» пересобраны от точки", "settingsOk": false
+    },
+    "locationalways": {
+      "plist": "NSLocationAlwaysAndWhenInUseUsageDescription", "kind": "privacy", "prompt": true, "risk": "high",
+      "gives": "геопозиция при свёрнутом приложении",
+      "strong": ["трек прогулки или поездки с экраном блокировки", "уведомление по прибытии на место"],
+      "weak": ["«всегда» ради того же, что даёт «при использовании»"],
+      "result": "идущий трек или гео-напоминание видно в продукте и на локскрине", "settingsOk": false,
+      "weakPhrases": ["в фоне без причины"]
+    },
+    "contacts": {
+      "plist": "NSContactsUsageDescription", "kind": "privacy", "prompt": true, "risk": "medium",
+      "gives": "адресная книга",
+      "strong": ["найти знакомых, которые уже здесь", "пригласить конкретного человека в конкретное событие"],
+      "weak": ["загрузка контактов без видимого сопоставления"],
+      "result": "список совпадений и приглашений", "settingsOk": false
+    },
+    "calendar": {
+      "plist": "NSCalendarsFullAccessUsageDescription", "kind": "privacy", "prompt": true, "risk": "low",
+      "gives": "запись событий в Календарь",
+      "strong": ["добавить конкретное событие продукта с временем и местом"],
+      "weak": ["синхронизация календаря без события в сценарии"],
+      "result": "подтверждение «в Календаре» у события", "settingsOk": false
+    },
+    "speech": {
+      "plist": "NSSpeechRecognitionUsageDescription", "kind": "privacy", "prompt": true, "risk": "low",
+      "gives": "речь в текст",
+      "strong": ["субтитры к своему видео", "расшифровка голосового или заметки"],
+      "weak": ["голосовой поиск как единственное применение"],
+      "result": "строки текста с метками времени", "settingsOk": false
+    },
+    "faceid": {
+      "plist": "NSFaceIDUsageDescription", "kind": "privacy", "prompt": true, "risk": "low",
+      "gives": "замок на приватной части",
+      "strong": ["замок на разделе, где лежит личное: черновики, коды, документы"],
+      "weak": ["замок на всё приложение без приватных данных"],
+      "result": "раздел открывается по Face ID, видно что под замком", "settingsOk": true
+    },
+    "tracking": {
+      "plist": "NSUserTrackingUsageDescription", "kind": "privacy", "prompt": true, "risk": "high",
+      "gives": "IDFA для персональной рекламы",
+      "strong": ["реклама — модель монетизации, видна в ленте; запрос перед её настройкой"],
+      "weak": ["ATT без рекламы в продукте", "запрос при первом запуске"],
+      "result": "рекламная карточка в ленте подобрана или помечена «без подбора»", "settingsOk": true
+    },
+    "push": {
+      "plist": "aps-environment", "kind": "push", "prompt": true, "risk": "low",
+      "gives": "уведомления",
+      "strong": ["напомнить о конкретном событии в момент, когда человек его ждёт"],
+      "weak": ["«включить уведомления» списком в настройках при первом запуске"],
+      "result": "у события видно, что напоминание стоит", "settingsOk": true
+    },
+    "remotenotif": {
+      "plist": "UIBackgroundModes: remote-notification", "kind": "background", "prompt": false, "risk": "medium",
+      "gives": "тихий пуш будит приложение и обновляет данные",
+      "strong": ["свежие данные к моменту открытия: ответ автора уже в чате, клип уже скачан"],
+      "weak": ["переключатель «тихие обновления» в настройках"],
+      "result": "на экране данных видно «обновлено ночью» или новый элемент без загрузки", "settingsOk": false,
+      "weakPhrases": ["тих(ое|ие) обновлени"]
+    },
+    "fetch": {
+      "plist": "UIBackgroundModes: fetch", "kind": "background", "prompt": false, "risk": "medium",
+      "gives": "периодическое обновление в фоне",
+      "strong": ["лента или расписание свежие к открытию без спиннера"],
+      "weak": ["переключатель «обновлять в фоне» в настройках"],
+      "result": "на экране ленты метка «обновлено в 04:12» и новые записи", "settingsOk": false,
+      "weakPhrases": ["в фоне"]
+    },
+    "bgtask": {
+      "plist": "BGTaskSchedulerPermittedIdentifiers", "kind": "background", "prompt": false, "risk": "medium",
+      "gives": "запланированные фоновые задачи",
+      "strong": ["подготовить офлайн-пакет перед поездкой, собрать итог дня к утру"],
+      "weak": ["«проверить фоновые задачи», «обслуживание кэша»"],
+      "result": "готовый результат задачи на экране: скачано, собрано, пересчитано", "settingsOk": false,
+      "weakPhrases": ["фоновые задачи", "кэш", "обслуживани"]
+    },
+    "processing": {
+      "plist": "UIBackgroundModes: processing", "kind": "background", "prompt": false, "risk": "medium",
+      "gives": "долгая работа в фоне на зарядке",
+      "strong": ["тяжёлая обработка своего контента ночью: склейка видео, распознавание архива"],
+      "weak": ["«подготовка данных» без видимого результата"],
+      "result": "к утру готов объект: смонтированный ролик, расшифрованный архив", "settingsOk": false,
+      "weakPhrases": ["подготовка", "обслуживани"]
+    },
+    "audio": {
+      "plist": "UIBackgroundModes: audio", "kind": "background", "prompt": false, "risk": "low",
+      "gives": "звук при свёрнутом приложении и на локскрине",
+      "strong": ["слушать разбор, трек или шаги рецепта с погашенным экраном"],
+      "weak": ["фоновое аудио у продукта без аудиоконтента"],
+      "result": "плеер на локскрине с управлением", "settingsOk": false
+    },
+    "voip": {
+      "plist": "UIBackgroundModes: voip", "kind": "background", "prompt": false, "risk": "high",
+      "gives": "входящие и исходящие звонки через CallKit",
+      "strong": ["звонок из диалога человеку или группе внутри сценария"],
+      "weak": ["«звонок» без собеседника и без мессенджера"],
+      "result": "экран звонка с собеседником", "settingsOk": false
+    },
+    "commnotif": {
+      "plist": "com.apple.developer.usernotifications.communication", "kind": "push", "prompt": false, "risk": "low",
+      "gives": "уведомления о сообщениях с аватаром и именем",
+      "strong": ["сообщения от людей в чате продукта"],
+      "weak": ["включатель в настройках без мессенджера в продукте"],
+      "result": "сообщение человека с аватаром; в продукте есть мессенджер", "settingsOk": true
+    },
+    "wifiinfo": {
+      "plist": "com.apple.developer.networking.wifi-info", "kind": "entitlement", "prompt": false, "risk": "medium",
+      "gives": "имя текущей сети",
+      "strong": ["подтвердить, что человек на месте: отметка на площадке, дома, в офисе"],
+      "weak": ["показать имя сети ради показа"],
+      "result": "отметка или проверка прошла, видно по какой сети", "settingsOk": false
+    },
+    "hotspot": {
+      "plist": "com.apple.developer.networking.HotspotConfiguration", "kind": "entitlement", "prompt": true, "risk": "low",
+      "gives": "подключение к Wi‑Fi из приложения",
+      "strong": ["подключиться к гостевой сети места по QR или карточке события"],
+      "weak": ["подключение к сети, которой нет в сценарии"],
+      "result": "«вы в сети площадки» у места", "settingsOk": false
+    },
+    "localnetwork": {
+      "aliases": ["localnet"], "plist": "NSLocalNetworkUsageDescription", "kind": "privacy", "prompt": true, "risk": "low",
+      "gives": "устройства в домашней сети",
+      "strong": ["показать на ТВ, колонке, кухонном экране"],
+      "weak": ["сканирование сети без устройства в сценарии"],
+      "result": "список устройств и идущий показ", "settingsOk": false
+    },
+    "keychain": {
+      "plist": "keychain-access-groups", "kind": "entitlement", "prompt": false, "risk": "low",
+      "gives": "общая сессия приложения и его расширений",
+      "strong": ["виджет и расширение «Поделиться» работают без повторного входа"],
+      "weak": ["«защищённый вход» переключателем в настройках"],
+      "result": "расширение или виджет открывается уже с вашими данными", "settingsOk": false,
+      "weakPhrases": ["защищённ", "keychain"]
+    },
+    "appgroups": {
+      "plist": "com.apple.security.application-groups", "kind": "entitlement", "prompt": false, "risk": "low",
+      "gives": "общие данные приложения, виджета и расширений",
+      "strong": ["виджет показывает живые данные продукта"],
+      "weak": ["виджет-заглушка с логотипом"],
+      "result": "виджет на экране «Домой» с данными", "settingsOk": true
+    },
+    "autofill": {
+      "plist": "com.apple.developer.authentication-services.autofill-credential-provider", "kind": "entitlement", "prompt": false, "risk": "medium",
+      "gives": "подстановка входа в Safari и других приложениях",
+      "strong": ["вход на сайт партнёра продукта (кабинет УК, магазин марки) подставляется из приложения"],
+      "weak": ["менеджер паролей внутри непарольного продукта"],
+      "result": "строка QuickType с данными из продукта над клавиатурой", "settingsOk": true
+    },
+    "shareext": {
+      "plist": "NSExtension: share", "kind": "entitlement", "prompt": false, "risk": "low",
+      "gives": "приём ссылок и файлов из других приложений",
+      "strong": ["сохранить находку из Safari прямо в объект продукта"],
+      "weak": ["расширение, которое просто открывает приложение"],
+      "result": "лист «Поделиться» с выбором, куда положить", "settingsOk": true
+    },
+    "associateddomains": {
+      "aliases": ["domains"], "plist": "com.apple.developer.associated-domains", "kind": "entitlement", "prompt": false, "risk": "low",
+      "gives": "ссылки на сайт открываются в приложении",
+      "strong": ["ссылка-приглашение открывает событие в приложении"],
+      "weak": ["объяснение доменов в интерфейсе"],
+      "result": "переход по ссылке ведёт на нужный экран", "settingsOk": false
+    },
+    "music": {
+      "plist": "NSAppleMusicUsageDescription", "kind": "privacy", "prompt": true, "risk": "low",
+      "gives": "медиатека Apple Music",
+      "strong": ["своя музыка из медиатеки в сценарии продукта"],
+      "weak": [],
+      "result": "треки медиатеки в списке", "settingsOk": false
+    }
+  }
+}

@@ -22,8 +22,13 @@ export default (ui) => ui.screen({
       menu: { toast: 'Скрыть · Пожаловаться · Скопировать ссылку' },
     }),
     ui.section({ title: 'Рекомендации', children: [
-      ui.list([ui.row({ lead: ui.leadIcon('sparkles', { accent: true }), title: 'Сезонные блюда рядом', sub: 'Подборка по авторам, которых вы читаете' })]),
+      ui.list([
+        ui.row({ lead: ui.leadIcon('sparkles', { accent: true }), title: 'Сезонные блюда рядом', sub: 'Реклама · рынок «Зелёный базар»' }),
+        ui.row({ lead: ui.leadIcon('repeat-2'), title: 'Свежая лента к утру', sub: 'Новые блюда подписок без ожидания', activate: 'fetch|feed' }),
+      ]),
+      ui.granted('fetch', 'Лента обновлена в 06:40 · 12 новых публикаций'),
       ui.actions([ui.button({ label: 'Настроить рекомендации', variant: 'secondary', block: true, ask: 'tracking|feed|feed' })], { className: 'pd-gap' }),
+      ui.granted('tracking', 'Подборка собрана по авторам, которых вы читаете'),
       ui.denied('tracking', 'Остаются общие сезонные рекомендации'),
     ] }),
     ui.post({

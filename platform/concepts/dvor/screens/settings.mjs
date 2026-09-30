@@ -10,7 +10,6 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'house', title: 'Мой дом', sub: 'Полевая, 12, кв. 74 · подтверждён', go: 'verify' }),
       ] }) }),
       ui.section({ children: ui.group({ label: 'Уведомления и фон', cells: [
-        ui.cell({ icon: 'repeat-2', title: 'Обновление в фоне', value: 'Раз в сутки', activate: 'fetch|background' }),
         ui.cell({ icon: 'layout-grid', title: 'Виджет на экран «Домой»', value: 'Не добавлен', activate: 'appgroups|widget' }),
       ] }) }),
       ui.section({ children: ui.group({ label: 'Приватность', cells: [

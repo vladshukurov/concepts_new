@@ -4,6 +4,7 @@ export default (ui) => ui.screen({
   id: 'events', theme: THEME,
   body: ui.scroll([
     ui.largeTitle('События', ui.iconButton({ icon: 'mic', label: 'Новая заявка голосом', sr: 'Новая заявка голосом', ask: 'mic+speech|events|events' })),
+    ui.granted('mic,speech', 'Распознано: «дверь во втором подъезде не закрывается»'),
     ui.denied('mic,speech', 'Заявку можно заполнить текстом'),
     ui.section({ title: 'Заявки', meta: '3 открыты', children: ui.list([
       ui.row({ lead: ui.leadIcon('mic', { accent: true }), title: 'Черновик: дверь не закрывается', sub: 'Второй подъезд · распознано из записи 0:12', toast: 'Черновик заявки открыт' }),
@@ -16,6 +17,7 @@ export default (ui) => ui.screen({
         ui.row({ lead: ui.leadIcon('', { text: '18' }), title: 'Собрание собственников', sub: '19:00 · холл · нужен кворум', go: 'post' }),
         ui.row({ lead: ui.leadIcon('', { text: '14' }), title: 'Опрессовка стояка', sub: '14–17 апреля · без горячей воды', go: 'post' }),
       ]),
+      ui.granted('calendar', 'Субботник в Календаре · 12 апреля, 11:00'),
       ui.denied('calendar', 'Без календаря событие остаётся здесь'),
     ] }),
   ], { root: true }),

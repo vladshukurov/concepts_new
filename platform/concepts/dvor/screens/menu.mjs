@@ -9,7 +9,7 @@ export default (ui) => ui.screen({
       ui.stats([['18', 'соседей рядом'], ['4', 'открытых заявки'], ['6', 'дней до показаний']]),
     ] }),
     ui.section({ children: ui.group({ cells: [
-      ui.cell({ icon: 'users', title: 'Соседи', sub: 'Найти среди контактов', ask: 'contacts|neighbors|neighbors' }),
+      ui.cell({ icon: 'users', title: 'Соседи', value: '18', go: 'neighbors' }),
       ui.cell({ icon: 'gauge', title: 'Счётчики', value: 'до 25 апреля', go: 'meters' }),
       ui.cell({ icon: 'key', title: 'Пароли дома', value: '3', go: 'passwords' }),
       ui.cell({ icon: 'wifi', title: 'Гостевая сеть', go: 'guest' }),

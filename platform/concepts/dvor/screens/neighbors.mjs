@@ -6,7 +6,11 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Соседи' }),
     ui.scroll([
-      ui.denied('contacts', 'Без контактов — поиск по квартире ниже'),
+      ui.section({ children: [
+        ui.actions([ui.button({ label: 'Найти среди контактов', icon: 'users', variant: 'secondary', block: true, ask: 'contacts|neighbors|neighbors' })]),
+        ui.granted('contacts', 'Трое из ваших контактов живут в доме'),
+        ui.denied('contacts', 'Без контактов — поиск по квартире ниже'),
+      ] }),
       ui.section({ title: 'Из ваших контактов', meta: '3', children: ui.list([
         ui.row({ lead: ui.avatar('ПИ'), title: 'Пётр Ильин', sub: 'Кв. 12 · в контактах «Петя двор»', go: 'profile' }),
         ui.row({ lead: ui.avatar('МК'), title: 'Марина Кольцова', sub: 'Кв. 48 · в контактах «Марина сад»', go: 'chat' }),
