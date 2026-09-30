@@ -46,7 +46,8 @@
       "Авторы и подписки",
       "Сообщества",
       "Клипы-примерки",
-      "Свопы вещей с карточкой события и отметкой участия"
+      "Свопы вещей с карточкой события и отметкой участия",
+      "Мессенджер с голосовыми и звонками"
     ],
     "distinctions": [
       "Отметки вещей на фото",
@@ -64,24 +65,43 @@
       "social-feed",
       "profile",
       "create-post",
-      "communities"
+      "communities",
+      "messaging"
     ],
-    "referenceEvidence": []
+    "referenceEvidence": [
+      {
+        "pattern": "social-feed",
+        "screen": "home",
+        "behavior": "Лента: истории, посты авторов с отмеченными вещами, лайки, комментарии и репосты"
+      },
+      {
+        "pattern": "messaging",
+        "screen": "chats",
+        "behavior": "Мессенджер: диалоги с авторами и чат свопа, фото, голосовые, звонок"
+      }
+    ]
   },
   "brand": {
     "accent": "#0077FF",
     "accentDark": "#0077FF",
-    "fonts": "Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600"
+    "fonts": "Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600",
+    "theme": "vk-light"
   },
   "start": "phone",
   "tabs": [
     {
       "id": "home",
-      "label": "Главная"
+      "label": "Главная",
+      "role": "feed"
     },
     {
       "id": "nearby",
       "label": "Рядом"
+    },
+    {
+      "id": "chats",
+      "label": "Мессенджер",
+      "role": "messages"
     },
     {
       "id": "swap",
@@ -90,7 +110,8 @@
     },
     {
       "id": "profile",
-      "label": "Профиль"
+      "label": "Профиль",
+      "role": "profile"
     }
   ],
   "permissions": [
@@ -156,7 +177,7 @@
         "text": "Чтобы показывать локальные свопы и события стиля."
       },
       "feature": "События стиля рядом",
-      "gesture": "«Кто гуляет рядом»",
+      "gesture": "«Рядом» в историях",
       "screen": "home",
       "target": "nearby",
       "fallback": "Район выбирается вручную",
@@ -232,7 +253,7 @@
       },
       "activate": true,
       "feature": "Виджет сохранённого образа",
-      "gesture": "«Виджет на экране „Домой“»",
+      "gesture": "«Виджет» в «Настройках»",
       "screen": "settings",
       "target": "widget",
       "fallback": "Сохранённое остаётся внутри приложения",
@@ -250,7 +271,7 @@
       },
       "activate": true,
       "feature": "Один вход для приложения и виджета",
-      "gesture": "«Открыть „Образы“» с виджета",
+      "gesture": "«Образы» с виджета",
       "screen": "widget",
       "target": "profile",
       "fallback": "Виджет открывает приложение для входа",
@@ -473,14 +494,14 @@
       "plist": "UIBackgroundModes: voip",
       "alert": {
         "title": "Живая проверка вещи",
-        "text": "Entitlement без системного запроса: ведущий свопа осматривает вещь по короткому видеоэфиру."
+        "text": "Entitlement без системного запроса: звонок из диалога идёт через CallKit."
       },
       "activate": true,
-      "feature": "Короткая видеопроверка вещи ведущим свопа",
-      "gesture": "«Показать жакет ведущей»",
-      "screen": "swap",
-      "target": "swap",
-      "fallback": "Можно загрузить четыре фото и дождаться проверки",
+      "feature": "Видеозвонок ведущей свопа: показать вещь до приёма",
+      "gesture": "«Позвонить» в шапке диалога",
+      "screen": "chat",
+      "target": "call",
+      "fallback": "Остаются фото подкладки и ярлыка в чате",
       "risk": "high",
       "anchor": false,
       "conditional": true,
@@ -542,7 +563,8 @@
           "пост",
           "истории",
           "fallback"
-        ]
+        ],
+        "navigation": "root"
       }
     },
     {
@@ -569,7 +591,8 @@
           "автор",
           "характер",
           "нет сети"
-        ]
+        ],
+        "navigation": "push"
       }
     },
     {
@@ -596,13 +619,14 @@
           "три свопа на две недели",
           "город не определён",
           "в районе пусто"
-        ]
+        ],
+        "navigation": "root"
       }
     },
     {
       "id": "clip",
       "title": "Клип-примерка",
-      "type": "push",
+      "type": "fullscreen",
       "light": false,
       "parent": "nearby",
       "meta": "Клип сообщества",
@@ -623,13 +647,14 @@
           "состав",
           "место",
           "нет сети"
-        ]
+        ],
+        "navigation": "fullscreen"
       }
     },
     {
       "id": "create",
       "title": "Новый образ",
-      "type": "push",
+      "type": "modal",
       "light": true,
       "parent": "home",
       "meta": "Текст, фото и аудитория",
@@ -651,7 +676,8 @@
           "камера",
           "медиатека",
           "нет сети"
-        ]
+        ],
+        "navigation": "modal"
       }
     },
     {
@@ -678,13 +704,14 @@
           "кадр",
           "пустое состояние",
           "нет сети"
-        ]
+        ],
+        "navigation": "fullscreen"
       }
     },
     {
       "id": "media",
       "title": "Фото",
-      "type": "system picker",
+      "type": "modal",
       "light": true,
       "parent": "create",
       "meta": "Выбор кадра",
@@ -704,6 +731,91 @@
         "contentCases": [
           "галерея",
           "пустое состояние",
+          "нет сети"
+        ],
+        "navigation": "modal"
+      }
+    },
+    {
+      "id": "chats",
+      "title": "Мессенджер",
+      "type": "tab (root)",
+      "light": true,
+      "parent": "home",
+      "meta": "Диалоги с авторами и чат свопа",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "root",
+        "purpose": "Переписка с авторами и ведущими свопов",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "короткое",
+          "длинное",
+          "нет сети"
+        ]
+      }
+    },
+    {
+      "id": "chat",
+      "title": "Диалог",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Фото, голосовые, звонок · VoIP",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Договориться о вещи и показать её",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "короткое",
+          "длинное",
+          "нет сети"
+        ]
+      }
+    },
+    {
+      "id": "call",
+      "title": "Звонок",
+      "type": "fullscreen",
+      "light": false,
+      "parent": "chat",
+      "meta": "Видеопроверка вещи · VoIP",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "fullscreen",
+        "purpose": "Показать вещь ведущей до приёма",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "короткое",
+          "длинное",
           "нет сети"
         ]
       }
@@ -731,7 +843,8 @@
           "публикации",
           "сохранённое",
           "нет сети"
-        ]
+        ],
+        "navigation": "root"
       }
     },
     {
@@ -758,20 +871,21 @@
           "состояние восьми доступов",
           "фон и виджет включены",
           "доступ выключен в iOS"
-        ]
+        ],
+        "navigation": "push"
       }
     },
     {
       "id": "widget",
       "title": "Виджет на экране «Домой»",
-      "type": "fullscreen",
+      "type": "системная поверхность",
       "light": false,
       "parent": "settings",
       "meta": "App Group · Keychain",
       "ui": {
         "pattern": "system",
         "purpose": "Поставить виджет сохранённого образа на экран «Домой»",
-        "primaryAction": "Открыть «Образы»",
+        "primaryAction": "Образы",
         "states": [
           "default",
           "loading",
@@ -785,13 +899,14 @@
           "снимок обновлён ночью",
           "виджет ещё не добавлен",
           "снимок не обновился — нет сети"
-        ]
+        ],
+        "navigation": "system"
       }
     },
     {
       "id": "fill",
       "title": "Автозаполнение на сайте",
-      "type": "fullscreen",
+      "type": "системная поверхность",
       "light": true,
       "parent": "settings",
       "meta": "AutoFill · Safari",
@@ -812,7 +927,8 @@
           "вход подставлен из связки",
           "пароль повторяется на двух сайтах",
           "сайта нет в сохранённых"
-        ]
+        ],
+        "navigation": "system"
       }
     },
     {
@@ -839,7 +955,8 @@
           "12 совпадений",
           "новичок без публикаций",
           "контакты запрещены"
-        ]
+        ],
+        "navigation": "push"
       }
     },
     {
@@ -866,7 +983,8 @@
           "до запроса",
           "после отказа",
           "после согласия"
-        ]
+        ],
+        "navigation": "modal"
       }
     },
     {
@@ -879,7 +997,7 @@
       "ui": {
         "pattern": "system",
         "purpose": "Закрыть подборки и черновики биометрией",
-        "primaryAction": "Замок Face ID",
+        "primaryAction": "Открыть",
         "states": [
           "default",
           "loading",
@@ -893,7 +1011,8 @@
           "замок выключен",
           "замок включён",
           "Face ID недоступен"
-        ]
+        ],
+        "navigation": "push"
       }
     },
     {
@@ -906,7 +1025,7 @@
       "ui": {
         "pattern": "editor",
         "purpose": "Собрать и поправить субтитры перед публикацией",
-        "primaryAction": "Опубликовать клип",
+        "primaryAction": "Сохранить",
         "states": [
           "default",
           "loading",
@@ -921,7 +1040,8 @@
           "распознано 14 строк",
           "строка не разобрана",
           "правка вручную"
-        ]
+        ],
+        "navigation": "push"
       }
     },
     {
@@ -948,13 +1068,14 @@
           "27 минут, скачан",
           "загружается 62 %",
           "нет сети"
-        ]
+        ],
+        "navigation": "push"
       }
     },
     {
       "id": "background",
       "title": "Экран погас",
-      "type": "fullscreen",
+      "type": "системная поверхность",
       "light": false,
       "parent": "talk",
       "meta": "Now Playing · локскрин",
@@ -975,7 +1096,8 @@
           "играет 12:04 из 27:19",
           "пауза с локскрина",
           "−15 секунд"
-        ]
+        ],
+        "navigation": "system"
       }
     },
     {
@@ -1001,7 +1123,8 @@
           "18 участников",
           "дату перенесли",
           "вход свободный"
-        ]
+        ],
+        "navigation": "root"
       }
     },
     {
@@ -1028,7 +1151,8 @@
           "сеть площадки найдена",
           "сеть чужая",
           "отметка вручную"
-        ]
+        ],
+        "navigation": "push"
       }
     },
     {
@@ -1055,20 +1179,21 @@
           "QR со стойки",
           "пароль не подошёл",
           "уже подключены"
-        ]
+        ],
+        "navigation": "modal"
       }
     },
     {
       "id": "shareext",
       "title": "Поделиться в «Образы»",
-      "type": "modal",
+      "type": "системная поверхность",
       "light": true,
       "parent": "settings",
       "meta": "Share Extension · отдельный target",
       "ui": {
         "pattern": "system",
         "purpose": "Принять ссылку или кадр из другого приложения в черновик",
-        "primaryAction": "Сохранить в черновик",
+        "primaryAction": "Сохранить",
         "states": [
           "default",
           "loading",
@@ -1083,7 +1208,8 @@
           "ссылка из Safari",
           "кадр из «Фото»",
           "черновик уже есть"
-        ]
+        ],
+        "navigation": "system"
       }
     }
   ],
@@ -1092,7 +1218,7 @@
       "id": "all",
       "hero": true,
       "label": "Весь продукт",
-      "note": "26 экранов и 21 доступов",
+      "note": "25 экрана и 21 доступ",
       "start": "phone",
       "screens": [
         "phone",
@@ -1103,6 +1229,9 @@
         "create",
         "camera",
         "media",
+        "chats",
+        "chat",
+        "call",
         "profile",
         "settings",
         "widget",
@@ -1173,11 +1302,32 @@
         "swap",
         "nearby",
         "checkin",
-        "netqr"
+        "netqr",
+        "chat"
       ],
       "stops": [
         "swap",
-        "nearby"
+        "nearby",
+        "chat"
+      ]
+    },
+    {
+      "id": "messenger",
+      "label": "Мессенджер",
+      "note": "Диалог с ведущей свопа, фото и звонок",
+      "start": "chats",
+      "screens": [
+        "chats",
+        "chat",
+        "call",
+        "swap",
+        "media",
+        "mates"
+      ],
+      "stops": [
+        "swap",
+        "media",
+        "mates"
       ]
     }
   ],
