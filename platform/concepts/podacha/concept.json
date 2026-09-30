@@ -43,7 +43,11 @@
           "id": "author",
           "name": "Автор",
           "identity": "профиль",
-          "fields": ["name", "bio", "followers"],
+          "fields": [
+            "name",
+            "bio",
+            "followers"
+          ],
           "relations": [
             {
               "kind": "has-many",
@@ -55,7 +59,12 @@
           "id": "post",
           "name": "Публикация",
           "identity": "автор и время",
-          "fields": ["text", "media", "reactions", "saved"],
+          "fields": [
+            "text",
+            "media",
+            "reactions",
+            "saved"
+          ],
           "relations": [
             {
               "kind": "links-to",
@@ -67,7 +76,12 @@
           "id": "recipe",
           "name": "Рецепт",
           "identity": "автор и версия",
-          "fields": ["ingredients", "steps", "swaps", "duration"],
+          "fields": [
+            "ingredients",
+            "steps",
+            "swaps",
+            "duration"
+          ],
           "relations": [
             {
               "kind": "has-many",
@@ -79,7 +93,11 @@
           "id": "proof",
           "name": "Проверка",
           "identity": "автор и результат",
-          "fields": ["media", "swap", "outcome"],
+          "fields": [
+            "media",
+            "swap",
+            "outcome"
+          ],
           "relations": [
             {
               "kind": "belongs-to",
@@ -91,7 +109,11 @@
           "id": "cookalong",
           "name": "Совместная готовка",
           "identity": "время и ведущий",
-          "fields": ["steps", "participants", "currentStep"],
+          "fields": [
+            "steps",
+            "participants",
+            "currentStep"
+          ],
           "relations": [
             {
               "kind": "uses",
@@ -103,7 +125,12 @@
           "id": "conversation",
           "name": "Разговор",
           "identity": "участники и связанная кухня или автор",
-          "fields": ["participants", "context", "unread", "notifications"],
+          "fields": [
+            "participants",
+            "context",
+            "unread",
+            "notifications"
+          ],
           "relations": [
             {
               "kind": "has-many",
@@ -119,7 +146,12 @@
           "id": "message",
           "name": "Сообщение",
           "identity": "разговор, автор и время",
-          "fields": ["text", "voice", "photo", "contextCard"],
+          "fields": [
+            "text",
+            "voice",
+            "photo",
+            "contextCard"
+          ],
           "relations": [
             {
               "kind": "belongs-to",
@@ -137,7 +169,13 @@
           "effect": "Добавляет запись в ленту",
           "screen": "compose",
           "result": "Видны автор, фото, место и рецепт",
-          "capabilities": ["camera", "mic", "photos", "photosadd", "location"]
+          "capabilities": [
+            "camera",
+            "mic",
+            "photos",
+            "photosadd",
+            "location"
+          ]
         },
         {
           "id": "cook",
@@ -147,7 +185,11 @@
           "effect": "Фиксирует участие и общий шаг",
           "screen": "cookalong",
           "result": "Участник следует общей последовательности",
-          "capabilities": ["calendar", "push", "speech"]
+          "capabilities": [
+            "calendar",
+            "push",
+            "speech"
+          ]
         },
         {
           "id": "send-message",
@@ -157,7 +199,12 @@
           "effect": "Добавляет сообщение в разговор конкретной готовки или с автором",
           "screen": "conversation",
           "result": "Текст, фото, голос и карточка шага остаются рядом с блюдом",
-          "capabilities": ["push", "commnotif", "mic", "photos"]
+          "capabilities": [
+            "push",
+            "commnotif",
+            "mic",
+            "photos"
+          ]
         },
         {
           "id": "start-kitchen-call",
@@ -167,7 +214,10 @@
           "effect": "Начинает групповой аудиозвонок участников текущей готовки",
           "screen": "conversation",
           "result": "Участники получают системный вызов, связанный с блюдом",
-          "capabilities": ["mic", "voip"]
+          "capabilities": [
+            "mic",
+            "voip"
+          ]
         },
         {
           "id": "follow",
@@ -177,7 +227,9 @@
           "effect": "Добавляет автора в подписки",
           "screen": "following",
           "result": "Публикации появляются в ленте",
-          "capabilities": ["contacts"]
+          "capabilities": [
+            "contacts"
+          ]
         },
         {
           "id": "present",
@@ -187,7 +239,11 @@
           "effect": "Выносит текущий шаг на кухонный экран",
           "screen": "kitchen",
           "result": "Крупный шаг виден всей кухне",
-          "capabilities": ["localnetwork", "wifiinfo", "audio"]
+          "capabilities": [
+            "localnetwork",
+            "wifiinfo",
+            "audio"
+          ]
         },
         {
           "id": "prepare",
@@ -213,7 +269,9 @@
           "effect": "Учитывает отдельное согласие",
           "screen": "feed",
           "result": "Отказ не влияет на продукт",
-          "capabilities": ["tracking"]
+          "capabilities": [
+            "tracking"
+          ]
         }
       ]
     }
@@ -241,7 +299,12 @@
       "recipe",
       "profile"
     ],
-    "referencePatterns": ["social-feed", "profile", "create-post"],
+    "referencePatterns": [
+      "social-feed",
+      "profile",
+      "create-post",
+      "messaging"
+    ],
     "referenceEvidence": [
       {
         "pattern": "social-feed",
@@ -257,6 +320,11 @@
         "pattern": "create-post",
         "screen": "compose",
         "behavior": "Композер собирает текст, медиа, место и проверенный рецепт на одной поверхности."
+      },
+      {
+        "pattern": "messaging",
+        "screen": "chats",
+        "behavior": "Мессенджер: чат совместной готовки и личные диалоги с авторами, карточки рецептов, голосовые, звонок кухни"
       }
     ]
   },
@@ -278,17 +346,29 @@
       {
         "objection": "Рецептов уже очень много в интернете",
         "resolution": "«Подача» отвечает не каталогом, а доверием к конкретному автору, реальным результатом и проверенной альтернативой ингредиента",
-        "evidenceScreens": ["feed", "post", "recipe"]
+        "evidenceScreens": [
+          "feed",
+          "post",
+          "recipe"
+        ]
       },
       {
         "objection": "Совместная готовка может быть обычным видеозвонком",
         "resolution": "Фиксированные шаги и общий тайминг помогают готовить без постоянного разговора и ведущего в кадре",
-        "evidenceScreens": ["cookings", "cookalong", "steps"]
+        "evidenceScreens": [
+          "cookings",
+          "cookalong",
+          "steps"
+        ]
       },
       {
         "objection": "Это просто тематическая лента",
         "resolution": "Рецепт — самостоятельный объект с версиями, вариантами ингредиентов, проверками и запуском пошаговой готовки",
-        "evidenceScreens": ["recipe", "post", "profile"]
+        "evidenceScreens": [
+          "recipe",
+          "post",
+          "profile"
+        ]
       }
     ],
     "visualPasses": [
@@ -312,9 +392,10 @@
   },
   "brand": {
     "accent": "#0077FF",
-    "accentDark": "#4C9EFF",
+    "accentDark": "#0077FF",
     "fonts": "Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500",
-    "authIcon": "utensils"
+    "authIcon": "utensils",
+    "theme": "vk-light"
   },
   "start": "phone",
   "uiContractVersion": 3,
@@ -331,8 +412,8 @@
     },
     {
       "id": "chats",
-      "label": "Чаты",
-      "role": "messaging"
+      "label": "Мессенджер",
+      "role": "messages"
     },
     {
       "id": "recipes",
@@ -354,7 +435,7 @@
         "text": "Снять фото или короткое видео результата"
       },
       "feature": "Снять фото или короткое видео результата",
-      "gesture": "Снять блюдо",
+      "gesture": "«Снять блюдо»",
       "screen": "compose",
       "target": "camera",
       "fallback": "Можно выбрать готовый кадр или опубликовать текст",
@@ -373,7 +454,7 @@
         "text": "Записать звук короткого видео или голосовое сообщение на кухне"
       },
       "feature": "Звук видео и голосовые сообщения",
-      "gesture": "Снять с пояснением или записать голосовое",
+      "gesture": "«Снять с пояснением» или голосовое в чате",
       "screen": "camera",
       "target": "post",
       "fallback": "Видео снимается без звука, а сообщение вводится текстом",
@@ -381,9 +462,11 @@
       "risk": "low",
       "anchor": false,
       "conditional": false,
-      "requires": ["camera"],
+      "requires": [
+        "camera"
+      ],
       "grounding": "Системный iOS API; данные используются только для выбранного действия",
-      "reviewNote": "Доступ вызывается действием «Снять с пояснением» на экране «camera». При отказе: Видео снимается без звука, пояснение вводится текстом"
+      "reviewNote": "Доступ вызывается действием «Снять с пояснением» или голосовое в чате на экране «camera». При отказе: Видео снимается без звука, пояснение вводится текстом"
     },
     {
       "key": "photos",
@@ -393,7 +476,7 @@
         "text": "Выбрать фото блюда для публикации или разговора"
       },
       "feature": "Фото блюда в публикации и сообщении",
-      "gesture": "Из медиатеки или добавить фото в разговор",
+      "gesture": "«Из медиатеки»",
       "screen": "compose",
       "target": "picker",
       "fallback": "Можно снять новый кадр камерой",
@@ -412,7 +495,7 @@
         "text": "Экспортировать выбранную карточку"
       },
       "feature": "Экспортировать выбранную карточку",
-      "gesture": "Сохранить карточку в Фото",
+      "gesture": "«Сохранить карточку в Фото»",
       "screen": "post",
       "target": "post",
       "fallback": "Карточка остаётся в приложении",
@@ -431,7 +514,7 @@
         "text": "Подсказать рынки и места рядом"
       },
       "feature": "Подсказать рынки и места рядом",
-      "gesture": "Место",
+      "gesture": "«Место»",
       "screen": "compose",
       "target": "place",
       "fallback": "Место вводится вручную",
@@ -450,7 +533,7 @@
         "text": "Сопоставить номера на устройстве"
       },
       "feature": "Сопоставить номера на устройстве",
-      "gesture": "Найти знакомых",
+      "gesture": "«Найти знакомых»",
       "screen": "following",
       "target": "matches",
       "fallback": "Можно найти автора по имени или ссылке",
@@ -469,7 +552,7 @@
         "text": "Записать выбранную готовку в календарь"
       },
       "feature": "Записать выбранную готовку в календарь",
-      "gesture": "Добавить в календарь",
+      "gesture": "«Добавить в календарь»",
       "screen": "cookalong",
       "target": "cookalong",
       "fallback": "Время остаётся внутри «Подачи»",
@@ -488,7 +571,7 @@
         "text": "Напомнить о выбранной готовке и новых сообщениях её участников"
       },
       "feature": "Напоминание о готовке и новые сообщения",
-      "gesture": "Напомнить за 15 минут",
+      "gesture": "«Напомнить за 15 минут»",
       "screen": "cookalong",
       "target": "cookalong",
       "fallback": "Напоминание видно внутри приложения",
@@ -507,7 +590,7 @@
         "text": "Персонализировать рекламную карточку"
       },
       "feature": "Персонализировать рекламную карточку",
-      "gesture": "Настроить рекомендации",
+      "gesture": "«Настроить рекомендации»",
       "screen": "feed",
       "target": "feed",
       "fallback": "Остаются общие сезонные рекомендации",
@@ -526,7 +609,7 @@
         "text": "Продолжить озвучивание шагов при погашенном экране"
       },
       "feature": "Продолжить озвучивание шагов при погашенном экране",
-      "gesture": "Слушать в фоне",
+      "gesture": "«Слушать с погашенным экраном»",
       "screen": "audio",
       "target": "audio",
       "fallback": "Шаги читаются с открытым экраном",
@@ -536,7 +619,7 @@
       "conditional": false,
       "activate": true,
       "grounding": "Системный iOS API; данные используются только для выбранного действия",
-      "reviewNote": "Доступ вызывается действием «Слушать в фоне» на экране «audio». При отказе: Шаги читаются с открытым экраном"
+      "reviewNote": "Доступ вызывается действием «Слушать с погашенным экраном» на экране «audio». При отказе: Шаги читаются с открытым экраном"
     },
     {
       "key": "localnetwork",
@@ -546,7 +629,7 @@
         "text": "Найти доступные экраны в домашней сети"
       },
       "feature": "Найти доступные экраны в домашней сети",
-      "gesture": "Найти экран на кухне",
+      "gesture": "«Найти экран на кухне»",
       "screen": "kitchen",
       "target": "cast",
       "fallback": "Шаги остаются на телефоне",
@@ -565,7 +648,7 @@
         "text": "Уточнить выбранную домашнюю сеть"
       },
       "feature": "Уточнить выбранную домашнюю сеть",
-      "gesture": "Кухня · Apple TV",
+      "gesture": "«Кухня · Apple TV»",
       "screen": "cast",
       "target": "cast",
       "fallback": "Экран выбирается вручную по имени",
@@ -573,7 +656,9 @@
       "risk": "low",
       "anchor": false,
       "conditional": false,
-      "requires": ["localnetwork"],
+      "requires": [
+        "localnetwork"
+      ],
       "activate": true,
       "grounding": "Системный iOS API; данные используются только для выбранного действия",
       "reviewNote": "Доступ вызывается действием «Кухня · Apple TV» на экране «cast». При отказе: Экран выбирается вручную по имени"
@@ -586,7 +671,7 @@
         "text": "Получать ответы авторов и изменения готовки"
       },
       "feature": "Получать ответы авторов и изменения готовки",
-      "gesture": "Важные ответы",
+      "gesture": "«Важные ответы» в настройках",
       "screen": "settings",
       "target": "notif",
       "fallback": "Обновления видны после открытия",
@@ -596,7 +681,7 @@
       "conditional": false,
       "activate": true,
       "grounding": "Системный iOS API; данные используются только для выбранного действия",
-      "reviewNote": "Доступ вызывается действием «Важные ответы» на экране «settings». При отказе: Обновления видны после открытия"
+      "reviewNote": "Доступ вызывается действием «Важные ответы» в настройках на экране «settings». При отказе: Обновления видны после открытия"
     },
     {
       "key": "fetch",
@@ -606,7 +691,7 @@
         "text": "Обновлять короткий снапшот ленты"
       },
       "feature": "Обновлять короткий снапшот ленты",
-      "gesture": "Свежая лента к открытию",
+      "gesture": "«Свежая лента к открытию»",
       "screen": "settings",
       "target": "settings",
       "fallback": "Лента обновляется после открытия",
@@ -626,7 +711,7 @@
         "text": "Сохранить шаги до начала готовки"
       },
       "feature": "Сохранить шаги до начала готовки",
-      "gesture": "Подготовка рецептов",
+      "gesture": "«Подготовка рецептов»",
       "screen": "settings",
       "target": "settings",
       "fallback": "Шаги загружаются при открытии",
@@ -646,7 +731,7 @@
         "text": "Зарегистрировать обслуживание кэша"
       },
       "feature": "Зарегистрировать обслуживание кэша",
-      "gesture": "Проверить фоновые задачи",
+      "gesture": "«Проверить фоновые задачи»",
       "screen": "settings",
       "target": "settings",
       "fallback": "Кэш обновляется в приложении",
@@ -666,7 +751,7 @@
         "text": "Хранить сессию аккаунта в Keychain"
       },
       "feature": "Хранить сессию аккаунта в Keychain",
-      "gesture": "Защищённый вход",
+      "gesture": "«Защищённый вход»",
       "screen": "settings",
       "target": "settings",
       "fallback": "Потребуется повторный вход",
@@ -694,7 +779,9 @@
       "risk": "low",
       "anchor": false,
       "conditional": false,
-      "requires": ["push"],
+      "requires": [
+        "push"
+      ],
       "activate": true,
       "grounding": "Communication Notifications используются только для сообщений реальных участников; уведомление связано с INSendMessageIntent и стабильным conversationIdentifier",
       "reviewNote": "Доступ вызывается переключателем «Сообщения кухни» в общих настройках. При отказе сообщения остаются во вкладке «Чаты»"
@@ -707,18 +794,20 @@
         "text": "Начать групповой аудиозвонок с ведущей и участниками готовки."
       },
       "feature": "Групповой звонок совместной готовки",
-      "gesture": "Иконка телефона в топбаре кухни",
+      "gesture": "«Позвонить» в шапке чата кухни",
       "screen": "conversation",
-      "target": "conversation",
+      "target": "call",
       "fallback": "Вопрос можно задать текстом или голосовым сообщением",
       "snack": "Звонок недоступен — задайте вопрос в чате",
       "risk": "high",
       "anchor": false,
       "conditional": true,
-      "requires": ["mic"],
+      "requires": [
+        "mic"
+      ],
       "activate": true,
       "grounding": "PushKit используется только для настоящего группового VoIP-звонка; вызов передаётся CallKit и связан с текущей готовкой",
-      "reviewNote": "Телефон в топбаре запускает реальный звонок ведущей и участников кухни"
+      "reviewNote": "«Позвонить» в шапке чата кухни запускает групповой звонок ведущей и участников"
     },
     {
       "key": "speech",
@@ -728,7 +817,7 @@
         "text": "Преобразовать заметку о замене в текст"
       },
       "feature": "Преобразовать заметку о замене в текст",
-      "gesture": "Надиктовать заметку",
+      "gesture": "«Надиктовать заметку»",
       "screen": "steps",
       "target": "steps",
       "fallback": "Заметка вводится с клавиатуры",
@@ -756,7 +845,12 @@
           "primary": "Основная область «Вход в «Подачу»» и действие «Далее»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "loading", "empty", "error"],
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error"
+        ],
         "density": "low",
         "contentCases": [
           {
@@ -784,12 +878,19 @@
         "pattern": "collection",
         "navigation": "root",
         "purpose": "Показать реальные блюда авторов и быстрый вход в публикацию",
-        "primaryAction": "Что получилось сегодня?",
+        "primaryAction": null,
         "hierarchy": {
           "primary": "Основная область «Лента» и действие «Что получилось сегодня?»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "high",
         "contentCases": [
           {
@@ -823,7 +924,14 @@
           "primary": "Основная область «Публикация» и действие «Открыть проверенный рецепт»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "high",
         "contentCases": [
           {
@@ -852,12 +960,19 @@
         "pattern": "collection",
         "navigation": "push",
         "purpose": "Найти автора, блюдо или готовку",
-        "primaryAction": "Найти",
+        "primaryAction": "Ужин за 20 минут",
         "hierarchy": {
           "primary": "Основная область «Поиск» и действие «Найти»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "medium",
         "contentCases": [
           {
@@ -878,13 +993,13 @@
     {
       "id": "compose",
       "title": "Новая публикация",
-      "type": "push",
+      "type": "modal",
       "light": true,
       "parent": "feed",
       "meta": "Собрать текст, медиа, место и рецепт",
       "ui": {
         "pattern": "editor",
-        "navigation": "push",
+        "navigation": "modal",
         "purpose": "Собрать текст, медиа, место и рецепт",
         "primaryAction": "Опубликовать",
         "hierarchy": {
@@ -928,12 +1043,19 @@
         "pattern": "capture",
         "navigation": "fullscreen",
         "purpose": "Снять честный результат и короткое пояснение",
-        "primaryAction": "Снять",
+        "primaryAction": null,
         "hierarchy": {
           "primary": "Основная область «Снять блюдо» и действие «Снять»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "low",
         "contentCases": [
           {
@@ -967,7 +1089,14 @@
           "primary": "Основная область «Медиатека» и действие «Добавить 2 фото»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "high",
         "contentCases": [
           {
@@ -996,12 +1125,19 @@
         "pattern": "task",
         "navigation": "push",
         "purpose": "Добавить место покупки или приготовления",
-        "primaryAction": "Добавить место",
+        "primaryAction": "Зелёный базар",
         "hierarchy": {
           "primary": "Основная область «Место» и действие «Добавить место»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "medium",
         "contentCases": [
           {
@@ -1029,12 +1165,19 @@
         "pattern": "collection",
         "navigation": "root",
         "purpose": "Показать расписание совместных готовок",
-        "primaryAction": "Создать готовку",
+        "primaryAction": "Ужин из одной сковороды",
         "hierarchy": {
           "primary": "Основная область «Готовим вместе» и действие «Создать готовку»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "high",
         "contentCases": [
           {
@@ -1068,7 +1211,14 @@
           "primary": "Основная область «Совместная готовка» и действие «Открыть все шаги»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "high",
         "contentCases": [
           {
@@ -1102,7 +1252,14 @@
           "primary": "Основная область «Шаги готовки» и действие «Шаг готов»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "medium",
         "contentCases": [
           {
@@ -1130,12 +1287,19 @@
         "pattern": "collection",
         "navigation": "root",
         "purpose": "Показать сохранённые и проверенные рецепты",
-        "primaryAction": "Открыть рецепт",
+        "primaryAction": "Чечевичный суп",
         "hierarchy": {
           "primary": "Основная область «Рецепты» и действие «Открыть рецепт»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "high",
         "contentCases": [
           {
@@ -1169,7 +1333,14 @@
           "primary": "Название, ингредиенты и кнопка запуска готовки",
           "secondary": "Автор, длительность, рабочий вариант продукта и число повторений"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "high",
         "contentCases": [
           {
@@ -1203,7 +1374,14 @@
           "primary": "Основная область «Рецепт вслух» и действие «Слушать с погашенным экраном»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "low",
         "contentCases": [
           {
@@ -1224,20 +1402,27 @@
     {
       "id": "kitchen",
       "title": "Кухонный экран",
-      "type": "push",
-      "light": true,
+      "type": "fullscreen",
+      "light": false,
       "parent": "steps",
       "meta": "Вынести крупный шаг и таймер на общий экран",
       "ui": {
         "pattern": "system",
-        "navigation": "push",
+        "navigation": "fullscreen",
         "purpose": "Вынести крупный шаг и таймер на общий экран",
-        "primaryAction": "Найти экран",
+        "primaryAction": "Найти экран на кухне",
         "hierarchy": {
           "primary": "Основная область «Кухонный экран» и действие «Найти экран»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "low",
         "contentCases": [
           {
@@ -1258,20 +1443,27 @@
     {
       "id": "cast",
       "title": "Выбор экрана",
-      "type": "system",
+      "type": "modal",
       "light": true,
       "parent": "kitchen",
       "meta": "Выбрать устройство в локальной сети",
       "ui": {
         "pattern": "task",
-        "navigation": "system",
+        "navigation": "modal",
         "purpose": "Выбрать устройство в локальной сети",
         "primaryAction": "Показать шаги",
         "hierarchy": {
           "primary": "Основная область «Выбор экрана» и действие «Показать шаги»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "medium",
         "contentCases": [
           {
@@ -1304,7 +1496,14 @@
           "primary": "Основная область «Профиль автора» и действие «Опубликовать»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "high",
         "contentCases": [
           {
@@ -1338,7 +1537,14 @@
           "primary": "Основная область «Подписки» и действие «Найти знакомых»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "medium",
         "contentCases": [
           {
@@ -1367,12 +1573,19 @@
         "pattern": "collection",
         "navigation": "push",
         "purpose": "Найти знакомых по контактам на устройстве",
-        "primaryAction": "Подписаться",
+        "primaryAction": "Пригласить по ссылке",
         "hierarchy": {
           "primary": "Основная область «Знакомые» и действие «Подписаться»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "medium",
         "contentCases": [
           {
@@ -1401,12 +1614,19 @@
         "pattern": "collection",
         "navigation": "push",
         "purpose": "Показать значимые ответы и готовки",
-        "primaryAction": "Открыть событие",
+        "primaryAction": "Ужин из одной сковороды",
         "hierarchy": {
           "primary": "Основная область «Уведомления» и действие «Открыть событие»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "medium",
         "contentCases": [
           {
@@ -1434,12 +1654,18 @@
         "pattern": "collection",
         "navigation": "root",
         "purpose": "Продолжить разговор в контексте блюда или совместной готовки",
-        "primaryAction": "Открыть разговор",
+        "primaryAction": "Ужин из одной сковороды",
         "hierarchy": {
           "primary": "Активные кухни с текущим шагом и непрочитанными сообщениями",
           "secondary": "Личные разговоры с авторами"
         },
-        "states": ["default", "empty", "loading", "error", "offline"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline"
+        ],
         "density": "high",
         "contentCases": [
           {
@@ -1468,12 +1694,18 @@
         "pattern": "messaging",
         "navigation": "push",
         "purpose": "Отправить текст, фото, голос или карточку текущего шага",
-        "primaryAction": "Отправить сообщение",
+        "primaryAction": null,
         "hierarchy": {
           "primary": "История разговора и композер",
           "secondary": "Карточка готовки, участники и групповой звонок"
         },
-        "states": ["default", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "high",
         "contentCases": [
           {
@@ -1492,6 +1724,46 @@
       }
     },
     {
+      "id": "call",
+      "title": "Звонок кухни",
+      "type": "fullscreen",
+      "light": false,
+      "parent": "conversation",
+      "meta": "Групповой звонок · VoIP",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "fullscreen",
+        "purpose": "Спросить ведущую голосом, не отрываясь от плиты",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Звонок ведущей и восьми участников"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное название готовки и час разговора"
+          },
+          {
+            "kind": "failure",
+            "example": "Связь пропала — вопрос уходит в чат"
+          }
+        ],
+        "hierarchy": {
+          "primary": "Ведущая и завершение звонка",
+          "secondary": "Микрофон, динамик и шаги"
+        }
+      }
+    },
+    {
       "id": "direct-zhanna",
       "title": "Жанна Ким",
       "type": "push",
@@ -1502,14 +1774,32 @@
         "pattern": "messaging",
         "navigation": "push",
         "purpose": "Уточнить рецепт напрямую у автора",
-        "primaryAction": "Отправить сообщение",
-        "hierarchy": { "primary": "История личной переписки с выбранным автором", "secondary": "Композер, фото блюда, голосовые сообщения и звонок" },
-        "states": ["default", "loading", "error", "offline", "denied"],
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "История личной переписки с выбранным автором",
+          "secondary": "Композер, фото блюда, голосовые сообщения и звонок"
+        },
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "high",
         "contentCases": [
-          { "kind": "typical", "example": "Вопрос автору об ингредиенте" },
-          { "kind": "stress", "example": "Длинный совет по приготовлению" },
-          { "kind": "failure", "example": "Сообщение ждёт подключения" }
+          {
+            "kind": "typical",
+            "example": "Вопрос автору об ингредиенте"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинный совет по приготовлению"
+          },
+          {
+            "kind": "failure",
+            "example": "Сообщение ждёт подключения"
+          }
         ]
       }
     },
@@ -1524,14 +1814,32 @@
         "pattern": "messaging",
         "navigation": "push",
         "purpose": "Обсудить присланный рецепт напрямую с автором",
-        "primaryAction": "Отправить сообщение",
-        "hierarchy": { "primary": "История личной переписки с выбранным автором", "secondary": "Композер, фото блюда, голосовые сообщения и звонок" },
-        "states": ["default", "loading", "error", "offline", "denied"],
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "История личной переписки с выбранным автором",
+          "secondary": "Композер, фото блюда, голосовые сообщения и звонок"
+        },
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "high",
         "contentCases": [
-          { "kind": "typical", "example": "Автор прислал карточку рецепта" },
-          { "kind": "stress", "example": "Несколько вложений подряд" },
-          { "kind": "failure", "example": "Сообщение ждёт подключения" }
+          {
+            "kind": "typical",
+            "example": "Автор прислал карточку рецепта"
+          },
+          {
+            "kind": "stress",
+            "example": "Несколько вложений подряд"
+          },
+          {
+            "kind": "failure",
+            "example": "Сообщение ждёт подключения"
+          }
         ]
       }
     },
@@ -1546,12 +1854,19 @@
         "pattern": "settings",
         "navigation": "push",
         "purpose": "Управлять аккаунтом, уведомлениями и фоном",
-        "primaryAction": "Проверить фон",
+        "primaryAction": null,
         "hierarchy": {
           "primary": "Основная область «Настройки» и действие «Проверить фон»",
           "secondary": "Уведомления кухни, фоновые обновления и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "high",
         "contentCases": [
           {
@@ -1585,7 +1900,14 @@
           "primary": "Основная область «Конфиденциальность» и действие «Открыть политику»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "high",
         "contentCases": [
           {
@@ -1619,7 +1941,14 @@
           "primary": "Основная область «Приглашение» и действие «Скопировать ссылку»",
           "secondary": "Автор, статус, метаданные и доступный запасной путь"
         },
-        "states": ["default", "empty", "loading", "error", "offline", "denied"],
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "low",
         "contentCases": [
           {
@@ -1663,13 +1992,14 @@
         "kitchen",
         "cast",
         "profile",
-        "chats",
-        "conversation",
-        "direct-zhanna",
-        "direct-timur",
         "following",
         "matches",
         "notif",
+        "chats",
+        "conversation",
+        "call",
+        "direct-zhanna",
+        "direct-timur",
         "settings",
         "privacy",
         "invite"
@@ -1680,70 +2010,195 @@
       "label": "Вход и гостевой проход",
       "note": "Номер, пароль, регистрация, legal и гостевой режим",
       "start": "phone",
-      "screens": ["phone", "feed"],
-      "stops": ["feed"]
+      "screens": [
+        "phone",
+        "feed"
+      ],
+      "stops": [
+        "feed"
+      ]
     },
     {
       "id": "publish",
       "label": "Опубликовать блюдо",
       "note": "Камера или фото, место, рецепт и готовая публикация",
       "start": "compose",
-      "screens": ["compose", "camera", "picker", "place", "recipe", "post", "cookalong"],
-      "stops": ["cookalong"]
+      "screens": [
+        "compose",
+        "camera",
+        "picker",
+        "place",
+        "recipe",
+        "post",
+        "cookalong",
+        "direct-zhanna"
+      ],
+      "stops": [
+        "cookalong",
+        "direct-zhanna"
+      ]
     },
     {
       "id": "discover",
       "label": "Найти автора и блюдо",
       "note": "Поиск по знакомым авторам, публикациям и совместным готовкам",
       "start": "discover",
-      "screens": ["discover", "post", "profile", "cookings"],
-      "stops": ["post", "profile", "cookings"]
+      "screens": [
+        "discover",
+        "post",
+        "profile",
+        "cookings",
+        "direct-zhanna"
+      ],
+      "stops": [
+        "post",
+        "profile",
+        "cookings",
+        "direct-zhanna"
+      ]
     },
     {
       "id": "cookalong",
       "label": "Готовить вместе",
       "note": "Активная готовка, шаги, календарь, чат и кухонный экран",
       "start": "cookings",
-      "screens": ["cookings", "notif", "cookalong", "steps", "conversation", "kitchen", "cast"]
+      "screens": [
+        "cookings",
+        "notif",
+        "cookalong",
+        "steps",
+        "conversation",
+        "kitchen",
+        "cast",
+        "recipes",
+        "profile",
+        "compose",
+        "direct-zhanna",
+        "post",
+        "call",
+        "audio"
+      ],
+      "stops": [
+        "recipes",
+        "profile",
+        "compose",
+        "direct-zhanna",
+        "post",
+        "call",
+        "audio"
+      ]
     },
     {
       "id": "recipe",
       "label": "Сохранить и повторить рецепт",
       "note": "Коллекция рецептов и переход к совместной готовке",
       "start": "recipes",
-      "screens": ["recipes", "discover", "recipe", "cookalong"],
-      "stops": ["discover", "cookalong"]
+      "screens": [
+        "recipes",
+        "discover",
+        "recipe",
+        "cookalong"
+      ],
+      "stops": [
+        "discover",
+        "cookalong"
+      ]
     },
     {
       "id": "kitchen",
       "label": "Открыть кухонный экран",
       "note": "Голосовой шаг и передача процесса на экран рядом",
       "start": "steps",
-      "screens": ["steps", "kitchen", "cast"]
+      "screens": [
+        "steps",
+        "kitchen",
+        "cast",
+        "audio"
+      ],
+      "stops": [
+        "audio"
+      ]
     },
     {
       "id": "messaging",
       "label": "Обсудить готовку",
       "note": "Групповой разговор, личные диалоги, голосовые и звонок",
       "start": "chats",
-      "screens": ["chats", "conversation", "direct-zhanna", "direct-timur", "cookalong", "profile"],
-      "stops": ["cookalong", "profile"]
+      "screens": [
+        "chats",
+        "conversation",
+        "call",
+        "direct-zhanna",
+        "direct-timur",
+        "cookalong",
+        "profile",
+        "following",
+        "steps",
+        "recipe"
+      ],
+      "stops": [
+        "cookalong",
+        "profile",
+        "following",
+        "steps",
+        "recipe"
+      ]
     },
     {
       "id": "social",
       "label": "Найти знакомых авторов",
       "note": "Подписки, совпадения контактов и безопасное приглашение",
       "start": "following",
-      "screens": ["following", "profile", "matches", "invite"],
-      "stops": ["profile"]
+      "screens": [
+        "following",
+        "profile",
+        "matches",
+        "invite",
+        "direct-zhanna",
+        "direct-timur",
+        "cookalong"
+      ],
+      "stops": [
+        "profile",
+        "direct-zhanna",
+        "direct-timur",
+        "cookalong"
+      ]
     },
     {
       "id": "access",
       "label": "Настроить приложение",
       "note": "Приватность, фон, оповещения, аудио и кухонный экран",
       "start": "settings",
-      "screens": ["settings", "privacy", "audio", "kitchen", "picker", "place", "following", "cast", "profile", "matches", "compose"],
-      "stops": ["cast", "profile", "matches", "compose"]
+      "screens": [
+        "settings",
+        "privacy",
+        "audio",
+        "kitchen",
+        "picker",
+        "place",
+        "following",
+        "cast",
+        "profile",
+        "matches",
+        "compose",
+        "account",
+        "notif",
+        "direct-zhanna",
+        "direct-timur",
+        "cookalong"
+      ],
+      "stops": [
+        "cast",
+        "profile",
+        "matches",
+        "compose",
+        "account",
+        "notif",
+        "direct-zhanna",
+        "direct-timur",
+        "cookalong"
+      ]
     }
   ],
   "backendless": [

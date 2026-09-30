@@ -265,6 +265,15 @@ function lint(slug) {
     if (quoted && html && !text.includes(quoted)) P(`${p.key}: жест «${quoted}» не найден на экране ${p.screen}`);
   }
 
+  /* —— иконки есть в спрайте —— */
+  /* Ссылка на несуществующий символ рисует пустое место без ошибки в консоли. */
+  const sprite = read(join(KERNEL, 'icons.svg'));
+  const missingIcons = new Set();
+  for (const m of Object.values(effectiveMarkup).join('').matchAll(/href="#i-([\w-]+)"/g)) {
+    if (!sprite.includes(`id="i-${m[1]}"`)) missingIcons.add(m[1]);
+  }
+  if (missingIcons.size) P(`иконок нет в kernel/icons.svg: ${[...missingIcons].join(', ')}`);
+
   /* —— коллизии имён с ядром —— */
   /* Класс, объявленный и в ядре, и в концепте, молча ломает страницу:
      кто последний в <style>, тот и выиграл. Ловим до того, как заметим глазами. */
