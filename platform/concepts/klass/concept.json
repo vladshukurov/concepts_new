@@ -175,9 +175,10 @@
     ]
   },
   "brand": {
-    "accent": "#EE7203",
-    "accentDark": "#F59042",
-    "fonts": "Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500"
+    "accent": "#FF7700",
+    "accentDark": "#FF7700",
+    "fonts": "Inter:wght@400;500;600;700",
+    "theme": "ok-light"
   },
   "start": "phone",
   "uiContractVersion": 3,
@@ -417,7 +418,7 @@
       "key": "remotenotif",
       "plist": "UIBackgroundModes: remote-notification",
       "feature": "Тихие пуши обновляют счётчики разделов до открытия приложения",
-      "gesture": "«Обновлять счётчики в фоне»",
+      "gesture": "«Счётчики в фоне» в оповещениях",
       "screen": "notif",
       "target": "notif",
       "fallback": "Счётчики обновляются при открытии приложения",
@@ -496,7 +497,7 @@
       "key": "keychain",
       "plist": "keychain-access-groups",
       "feature": "Общий вход у приложения, расширения уведомлений и «Поделиться»",
-      "gesture": "«Общая связка ключей»",
+      "gesture": "«Одна сессия на расширения» в настройках",
       "screen": "settings",
       "target": "settings",
       "fallback": "Расширения требуют отдельного входа",
@@ -512,27 +513,6 @@
       "activate": true
     },
     {
-      "key": "associateddomains",
-      "plist": "com.apple.developer.associated-domains",
-      "feature": "Приглашение в товарищество и ссылка на объявление открываются прямо в приложении",
-      "gesture": "«Ссылки sotki.app»",
-      "screen": "settings",
-      "target": "invite",
-      "fallback": "Ссылка открывается на сайте с предложением установить приложение",
-      "snack": "Universal Links недоступны",
-      "risk": "high",
-      "anchor": false,
-      "conditional": true,
-      "grounding": "Статический apple-app-site-association на sotki.app, без своего обработчика",
-      "alert": {
-        "title": "Связанные домены",
-        "text": "Entitlement без системного запроса: ссылка-приглашение открывается прямо в приложении."
-      },
-      "activate": true,
-      "requires": "статический apple-app-site-association на sotki.app и обработка входящей ссылки в коде",
-      "reviewNote": "Universal Links используются только для приглашения в товарищество и ссылки на объявление: домен sotki.app, статический apple-app-site-association. Приложение не принимает чужих доменов. Если приложение не установлено, ссылка открывает страницу с предложением установить. Как проверить: демо-аккаунт → Профиль → Соседи → «Пригласить ссылкой»."
-    },
-    {
       "key": "commnotif",
       "plist": "com.apple.developer.usernotifications.communication",
       "alert": {
@@ -541,7 +521,7 @@
       },
       "activate": true,
       "feature": "Именное срочное обновление собрания от председателя",
-      "gesture": "«Председатель обновила повестку»",
+      "gesture": "«Повестка обновлена» в записях",
       "screen": "records",
       "target": "records",
       "fallback": "Без entitlement обновление приходит обычным уведомлением",
@@ -560,7 +540,7 @@
       },
       "activate": true,
       "feature": "Удалённое подключение к трансляции общего собрания",
-      "gesture": "«Правление, северная дорога»",
+      "gesture": "«Войти в эфир» у собрания правления",
       "screen": "records",
       "target": "records",
       "fallback": "Без фонового режима трансляция работает только в открытом приложении",
@@ -1674,7 +1654,7 @@
     {
       "id": "keys",
       "label": "Фон и оповещения",
-      "note": "Фоновые задачи, разбор архива, пуши и связанные домены",
+      "note": "Фоновые задачи, разбор архива и пуши",
       "start": "settings",
       "screens": [
         "settings",

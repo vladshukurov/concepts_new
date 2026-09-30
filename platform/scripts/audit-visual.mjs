@@ -209,7 +209,7 @@ function probe(scr, cfg) {
   // 8–13. Правила интерфейса портфеля (CLAUDE.md → «Правила интерфейса»).
   //       Раньше жили только в голове ревьюера; каждое уже стоило правки.
   const EXPLAINER = /(кадр|фото|снимок|видео|данные|файл\S*)\s+не\s+(сохраня|отправля|загружа|покида|ухо)|(обработ\S*|хран\S*|оста[ёе]тся|анализ\S*)\s+на устройстве|как используются|доступ только к|по геопозиции|без отслеживания между|(камер\S*|фото|микрофон\S*|геопозиц\S*|доступ\S*)\s+(нужн\S*|требу\S*)|работают без н/i;
-  const CAPS_OK = /^(ВК|ОК|СМС|МКАД|РФ|США|ТВ|ИП|ООО|ВУЗ|ГИБДД|ЖКХ|МФЦ|ПДД|ЕГЭ|ОГЭ)$/;
+  const CAPS_OK = /^(ВК|ОК|СМС|МКАД|РФ|США|ТВ|ИП|ООО|ВУЗ|ГИБДД|ЖКХ|МФЦ|ПДД|ЕГЭ|ОГЭ|СНТ|ДНТ|ТСЖ|ЖК|ПВЗ|ТЦ|ДТП|ОСАГО|КАСКО|НДФЛ|ИНН|СНИЛС|ОМС|ДМС|МГУ|СПБ)$/;
   const lumOf = (v) => {
     const raw = (v.match(/[\d.]+/g) || []).map(Number);
     const rgb = /^color\(/.test(v) ? raw.slice(0, 3).map((x) => x * 255) : raw.slice(0, 3);
@@ -217,7 +217,7 @@ function probe(scr, cfg) {
     return { rgb, a: raw[3] ?? 1, l: 0.2126 * f(rgb[0]) + 0.7152 * f(rgb[1]) + 0.0722 * f(rgb[2]) };
   };
   const brandFill = (rgb) => Math.abs(rgb[0] - 0) < 3 && Math.abs(rgb[1] - 119) < 3 && Math.abs(rgb[2] - 255) < 3
-    || Math.abs(rgb[0] - 238) < 4 && Math.abs(rgb[1] - 130) < 4 && Math.abs(rgb[2] - 8) < 4;
+    || Math.abs(rgb[0] - 255) < 3 && Math.abs(rgb[1] - 119) < 3 && Math.abs(rgb[2] - 0) < 3;
   for (const el of els) {
     if (el.closest('.perm-hidden')) continue;
     const r = el.getBoundingClientRect();
@@ -247,7 +247,7 @@ function probe(scr, cfg) {
         const ratio = (Math.max(fg.l, bgColor.l) + 0.05) / (Math.min(fg.l, bgColor.l) + 0.05);
         const px = parseFloat(cs.fontSize), bold = parseInt(cs.fontWeight, 10) >= 600;
         const need = px >= 24 || (px >= 18.66 && bold) ? 3 : 4.5;
-        /* Белый на фирменной заливке (#0077FF ВК, #EE8208 ОК) — 4.1:1 и 2.9:1.
+        /* Белый на фирменной заливке (#0077FF ВК, #FF7700 ОК) — 4.1:1 и 2.7:1.
            Это цвет бренда на главной кнопке, осознанное исключение. */
         const whiteOnBrand = fg.l > 0.95 && brandFill(bgColor.rgb);
         if (ratio < need && ratio >= 1.8 && !whiteOnBrand) out.push({ kind: 'contrast-aa', what: label(el), detail: ratio.toFixed(2) + ':1 < ' + need });

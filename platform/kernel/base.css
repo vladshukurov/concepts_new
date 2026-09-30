@@ -1027,7 +1027,7 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
   --ui-bg:#f2f3f5; --ui-card:#fff; --ui-card-2:#ebedf0; --ui-modal:#fff; --ui-ph:#e1e3e6;
   --ui-fill:rgba(0,0,0,.05); --ui-fill-2:rgba(0,0,0,.09); --ui-line:#d7d8d9;
   --ui-text:#000; --ui-text-2:#5f6b78; --ui-text-3:#99a2ad;
-  --ui-accent:#ff7700; --ui-on-accent:#fff; --ui-link:#c45500; --ui-accent-soft:rgba(255,119,0,.12);
+  --ui-accent:#ff7700; --ui-on-accent:#fff; --ui-link:#b34d00; --ui-accent-soft:rgba(255,119,0,.12);
   --ui-play-bg:#ff7700; --ui-play-fg:#fff; --ui-danger:#c42b2b; --ui-seg-on:#fff; --ui-shadow:rgba(0,0,0,.14);
 }
 .ui, .ui * { box-sizing:border-box; }
@@ -1246,6 +1246,12 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 
 /* Строка с круглым аватаром */
 .ui-thumb.is-round { border-radius:50%; }
+/* Левая колонка строки всегда 56: значок, аватар и обложка дают одну линию текста */
+.ui-lead { width:56px; height:56px; flex:none; display:grid; place-items:center; border-radius:12px; background:var(--ui-card-2); color:var(--ui-text-2); font:600 14px/18px var(--ui-face); font-variant-numeric:tabular-nums; }
+.ui-lead.is-round { border-radius:50%; }
+.ui-lead.is-accent { background:var(--ui-accent-soft); color:var(--ui-link); }
+.ui-lead svg { width:24px; height:24px; }
+.ui-row > .ui-avatar, .ui-row-main > .ui-avatar { width:48px; height:48px; margin:0 4px; font-size:16px; }
 .ui-thumb.is-sm { width:40px; height:40px; }
 
 /* Сегменты */
@@ -1270,7 +1276,12 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui-post-who { display:flex; flex-direction:column; min-width:0; }
 .ui-post-who > strong { font:600 15px/20px var(--ui-face); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .ui-post-who > span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.ui-post-text { padding:8px 16px 12px; font:400 15px/20px var(--ui-face); }
+.ui-post-text { display:block; width:100%; padding:8px 16px 12px; font:400 15px/20px var(--ui-face); text-align:left; }
+.ui-post-media { display:block; }
+.ui-post-ava.is-initial { display:grid; place-items:center; background:var(--ui-accent-soft); color:var(--ui-link); font:600 14px/1 var(--ui-face); }
+/* «Что нового?» */
+.ui-prompt { display:flex; align-items:center; gap:4px; padding:8px 8px 8px 16px; background:var(--ui-card); }
+.ui-prompt-main { flex:1; min-width:0; display:flex; align-items:center; gap:12px; min-height:44px; font:400 16px/20px var(--ui-face); color:var(--ui-text-2); text-align:left; }
 .ui-post-media { width:100%; aspect-ratio:4/3; background-color:var(--ui-ph); background-size:cover; background-position:center; }
 .ui-post-attach { margin:0 16px 8px; }
 .ui-post-bar { display:flex; align-items:center; gap:4px; padding:4px 8px 0; }

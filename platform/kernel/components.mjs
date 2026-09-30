@@ -104,6 +104,9 @@ export const toggle = (on = false) => `<span class="${cls('ui-switch', on && 'is
 export const progress = ({ fillClass, white = false }) => `<div class="${cls('ui-progress', white && 'is-white')}"><i class="${fillClass}"></i></div>`;
 export const times = (a, b) => `<div class="ui-times"><span>${a}</span><span>${b}</span></div>`;
 export const sr = (text) => `<span class="ui-sr">${text}</span>`;
+/** Левая колонка строки 56: значок или короткий текст (дата, время). */
+export const leadIcon = (name, { round = false, accent = false, text } = {}) =>
+  `<span class="${cls('ui-lead', round && 'is-round', accent && 'is-accent')}">${text ?? icon(name)}</span>`;
 
 /* ── Секции и списки ── */
 /** Секция: заголовок title1 и справа — подпись или круглая стрелка «ещё». */
@@ -135,6 +138,8 @@ export function row({ thumb, wide = false, lead, title, sub, subWrap = false, wr
       : `<span class="${cls('ui-row-end', end.value !== undefined && 'is-value', end.linkColor && 'ui-link')}">${inner}</span>`;
   } else if (end) endHtml = end;
   const rowCls = cls('ui-row', now && 'is-now', wrap && 'is-wrap', className);
+  /* Подпись строки-кнопки — её заголовок, а не инициалы в аватаре слева */
+  if (isAction(a) && !a.label) a = { ...a, label: String(title).replace(/<[^>]+>/g, '') };
   if (isAction(a) && end && typeof end === 'object' && isAction(end)) {
     return `<div class="${rowCls}"><button class="ui-row-main"${act(a)}>${leadHtml}${text}</button>${endHtml}</div>`;
   }
@@ -215,12 +220,17 @@ export const stories = (items) => `<div class="ui-stories">${items.map(({ label,
  * attach — своя разметка вложения (карточка курса, прогулки).
  * likes/comments/shares — числа; liked — лайк уже стоит.
  */
-export function post({ author, text, media, attach, likes, comments, shares, views, liked = false, menu, className }) {
-  const head = `<div class="ui-post-head"><button class="ui-post-author"${act({ label: author.name, ...author.action })}><span class="ui-post-ava ${author.face || ''}"></span><span class="ui-post-who"><strong>${author.name}</strong><span>${author.meta}</span></span></button>${menu ? iconButton({ icon: 'ellipsis', label: 'Действия с записью', ...menu }) : ''}</div>`;
-  const bar = `<div class="ui-post-bar">${likes !== undefined ? `<button class="${cls('ui-post-act', liked && 'is-on')}"${act({ toast: liked ? 'Лайк убран' : 'Понравилось', label: 'Нравится' })}>${icon('heart')}${likes}</button>` : ''}${comments !== undefined ? `<button class="ui-post-act"${act({ toast: 'Комментарии', label: 'Комментарии' })}>${icon('message-circle')}${comments}</button>` : ''}${shares !== undefined ? `<button class="ui-post-act"${act({ toast: 'Ссылка скопирована', label: 'Поделиться' })}>${icon('share')}${shares}</button>` : ''}${views ? `<span class="ui-post-views">${icon('eye')}${views}</span>` : ''}</div>`;
-  return `<article class="${cls('ui-post', className)}">${head}${text ? `<p class="ui-post-text">${text}</p>` : ''}${media ? `<div class="ui-post-media ${media}"></div>` : ''}${attach ? `<div class="ui-post-attach">${attach}</div>` : ''}${bar}</article>`;
+export function post({ author, text, media, attach, likes, comments, shares, views, liked = false, menu, open, discuss, className }) {
+  const ava = author.initial ? `<span class="ui-post-ava is-initial">${author.initial}</span>` : `<span class="ui-post-ava ${author.face || ''}"></span>`;
+  const head = `<div class="ui-post-head"><button class="ui-post-author"${act({ label: author.name, ...author.action })}>${ava}<span class="ui-post-who"><strong>${author.name}</strong><span>${author.meta}</span></span></button>${menu ? iconButton({ icon: 'ellipsis', label: 'Действия с записью', ...menu }) : ''}</div>`;
+  const bar = `<div class="ui-post-bar">${likes !== undefined ? `<button class="${cls('ui-post-act', liked && 'is-on')}"${act({ toast: liked ? 'Лайк убран' : 'Понравилось', label: 'Нравится' })}>${icon('heart')}${likes}</button>` : ''}${comments !== undefined ? `<button class="ui-post-act"${act({ toast: 'Комментарии', ...discuss, label: 'Комментарии' })}>${icon('message-circle')}${comments}</button>` : ''}${shares !== undefined ? `<button class="ui-post-act"${act({ toast: 'Ссылка скопирована', label: 'Поделиться' })}>${icon('share')}${shares}</button>` : ''}${views ? `<span class="ui-post-views">${icon('eye')}${views}</span>` : ''}</div>`;
+  return `<article class="${cls('ui-post', className)}">${head}${text ? (open ? `<button class="ui-post-text"${act(open)}>${text}</button>` : `<p class="ui-post-text">${text}</p>`) : ''}${media ? (open ? `<button class="ui-post-media ${media}"${act({ label: 'Открыть публикацию', ...open })}></button>` : `<div class="ui-post-media ${media}"></div>`) : ''}${attach ? `<div class="ui-post-attach">${attach}</div>` : ''}${bar}</article>`;
 }
 
 /** Сегменты: переключают вид внутри экрана. */
 export const segments = (items) => `<div class="ui-seg">${items.map(({ label, on = false, ...a }) =>
   `<button class="${on ? 'is-on' : ''}"${act(a)}>${label}</button>`).join('')}</div>`;
+
+/** Строка «Что нового?» над лентой: аватар, приглашение написать, быстрые действия. */
+export const composerPrompt = ({ initial, face, placeholder, trailing = '', ...a }) =>
+  `<div class="ui-prompt"><button class="ui-prompt-main"${act({ label: placeholder, ...a })}>${initial ? `<span class="ui-post-ava is-initial">${initial}</span>` : `<span class="ui-post-ava ${face}"></span>`}<span>${placeholder}</span></button>${join(trailing)}</div>`;
