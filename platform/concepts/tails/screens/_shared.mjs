@@ -3,7 +3,7 @@ export const THEME = 'vk-light';
 export const TABS = [
   { id: 'home', label: 'Главная', icon: 'house' },
   { id: 'nearby', label: 'Рядом', icon: 'map-pin' },
-  { id: 'create', label: 'Создать', icon: 'plus' },
+  { id: 'chats', label: 'Мессенджер', icon: 'message-circle' },
   { id: 'vaccine', label: 'Здоровье', icon: 'stethoscope' },
   { id: 'profile', label: 'Профиль', icon: 'user' },
 ];

@@ -157,7 +157,9 @@ export const group = ({ label, cells, className }) =>
  */
 export function cell({ icon: ic, lead, title, sub, value, toggle: sw, check = false, className, ...a }) {
   const chevron = a.go || a.ask || a.activate ? icon('chevron-right') : '';
-  const tail = sw !== undefined ? toggle(sw)
+  /* Свитч у ячейки с запросом доступа включается сам после разрешения (data-switch движка) */
+  const permKey = (a.ask || a.activate || '').split('|')[0].split('+')[0];
+  const tail = sw !== undefined ? (permKey ? `<span class="${cls('ui-switch', sw && 'is-on')}" data-switch="${permKey}"></span>` : toggle(sw))
     : `<span class="${cls('ui-cell-end', check && 'ui-link')}">${value ?? ''}${check ? icon('check') : sw === undefined && !a.toast ? chevron : ''}</span>`;
   const tag = isAction(a) ? 'button' : 'div';
   return `<${tag} class="${cls('ui-cell', !ic && !lead && 'no-ico', className)}"${act(a)}>${lead || (ic ? icon(ic) : '')}<span class="ui-cell-text"><strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}</span>${tail}</${tag}>`;
@@ -192,6 +194,9 @@ export const stats = (items) => `<div class="ui-stats">${items.map(([v, l]) => `
 /** Сообщение при отказе в доступе: показывается движком по data-show-denied. */
 export const denied = (key, text, extra = '') =>
   `<div class="perm-hidden" data-show-denied="${key}"><p class="ui-note">${icon('info')}<span>${text}</span></p>${extra}</div>`;
+/** Результат действия после разрешения: движок показывает его по data-show-granted. */
+export const granted = (key, text) =>
+  `<p class="perm-hidden ui-note is-ok" data-show-granted="${key}">${icon('circle-check')}<span>${text}</span></p>`;
 export const note = (text) => `<p class="ui-note">${icon('info')}<span>${text}</span></p>`;
 export const foot = (text, className) => `<p class="${cls('ui-foot', className)}">${text}</p>`;
 
@@ -234,3 +239,34 @@ export const segments = (items) => `<div class="ui-seg">${items.map(({ label, on
 /** Строка «Что нового?» над лентой: аватар, приглашение написать, быстрые действия. */
 export const composerPrompt = ({ initial, face, placeholder, trailing = '', ...a }) =>
   `<div class="ui-prompt"><button class="ui-prompt-main"${act({ label: placeholder, ...a })}>${initial ? `<span class="ui-post-ava is-initial">${initial}</span>` : `<span class="ui-post-ava ${face}"></span>`}<span>${placeholder}</span></button>${join(trailing)}</div>`;
+
+/* ── Мессенджер: диалоги, чат, звонок ── */
+const face = ({ face: f, initial }, cl) => initial ? `<span class="${cl} is-initial">${initial}</span>` : `<span class="${cl} ${f || 'ph'}"></span>`;
+
+/** Строка диалога: аватар с онлайном, имя и время, последнее сообщение и счётчик. */
+export const dialog = ({ name, text, time, unread, online = false, you = false, muted = false, ...a }) =>
+  `<button class="ui-dialog"${act({ label: `Диалог: ${name}`, ...a })}><span class="ui-dialog-ava">${face(a, 'ui-dialog-face')}${online ? '<i class="ui-online"></i>' : ''}</span><span class="ui-dialog-body"><span class="ui-dialog-top"><strong>${name}</strong><span>${time}</span></span><span class="ui-dialog-bottom"><span>${you ? '<b>Вы:</b> ' : ''}${text}</span>${unread ? `<span class="${cls('ui-unread', muted && 'is-muted')}">${unread}</span>` : ''}</span></span></button>`;
+
+/** Шапка чата: назад · аватар, имя и статус · звонок. */
+export const chatNav = ({ name, status, call, ...who }) =>
+  `<header class="ui-nav ui-chat-nav">${iconButton({ icon: 'chevron-left', label: 'Назад', back: true })}<span class="ui-chat-who">${face(who, 'ui-chat-face')}<span><strong>${name}</strong><span>${status}</span></span></span>${call ? iconButton({ icon: 'phone', label: 'Позвонить', sr: 'Позвонить', ...call }) : '<span></span>'}</header>`;
+
+export const day = (text) => `<p class="ui-day">${text}</p>`;
+/** Пузырь сообщения. out — исходящее; read — прочитано; attach — вложение над текстом. */
+export const bubble = ({ out = false, text = '', time, read = false, attach = '', ...a }) => {
+  const tag = isAction(a) ? 'button' : 'div';
+  return `<${tag} class="${cls('ui-bubble', out ? 'is-out' : 'is-in', attach && 'has-attach')}"${act(a)}>${attach}${text ? `<span class="ui-bubble-text">${text}</span>` : ''}<span class="ui-bubble-meta">${time}${out ? icon(read ? 'check-check' : 'check') : ''}</span></${tag}>`;
+};
+/** Голосовое: кнопка воспроизведения, волна и длительность. */
+export const voice = ({ out = false, dur, time, ...a }) =>
+  `<div class="${cls('ui-bubble', 'ui-voice', out ? 'is-out' : 'is-in')}">${iconButton({ icon: 'play', fill: true, label: `Голосовое ${dur}`, toast: `Воспроизведение ${dur}`, ...a })}<i class="ui-wave"></i><span class="ui-bubble-meta">${dur} · ${time}</span></div>`;
+/** Лента сообщений. */
+export const chat = (items) => `<div class="ui-chat">${join(items)}</div>`;
+/** Поле ввода: вложение, текст, голосовое или отправка. */
+export const composer = ({ placeholder = 'Сообщение', attach, mic, send }) =>
+  `<div class="ui-composer">${iconButton({ icon: 'paperclip', label: 'Вложение', ...attach })}<span class="ui-composer-field">${placeholder}</span>${mic ? iconButton({ icon: 'mic', label: 'Голосовое сообщение', ...mic }) : iconButton({ icon: 'send', label: 'Отправить', ...send })}</div>`;
+
+/** Экран звонка: крупный аватар, имя, статус и ряд круглых кнопок. controls: [{ icon, label, end, ...action }]. */
+export const callView = ({ name, status, controls, ...who }) =>
+  `<div class="ui-call">${face(who, 'ui-call-face')}<strong>${name}</strong><span>${status}</span><div class="ui-call-controls">${controls.map(({ icon: ic, label, end = false, ...a }) =>
+    `<span class="ui-call-ctl"><button class="${cls('ui-call-btn', end && 'is-end')}"${act({ label, ...a })}>${icon(ic)}</button><span>${label}</span></span>`).join('')}</div></div>`;

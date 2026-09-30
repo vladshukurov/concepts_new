@@ -71,6 +71,11 @@
         "pattern": "social-feed",
         "screen": "home",
         "behavior": "Лента: истории питомцев, посты нескольких авторов с фото, лайками, комментариями и репостами"
+      },
+      {
+        "pattern": "messaging",
+        "screen": "chats",
+        "behavior": "Мессенджер: диалоги с онлайном и счётчиками, чат с фото, голосовыми и карточкой прогулки, звонок"
       }
     ]
   },
@@ -91,8 +96,9 @@
       "label": "Рядом"
     },
     {
-      "id": "create",
-      "label": "Создать"
+      "id": "chats",
+      "label": "Мессенджер",
+      "role": "messages"
     },
     {
       "id": "vaccine",
@@ -487,16 +493,16 @@
         "text": "Entitlement без системного запроса: перенос приёма приходит с именем врача."
       },
       "activate": true,
-      "feature": "Именное изменение записи ветеринаром",
-      "gesture": "«Изменения приёма» в «Здоровье»",
-      "screen": "vaccine",
-      "target": "vaccine",
-      "fallback": "Новая дата остаётся в ветпаспорте и обычном уведомлении",
+      "feature": "Уведомления о сообщениях с фото собеседника",
+      "gesture": "«Фото собеседника в уведомлениях» в мессенджере",
+      "screen": "chats",
+      "target": "chats",
+      "fallback": "Уведомления приходят без фото, только с текстом",
       "risk": "low",
       "anchor": false,
       "conditional": true,
       "requires": "INSendMessageIntent только для структурированного изменения записи",
-      "grounding": "Свободной переписки с врачом нет"
+      "grounding": "Communication Notifications (INSendMessageIntent)"
     },
     {
       "key": "voip",
@@ -506,16 +512,16 @@
         "text": "Entitlement без системного запроса: ветеринар проводит забронированный видеоосмотр."
       },
       "activate": true,
-      "feature": "Забронированный видеоосмотр питомца клиникой",
-      "gesture": "«Начать» у видеоосмотра",
-      "screen": "vaccine",
-      "target": "vaccine",
-      "fallback": "Можно приложить видео наблюдения к записи на очный приём",
+      "feature": "Звонок владельцу питомца из диалога",
+      "gesture": "«Позвонить» в шапке диалога",
+      "screen": "chat",
+      "target": "call",
+      "fallback": "Остаются сообщения и голосовые",
       "risk": "high",
       "anchor": false,
       "conditional": true,
       "requires": "CallKit + WebRTC только для подтверждённого приёма",
-      "grounding": "Нет каталога врачей и произвольных звонков"
+      "grounding": "PushKit VoIP + CallKit, звонок через SDK провайдера"
     }
   ],
   "screens": [
@@ -661,9 +667,93 @@
       }
     },
     {
+      "id": "chats",
+      "title": "Мессенджер",
+      "type": "tab (root)",
+      "light": true,
+      "parent": "home",
+      "meta": "Диалоги с владельцами и клиникой",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Встретиться",
+        "primaryAction": "Ксения · Трюфель",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "состав",
+          "место",
+          "нет сети"
+        ],
+        "navigation": "root"
+      }
+    },
+    {
+      "id": "chat",
+      "title": "Диалог",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Сообщения, фото, голосовые и звонок",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Встретиться",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "состав",
+          "место",
+          "нет сети"
+        ],
+        "navigation": "push"
+      }
+    },
+    {
+      "id": "call",
+      "title": "Звонок",
+      "type": "fullscreen",
+      "light": false,
+      "parent": "chat",
+      "meta": "Аудиозвонок через CallKit",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Встретиться",
+        "primaryAction": "Завершить",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "состав",
+          "место",
+          "нет сети"
+        ],
+        "navigation": "fullscreen"
+      }
+    },
+    {
       "id": "create",
       "title": "Новый момент",
-      "type": "tab (root)",
+      "type": "push",
       "light": true,
       "meta": "Камера или Фото",
       "ui": {
@@ -685,8 +775,9 @@
           "медиатека",
           "нет сети"
         ],
-        "navigation": "root"
-      }
+        "navigation": "modal"
+      },
+      "parent": "home"
     },
     {
       "id": "camera",
@@ -1195,7 +1286,10 @@
         "background",
         "vaccine",
         "netqr",
-        "shareext"
+        "shareext",
+        "chats",
+        "chat",
+        "call"
       ],
       "stops": [],
       "authTarget": "home"
@@ -1252,12 +1346,31 @@
         "vetnote",
         "home",
         "course",
-        "lock"
+        "lock",
+        "chats"
       ],
       "stops": [
         "home",
         "course",
-        "lock"
+        "lock",
+        "chats"
+      ]
+    },
+    {
+      "id": "messenger",
+      "label": "Мессенджер",
+      "note": "Диалоги, чат с фото и голосовыми, звонок",
+      "start": "chats",
+      "screens": [
+        "chats",
+        "chat",
+        "call",
+        "walk",
+        "media"
+      ],
+      "stops": [
+        "walk",
+        "media"
       ]
     }
   ],

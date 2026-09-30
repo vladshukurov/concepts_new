@@ -17,6 +17,7 @@ export default (ui) => ui.screen({
           ui.cell({ icon: 'repeat-2', title: 'Обновлять статусы заранее', sub: 'Состав и передачи до открытия', toggle: false, activate: 'remotenotif|notifications' }),
           ui.cell({ icon: 'user', title: 'Показывать участника передачи', sub: 'Имя в уведомлении о передаче', toggle: false, activate: 'commnotif|notifications' }),
         ] }),
+        ui.granted('commnotif', 'В уведомлении о передаче видно, кто её закрыл'),
         ui.denied('remotenotif', 'Статусы обновятся после открытия'),
         ui.denied('commnotif', 'Участник не показывается в уведомлении'),
       ] }),

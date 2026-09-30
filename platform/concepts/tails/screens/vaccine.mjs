@@ -7,12 +7,12 @@ export default (ui) => ui.screen({
     `<div class="tl-vet-head"><span class="ui-thumb is-round ${PET.truffle}"></span><div><h2>Трюфель, 2 года</h2><p>Ветпаспорт RU 4471 · клиника «Свои люди»</p><p>27,4 кг · +1,3 кг с февраля</p></div></div>`,
     ui.section({ title: 'Ближайший приём', meta: '19 мая', children: [
       `<div class="tl-appt"><span class="tl-appt-when">19 мая · 09:15</span><strong>Видеоосмотр с Марией Тенищевой</strong><span>Походка и состояние кожи · 10 минут</span>${ui.actions([
-        ui.button({ label: 'Начать', icon: 'video', activate: 'voip|vaccine' }),
+        ui.button({ label: 'Написать', icon: 'message-circle', go: 'chats' }),
         ui.button({ label: 'В Календарь', icon: 'calendar-plus', variant: 'secondary', primary: true, ask: 'calendar|vaccine|vaccine'}),
       ], { row: true })}</div>`,
       ui.denied('calendar', 'Приём остаётся в ветпаспорте и напоминании приложения'),
       ui.list([
-        ui.row({ lead: `<span class="tl-date">${ui.icon('bell')}</span>`, title: 'Изменения приёма', sub: 'Перенос, отмена или подготовка от врача', activate: 'commnotif|vaccine' }),
+        ui.row({ lead: `<span class="tl-date">${ui.icon('bell')}</span>`, title: 'Изменения приёма', sub: 'Перенос, отмена или подготовка от врача', go: 'chats' }),
         ui.row({ lead: `<span class="tl-date">${ui.icon('notebook-pen')}</span>`, title: 'Наблюдения к приёму', sub: 'Сегодня: 4 из 5 разобрано', go: 'vetnote' }),
       ]),
     ] }),

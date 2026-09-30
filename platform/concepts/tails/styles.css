@@ -171,3 +171,10 @@
 /* Доли прогресса */
 .tl-w-46 { width:46%; }
 .tl-qr-actions { margin-top:12px; }
+
+/* Мессенджер: фото и карточка прогулки внутри сообщения */
+.tl-chat-photo { display:block; width:220px; height:160px; border-radius:14px; }
+.tl-walk.tl-walk-in { width:230px; margin:0; background:var(--ui-card); }
+.tl-call { background:linear-gradient(180deg, #2b3440, #0f1318)!important; color:#fff; }
+.tl-call .ui-call > span, .tl-call .ui-call-ctl { color:rgba(255,255,255,.72); }
+.tl-call .ui-call-btn:not(.is-end) { background:rgba(255,255,255,.16); color:#fff; }

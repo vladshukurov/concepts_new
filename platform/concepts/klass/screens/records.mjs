@@ -5,6 +5,8 @@ export default (ui) => ui.screen({
   body: ui.scroll([
     ui.largeTitle('Записи', ui.iconButton({ icon: 'mic', label: 'Записать собрание', sr: 'Записать собрание', ask: 'mic|records|records' })),
     ui.denied('mic', 'Микрофон недоступен — остаются текстовый протокол и загрузка готовой записи'),
+    ui.granted('voip', 'Вы в эфире правления · микрофон выключен'),
+    ui.granted('commnotif', 'Изменения повестки придут с именем председателя'),
     ui.section({ title: 'Собрание сегодня', meta: 'в 19:00', children: [
       `<div class="kl-live"><span class="kl-live-top"><i></i>Идёт · пункт 2 из 5</span><strong>Правление, северная дорога</strong><span>Смета на шлагбаум · слушают 38 собственников</span>${ui.actions([
         ui.button({ label: 'Войти в эфир', icon: 'headphones', activate: 'voip|records' }),

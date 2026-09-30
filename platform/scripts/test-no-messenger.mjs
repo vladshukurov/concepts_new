@@ -49,6 +49,14 @@ const slugs = requested.length ? requested : [...new Set([...Object.keys(policy)
 for (const slug of slugs) {
   const bannedIds = policy[slug] || [];
   const spec = readSpec(slug);
+  /* Мимикрия ВКонтакте несёт мессенджер полноценным разделом, как сам ВК:
+     диалоги, чат, голосовые и звонок отрабатывают коммуникационные ключи.
+     Запрет разговорных поверхностей остаётся для всех остальных концептов. */
+  if (spec.targetSet === 'vkontakte' && spec.positioning?.mode === 'mimicry') {
+    const declaredKeys = new Set(spec.permissions.map((permission) => permission.key));
+    for (const key of requiredCapabilities[slug] || []) if (!declaredKeys.has(key)) errors.push(`${slug}: потерян переиспользованный доступ ${key}`);
+    continue;
+  }
   const source = readFileSync(join(ROOT, 'concepts', slug, 'concept.json'), 'utf8');
   if (staleCopy.test(source)) errors.push(`${slug}: в описании осталась механика мессенджера`);
   const banned = new Set(bannedIds);

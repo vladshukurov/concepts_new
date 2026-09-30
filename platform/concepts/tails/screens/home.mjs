@@ -4,6 +4,7 @@ export default (ui) => ui.screen({
   id: 'home', theme: THEME,
   body: ui.scroll([
     ui.top(ui.wordmark({ name: 'Хвосты', glyph: 'paw-print' }), [
+      ui.iconButton({ icon: 'plus', label: 'Новая запись', go: 'create' }),
       ui.iconButton({ icon: 'users', label: 'Друзья из контактов', go: 'mates' }),
     ]),
     ui.stories([
