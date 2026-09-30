@@ -557,18 +557,31 @@
       "profile",
       "create-post"
     ],
-    "referenceEvidence": []
+    "referenceEvidence": [
+      {
+        "pattern": "social-feed",
+        "screen": "home",
+        "behavior": "Лента дома: объявления УК и соседей с лайками, комментариями и фото"
+      },
+      {
+        "pattern": "messaging",
+        "screen": "chats",
+        "behavior": "Мессенджер: диалоги соседей и чат подъезда, фото, голосовые, звонок"
+      }
+    ]
   },
   "brand": {
     "accent": "#0077FF",
-    "accentDark": "#529EF5",
-    "fonts": "Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500"
+    "accentDark": "#0077FF",
+    "fonts": "Inter:wght@400;500;600;700",
+    "theme": "vk-light"
   },
   "start": "phone",
   "tabs": [
     {
       "id": "home",
-      "label": "Дом"
+      "label": "Дом",
+      "role": "feed"
     },
     {
       "id": "events",
@@ -576,12 +589,19 @@
       "role": "calendar"
     },
     {
+      "id": "chats",
+      "label": "Мессенджер",
+      "role": "messages"
+    },
+    {
       "id": "yard",
-      "label": "Двор"
+      "label": "Двор",
+      "role": "services"
     },
     {
       "id": "menu",
-      "label": "Меню"
+      "label": "Меню",
+      "role": "profile"
     }
   ],
   "permissions": [
@@ -633,7 +653,7 @@
         "text": "Чтобы снять то, что сломалось, и сканировать QR-код гостевой сети двора."
       },
       "feature": "Съёмка проблемы во дворе и сканер QR",
-      "gesture": "«Снять» и «Сканировать QR»",
+      "gesture": "«Фото с места» в заявке",
       "screen": "problem",
       "target": "shoot",
       "fallback": "Остаётся фото из медиатеки и ввод имени сети с паролем руками",
@@ -749,7 +769,7 @@
         "text": "Entitlement без системного запроса: виджет и расширения читают данные приложения."
       },
       "feature": "Виджет «Двор» и Share Extension видят данные приложения",
-      "gesture": "«Виджет на экран „Домой“»",
+      "gesture": "«Виджет на экран «Домой»» в настройках",
       "screen": "settings",
       "target": "widget",
       "activate": true,
@@ -785,7 +805,7 @@
         "text": "Entitlement без системного запроса: пароли дома подставляются в Safari системным автозаполнением."
       },
       "feature": "Пароли дома подставляются в Safari без копирования",
-      "gesture": "«Включить автозаполнение»",
+      "gesture": "«Автозаполнение» в паролях дома",
       "screen": "passwords",
       "target": "fill",
       "activate": true,
@@ -840,7 +860,7 @@
         "text": "Чтобы добавить собрание и субботник, а при переносе — поправить уже добавленное событие."
       },
       "feature": "События дома в календаре, с правкой при переносе даты",
-      "gesture": "«Добавить в Календарь»",
+      "gesture": "«В Календарь» у субботника",
       "screen": "events",
       "target": "events",
       "fallback": "Событие остаётся только внутри «Двора», с напоминанием в приложении",
@@ -956,16 +976,16 @@
         "text": "Entitlement без системного запроса: вызов панели у калитки показывается через CallKit."
       },
       "activate": true,
-      "feature": "Входящий вызов домофона с панели дома",
-      "gesture": "«Домофон»",
-      "screen": "yard",
-      "target": "yard",
-      "fallback": "Без режима вызова останется обычное уведомление с кадром посетителя",
+      "feature": "Звонок соседу из диалога",
+      "gesture": "«Позвонить» в шапке диалога",
+      "screen": "chat",
+      "target": "call",
+      "fallback": "Остаются сообщения и голосовые",
       "risk": "high",
       "anchor": false,
       "conditional": true,
       "requires": "PushKit + CallKit и реальный WebRTC-сеанс только с панелью дома",
-      "grounding": "Вызов инициирует зарегистрированная панель, жильцы не звонят друг другу",
+      "grounding": "PushKit VoIP + CallKit, звонок через SDK провайдера",
       "reviewNote": "Это управление домофоном, не пользовательские звонки."
     }
   ],
@@ -1014,7 +1034,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "push"
       }
     },
     {
@@ -1032,7 +1053,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "modal"
       }
     },
     {
@@ -1050,7 +1072,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "push"
       }
     },
     {
@@ -1067,7 +1090,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "root"
       }
     },
     {
@@ -1085,7 +1109,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "push"
       }
     },
     {
@@ -1103,7 +1128,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "modal"
       }
     },
     {
@@ -1121,7 +1147,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "system"
       }
     },
     {
@@ -1139,7 +1166,84 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "push"
+      }
+    },
+    {
+      "id": "chats",
+      "title": "Мессенджер",
+      "type": "tab (root)",
+      "light": true,
+      "parent": "home",
+      "meta": "Диалоги соседей и чаты подъездов",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "root"
+      }
+    },
+    {
+      "id": "chat",
+      "title": "Диалог",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Сообщения, фото, голосовые и звонок",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push"
+      }
+    },
+    {
+      "id": "call",
+      "title": "Звонок",
+      "type": "fullscreen",
+      "light": false,
+      "parent": "chat",
+      "meta": "Звонок соседу",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "fullscreen"
+      }
+    },
+    {
+      "id": "intercom",
+      "title": "Домофон",
+      "type": "fullscreen",
+      "light": false,
+      "parent": "yard",
+      "meta": "Вызов с панели подъезда",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "fullscreen"
       }
     },
     {
@@ -1156,7 +1260,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "root"
       }
     },
     {
@@ -1174,7 +1279,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "push"
       }
     },
     {
@@ -1192,7 +1298,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "system"
       }
     },
     {
@@ -1210,14 +1317,15 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "push"
       }
     },
     {
       "id": "background",
       "title": "Обновление в фоне",
       "type": "системная поверхность",
-      "light": false,
+      "light": true,
       "parent": "meters",
       "meta": "Background fetch · BGTaskScheduler",
       "ui": {
@@ -1228,7 +1336,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "push"
       }
     },
     {
@@ -1245,7 +1354,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "root"
       }
     },
     {
@@ -1262,7 +1372,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "root"
       }
     },
     {
@@ -1280,7 +1391,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "push"
       }
     },
     {
@@ -1298,7 +1410,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "system"
       }
     },
     {
@@ -1316,7 +1429,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "push"
       }
     },
     {
@@ -1334,7 +1448,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "push"
       }
     },
     {
@@ -1352,7 +1467,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "push"
       }
     },
     {
@@ -1370,7 +1486,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "modal"
       }
     },
     {
@@ -1388,7 +1505,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "system"
       }
     },
     {
@@ -1406,7 +1524,8 @@
           "error",
           "offline",
           "denied"
-        ]
+        ],
+        "navigation": "system"
       }
     }
   ],
@@ -1441,7 +1560,11 @@
         "settings",
         "ads",
         "lock",
-        "widget"
+        "widget",
+        "chats",
+        "chat",
+        "call",
+        "intercom"
       ],
       "stops": [],
       "authTarget": "join"
@@ -1473,9 +1596,18 @@
         "problem",
         "shoot",
         "chronicle",
-        "post"
+        "post",
+        "events",
+        "yard",
+        "profile",
+        "chat"
       ],
-      "stops": []
+      "stops": [
+        "events",
+        "yard",
+        "profile",
+        "chat"
+      ]
     },
     {
       "id": "guestnet",
@@ -1488,12 +1620,14 @@
         "scan",
         "problem",
         "meters",
-        "events"
+        "events",
+        "intercom"
       ],
       "stops": [
         "problem",
         "meters",
-        "events"
+        "events",
+        "intercom"
       ]
     },
     {
@@ -1507,11 +1641,15 @@
         "background",
         "events",
         "guest",
-        "problem"
+        "problem",
+        "intercom",
+        "post"
       ],
       "stops": [
         "guest",
-        "problem"
+        "problem",
+        "intercom",
+        "post"
       ]
     },
     {
@@ -1528,11 +1666,13 @@
         "ads",
         "menu",
         "home",
-        "meters"
+        "meters",
+        "account"
       ],
       "stops": [
         "menu",
-        "home"
+        "home",
+        "account"
       ]
     },
     {
@@ -1553,7 +1693,8 @@
         "chronicle",
         "ads",
         "yard",
-        "home"
+        "home",
+        "chat"
       ],
       "stops": [
         "settings",
@@ -1563,7 +1704,27 @@
         "chronicle",
         "ads",
         "yard",
-        "home"
+        "home",
+        "chat"
+      ]
+    },
+    {
+      "id": "messenger",
+      "label": "Мессенджер",
+      "note": "Диалоги соседей, чат с фото и голосовыми, звонок",
+      "start": "chats",
+      "screens": [
+        "chats",
+        "chat",
+        "call",
+        "events",
+        "problem",
+        "neighbors"
+      ],
+      "stops": [
+        "events",
+        "problem",
+        "neighbors"
       ]
     }
   ],

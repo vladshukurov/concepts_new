@@ -185,7 +185,7 @@ const accountAuthScreens = (spec, target, light = true, sourceClasses = "") => {
   const icon =
     registrationIcon(spec) ||
     '<span class="auth-app-icon app-icon-placeholder"></span>';
-  if (spec.slug === "dvor") return dvorAccountAuthScreens(spec, target);
+  if (spec.slug === "dvor" && !UI_THEMES.has(spec.brand?.theme)) return dvorAccountAuthScreens(spec, target);
   const phone = authField({
     label: "Номер телефона",
     type: "tel",
@@ -1194,7 +1194,9 @@ const brandCss = (b) => `
    продуктовый цвет или делать CTA невидимым. Контракт идёт после styles.css. */
 const productUiContractCss = (spec) => {
   const isVkMimicry = ["vk-video", "vk-music"].includes(spec.targetSet);
-  const hasCurrentBatchAuth = new Set([
+  /* Концепты на оболочке `.ui` берут вход из темы: ручные метрики им не нужны */
+  const onUi = UI_THEMES.has(spec.brand?.theme);
+  const hasCurrentBatchAuth = !onUi && new Set([
     "kontur",
     "kvartal",
     "marshrut",
@@ -1217,7 +1219,7 @@ const productUiContractCss = (spec) => {
     strochka: ["32px", "36px", "780", "12px"],
     tails: ["32px", "35px", "800", "12px"],
     today: ["34px", "37px", "800", "12px"],
-  }[spec.slug];
+  }[onUi ? "" : spec.slug];
   return `
 .unified-auth .unified-auth-actions > .btn-filled {
   background:var(--accent-fill)!important;
