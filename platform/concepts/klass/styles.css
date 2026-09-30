@@ -13,7 +13,7 @@
 
 /* Эфир собрания правления */
 .kl-live { margin:0 16px; padding:12px; border-radius:12px; background:var(--ui-card-2); }
-.kl-live-top { display:flex; align-items:center; gap:8px; font:600 13px/16px var(--ui-face); color:var(--ui-danger); }
+.kl-live > .kl-live-top { display:flex; align-items:center; gap:8px; font:600 13px/16px var(--ui-face); color:var(--ui-danger); }
 .kl-live-top i { width:8px; height:8px; border-radius:50%; background:var(--ui-danger); }
 .kl-live > strong { display:block; margin-top:6px; font:600 17px/22px var(--ui-face); }
 .kl-live > span { display:block; font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
