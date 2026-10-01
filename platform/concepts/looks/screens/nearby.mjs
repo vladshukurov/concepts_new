@@ -7,8 +7,8 @@ export default (ui) => ui.screen({
     ui.largeTitle('Рядом', ui.iconButton({ icon: 'search', label: 'Поиск событий', toast: 'Поиск событий и авторов' })),
     ui.denied('location', 'Город не определён — показываем Петербург, район выбирается вручную'),
     ui.section({ title: 'Свопы и встречи', children: ui.list([
-      ui.row({ lead: ui.leadIcon('', { text: '24' }), title: swap.title, sub: `Идёт до ${swap.hours.split('–')[1]} · 2,4 км`, go: 'swap' }),
-      ui.row({ lead: ui.leadIcon('', { text: '25' }), title: 'Барахолка на Ваське', sub: 'Воскресенье, 12:00 · 5,1 км', go: 'swap' }),
+      ui.row({ lead: ui.leadIcon('', { text: '23' }), title: swap.title, sub: `Идёт до ${swap.hours.split('–')[1]} · 2,4 км`, go: 'swap' }),
+      ui.row({ lead: ui.leadIcon('', { text: '24' }), title: 'Барахолка на Ваське', sub: 'Воскресенье, 12:00 · 5,1 км', go: 'swap' }),
       ui.row({ lead: ui.leadIcon('', { text: '28' }), title: 'Разбор гардероба на Рубинштейна', sub: '19:30 · 1,2 км', go: 'talk' }),
     ]) }),
     ui.section({ title: 'Авторы рядом', meta: '24', children: ui.list([

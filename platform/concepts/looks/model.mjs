@@ -6,7 +6,10 @@
  * в продукте тоже утро: своп уже идёт, жакет ждёт проверки.
  */
 
-export const now = { date: 'суббота, 24 мая', time: '9:41' };
+import { moment, range } from '../../kernel/world.mjs';
+
+/* Своп в субботу утром; «сейчас» — 9:41, своп уже идёт */
+export const now = moment('2026-05-23');
 
 /* Один кадр — один человек: фото назначены людям, а не экранам */
 export const people = {
@@ -21,7 +24,7 @@ export const swap = {
   place: 'Новая Голландия',
   where: 'Двор Бутылки, второй этаж',
   date: now.date,
-  hours: '9:30–15:00',
+  hours: range('9:30', '15:00'),
   going: 18,
   checkedIn: 11,
   network: 'Novaya-Gollandia-Guest',

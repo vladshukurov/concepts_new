@@ -292,6 +292,22 @@ function lint(slug) {
     }
   }
 
+  /* —— день недели сходится с датой (канон мира, год kernel/world.mjs) —— */
+  /* «суббота, 24 мая» в 2026 году — воскресенье: такая дата выдаёт прототип */
+  {
+    const WD = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+    const MO = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+    const year = Number(read(join(KERNEL, 'world.mjs')).match(/YEAR = (\d{4})/)[1]);
+    const text = Object.values(effectiveMarkup).join(' ').replace(/<[^>]+>/g, ' ');
+    const seen = new Set();
+    for (const m of text.matchAll(new RegExp(`(${WD.join('|')}),?\\s+(\\d{1,2})\\s+(${MO.join('|')})`, 'gi'))) {
+      const key = m[0].toLowerCase();
+      if (seen.has(key)) continue; seen.add(key);
+      const real = WD[new Date(Date.UTC(year, MO.indexOf(m[3].toLowerCase()), Number(m[2]))).getUTCDay()];
+      if (real !== m[1].toLowerCase()) P(`дата «${m[0]}»: в ${year} году это ${real} — бери dayLabel() из kernel/world.mjs`);
+    }
+  }
+
   /* —— жест доступа совпадает с кнопкой —— */
   /* Спека обещает ревьюеру «нажмите «Проверить кадр»», а на экране кнопка
      давно называется иначе — такой маршрут в review notes ведёт в никуда. */
