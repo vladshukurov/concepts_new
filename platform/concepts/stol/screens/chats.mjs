@@ -5,7 +5,6 @@ export default (ui) => ui.screen({
   id: 'chats', theme: THEME,
   body: ui.scroll([
     ui.largeTitle('Мессенджер', ui.iconButton({ icon: 'square-pen', label: 'Новое сообщение', go: 'direct' })),
-    ui.section({ children: [ui.list([ui.row({ lead: ui.leadIcon('bell'), title: 'Уведомления', sub: 'Сообщения с именем и фото', end: { value: 'Включить', activate: 'commnotif|chats', label: 'Включить уведомления о сообщениях' } })]), ui.granted('commnotif', 'Сообщения приходят с именем и фото')] }),
     ui.section({ children: ui.search({ placeholder: 'Поиск по сообщениям' }) }),
     ui.section({ children: [
       ui.dialog({ initial: 'ЛС', name: `${tonight.game} · ${tonight.start}`, text: `${tonight.host.first}: беру базовую коробку`, time: '12:14', unread: 2, go: 'chat', primary: true }),

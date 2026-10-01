@@ -31,7 +31,7 @@
 | `localnetwork` | «Экран у большого стола» | `cast` | заслужен |
 | `wifiinfo` | «Проверить сеть» на общем экране | `cast` | заслужен |
 | `keychain` | Без жеста — фоновый режим | `cast` | заслужен |
-| `commnotif` | «Включить» в строке «Уведомления о сообщениях» | `chats` | заслужен |
+| `commnotif` | Переключатель «Сообщения» в настройках | `settings` | заслужен |
 | `voip` | «Позвонить» в шапке чата стола | `chat` | заслужен |
 <!-- @end -->
 
@@ -84,9 +84,9 @@
             └─ Общий экран (cast) — push · открывается: «Показать на экране» · localnetwork, wifiinfo, keychain
 
 Профиль (profile) — tab (root) · открывается: вкладка таб-бара
-    └─ Настройки (settings) — push · открывается: «Настройки»
+    └─ Настройки (settings) — push · открывается: «Настройки» · commnotif
 
-Чаты (chats) — tab (root) · открывается: вкладка таб-бара · commnotif
+Чаты (chats) — tab (root) · открывается: вкладка таб-бара
     ├─ Чат стола (chat) — push · открывается: «Комментарии», «Чат стола» … · voip
     │   └─ Звонок стола (call) — fullscreen · открывается: «Позвонить» (voip)
     └─ Личный диалог (direct) — push · открывается: «Женя Ким», «Новое сообщение» …
@@ -150,7 +150,6 @@
 | `cast` | «Проверить сеть» | `cast` | `com.apple.developer.networking.wifi-info` | entitlement, без alert |
 | `cast` | «Вернуться к счёту» | `score` | — | переход |
 | `chats` | «Новое сообщение», «Диалог: Женя Ким» | `direct` | — | переход |
-| `chats` | «Включить уведомления о сообщениях» | `chats` | `com.apple.developer.usernotifications.communication` | entitlement, без alert |
 | `chats` | «Диалог: Лесные союзы · 19:30», «Диалог: Маршруты Севера» | `chat` | — | переход |
 | `chat` | «Назад» | `chats` | — | возврат по IA |
 | `chat` | «Позвонить» | `call` | `UIBackgroundModes: voip` | entitlement, без alert |
@@ -162,4 +161,5 @@
 | `call` | «Завершить» | `chat` | — | возврат по IA |
 | `settings` | «Назад» | `profile` | — | возврат по IA |
 | `settings` | «Профиль и аккаунт» | `account` | — | переход |
+| `settings` | «Сообщения» | `settings` | `com.apple.developer.usernotifications.communication` | entitlement, без alert |
 <!-- @end -->

@@ -12,8 +12,10 @@ export default (ui) => ui.screen({
       ui.section({ children: [
         ui.group({ label: 'Уведомления', cells: [
           ui.cell({ icon: 'bell', title: 'Прогулки и ответы', toggle: false, ask: 'push|settings|settings' }),
+          ui.cell({ icon: 'message-circle', title: 'Сообщения', sub: 'С именем и фото отправителя', toggle: false, activate: 'commnotif|settings' }),
           ui.cell({ icon: 'stethoscope', title: 'Здоровье', sub: 'Прививки и приёмы', toggle: true }),
         ] }),
+        ui.granted('commnotif', 'Сообщения приходят с именем и фото'),
         ui.denied('push', 'Уведомления выключены — новое отмечаем точками на вкладках'),
       ] }),
       ui.section({ children: ui.group({ label: 'Лента', cells: [

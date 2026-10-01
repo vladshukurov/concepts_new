@@ -500,10 +500,10 @@
       },
       "activate": true,
       "feature": "Уведомления о сообщениях с фото собеседника",
-      "gesture": "«Фото собеседника в уведомлениях» в мессенджере",
-      "screen": "chats",
-      "target": "chats",
-      "fallback": "Уведомления приходят без фото, только с текстом",
+      "gesture": "Переключатель «Сообщения» в настройках",
+      "screen": "settings",
+      "target": "settings",
+      "fallback": "Новые сообщения видны во вкладке «Мессенджер»",
       "risk": "low",
       "anchor": false,
       "conditional": true,
@@ -1372,11 +1372,13 @@
         "chat",
         "call",
         "walk",
-        "media"
+        "media",
+        "mates"
       ],
       "stops": [
         "walk",
-        "media"
+        "media",
+        "mates"
       ]
     }
   ],

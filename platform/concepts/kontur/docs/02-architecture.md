@@ -39,7 +39,7 @@
 | `tracking` | «Персонализировать предложения» | `ads` | заслужен |
 | `speech` ⚓ | «Распознать запись» | `voice` | заслужен |
 | `hotspot` | «Подключиться к Lab-Red» | `labnet` | заслужен |
-| `commnotif` | «Включить» в строке «Уведомления о сообщениях» | `notifications` | заслужен |
+| `commnotif` | Переключатель «Сообщения» в уведомлениях | `notifications` | заслужен |
 <!-- @end -->
 
 ## Информационная архитектура
@@ -167,8 +167,8 @@
 | `contacts` | «Найти в контактах» | `contacts` | `NSContactsUsageDescription` | доступ разрешён |
 | `contacts` | «Ренат Мусин», «Лиза Вэй» … | `photographer` | — | переход |
 | `notifications` | «Назад» | `profile` | — | возврат по IA |
-| `notifications` | «Включить уведомления о сообщениях» | `notifications` | `com.apple.developer.usernotifications.communication` | entitlement, без alert |
 | `notifications` | «Разрешить уведомления» | `notifications` | `aps-environment` | доступ разрешён |
+| `notifications` | «Сообщения» | `notifications` | `com.apple.developer.usernotifications.communication` | entitlement, без alert |
 | `widget` | «Добавить виджет» | `widget` | `com.apple.security.application-groups` | entitlement, без alert |
 | `widget` | «Открыть прогулку» | `walk` | `keychain-access-groups` | entitlement, без alert |
 | `security` | «Назад» | `profile` | — | возврат по IA |

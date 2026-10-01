@@ -1270,6 +1270,10 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui:is(.vk-light,.ok-light) .ui-large,
 .ui:is(.vk-light,.ok-light) .ui-top { background:var(--ui-card); }
 .ui:is(.vk-light,.ok-light) .ui-scroll.is-root { background:linear-gradient(var(--ui-card) 0 var(--safe-top), transparent var(--safe-top)); }
+/* Мессенджер — одна белая поверхность, как в ВК: шапка, поиск и диалоги без серых полос между ними */
+.ui:is(.vk-light,.ok-light) .ui-scroll.is-root:has(> .ui-sec > .ui-dialog) { background:var(--ui-card); }
+.ui:is(.vk-light,.ok-light) .ui-scroll:has(> .ui-sec > .ui-dialog) > .ui-sec { margin-top:0; padding:0; }
+.ui:is(.vk-light,.ok-light) .ui-scroll:has(> .ui-sec > .ui-dialog) > .ui-sec:has(> .ui-search) { padding:4px 0 8px; }
 .ui:is(.vk-light,.ok-light) .ui-tabs { background:var(--ui-card); box-shadow:inset 0 .5px 0 var(--ui-line); }
 .ui:is(.vk-light,.ok-light) .ui-mini { background:var(--ui-card); box-shadow:0 2px 12px var(--ui-shadow); }
 .ui:is(.vk-light,.ok-light) .ui-thumb, .ui:is(.vk-light,.ok-light) .ui-card-art { background-color:var(--ui-ph); }

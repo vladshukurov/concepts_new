@@ -39,7 +39,7 @@
 | `processing` | Без жеста — фоновый режим | `album` | заслужен |
 | `bgtask` | Без жеста — фоновый режим | `records` | заслужен |
 | `keychain` | Без жеста — фоновый режим | `tv` | заслужен |
-| `commnotif` | «Включить» в строке «Уведомления о сообщениях» | `discussions` | заслужен |
+| `commnotif` | Переключатель «Сообщения» в уведомлениях | `notif` | заслужен |
 | `voip` | «Войти в эфир» у собрания правления | `records` | заслужен |
 <!-- @end -->
 
@@ -62,7 +62,7 @@
     │       └─ Идёт показ (cast) — fullscreen · открывается: «Смотреть на телевизоре» (localnetwork)
     ├─ Поездка на ярмарку (event) — push · открывается: «Суббота, 12 сентября · выезд в 09:30», «Поездка на ярмарку 12 сентября» … · locationalways
     │   └─ Где автобус (route) — push · открывается: «Отмечать дорогу» (locationalways), «Где автобус»
-    └─ Оповещения (notif) — modal · открывается: «Оповещения», «Что приходит» · push, remotenotif
+    └─ Оповещения (notif) — modal · открывается: «Оповещения», «Что приходит» · push, remotenotif, commnotif
 
 Альбом товарищества (album) — tab (root) · открывается: «Открыть альбом», «Вложение» … · processing
 
@@ -71,7 +71,7 @@
     ├─ Медиатека (picker) — modal · открывается: «Из медиатеки» (photos), «Выбрать из медиатеки», «Медиатека»
     └─ Место (place) — modal · открывается: «Отметить место» (location)
 
-Обсуждения (discussions) — tab (root) · открывается: «Обсуждения» · commnotif
+Обсуждения (discussions) — tab (root) · открывается: «Обсуждения»
     └─ Обсуждение (thread) — push · открывается: «Комментарии», «Спросить в обсуждении» …
 
 Записи (records) — tab (root) · открывается: «Записи без сети» · mic, bgtask, voip
@@ -106,7 +106,7 @@
 | `shoot` | Съёмка | fullscreen | — |
 | `picker` | Медиатека | modal | — |
 | `place` | Место | modal | — |
-| `discussions` | Обсуждения | tab (root) | commnotif (activate) |
+| `discussions` | Обсуждения | tab (root) | — |
 | `thread` | Обсуждение | push | — |
 | `records` | Записи | tab (root) | mic, bgtask (activate), voip (activate) |
 | `live` | Эфир собрания | fullscreen | — |
@@ -120,7 +120,7 @@
 | `route` | Где автобус | push | — |
 | `tv` | Телевизор | modal | localnetwork, wifiinfo (activate), keychain (activate) |
 | `cast` | Идёт показ | fullscreen | — |
-| `notif` | Оповещения | modal | push, remotenotif (activate) |
+| `notif` | Оповещения | modal | push, remotenotif (activate), commnotif (activate) |
 | `settings` | Настройки | push | — |
 | `invite` | Приглашение | modal | — |
 <!-- @end -->

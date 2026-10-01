@@ -13,7 +13,6 @@ const topics = [
 export default (ui) => ui.screen({
   id: 'discussions', theme: THEME,
   body: ui.scroll([
-      ui.section({ children: [ui.list([ui.row({ lead: ui.leadIcon('bell'), title: 'Уведомления', sub: 'Сообщения с именем и фото', end: { value: 'Включить', activate: 'commnotif|discussions', label: 'Включить уведомления о сообщениях' } })]), ui.granted('commnotif', 'Сообщения приходят с именем и фото')] }),
     ui.largeTitle('Обсуждения', ui.iconButton({ icon: 'plus', label: 'Спросить', sr: 'Спросить', go: 'compose', primary: true })),
     ui.section({ children: ui.list(topics.map(([t, s, v], i) => ui.row({ lead: ui.avatar(s.split(' ').slice(0, 2).map((w) => w[0]).join('')), title: t, sub: i === 0 ? s : `${s} · ${v}`, wrap: true, end: i === 0 ? { badge: v } : undefined, go: 'thread' }))) }),
     ui.section({ children: ui.list([ui.row({ lead: `<span class="ui-thumb ph"></span>`, title: `Поездка на ярмарку ${trip.short}`, sub: 'Обсуждение привязано к поездке', go: 'event' })]) }),

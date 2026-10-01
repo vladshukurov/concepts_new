@@ -46,7 +46,7 @@
 | `calendar` | «В Календарь» у ближайшего приёма | `vaccine` | заслужен |
 | `shareext` | «Поделиться в «Хвосты»» в настройках | `settings` | заслужен |
 | `hotspot` | «Подключиться» на экране сети площадки | `netqr` | заслужен |
-| `commnotif` | «Фото собеседника в уведомлениях» в мессенджере | `chats` | заслужен |
+| `commnotif` | Переключатель «Сообщения» в настройках | `settings` | заслужен |
 | `voip` | «Позвонить» в шапке диалога | `chat` | заслужен |
 <!-- @end -->
 
@@ -65,7 +65,7 @@
 | `pet` | Профиль питомца | push | speech |
 | `nearby` | Рядом | tab (root) | — |
 | `walk` | Прогулка | push | remotenotif (activate), wifiinfo (activate) |
-| `chats` | Мессенджер | tab (root) | commnotif (activate) |
+| `chats` | Мессенджер | tab (root) | — |
 | `chat` | Диалог | push | voip (activate) |
 | `call` | Звонок | fullscreen | — |
 | `create` | Новый момент | push | camera, photos |
@@ -73,7 +73,7 @@
 | `media` | Фото | system picker | — |
 | `places` | Площадки рядом | push | — |
 | `profile` | Профиль | tab (root) | contacts |
-| `settings` | Настройки | push | push, appgroups (activate), autofill (activate), faceid, shareext (activate) |
+| `settings` | Настройки | push | push, appgroups (activate), autofill (activate), faceid, shareext (activate), commnotif (activate) |
 | `widget` | Виджет на экране «Домой» | fullscreen | keychain (activate) |
 | `fill` | Автозаполнение на сайте | fullscreen | — |
 | `refresh` | Без сети | push | bgtask (activate) |
@@ -115,7 +115,7 @@
 | `NSCalendarsFullAccessUsageDescription + NSCalendarsUsageDescription` | «В Календарь» у ближайшего приёма | Прививки и обработки | Срок остаётся в карточке питомца и в напоминании приложения | Низкий |
 | `NSExtensionPointIdentifier: com.apple.share-services` | «Поделиться в «Хвосты»» в настройках | Настройки | Остаётся создание записи внутри приложения | **Условный** — Отдельный target расширения; черновик кладётся в общий контейнер App Group |
 | `com.apple.developer.networking.HotspotConfiguration` | «Подключиться» на экране сети площадки | Сеть площадки по QR | Сеть выбирается вручную в Настройках | Низкий |
-| `com.apple.developer.usernotifications.communication` | «Фото собеседника в уведомлениях» в мессенджере | Мессенджер | Уведомления приходят без фото, только с текстом | **Условный** — INSendMessageIntent только для структурированного изменения записи |
+| `com.apple.developer.usernotifications.communication` | Переключатель «Сообщения» в настройках | Настройки | Новые сообщения видны во вкладке «Мессенджер» | **Условный** — INSendMessageIntent только для структурированного изменения записи |
 | `UIBackgroundModes: voip` | «Позвонить» в шапке диалога | Диалог | Остаются сообщения и голосовые | **Условный** — CallKit + WebRTC только для подтверждённого приёма |
 <!-- @end -->
 
@@ -137,7 +137,7 @@
         ├─ Рядом (nearby) — tab (root) · открывается: «Кто гуляет рядом» (location)
         │   └─ Прогулка (walk) — push · открывается: «Спокойный круг у пруда», «Быстро по набережной» … · remotenotif, wifiinfo
         │       └─ Сеть площадки по QR (netqr) — modal · открывается: «Сеть площадки» · hotspot
-        ├─ Мессенджер (chats) — tab (root) · открывается: «Написать», «Изменения приёма» · commnotif
+        ├─ Мессенджер (chats) — tab (root) · открывается: «Написать», «Изменения приёма»
         │   └─ Диалог (chat) — push · открывается: «Диалог: Ксения · Трюфель», «Диалог: Прогулка у пруда · 6» … · voip
         │       └─ Звонок (call) — fullscreen · открывается: «Позвонить» (voip)
         ├─ Новый момент (create) — push · открывается: «Новая запись», «История», «Готово», «Сохранить в черновик» · camera, photos
@@ -148,14 +148,14 @@
             └─ Экран погас (background) — fullscreen · открывается: «Слушать» (audio)
 
 Профиль (profile) — tab (root) · открывается: «Барни», «Продолжить» (tracking) · contacts
-    ├─ Настройки (settings) — push · открывается: «Настройки» · push, appgroups, autofill, faceid, shareext
+    ├─ Настройки (settings) — push · открывается: «Настройки» · push, appgroups, autofill, faceid, shareext, commnotif
     │   ├─ Виджет на экране «Домой» (widget) — fullscreen · открывается: «Виджет» (appgroups) · keychain
     │   ├─ Автозаполнение на сайте (fill) — fullscreen · открывается: «Вход на сайте» (autofill)
     │   ├─ Без сети (refresh) — push · открывается: «Без сети» · bgtask
     │   ├─ Реклама вместо подписки (ads) — modal · открывается: «Реклама» · tracking
     │   ├─ Замок на ветпаспорте (lock) — push · открывается: «Замок Face ID» (faceid)
     │   └─ Поделиться в «Хвосты» (shareext) — modal · открывается: «Поделиться в «Хвосты»» (shareext)
-    └─ Контакты в «Хвостах» (mates) — push · открывается: «Друзья из контактов», «Найти среди контактов» (contacts)
+    └─ Контакты в «Хвостах» (mates) — push · открывается: «Друзья из контактов», «Новое сообщение», «Найти среди контактов» (contacts)
 
 Прививки и обработки (vaccine) — tab (root) · открывается: «Открыть здоровье», «Прививки и обработки» · calendar
 ```
