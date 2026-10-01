@@ -14,10 +14,6 @@ export default (ui) => ui.screen({
       ui.row({ thumb: 'ph', title: 'Ярмарка во дворе', sub: '88 снимков · выкладывали пятеро соседей', end: { value: 'сентябрь' }, go: 'tv' }),
       ui.row({ thumb: 'ph', title: 'Садовая ярмарка', sub: '27 снимков · половина смазана', end: { value: 'май' }, go: 'tv' }),
     ]) }),
-    ui.section({ children: [
-      ui.list([ui.row({ lead: ui.leadIcon('images'), title: 'Разобрать альбом ночью', sub: 'Снимки разойдутся по событиям, пока телефон на зарядке', activate: 'processing|album' })]),
-      ui.granted('processing', 'Разобрано: 312 снимков по 9 событиям'),
-    ] }),
     ui.section({ title: 'Без сети', meta: '2 папки', children: ui.list([
       ui.row({ lead: `<span class="ui-thumb ph"></span>`, title: 'Скачано на телефон', sub: 'Праздник урожая и субботник · 512 МБ', end: { value: 'Освободить', toast: 'Освобождено 512 МБ', label: 'Освободить 512 МБ' } }),
     ]) }),

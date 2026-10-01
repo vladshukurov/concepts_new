@@ -16,8 +16,6 @@ export default (ui) => ui.screen({
         ui.group({ cells: [
           ui.cell({ icon: 'bell', title: 'Напомнить накануне', sub: 'В пятницу в 21:00', toggle: false, ask: 'push|meetup|meetup' }),
         ] }),
-        ui.list([ui.row({ lead: ui.leadIcon('map-pin'), title: 'Точка старта обновится сама', sub: `Если ${longrun.host.first} её сдвинет, она поменяется здесь`, activate: 'remotenotif|meetup' })]),
-        ui.granted('remotenotif', 'Точку сдвинули к главному входу — обновилось в 06:40'),
         ui.denied('push', 'Напоминание будет в разделе «Тренировки»'),
       ] }),
     ]),

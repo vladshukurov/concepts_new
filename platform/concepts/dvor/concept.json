@@ -399,7 +399,7 @@
           "actor": "system",
           "entity": "meter",
           "effect": "снапшот виджета переписывается тихим пушем и фоновой задачей",
-          "screen": "background",
+          "screen": "meters",
           "result": "Срок показаний и отключения свежие до открытия приложения",
           "capabilities": [
             "remotenotif",
@@ -711,16 +711,19 @@
         "text": "Entitlement без системного запроса: тихий пуш обновляет показания и срок, пока приложение закрыто."
       },
       "feature": "Срок показаний и тарифы обновляются сами, если УК их меняет",
-      "gesture": "«Срок и тарифы без перезагрузки» в счётчиках",
+      "gesture": "Без жеста — фоновый режим",
       "screen": "meters",
-      "target": "background",
+      "target": "meters",
       "activate": true,
       "fallback": "Без режима цифры обновляются только при открытии",
       "risk": "low",
       "anchor": false,
       "conditional": true,
       "requires": "обработчик didReceiveRemoteNotification, который переписывает снапшот виджета",
-      "grounding": "silent push из консоли FCM, снапшот в контейнере App Group"
+      "grounding": "silent push из консоли FCM, снапшот в контейнере App Group",
+      "silent": true,
+      "evidence": "Срок показаний обновляется в счётчиках, если УК его сдвинет",
+      "reviewNote": "Без системного запроса и без кнопки: срок показаний обновляется в счётчиках, если УК его сдвинет"
     },
     {
       "key": "fetch",
@@ -730,9 +733,9 @@
         "text": "Entitlement без системного запроса: объявления дома и срок передачи показаний подтягиваются к утру."
       },
       "feature": "Объявления дома и срок показаний готовы к первому открытию",
-      "gesture": "«Объявления дома к утру» в ленте",
+      "gesture": "Без жеста — фоновый режим",
       "screen": "home",
-      "target": "background",
+      "target": "home",
       "activate": true,
       "fallback": "Без режима лента и срок обновляются в момент открытия",
       "risk": "medium",
@@ -740,7 +743,9 @@
       "conditional": true,
       "requires": "BGAppRefreshTask, который реально читает объявления своего дома из Firestore",
       "grounding": "BGAppRefreshTask, чтение Firestore через SDK, запись снапшота для виджета",
-      "reviewNote": "Доступ вызывается действием «Объявления дома к утру» в ленте на экране «home». При отказе или без режима: Без режима лента и срок обновляются в момент открытия"
+      "reviewNote": "Без системного запроса и без кнопки: объявления дома и сроки показаний уже в ленте к утру",
+      "silent": true,
+      "evidence": "Объявления дома и сроки показаний уже в ленте к утру"
     },
     {
       "key": "bgtask",
@@ -750,16 +755,19 @@
         "text": "Entitlement без системного запроса: app.dvor.refresh объявлен в Info.plist и зарегистрирован в коде."
       },
       "feature": "Сводка дома к утру: объявления, заявки, сроки",
-      "gesture": "«Собирать сводку каждое утро»",
-      "screen": "background",
-      "target": "background",
+      "gesture": "Без жеста — фоновый режим",
+      "screen": "home",
+      "target": "home",
       "activate": true,
       "fallback": "Сводка собирается при открытии",
       "risk": "low",
       "anchor": false,
       "conditional": true,
       "requires": "строка в Info.plist совпадает с BGTaskScheduler.register — иначе падение при регистрации",
-      "grounding": "один идентификатор app.dvor.refresh под BGAppRefreshTask"
+      "grounding": "один идентификатор app.dvor.refresh под BGAppRefreshTask",
+      "silent": true,
+      "evidence": "Сводка дома собрана к утру",
+      "reviewNote": "Без системного запроса и без кнопки: сводка дома собрана к утру"
     },
     {
       "key": "appgroups",
@@ -1338,26 +1346,6 @@
       }
     },
     {
-      "id": "background",
-      "title": "Дом к утру",
-      "type": "системная поверхность",
-      "light": true,
-      "parent": "meters",
-      "meta": "Сводка к утру · Background fetch · BGTask",
-      "ui": {
-        "states": [
-          "default",
-          "loading",
-          "empty",
-          "error",
-          "offline",
-          "denied"
-        ],
-        "navigation": "push",
-        "primaryAction": "Собирать сводку каждое утро"
-      }
-    },
-    {
       "id": "events",
       "title": "События дома",
       "type": "tab (root)",
@@ -1581,7 +1569,6 @@
         "guest",
         "scan",
         "meters",
-        "background",
         "events",
         "menu",
         "passwords",
@@ -1627,15 +1614,13 @@
         "events",
         "yard",
         "profile",
-        "chat",
-        "background"
+        "chat"
       ],
       "stops": [
         "events",
         "yard",
         "profile",
-        "chat",
-        "background"
+        "chat"
       ]
     },
     {
@@ -1667,7 +1652,6 @@
       "screens": [
         "yard",
         "meters",
-        "background",
         "events",
         "guest",
         "problem",
@@ -1689,7 +1673,6 @@
       "screens": [
         "settings",
         "verify",
-        "background",
         "widget",
         "lock",
         "ads",
@@ -2056,8 +2039,7 @@
       "screens": [
         "settings",
         "widget",
-        "meters",
-        "background"
+        "meters"
       ],
       "capabilities": [
         "appgroups",

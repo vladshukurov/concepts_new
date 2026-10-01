@@ -12,7 +12,7 @@ export default (ui) => ui.screen({
       ] }) }),
       ui.denied('tracking', 'Реклама остаётся случайной'),
       ui.section({ children: ui.actions([
-        ui.button({ label: 'Продолжить', block: true, ask: 'tracking|menu|ads', primary: true }),
+        ui.button({ label: 'Продолжить', block: true, ask: 'tracking|me|ads', primary: true }),
         ui.button({ label: 'Не сейчас', variant: 'tertiary', block: true, back: true }),
       ]) }),
     ]),

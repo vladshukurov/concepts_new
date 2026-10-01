@@ -43,6 +43,13 @@ export function assess(slug) {
     const issues = [];
     if (!model) { rows.push({ key: p.key, anchor: p.anchor, issues: ['нет в модели доступов'] }); continue; }
     if (ALIAS[p.key]) issues.push(`ключ-синоним, канон — ${key}`);
+    /* Тихий доступ: кнопка не нужна, нужен видимый результат в уже существующем интерфейсе */
+    if (p.silent) {
+      if (model.prompt) issues.push('доступ с системным запросом не может быть тихим — нужен жест в сценарии');
+      if (!p.evidence) issues.push('тихий доступ без evidence: где человек видит результат');
+      rows.push({ key: p.key, anchor: !!p.anchor, screen: p.screen, issues });
+      continue;
+    }
     const screenId = p.screen;
     const screenSpec = spec.screens.find((s) => s.id === screenId);
     const html = markup[screenId] || '';

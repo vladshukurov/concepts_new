@@ -17,10 +17,6 @@ export default (ui) => ui.screen({
         ui.row({ lead: ui.leadIcon('audio-lines', { accent: true }), title: 'Собрание 4 сентября', sub: 'Записал Илья · остановились на 21:30', end: { value: 'Слушать', go: 'player', primary: true, label: 'Слушать собрание 4 сентября' } }),
       ]),
     ] }),
-    ui.section({ children: [
-      ui.list([ui.row({ lead: ui.leadIcon('download'), title: 'Новые записи к утру', sub: 'Слушать на даче без связи', activate: 'bgtask|records' })]),
-      ui.granted('bgtask', 'Три записи скачаны к 06:00 · слушаются без сети'),
-    ] }),
     ui.section({ title: 'Записи товарищества', meta: '14', children: ui.list([
       ui.row({ lead: ui.leadIcon('audio-lines'), title: 'Ремонт северной дороги', sub: '12:04 · фрагмент собрания', end: { badge: 'новое' }, go: 'player' }),
       ui.row({ lead: ui.leadIcon('audio-lines'), title: 'Отчёт правления за лето', sub: '6:14 · вода, ворота и территория', end: '<span class="ui-row-end is-value"><span class="dl is-busy"><svg><use href="#i-loader-circle"/></svg>62 %</span></span>', go: 'player' }),

@@ -36,11 +36,11 @@
 | `audio` | «Слушать с погашенным экраном» | `audio` | заслужен |
 | `localnetwork` ⚓ | «Найти экран на кухне» | `kitchen` | заслужен |
 | `wifiinfo` | «Кухня · Apple TV» | `cast` | заслужен |
-| `remotenotif` | «Ответы авторов сразу» в уведомлениях | `notif` | заслужен |
-| `fetch` | «Свежая лента к утру» в рекомендациях | `feed` | заслужен |
-| `processing` | «Видео шагов из ваших фото» в рецепте | `recipe` | заслужен |
-| `bgtask` | «Скачать шаги перед готовкой» | `cookalong` | заслужен |
-| `keychain` | «Войти на Apple TV» на экране показа | `cast` | заслужен |
+| `remotenotif` | Без жеста — фоновый режим | `notif` | заслужен |
+| `fetch` | Без жеста — фоновый режим | `feed` | заслужен |
+| `processing` | Без жеста — фоновый режим | `recipe` | заслужен |
+| `bgtask` | Без жеста — фоновый режим | `cookalong` | заслужен |
+| `keychain` | Без жеста — фоновый режим | `cast` | заслужен |
 | `commnotif` | «Сообщения кухни» в настройках | `settings` | заслужен |
 | `voip` | «Позвонить» в шапке чата кухни | `conversation` | заслужен |
 | `speech` | «Надиктовать заметку» | `steps` | заслужен |
@@ -124,7 +124,6 @@
 | `feed` | «Тимур», «Тимур Садыков» | `direct-timur` | — | переход |
 | `feed` | «Жанна Ким» | `direct-zhanna` | — | переход |
 | `feed` | «Рецепт: Чечевичный суп», «Рецепт: Хачапури на сковороде» | `recipe` | — | переход |
-| `feed` | «Свежая лента к утру» | `feed` | `UIBackgroundModes: fetch` | entitlement, без alert |
 | `feed` | «Настроить рекомендации» | `feed` | `NSUserTrackingUsageDescription` | доступ разрешён |
 | `post` | «Назад» | `feed` | — | возврат по IA |
 | `post` | «Жанна Ким» | `direct-zhanna` | — | переход |
@@ -159,7 +158,6 @@
 | `cookalong` | «Чат кухни», «Чат кухни · 4 новых» | `conversation` | — | переход |
 | `cookalong` | «Открыть все шаги» | `steps` | — | переход |
 | `cookalong` | «Добавить в календарь» | `cookalong` | `NSCalendarsWriteOnlyAccessUsageDescription` | доступ разрешён |
-| `cookalong` | «Скачать шаги перед готовкой» | `cookalong` | `BGTaskSchedulerPermittedIdentifiers` | entitlement, без alert |
 | `cookalong` | «Напомнить за 15 минут» | `cookalong` | `aps-environment` | доступ разрешён |
 | `steps` | «Назад» | `cookalong` | — | возврат по IA |
 | `steps` | «Кухонный экран», «Шаг готов» | `kitchen` | — | переход |
@@ -168,7 +166,6 @@
 | `recipes` | «Все» | `recipes` | — | переход |
 | `recipes` | «Чечевичный суп», «Хачапури на сковороде» … | `recipe` | — | переход |
 | `recipe` | «Назад» | `recipes` | — | возврат по IA |
-| `recipe` | «Видео шагов из ваших фото» | `recipe` | `UIBackgroundModes: processing` | entitlement, без alert |
 | `recipe` | «Готовить по шагам» | `cookalong` | — | переход |
 | `audio` | «Свернуть» | `settings` | — | возврат по IA |
 | `audio` | «Слушать с погашенным экраном» | `audio` | `UIBackgroundModes: audio` | entitlement, без alert |
@@ -178,7 +175,6 @@
 | `kitchen` | «Найти экран на кухне» | `kitchen` | `NSLocalNetworkUsageDescription` | отказ → fallback |
 | `cast` | «Закрыть» | `kitchen` | — | возврат по IA |
 | `cast` | «Кухня · Apple TV» | `cast` | `Access WiFi Information` | entitlement, без alert |
-| `cast` | «Войти на Apple TV» | `cast` | `Keychain sharing` | entitlement, без alert |
 | `cast` | «Показать шаги» | `kitchen` | — | подтверждение |
 | `profile` | «Настройки» | `settings` | — | переход |
 | `profile` | «Опубликовать» | `compose` | — | переход |
@@ -199,7 +195,6 @@
 | `notif` | «Назад» | `feed` | — | возврат по IA |
 | `notif` | «Жанна проверила вашу замену» | `direct-zhanna` | — | переход |
 | `notif` | «Ужин из одной сковороды» | `cookalong` | — | переход |
-| `notif` | «Ответы авторов сразу» | `notif` | `Remote notifications` | entitlement, без alert |
 | `notif` | «Ваш пирог повторили 6 раз» | `post` | — | переход |
 | `chats` | «Новое сообщение» | `following` | — | переход |
 | `chats` | «Диалог: Ужин из одной сковороды» | `conversation` | — | переход |

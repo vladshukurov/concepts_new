@@ -23,6 +23,7 @@
     "sync": "node scripts/sync-spec.mjs",
     "migrate:check": "node scripts/migrate-check.mjs",
     "storybook": "node scripts/gen-storybook.mjs",
+    "sameness": "node scripts/sameness.mjs",
     "proof": "node scripts/pipeline-proof.mjs",
     "review": "node scripts/quality-review.mjs",
     "test:quality": "node scripts/test-quality.mjs",

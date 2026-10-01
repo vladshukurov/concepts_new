@@ -34,12 +34,12 @@
 | `wifiinfo` | «Обновить список» | `tv` | заслужен |
 | `push` | «Включить оповещения» | `notif` | заслужен |
 | `audio` ⚓ | «Слушать» | `player` | заслужен |
-| `remotenotif` | «Счётчики в фоне» в оповещениях | `notif` | заслужен |
-| `fetch` | «Новости товарищества к утру» в ленте | `feed` | заслужен |
-| `processing` | «Разобрать альбом ночью» | `album` | заслужен |
-| `bgtask` | «Новые записи к утру» | `records` | заслужен |
-| `keychain` | «Войти на телевизоре» | `tv` | заслужен |
-| `commnotif` | «Следить за обсуждением» | `thread` | заслужен |
+| `remotenotif` | Без жеста — фоновый режим | `notif` | заслужен |
+| `fetch` | Без жеста — фоновый режим | `feed` | заслужен |
+| `processing` | Без жеста — фоновый режим | `album` | заслужен |
+| `bgtask` | Без жеста — фоновый режим | `records` | заслужен |
+| `keychain` | Без жеста — фоновый режим | `tv` | заслужен |
+| `commnotif` | «Включить» в строке «Уведомления о сообщениях» | `discussions` | заслужен |
 | `voip` | «Войти в эфир» у собрания правления | `records` | заслужен |
 <!-- @end -->
 
@@ -71,8 +71,8 @@
     ├─ Медиатека (picker) — modal · открывается: «Из медиатеки» (photos), «Выбрать из медиатеки», «Медиатека»
     └─ Место (place) — modal · открывается: «Отметить место» (location)
 
-Обсуждения (discussions) — tab (root) · открывается: «Обсуждения»
-    └─ Обсуждение (thread) — push · открывается: «Комментарии», «Спросить в обсуждении» … · commnotif
+Обсуждения (discussions) — tab (root) · открывается: «Обсуждения» · commnotif
+    └─ Обсуждение (thread) — push · открывается: «Комментарии», «Спросить в обсуждении» …
 
 Записи (records) — tab (root) · открывается: «Записи без сети» · mic, bgtask, voip
     ├─ Эфир собрания (live) — fullscreen · открывается: «Войти в эфир» (voip)
@@ -106,8 +106,8 @@
 | `shoot` | Съёмка | fullscreen | — |
 | `picker` | Медиатека | modal | — |
 | `place` | Место | modal | — |
-| `discussions` | Обсуждения | tab (root) | — |
-| `thread` | Обсуждение | push | commnotif (activate) |
+| `discussions` | Обсуждения | tab (root) | commnotif (activate) |
+| `thread` | Обсуждение | push | — |
 | `records` | Записи | tab (root) | mic, bgtask (activate), voip (activate) |
 | `live` | Эфир собрания | fullscreen | — |
 | `player` | Запись | push | audio (activate) |

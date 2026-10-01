@@ -14,11 +14,9 @@ export default (ui) => ui.screen({
       ui.post({ author: { initial: 'НЧ', name: 'Наталья Чернова', meta: 'участок 31 · 9 сентября' }, text: 'Кто едет на ярмарку на машине и может взять соседей? В автобусе осталось только пять мест', attach: ui.list([ui.row({ lead: ui.leadIcon('calendar', { accent: true }), title: 'Поездка на садовую ярмарку', sub: '12 сентября · записались 18 из 28', go: 'event' })]), likes: 6 }),
       ui.section({ title: 'Ответы', meta: '9', children: [
         ui.chat([
-          ...replies.map(([, n, t, time]) => ui.bubble({ text: `<b class="kl-who">${n}</b>${t}`, time })),
+          ...replies.map(([, n, t, time]) => ui.bubble({ from: `${n}`, text: `${t}`, time })),
           ui.bubble({ out: true, text: 'Я в автобусе, займу место у окна для Натальи', time: '16:52', read: true }),
         ]),
-        ui.list([ui.row({ lead: ui.leadIcon('bell'), title: 'Следить за обсуждением', sub: 'Ответы придут с именем соседа', activate: 'commnotif|thread' })]),
-        ui.granted('commnotif', 'Ответы придут с именем и фото соседа'),
       ] }),
     ]),
     ui.composer({ placeholder: 'Ответить', attach: { go: 'album' }, send: { toast: 'Ответ отправлен', primary: true } }),

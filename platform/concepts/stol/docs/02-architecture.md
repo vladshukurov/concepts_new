@@ -30,8 +30,8 @@
 | `audio` | «Слушать памятку» | `audio` | заслужен |
 | `localnetwork` | «Экран у большого стола» | `cast` | заслужен |
 | `wifiinfo` | «Проверить сеть» на общем экране | `cast` | заслужен |
-| `keychain` | «Войти на экране клуба» | `cast` | заслужен |
-| `commnotif` | «Сообщения стола с именами» в чате | `chat` | заслужен |
+| `keychain` | Без жеста — фоновый режим | `cast` | заслужен |
+| `commnotif` | «Включить» в строке «Уведомления о сообщениях» | `chats` | заслужен |
 | `voip` | «Позвонить» в шапке чата стола | `chat` | заслужен |
 <!-- @end -->
 
@@ -86,8 +86,8 @@
 Профиль (profile) — tab (root) · открывается: вкладка таб-бара
     └─ Настройки (settings) — push · открывается: «Настройки»
 
-Чаты (chats) — tab (root) · открывается: вкладка таб-бара
-    ├─ Чат стола (chat) — push · открывается: «Комментарии», «Чат стола» … · commnotif, voip
+Чаты (chats) — tab (root) · открывается: вкладка таб-бара · commnotif
+    ├─ Чат стола (chat) — push · открывается: «Комментарии», «Чат стола» … · voip
     │   └─ Звонок стола (call) — fullscreen · открывается: «Позвонить» (voip)
     └─ Личный диалог (direct) — push · открывается: «Женя Ким», «Новое сообщение» …
 ```
@@ -148,13 +148,12 @@
 | `cast` | «Назад» | `score` | — | возврат по IA |
 | `cast` | «Экран у большого стола» | `cast` | `NSLocalNetworkUsageDescription (+ NSBonjourServices: _googlecast._tcp)` | доступ разрешён |
 | `cast` | «Проверить сеть» | `cast` | `com.apple.developer.networking.wifi-info` | entitlement, без alert |
-| `cast` | «Войти на экране клуба» | `cast` | `keychain-access-groups` | entitlement, без alert |
 | `cast` | «Вернуться к счёту» | `score` | — | переход |
 | `chats` | «Новое сообщение», «Диалог: Женя Ким» | `direct` | — | переход |
+| `chats` | «Включить уведомления о сообщениях» | `chats` | `com.apple.developer.usernotifications.communication` | entitlement, без alert |
 | `chats` | «Диалог: Лесные союзы · 19:30», «Диалог: Маршруты Севера» | `chat` | — | переход |
 | `chat` | «Назад» | `chats` | — | возврат по IA |
 | `chat` | «Позвонить» | `call` | `UIBackgroundModes: voip` | entitlement, без alert |
-| `chat` | «Сообщения стола с именами» | `chat` | `com.apple.developer.usernotifications.communication` | entitlement, без alert |
 | `chat` | «Вложение» | `compose` | — | переход |
 | `chat` | «Голосовое сообщение» | `chat` | `NSMicrophoneUsageDescription` | доступ разрешён |
 | `direct` | «Назад» | `chats` | — | возврат по IA |

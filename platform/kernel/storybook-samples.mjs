@@ -38,6 +38,17 @@ export const groups = [
       ui.foot('Сверено сегодня в 9:12 · 214 номеров'),
     ] }) },
   ] },
+  { title: 'Меню и виджеты', items: [
+    { name: 'menu', note: 'Сервисы двумя колонками, как в меню ВК', render: (ui) => ui.menu([{ icon: 'images', label: 'Мои серии' }, { icon: 'users', label: 'Авторы', badge: 3 }, { icon: 'tv', label: 'Выставка' }, { icon: 'lock', label: 'Черновики' }, { icon: 'shield', label: 'Приватность' }, { icon: 'chevron-right', label: 'Ещё' }]) },
+    { name: 'widgets', note: 'Живые данные продукта карточками: у каждой одна роль и одно действие', render: (ui) => ui.widgets([{ title: 'Место дня', sub: 'Панфилова, 84 · 27 работ', art: 'ph', tall: true, button: { label: 'Нарисовать', toast: 'x' } }, { faces: ['МЛ', 'МК', 'ЛЯ'], title: 'Пленэр завтра в 9:00', sub: '18 участников', toast: 'x' }, { value: '+4', icon: 'images', title: 'Новые работы', sub: 'В ваших сериях', toast: 'x' }]) },
+  ] },
+  { title: 'Сведения о событии и людях', items: [
+    { name: 'miniInfo · usersStack', note: 'Событие как в ВК: факты строками со значком и кто идёт', render: (ui) => ui.miniInfo([{ icon: 'calendar', text: 'Сегодня, 19:30 · 75 минут', accent: true }, { icon: 'map-pin', text: 'Клуб «Полка», Абая 44' }, { icon: 'info', text: 'Подробнее', more: true, toast: 'x' }]) + ui.usersStack({ faces: ['МО', 'ИЛ', 'ЖК'], text: 'Маша, Илья и ещё 2 идут', toast: 'x' }) },
+    { name: 'infoRows', note: 'Паспорт вещи, адрес, реквизиты', render: (ui) => ui.infoRows([['Инвентарный номер', '074'], ['Мастерская', 'Реверс, 13-я линия В.О., 70']]) },
+    { name: 'richCell', note: 'Заявка или приглашение: текст и кнопки под ним', render: (ui) => ui.richCell({ lead: ui.avatar('ИБ'), over: 'Назначение', title: 'Ирина Бек', sub: 'Возьмёте абажур для Л‑74?', after: '19:20', actions: [{ label: 'Принять', toast: 'x' }, { label: 'Отказаться', variant: 'secondary', toast: 'x' }] }) },
+    { name: 'hscroll', note: 'Карточки вбок: люди (s), места (m), события (l)', render: (ui) => ui.hscroll([{ initial: 'МЛ', title: 'Марина', toast: 'x' }, { initial: 'МК', title: 'Миша', toast: 'x' }, { initial: 'ЛЯ', title: 'Лера', toast: 'x' }, { initial: 'ПИ', title: 'Пётр', toast: 'x' }], { size: 's' }) + ui.hscroll([{ title: 'Зелёный базар', sub: '42 работы', toast: 'x' }, { title: 'Терренкур', sub: '18 работ', toast: 'x' }]) },
+    { name: 'banner · placeholder · subnav', note: 'Важное с действием, пустое состояние, фильтры со значком', render: (ui) => ui.subnav([{ icon: 'calendar', label: 'Сегодня', on: true, go: 'x' }, { icon: 'map-pin', label: 'Рядом', go: 'x' }, { icon: 'users', label: 'Знакомые', count: 4, go: 'x' }]) + ui.banner({ icon: 'calendar', title: 'Пленэр завтра в 9:00', sub: 'Возьмите складной стул', button: { label: 'Я пойду', toast: 'x' } }) + ui.placeholder({ icon: 'pen-line', title: 'Черновиков нет', sub: 'Снимите рисунок — он появится здесь', button: { label: 'Новая работа', toast: 'x' } }) },
+  ] },
   { title: 'Соцсеть', items: [
     { name: 'stories', note: 'Фото, инициалы или значок; просмотренные — серое кольцо', render: (ui) => ui.stories([{ label: 'История', icon: 'plus', seen: true }, { label: 'Жанна', initial: 'ЖК' }, { label: 'Вместе', icon: 'chef-hat' }, { label: 'Тимур', initial: 'ТС', seen: true }]) },
     { name: 'composerPrompt', note: '«Что нового?» над лентой', render: (ui) => ui.composerPrompt({ initial: 'СЛ', placeholder: 'Что получилось сегодня?', trailing: ui.iconButton({ icon: 'camera', label: 'Снять' }) }) },

@@ -11,7 +11,6 @@ export default (ui) => ui.screen({
       ui.section({ title: 'Холодная вода', meta: '№ 41-882-07', children: `<div class="dv-meter">${drum('00417', '83')}<p>Предыдущее 00415,42 · 12 марта</p></div>` }),
       ui.section({ title: 'Электричество', meta: '№ 09-14-337', children: `<div class="dv-meter">${drum('018247')}<p>Предыдущее 018204 · 12 марта</p></div>` }),
       ui.section({ children: [
-        ui.list([ui.row({ lead: ui.leadIcon('repeat-2'), title: 'Срок и тарифы без перезагрузки', sub: 'Если УК сдвинет срок, он поменяется здесь сам', activate: 'remotenotif|background' })]),
         ui.actions([ui.button({ label: 'Сохранить показания', block: true, toast: 'Показания сохранены' })], { className: 'dv-gap' }),
       ] }),
     ]),

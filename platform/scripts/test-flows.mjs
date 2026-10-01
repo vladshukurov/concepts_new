@@ -309,7 +309,7 @@ async function run(slug) {
     return [...s];
   }, H);
   for (const p of spec.permissions)
-    ok(`доступ ${p.key} достижим из UI`, reachable.includes(p.key));
+    if (!p.silent) ok(`доступ ${p.key} достижим из UI`, reachable.includes(p.key));
   const stray = reachable.filter(
     (k) => !spec.permissions.some((p) => p.key === k),
   );
@@ -390,6 +390,7 @@ async function run(slug) {
     },
   );
   for (const p of spec.permissions) {
+    if (p.silent) continue;
     const triggerScreens = routePermissions.triggers[p.key] || [];
     const available = triggerScreens.filter((id) =>
       routePermissions.reached.includes(id),
@@ -405,6 +406,12 @@ async function run(slug) {
 
   /* —— доступы: отказ ведёт на видимый fallback —— */
   for (const p of spec.permissions) {
+    /* Тихий доступ: фоновый режим или entitlement без системного запроса и без
+       кнопки в интерфейсе — результат виден там, где и так живёт контент (evidence) */
+    if (p.silent) {
+      ok(`${p.key}: тихий доступ, результат описан`, !!p.evidence);
+      continue;
+    }
     if (p.activate) {
       await reset();
       const el = await page.$(`[data-activate^="${p.key}|"], [data-ask^="${p.key}+"], [data-ask*="+${p.key}|"]`);
@@ -718,6 +725,7 @@ async function run(slug) {
       }
     };
     for (const perm of spec.permissions) {
+      if (perm.silent) continue;
       const step = plan[perm.key];
       if (!step) {
         ok(`${perm.key}: маршрут кликами доходит до запроса`, false);

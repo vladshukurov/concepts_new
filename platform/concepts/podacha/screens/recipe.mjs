@@ -13,10 +13,6 @@ export default (ui) => ui.screen({
         ui.cell({ title: 'Лимон', value: '½ шт' }),
       ] }) }),
       ui.section({ title: 'Рабочая замена', children: ui.list([ui.row({ lead: ui.leadIcon('repeat-2', { accent: true }), title: 'Нет тахини — 2 ложки кешью-пасты', sub: 'Проверили 11 человек', wrap: true })]) }),
-      ui.section({ children: [
-        ui.list([ui.row({ lead: ui.leadIcon('clapperboard'), title: 'Видео шагов из ваших фото', sub: 'Соберём ночью, пока телефон заряжается', activate: 'processing|recipe' })]),
-        ui.granted('processing', 'Видео шагов готово · 6 шагов, 2:40'),
-      ] }),
       ui.section({ children: ui.actions([ui.button({ label: 'Готовить по шагам', block: true, go: 'cookalong', primary: true })]) }),
     ]),
   ],

@@ -265,7 +265,7 @@
           "actor": "photographer",
           "entity": "walk",
           "effect": "Обновляет ленту и виджет до открытия",
-          "screen": "background",
+          "screen": "feed",
           "result": "Следующая прогулка видна в виджете с защищённой сессией",
           "capabilities": [
             "fetch",
@@ -580,7 +580,7 @@
         "text": "Подтягивать состав прогулки и статус передачи до открытия."
       },
       "feature": "Этап проявки меняется на экране партии без перезагрузки",
-      "gesture": "«Статус партии без перезагрузки»",
+      "gesture": "Без жеста — фоновый режим",
       "screen": "batch",
       "target": "batch",
       "fallback": "Статусы обновятся при открытии",
@@ -590,7 +590,10 @@
       "conditional": true,
       "grounding": "didReceiveRemoteNotification обновляет локальный snapshot",
       "activate": true,
-      "requires": "Content-available payload и видимый timestamp"
+      "requires": "Content-available payload и видимый timestamp",
+      "silent": true,
+      "evidence": "Этап проявки на экране партии меняется без перезагрузки",
+      "reviewNote": "Без системного запроса и без кнопки: этап проявки на экране партии меняется без перезагрузки"
     },
     {
       "key": "fetch",
@@ -600,7 +603,7 @@
         "text": "Подготовить новые контакт-листы к следующему открытию."
       },
       "feature": "Контакт-листы подписок готовы к открытию ленты",
-      "gesture": "«Новые листы к утру» в ленте",
+      "gesture": "Без жеста — фоновый режим",
       "screen": "feed",
       "target": "feed",
       "fallback": "Лента обновится после открытия",
@@ -610,7 +613,10 @@
       "conditional": true,
       "grounding": "BGAppRefreshTask читает SDK-кэш",
       "activate": true,
-      "requires": "Лента реально читается из синхронизируемого SDK-кэша"
+      "requires": "Лента реально читается из синхронизируемого SDK-кэша",
+      "silent": true,
+      "evidence": "Лента открывается с новыми контакт-листами",
+      "reviewNote": "Без системного запроса и без кнопки: лента открывается с новыми контакт-листами"
     },
     {
       "key": "bgtask",
@@ -620,9 +626,9 @@
         "text": "Завершать миниатюры сканов, когда устройство на зарядке."
       },
       "feature": "Миниатюры сканов собираются ночью на зарядке",
-      "gesture": "«Собрать миниатюры к утру»",
-      "screen": "background",
-      "target": "background",
+      "gesture": "Без жеста — фоновый режим",
+      "screen": "feed",
+      "target": "feed",
       "fallback": "Миниатюры будут собраны при открытом приложении",
       "snack": "Миниатюры будут собраны при открытом приложении",
       "risk": "low",
@@ -630,7 +636,10 @@
       "conditional": true,
       "grounding": "BGProcessingTask app.kontur.contactsheet",
       "activate": true,
-      "requires": "Зарегистрированный identifier совпадает с Info.plist"
+      "requires": "Зарегистрированный identifier совпадает с Info.plist",
+      "silent": true,
+      "evidence": "Миниатюры сканов готовы к утру",
+      "reviewNote": "Без системного запроса и без кнопки: миниатюры сканов готовы к утру"
     },
     {
       "key": "appgroups",
@@ -829,10 +838,10 @@
         "title": "Участник передачи",
         "text": "Показывать имя фотографа в атомарном статусе физической передачи."
       },
-      "feature": "Сообщения о передаче материалов приходят с именем участника",
-      "gesture": "«Сообщения о передаче»",
-      "screen": "handoff",
-      "target": "handoff",
+      "feature": "Сообщения приходят с именем и фото отправителя",
+      "gesture": "«Включить» в строке «Уведомления о сообщениях»",
+      "screen": "notifications",
+      "target": "notifications",
       "fallback": "Придёт обычный статус без имени",
       "snack": "Придёт обычный статус без имени",
       "risk": "low",
@@ -840,7 +849,8 @@
       "conditional": true,
       "grounding": "Системное уведомление связано с реальным участником и карточкой передачи; показывает только состояние операции",
       "activate": true,
-      "requires": "Реальный социальный граф и атомарный статус передачи"
+      "requires": "Реальный социальный граф и атомарный статус передачи",
+      "reviewNote": "Доступ вызывается действием «Включить» в строке «Уведомления о сообщениях» на экране «notifications». При отказе: Придёт обычный статус без имени"
     }
   ],
   "screens": [
@@ -1651,43 +1661,6 @@
       }
     },
     {
-      "id": "background",
-      "title": "Сканы к утру",
-      "type": "push",
-      "light": true,
-      "parent": "profile",
-      "meta": "Лента и обработка миниатюр",
-      "ui": {
-        "pattern": "task",
-        "navigation": "push",
-        "purpose": "Управлять реальными фоновыми задачами",
-        "primaryAction": "Собрать миниатюры к утру",
-        "hierarchy": {
-          "primary": "Управлять реальными фоновыми задачами",
-          "secondary": "Контекст, состояние и безопасный следующий шаг"
-        },
-        "states": [
-          "default",
-          "error"
-        ],
-        "density": "medium",
-        "contentCases": [
-          {
-            "kind": "typical",
-            "example": "Управлять реальными фоновыми задачами: партия K-184, 36 кадров и статус 18:40"
-          },
-          {
-            "kind": "stress",
-            "example": "Длинное имя автора, несколько статусов и плотный список"
-          },
-          {
-            "kind": "failure",
-            "example": "Нет сети, пустой результат или отказ в доступе"
-          }
-        ]
-      }
-    },
-    {
       "id": "widget",
       "title": "Виджет",
       "type": "system",
@@ -1826,7 +1799,6 @@
         "profile",
         "contacts",
         "notifications",
-        "background",
         "widget",
         "security",
         "ads"
@@ -1950,7 +1922,6 @@
         "profile",
         "contacts",
         "notifications",
-        "background",
         "widget",
         "security",
         "ads",
@@ -1960,7 +1931,6 @@
       "stops": [
         "contacts",
         "notifications",
-        "background",
         "widget",
         "security",
         "ads",

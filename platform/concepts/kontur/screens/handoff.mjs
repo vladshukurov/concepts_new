@@ -16,11 +16,9 @@ export default (ui) => ui.screen({
       ] }) }),
       ui.section({ title: 'Переписка', children: [
         ui.chat([
-          ui.bubble({ text: '<b class="kt-who">Айжан · Lab-Red</b>Конверт K-184 у бариста, на имя Даны', time: '19:06' }),
+          ui.bubble({ from: 'Айжан · Lab-Red', text: 'Конверт K-184 у бариста, на имя Даны', time: '19:06' }),
           ui.bubble({ out: true, text: 'Спасибо, заберу после семи', time: '19:08', read: true }),
         ]),
-        ui.list([ui.row({ lead: ui.leadIcon('message-circle'), title: 'Сообщения о передаче', sub: 'С именем того, кто передал', activate: 'commnotif|handoff' })]),
-        ui.granted('commnotif', 'Сообщения о передаче придут с именем Айжан'),
       ] }),
       ui.section({ children: ui.actions([
         ui.button({ label: 'Отметить полученным', icon: 'circle-check', block: true, primary: true, toast: 'Получение зафиксировано · 19:24' }),

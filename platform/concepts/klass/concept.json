@@ -418,7 +418,7 @@
       "key": "remotenotif",
       "plist": "UIBackgroundModes: remote-notification",
       "feature": "Тихие пуши обновляют счётчики разделов до открытия приложения",
-      "gesture": "«Счётчики в фоне» в оповещениях",
+      "gesture": "Без жеста — фоновый режим",
       "screen": "notif",
       "target": "notif",
       "fallback": "Счётчики обновляются при открытии приложения",
@@ -431,13 +431,16 @@
         "title": "Тихие уведомления",
         "text": "Entitlement без системного запроса: тихие пуши обновляют счётчики разделов."
       },
-      "activate": true
+      "activate": true,
+      "silent": true,
+      "evidence": "Счётчики разделов обновлены к открытию",
+      "reviewNote": "Без системного запроса и без кнопки: счётчики разделов обновлены к открытию"
     },
     {
       "key": "fetch",
       "plist": "UIBackgroundModes: fetch",
       "feature": "Лента товарищества готова к первому открытию",
-      "gesture": "«Новости товарищества к утру» в ленте",
+      "gesture": "Без жеста — фоновый режим",
       "screen": "feed",
       "target": "feed",
       "fallback": "Лента обновляется при открытии",
@@ -451,13 +454,16 @@
         "text": "Entitlement без системного запроса: лента подгружается до открытия приложения."
       },
       "activate": true,
-      "requires": "BGAppRefreshTask, который реально читает ленту товарищества и ближайшие даты"
+      "requires": "BGAppRefreshTask, который реально читает ленту товарищества и ближайшие даты",
+      "silent": true,
+      "evidence": "Лента товарищества обновлена к первому открытию",
+      "reviewNote": "Без системного запроса и без кнопки: лента товарищества обновлена к первому открытию"
     },
     {
       "key": "processing",
       "plist": "UIBackgroundModes: processing",
       "feature": "Снимки альбома раскладываются по событиям на зарядке",
-      "gesture": "«Разобрать альбом ночью»",
+      "gesture": "Без жеста — фоновый режим",
       "screen": "album",
       "target": "album",
       "fallback": "Снимки остаются общей папкой",
@@ -471,13 +477,16 @@
         "text": "Entitlement без системного запроса: разбор альбома идёт на зарядке."
       },
       "activate": true,
-      "requires": "BGProcessingTask с requiresExternalPower, который действительно разбирает архив"
+      "requires": "BGProcessingTask с requiresExternalPower, который действительно разбирает архив",
+      "silent": true,
+      "evidence": "Снимки альбома разложены по событиям после ночи на зарядке",
+      "reviewNote": "Без системного запроса и без кнопки: снимки альбома разложены по событиям после ночи на зарядке"
     },
     {
       "key": "bgtask",
       "plist": "BGTaskSchedulerPermittedIdentifiers",
       "feature": "Новые записи собраний скачиваются к утру для дачи без связи",
-      "gesture": "«Новые записи к утру»",
+      "gesture": "Без жеста — фоновый режим",
       "screen": "records",
       "target": "records",
       "fallback": "Записи грузятся при открытии",
@@ -491,13 +500,16 @@
         "text": "Entitlement без системного запроса: список фоновых задач приложения."
       },
       "activate": true,
-      "requires": "строки в Info.plist совпадают с BGTaskScheduler.register — иначе падение при регистрации"
+      "requires": "строки в Info.plist совпадают с BGTaskScheduler.register — иначе падение при регистрации",
+      "silent": true,
+      "evidence": "Новые записи собраний скачаны к утру",
+      "reviewNote": "Без системного запроса и без кнопки: новые записи собраний скачаны к утру"
     },
     {
       "key": "keychain",
       "plist": "keychain-access-groups",
       "feature": "Вход на телевизоре с телефона без пароля",
-      "gesture": "«Войти на телевизоре»",
+      "gesture": "Без жеста — фоновый режим",
       "screen": "tv",
       "target": "tv",
       "fallback": "На телевизоре вход по коду",
@@ -510,7 +522,10 @@
         "title": "Общая связка ключей",
         "text": "Entitlement без системного запроса: одна сессия на приложение, расширение уведомлений и «Поделиться»."
       },
-      "activate": true
+      "activate": true,
+      "silent": true,
+      "evidence": "Вход сохраняется между приложением и его расширениями",
+      "reviewNote": "Без системного запроса и без кнопки: вход сохраняется между приложением и его расширениями"
     },
     {
       "key": "commnotif",
@@ -520,16 +535,17 @@
         "text": "Entitlement без системного запроса: срочное изменение собрания приходит с именем председателя."
       },
       "activate": true,
-      "feature": "Ответы соседей в обсуждении приходят с именем и фото",
-      "gesture": "«Следить за обсуждением»",
-      "screen": "thread",
-      "target": "thread",
+      "feature": "Сообщения приходят с именем и фото отправителя",
+      "gesture": "«Включить» в строке «Уведомления о сообщениях»",
+      "screen": "discussions",
+      "target": "discussions",
       "fallback": "Без entitlement обновление приходит обычным уведомлением",
       "risk": "low",
       "anchor": false,
       "conditional": true,
       "requires": "INSendMessageIntent только для структурированного обновления активного собрания",
-      "grounding": "Notification Service Extension, свободной переписки нет"
+      "grounding": "Notification Service Extension, свободной переписки нет",
+      "reviewNote": "Доступ вызывается действием «Включить» в строке «Уведомления о сообщениях» на экране «discussions». При отказе: Без entitlement обновление приходит обычным уведомлением"
     },
     {
       "key": "voip",

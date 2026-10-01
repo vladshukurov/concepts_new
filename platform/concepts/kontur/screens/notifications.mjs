@@ -5,6 +5,7 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Уведомления' }),
     ui.scroll([
+      ui.section({ children: [ui.list([ui.row({ lead: ui.leadIcon('bell'), title: 'Уведомления', sub: 'Сообщения с именем и фото', end: { value: 'Включить', activate: 'commnotif|notifications', label: 'Включить уведомления о сообщениях' } })]), ui.granted('commnotif', 'Сообщения приходят с именем и фото')] }),
       ui.section({ children: ui.actions([ui.button({ label: 'Разрешить уведомления', icon: 'bell', block: true, primary: true, ask: 'push|notifications|notifications' })]) }),
       ui.granted('push', 'Уведомления включены · K-184 сообщит о готовности'),
       ui.denied('push', 'Уведомления выключены — статусы в журнале событий'),

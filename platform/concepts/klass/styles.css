@@ -85,7 +85,6 @@
 .kl-cast .kl-glass-controls { margin-top:16px; }
 .kl-cast .ui-actions { position:absolute; left:0; right:0; bottom:calc(var(--safe-bottom) + 16px); }
 .kl-cast .ui-btn.is-secondary { background:rgba(255,255,255,.14); color:#fff; }
-.kl-who { display:block; font:600 13px/16px var(--ui-face); color:var(--ui-link); }
 .kl-call { background:linear-gradient(180deg, #4a3a2c, #16120e)!important; color:#fff; }
 .kl-call .ui-call > span, .kl-call .ui-call-ctl { color:rgba(255,255,255,.72); }
 .kl-call .ui-call-btn:not(.is-end) { background:rgba(255,255,255,.16); color:#fff; }

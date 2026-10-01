@@ -9,9 +9,7 @@ export default (ui) => ui.screen({
       map(),
       ui.list([
         ui.row({ lead: ui.leadIcon('play', { accent: true }), title: 'Бежать с голосом', sub: `Набор ${route.climb} · покрытие сухое`, go: 'player', primary: true }),
-        ui.row({ lead: ui.leadIcon('download'), title: 'Скачать маршрут к утру', sub: 'Набережная без сети, с подсказками тренера', activate: 'bgtask|music' }),
       ]),
-      ui.granted('bgtask', `Маршрут на телефоне · ${route.size}, работает без сети`),
     ] }),
     ui.section({ title: 'Подсказка тренера', children: [
       ui.list([ui.row({ lead: ui.leadIcon('mic', { accent: true }), title: 'Записать подсказку', sub: `До 30 секунд · прозвучит на ${route.hint.at}`, ask: 'mic|music|music' })]),

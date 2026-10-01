@@ -18,8 +18,6 @@ export default (ui) => ui.screen({
         ui.button({ label: 'Я иду', icon: 'check', block: true, toast: 'Следим за прогулкой' }),
         ui.button({ label: 'Я на площадке', icon: 'map-pin', variant: 'secondary', block: true, activate: 'wifiinfo|walk' }),
         ui.button({ label: 'Сеть площадки', icon: 'qr-code', variant: 'secondary', block: true, go: 'netqr' }),
-        ui.button({ label: 'Обновлять состав', icon: 'repeat-2', variant: 'tertiary', block: true, activate: 'remotenotif|walk' }),
-        ui.granted('remotenotif', 'Состав обновился: присоединился Барни'),
         ui.granted('wifiinfo', 'Вы на площадке · отмечено в 18:42'),
       ]) }),
     ]),

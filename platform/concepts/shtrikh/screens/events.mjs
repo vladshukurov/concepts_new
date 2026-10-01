@@ -1,21 +1,31 @@
 import { THEME, TABS } from './_shared.mjs';
-import { pleinair, walk } from '../model.mjs';
+import { people, pleinair, walk, places, exhibit } from '../model.mjs';
 
+/* Встречи: ближайшая — как событие ВК (когда, где, что взять, кто идёт);
+   дальше — выставка и будущие встречи */
 export default (ui) => ui.screen({
   id: 'events', theme: THEME,
   body: ui.scroll([
-    ui.largeTitle('Пленэры', ui.iconButton({ icon: 'plus', label: 'Собрать пленэр', toast: 'Новый пленэр' })),
-    ui.section({ title: 'Завтра', children: [
-      ui.list([ui.row({ lead: ui.leadIcon('', { text: pleinair.start }), title: pleinair.title, sub: `${pleinair.where} · ${pleinair.people} участников`, go: 'chat', primary: true })]),
-      ui.actions([ui.button({ label: 'Я пойду', icon: 'calendar-plus', variant: 'secondary', block: true, ask: 'calendar|events|events' })], { className: 'sh-gap' }),
-      ui.granted('calendar', `Пленэр в Календаре · ${pleinair.day}, ${pleinair.start}`),
-      ui.denied('calendar', 'Дата остаётся в карточке пленэра'),
-      ui.list([ui.row({ lead: ui.leadIcon('download'), title: 'Места пленэра к утру', sub: 'Серии и схема рынка — без сети', activate: 'bgtask|events' })]),
-      ui.granted('bgtask', 'Места пленэра скачаны к 07:00'),
+    ui.largeTitle('Встречи', ui.iconButton({ icon: 'plus', label: 'Собрать встречу', toast: 'Новая встреча' })),
+    ui.section({ title: pleinair.title, children: [
+      ui.miniInfo([
+        { icon: 'calendar', text: `Завтра, ${pleinair.day}, ${pleinair.start}`, accent: true },
+        { icon: 'map-pin', text: `${places.bazar.name}, ${pleinair.where}` },
+        { icon: 'pen-line', text: 'Рисуем с натуры · возьмите линер и стул' },
+      ]),
+      ui.usersStack({ faces: [people.marina.initial, people.lera.initial, people.petr.initial], text: `${people.marina.first}, ${people.lera.first} и ещё ${pleinair.people - 2} идут`, go: 'chat' }),
+      ui.actions([
+        ui.button({ label: 'Я пойду', icon: 'calendar-plus', ask: 'calendar|events|events', primary: true }),
+        ui.button({ label: 'Чат встречи', icon: 'message-circle', variant: 'secondary', go: 'chat' }),
+      ], { row: true, className: 'sh-gap' }),
+      ui.granted('calendar', `Встреча в Календаре · ${pleinair.day}, ${pleinair.start}`),
+      ui.denied('calendar', 'Дата остаётся в карточке встречи'),
     ] }),
-    ui.section({ title: 'Потом', children: ui.list([
-      ui.row({ lead: ui.leadIcon('', { text: 'сб' }), title: walk.title, sub: `${walk.day}, ${walk.start} · ${walk.where} · ${walk.people} участника`, go: 'chat' }),
-    ]) }),
+    ui.section({ title: 'Выставка', children: ui.list([ui.row({ thumb: 'sh-s6', title: exhibit.title, sub: `Работы участников на общем экране · до ${exhibit.until}`, go: 'exhibit' })]) }),
+    ui.section({ title: 'Потом', children: ui.hscroll([
+      { art: 'sh-s1', title: walk.title, sub: `${walk.day}, ${walk.start}`, go: 'chat' },
+      { art: places.terrenkur.art, title: 'Мост на Терренкуре', sub: '3 октября, 10:00', go: 'chat' },
+    ], { size: 'l' }) }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'events' }),
 });

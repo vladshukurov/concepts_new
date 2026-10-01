@@ -6,7 +6,7 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Шаг 1 из 1', back: false, trailing: ui.textButton({ label: 'Пропустить', go: 'home' }) }),
     ui.scroll([
-      ui.section({ children: '<div class="sh-head"><strong>Где вы рисуете?</strong><span>Покажем работы, места и пленэры вашего города</span></div>' }),
+      ui.section({ children: '<div class="sh-head"><strong>Где вы рисуете?</strong><span>Покажем работы, места и встречи вашего города</span></div>' }),
       ui.section({ children: ui.list([
         ui.row({ lead: ui.leadIcon('map-pin', { accent: true }), title: city.name, sub: `${city.authors} автора рядом · ${city.places} мест с сериями` }),
       ]) }),

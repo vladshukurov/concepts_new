@@ -319,6 +319,7 @@ function lint(slug) {
   /* Спека обещает ревьюеру «нажмите «Проверить кадр»», а на экране кнопка
      давно называется иначе — такой маршрут в review notes ведёт в никуда. */
   for (const p of spec.permissions) {
+    if (p.silent) continue;
     const quoted = (p.gesture || '').match(/«([^»]+)»/)?.[1];
     const html = effectiveMarkup[p.screen] || '';
     const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');

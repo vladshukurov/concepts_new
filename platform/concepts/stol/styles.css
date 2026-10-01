@@ -41,7 +41,6 @@
 .st-me .ui-stats, .st-me .ui-actions { width:100%; padding:12px 0 0; }
 
 /* Мессенджер и звонок стола */
-.st-who { display:block; font:600 13px/16px var(--ui-face); color:var(--ui-link); }
 .st-call { background:linear-gradient(180deg, #2a3140, #10131a)!important; color:#fff; }
 .st-call .ui-call > span, .st-call .ui-call-ctl { color:rgba(255,255,255,.72); }
 .st-call .ui-call-btn:not(.is-end) { background:rgba(255,255,255,.16); color:#fff; }

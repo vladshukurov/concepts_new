@@ -13,9 +13,6 @@ export default (ui) => ui.screen({
       { label: 'Хроника', icon: 'images', seen: true, go: 'chronicle' },
       { label: 'Обмен', icon: 'repeat-2', seen: true, go: 'yard' },
     ]),
-    ui.section({ children: [
-      ui.list([ui.row({ lead: ui.leadIcon('bell'), title: 'Объявления дома к утру', sub: 'Отключения и сроки показаний без ожидания загрузки', activate: 'fetch|background' })]),
-    ] }),
     ui.denied('photos', 'Без медиатеки хроника собирается из съёмки в приложении'),
     ui.post({
       author: { initial: 'УК', name: 'Управляющая компания', meta: 'вчера в 19:04 · официально' },

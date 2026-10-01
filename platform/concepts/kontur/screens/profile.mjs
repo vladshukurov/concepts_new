@@ -13,7 +13,6 @@ export default (ui) => ui.screen({
     ] }) }),
     ui.section({ children: ui.group({ label: 'Устройство', cells: [
       ui.cell({ icon: 'user', title: 'Профиль и аккаунт', sub: '+7 900 123-45-67', go: 'account' }),
-      ui.cell({ icon: 'moon', title: 'Фоновая работа', sub: 'Лента и миниатюры', go: 'background' }),
       ui.cell({ icon: 'layout-grid', title: 'Виджет', sub: 'Следующая прогулка и передача', go: 'widget' }),
       ui.cell({ icon: 'shield', title: 'Защита и вход', sub: 'Face ID, сайт и расширения', go: 'security' }),
     ] }) }),

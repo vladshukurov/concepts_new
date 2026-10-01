@@ -11,11 +11,9 @@ export default (ui) => ui.screen({
         ui.group({ label: `Сеть ${club.network}`, cells: [
           ui.cell({ icon: 'tv', title: 'Экран у большого стола', sub: 'Готов к показу', ask: 'localnetwork|cast|cast' }),
           ui.cell({ icon: 'repeat-2', title: 'Проверить сеть', activate: 'wifiinfo|cast' }),
-          ui.cell({ icon: 'key', title: 'Войти на экране клуба', sub: 'Без пароля — с этого телефона', activate: 'keychain|cast' }),
         ] }),
         ui.granted('localnetwork', 'Табло на экране у большого стола'),
         ui.granted('wifiinfo', `Вы в сети ${club.network} · экран рядом`),
-        ui.granted('keychain', 'Экран клуба вошёл в ваш аккаунт'),
         ui.denied('localnetwork', 'Табло остаётся на телефоне'),
       ] }),
       ui.section({ children: ui.actions([ui.button({ label: 'Вернуться к счёту', variant: 'secondary', block: true, go: 'score', primary: true })]) }),

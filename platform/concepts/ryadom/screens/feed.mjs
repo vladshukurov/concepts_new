@@ -17,8 +17,6 @@ export default (ui) => ui.screen({
     ]),
     ui.section({ children: [
       `<button class="ry-plan" data-go="meetup"><small>Сегодня · старт в ${longrun.start}</small><strong>${longrun.title}</strong><span>${longrun.from} · ${longrun.km} км · темп ${longrun.pace}</span>${ui.progress({ fillClass: 'ry-w-64' })}</button>`,
-      ui.list([ui.row({ lead: ui.leadIcon('sunrise'), title: 'Тренировки на завтра — к утру', sub: 'Состав и точки старта обновятся ночью', activate: 'fetch|feed' })]),
-      ui.granted('fetch', 'Обновлено в 06:10 · две тренировки на завтра'),
     ] }),
     ui.post({
       author: { initial: people.alina.initial, name: people.alina.name, meta: `вчера, 21:04 · ${club.city}`, action: { go: 'friends' } },

@@ -12,10 +12,6 @@ export default (ui) => ui.screen({
       { label: 'Мастерские', icon: 'map-pin', seen: true, go: 'workshops' },
       { label: 'Антон', initial: people.anton.initial, seen: true, go: 'contacts' },
     ]),
-    ui.section({ children: [
-      ui.list([ui.row({ lead: ui.leadIcon('sunrise'), title: 'Новые этапы к утру', sub: 'Проекты подписок обновятся ночью', activate: 'fetch|feed' })]),
-      ui.granted('fetch', 'Обновлено в 06:40 · три новых этапа'),
-    ] }),
     ui.post({
       author: { initial: people.irina.initial, name: people.irina.name, meta: `${lamp.title} · сегодня, 14:20`, action: { go: 'contacts' } },
       text: 'Заменили патрон и закрепили кабель — лампа снова включается. Осталось подобрать абажур',

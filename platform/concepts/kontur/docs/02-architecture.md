@@ -26,9 +26,9 @@
 | `mic` ⚓ | «Записать голосом» | `voice` | заслужен |
 | `location` ⚓ | «Найти рядом» | `walks` | заслужен |
 | `push` | «Разрешить уведомления» | `notifications` | заслужен |
-| `remotenotif` | «Статус партии без перезагрузки» | `batch` | заслужен |
-| `fetch` | «Новые листы к утру» в ленте | `feed` | заслужен |
-| `bgtask` | «Собрать миниатюры к утру» | `background` | заслужен |
+| `remotenotif` | Без жеста — фоновый режим | `batch` | заслужен |
+| `fetch` | Без жеста — фоновый режим | `feed` | заслужен |
+| `bgtask` | Без жеста — фоновый режим | `feed` | заслужен |
 | `appgroups` | «Добавить виджет» | `widget` | заслужен |
 | `keychain` | «Открыть прогулку» с виджета | `widget` | заслужен |
 | `autofill` | «Вход на сайте» | `security` | заслужен |
@@ -39,7 +39,7 @@
 | `tracking` | «Персонализировать предложения» | `ads` | заслужен |
 | `speech` ⚓ | «Распознать запись» | `voice` | заслужен |
 | `hotspot` | «Подключиться к Lab-Red» | `labnet` | заслужен |
-| `commnotif` | «Сообщения о передаче» | `handoff` | заслужен |
+| `commnotif` | «Включить» в строке «Уведомления о сообщениях» | `notifications` | заслужен |
 <!-- @end -->
 
 ## Информационная архитектура
@@ -53,10 +53,10 @@
     └─ Создать аккаунт (register) — push, без таб-бара · открывается: «Создать аккаунт»
         └─ Пароль нового аккаунта (registerpassword) — push, без таб-бара · открывается: «Далее»
 
-Лента (feed) — tab (root) · открывается: «Продолжить без аккаунта», «Войти» … · fetch
+Лента (feed) — tab (root) · открывается: «Продолжить без аккаунта», «Войти» … · fetch, bgtask
     ├─ Контакт-лист (post) — push · открывается: «36 кадров после дождя», «Отмеченные кадры» …
     │   ├─ Профиль фотографа (photographer) — push · открывается: «Алия», «Марат» …
-    │   └─ Передача материалов (handoff) — push · открывается: «Передать автору материал», «Серия «После дождя»» … · commnotif
+    │   └─ Передача материалов (handoff) — push · открывается: «Передать автору материал», «Серия «После дождя»» …
     └─ Новый контакт-лист (compose) — modal · открывается: «Новый контакт-лист», «Сохранить скан» … · camera, photos
         ├─ Скан контакт-листа (camera) — fullscreen · открывается: «Сканировать лист» (camera)
         └─ Выбор сканов (picker) — system · открывается: «Выбрать из Фото» (photos)
@@ -76,8 +76,7 @@
 
 Профиль (profile) — tab (root) · открывается: «Персонализировать предложения» (tracking), «Оставить без подбора»
     ├─ Знакомые фотографы (contacts) — push · открывается: «Знакомые фотографы» · contacts
-    ├─ Уведомления (notifications) — push · открывается: «Уведомления» · push
-    ├─ Сканы к утру (background) — push · открывается: «Фоновая работа» · bgtask
+    ├─ Уведомления (notifications) — push · открывается: «Уведомления» · push, commnotif
     ├─ Виджет (widget) — system · открывается: «Виджет» · appgroups, keychain
     ├─ Защита и вход (security) — push · открывается: «Защита и вход» · autofill, faceid
     └─ Предложения мастерских (ads) — push · открывается: «Предложения мастерских» · tracking
@@ -109,7 +108,6 @@
 | `feed` | «Сегодня» | `walks` | — | переход |
 | `feed` | «В лабе» | `lab` | — | переход |
 | `feed` | «36 кадров после дождя», «Отмеченные кадры» … | `post` | — | переход |
-| `feed` | «Новые листы к утру» | `feed` | `UIBackgroundModes: fetch` | entitlement, без alert |
 | `post` | «Назад» | `feed` | — | возврат по IA |
 | `post` | «Дана Садыкова», «Открыть практику Даны» | `photographer` | — | переход |
 | `post` | «Передать автору материал» | `handoff` | — | переход |
@@ -139,14 +137,12 @@
 | `calendar` | «Добавить в календарь» | `walk` | `NSCalendarsFullAccessUsageDescription` | доступ разрешён |
 | `calendar` | «Добавить в календарь» | `calendar` | `NSCalendarsFullAccessUsageDescription` | отказ → fallback |
 | `handoff` | «Назад» | `post` | — | возврат по IA |
-| `handoff` | «Сообщения о передаче» | `handoff` | `com.apple.developer.usernotifications.communication` | entitlement, без alert |
 | `lab` | «Сеть лаборатории» | `labnet` | — | переход |
 | `lab` | «HP5 · партия K-184», «Fomapan 200 · K-186» | `batch` | — | переход |
 | `lab` | «Portra 400 · K-185» | `scan` | — | переход |
 | `lab` | «Ilford MG RC · 18 листов», «Материалы» | `materials` | — | переход |
 | `batch` | «Назад» | `lab` | — | возврат по IA |
 | `batch` | «Запустить таймер» | `timer` | — | переход |
-| `batch` | «Статус партии без перезагрузки» | `batch` | `UIBackgroundModes: remote-notification` | entitlement, без alert |
 | `batch` | «Голосовая заметка» | `voice` | — | переход |
 | `batch` | «Сканировать лист» | `scan` | — | переход |
 | `timer` | «Закрыть» | `batch` | — | возврат по IA |
@@ -166,15 +162,13 @@
 | `profile` | «Уведомления» | `notifications` | — | переход |
 | `profile` | «Предложения мастерских» | `ads` | — | переход |
 | `profile` | «Профиль и аккаунт» | `account` | — | переход |
-| `profile` | «Фоновая работа» | `background` | — | переход |
 | `profile` | «Виджет» | `widget` | — | переход |
 | `contacts` | «Назад» | `profile` | — | возврат по IA |
 | `contacts` | «Найти в контактах» | `contacts` | `NSContactsUsageDescription` | доступ разрешён |
 | `contacts` | «Ренат Мусин», «Лиза Вэй» … | `photographer` | — | переход |
 | `notifications` | «Назад» | `profile` | — | возврат по IA |
+| `notifications` | «Включить уведомления о сообщениях» | `notifications` | `com.apple.developer.usernotifications.communication` | entitlement, без alert |
 | `notifications` | «Разрешить уведомления» | `notifications` | `aps-environment` | доступ разрешён |
-| `background` | «Назад» | `profile` | — | возврат по IA |
-| `background` | «Собрать миниатюры к утру» | `background` | `BGTaskSchedulerPermittedIdentifiers` | entitlement, без alert |
 | `widget` | «Добавить виджет» | `widget` | `com.apple.security.application-groups` | entitlement, без alert |
 | `widget` | «Открыть прогулку» | `walk` | `keychain-access-groups` | entitlement, без alert |
 | `security` | «Назад» | `profile` | — | возврат по IA |

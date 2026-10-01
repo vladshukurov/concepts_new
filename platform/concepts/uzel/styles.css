@@ -56,7 +56,6 @@
 .uz-grid > .is-picked { box-shadow:inset 0 0 0 3px var(--ui-accent); }
 
 /* Мессенджер и звонок */
-.uz-who { display:block; font:600 13px/16px var(--ui-face); color:var(--ui-link); }
 .uz-call { background:linear-gradient(180deg, #2c3440, #10141a)!important; color:#fff; }
 .uz-call .ui-call > span, .uz-call .ui-call-ctl { color:rgba(255,255,255,.72); }
 .uz-call .ui-call-btn:not(.is-end) { background:rgba(255,255,255,.16); color:#fff; }

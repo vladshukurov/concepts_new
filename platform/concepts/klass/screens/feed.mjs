@@ -7,10 +7,6 @@ export default (ui) => ui.screen({
     ui.largeTitle('Лента', [ui.iconButton({ icon: 'bell', label: 'Оповещения', go: 'notif' })]),
     ui.composerPrompt({ initial: 'ОЗ', placeholder: 'Что нового в товариществе?', go: 'compose', primary: true, trailing: ui.iconButton({ icon: 'camera', label: 'Снять для публикации', go: 'shoot' }) }),
     ui.section({ children: [
-      ui.list([ui.row({ lead: ui.leadIcon('sunrise'), title: 'Новости товарищества к утру', sub: 'Лента готова к первому открытию', activate: 'fetch|feed' })]),
-      ui.granted('fetch', 'Обновлено в 06:12 · четыре новые записи'),
-    ] }),
-    ui.section({ children: [
       `<button class="kl-event" data-go="event"><small>${trip.date[0].toUpperCase() + trip.date.slice(1)} · выезд в ${trip.departure}</small><strong>${trip.title}</strong><span>Записались ${trip.signed} из ${trip.seats} · осталось пять мест</span>${ui.progress({ fillClass: 'kl-w-64' })}</button>`,
       ui.list([ui.row({ lead: ui.avatar('СБ'), title: 'СНТ «Берёзка» · 28 участков', sub: 'В приложении 24, четверых ещё не позвали', go: 'classroom' })]),
     ] }),

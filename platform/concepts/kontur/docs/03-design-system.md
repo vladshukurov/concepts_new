@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `section` ×50, `row` ×37, `cell` ×35, `leadIcon` ×30, `button` ×28, `actions` ×22, `nav` ×20, `denied` ×17, `list` ×17, `granted` ×12, `group` ×12, `iconButton` ×7, `avatar` ×7, `tabBar` ×4, `textButton` ×3, `largeTitle` ×3, `stats` ×3, `bubble` ×2, `composerPrompt` ×1, `search` ×1, `top` ×1, `wordmark` ×1, `stories` ×1, `chat` ×1, `foot` ×1, `duration` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `section` ×47, `cell` ×34, `row` ×33, `button` ×27, `leadIcon` ×26, `actions` ×21, `nav` ×19, `denied` ×16, `list` ×14, `group` ×12, `granted` ×9, `iconButton` ×7, `avatar` ×7, `tabBar` ×4, `textButton` ×3, `largeTitle` ×3, `stats` ×3, `bubble` ×2, `composerPrompt` ×1, `search` ×1, `top` ×1, `wordmark` ×1, `stories` ×1, `chat` ×1, `foot` ×1, `duration` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -47,7 +47,7 @@
 | Выбор сканов | `.kt-picks` |
 | Экран «Домой» с виджетом | `.kt-home` `.kt-widget` |
 | Профиль и фотограф | `.kt-me` `.kt-me-block` |
-| Предложение мастерской | `.kt-offer` `.kt-x14` `.kt-y28` `.kt-who` |
+| Предложение мастерской | `.kt-offer` `.kt-x14` `.kt-y28` |
 <!-- @end -->
 
 ## Актуальная навигация

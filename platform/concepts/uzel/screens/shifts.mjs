@@ -12,10 +12,6 @@ export default (ui) => ui.screen({
     ui.section({ title: 'Суббота', children: ui.list([
       ui.row({ lead: ui.leadIcon('', { text: saturday.start }), title: saturday.title, sub: `${saturday.workshop} · ${saturday.free} места`, go: 'shift' }),
     ]) }),
-    ui.section({ children: [
-      ui.list([ui.row({ lead: ui.leadIcon('download'), title: 'Расписание смен к утру', sub: 'Роли и вещи смен — без сети', activate: 'bgtask|shifts' })]),
-      ui.granted('bgtask', 'Расписание на неделю скачано к 07:00'),
-    ] }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'shifts' }),
 });

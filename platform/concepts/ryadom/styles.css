@@ -82,7 +82,6 @@
 .ry-glass .ui-row-text > span { color:rgba(255,255,255,.72); }
 .ry-glass .ui-progress { margin:8px 0 0; background:rgba(255,255,255,.24); }
 .ry-gap { margin-top:12px; }
-.ry-who { display:block; font:600 13px/16px var(--ui-face); color:var(--ui-link); }
 .ry-chat-map { display:block; width:220px; height:120px; border-radius:12px; background:linear-gradient(160deg, #e9eef3, #d7e3ef); position:relative; }
 .ry-chat-map::after { content:""; position:absolute; left:24px; top:28px; width:150px; height:56px; border:3px solid var(--ui-accent); border-radius:28px 10px 28px 10px; }
 .ry-text { padding:0 16px; font:400 17px/24px var(--ui-face); }

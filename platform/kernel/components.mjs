@@ -197,6 +197,81 @@ export function player({ art, at, total, fillClass, chapters = [], chapter, play
   return `<div class="${cls('ui-player', art, className)}">${top}${mid}<div class="ui-player-bottom">${scrub}${row}</div></div>`;
 }
 
+/**
+ * Меню сервисов как в ВК: две колонки, значок 28 и подпись, без серых групп.
+ * items: [{ icon, label, badge, ...action }]. Последним можно положить «Ещё».
+ */
+export const menu = (items) => `<nav class="ui-menu" aria-label="Сервисы">${items.map(({ icon: ic, label, badge: b, ...a }) =>
+  `<button class="ui-menu-item"${act({ label, ...a })}>${icon(ic)}<span>${label}</span>${b ? `<span class="ui-menu-badge">${b}</span>` : ''}</button>`).join('')}</nav>`;
+
+/**
+ * Виджеты как в меню ВК: карточки в две колонки с живыми данными продукта.
+ * items: [{ title, sub, value (крупное число), faces: [классы фото | инициалы],
+ * icon, art (класс картинки), tall (карточка на две строки), button: { label, ...action }, ...action }].
+ * У виджета одна роль и одно действие: не «ещё один список», а повод зайти.
+ */
+export function widgets(items) {
+  const one = ({ title, sub, value, faces, icon: ic, art, tall = false, button: btn, className, ...a }) => {
+    const top = faces ? `<span class="ui-widget-faces">${faces.map((f) => (f.length <= 3 ? `<i class="is-initial">${f.slice(0, 1)}</i>` : `<i class="${f}"></i>`)).join('')}</span>`
+      : value ? `<span class="ui-widget-value">${value}${ic ? icon(ic) : ''}</span>`
+      : ic ? `<span class="ui-widget-ico">${icon(ic)}</span>` : '';
+    const body = `${art ? `<span class="ui-widget-art ${art}"></span>` : ''}${top}<strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}${btn ? button({ variant: 'secondary', block: true, ...btn }) : ''}`;
+    const tag = !btn && isAction(a) ? 'button' : 'div';
+    return `<${tag} class="${cls('ui-widget', tall && 'is-tall', className)}"${tag === 'button' ? act({ label: title, ...a }) : ''}>${body}</${tag}>`;
+  };
+  return `<div class="ui-widgets">${items.map(one).join('')}</div>`;
+}
+
+/* ── Компоненты VKUI для сведений о событии, людях и пустых состояниях ── */
+
+/**
+ * MiniInfoCell: значок 20 и факт одной строкой — дата, место, участники.
+ * Так ВК показывает сведения о событии и профиле вместо серых ячеек.
+ * items: [{ icon, text, accent (основной цвет), more (ссылка «Подробнее»), ...action }]
+ */
+export const miniInfo = (items) => `<div class="ui-mini-info">${items.map(({ icon: ic, text, accent = false, more = false, ...a }) => {
+  const tag = isAction(a) ? 'button' : 'div';
+  return `<${tag} class="${cls('ui-mini-info-cell', accent && 'is-accent', more && 'is-more')}"${tag === 'button' ? act({ label: String(text).replace(/<[^>]+>/g, ''), ...a }) : ''}>${icon(ic)}<span>${text}</span></${tag}>`;
+}).join('')}</div>`;
+
+/** InfoRow: подпись сверху, значение крупнее — для паспортов вещей, адресов, реквизитов. */
+export const infoRows = (items) => `<div class="ui-info-rows">${items.map(([label, value]) => `<div class="ui-info-row"><span>${label}</span><strong>${value}</strong></div>`).join('')}</div>`;
+
+/** UsersStack: стопка аватаров и подпись «Маша, Илья и ещё 2 идут». faces — классы фото или инициалы. */
+export const usersStack = ({ faces, text, ...a }) => {
+  const tag = isAction(a) ? 'button' : 'div';
+  return `<${tag} class="ui-users-stack"${tag === 'button' ? act({ label: text, ...a }) : ''}><span class="ui-users-faces">${faces.slice(0, 3).map((f) => (f.length <= 3 ? `<i class="is-initial">${f.slice(0, 1)}</i>` : `<i class="${f}"></i>`)).join('')}</span><span>${text}</span></${tag}>`;
+};
+
+/**
+ * HorizontalScroll из HorizontalCell: карточки с картинкой или аватаром в ленте вбок.
+ * items: [{ art (класс) | initial, title, sub, size: 's' (аватар 56) | 'm' (картинка 128) | 'l' (картинка 220), ...action }]
+ */
+export const hscroll = (items, { size = 'm' } = {}) => `<div class="${cls('ui-hscroll', `is-${size}`)}">${items.map(({ art, initial, title, sub, ...a }) =>
+  `<button class="ui-hcell"${act({ label: title, ...a })}>${initial ? `<span class="ui-hcell-art is-initial">${initial}</span>` : `<span class="ui-hcell-art ${art || 'ph'}"></span>`}<strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}</button>`).join('')}</div>`;
+
+/** Banner: промо или важное сообщение с действием. mode: 'tint' (мягкий акцент) | 'plain'. */
+export const banner = ({ icon: ic, title, sub, button: btn, mode = 'tint', ...a }) =>
+  `<div class="${cls('ui-banner', mode === 'tint' && 'is-tint')}">${ic ? `<span class="ui-banner-ico">${icon(ic)}</span>` : ''}<div class="ui-banner-body"><strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}${btn ? `<div class="ui-banner-actions">${button(btn)}</div>` : ''}</div>${isAction(a) ? iconButton({ icon: 'chevron-right', label: title, ...a }) : ''}</div>`;
+
+/** Placeholder: пустое состояние — значок 56, заголовок, пояснение и одно действие. */
+export const placeholder = ({ icon: ic, title, sub, button: btn }) =>
+  `<div class="ui-placeholder"><span class="ui-placeholder-ico">${icon(ic)}</span><strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}${btn ? button({ size: 'm', ...btn }) : ''}</div>`;
+
+/** SubnavigationBar: фильтры-кнопки со значком, прокрутка вбок. items: [{ icon, label, on, count, ...action }] */
+export const subnav = (items) => `<div class="ui-subnav">${items.map(({ icon: ic, label, on = false, count, ...a }) =>
+  `<button class="${cls('ui-subnav-btn', on && 'is-on')}"${act(a)}>${ic ? icon(ic) : ''}<span>${label}</span>${count ? `<b>${count}</b>` : ''}</button>`).join('')}</div>`;
+
+/**
+ * RichCell: аватар 48, над заголовком подпись, заголовок, текст, справа время,
+ * снизу кнопки — заявки, приглашения, назначения.
+ */
+export function richCell({ lead, over, title, sub, extra, after, afterCaption, actions: acts = [], ...a }) {
+  const body = `${lead || ''}<span class="ui-rich-body">${over ? `<small>${over}</small>` : ''}<strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}${extra ? `<span class="is-extra">${extra}</span>` : ''}${acts.length ? `<span class="ui-rich-actions">${acts.map((b) => button({ size: 'm', ...b })).join('')}</span>` : ''}</span>${after || afterCaption ? `<span class="ui-rich-after">${after ? `<b>${after}</b>` : ''}${afterCaption ? `<small>${afterCaption}</small>` : ''}</span>` : ''}`;
+  const tag = isAction(a) && !acts.length ? 'button' : 'div';
+  return `<${tag} class="ui-rich"${tag === 'button' ? act({ label: String(title).replace(/<[^>]+>/g, ''), ...a }) : ''}>${body}</${tag}>`;
+}
+
 /** Плитки-входы 2 в ряд: текст слева, обложка справа. */
 export const tiles = (items) => `<div class="ui-tiles">${items.map(({ title, sub, art, ...a }) =>
   `<button class="ui-tile"${act({ label: title, ...a })}><strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}${art ? `<span class="ui-tile-art ${art}"></span>` : ''}</button>`).join('')}</div>`;
@@ -266,19 +341,28 @@ const face = ({ face: f, initial }, cl) => initial ? `<span class="${cl} is-init
 export const dialog = ({ name, text, time, unread, online = false, you = false, muted = false, ...a }) =>
   `<button class="ui-dialog"${act({ label: `Диалог: ${name}`, ...a })}><span class="ui-dialog-ava">${face(a, 'ui-dialog-face')}${online ? '<i class="ui-online"></i>' : ''}</span><span class="ui-dialog-body"><span class="ui-dialog-top"><strong>${name}</strong><span>${time}</span></span><span class="ui-dialog-bottom"><span>${you ? '<b>Вы:</b> ' : ''}${text}</span>${unread ? `<span class="${cls('ui-unread', muted && 'is-muted')}">${unread}</span>` : ''}</span></span></button>`;
 
-/** Шапка чата: назад · аватар, имя и статус · звонок. */
+/** Шапка чата как в ВК: назад · аватар, имя и статус слева с зазором 12 · справа значок звонка. */
 export const chatNav = ({ name, status, call, ...who }) =>
-  `<header class="ui-nav ui-chat-nav">${iconButton({ icon: 'chevron-left', label: 'Назад', back: true })}<span class="ui-chat-who">${face(who, 'ui-chat-face')}<span><strong>${name}</strong><span>${status}</span></span></span>${call ? iconButton({ icon: 'phone', label: 'Позвонить', sr: 'Позвонить', ...call }) : '<span></span>'}</header>`;
+  `<header class="ui-nav ui-chat-nav">${iconButton({ icon: 'chevron-left', label: 'Назад', back: true })}<span class="ui-chat-who">${face(who, 'ui-chat-face')}<span class="ui-chat-text"><strong>${name}</strong><span>${status}</span></span></span>${call ? iconButton({ icon: 'phone', label: 'Позвонить', sr: 'Позвонить', ...call }) : '<span></span>'}</header>`;
 
 export const day = (text) => `<p class="ui-day">${text}</p>`;
-/** Пузырь сообщения. out — исходящее; read — прочитано; attach — вложение над текстом. */
-export const bubble = ({ out = false, text = '', time, read = false, attach = '', ...a }) => {
+/**
+ * Пузырь сообщения как в ВК. from — имя отправителя в групповом чате (над
+ * содержимым); attach — фото или карточка от края до края пузыря; out — исходящее.
+ */
+export const bubble = ({ out = false, from, text = '', time, read = false, attach = '', ...a }) => {
   const tag = isAction(a) ? 'button' : 'div';
-  return `<${tag} class="${cls('ui-bubble', out ? 'is-out' : 'is-in', attach && 'has-attach')}"${act(a)}>${attach}${text ? `<span class="ui-bubble-text">${text}</span>` : ''}<span class="ui-bubble-meta">${time}${out ? icon(read ? 'check-check' : 'check') : ''}</span></${tag}>`;
+  return `<${tag} class="${cls('ui-bubble', out ? 'is-out' : 'is-in', attach && 'has-attach')}"${act(a)}>${from ? `<span class="ui-bubble-from">${from}</span>` : ''}${attach ? `<span class="ui-bubble-media">${attach}</span>` : ''}${text ? `<span class="ui-bubble-text">${text}</span>` : ''}<span class="ui-bubble-meta">${time}${out ? icon(read ? 'check-check' : 'check') : ''}</span></${tag}>`;
 };
-/** Голосовое: кнопка воспроизведения, волна и длительность. */
-export const voice = ({ out = false, dur, time, ...a }) =>
-  `<div class="${cls('ui-bubble', 'ui-voice', out ? 'is-out' : 'is-in')}">${iconButton({ icon: 'play', fill: true, label: `Голосовое ${dur}`, toast: `Воспроизведение ${dur}`, ...a })}<i class="ui-wave"></i><span class="ui-bubble-meta">${dur} · ${time}</span></div>`;
+/* Волна голосового: высоты столбиков из длительности — одинаковые при каждой сборке */
+const wave = (seed) => {
+  let x = [...String(seed)].reduce((n, c) => n * 31 + c.charCodeAt(0), 7);
+  const bars = Array.from({ length: 30 }, (_, i) => { x = (x * 9301 + 49297) % 233280; return 4 + Math.round((x / 233280) * 14 + Math.sin(i / 3) * 3 + 3); });
+  return `<svg class="ui-wave" viewBox="0 0 120 24" aria-hidden="true">${bars.map((h, i) => `<rect x="${i * 4}" y="${12 - h / 2}" width="2" height="${h}" rx="1"/>`).join('')}</svg>`;
+};
+/** Голосовое как в ВК: круглая кнопка воспроизведения, волна и длительность под ней. */
+export const voice = ({ out = false, from, dur, time, ...a }) =>
+  `<div class="${cls('ui-bubble', 'ui-voice', out ? 'is-out' : 'is-in')}">${from ? `<span class="ui-bubble-from">${from}</span>` : ''}<span class="ui-voice-row"><button class="ui-voice-play"${act({ label: `Голосовое ${dur}`, toast: `Воспроизведение ${dur}`, ...a })}>${icon('play', { fill: true })}</button><span class="ui-voice-body">${wave(dur + time)}<span class="ui-bubble-meta">${dur}<span>${time}</span></span></span></span></div>`;
 /** Лента сообщений. */
 export const chat = (items) => `<div class="ui-chat">${join(items)}</div>`;
 /** Поле ввода: вложение, текст, голосовое или отправка. */

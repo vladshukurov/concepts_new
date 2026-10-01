@@ -21,10 +21,6 @@ export default (ui) => ui.screen({
       media: 'sh-s2', attach: tools('Линер 0.3', 'Бумага 160 г', '20 минут'),
       likes: 146, comments: 18, shares: 7, views: '1,2K', open: { go: 'post' }, discuss: { go: 'post' }, menu: { toast: 'Скрыть · Пожаловаться' },
     }),
-    ui.section({ children: [
-      ui.list([ui.row({ lead: ui.leadIcon('sunrise'), title: 'Новые работы к утру', sub: 'Серии сохранённых мест обновятся ночью', activate: 'fetch|home' })]),
-      ui.granted('fetch', 'Обновлено в 06:30 · четыре новые работы в ваших местах'),
-    ] }),
     ui.section({ title: 'Серия места', more: { go: 'series', label: 'Открыть серию' }, children: ui.list([
       ui.row({ thumb: places.panfilova.art, title: places.panfilova.series, sub: `${places.panfilova.name} · ${places.panfilova.works} работ · ${places.panfilova.authors} авторов`, go: 'series' }),
     ]) }),

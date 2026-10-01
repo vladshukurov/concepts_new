@@ -3,9 +3,9 @@ export const THEME = 'vk-light';
 export const TABS = [
   { id: 'home', label: 'Главная', icon: 'house' },
   { id: 'places', label: 'Места', icon: 'map-pin' },
-  { id: 'events', label: 'Пленэры', icon: 'calendar' },
+  { id: 'events', label: 'Встречи', icon: 'calendar' },
   { id: 'chats', label: 'Мессенджер', icon: 'message-circle' },
-  { id: 'menu', label: 'Сервисы', icon: 'layout-grid' },
+  { id: 'me', label: 'Профиль', icon: 'user' },
 ];
 /** Материалы под работой */
 export const tools = (...list) => `<div class="sh-tools">${list.map((t) => `<span>${t}</span>`).join('')}</div>`;

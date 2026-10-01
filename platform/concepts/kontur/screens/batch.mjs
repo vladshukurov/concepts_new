@@ -9,10 +9,6 @@ export default (ui) => ui.screen({
     ui.scroll([
       `<div class="kt-batch"><small>HP5 · Айжан и Дана</small><h1>Проявка 20 °C</h1><p class="ui-sub kt-mono">DD-X 1+4 · 9:30</p></div>`,
       ui.section({ children: ui.actions([ui.button({ label: 'Запустить таймер', icon: 'timer', block: true, primary: true, go: 'timer' })]) }),
-      ui.section({ children: [
-        ui.list([ui.row({ lead: ui.leadIcon('bell'), title: 'Статус партии без перезагрузки', sub: 'Этап сменится сам, даже если «Контур» закрыт', activate: 'remotenotif|batch' })]),
-        ui.granted('remotenotif', 'Статус обновился сам: проявитель, 6:42 из 9:30'),
-      ] }),
       ui.section({ title: 'Этапы', children: ui.list(steps.map(([n, t, s, st]) => ui.row({ lead: `<span class="kt-num${st ? ` is-${st}` : ''}">${n}</span>`, title: t, sub: s }))) }),
       ui.section({ children: ui.group({ cells: [
         ui.cell({ icon: 'mic', title: 'Голосовая заметка', sub: 'Одна запись · без расшифровки', go: 'voice' }),

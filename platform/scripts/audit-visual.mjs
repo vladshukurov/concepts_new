@@ -105,7 +105,8 @@ function probe(scr, cfg) {
       if (px < cfg.minFont && !el.matches('.tab-label, .dur')) out.push({ kind: 'tiny-font', what: label(el), detail: px + 'px' });
     }
     // 3. текст, который не поместился
-    if (own && cs.textOverflow === 'ellipsis' && el.scrollWidth > el.clientWidth + 1) {
+    /* В шапке чата и в карточках вбок многоточие — норма ВК: имя длинное, место узкое */
+    if (own && cs.textOverflow === 'ellipsis' && el.scrollWidth > el.clientWidth + 1 && !el.closest('.ui-chat-who, .ui-hcell')) {
       out.push({ kind: 'truncated', what: label(el), detail: el.scrollWidth + '>' + el.clientWidth });
     }
     // 4. вылез за края устройства по горизонтали
