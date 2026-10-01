@@ -261,6 +261,10 @@ function probe(scr, cfg) {
       const v = (el.getAttribute(attr) || '').trim();
       if (/[^.…]\.$/.test(v)) out.push({ kind: 'trailing-period', what: label(el), detail: attr });
     }
+    // 11а. play, который нельзя нажать: иконка воспроизведения вне кнопки и без перехода
+    if (el.matches('.ui-play, .vkd-play') && !el.closest('button, a, [data-go], [data-ask], [data-activate], [data-toast], [data-back]')) {
+      out.push({ kind: 'fake-control', what: label(el), detail: 'play без действия' });
+    }
     // 11. контрол-пустышка: фильтр или чипс, который только показывает тост
     if (el.matches('[class*="chip"],[class*="filter"],[class*="pill"],[class*="seg"]')
         && el.hasAttribute('data-toast') && !el.matches('[data-go],[data-ask],[data-activate],[data-back]')) {

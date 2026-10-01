@@ -42,6 +42,7 @@ export function check(slug, { lint = true } = {}) {
   item(existsSync(join(dir, 'model.mjs')), 'модель домена model.mjs');
   const vkMimicry = spec.targetSet === 'vkontakte' && spec.positioning?.mode === 'mimicry';
   if (vkMimicry) item(spec.tabs?.some((t) => /messag/.test(t.role || '')), 'мессенджер — вкладка (мимикрия ВКонтакте)');
+  if (spec.targetSet === 'vk-video' && spec.positioning?.mode === 'mimicry') item(ids.some((id) => /class="ui-player\b/.test(html(id))), 'плеер ВК Видео (ui.player)');
   const aliases = spec.permissions.filter((p) => ALIASES.has(p.key)).map((p) => p.key);
   item(!aliases.length, 'ключи доступов канонические', aliases.length ? `${aliases.join(', ')} — node scripts/rename-access-key.mjs ${slug}` : '');
   const domains = spec.permissions.some((p) => /associated-?domains|^domains$/.test(p.key));

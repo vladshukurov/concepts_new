@@ -178,6 +178,25 @@ export function videoCard({ art, duration: dur, progressClass, title, sub, avata
   const tag = isAction(a) ? 'button' : 'div';
   return `<${tag} class="${cls('ui-video', className)}"${act(a)}>${frame}${meta}</${tag}>`;
 }
+/**
+ * Плеер ВК Видео: кадр на всю ширину и управление поверх него.
+ * art — класс кадра; at/total — таймкоды; fillClass — доля просмотренного
+ * (класс концепта, inline-style запрещён). chapters — главы шкалы:
+ * [{ label, w: 1–9 (доля), state: 'done' | 'now' }] — у каждого продукта свои
+ * (блоки выступления, части фильма). Действия: collapse, cast, settings,
+ * pip, fullscreen — объекты действий; без объекта кнопки нет. extra — свои
+ * кнопки в верхнем ряду (например, «Поделиться»).
+ */
+export function player({ art, at, total, fillClass, chapters = [], chapter, playing = false, collapse, cast, settings, pip, fullscreen, extra = '', playAction = {}, className }) {
+  const top = `<div class="ui-player-top">${collapse ? iconButton({ icon: 'chevron-down', label: 'Свернуть', look: 'glass', ...collapse }) : '<span></span>'}<span class="ui-player-gap"></span>${join(extra)}${cast ? iconButton({ icon: 'cast', label: 'Смотреть на телевизоре', look: 'glass', ...cast }) : ''}${settings ? iconButton({ icon: 'settings-2', label: 'Качество и скорость', look: 'glass', ...settings }) : ''}</div>`;
+  const mid = `<div class="ui-player-mid">${iconButton({ icon: 'rotate-ccw', label: 'Назад на 10 секунд', toast: 'Назад на 10 секунд' })}${play({ size: 'xl', pause: playing, label: playing ? 'Пауза' : 'Смотреть', toast: playing ? `Пауза · ${at}` : `Воспроизведение с ${at}`, ...playAction })}${iconButton({ icon: 'rotate-cw', label: 'Вперёд на 10 секунд', toast: 'Вперёд на 10 секунд' })}</div>`;
+  const scrub = chapters.length
+    ? `<div class="ui-player-scrub">${chapters.map((c) => `<span class="${cls('ui-player-ch', `is-w${c.w || 1}`, c.state && `is-${c.state}`)}" title="${c.label}">${c.state === 'now' ? `<i class="${fillClass}"></i>` : ''}</span>`).join('')}</div>`
+    : `<div class="ui-player-scrub"><span class="ui-player-ch is-w9 is-now"><i class="${fillClass}"></i></span></div>`;
+  const row = `<div class="ui-player-row"><span class="ui-player-time">${at} / ${total}</span>${chapter ? `<span class="ui-player-chapter">${chapter}</span>` : '<span class="ui-player-gap"></span>'}${pip ? iconButton({ icon: 'picture-in-picture-2', label: 'Картинка в картинке', ...pip }) : ''}${fullscreen ? iconButton({ icon: 'maximize', label: 'Во весь экран', ...fullscreen }) : ''}</div>`;
+  return `<div class="${cls('ui-player', art, className)}">${top}${mid}<div class="ui-player-bottom">${scrub}${row}</div></div>`;
+}
+
 /** Плитки-входы 2 в ряд: текст слева, обложка справа. */
 export const tiles = (items) => `<div class="ui-tiles">${items.map(({ title, sub, art, ...a }) =>
   `<button class="ui-tile"${act({ label: title, ...a })}><strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}${art ? `<span class="ui-tile-art ${art}"></span>` : ''}</button>`).join('')}</div>`;

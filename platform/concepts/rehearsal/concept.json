@@ -705,10 +705,12 @@
       "screens": [
         "subs",
         "lesson",
-        "setup"
+        "setup",
+        "session"
       ],
       "stops": [
-        "setup"
+        "setup",
+        "session"
       ]
     },
     {

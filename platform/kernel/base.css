@@ -1417,3 +1417,35 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
    (#e1e3e6): серое на белом читается как незагрузившаяся картинка. */
 .ui:is(.vk-light,.ok-light) :is(.ui-avatar, .ui-post-ava.is-initial, .ui-dialog-face.is-initial, .ui-chat-face.is-initial) { background:var(--ui-accent-soft); color:var(--ui-link); }
 .ui:is(.vk-light,.ok-light) .ph:not(.on-dark) { background:linear-gradient(160deg, color-mix(in srgb, var(--ui-accent) 7%, #fff), color-mix(in srgb, var(--ui-accent) 17%, #fff)); color:color-mix(in srgb, var(--ui-link) 45%, transparent); }
+
+/* ── Плеер ВК Видео: кадр 16:9 на всю ширину, управление поверх ──
+   Управление показано, как после касания: затемнение сверху и снизу,
+   play по центру, шкала глав и таймкоды внизу. */
+.ui-player { position:relative; flex:none; display:flex; flex-direction:column; justify-content:space-between; width:100%; aspect-ratio:16/9; overflow:hidden; background-color:#000; background-size:cover; background-position:center; color:#fff; }
+.ui-player::before { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.5), rgba(0,0,0,.08) 34%, rgba(0,0,0,.08) 62%, rgba(0,0,0,.62)); pointer-events:none; }
+.ui-player > * { position:relative; z-index:1; }
+.ui-player .ui-icon-btn { color:#fff; }
+.ui-player-top { display:flex; align-items:center; padding:4px 4px 0; }
+.ui-player-gap { flex:1; }
+.ui-player-mid { position:absolute; left:0; right:0; top:50%; transform:translateY(-50%); display:flex; align-items:center; justify-content:center; gap:28px; }
+.ui-player-mid .ui-play { background:rgba(0,0,0,.45); color:#fff; box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
+.ui-player-mid .ui-play.is-xl { width:64px; height:64px; }
+.ui-player-mid .ui-play.is-xl svg { width:26px; height:26px; }
+.ui-player-mid .ui-icon-btn svg { width:28px; height:28px; }
+.ui-player-bottom { padding:0 12px 2px; }
+.ui-player-scrub { display:flex; gap:3px; height:4px; margin:0 4px 2px; }
+.ui-player-ch { position:relative; flex:1; border-radius:2px; background:rgba(255,255,255,.32); overflow:hidden; }
+.ui-player-ch.is-done { background:var(--ui-accent); }
+.ui-player-ch > i { position:absolute; left:0; top:0; bottom:0; background:var(--ui-accent); }
+.ui-player-ch.is-w1 { flex:1; } .ui-player-ch.is-w2 { flex:2; } .ui-player-ch.is-w3 { flex:3; } .ui-player-ch.is-w4 { flex:4; } .ui-player-ch.is-w5 { flex:5; }
+.ui-player-ch.is-w6 { flex:6; } .ui-player-ch.is-w7 { flex:7; } .ui-player-ch.is-w8 { flex:8; } .ui-player-ch.is-w9 { flex:9; }
+.ui-player-row { display:flex; align-items:center; gap:0; min-height:44px; }
+.ui-player-row .ui-icon-btn { width:44px; height:44px; }
+.ui-player-row .ui-icon-btn svg { width:22px; height:22px; }
+.ui-player-time { padding-left:4px; font:600 13px/16px var(--ui-face); font-variant-numeric:tabular-nums; }
+.ui-player-chapter { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding-left:8px; font:400 13px/16px var(--ui-face); color:rgba(255,255,255,.8); }
+/* Плеер первым на экране — под статус-баром, как в ВК Видео */
+.ui-player.is-root { margin-top:var(--safe-top); }
+/* Значки поверх кадра читаются на любом фоне, даже на белом слайде */
+.ui-player-mid .ui-icon-btn svg, .ui-player-row .ui-icon-btn svg, .ui-player-time, .ui-player-chapter { filter:drop-shadow(0 1px 2px rgba(0,0,0,.7)); }
+.ui-player-mid .ui-icon-btn { border-radius:50%; background:rgba(0,0,0,.32); }

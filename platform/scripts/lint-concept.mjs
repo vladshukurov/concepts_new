@@ -308,6 +308,13 @@ function lint(slug) {
     }
   }
 
+  /* —— паттерн эталона подтверждён разметкой —— */
+  /* «immersive-player» в доказательствах, а на экране картинка с иконкой play —
+     так «Репетиция» жила без плеера. Паттерн требует компонент ui.player. */
+  for (const ev of spec.positioning?.referenceEvidence || []) {
+    if (ev.pattern === 'immersive-player' && !/class="ui-player\b/.test(effectiveMarkup[ev.screen] || '')) P(`паттерн immersive-player заявлен на экране ${ev.screen}, а плеера (ui.player) там нет`);
+  }
+
   /* —— жест доступа совпадает с кнопкой —— */
   /* Спека обещает ревьюеру «нажмите «Проверить кадр»», а на экране кнопка
      давно называется иначе — такой маршрут в review notes ведёт в никуда. */
