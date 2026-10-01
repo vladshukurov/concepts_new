@@ -61,7 +61,7 @@ const gallery = (items) => {
   const filters = [...new Set(items.map((item) => item.targetSet))]
     .sort((a, b) => targetSetMeta(a).label.localeCompare(targetSetMeta(b).label, 'ru'));
   const plural = items.length % 10 === 1 && items.length % 100 !== 11 ? 'концепт' : 'концептов';
-  const card = (item) => `    <a class="card" href="./${item.slug}/index.html" data-target-set="${esc(item.targetSet)}" data-mode="${item.mode}" aria-label="${esc(item.name)} — ${esc(item.modeLabel)}, ${esc(item.category)}">
+  const card = (item) => `    <a class="card" href="./${item.slug}/index.html" data-target-set="${esc(item.targetSet)}" data-mode="${item.mode}" data-search="${esc(item.search)}" aria-label="${esc(item.name)} — ${esc(item.modeLabel)}, ${esc(item.category)}">
       <div class="shot"><img src="./${item.slug}/assets/screenshots/${item.start}.png" alt="Экран «${esc(item.name)}»" loading="lazy"></div>
       <div class="meta">
         <div class="card-kicker"><span class="category">${esc(item.category)}</span><span class="card-badges">${item.isNew ? '<span class="new-badge">NEW</span>' : ''}<span class="mode-badge ${item.mode}">${esc(item.modeLabel)}</span></span></div>
@@ -124,6 +124,15 @@ const gallery = (items) => {
   .mode-tab:hover { color:var(--page-ink); }
   .mode-tab.is-on { color:var(--page-ink); font-weight:600; }
   .mode-tab.is-on::after { background:var(--page-ink); }
+  .search { position:relative; grid-column:1 / -1; }
+  .search svg { position:absolute; left:14px; top:50%; width:18px; height:18px; margin-top:-9px; color:var(--page-ink-mute); pointer-events:none; }
+  .search input { width:100%; min-height:44px; padding:10px 64px 10px 42px; border:1px solid var(--page-line); border-radius:12px; background:var(--page-card); color:var(--page-ink); font:500 15px/1.2 var(--face); outline:none; }
+  .search input::placeholder { color:var(--page-ink-mute); }
+  .search input:focus { border-color:var(--page-ink-mute); }
+  .search kbd { position:absolute; right:12px; top:50%; transform:translateY(-50%); padding:2px 7px; border:1px solid var(--page-line); border-radius:6px; color:var(--page-ink-mute); font:600 11px/1.4 var(--mono); }
+  .search input:not(:placeholder-shown) + kbd { display:none; }
+  .no-results { padding:48px 0; color:var(--page-ink-dim); text-align:center; font-size:14px; }
+  .no-results[hidden] { display:none; }
   .set-picker { min-width:210px; }
   .set-picker select { width:100%; min-height:40px; padding:8px 38px 8px 12px; border:1px solid var(--page-line); border-radius:10px; appearance:none; background:var(--page-card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center; color:var(--page-ink); cursor:pointer; font:500 13px/1.2 var(--face); }
   .set-picker select:hover { border-color:var(--page-ink-mute); }
@@ -177,6 +186,11 @@ const gallery = (items) => {
     </div>
   </section>
   <div class="controls">
+    <label class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" data-search-input placeholder="Название, ниша или доступ — «рецепт», «звонок», «voip»" aria-label="Поиск по концептам" autocomplete="off" spellcheck="false">
+      <kbd>/</kbd>
+    </label>
     <div>
       <span class="control-label">Стратегия</span>
       <nav class="mode-tabs" aria-label="Стратегия концепта">
@@ -195,6 +209,7 @@ ${filters.map((targetSet) => `        <option value="${esc(targetSet)}">${esc(ta
   </div>
   <main id="concept-grid">
 ${items.length ? ['mimicry', 'differentiation'].map(group).join('\n') : '    <p class="empty">Пока ни одного концепта.</p>'}
+    <p class="no-results" data-no-results hidden>Ничего не нашлось — попробуйте другое слово или сбросьте фильтры</p>
   </main>
 </div>
 <script>
@@ -202,7 +217,11 @@ ${items.length ? ['mimicry', 'differentiation'].map(group).join('\n') : '    <p 
   const setSelect = document.querySelector('[data-set-filter]');
   const cards = [...document.querySelectorAll('[data-target-set]')];
   const groups = [...document.querySelectorAll('[data-mode-group]')];
+  const searchInput = document.querySelector('[data-search-input]');
+  const noResults = document.querySelector('[data-no-results]');
+  const norm = (text) => text.toLowerCase().replace(/ё/g, 'е').trim();
   const applyFilters = (mode, set, updateUrl = true) => {
+    const words = norm(searchInput.value).split(/\s+/).filter(Boolean);
     const selectedMode = mode === 'all' || cards.some((card) => card.dataset.mode === mode) ? mode : 'all';
     const selectedSet = set === 'all' || cards.some((card) => card.dataset.targetSet === set) ? set : 'all';
     modeButtons.forEach((button) => {
@@ -211,22 +230,36 @@ ${items.length ? ['mimicry', 'differentiation'].map(group).join('\n') : '    <p 
       button.setAttribute('aria-pressed', String(active));
     });
     setSelect.value = selectedSet;
-    cards.forEach((card) => { card.hidden = (selectedMode !== 'all' && card.dataset.mode !== selectedMode) || (selectedSet !== 'all' && card.dataset.targetSet !== selectedSet); });
+    cards.forEach((card) => {
+      card.hidden = (selectedMode !== 'all' && card.dataset.mode !== selectedMode)
+        || (selectedSet !== 'all' && card.dataset.targetSet !== selectedSet)
+        || !words.every((word) => card.dataset.search.includes(word));
+    });
     groups.forEach((group) => {
       const visible = group.querySelectorAll('.card:not([hidden])').length;
       group.hidden = visible === 0;
       group.querySelector('[data-group-count]').textContent = visible;
     });
+    noResults.hidden = cards.some((card) => !card.hidden);
     if (updateUrl) {
       const url = new URL(location.href);
       selectedMode === 'all' ? url.searchParams.delete('mode') : url.searchParams.set('mode', selectedMode);
       selectedSet === 'all' ? url.searchParams.delete('set') : url.searchParams.set('set', selectedSet);
+      words.length ? url.searchParams.set('q', searchInput.value.trim()) : url.searchParams.delete('q');
       history.replaceState(null, '', url);
     }
   };
   modeButtons.forEach((button) => button.addEventListener('click', () => applyFilters(button.dataset.modeFilter, setSelect.value)));
   setSelect.addEventListener('change', () => applyFilters(document.querySelector('[data-mode-filter].is-on').dataset.modeFilter, setSelect.value));
+  const current = () => [document.querySelector('[data-mode-filter].is-on').dataset.modeFilter, setSelect.value];
+  searchInput.addEventListener('input', () => applyFilters(...current()));
+  searchInput.addEventListener('keydown', (event) => { if (event.key === 'Escape') { searchInput.value = ''; applyFilters(...current()); searchInput.blur(); } });
+  /* «/» — к поиску, как в GitHub и Linear */
+  document.addEventListener('keydown', (event) => {
+    if (event.key === '/' && document.activeElement !== searchInput && !event.metaKey && !event.ctrlKey) { event.preventDefault(); searchInput.focus(); }
+  });
   const initial = new URL(location.href).searchParams;
+  searchInput.value = initial.get('q') || '';
   applyFilters(initial.get('mode') || 'all', initial.get('set') || 'all', false);
 </script>
 </html>
@@ -261,6 +294,13 @@ for (const slug of slugs) {
     isNew: CURRENT_BATCH.has(slug),
     hasAppIcon: existsSync(join(conceptDir(slug), 'assets', 'app-icon.png')),
     iconPlaceholder: Boolean(spec.iconPlaceholder),
+    /* Поисковый индекс карточки: что это, для кого и какими доступами */
+    search: [spec.name, spec.slug, spec.tagline, spec.deck, spec.insight, spec.eyebrow,
+      categoryLabel(spec.appStore?.category?.primary), targetSetMeta(spec.targetSet).label,
+      POSITIONING_MODES[spec.positioning.mode].label,
+      ...spec.permissions.flatMap((p) => [p.key, p.feature, p.plist, p.gesture]),
+      ...(spec.tabs || []).map((t) => t.label)]
+      .filter(Boolean).join(' ').toLowerCase().replace(/ё/g, 'е').replace(/[«»„“"]/g, '').replace(/\s+/g, ' '),
   });
   const archive = n ? ` · архив: доки ${n.docs}, скриншоты ${n.shots}` : '';
   console.log(`  ${slug}: ${(bytes / 1024).toFixed(0)} КБ · ${spec.screens.length} экранов · ${spec.permissions.length} доступов${archive}`);

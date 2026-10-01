@@ -1007,8 +1007,8 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
    Вторичный текст — text_subhead, а не text_secondary: тот не держит 4.5:1. */
 .ui {
   --ui-face:-apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif;
-  /* Шкала заголовков: у ВК Музыки и Видео крупная, у соцсетей ВК и ОК спокойная */
-  --ui-page:700 34px/41px; --ui-page-ls:-.02em; --ui-h2:600 24px/28px; --ui-h1:600 24px/28px;
+  /* Шкала заголовков одна на все три темы, спокойная: корень вкладки 24/30, экран 20/26, секция 18/24 */
+  --ui-page:600 24px/30px; --ui-page-ls:-.01em; --ui-h2:600 18px/24px; --ui-h1:600 20px/26px;
   --ui-row-h:72px; --ui-row-pad:8px; --ui-sec-gap:28px;
   background:var(--ui-bg)!important; color:var(--ui-text); font-family:var(--ui-face);
 }
@@ -1021,7 +1021,6 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
   --ui-play-bg:#fff; --ui-play-fg:#000; --ui-danger:#ff5c5c; --ui-seg-on:#626364; --ui-shadow:rgba(0,0,0,.45);
 }
 .ui.vk-light, .ui.ok-light {
-  --ui-page:600 24px/30px; --ui-page-ls:-.01em; --ui-h2:600 18px/24px; --ui-h1:600 20px/26px;
   --ui-row-h:64px; --ui-row-pad:10px;
 }
 .ui.vk-light {

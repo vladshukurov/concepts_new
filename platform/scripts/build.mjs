@@ -17,6 +17,7 @@ import {
   readdirSync,
 } from "node:fs";
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import {
@@ -1564,6 +1565,11 @@ export function build(slug, { outDir } = {}) {
     ? read(join(dir, "sections.html"))
     : "";
   const hasAppIcon = existsSync(join(dir, "assets", "app-icon.png"));
+  // Фавикон браузер кэширует отдельно и надолго: версия по содержимому иконки,
+  // чтобы перекрашенная иконка сменила вкладку, а не осталась старой
+  const appIconVersion = hasAppIcon
+    ? createHash("sha1").update(readFileSync(join(dir, "assets", "app-icon.png"))).digest("hex").slice(0, 8)
+    : "";
   const useIconPlaceholder = Boolean(spec.iconPlaceholder);
   const grab = (name) => {
     const m = rawSections.match(
@@ -1588,7 +1594,7 @@ export function build(slug, { outDir } = {}) {
     SLUG: spec.slug,
     APP_ICON_HEAD:
       hasAppIcon && !useIconPlaceholder
-        ? '<link rel="icon" type="image/png" href="assets/app-icon.png">'
+        ? `<link rel="icon" type="image/png" href="assets/app-icon.png?v=${appIconVersion}">`
         : "",
     APP_ICON_TOPBAR: useIconPlaceholder
       ? '<span class="topbar-app-icon app-icon-placeholder"></span>'

@@ -36,6 +36,18 @@ try {
   }
   const conceptsWithIcons = concepts.filter((slug) => existsSync(join(conceptDir(slug), 'assets', 'app-icon.png')));
   assert.equal(await page.locator('.card .app-icon').count(), conceptsWithIcons.length, 'лаунчер должен показывать все доступные логотипы');
+  /* Поиск: по названию, по доступу, по слову из фичи; пустой результат и сброс */
+  const visible = () => page.locator('.card:not([hidden])').count();
+  await page.fill('[data-search-input]', 'образы');
+  assert.ok(await page.locator('.card:not([hidden])[href="./looks/index.html"]').count(), 'поиск по названию не нашёл «Образы»');
+  await page.fill('[data-search-input]', 'voip');
+  const withVoip = await visible();
+  assert.ok(withVoip > 0 && withVoip < concepts.length, 'поиск по ключу доступа должен сузить список');
+  await page.fill('[data-search-input]', 'ъъъ несуществующее');
+  assert.equal(await visible(), 0, 'бессмысленный запрос должен дать пустой список');
+  assert.ok(await page.locator('[data-no-results]:not([hidden])').count(), 'при пустом результате нужна подсказка');
+  await page.press('[data-search-input]', 'Escape');
+  assert.equal(await visible(), concepts.length, 'Escape должен сбросить поиск');
   const conceptUrls = [];
 
   for (const card of await cards.all()) {
