@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `section` ×37, `button` ×19, `cell` ×18, `nav` ×15, `denied` ×15, `row` ×13, `iconButton` ×11, `list` ×10, `actions` ×9, `granted` ×7, `group` ×6, `leadIcon` ×6, `avatar` ×5, `bubble` ×5, `tabBar` ×5, `search` ×4, `composer` ×3, `largeTitle` ×3, `dialog` ×3, `textButton` ×3, `hscroll` ×3, `post` ×3, `chatNav` ×2, `chat` ×2, `day` ×2, `top` ×2, `stats` ×2, `callView` ×1, `voice` ×1, `miniInfo` ×1, `usersStack` ×1, `wordmark` ×1, `composerPrompt` ×1, `stories` ×1, `subnav` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `section` ×37, `button` ×19, `cell` ×18, `nav` ×15, `denied` ×15, `row` ×13, `iconButton` ×11, `list` ×10, `actions` ×9, `granted` ×7, `dialog` ×7, `group` ×6, `leadIcon` ×6, `avatar` ×5, `bubble` ×5, `tabBar` ×5, `search` ×4, `composer` ×3, `largeTitle` ×3, `textButton` ×3, `hscroll` ×3, `post` ×3, `chatNav` ×2, `chat` ×2, `day` ×2, `top` ×2, `stats` ×2, `callView` ×1, `voice` ×1, `miniInfo` ×1, `usersStack` ×1, `wordmark` ×1, `composerPrompt` ×1, `stories` ×1, `subnav` ×1.
 <!-- @end -->
 
 ## Свои компоненты
