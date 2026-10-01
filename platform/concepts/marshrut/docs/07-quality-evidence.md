@@ -18,4 +18,4 @@
 
 ## Приёмка
 
-Перед push обязательны зелёные `build`, `lint`, `audit`, `audit:grid`, `test`, `test:no-messenger` и ручной просмотр свежего contact sheet.
+Перед push обязательны зелёные `build`, `lint`, `audit`, `audit:grid`, `test`, `access` и ручной просмотр свежего contact sheet.
