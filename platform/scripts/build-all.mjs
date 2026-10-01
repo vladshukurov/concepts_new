@@ -8,6 +8,7 @@
  */
 import { renderScreens } from './render-screens.mjs';
 import { sync as syncDocs } from './gen-docs.mjs';
+import { buildStorybook } from './gen-storybook.mjs';
 import { writeFileSync, mkdirSync, rmSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { DIST, conceptDir, listConcepts, esc, TARGET_PRODUCTS, POSITIONING_MODES } from './lib.mjs';
@@ -166,6 +167,8 @@ const gallery = (items) => {
   .tag { flex:1; color:var(--page-ink-dim); margin-top:7px; font:400 13px/1.45 var(--face); }
   .chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
   .chip { padding:4px 8px; border-radius:999px; background:color-mix(in srgb,var(--accent) 12%,transparent); color:var(--accent); font:600 10px/1.4 var(--mono); letter-spacing:.03em; }
+  .storybook-link { color:inherit; text-decoration:none; border-bottom:1px solid var(--page-line); }
+  .storybook-link:hover { color:var(--page-ink); }
   .chip.secondary { background:var(--page-chip); color:var(--page-ink-dim); }
   .empty { color:var(--page-ink-dim); }
   @media (max-width:860px) { .controls { grid-template-columns:minmax(0,1fr) minmax(180px,220px); gap:20px; } .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
@@ -175,7 +178,7 @@ const gallery = (items) => {
 <header class="topbar">
   <div class="brand">Camo</div>
   <div class="section-name">Концепты</div>
-  <div class="concept-count">${items.length} ${plural}</div>
+  <div class="concept-count"><a class="storybook-link" href="./storybook.html">Компоненты</a> · ${items.length} ${plural}</div>
 </header>
 <div class="wrap">
   <section class="hero">
@@ -310,6 +313,8 @@ for (const slug of slugs) {
 }
 
 writeFileSync(join(DIST, 'index.html'), gallery(items));
+const storybook = await buildStorybook();
+console.log(`сторибук: ${storybook.out} · компонентов ${storybook.components}`);
 writeFileSync(join(DIST, '_headers'), `/*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
