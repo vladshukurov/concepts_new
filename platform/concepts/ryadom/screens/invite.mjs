@@ -1,0 +1,17 @@
+import { THEME } from './_shared.mjs';
+import { club } from '../model.mjs';
+
+export default (ui) => ui.screen({
+  id: 'invite', theme: THEME,
+  body: [
+    ui.nav({ title: 'Пригласить', back: 'close' }),
+    ui.scroll([
+      ui.section({ children: ui.list([ui.row({ lead: ui.leadIcon('link', { accent: true }), title: 'ryadom.club/central', sub: `Вступление в ${club.name} подтверждает администратор` })]) }),
+      ui.section({ children: ui.group({ cells: [
+        ui.cell({ icon: 'copy', title: 'Скопировать', toast: 'Ссылка скопирована' }),
+        ui.cell({ icon: 'clock', title: 'Срок действия', value: '7 дней', toast: 'Срок · 7 дней · 30 дней · без срока' }),
+      ] }) }),
+      ui.section({ children: ui.actions([ui.button({ label: 'Отправить ссылку', icon: 'send', block: true, toast: 'Приглашение отправлено|profile', primary: true })]) }),
+    ]),
+  ],
+});
