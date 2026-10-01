@@ -16,6 +16,10 @@ export default (ui) => ui.screen({
     ]),
     `<button class="tl-nearby" data-ask="location|nearby|home"><span class="tl-nearby-ico">${ui.icon('map-pin')}</span><span class="ui-row-text"><strong>Кто гуляет рядом</strong><span>7 питомцев в Петроградском районе</span></span>${ui.icon('chevron-right')}</button>`,
     ui.denied('location', 'Район можно выбрать вручную — прогулки останутся доступны'),
+    ui.section({ children: [
+      ui.list([ui.row({ lead: ui.leadIcon('sunrise'), title: 'Прогулки на завтра — к утру', sub: 'Состав и время обновятся, пока вы спите', activate: 'fetch|home' })]),
+      ui.granted('fetch', 'Обновлено в 06:10 · две прогулки рядом на завтра'),
+    ] }),
     ui.post({
       author: { face: PET.truffle, name: 'Ксения и Трюфель', meta: '18 минут назад · Петроградская', action: { go: 'pet' } },
       text: 'Трюфель впервые дошёл до дальнего пруда. Утки заинтересовали, но команда «рядом» победила',

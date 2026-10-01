@@ -137,7 +137,7 @@
       "grounding": "AVFoundation; обработка на устройстве"
     },
     {
-      "key": "photo",
+      "key": "photos",
       "plist": "NSPhotoLibraryUsageDescription",
       "alert": {
         "title": "«Дыхание» запрашивает доступ к «Фото»",
@@ -232,7 +232,7 @@
       "ui": {
         "pattern": "collection",
         "purpose": "Найти подходящий контент",
-        "primaryAction": "Тихий берег",
+        "primaryAction": null,
         "states": [
           "default",
           "loading",
@@ -372,7 +372,7 @@
       "ui": {
         "pattern": "collection",
         "purpose": "Вернуться к сохранённому",
-        "primaryAction": "Тихий берег",
+        "primaryAction": null,
         "states": [
           "default",
           "loading",
@@ -632,10 +632,12 @@
         "studio",
         "background",
         "capture",
-        "pick"
+        "pick",
+        "account"
       ],
       "stops": [
-        "studio"
+        "studio",
+        "account"
       ]
     }
   ],

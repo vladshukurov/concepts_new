@@ -10,7 +10,10 @@ export default (ui) => ui.screen({
           ui.cell({ icon: 'tv-minimal', title: 'Телевизор в гостиной', sub: 'Google Cast · готов', check: true }),
           ui.cell({ icon: 'monitor', title: 'Кухня, приставка', sub: 'Занята другим показом', toast: 'Приставка занята другим показом' }),
           ui.cell({ icon: 'repeat-2', title: 'Обновить список', activate: 'wifiinfo|tv' }),
+          ui.cell({ icon: 'key', title: 'Войти на телевизоре', sub: 'Без пароля — с этого телефона', activate: 'keychain|tv' }),
         ] }),
+        ui.granted('keychain', 'Телевизор в гостиной вошёл в ваш аккаунт'),
+        ui.granted('wifiinfo', 'Сеть «Zaharov_5G» · два устройства'),
         ui.denied('localnetwork', 'Устройства не найти — альбом открывается на телефоне'),
       ] }),
       ui.section({ children: ui.actions([

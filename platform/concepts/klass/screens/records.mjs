@@ -5,17 +5,20 @@ export default (ui) => ui.screen({
   body: ui.scroll([
     ui.largeTitle('Записи', ui.iconButton({ icon: 'mic', label: 'Записать собрание', sr: 'Записать собрание', ask: 'mic|records|records' })),
     ui.denied('mic', 'Микрофон недоступен — остаются текстовый протокол и загрузка готовой записи'),
-    ui.granted('voip', 'Вы в эфире правления · микрофон выключен'),
-    ui.granted('commnotif', 'Изменения повестки придут с именем председателя'),
+    ui.granted('mic', 'Идёт запись собрания · 00:12'),
     ui.section({ title: 'Собрание сегодня', meta: 'в 19:00', children: [
       `<div class="kl-live"><span class="kl-live-top"><i></i>Идёт · пункт 2 из 5</span><strong>Правление, северная дорога</strong><span>Смета на шлагбаум · слушают 38 собственников</span>${ui.actions([
-        ui.button({ label: 'Войти в эфир', icon: 'headphones', activate: 'voip|records' }),
+        ui.button({ label: 'Войти в эфир', icon: 'phone', activate: 'voip|live' }),
         ui.button({ label: 'Свернуть', variant: 'secondary', toast: 'Трансляция свёрнута' }),
       ], { row: true })}</div>`,
       ui.list([
-        ui.row({ lead: ui.leadIcon('file-text'), title: 'Повестка обновлена', sub: 'Смета на шлагбаум — пятым пунктом', end: { value: 'сейчас' }, activate: 'commnotif|records' }),
+        ui.row({ lead: ui.leadIcon('file-text'), title: 'Повестка обновлена', sub: 'Смета на шлагбаум — пятым пунктом', end: { value: 'сейчас' }, go: 'thread' }),
         ui.row({ lead: ui.leadIcon('audio-lines', { accent: true }), title: 'Собрание 4 сентября', sub: 'Записал Илья · остановились на 21:30', end: { value: 'Слушать', go: 'player', primary: true, label: 'Слушать собрание 4 сентября' } }),
       ]),
+    ] }),
+    ui.section({ children: [
+      ui.list([ui.row({ lead: ui.leadIcon('download'), title: 'Новые записи к утру', sub: 'Слушать на даче без связи', activate: 'bgtask|records' })]),
+      ui.granted('bgtask', 'Три записи скачаны к 06:00 · слушаются без сети'),
     ] }),
     ui.section({ title: 'Записи товарищества', meta: '14', children: ui.list([
       ui.row({ lead: ui.leadIcon('audio-lines'), title: 'Ремонт северной дороги', sub: '12:04 · фрагмент собрания', end: { badge: 'новое' }, go: 'player' }),

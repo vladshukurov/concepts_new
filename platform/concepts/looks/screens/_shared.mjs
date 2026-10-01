@@ -7,6 +7,8 @@ export const TABS = [
   { id: 'swap', label: 'Свопы', icon: 'repeat-2' },
   { id: 'profile', label: 'Профиль', icon: 'user' },
 ];
-/* Лера — чёрный костюм, Марк — деним, Марина (вы) — бежевый, Юля — фиолетовое пальто */
-export const P = { lera: 'lk-p1', mark: 'lk-p2', marina: 'lk-p3', yulia: 'lk-p4' };
+import { people } from '../model.mjs';
+
+/* Фото людей — из модели: Лера в чёрном, Марк в дениме, Марина (вы) в бежевом, Юля в фиолетовом пальто */
+export const P = Object.fromEntries(Object.entries(people).map(([id, p]) => [id, p.photo]));
 export const tags = (...items) => `<div class="lk-tags">${items.map((t) => `<span><svg><use href="#i-tag"/></svg>${t}</span>`).join('')}</div>`;

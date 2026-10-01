@@ -1659,6 +1659,11 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   }
   const { renderScreens } = await import("./render-screens.mjs");
   await renderScreens(slug);
+  /* Генерируемые блоки доков пересобираются на каждой сборке: таблица,
+     которую надо помнить перезапустить, устаревает с первой правки */
+  /* Отдельным процессом: gen-docs сам импортирует build.mjs */
+  const { execFileSync } = await import("node:child_process");
+  execFileSync(process.execPath, [new URL("./gen-docs.mjs", import.meta.url).pathname, slug], { stdio: "ignore" });
   const r = build(slug);
   console.log(
     `собран ${slug}: ${r.out} · ${(r.bytes / 1024).toFixed(0)} КБ · ${r.spec.screens.length} экранов · ` +

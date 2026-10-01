@@ -151,7 +151,7 @@
       "risk": "low",
       "anchor": false,
       "conditional": false,
-      "key": "photo",
+      "key": "photos",
       "plist": "NSPhotoLibraryUsageDescription",
       "alert": {
         "title": "«Репетиция» запрашивает доступ к «Фото»",
@@ -169,7 +169,7 @@
       "risk": "low",
       "anchor": false,
       "conditional": false,
-      "key": "photoadd",
+      "key": "photosadd",
       "plist": "NSPhotoLibraryAddUsageDescription",
       "alert": {
         "title": "«Репетиция» хочет добавить видео в «Фото»",
@@ -205,7 +205,7 @@
       "risk": "medium",
       "anchor": false,
       "conditional": false,
-      "key": "localnet",
+      "key": "localnetwork",
       "plist": "NSLocalNetworkUsageDescription (+ NSBonjourServices)",
       "alert": {
         "title": "«Репетиция» запрашивает доступ к локальной сети",
@@ -328,7 +328,8 @@
           "offline",
           "denied"
         ],
-        "navigation": "root"
+        "navigation": "root",
+        "primaryAction": "Начать прогон"
       }
     },
     {
@@ -347,7 +348,8 @@
           "offline",
           "denied"
         ],
-        "navigation": "root"
+        "navigation": "root",
+        "primaryAction": null
       }
     },
     {
@@ -366,7 +368,8 @@
           "offline",
           "denied"
         ],
-        "navigation": "root"
+        "navigation": "root",
+        "primaryAction": null
       }
     },
     {
@@ -385,7 +388,8 @@
           "offline",
           "denied"
         ],
-        "navigation": "push"
+        "navigation": "push",
+        "primaryAction": "Попробовать в прогоне"
       }
     },
     {
@@ -404,7 +408,8 @@
           "offline",
           "denied"
         ],
-        "navigation": "push"
+        "navigation": "push",
+        "primaryAction": "Начать прогон"
       }
     },
     {
@@ -423,7 +428,8 @@
           "offline",
           "denied"
         ],
-        "navigation": "push"
+        "navigation": "push",
+        "primaryAction": null
       }
     },
     {
@@ -442,7 +448,8 @@
           "offline",
           "denied"
         ],
-        "navigation": "fullscreen"
+        "navigation": "fullscreen",
+        "primaryAction": null
       }
     },
     {
@@ -461,7 +468,8 @@
           "offline",
           "denied"
         ],
-        "navigation": "fullscreen"
+        "navigation": "fullscreen",
+        "primaryAction": "Отметить"
       }
     },
     {
@@ -480,7 +488,8 @@
           "offline",
           "denied"
         ],
-        "navigation": "fullscreen"
+        "navigation": "fullscreen",
+        "primaryAction": null
       }
     },
     {
@@ -499,7 +508,8 @@
           "offline",
           "denied"
         ],
-        "navigation": "push"
+        "navigation": "push",
+        "primaryAction": "Повторить прогон"
       }
     },
     {
@@ -518,7 +528,8 @@
           "offline",
           "denied"
         ],
-        "navigation": "push"
+        "navigation": "push",
+        "primaryAction": "Повторить только блок"
       }
     },
     {
@@ -537,7 +548,8 @@
           "offline",
           "denied"
         ],
-        "navigation": "system"
+        "navigation": "system",
+        "primaryAction": null
       }
     },
     {
@@ -556,7 +568,8 @@
           "offline",
           "denied"
         ],
-        "navigation": "system"
+        "navigation": "system",
+        "primaryAction": null
       }
     },
     {
@@ -575,7 +588,8 @@
           "offline",
           "denied"
         ],
-        "navigation": "system"
+        "navigation": "system",
+        "primaryAction": null
       }
     },
     {
@@ -594,7 +608,8 @@
           "offline",
           "denied"
         ],
-        "navigation": "push"
+        "navigation": "push",
+        "primaryAction": null
       }
     },
     {
@@ -613,7 +628,8 @@
           "offline",
           "denied"
         ],
-        "navigation": "push"
+        "navigation": "push",
+        "primaryAction": "Показывать по интересам"
       }
     }
   ],
@@ -705,10 +721,12 @@
         "import",
         "analysis",
         "settings",
-        "ads"
+        "ads",
+        "account"
       ],
       "stops": [
-        "analysis"
+        "analysis",
+        "account"
       ]
     }
   ],

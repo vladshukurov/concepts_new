@@ -14,6 +14,14 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'map-pin', title: 'Точка', sub: 'Кофейня у лаборатории', toast: 'Точка передачи подтверждена' }),
         ui.cell({ icon: 'clock', title: 'Окно', value: '19:00–20:30', toast: 'Время передачи подтверждено' }),
       ] }) }),
+      ui.section({ title: 'Переписка', children: [
+        ui.chat([
+          ui.bubble({ text: '<b class="kt-who">Айжан · Lab-Red</b>Конверт K-184 у бариста, на имя Даны', time: '19:06' }),
+          ui.bubble({ out: true, text: 'Спасибо, заберу после семи', time: '19:08', read: true }),
+        ]),
+        ui.list([ui.row({ lead: ui.leadIcon('message-circle'), title: 'Сообщения о передаче', sub: 'С именем того, кто передал', activate: 'commnotif|handoff' })]),
+        ui.granted('commnotif', 'Сообщения о передаче придут с именем Айжан'),
+      ] }),
       ui.section({ children: ui.actions([
         ui.button({ label: 'Отметить полученным', icon: 'circle-check', block: true, primary: true, toast: 'Получение зафиксировано · 19:24' }),
         ui.button({ label: 'Состав не совпадает', variant: 'tertiary', block: true, toast: 'Состав отправлен на повторную проверку' }),

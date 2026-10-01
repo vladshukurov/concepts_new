@@ -6,6 +6,7 @@ export default (ui) => ui.screen({
     ui.nav({ title: 'Знакомые фотографы' }),
     ui.scroll([
       ui.section({ children: [ui.search({ placeholder: 'Имя или псевдоним' }), ui.actions([ui.button({ label: 'Найти в контактах', icon: 'users', block: true, primary: true, ask: 'contacts|contacts|contacts' })])] }),
+      ui.granted('contacts', 'Нашли четверых знакомых из контактов'),
       ui.denied('contacts', 'Контакты закрыты — поиск по имени работает'),
       ui.section({ title: 'В Контуре', meta: '18', children: ui.list([
         ui.row({ lead: ui.avatar('РМ'), title: 'Ренат Мусин', sub: '2 общих · снимает Бостандык', go: 'photographer' }),

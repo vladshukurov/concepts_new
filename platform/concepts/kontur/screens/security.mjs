@@ -6,6 +6,7 @@ export default (ui) => ui.screen({
     ui.nav({ title: 'Защита и вход' }),
     ui.scroll([
       ui.section({ children: ui.actions([ui.button({ label: 'Включить Face ID', icon: 'scan-face', block: true, primary: true, ask: 'faceid|security|security' })]) }),
+      ui.granted('faceid', 'Лабораторный журнал открывается по Face ID'),
       ui.denied('faceid', 'Face ID недоступен — используется код устройства'),
       ui.section({ children: [
         ui.group({ cells: [

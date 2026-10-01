@@ -229,10 +229,10 @@
         "text": "Лента друзей готова к первому открытию."
       },
       "activate": true,
-      "feature": "Свежая лента к запуску",
-      "gesture": "«Обновлять ленту в фоне» в настройках",
-      "screen": "settings",
-      "target": "settings",
+      "feature": "Состав и время завтрашних прогулок обновляются ночью",
+      "gesture": "«Прогулки на завтра — к утру» в ленте",
+      "screen": "home",
+      "target": "home",
       "fallback": "Лента обновится после открытия",
       "risk": "medium",
       "anchor": false,
@@ -245,14 +245,14 @@
       "plist": "BGTaskSchedulerPermittedIdentifiers",
       "alert": {
         "title": "Фоновая задача",
-        "text": "app.tails.refresh зарегистрирована для обновления ленты."
+        "text": "Ветпаспорт и карта площадок скачиваются к утру для поездки без связи."
       },
       "activate": true,
-      "feature": "Зарегистрированная задача обновления",
-      "gesture": "«Проверить задачу» в фоновом обновлении",
+      "feature": "Ветпаспорт, площадки у дачи и дежурный ветеринар скачиваются ночью для поездки без связи",
+      "gesture": "«Скачать к утру» в разделе «Без сети»",
       "screen": "refresh",
-      "target": "home",
-      "fallback": "Без задачи обновление только вручную",
+      "target": "refresh",
+      "fallback": "Ветпаспорт открывается только при сети",
       "risk": "low",
       "anchor": false,
       "conditional": true,
@@ -732,7 +732,7 @@
       "ui": {
         "pattern": "detail",
         "purpose": "Встретиться",
-        "primaryAction": "Завершить",
+        "primaryAction": null,
         "states": [
           "default",
           "loading",
@@ -900,7 +900,7 @@
       "ui": {
         "pattern": "settings",
         "purpose": "Держать доступы и системные функции под рукой",
-        "primaryAction": "Обновлять ленту в фоне",
+        "primaryAction": "Без сети",
         "states": [
           "default",
           "loading",
@@ -976,15 +976,15 @@
     },
     {
       "id": "refresh",
-      "title": "Обновление в фоне",
+      "title": "Без сети",
       "type": "push",
       "light": true,
       "parent": "settings",
-      "meta": "BGAppRefreshTask",
+      "meta": "Ветпаспорт и площадки для поездки · BGTask",
       "ui": {
-        "pattern": "settings",
-        "purpose": "Проверить, что фоновое обновление работает",
-        "primaryAction": "Проверить задачу",
+        "pattern": "task",
+        "purpose": "Взять ветпаспорт и площадки в поездку без связи",
+        "primaryAction": "Скачать к утру",
         "states": [
           "default",
           "loading",
@@ -1269,6 +1269,9 @@
         "pet",
         "nearby",
         "walk",
+        "chats",
+        "chat",
+        "call",
         "create",
         "camera",
         "media",
@@ -1286,10 +1289,7 @@
         "background",
         "vaccine",
         "netqr",
-        "shareext",
-        "chats",
-        "chat",
-        "call"
+        "shareext"
       ],
       "stops": [],
       "authTarget": "home"

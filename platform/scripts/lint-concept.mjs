@@ -255,6 +255,43 @@ function lint(slug) {
     if (hasATT !== labelsTrack) P(`ATT в наборе (${hasATT}) и трекинг в privacy-лейблах (${labelsTrack}) расходятся`);
   }
 
+  /* —— доки не противоречат продукту —— */
+  /* Ручной текст доков пишется один раз и молча устаревает: «фиолетовый акцент»,
+     «сообщений в продукте нет», «BGTask не заявлен» стояли в доках «Образов»,
+     когда продукт был уже другим. Генерируемые блоки исключены — они из спеки. */
+  {
+    const docsDir = join(dir, 'docs');
+    const sources = [];
+    if (existsSync(docsDir)) for (const f of readdirSync(docsDir).filter((x) => x.endsWith('.md'))) sources.push([f, read(join(docsDir, f))]);
+    if (existsSync(join(dir, 'sections.html'))) sources.push(['sections.html', read(join(dir, 'sections.html')).replace(/<[^>]+>/g, ' ')]);
+    const onUi = ['vk-dark', 'vk-light', 'ok-light'].includes(spec.brand?.theme);
+    const accentWord = spec.brand?.theme === 'ok-light' ? 'оранжев' : 'син';
+    const hasMessenger = spec.tabs?.some((t) => /messag/.test(t.role || ''));
+    const plists = new Set(spec.permissions.map((p) => p.plist));
+    /* Допустимые цвета: бренд концепта и токены тем оболочки .ui из ядра */
+    const themeTokens = [...read(join(KERNEL, 'base.css')).matchAll(/^\.ui(?:\.[a-z-]+)?(?:,\s*\.ui\.[a-z-]+)*\s*\{[^}]*\}/gm)].map((m) => m[0]).join('');
+    const allowedHex = new Set([spec.brand?.accent, spec.brand?.accentDark, '#ffffff', '#000000', ...themeTokens.match(/#[0-9a-f]{6}\b/gi) || []].filter(Boolean).map((h) => h.toLowerCase()));
+    for (const [file, raw] of sources) {
+      /* Строки об убранном («прежний красный заменён синим») — история, не утверждение */
+      const prose = raw.replace(/<!-- @generated:[\s\S]*?<!-- @end -->/g, '').replace(/<!-- @history -->[\s\S]*?<!-- @end-history -->/g, '').split('\n').filter((l) => !/замен|убран|прежн|вместо|было\b|был\b/i.test(l)).join('\n');
+      const say = (msg) => P(`доки ${file}: ${msg}`);
+      for (const m of prose.matchAll(/(фиолетов|зелён|красн|розов|жёлт|бирюзов|оранжев|син)\w*\s+акцент|акцент\w*\s+[—–-]?\s*(фиолетов|зелён|красн|розов|жёлт|бирюзов|оранжев|син)/gi)) {
+        const word = (m[1] || m[2]).toLowerCase();
+        if (onUi && !word.startsWith(accentWord)) say(`«${m[0]}» — акцент темы ${spec.brand.theme} другой`);
+      }
+      for (const m of prose.matchAll(/#[0-9a-f]{6}\b/gi)) if (onUi && !allowedHex.has(m[0].toLowerCase())) say(`цвет ${m[0]} не из бренда и не из темы`);
+      if (onUi) for (const m of prose.matchAll(/\b(Manrope|Inter|Roboto|Golos|Onest|IBM Plex \w+|JetBrains Mono|Montserrat|Nunito)\b/g)) say(`шрифт «${m[1]}» — интерфейс на оболочке .ui набран системным SF Pro`);
+      if (hasMessenger && /(нет|не входят|не предоставляет|удален\w*|убран\w*)\s[^.\n]{0,40}(сообщени|переписк|мессенджер|передач\w* текста)/i.test(prose)) say('утверждает, что сообщений нет, а мессенджер — вкладка продукта');
+      for (const m of prose.matchAll(/`([^`]+)`\s+не заявлен/g)) if (plists.has(m[1])) say(`«${m[1]} не заявлен», а в спеке он есть`);
+      for (const m of prose.matchAll(/заявлен\w*\s+(\d+)\s+ключ/g)) if (Number(m[1]) !== spec.permissions.length) say(`«заявлено ${m[1]} ключей», а в спеке ${spec.permissions.length}`);
+      for (const m of prose.matchAll(/навигаци\w*[^\n]*\n+([^\n]+ · [^\n]+)/gi)) {
+        const named = m[1].split(/\.\s/)[0].replace(/[.*_]/g, '').split(' · ').map((x) => x.trim());
+        const tabs = (spec.tabs || []).map((t) => t.label);
+        if (named.every((n) => /^[А-ЯЁ]/.test(n)) && named.join('|') !== tabs.join('|')) say(`навигация «${named.join(' · ')}», а вкладки «${tabs.join(' · ')}»`);
+      }
+    }
+  }
+
   /* —— жест доступа совпадает с кнопкой —— */
   /* Спека обещает ревьюеру «нажмите «Проверить кадр»», а на экране кнопка
      давно называется иначе — такой маршрут в review notes ведёт в никуда. */

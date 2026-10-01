@@ -436,10 +436,10 @@
     {
       "key": "fetch",
       "plist": "UIBackgroundModes: fetch",
-      "feature": "Лента и объявления подгружаются до того, как приложение открыли",
-      "gesture": "«Лента к первому открытию»",
-      "screen": "settings",
-      "target": "settings",
+      "feature": "Лента товарищества готова к первому открытию",
+      "gesture": "«Новости товарищества к утру» в ленте",
+      "screen": "feed",
+      "target": "feed",
       "fallback": "Лента обновляется при открытии",
       "snack": "Фоновая загрузка выключена",
       "risk": "medium",
@@ -456,11 +456,11 @@
     {
       "key": "processing",
       "plist": "UIBackgroundModes: processing",
-      "feature": "Разбор загруженного альбома с праздника идёт на зарядке, а не при пользователе",
-      "gesture": "«Разобрать альбом»",
-      "screen": "settings",
-      "target": "settings",
-      "fallback": "Разбор идёт при открытом приложении",
+      "feature": "Снимки альбома раскладываются по событиям на зарядке",
+      "gesture": "«Разобрать альбом ночью»",
+      "screen": "album",
+      "target": "album",
+      "fallback": "Снимки остаются общей папкой",
       "snack": "Фоновая обработка выключена",
       "risk": "medium",
       "anchor": false,
@@ -476,11 +476,11 @@
     {
       "key": "bgtask",
       "plist": "BGTaskSchedulerPermittedIdentifiers",
-      "feature": "Список фоновых задач приложения: обновление ленты и разбор альбома",
-      "gesture": "«Фоновые задачи»",
-      "screen": "settings",
-      "target": "settings",
-      "fallback": "Фоновых задач нет, всё обновляется вручную",
+      "feature": "Новые записи собраний скачиваются к утру для дачи без связи",
+      "gesture": "«Новые записи к утру»",
+      "screen": "records",
+      "target": "records",
+      "fallback": "Записи грузятся при открытии",
       "snack": "Фоновые задачи недоступны",
       "risk": "low",
       "anchor": false,
@@ -496,11 +496,11 @@
     {
       "key": "keychain",
       "plist": "keychain-access-groups",
-      "feature": "Общий вход у приложения, расширения уведомлений и «Поделиться»",
-      "gesture": "«Одна сессия на расширения» в настройках",
-      "screen": "settings",
-      "target": "settings",
-      "fallback": "Расширения требуют отдельного входа",
+      "feature": "Вход на телевизоре с телефона без пароля",
+      "gesture": "«Войти на телевизоре»",
+      "screen": "tv",
+      "target": "tv",
+      "fallback": "На телевизоре вход по коду",
       "snack": "Общий keychain недоступен",
       "risk": "low",
       "anchor": false,
@@ -520,10 +520,10 @@
         "text": "Entitlement без системного запроса: срочное изменение собрания приходит с именем председателя."
       },
       "activate": true,
-      "feature": "Именное срочное обновление собрания от председателя",
-      "gesture": "«Повестка обновлена» в записях",
-      "screen": "records",
-      "target": "records",
+      "feature": "Ответы соседей в обсуждении приходят с именем и фото",
+      "gesture": "«Следить за обсуждением»",
+      "screen": "thread",
+      "target": "thread",
       "fallback": "Без entitlement обновление приходит обычным уведомлением",
       "risk": "low",
       "anchor": false,
@@ -539,10 +539,10 @@
         "text": "Entitlement без системного запроса: собственник может слушать общее собрание удалённо."
       },
       "activate": true,
-      "feature": "Удалённое подключение к трансляции общего собрания",
+      "feature": "Голосовое участие в собрании правления: слово по очереди",
       "gesture": "«Войти в эфир» у собрания правления",
       "screen": "records",
-      "target": "records",
+      "target": "live",
       "fallback": "Без фонового режима трансляция работает только в открытом приложении",
       "risk": "high",
       "anchor": false,
@@ -600,7 +600,7 @@
         "pattern": "collection",
         "navigation": "root",
         "purpose": "Показать, что нового у выпуска, и дать повод ответить",
-        "primaryAction": "Что нового в товариществе?",
+        "primaryAction": "ОЗ Что нового в товариществе?",
         "hierarchy": {
           "primary": "Публикации соседей с оценками и ответами",
           "secondary": "Встреча, состав выпуска и промо-блок"
@@ -763,7 +763,7 @@
         "pattern": "capture",
         "navigation": "fullscreen",
         "purpose": "Снять кадр для публикации",
-        "primaryAction": "Снять",
+        "primaryAction": null,
         "hierarchy": {
           "primary": "Видоискатель во весь экран и кнопка спуска",
           "secondary": "Переключение фото и видео, вспышка и переход в медиатеку"
@@ -804,7 +804,7 @@
         "pattern": "system",
         "navigation": "modal",
         "purpose": "Выбрать снимки из медиатеки телефона",
-        "primaryAction": "Добавить",
+        "primaryAction": "Добавить · 2",
         "hierarchy": {
           "primary": "Сетка снимков медиатеки телефона",
           "secondary": "Выбор альбома и счётчик выбранного"
@@ -885,7 +885,7 @@
         "pattern": "collection",
         "navigation": "root",
         "purpose": "Собрать ответы и вопросы выпуска в одном месте",
-        "primaryAction": "Спросить",
+        "primaryAction": null,
         "hierarchy": {
           "primary": "Ветки с новыми ответами",
           "secondary": "Вопросы без ответа и упоминания"
@@ -926,7 +926,7 @@
         "pattern": "detail",
         "navigation": "push",
         "purpose": "Показать вопрос и все ответы по порядку",
-        "primaryAction": "Ответить",
+        "primaryAction": null,
         "hierarchy": {
           "primary": "Вопрос выпуска и ответы по порядку",
           "secondary": "Кто отвечал, когда и что процитировал"
@@ -997,6 +997,46 @@
       }
     },
     {
+      "id": "live",
+      "title": "Эфир собрания",
+      "type": "fullscreen",
+      "light": false,
+      "parent": "records",
+      "meta": "Голосом в собрании · VoIP",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "fullscreen",
+        "purpose": "Участвовать в собрании голосом и взять слово",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Идущее собрание и кнопка выхода",
+          "secondary": "Микрофон, очередь на слово и повестка"
+        },
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Пункт 2, слушают 38 собственников"
+          },
+          {
+            "kind": "stress",
+            "example": "Очередь на слово из десяти человек"
+          },
+          {
+            "kind": "failure",
+            "example": "Связь пропала — остаётся запись"
+          }
+        ]
+      }
+    },
+    {
       "id": "player",
       "title": "Запись",
       "type": "push",
@@ -1048,7 +1088,7 @@
         "pattern": "system",
         "navigation": "system",
         "purpose": "Показать, что запись играет после сворачивания приложения",
-        "primaryAction": "Пауза",
+        "primaryAction": null,
         "hierarchy": {
           "primary": "Now Playing с названием записи",
           "secondary": "Пауза и перемотка ±15 секунд"
@@ -1170,7 +1210,7 @@
         "pattern": "collection",
         "navigation": "push",
         "purpose": "Показать совпадения из записной книжки и связать их с товариществами",
-        "primaryAction": "Добавить",
+        "primaryAction": "Добавить · 2",
         "hierarchy": {
           "primary": "Совпадения по номерам",
           "secondary": "Подсказка связи с участком и защищённое приглашение"
@@ -1375,7 +1415,7 @@
         "pattern": "player",
         "navigation": "fullscreen",
         "purpose": "Управлять показом выбранного видео на телевизоре",
-        "primaryAction": "Пауза",
+        "primaryAction": null,
         "hierarchy": {
           "primary": "Кадр, который сейчас идёт на телевизоре",
           "secondary": "Перелистывание, пауза и остановка показа"
@@ -1457,7 +1497,7 @@
         "pattern": "settings",
         "navigation": "push",
         "purpose": "Управлять входом, фоновыми задачами и разбором архива",
-        "primaryAction": "Разобрать архив",
+        "primaryAction": null,
         "hierarchy": {
           "primary": "Вход в приложение и участники выпуска",
           "secondary": "Фоновые задачи, разбор архива и выход из аккаунта"
@@ -1548,6 +1588,7 @@
         "discussions",
         "thread",
         "records",
+        "live",
         "player",
         "background",
         "profile",
@@ -1605,11 +1646,15 @@
         "player",
         "background",
         "album",
-        "tv"
+        "tv",
+        "thread",
+        "live"
       ],
       "stops": [
         "album",
-        "tv"
+        "tv",
+        "thread",
+        "live"
       ]
     },
     {
@@ -1659,11 +1704,17 @@
       "screens": [
         "settings",
         "invite",
-        "notif"
+        "notif",
+        "account",
+        "classroom",
+        "records"
       ],
       "stops": [
         "invite",
-        "notif"
+        "notif",
+        "account",
+        "classroom",
+        "records"
       ]
     }
   ],

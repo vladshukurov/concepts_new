@@ -5,6 +5,8 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Заметка к K-184' }),
     ui.scroll([
+      ui.granted('mic', 'Идёт запись · 00:04'),
+      ui.granted('speech', 'Расшифровано: «на шестой минуте поднялось до 21 °C»'),
       ui.denied('mic', 'Микрофон недоступен — напишите заметку текстом'),
       ui.denied('speech', 'Запись сохранена без расшифровки'),
       ui.section({ children: ui.actions([ui.button({ label: 'Записать голосом', icon: 'mic', block: true, primary: true, ask: 'mic|voice|voice' })]) }),

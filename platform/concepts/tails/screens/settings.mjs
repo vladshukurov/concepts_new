@@ -17,8 +17,7 @@ export default (ui) => ui.screen({
         ui.denied('push', 'Уведомления выключены — новое отмечаем точками на вкладках'),
       ] }),
       ui.section({ children: ui.group({ label: 'Лента', cells: [
-        ui.cell({ icon: 'repeat-2', title: 'Обновлять ленту в фоне', toggle: false, activate: 'fetch|settings', primary: true }),
-        ui.cell({ icon: 'clock', title: 'Фоновая задача', value: '04:12', go: 'refresh' }),
+        ui.cell({ icon: 'download', title: 'Без сети', value: 'Ветпаспорт', go: 'refresh', primary: true }),
         ui.cell({ icon: 'download', title: 'Качество загрузки', value: 'Высокое', toast: 'Высокое · 1,4 ГБ за месяц' }),
       ] }) }),
       ui.section({ children: ui.group({ label: 'На устройстве', cells: [

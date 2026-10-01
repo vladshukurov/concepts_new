@@ -29,15 +29,15 @@ SDK входа — номер и пароль, FCM — темы авторов �
 | `deleteaccount` | Удаление аккаунта | push, без таб-бара | — |
 | `today` | Главная | tab (root, start) | — |
 | `subs` | Подписки | tab (root) | push |
-| `history` | Профиль | tab (root) | photo |
+| `history` | Профиль | tab (root) | photos |
 | `lesson` | Урок | push | — |
 | `setup` | Прогон | push | camera, mic, location |
 | `place` | Площадка | push | — |
 | `frame` | Кадр и звук | fullscreen | — |
 | `recording` | Идёт прогон | fullscreen | — |
 | `paused` | Пауза | состояние записи | — |
-| `analysis` | Разбор | push | localnet |
-| `moment` | Момент выступления | push | photoadd, audio (activate) |
+| `analysis` | Разбор | push | localnetwork |
+| `moment` | Момент выступления | push | photosadd, audio (activate) |
 | `cast` | AirPlay | system | — |
 | `session` | Экран блокировки | system | — |
 | `import` | Видео | system picker | — |
@@ -78,8 +78,8 @@ SDK входа — номер и пароль, FCM — темы авторов �
     └─ Главная (today) — tab (root, start) · открывается: «Продолжить без аккаунта», «Войти» …
         ├─ Подписки (subs) — tab (root) · открывается: «Все подписки», «Подписки» · push
         │   └─ Урок (lesson) — push · открывается: «5:40», «12:05» …
-        ├─ Профиль (history) — tab (root) · открывается: вкладка таб-бара · photo
-        │   ├─ Видео (import) — system picker · открывается: «Добавить прогон из Фото» (photo)
+        ├─ Профиль (history) — tab (root) · открывается: вкладка таб-бара · photos
+        │   ├─ Видео (import) — system picker · открывается: «Добавить прогон из Фото» (photos)
         │   └─ Настройки (settings) — push · открывается: «Настройки», «Показывать по интересам» (tracking)
         │       └─ Реклама (ads) — push · открывается: «Петличка за 1 990 ₽», «Реклама в уроках» · tracking
         └─ Прогон (setup) — push · открывается: «Начать прогон», «Демо для команды» … · camera, mic, location
@@ -87,10 +87,10 @@ SDK входа — номер и пароль, FCM — темы авторов �
             ├─ Кадр и звук (frame) — fullscreen · открывается: «Проверить кадр и звук» (camera + mic)
             └─ Идёт прогон (recording) — fullscreen · открывается: «Начать прогон», «Продолжить прогон» …
                 ├─ Пауза (paused) — состояние записи · открывается: «Пауза»
-                └─ Разбор (analysis) — push · открывается: «Разбор», «7:24» … · localnet
-                    ├─ Момент выступления (moment) — push · открывается: «3:18», «0:36» · photoadd, audio
+                └─ Разбор (analysis) — push · открывается: «Разбор», «7:24» … · localnetwork
+                    ├─ Момент выступления (moment) — push · открывается: «3:18», «0:36» · photosadd, audio
                     │   └─ Экран блокировки (session) — system · открывается: «Слушать в фоне» (audio)
-                    └─ AirPlay (cast) — system · открывается: «Смотреть на телевизоре» (localnet)
+                    └─ AirPlay (cast) — system · открывается: «Смотреть на телевизоре» (localnetwork)
 ```
 <!-- @end -->
 
@@ -217,7 +217,7 @@ SDK входа — номер и пароль, FCM — темы авторов �
 | `subs` | Подписки | вкладка | переключает вкладку таб-бара | Подписки (subs) | — | — |
 | `subs` | Профиль | вкладка | переключает вкладку таб-бара | Профиль (history) | — | — |
 | `history` | Настройки | элемент экрана | открывает экран | Настройки (settings) | — | — |
-| `history` | Добавить прогон из Фото | элемент экрана | спрашивает доступ photo | Видео (import) | Профиль (history) | `NSPhotoLibraryUsageDescription` |
+| `history` | Добавить прогон из Фото | элемент экрана | спрашивает доступ photos | Видео (import) | Профиль (history) | `NSPhotoLibraryUsageDescription` |
 | `history` | 7:24 | элемент экрана | открывает экран | Разбор (analysis) | — | — |
 | `history` | 8:12 | элемент экрана | открывает экран | Разбор (analysis) | — | — |
 | `history` | 6:48 | элемент экрана | открывает экран | Разбор (analysis) | — | — |
@@ -252,14 +252,14 @@ SDK входа — номер и пароль, FCM — темы авторов �
 | `paused` | Завершить и разобрать | элемент экрана | открывает экран | Разбор (analysis) | — | — |
 | `paused` | Продолжить прогон | элемент экрана | открывает экран | Идёт прогон (recording) | — | — |
 | `analysis` | Назад | кнопка «назад» | возвращает к родительскому экрану | Идёт прогон (recording) | — | — |
-| `analysis` | Смотреть на телевизоре | элемент экрана | спрашивает доступ localnet | AirPlay (cast) | Разбор (analysis) | `NSLocalNetworkUsageDescription (+ NSBonjourServices)` |
+| `analysis` | Смотреть на телевизоре | элемент экрана | спрашивает доступ localnetwork | AirPlay (cast) | Разбор (analysis) | `NSLocalNetworkUsageDescription (+ NSBonjourServices)` |
 | `analysis` | 3:18 | элемент экрана | открывает экран | Момент выступления (moment) | — | — |
 | `analysis` | 0:36 | элемент экрана | открывает экран | Момент выступления (moment) | — | — |
 | `analysis` | 1:10 | элемент экрана | показывает подтверждение «Перемотали на 06:14» | остаётся на экране | — | — |
 | `analysis` | Повторить прогон | элемент экрана | открывает экран | Прогон (setup) | — | — |
 | `moment` | Назад | кнопка «назад» | возвращает к родительскому экрану | Разбор (analysis) | — | — |
 | `moment` | Повторить только блок | элемент экрана | открывает экран | Идёт прогон (recording) | — | — |
-| `moment` | Сохранить фрагмент в Фото | элемент экрана | спрашивает доступ photoadd | Момент выступления (moment) | Момент выступления (moment) | `NSPhotoLibraryAddUsageDescription` |
+| `moment` | Сохранить фрагмент в Фото | элемент экрана | спрашивает доступ photosadd | Момент выступления (moment) | Момент выступления (moment) | `NSPhotoLibraryAddUsageDescription` |
 | `moment` | Слушать в фоне | элемент экрана | включает entitlement audio, системного alert нет | Экран блокировки (session) | — | `UIBackgroundModes: audio` |
 | `cast` | iPhone | элемент экрана | открывает экран | Разбор (analysis) | — | — |
 | `cast` | Переговорная «Орбита» | элемент экрана | открывает экран | Разбор (analysis) | — | — |

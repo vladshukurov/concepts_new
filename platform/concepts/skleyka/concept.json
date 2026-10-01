@@ -216,7 +216,7 @@
       "grounding": "AVAudioSession только во время съёмки"
     },
     {
-      "key": "photo",
+      "key": "photos",
       "plist": "NSPhotoLibraryUsageDescription",
       "alert": {
         "title": "«Склейка» запрашивает доступ к «Фото»",
@@ -252,7 +252,7 @@
       "grounding": "Core Location only when in use; координаты привязаны к приватному событию"
     },
     {
-      "key": "localnet",
+      "key": "localnetwork",
       "plist": "NSLocalNetworkUsageDescription (+ NSBonjourServices)",
       "alert": {
         "title": "«Склейка» запрашивает доступ к локальной сети",
@@ -289,7 +289,7 @@
       "grounding": "AVPlayer + MPNowPlayingInfoCenter + MPRemoteCommandCenter"
     },
     {
-      "key": "photoadd",
+      "key": "photosadd",
       "plist": "NSPhotoLibraryAddUsageDescription",
       "alert": {
         "title": "«Склейка» запрашивает доступ к сохранению в «Фото»",
@@ -398,7 +398,7 @@
         "pattern": "collection",
         "navigation": "root",
         "purpose": "Показать локальные видеопроекты и создать новый",
-        "primaryAction": "Создать событие",
+        "primaryAction": null,
         "hierarchy": {
           "primary": "Активный локальный проект с количеством импортированных файлов",
           "secondary": "Локальные drafts, готовые экспорты и объём хранения"
@@ -601,7 +601,7 @@
         "pattern": "system",
         "navigation": "system",
         "purpose": "Подставить найденное место или ввести адрес вручную",
-        "primaryAction": null,
+        "primaryAction": "Выбрать место",
         "hierarchy": {
           "primary": "Найденное текущее место и подтверждение",
           "secondary": "Строка ручного поиска без геопозиции"
@@ -766,7 +766,7 @@
         "pattern": "capture",
         "navigation": "fullscreen",
         "purpose": "Снять новый фрагмент прямо в общий проект",
-        "primaryAction": "Записать фрагмент",
+        "primaryAction": null,
         "hierarchy": {
           "primary": "Живой кадр, таймер и большая кнопка записи",
           "secondary": "Переключение камеры, звук и выход без съёмки"
@@ -1299,14 +1299,16 @@
         "import",
         "cast",
         "place",
-        "ads"
+        "ads",
+        "account"
       ],
       "stops": [
         "archive",
         "camera",
         "import",
         "cast",
-        "place"
+        "place",
+        "account"
       ]
     }
   ],

@@ -34,7 +34,8 @@ export function assess(slug) {
   const markup = readMarkup(slug, spec);
   const all = Object.values(markup).join('\n');
   const text = all.replace(/<[^>]+>/g, ' ');
-  const hasMessenger = spec.tabs?.some((t) => /messag/.test(t.role || '')) || 'chats' in markup;
+  /* Мессенджер — любая переписка в продукте: вкладка, чат обсуждения, диалог */
+  const hasMessenger = spec.tabs?.some((t) => /messag/.test(t.role || '')) || /ui-chat\b|ui-dialog\b|ui-bubble\b/.test(all);
   const rows = [];
   for (const p of spec.permissions) {
     const key = ALIAS[p.key] || p.key;
@@ -67,6 +68,8 @@ export function assess(slug) {
   return { slug, name: spec.name, rows };
 }
 
+import { pathToFileURL } from 'node:url';
+if (import.meta.url !== pathToFileURL(process.argv[1]).href) { /* импорт как библиотеки */ } else {
 const args = process.argv.slice(2);
 const strict = args.includes('--strict');
 const slugs = args.filter((a) => !a.startsWith('--'));
@@ -102,4 +105,5 @@ if (slugs.length) {
   for (const [k, v] of Object.entries(byKey).sort((a, b) => Object.values(b[1]).reduce((x, y) => x + y) - Object.values(a[1]).reduce((x, y) => x + y))) {
     console.log(`  ${k.padEnd(18)} ${Object.entries(v).sort((a, b) => b[1] - a[1]).map(([i, n]) => `${i} ×${n}`).join(' · ')}`);
   }
+}
 }
