@@ -22,9 +22,9 @@ export default (ui) => ui.screen({
         ui.button({ label: 'Надиктовать наблюдение', icon: 'mic', variant: 'secondary', block: true, ask: 'mic|vetnote|vetnote' }),
       ]) }),
       ui.section({ title: 'Прошлые заметки', meta: '23', children: ui.list([
-        ui.row({ lead: '<span class="tl-date">14.05</span>', title: 'Чесал правое ухо весь вечер', sub: 'Прошло само на следующий день', toast: 'Заметка 14 мая' }),
-        ui.row({ lead: '<span class="tl-date">06.05</span>', title: 'Съел что-то у воды', sub: 'Показали Марии, наблюдать трое суток', toast: 'Заметка 6 мая' }),
-        ui.row({ lead: '<span class="tl-date">27.04</span>', title: 'Заметка без текста', sub: '0:22 · ищется только по дате', toast: 'Воспроизведение 0:22' }),
+        ui.row({ lead: ui.leadIcon('', { text: '14.05' }), title: 'Чесал правое ухо весь вечер', sub: 'Прошло само на следующий день', toast: 'Заметка 14 мая' }),
+        ui.row({ lead: ui.leadIcon('', { text: '06.05' }), title: 'Съел что-то у воды', sub: 'Показали Марии, наблюдать трое суток', toast: 'Заметка 6 мая' }),
+        ui.row({ lead: ui.leadIcon('', { text: '27.04' }), title: 'Заметка без текста', sub: '0:22 · ищется только по дате', toast: 'Воспроизведение 0:22' }),
       ]) }),
     ]),
   ],

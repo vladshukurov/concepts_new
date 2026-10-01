@@ -3,7 +3,7 @@
  * «Сейчас» — суббота, 16 мая, 9:41: вечером прогулка у Лопухинки,
  * во вторник — видеоосмотр у ветеринара.
  */
-import { moment, dateLabel } from '../../kernel/world.mjs';
+import { moment, dateLabel, daysBetween, plural } from '../../kernel/world.mjs';
 
 export const now = moment('2026-05-16');
 
@@ -17,6 +17,8 @@ export const pets = {
 
 export const vet = { name: 'Мария Тенищева', clinic: 'каб. 3' };
 export const visit = { iso: '2026-05-19', day: dateLabel('2026-05-19'), time: '09:15', title: `Видеоосмотр с Марией Тенищевой`, movedFrom: '12' };
+
+export const revaccination = { title: 'Ревакцинация', vaccine: 'Nobivac DHPPi', day: dateLabel('2026-05-29'), time: '10:40', left: plural(daysBetween('2026-05-16', '2026-05-29'), 'день', 'дня', 'дней') };
 
 export const entities = [
   { name: 'Питомец', what: 'животное с ветпаспортом; фото — его, а не экрана', states: ['в профиле', 'на прогулке', 'на приёме'], screens: ['pet', 'profile', 'home'] },

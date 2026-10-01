@@ -1,4 +1,5 @@
 import { THEME, PET } from './_shared.mjs';
+import { revaccination } from '../model.mjs';
 
 export default (ui) => ui.screen({
   id: 'pet', theme: THEME,
@@ -10,8 +11,8 @@ export default (ui) => ui.screen({
     ])}</div>`,
     ui.section({ children: `<div class="tl-match">${ui.icon('badge-check')}<div><strong>Подойдёте друг другу</strong>Барни и Трюфель выбирают активные прогулки и спокойно общаются с крупными собаками</div></div>` }),
     ui.section({ title: 'Здоровье', children: ui.list([
-      ui.row({ lead: `<span class="tl-date">${ui.icon('syringe')}</span>`, title: 'Прививки и обработки', sub: 'Ревакцинация через 11 дней', go: 'vaccine' }),
-      ui.row({ lead: `<span class="tl-date">${ui.icon('notebook-pen')}</span>`, title: 'Наблюдения владельца', sub: 'Последнее 14 мая: чесал правое ухо', go: 'vetnote' }),
+      ui.row({ lead: ui.leadIcon('syringe'), title: 'Прививки и обработки', sub: `Ревакцинация через ${revaccination.left}`, go: 'vaccine' }),
+      ui.row({ lead: ui.leadIcon('notebook-pen'), title: 'Наблюдения владельца', sub: 'Последнее 14 мая: чесал правое ухо', go: 'vetnote' }),
     ]) }),
     ui.section({ title: 'Публикации', meta: '142', children: `<div class="tl-gallery">${[PET.truffle, PET.loki, PET.barni, PET.mint, PET.truffle, PET.loki].map((p, i) => `<button class="${p}" data-toast="Публикация ${i + 1}" aria-label="Публикация ${i + 1}"></button>`).join('')}</div>` }),
   ]),

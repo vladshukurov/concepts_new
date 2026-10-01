@@ -94,7 +94,6 @@
 .tl-appt .ui-actions { padding:12px 0 0; }
 .tl-days { min-width:56px; padding:3px 8px; border-radius:8px; background:var(--ui-card-2); font:600 13px/16px var(--ui-face); color:var(--ui-text-2); text-align:center; font-variant-numeric:tabular-nums; }
 .tl-days.is-late { background:rgba(230,70,70,.12); color:#c42b2b; }
-.tl-date { width:56px; height:56px; flex:none; display:grid; place-items:center; border-radius:12px; background:var(--ui-card-2); font:600 14px/18px var(--ui-face); color:var(--ui-text-2); font-variant-numeric:tabular-nums; }
 
 /* Расшифровка наблюдения */
 .tl-note-head { display:flex; flex-direction:column; gap:4px; padding:4px 16px 16px; background:var(--ui-card); }

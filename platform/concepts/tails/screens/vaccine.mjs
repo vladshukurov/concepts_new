@@ -1,4 +1,5 @@
 import { THEME, TABS, PET } from './_shared.mjs';
+import { revaccination } from '../model.mjs';
 import { visit } from '../model.mjs';
 
 export default (ui) => ui.screen({
@@ -14,20 +15,20 @@ export default (ui) => ui.screen({
       ui.granted('calendar', `Приём в Календаре · ${visit.day}`),
       ui.denied('calendar', 'Приём остаётся в ветпаспорте и напоминании приложения'),
       ui.list([
-        ui.row({ lead: `<span class="tl-date">${ui.icon('bell')}</span>`, title: 'Изменения приёма', sub: 'Перенос, отмена или подготовка от врача', go: 'chats' }),
-        ui.row({ lead: `<span class="tl-date">${ui.icon('notebook-pen')}</span>`, title: 'Наблюдения к приёму', sub: 'Сегодня: 4 из 5 разобрано', go: 'vetnote' }),
+        ui.row({ lead: ui.leadIcon('bell'), title: 'Изменения приёма', sub: 'Перенос, отмена или подготовка от врача', go: 'chats' }),
+        ui.row({ lead: ui.leadIcon('notebook-pen'), title: 'Наблюдения к приёму', sub: 'Сегодня: 4 из 5 разобрано', go: 'vetnote' }),
       ]),
     ] }),
     ui.section({ title: 'Впереди', meta: '4 срока', children: ui.list([
-      ui.row({ lead: `<span class="tl-date">${ui.icon('syringe')}</span>`, title: 'Ревакцинация', sub: 'Nobivac DHPPi, 29 мая в 10:40', end: '<span class="tl-days">11 дней</span>' }),
-      ui.row({ lead: `<span class="tl-date">${ui.icon('shield')}</span>`, title: 'Обработка от клещей', sub: 'Bravecto кончился 14 мая', end: '<span class="tl-days is-late">−4 дня</span>' }),
-      ui.row({ lead: `<span class="tl-date">${ui.icon('calendar')}</span>`, title: 'Приём перенесли', sub: `С ${visit.movedFrom} на ${visit.day}, врач была в отпуске`, end: '<span class="tl-days">перенос</span>' }),
-      ui.row({ lead: `<span class="tl-date">${ui.icon('circle-check')}</span>`, title: 'Бешенство', sub: 'Сделано 6 марта · следующее в 2027', end: '<span class="tl-days">готово</span>' }),
+      ui.row({ lead: ui.leadIcon('syringe'), title: 'Ревакцинация', sub: `${revaccination.vaccine}, ${revaccination.day} в ${revaccination.time}`, end: `<span class=\"tl-days\">${revaccination.left}</span>` }),
+      ui.row({ lead: ui.leadIcon('shield'), title: 'Обработка от клещей', sub: 'Bravecto кончился 14 мая', end: '<span class="tl-days is-late">−4 дня</span>' }),
+      ui.row({ lead: ui.leadIcon('calendar'), title: 'Приём перенесли', sub: `С ${visit.movedFrom} на ${visit.day}, врач была в отпуске`, end: '<span class="tl-days">перенос</span>' }),
+      ui.row({ lead: ui.leadIcon('circle-check'), title: 'Бешенство', sub: 'Сделано 6 марта · следующее в 2027', end: '<span class="tl-days">готово</span>' }),
     ]) }),
     ui.section({ title: 'Клиника и врач', children: ui.list([
       ui.row({ lead: ui.leadIcon('', { text: 'МТ', round: true }), title: 'Мария Тенищева', sub: 'Ведёт Трюфеля с восьми месяцев · каб. 3' }),
-      ui.row({ lead: `<span class="tl-date">${ui.icon('map-pin')}</span>`, title: 'Большой проспект П. С., 74', sub: 'От парка 12 минут пешком' }),
-      ui.row({ lead: `<span class="tl-date">${ui.icon('id-card')}</span>`, title: 'Чип 643094100128756', sub: 'AnimalID с 4 апреля 2024' }),
+      ui.row({ lead: ui.leadIcon('map-pin'), title: 'Большой проспект П. С., 74', sub: 'От парка 12 минут пешком' }),
+      ui.row({ lead: ui.leadIcon('id-card'), title: 'Чип 643094100128756', sub: 'AnimalID с 4 апреля 2024' }),
     ]) }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'vaccine' }),
