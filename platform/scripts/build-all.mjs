@@ -62,7 +62,7 @@ const gallery = (items) => {
     .sort((a, b) => targetSetMeta(a).label.localeCompare(targetSetMeta(b).label, 'ru'));
   const plural = items.length % 10 === 1 && items.length % 100 !== 11 ? 'концепт' : 'концептов';
   const card = (item) => `    <a class="card" href="./${item.slug}/index.html" data-target-set="${esc(item.targetSet)}" data-mode="${item.mode}" data-search="${esc(item.search)}" aria-label="${esc(item.name)} — ${esc(item.modeLabel)}, ${esc(item.category)}">
-      <div class="shot"><img src="./${item.slug}/assets/screenshots/${item.start}.png" alt="Экран «${esc(item.name)}»" loading="lazy"></div>
+      <div class="shot"><img src="./${item.slug}/assets/screenshots/${item.preview}.png" alt="Экран «${esc(item.name)}»" loading="lazy"></div>
       <div class="meta">
         <div class="card-kicker"><span class="category">${esc(item.category)}</span><span class="card-badges">${item.isNew ? '<span class="new-badge">NEW</span>' : ''}<span class="mode-badge ${item.mode}">${esc(item.modeLabel)}</span></span></div>
         <div class="name-row"><div class="name-row-main">${item.iconPlaceholder ? '<span class="app-icon app-icon-placeholder"></span>' : item.hasAppIcon ? `<img class="app-icon" src="./${item.slug}/assets/app-icon.png" alt="" loading="lazy">` : ''}<div class="name">${esc(item.name)}</div></div><span class="arrow" aria-hidden="true">→</span></div>
@@ -284,6 +284,9 @@ for (const slug of slugs) {
     name: spec.name,
     tagline: spec.tagline,
     start: spec.start,
+    /* Превью — первая вкладка продукта, а не общий экран входа: иначе все карточки на одно лицо */
+    preview: [spec.tabs?.[0]?.id, spec.auth?.entryTarget, spec.start]
+      .find((id) => id && existsSync(join(conceptDir(slug), 'assets', 'screenshots', `${id}.png`))) || spec.start,
     perms: spec.permissions.length,
     screens: spec.screens.length,
     targetSet: spec.targetSet || '',
