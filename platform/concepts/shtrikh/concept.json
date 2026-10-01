@@ -23,7 +23,7 @@
     ],
     "verticalSlice": {
       "entry": "phone",
-      "action": "problem",
+      "action": "compose",
       "result": "post"
     },
     "coreLoop": [
@@ -44,7 +44,13 @@
           "id": "artist",
           "name": "Художник",
           "identity": "публичный профиль автора",
-          "fields": ["name", "bio", "materials", "city", "followers"],
+          "fields": [
+            "name",
+            "bio",
+            "materials",
+            "city",
+            "followers"
+          ],
           "relations": [
             {
               "kind": "creates",
@@ -60,7 +66,13 @@
           "id": "sketch",
           "name": "Зарисовка",
           "identity": "публикация автора с работой",
-          "fields": ["caption", "material", "createdAt", "media", "reactions"],
+          "fields": [
+            "caption",
+            "material",
+            "createdAt",
+            "media",
+            "reactions"
+          ],
           "relations": [
             {
               "kind": "authored-by",
@@ -80,7 +92,12 @@
           "id": "place",
           "name": "Место",
           "identity": "координата и устойчивое название",
-          "fields": ["title", "address", "coordinates", "saved"],
+          "fields": [
+            "title",
+            "address",
+            "coordinates",
+            "saved"
+          ],
           "relations": [
             {
               "kind": "has-many",
@@ -96,7 +113,12 @@
           "id": "series",
           "name": "Серия места",
           "identity": "место плюс кураторская тема",
-          "fields": ["title", "cover", "sketchCount", "artistCount"],
+          "fields": [
+            "title",
+            "cover",
+            "sketchCount",
+            "artistCount"
+          ],
           "relations": [
             {
               "kind": "belongs-to",
@@ -134,7 +156,10 @@
           "id": "voiceNote",
           "name": "Голосовая заметка",
           "identity": "локальная запись к черновику",
-          "fields": ["duration", "transcript"],
+          "fields": [
+            "duration",
+            "transcript"
+          ],
           "relations": [
             {
               "kind": "belongs-to",
@@ -143,10 +168,15 @@
           ]
         },
         {
-          "id": "conversation",
+          "id": "chat",
           "name": "Разговор",
           "identity": "участники и связанный пленэр или художник",
-          "fields": ["participants", "context", "unread", "notifications"],
+          "fields": [
+            "participants",
+            "context",
+            "unread",
+            "notifications"
+          ],
           "relations": [
             {
               "kind": "has-many",
@@ -162,11 +192,16 @@
           "id": "message",
           "name": "Сообщение",
           "identity": "разговор, автор и время",
-          "fields": ["text", "voice", "photo", "contextCard"],
+          "fields": [
+            "text",
+            "voice",
+            "photo",
+            "contextCard"
+          ],
           "relations": [
             {
               "kind": "belongs-to",
-              "to": "conversation"
+              "to": "chat"
             }
           ]
         }
@@ -178,9 +213,12 @@
           "actor": "artist",
           "entity": "sketch",
           "effect": "создаётся пост с работой и подписью",
-          "screen": "problem",
+          "screen": "compose",
           "result": "Работа появляется в ленте",
-          "capabilities": ["camera", "photos"]
+          "capabilities": [
+            "camera",
+            "photos"
+          ]
         },
         {
           "id": "attach-place",
@@ -188,9 +226,11 @@
           "actor": "artist",
           "entity": "place",
           "effect": "зарисовка связывается с точкой",
-          "screen": "yard",
+          "screen": "places",
           "result": "Работа попадает в страницу места",
-          "capabilities": ["location"]
+          "capabilities": [
+            "location"
+          ]
         },
         {
           "id": "capture-note",
@@ -198,9 +238,12 @@
           "actor": "artist",
           "entity": "voiceNote",
           "effect": "локальная запись превращается в редактируемый текст",
-          "screen": "problem",
+          "screen": "compose",
           "result": "Подпись добавлена в черновик",
-          "capabilities": ["mic", "speech"]
+          "capabilities": [
+            "mic",
+            "speech"
+          ]
         },
         {
           "id": "join-pleinair",
@@ -210,7 +253,10 @@
           "effect": "автор добавляется к участникам",
           "screen": "events",
           "result": "Встреча и точка сбора сохранены",
-          "capabilities": ["calendar", "push"]
+          "capabilities": [
+            "calendar",
+            "push"
+          ]
         },
         {
           "id": "find-artists",
@@ -218,9 +264,11 @@
           "actor": "artist",
           "entity": "artist",
           "effect": "локально сопоставляются контакты",
-          "screen": "neighbors",
+          "screen": "authors",
           "result": "Показаны только найденные совпадения",
-          "capabilities": ["contacts"]
+          "capabilities": [
+            "contacts"
+          ]
         },
         {
           "id": "refresh-feed",
@@ -230,7 +278,11 @@
           "effect": "локальный снимок ленты обновляется",
           "screen": "background",
           "result": "Новые работы готовы к открытию",
-          "capabilities": ["remotenotif", "fetch", "bgtask"]
+          "capabilities": [
+            "remotenotif",
+            "fetch",
+            "bgtask"
+          ]
         },
         {
           "id": "show-widget",
@@ -240,7 +292,10 @@
           "effect": "виджет читает снимок из общего контейнера",
           "screen": "widget",
           "result": "Место дня видно без открытия",
-          "capabilities": ["appgroups", "keychain"]
+          "capabilities": [
+            "appgroups",
+            "keychain"
+          ]
         },
         {
           "id": "open-portfolio",
@@ -250,7 +305,9 @@
           "effect": "связка подставляется в Safari",
           "screen": "fill",
           "result": "Вход без копирования пароля",
-          "capabilities": ["autofill"]
+          "capabilities": [
+            "autofill"
+          ]
         },
         {
           "id": "join-exhibit-wifi",
@@ -258,9 +315,12 @@
           "actor": "artist",
           "entity": "place",
           "effect": "телефон подключается по QR",
-          "screen": "guest",
+          "screen": "exhibit",
           "result": "Общий экран получает работы участников",
-          "capabilities": ["wifiinfo", "hotspot"]
+          "capabilities": [
+            "wifiinfo",
+            "hotspot"
+          ]
         },
         {
           "id": "protect-drafts",
@@ -270,7 +330,9 @@
           "effect": "локальный альбом требует биометрию",
           "screen": "lock",
           "result": "Неопубликованные работы защищены",
-          "capabilities": ["faceid"]
+          "capabilities": [
+            "faceid"
+          ]
         },
         {
           "id": "personalize-ads",
@@ -280,7 +342,9 @@
           "effect": "после согласия доступен рекламный идентификатор",
           "screen": "ads",
           "result": "Реклама релевантнее",
-          "capabilities": ["tracking"]
+          "capabilities": [
+            "tracking"
+          ]
         },
         {
           "id": "live-critique",
@@ -288,9 +352,12 @@
           "actor": "artist",
           "entity": "pleinair",
           "effect": "организатор запускает запланированный групповой звонок участников пленэра",
-          "screen": "conversation",
+          "screen": "chat",
           "result": "Участники получают настоящий входящий звонок с интерфейсом CallKit",
-          "capabilities": ["voip", "mic"]
+          "capabilities": [
+            "voip",
+            "mic"
+          ]
         },
         {
           "id": "send-message",
@@ -298,9 +365,14 @@
           "actor": "artist",
           "entity": "message",
           "effect": "добавляется сообщение в разговор пленэра или с художником",
-          "screen": "conversation",
+          "screen": "chat",
           "result": "Текст, фото, голос и карточка встречи остаются рядом с пленэром",
-          "capabilities": ["push", "commnotif", "mic", "photos"]
+          "capabilities": [
+            "push",
+            "commnotif",
+            "mic",
+            "photos"
+          ]
         }
       ]
     }
@@ -323,12 +395,17 @@
     "evidenceScreens": [
       "home",
       "post",
-      "yard",
-      "chronicle",
+      "places",
+      "series",
       "profile",
-      "problem"
+      "compose"
     ],
-    "referencePatterns": ["social-feed", "profile", "create-post"],
+    "referencePatterns": [
+      "social-feed",
+      "profile",
+      "create-post",
+      "messaging"
+    ],
     "referenceEvidence": [
       {
         "pattern": "social-feed",
@@ -342,25 +419,32 @@
       },
       {
         "pattern": "create-post",
-        "screen": "problem",
+        "screen": "compose",
         "behavior": "VK-подобный композер объединяет подпись, медиа, место и видимость"
+      },
+      {
+        "pattern": "messaging",
+        "screen": "chats",
+        "behavior": "Мессенджер: чаты пленэров и личные диалоги, ракурсы, голосовые, аудиоразбор"
       }
     ]
   },
   "brand": {
     "accent": "#0077FF",
-    "accentDark": "#529EF5",
+    "accentDark": "#0077FF",
     "authIcon": "image",
-    "fonts": "Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,600;1,500"
+    "fonts": "Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,600;1,500",
+    "theme": "vk-light"
   },
   "start": "phone",
   "tabs": [
     {
       "id": "home",
-      "label": "Главная"
+      "label": "Главная",
+      "role": "feed"
     },
     {
-      "id": "yard",
+      "id": "places",
       "label": "Места",
       "role": "map"
     },
@@ -371,12 +455,13 @@
     },
     {
       "id": "chats",
-      "label": "Чаты",
-      "role": "messaging"
+      "label": "Мессенджер",
+      "role": "messages"
     },
     {
       "id": "menu",
-      "label": "Сервисы"
+      "label": "Сервисы",
+      "role": "profile"
     }
   ],
   "permissions": [
@@ -387,10 +472,10 @@
         "title": "«Штрих» запрашивает геопозицию",
         "text": "Чтобы привязать зарисовку к месту и показать пленэры рядом."
       },
-      "feature": "Места рисунков и пленэры рядом",
-      "gesture": "Отметить место",
-      "screen": "problem",
-      "target": "yard",
+      "feature": "Работа попадает в серию своего места",
+      "gesture": "«Отметить место» в новой зарисовке",
+      "screen": "compose",
+      "target": "places",
       "fallback": "Место выбирается вручную",
       "snack": "Место выбирается вручную",
       "risk": "low",
@@ -398,7 +483,7 @@
       "conditional": true,
       "requires": "CLLocationManager whenInUse: без него iOS не отдаёт имя текущей сети",
       "grounding": "CoreLocation используется только при выборе точки; трек перемещений не ведётся",
-      "reviewNote": "CoreLocation используется только при выборе точки; трек перемещений не ведётся"
+      "reviewNote": "Доступ вызывается действием «Отметить место» в новой зарисовке на экране «compose». При отказе или без режима: Место выбирается вручную"
     },
     {
       "key": "wifiinfo",
@@ -407,10 +492,10 @@
         "title": "Сеть площадки",
         "text": "Имя текущей Wi‑Fi-сети сверяется с сетью выставочного экрана."
       },
-      "feature": "Подтверждение выставочной площадки",
-      "gesture": "Проверить площадку",
-      "screen": "verify",
-      "target": "home",
+      "feature": "Отметка на выставке по сети площадки — ваши работы на общем экране первыми",
+      "gesture": "«Я на выставке»",
+      "screen": "exhibit",
+      "target": "exhibit",
       "activate": true,
       "fallback": "Код площадки вводится вручную",
       "risk": "low",
@@ -418,7 +503,7 @@
       "conditional": true,
       "requires": "CNCopyCurrentNetworkInfo плюс выданная геопозиция — иначе SSID приходит пустым",
       "grounding": "CNCopyCurrentNetworkInfo вызывается один раз на экране выставки; SSID не сохраняется",
-      "reviewNote": "CNCopyCurrentNetworkInfo вызывается один раз на экране выставки; SSID не сохраняется",
+      "reviewNote": "Доступ вызывается действием «Я на выставке» на экране «exhibit». При отказе или без режима: Код площадки вводится вручную",
       "snack": "Код площадки вводится вручную"
     },
     {
@@ -429,8 +514,8 @@
         "text": "Чтобы снять рисунок или QR-код площадки."
       },
       "feature": "Съёмка зарисовки",
-      "gesture": "Снять рисунок",
-      "screen": "problem",
+      "gesture": "«Снять рисунок»",
+      "screen": "compose",
       "target": "shoot",
       "fallback": "Можно выбрать готовое фото",
       "snack": "Можно выбрать готовое фото",
@@ -438,7 +523,7 @@
       "anchor": false,
       "conditional": false,
       "grounding": "AVCaptureSession; кадр остаётся в черновике до публикации",
-      "reviewNote": "AVCaptureSession; кадр остаётся в черновике до публикации"
+      "reviewNote": "Доступ вызывается действием «Снять рисунок» на экране «compose». При отказе или без режима: Можно выбрать готовое фото"
     },
     {
       "key": "photos",
@@ -448,16 +533,16 @@
         "text": "Чтобы выбрать готовую работу для публикации или разговора."
       },
       "feature": "Работа из медиатеки в публикации и сообщении",
-      "gesture": "Фото из медиатеки или добавить работу в разговор",
-      "screen": "problem",
-      "target": "chronicle",
+      "gesture": "«Из медиатеки»",
+      "screen": "compose",
+      "target": "picker",
       "fallback": "Можно снять рисунок камерой",
       "snack": "Можно снять рисунок камерой",
       "risk": "low",
       "anchor": false,
       "conditional": false,
       "grounding": "PHPicker передаёт только выбранные пользователем файлы",
-      "reviewNote": "PHPicker передаёт только выбранные пользователем файлы"
+      "reviewNote": "Доступ вызывается действием «Из медиатеки» на экране «compose». При отказе или без режима: Можно снять рисунок камерой"
     },
     {
       "key": "push",
@@ -467,9 +552,9 @@
         "text": "Сообщим об ответах, новых работах места, сообщениях и изменениях пленэра."
       },
       "feature": "Ответы, сообщения и пленэры",
-      "gesture": "Включить уведомления",
-      "screen": "settings",
-      "target": "post",
+      "gesture": "«Ответы и реакции» в уведомлениях",
+      "screen": "notif",
+      "target": "notif",
       "fallback": "Обновления видны внутри приложения",
       "snack": "Обновления видны внутри приложения",
       "snackOnce": true,
@@ -478,7 +563,7 @@
       "conditional": true,
       "requires": "регистрация в APNs через Firebase Cloud Messaging и отправка из консоли — своего сервера нет",
       "grounding": "APNs через FCM topics; подписки включаются пользователем",
-      "reviewNote": "APNs через FCM topics; подписки включаются пользователем"
+      "reviewNote": "Доступ вызывается действием «Ответы и реакции» в уведомлениях на экране «notif». При отказе или без режима: Обновления видны внутри приложения"
     },
     {
       "key": "remotenotif",
@@ -487,10 +572,10 @@
         "title": "Тихие обновления",
         "text": "Новые работы сохранённых мест загрузятся до открытия."
       },
-      "feature": "Свежие серии мест",
-      "gesture": "Обновлять сохранённое",
-      "screen": "settings",
-      "target": "background",
+      "feature": "Серия места пополняется без перезагрузки",
+      "gesture": "«Новые работы этой точки — сами» в серии",
+      "screen": "series",
+      "target": "series",
       "activate": true,
       "fallback": "Лента обновится при открытии",
       "risk": "low",
@@ -499,7 +584,7 @@
       "requires": "обработчик didReceiveRemoteNotification, который переписывает снапшот виджета",
       "grounding": "didReceiveRemoteNotification обновляет локальный snapshot",
       "snack": "Лента обновится при открытии",
-      "reviewNote": "didReceiveRemoteNotification обновляет локальный snapshot"
+      "reviewNote": "Доступ вызывается действием «Новые работы этой точки — сами» в серии на экране «series». При отказе или без режима: Лента обновится при открытии"
     },
     {
       "key": "fetch",
@@ -508,10 +593,10 @@
         "title": "Фоновое обновление",
         "text": "Лента авторов будет готова к первому открытию."
       },
-      "feature": "Свежая авторская лента",
-      "gesture": "Обновлять ленту",
-      "screen": "settings",
-      "target": "background",
+      "feature": "Серии сохранённых мест обновлены к утру",
+      "gesture": "«Новые работы к утру» на главной",
+      "screen": "home",
+      "target": "home",
       "activate": true,
       "fallback": "Лента обновится при открытии",
       "risk": "medium",
@@ -519,7 +604,7 @@
       "conditional": true,
       "requires": "BGAppRefreshTask, который реально читает объявления своего город из Firestore",
       "grounding": "Background fetch обновляет локальный snapshot",
-      "reviewNote": "Background fetch обновляет локальный snapshot",
+      "reviewNote": "Доступ вызывается действием «Новые работы к утру» на главной на экране «home». При отказе или без режима: Лента обновится при открытии",
       "snack": "Лента обновится при открытии"
     },
     {
@@ -529,19 +614,19 @@
         "title": "Фоновая задача",
         "text": "Сохранённые места обновляются по системному расписанию."
       },
-      "feature": "Обновление сохранённых мест",
-      "gesture": "Обновлять места",
-      "screen": "settings",
-      "target": "background",
+      "feature": "Серии и схема места пленэра скачиваются для работы без сети",
+      "gesture": "«Места пленэра к утру»",
+      "screen": "events",
+      "target": "events",
       "activate": true,
-      "fallback": "Места обновятся при открытии",
+      "fallback": "Места грузятся по сети на пленэре",
       "risk": "low",
       "anchor": false,
       "conditional": true,
       "requires": "строка в Info.plist совпадает с BGTaskScheduler.register — иначе падение при регистрации",
       "grounding": "BGTaskScheduler с идентификатором app.shtrikh.refresh",
       "snack": "Места обновятся при открытии",
-      "reviewNote": "BGTaskScheduler с идентификатором app.shtrikh.refresh"
+      "reviewNote": "Доступ вызывается действием «Места пленэра к утру» на экране «events». При отказе или без режима: Места грузятся по сети на пленэре"
     },
     {
       "key": "appgroups",
@@ -551,7 +636,7 @@
         "text": "Виджет показывает место дня и ближайший пленэр."
       },
       "feature": "Виджет места дня",
-      "gesture": "Добавить виджет",
+      "gesture": "«Виджет места дня» в настройках",
       "screen": "settings",
       "target": "widget",
       "activate": true,
@@ -561,7 +646,7 @@
       "conditional": false,
       "grounding": "App Group хранит только JSON snapshot для виджета",
       "snack": "Место дня остаётся в приложении",
-      "reviewNote": "App Group хранит только JSON snapshot для виджета"
+      "reviewNote": "Доступ вызывается действием «Виджет места дня» в настройках на экране «settings». При отказе или без режима: Место дня остаётся в приложении"
     },
     {
       "key": "keychain",
@@ -571,7 +656,7 @@
         "text": "Приложение и расширения используют один защищённый вход."
       },
       "feature": "Один вход для приложения и виджета",
-      "gesture": "Открыть «Штрих»",
+      "gesture": "«Штрих» с виджета",
       "screen": "widget",
       "target": "profile",
       "activate": true,
@@ -581,7 +666,7 @@
       "conditional": false,
       "grounding": "Токен SDK хранится в общей Keychain group",
       "snack": "Виджет попросит открыть приложение",
-      "reviewNote": "Токен SDK хранится в общей Keychain group"
+      "reviewNote": "Доступ вызывается действием «Штрих» с виджета на экране «widget». При отказе или без режима: Виджет попросит открыть приложение"
     },
     {
       "key": "autofill",
@@ -591,8 +676,8 @@
         "text": "Системное автозаполнение подставит сохранённый аккаунт портфолио."
       },
       "feature": "Вход в веб-портфолио",
-      "gesture": "Войти на сайте",
-      "screen": "passwords",
+      "gesture": "«Вход в веб-портфолио» в приватности",
+      "screen": "privacy",
       "target": "fill",
       "activate": true,
       "fallback": "Логин и пароль вводятся вручную",
@@ -601,7 +686,7 @@
       "conditional": false,
       "grounding": "ASCredentialProviderViewController и общая Keychain group",
       "snack": "Логин и пароль вводятся вручную",
-      "reviewNote": "ASCredentialProviderViewController и общая Keychain group"
+      "reviewNote": "Доступ вызывается действием «Вход в веб-портфолио» в приватности на экране «privacy». При отказе или без режима: Логин и пароль вводятся вручную"
     },
     {
       "key": "hotspot",
@@ -611,16 +696,16 @@
         "text": "«Штрих» подключит телефон к сети выставочного экрана."
       },
       "feature": "Общий экран выставки",
-      "gesture": "Подключиться по QR",
-      "screen": "guest",
-      "target": "scan",
+      "gesture": "«Подключиться к Shtrikh-Guest»",
+      "screen": "exhibit",
+      "target": "exhibit",
       "fallback": "Сеть выбирается вручную в Настройках",
       "snack": "Сеть выбирается вручную в Настройках",
       "risk": "low",
       "anchor": false,
       "conditional": false,
       "grounding": "NEHotspotConfigurationManager получает SSID и пароль из QR",
-      "reviewNote": "NEHotspotConfigurationManager получает SSID и пароль из QR"
+      "reviewNote": "Доступ вызывается действием «Подключиться к Shtrikh-Guest» на экране «exhibit». При отказе или без режима: Сеть выбирается вручную в Настройках"
     },
     {
       "key": "contacts",
@@ -630,16 +715,16 @@
         "text": "Чтобы показать знакомых, которые уже публикуют зарисовки."
       },
       "feature": "Знакомые авторы",
-      "gesture": "Найти среди контактов",
-      "screen": "neighbors",
-      "target": "neighbors",
+      "gesture": "«Найти среди контактов»",
+      "screen": "authors",
+      "target": "authors",
       "fallback": "Остаётся поиск по имени",
       "snack": "Остаётся поиск по имени",
       "risk": "medium",
       "anchor": true,
       "conditional": false,
       "grounding": "CNContactStore; номера хешируются и сопоставляются на устройстве",
-      "reviewNote": "CNContactStore; номера хешируются и сопоставляются на устройстве"
+      "reviewNote": "Доступ вызывается действием «Найти среди контактов» на экране «authors». При отказе или без режима: Остаётся поиск по имени"
     },
     {
       "key": "calendar",
@@ -649,7 +734,7 @@
         "text": "Чтобы добавить пленэр и обновить его при переносе."
       },
       "feature": "Пленэр в системном календаре",
-      "gesture": "Добавить в Календарь",
+      "gesture": "«Я пойду» у пленэра",
       "screen": "events",
       "target": "events",
       "fallback": "Дата остаётся в карточке пленэра",
@@ -658,7 +743,7 @@
       "anchor": false,
       "conditional": false,
       "grounding": "EventKit; приложение хранит identifier созданного события",
-      "reviewNote": "EventKit; приложение хранит identifier созданного события"
+      "reviewNote": "Доступ вызывается действием «Я пойду» у пленэра на экране «events». При отказе или без режима: Дата остаётся в карточке пленэра"
     },
     {
       "key": "faceid",
@@ -668,8 +753,8 @@
         "text": "Чтобы закрыть неопубликованные работы и черновики."
       },
       "feature": "Замок черновиков",
-      "gesture": "Защитить черновики",
-      "screen": "settings",
+      "gesture": "«Замок черновиков»",
+      "screen": "privacy",
       "target": "lock",
       "fallback": "Остаётся код-пароль устройства",
       "snack": "Остаётся код-пароль устройства",
@@ -677,7 +762,7 @@
       "anchor": false,
       "conditional": false,
       "grounding": "LAContext; биометрия не покидает Secure Enclave",
-      "reviewNote": "LAContext; биометрия не покидает Secure Enclave"
+      "reviewNote": "Доступ вызывается действием «Замок черновиков» на экране «privacy». При отказе или без режима: Остаётся код-пароль устройства"
     },
     {
       "key": "tracking",
@@ -689,7 +774,7 @@
         "grant": "Разрешить"
       },
       "feature": "Реклама художественных материалов",
-      "gesture": "Продолжить",
+      "gesture": "«Продолжить» на экране рекламы",
       "screen": "ads",
       "target": "menu",
       "fallback": "Реклама остаётся неперсонализированной",
@@ -700,7 +785,7 @@
       "conditional": true,
       "requires": "рекламный SDK в сборке, IDFA действительно уходит в SDK — иначе промпт нечем оправдать",
       "grounding": "ATTrackingManager; IDFA только после согласия",
-      "reviewNote": "ATTrackingManager; IDFA только после согласия"
+      "reviewNote": "Доступ вызывается действием «Продолжить» на экране рекламы на экране «ads». При отказе или без режима: Реклама остаётся неперсонализированной"
     },
     {
       "key": "mic",
@@ -709,17 +794,17 @@
         "title": "«Штрих» запрашивает доступ к микрофону",
         "text": "Чтобы надиктовать впечатление, отправить голосовое или участвовать в аудиоразборе."
       },
-      "feature": "Голосовая заметка, сообщение и аудиоразбор",
-      "gesture": "Надиктовать, записать голосовое или войти в разбор",
-      "screen": "problem",
-      "target": "events",
+      "feature": "Голосовая заметка о месте к работе",
+      "gesture": "«Голосовая заметка» в новой зарисовке",
+      "screen": "compose",
+      "target": "compose",
       "fallback": "Подпись и сообщение набираются вручную; аудиоразбор недоступен",
       "snack": "Подпись набирается вручную",
       "risk": "low",
       "anchor": false,
       "conditional": false,
       "grounding": "AVAudioRecorder; запись хранится в локальном черновике",
-      "reviewNote": "AVAudioRecorder; запись хранится в локальном черновике"
+      "reviewNote": "Доступ вызывается действием «Голосовая заметка» в новой зарисовке на экране «compose». При отказе или без режима: Подпись и сообщение набираются вручную; аудиоразбор недоступен"
     },
     {
       "key": "speech",
@@ -729,16 +814,16 @@
         "text": "Чтобы превратить голосовую заметку в редактируемую подпись."
       },
       "feature": "Расшифровка заметки",
-      "gesture": "Расшифровать",
-      "screen": "problem",
-      "target": "events",
+      "gesture": "«Расшифровать заметку»",
+      "screen": "compose",
+      "target": "compose",
       "fallback": "Текст набирается вручную",
       "snack": "Текст набирается вручную",
       "risk": "low",
       "anchor": false,
       "conditional": false,
       "grounding": "SFSpeechRecognizer с on-device recognition",
-      "reviewNote": "SFSpeechRecognizer с on-device recognition"
+      "reviewNote": "Доступ вызывается действием «Расшифровать заметку» на экране «compose». При отказе или без режима: Текст набирается вручную"
     },
     {
       "key": "commnotif",
@@ -749,16 +834,16 @@
       },
       "activate": true,
       "feature": "Именные сообщения пленэра и художников",
-      "gesture": "«Сообщения» в настройках уведомлений",
-      "screen": "meters",
-      "target": "settings",
+      "gesture": "«Сообщения пленэра с именами» в чате",
+      "screen": "chat",
+      "target": "chat",
       "fallback": "Новые сообщения остаются во вкладке «Чаты»",
       "risk": "low",
       "anchor": false,
       "conditional": true,
       "requires": "push",
       "grounding": "Communication Notifications используются только для сообщений реальных участников; уведомление связано с INSendMessageIntent и стабильным conversationIdentifier",
-      "reviewNote": "Доступ вызывается переключателем «Сообщения» на экране настроек уведомлений",
+      "reviewNote": "Доступ вызывается действием «Сообщения пленэра с именами» в чате на экране «chat». При отказе или без режима: Новые сообщения остаются во вкладке «Чаты»",
       "snack": "Уведомления выключены — сообщения остаются в чатах"
     },
     {
@@ -769,17 +854,19 @@
         "text": "Организатор сможет позвонить участникам для запланированного группового разбора работ."
       },
       "activate": true,
-      "feature": "Входящий аудиоразбор пленэра",
-      "gesture": "Начать аудиоразбор",
-      "screen": "conversation",
-      "target": "conversation",
+      "feature": "Аудиоразбор работ участников после пленэра",
+      "gesture": "«Позвонить» в шапке чата пленэра",
+      "screen": "chat",
+      "target": "call",
       "fallback": "Разбор можно открыть вручную из разговора",
       "risk": "high",
       "anchor": false,
       "conditional": true,
-      "requires": ["mic"],
+      "requires": [
+        "mic"
+      ],
       "grounding": "PushKit используется только для настоящего входящего VoIP-звонка; каждый вызов немедленно передаётся CallKit и связан с запланированным пленэром",
-      "reviewNote": "Аудиоразбор — реальный групповой звонок с ответом, участниками, микрофоном и системным CallKit-интерфейсом",
+      "reviewNote": "Доступ вызывается действием «Позвонить» в шапке чата пленэра на экране «chat». При отказе или без режима: Разбор можно открыть вручную из разговора",
       "snack": "Разбор можно открыть вручную из разговора"
     }
   ],
@@ -799,7 +886,12 @@
           "primary": "Почта и создание аккаунта",
           "secondary": "Правовая строка, помощь и поддержка"
         },
-        "states": ["default", "loading", "empty", "error"],
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error"
+        ],
         "density": "low",
         "contentCases": [
           "Корректный адрес электронной почты",
@@ -816,18 +908,15 @@
       "parent": "phone",
       "meta": "Первичная настройка ленты",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
-      }
-    },
-    {
-      "id": "verify",
-      "title": "Выставка рядом",
-      "type": "modal",
-      "light": true,
-      "parent": "join",
-      "meta": "Location · Wi‑Fi Info",
-      "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "primaryAction": "Определить город"
       }
     },
     {
@@ -838,7 +927,15 @@
       "parent": "join",
       "meta": "Выбор города из справочника",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "primaryAction": "Алматы"
       }
     },
     {
@@ -848,7 +945,16 @@
       "light": true,
       "meta": "Авторская лента · Photo Library",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "root",
+        "primaryAction": "АР Что заметили в городе?"
       }
     },
     {
@@ -859,18 +965,34 @@
       "parent": "home",
       "meta": "Пост, реакции и комментарии",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "primaryAction": "Серия места · 27 работ"
       }
     },
     {
-      "id": "problem",
+      "id": "compose",
       "title": "Новая зарисовка",
       "type": "sheet",
       "light": true,
       "parent": "home",
-      "meta": "Композер · Camera · Location",
+      "meta": "Снимок, место, голосовая заметка",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "primaryAction": "Опубликовать"
       }
     },
     {
@@ -878,42 +1000,95 @@
       "title": "Камера рисунка",
       "type": "системная поверхность",
       "light": false,
-      "parent": "problem",
+      "parent": "compose",
       "meta": "AVFoundation",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "primaryAction": null
       }
     },
     {
-      "id": "chronicle",
+      "id": "picker",
+      "title": "Медиатека",
+      "type": "modal",
+      "light": true,
+      "parent": "compose",
+      "meta": "Выбор готовой работы",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "modal",
+        "primaryAction": "Добавить"
+      }
+    },
+    {
+      "id": "series",
       "title": "Серия места",
       "type": "push",
       "light": true,
       "parent": "home",
-      "meta": "Работы разных авторов",
+      "meta": "Взгляды разных авторов на одну точку",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "primaryAction": "Добавить свой взгляд"
       }
     },
     {
-      "id": "yard",
+      "id": "places",
       "title": "Места",
       "type": "tab (root)",
       "light": true,
-      "meta": "Карта городских точек",
+      "meta": "Точки с сериями рядом",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "root",
+        "primaryAction": null
       }
     },
     {
-      "id": "guest",
+      "id": "exhibit",
       "title": "Экран выставки",
       "type": "push",
       "light": true,
-      "parent": "yard",
-      "meta": "Hotspot · Camera",
+      "parent": "places",
+      "meta": "Отметка на выставке и гостевая сеть",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "primaryAction": "Я на выставке"
       }
     },
     {
@@ -921,32 +1096,37 @@
       "title": "QR площадки",
       "type": "системная поверхность",
       "light": false,
-      "parent": "guest",
+      "parent": "exhibit",
       "meta": "DataScanner",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "primaryAction": null
       }
     },
     {
-      "id": "meters",
+      "id": "notif",
       "title": "Уведомления",
       "type": "push",
       "light": true,
-      "parent": "yard",
-      "meta": "Push · фон",
+      "parent": "places",
+      "meta": "Ответы, пленэры, тихие часы",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
-      }
-    },
-    {
-      "id": "background",
-      "title": "Обновление ленты",
-      "type": "системная поверхность",
-      "light": false,
-      "parent": "meters",
-      "meta": "Background fetch · BGTaskScheduler",
-      "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "primaryAction": null
       }
     },
     {
@@ -956,7 +1136,16 @@
       "light": true,
       "meta": "Calendar · Voice",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "root",
+        "primaryAction": "Утро на Зелёном базаре"
       }
     },
     {
@@ -966,18 +1155,35 @@
       "light": true,
       "meta": "VK-подобное меню",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "root",
+        "primaryAction": "Анна Разумова"
       }
     },
     {
-      "id": "passwords",
+      "id": "privacy",
       "title": "Приватность",
       "type": "push",
       "light": true,
       "parent": "menu",
-      "meta": "AutoFill · Keychain",
+      "meta": "Замок черновиков, вход, реклама",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "primaryAction": null
       }
     },
     {
@@ -985,21 +1191,37 @@
       "title": "Вход в портфолио",
       "type": "системная поверхность",
       "light": true,
-      "parent": "passwords",
+      "parent": "privacy",
       "meta": "ASCredentialProvider",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "primaryAction": "Вернуться в «Штрих»"
       }
     },
     {
-      "id": "neighbors",
-      "title": "Знакомые авторы",
+      "id": "authors",
+      "title": "Авторы",
       "type": "push",
       "light": true,
       "parent": "menu",
-      "meta": "Contacts",
+      "meta": "Знакомые из контактов и подписки",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "primaryAction": "Найти среди контактов"
       }
     },
     {
@@ -1010,7 +1232,15 @@
       "parent": "menu",
       "meta": "Карточка художников",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "primaryAction": "Подписаться"
       }
     },
     {
@@ -1021,55 +1251,78 @@
       "meta": "Разговоры пленэров и художников",
       "ui": {
         "pattern": "collection",
-        "navigation": "tab",
+        "navigation": "root",
         "purpose": "Продолжить разговор в контексте встречи или автора",
-        "primaryAction": "Открыть разговор",
-        "states": ["default", "loading", "empty", "error", "offline"]
+        "primaryAction": "Утро на Зелёном базаре",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline"
+        ]
       }
     },
     {
-      "id": "conversation",
-      "title": "Разговор пленэра",
+      "id": "chat",
+      "title": "Чат пленэра",
       "type": "push",
       "light": true,
       "parent": "chats",
-      "meta": "Сообщения, карточка встречи и запланированный аудиоразбор",
+      "meta": "Сообщения, ракурсы, голосовые, аудиоразбор",
       "ui": {
         "pattern": "messaging",
         "navigation": "push",
         "purpose": "Отправить текст, фото, голос или начать аудиоразбор участников",
-        "primaryAction": "Отправить сообщение",
-        "states": ["default", "loading", "error", "offline", "denied"]
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ]
       }
     },
     {
-      "id": "direct-petr",
-      "title": "Пётр Ильин",
+      "id": "direct",
+      "title": "Личный диалог",
       "type": "push",
       "light": true,
       "parent": "chats",
-      "meta": "Личный разговор с художником",
+      "meta": "Переписка с автором",
       "ui": {
         "pattern": "messaging",
         "navigation": "push",
         "purpose": "Обсудить работу напрямую с художником",
-        "primaryAction": "Отправить сообщение",
-        "states": ["default", "loading", "error", "offline", "denied"]
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ]
       }
     },
     {
-      "id": "direct-irina",
-      "title": "Ирина Тепляк",
-      "type": "push",
-      "light": true,
-      "parent": "chats",
-      "meta": "Личный разговор с художником",
+      "id": "call",
+      "title": "Аудиоразбор пленэра",
+      "type": "fullscreen",
+      "light": false,
+      "parent": "chat",
+      "meta": "Голосом с участниками · VoIP",
       "ui": {
-        "pattern": "messaging",
-        "navigation": "push",
-        "purpose": "Договориться о месте напрямую с художником",
-        "primaryAction": "Отправить сообщение",
-        "states": ["default", "loading", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "fullscreen",
+        "primaryAction": null
       }
     },
     {
@@ -1080,7 +1333,15 @@
       "parent": "menu",
       "meta": "Push · Face ID · фон · виджет",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "primaryAction": null
       }
     },
     {
@@ -1091,7 +1352,15 @@
       "parent": "settings",
       "meta": "ATT после объяснения",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "primaryAction": "Продолжить"
       }
     },
     {
@@ -1102,7 +1371,15 @@
       "parent": "settings",
       "meta": "LocalAuthentication",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "primaryAction": "Открыть"
       }
     },
     {
@@ -1113,7 +1390,15 @@
       "parent": "settings",
       "meta": "App Groups · Keychain",
       "ui": {
-        "states": ["default", "loading", "empty", "error", "offline", "denied"]
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "primaryAction": "Штрих"
       }
     }
   ],
@@ -1127,28 +1412,27 @@
       "screens": [
         "phone",
         "join",
-        "verify",
         "manual",
         "home",
         "post",
-        "problem",
+        "compose",
         "shoot",
-        "chronicle",
-        "yard",
-        "guest",
+        "picker",
+        "series",
+        "places",
+        "exhibit",
         "scan",
-        "meters",
-        "background",
+        "notif",
         "events",
         "menu",
-        "passwords",
+        "privacy",
         "fill",
-        "neighbors",
+        "authors",
         "profile",
         "chats",
-        "conversation",
-        "direct-petr",
-        "direct-irina",
+        "chat",
+        "direct",
+        "call",
         "settings",
         "ads",
         "lock",
@@ -1162,54 +1446,129 @@
       "label": "Вход и гостевой проход",
       "note": "Телефон, пароль, регистрация и продолжение без аккаунта",
       "start": "phone",
-      "screens": ["phone", "home"],
-      "stops": ["home"]
+      "screens": [
+        "phone",
+        "home"
+      ],
+      "stops": [
+        "home"
+      ]
     },
     {
       "id": "publish",
       "label": "Опубликовать зарисовку",
       "note": "Камера или фото, место, подпись и готовая публикация",
-      "start": "problem",
-      "screens": ["problem", "shoot", "post", "chronicle", "yard", "events", "profile"],
-      "stops": ["chronicle", "yard", "events", "profile"]
+      "start": "compose",
+      "screens": [
+        "compose",
+        "shoot",
+        "post",
+        "series",
+        "places",
+        "events",
+        "profile",
+        "picker"
+      ],
+      "stops": [
+        "series",
+        "places",
+        "events",
+        "profile",
+        "picker"
+      ]
     },
     {
       "id": "place",
       "label": "Выбрать место зарисовки",
       "note": "Геопозиция по жесту и ручной выбор из сохранённых мест",
-      "start": "yard",
-      "screens": ["yard", "chronicle", "events"],
-      "stops": ["chronicle", "events"]
+      "start": "places",
+      "screens": [
+        "places",
+        "series",
+        "events"
+      ],
+      "stops": [
+        "series",
+        "events"
+      ]
     },
     {
       "id": "pleinair",
       "label": "Собраться на пленэр",
       "note": "Календарь встречи, голосовая заметка и разговор участников",
       "start": "events",
-      "screens": ["events", "conversation"]
+      "screens": [
+        "events",
+        "chat",
+        "picker",
+        "call"
+      ],
+      "stops": [
+        "picker",
+        "call"
+      ]
     },
     {
       "id": "exhibition",
       "label": "Подключиться на выставке",
       "note": "QR площадки, гостевая сеть и понятный ручной fallback",
-      "start": "guest",
-      "screens": ["guest", "scan"]
+      "start": "exhibit",
+      "screens": [
+        "exhibit",
+        "scan"
+      ],
+      "stops": []
     },
     {
       "id": "messaging",
       "label": "Обсудить работу",
       "note": "Чат пленэра, личные диалоги, голосовые и звонок",
       "start": "chats",
-      "screens": ["chats", "conversation", "direct-petr", "direct-irina", "events", "profile"],
-      "stops": ["events", "profile"]
+      "screens": [
+        "chats",
+        "chat",
+        "direct",
+        "events",
+        "profile",
+        "authors",
+        "picker",
+        "call"
+      ],
+      "stops": [
+        "events",
+        "profile",
+        "authors",
+        "picker",
+        "call"
+      ]
     },
     {
       "id": "services",
       "label": "Сервисы и доступы",
       "note": "Аккаунт, приватность, фон, пароли, виджет и уведомления",
       "start": "menu",
-      "screens": ["menu", "settings", "profile", "chronicle", "neighbors", "guest", "passwords", "meters", "background", "widget"],
-      "stops": ["profile", "chronicle", "neighbors", "guest", "passwords", "meters", "background", "widget"]
+      "screens": [
+        "menu",
+        "settings",
+        "profile",
+        "series",
+        "authors",
+        "exhibit",
+        "privacy",
+        "notif",
+        "widget",
+        "account"
+      ],
+      "stops": [
+        "profile",
+        "series",
+        "authors",
+        "exhibit",
+        "privacy",
+        "notif",
+        "widget",
+        "account"
+      ]
     }
   ],
   "backendless": [
@@ -1349,7 +1708,7 @@
           "body": "Работы, реакции и места в знакомой социальной ленте"
         },
         {
-          "screen": "yard",
+          "screen": "places",
           "headline": "Смотрите одно место вместе",
           "body": "Серии связывают разные материалы и времена"
         },
@@ -1379,8 +1738,14 @@
       "given": "Автор закончил зарисовку",
       "when": "Открывает композер и разрешает камеру",
       "then": "Кадр прикреплён, место можно отметить, публикация появляется в ленте",
-      "screens": ["problem", "shoot", "post"],
-      "capabilities": ["camera"]
+      "screens": [
+        "compose",
+        "shoot",
+        "post"
+      ],
+      "capabilities": [
+        "camera"
+      ]
     },
     {
       "id": "publish-from-library",
@@ -1389,8 +1754,14 @@
       "given": "Работа уже снята",
       "when": "Автор выбирает фото",
       "then": "PHPicker возвращает только выбранный файл",
-      "screens": ["problem", "chronicle", "post"],
-      "capabilities": ["photos"]
+      "screens": [
+        "compose",
+        "series",
+        "post"
+      ],
+      "capabilities": [
+        "photos"
+      ]
     },
     {
       "id": "place-with-fallback",
@@ -1399,8 +1770,13 @@
       "given": "Автор создаёт пост",
       "when": "Отмечает место и запрещает геопозицию",
       "then": "Открывается ручной поиск места",
-      "screens": ["problem", "yard"],
-      "capabilities": ["location"]
+      "screens": [
+        "compose",
+        "places"
+      ],
+      "capabilities": [
+        "location"
+      ]
     },
     {
       "id": "pleinair-calendar",
@@ -1409,8 +1785,13 @@
       "given": "Организатор назначил встречу",
       "when": "Участник нажимает «Добавить в Календарь»",
       "then": "Событие сохраняется и может быть обновлено при переносе",
-      "screens": ["events"],
-      "capabilities": ["calendar", "push"]
+      "screens": [
+        "events"
+      ],
+      "capabilities": [
+        "calendar",
+        "push"
+      ]
     },
     {
       "id": "voice-caption",
@@ -1419,8 +1800,14 @@
       "given": "Руки автора заняты",
       "when": "Он надиктовывает заметку",
       "then": "Запись расшифровывается локально и остаётся редактируемой",
-      "screens": ["problem", "events"],
-      "capabilities": ["mic", "speech"]
+      "screens": [
+        "compose",
+        "events"
+      ],
+      "capabilities": [
+        "mic",
+        "speech"
+      ]
     },
     {
       "id": "exhibit-screen",
@@ -1429,8 +1816,16 @@
       "given": "На площадке есть QR сети",
       "when": "Автор сканирует код",
       "then": "Телефон подключается к локальной сети; без камеры данные доступны текстом",
-      "screens": ["guest", "scan", "verify"],
-      "capabilities": ["camera", "hotspot", "wifiinfo"]
+      "screens": [
+        "exhibit",
+        "scan",
+        "verify"
+      ],
+      "capabilities": [
+        "camera",
+        "hotspot",
+        "wifiinfo"
+      ]
     },
     {
       "id": "repeat-launch-no-prompt",
@@ -1439,8 +1834,13 @@
       "given": "Доступ уже выдан",
       "when": "Автор снова открывает выбор места",
       "then": "Системный запрос не повторяется",
-      "screens": ["problem", "yard"],
-      "capabilities": ["location"]
+      "screens": [
+        "compose",
+        "places"
+      ],
+      "capabilities": [
+        "location"
+      ]
     }
   ],
   "fixtures": {

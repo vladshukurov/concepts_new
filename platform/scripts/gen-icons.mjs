@@ -52,7 +52,7 @@ export const ICONS = [
   'paw-print', 'building-2', 'check-check', 'video-off', 'user-plus', 'trees', 'aperture', 'flask-conical', 'package', 'umbrella', 'syringe', 'stethoscope', 'wifi-off', 'fingerprint', 'notebook-pen',
   'calendar-days', 'apple', 'skip-back', 'skip-forward', 'heart-plus', 'list-plus', 'shuffle', 'history', 'sliders-horizontal', 'film', 'clapperboard', 'folder', 'upload', 'smartphone', 'monitor', 'type', 'scissors', 'square-play', 'presentation', 'timer-reset', 'flag',
   // соцсеть и готовка
-  'chef-hat', 'sparkles', 'square-pen', 'tv', 'captions', 'shirt', 'tag', 'hand', 'maximize', 'settings-2',
+  'chef-hat', 'sparkles', 'square-pen', 'tv', 'captions', 'shirt', 'tag', 'hand', 'maximize', 'settings-2', 'pen-line',
 ];
 
 /** Иконки берём из локального lucide-static: сборка не ходит в сеть. */

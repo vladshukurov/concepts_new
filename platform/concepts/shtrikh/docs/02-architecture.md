@@ -1,5 +1,48 @@
 # Штрих — архитектура
 
+## Модель домена
+
+<!-- @generated:domain-model -->
+| Сущность | Что это | Состояния | Экраны |
+|---|---|---|---|
+| Автор | скетчер с работами, сериями и подписчиками | не подписаны → подписаны | `profile`, `authors`, `menu` |
+| Работа | зарисовка с местом, материалами и голосовой заметкой | черновик → опубликована → в серии | `home`, `post`, `compose`, `shoot`, `picker` |
+| Место | точка города, которая связывает работы разных авторов | новое → с серией | `places`, `series` |
+| Серия | взгляды разных авторов на одно место | растёт → закрыта | `series`, `home` |
+| Пленэр | встреча рисовать вместе: место, время, участники | запись открыта → завтра → идёт → прошёл | `events`, `chat`, `call` |
+| Выставка | работы рядом на общем экране площадки | не подключены → на выставке | `exhibit`, `scan` |
+| Диалог | чат пленэра или личная переписка | есть непрочитанные → прочитан | `chats`, `chat`, `direct`, `call` |
+<!-- @end -->
+
+## Сила доступов
+
+<!-- @generated:access-strength -->
+Сильных доступов: **20 из 20** (`npm run access -- shtrikh`).
+
+| Ключ | Жест | Экран | Оценка |
+|---|---|---|---|
+| `location` ⚓ | «Отметить место» в новой зарисовке | `compose` | заслужен |
+| `wifiinfo` ⚓ | «Я на выставке» | `exhibit` | заслужен |
+| `camera` | «Снять рисунок» | `compose` | заслужен |
+| `photos` | «Из медиатеки» | `compose` | заслужен |
+| `push` | «Ответы и реакции» в уведомлениях | `notif` | заслужен |
+| `remotenotif` | «Новые работы этой точки — сами» в серии | `series` | заслужен |
+| `fetch` ⚓ | «Новые работы к утру» на главной | `home` | заслужен |
+| `bgtask` | «Места пленэра к утру» | `events` | заслужен |
+| `appgroups` | «Виджет места дня» в настройках | `settings` | заслужен |
+| `keychain` | «Штрих» с виджета | `widget` | заслужен |
+| `autofill` | «Вход в веб-портфолио» в приватности | `privacy` | заслужен |
+| `hotspot` | «Подключиться к Shtrikh-Guest» | `exhibit` | заслужен |
+| `contacts` ⚓ | «Найти среди контактов» | `authors` | заслужен |
+| `calendar` | «Я пойду» у пленэра | `events` | заслужен |
+| `faceid` | «Замок черновиков» | `privacy` | заслужен |
+| `tracking` ⚓ | «Продолжить» на экране рекламы | `ads` | заслужен |
+| `mic` | «Голосовая заметка» в новой зарисовке | `compose` | заслужен |
+| `speech` | «Расшифровать заметку» | `compose` | заслужен |
+| `commnotif` | «Сообщения пленэра с именами» в чате | `chat` | заслужен |
+| `voip` | «Позвонить» в шапке чата пленэра | `chat` | заслужен |
+<!-- @end -->
+
 ## Домен
 
 `Artist` создаёт `Sketch`. Зарисовка относится к `Place` и при желании входит в `Series`. `PleinAir` назначается в месте и связывает участников с физической встречей. `Conversation` связывает сообщения и аудиоразбор с конкретным пленэром или автором. `VoiceNote` живёт только в черновике до публикации либо отправки.
@@ -34,42 +77,41 @@
 ```
 Вход по номеру (phone) — старт, без таб-бара · открывается: старт
     ├─ Пароль (password) — push, без таб-бара · открывается: «Далее»
-    │   └─ Аккаунт (account) — push, без таб-бара · открывается: «Аккаунт»
+    │   └─ Аккаунт (account) — push, без таб-бара · открывается: «Профиль и аккаунт»
     │       └─ Удаление аккаунта (deleteaccount) — push, без таб-бара · открывается: «Удалить аккаунт»
     ├─ Создать аккаунт (register) — push, без таб-бара · открывается: «Создать аккаунт»
     │   └─ Пароль нового аккаунта (registerpassword) — push, без таб-бара · открывается: «Далее»
     └─ Выберите город (join) — push · открывается: «Продолжить без аккаунта», «Войти» …
-        ├─ Выставка рядом (verify) — modal · открывается: «Определить город», «Продолжить» (location) · wifiinfo
-        └─ Город вручную (manual) — push · открывается: «Определить город», «Продолжить» (location), «Выбрать город вручную»
+        └─ Город вручную (manual) — push · открывается: «Определить город» (location), «Выбрать вручную»
 
-Главная (home) — tab (root) · открывается: «Пропустить», «Алматы» …, «Открыть «Штрих»» (wifiinfo), «Открыть Штрих из виджета» (keychain)
-    ├─ Зарисовка (post) — push · открывается: «Открыть зарисовку», «Открыть отклики к зарисовке» …
-    ├─ Новая зарисовка (problem) — sheet · открывается: «Новая зарисовка», «Ваш штрих» …, «Снять кадр» · location, camera, photos, mic, speech
-    │   └─ Камера рисунка (shoot) — системная поверхность · открывается: «Снять рисунок» (camera)
-    └─ Серия места (chronicle) — push · открывается: «Открыть серию места «Один двор, четыре погоды»», «Открыть серию места» …, «Фото из медиатеки» (photos)
+Главная (home) — tab (root) · открывается: «Пропустить», «Алматы» …, «Определить город» (location) · fetch
+    ├─ Зарисовка (post) — push · открывается: «Алина», «Поймала тень от липы до того, как включили…» …
+    ├─ Новая зарисовка (compose) — sheet · открывается: «Новая зарисовка», «Что заметили в городе?» …, «Снять» · location, camera, photos, mic, speech
+    │   ├─ Камера рисунка (shoot) — системная поверхность · открывается: «Снять рисунок» (camera)
+    │   └─ Медиатека (picker) — modal · открывается: «Вложение», «Работа», «Из медиатеки» (photos)
+    └─ Серия места (series) — push · открывается: «Базар», «Мост» … · remotenotif
 
-Места (yard) — tab (root) · открывается: «Отметить место» (location)
-    ├─ Экран выставки (guest) — push · открывается: «Распознано: Shtrikh-Guest», «Экран выставки» · hotspot
-    │   └─ QR площадки (scan) — системная поверхность · открывается: «Сканировать QR площадки»
-    └─ Уведомления (meters) — push · открывается: «Проверить фоновую задачу» (bgtask), «Уведомления» · commnotif
-        └─ Обновление ленты (background) — системная поверхность · открывается: «Обновление в фоне» (fetch), «Тихие обновления» (remotenotif)
+Места (places) — tab (root) · открывается: «Поиск мест и авторов», «Отметить место» (location)
+    ├─ Экран выставки (exhibit) — push · открывается: «Считать код», «Экран выставки» · wifiinfo, hotspot
+    │   └─ QR площадки (scan) — системная поверхность · открывается: «Код со стойки»
+    └─ Уведомления (notif) — push · открывается: «Уведомления» · push
 
-Пленэры (events) — tab (root) · открывается: «Голосовая заметка» (mic), «Расшифровать заметку» (speech), «Утро на Зелёном базаре» · calendar
+Пленэры (events) — tab (root) · открывается: вкладка таб-бара · bgtask, calendar
 
-Сервисы (menu) — tab (root) · открывается: «Продолжить» (tracking), «Открыть черновики по Face ID»
-    ├─ Приватность (passwords) — push · открывается: «Приватность» · autofill
+Сервисы (menu) — tab (root) · открывается: «Продолжить» (tracking)
+    ├─ Приватность (privacy) — push · открывается: «Приватность» · autofill, faceid
     │   └─ Вход в портфолио (fill) — системная поверхность · открывается: «Вход в веб-портфолио» (autofill)
-    ├─ Знакомые авторы (neighbors) — push · открывается: «Авторы», «Поиск среди контактов» (contacts) · contacts
-    ├─ Профиль художника (profile) — push · открывается: «Профиль Алины Рахимовой», «Анна Разумова» …
-    └─ Настройки (settings) — push · открывается: «Ответы и реакции» (push), «Сообщения» (commnotif), «Открыть настройки», «Настройки» … · push, remotenotif, fetch, bgtask, appgroups, faceid
-        ├─ Реклама материалов (ads) — modal · открывается: «Персонализация рекламы» · tracking
+    ├─ Авторы (authors) — push · открывается: «Авторы», «Новое сообщение» · contacts
+    ├─ Профиль художника (profile) — push · открывается: «Миша», «Алина Рахимова» …, «Место дня», «Штрих» (keychain)
+    └─ Настройки (settings) — push · открывается: «Настройки» · appgroups
+        ├─ Реклама материалов (ads) — modal · открывается: «Реклама» · tracking
         ├─ Замок черновиков (lock) — системная поверхность · открывается: «Замок черновиков» (faceid)
         └─ Виджет места дня (widget) — системная поверхность · открывается: «Виджет места дня» (appgroups) · keychain
 
 Чаты (chats) — tab (root) · открывается: вкладка таб-бара
-    ├─ Разговор пленэра (conversation) — push · открывается: «Чат», «Открыть разговор» · voip
-    ├─ Пётр Ильин (direct-petr) — push · открывается: «Пётр Ильин»
-    └─ Ирина Тепляк (direct-irina) — push · открывается: «Ирина Тепляк»
+    ├─ Чат пленэра (chat) — push · открывается: «Утро на Зелёном базаре», «Линии старого города» … · commnotif, voip
+    │   └─ Аудиоразбор пленэра (call) — fullscreen · открывается: «Позвонить» (voip)
+    └─ Личный диалог (direct) — push · открывается: «Написать», «Диалог: Пётр Ильин» …
 ```
 <!-- @end -->
 
@@ -92,93 +134,88 @@
 | `deleteaccount` | «Назад» | `account` | — | возврат по IA |
 | `deleteaccount` | «Удалить аккаунт» | `phone` | — | переход |
 | `join` | «Пропустить» | `home` | — | переход |
-| `join` | «Определить город», «Продолжить» | `verify` | `NSLocationWhenInUseUsageDescription` | доступ разрешён |
-| `join` | «Определить город», «Продолжить» | `manual` | `NSLocationWhenInUseUsageDescription` | отказ → fallback |
-| `join` | «Выбрать город вручную» | `manual` | — | переход |
-| `verify` | «Назад» | `join` | — | возврат по IA |
-| `verify` | «Открыть «Штрих»» | `home` | `com.apple.developer.networking.wifi-info` | entitlement, без alert |
+| `join` | «Определить город» | `home` | `NSLocationWhenInUseUsageDescription` | доступ разрешён |
+| `join` | «Определить город» | `manual` | `NSLocationWhenInUseUsageDescription` | отказ → fallback |
+| `join` | «Выбрать вручную» | `manual` | — | переход |
 | `manual` | «Назад» | `join` | — | возврат по IA |
 | `manual` | «Алматы», «Астана» … | `home` | — | переход |
-| `home` | «Новая зарисовка», «Ваш штрих» | `problem` | — | переход |
-| `home` | «Профиль Алины Рахимовой» | `profile` | — | переход |
-| `home` | «Открыть зарисовку», «Открыть отклики к зарисовке» | `post` | — | переход |
-| `home` | «Открыть серию места «Один двор, четыре погоды»» | `chronicle` | — | переход |
+| `home` | «Поиск мест и авторов» | `places` | — | переход |
+| `home` | «Новая зарисовка», «Что заметили в городе?» … | `compose` | — | переход |
+| `home` | «Алина», «Поймала тень от липы до того, как включили…» … | `post` | — | переход |
+| `home` | «Базар», «Мост» … | `series` | — | переход |
+| `home` | «Миша», «Алина Рахимова» … | `profile` | — | переход |
+| `home` | «Новые работы к утру» | `home` | `UIBackgroundModes: fetch` | entitlement, без alert |
 | `post` | «Назад» | `home` | — | возврат по IA |
-| `post` | «Профиль Алины Рахимовой» | `profile` | — | переход |
-| `post` | «Открыть серию места» | `chronicle` | — | переход |
-| `problem` | «Закрыть» | `home` | — | возврат по IA |
-| `problem` | «Опубликовать» | `post` | — | переход |
-| `problem` | «Снять рисунок» | `shoot` | `NSCameraUsageDescription` | доступ разрешён |
-| `problem` | «Снять рисунок» | `problem` | `NSCameraUsageDescription` | отказ → fallback |
-| `problem` | «Фото из медиатеки» | `chronicle` | `NSPhotoLibraryUsageDescription` | доступ разрешён |
-| `problem` | «Фото из медиатеки» | `problem` | `NSPhotoLibraryUsageDescription` | отказ → fallback |
-| `problem` | «Отметить место» | `yard` | `NSLocationWhenInUseUsageDescription` | доступ разрешён |
-| `problem` | «Отметить место» | `problem` | `NSLocationWhenInUseUsageDescription` | отказ → fallback |
-| `problem` | «Голосовая заметка» | `events` | `NSMicrophoneUsageDescription` | доступ разрешён |
-| `problem` | «Голосовая заметка» | `problem` | `NSMicrophoneUsageDescription` | отказ → fallback |
-| `problem` | «Расшифровать заметку» | `events` | `NSSpeechRecognitionUsageDescription` | доступ разрешён |
-| `problem` | «Расшифровать заметку» | `problem` | `NSSpeechRecognitionUsageDescription` | отказ → fallback |
-| `shoot` | «Закрыть камеру» | `problem` | — | возврат по IA |
-| `shoot` | «Снять кадр» | `problem` | — | подтверждение |
-| `chronicle` | «Добавить свой взгляд» | `problem` | — | переход |
-| `yard` | «Показать моё положение» | `yard` | `NSLocationWhenInUseUsageDescription` | доступ разрешён |
-| `yard` | «Панфилова, 84», «Зелёный базар» … | `chronicle` | — | переход |
-| `guest` | «Назад во город» | `yard` | — | возврат по IA |
-| `guest` | «Сканировать QR площадки» | `scan` | — | переход |
-| `guest` | «Подключиться к Shtrikh-Guest» | `guest` | `com.apple.developer.networking.HotspotConfiguration` | доступ разрешён |
-| `scan` | «Закрыть сканер» | `guest` | — | возврат по IA |
-| `scan` | «Распознано: Shtrikh-Guest» | `guest` | — | подтверждение |
-| `meters` | «Ответы и реакции» | `settings` | `aps-environment` | доступ разрешён |
-| `meters` | «Ответы и реакции» | `meters` | `aps-environment` | отказ → fallback |
-| `meters` | «Сообщения» | `settings` | `com.apple.developer.usernotifications.communication` | entitlement, без alert |
-| `background` | «Назад к настройкам» | `meters` | — | возврат по IA |
-| `background` | «Проверить фоновую задачу» | `meters` | `BGTaskSchedulerPermittedIdentifiers` | entitlement, без alert |
+| `post` | «Алина Рахимова» | `profile` | — | переход |
+| `post` | «Серия места · 27 работ» | `series` | — | переход |
+| `post` | «Вложение» | `picker` | — | переход |
+| `compose` | «Опубликовать» | `post` | — | переход |
+| `compose` | «Снять рисунок» | `shoot` | `NSCameraUsageDescription` | доступ разрешён |
+| `compose` | «Снять рисунок» | `compose` | `NSCameraUsageDescription` | отказ → fallback |
+| `compose` | «Из медиатеки» | `picker` | `NSPhotoLibraryUsageDescription` | доступ разрешён |
+| `compose` | «Из медиатеки» | `compose` | `NSPhotoLibraryUsageDescription` | отказ → fallback |
+| `compose` | «Отметить место» | `places` | `NSLocationWhenInUseUsageDescription` | доступ разрешён |
+| `compose` | «Отметить место» | `compose` | `NSLocationWhenInUseUsageDescription` | отказ → fallback |
+| `compose` | «Голосовая заметка» | `compose` | `NSMicrophoneUsageDescription` | доступ разрешён |
+| `compose` | «Расшифровать заметку» | `compose` | `NSSpeechRecognitionUsageDescription` | доступ разрешён |
+| `shoot` | «Закрыть» | `compose` | — | возврат по IA |
+| `shoot` | «Снять» | `compose` | — | подтверждение |
+| `picker` | «Закрыть» | `compose` | — | возврат по IA |
+| `picker` | «Добавить», «Работа 1» … | `compose` | — | переход |
+| `series` | «Назад» | `home` | — | возврат по IA |
+| `series` | «Работа серии 1», «Работа серии 2» … | `post` | — | переход |
+| `series` | «Новые работы этой точки — сами» | `series` | `UIBackgroundModes: remote-notification` | entitlement, без alert |
+| `series` | «Добавить свой взгляд» | `compose` | — | переход |
+| `places` | «Рядом со мной» | `places` | `NSLocationWhenInUseUsageDescription` | доступ разрешён |
+| `places` | «Панфилова, 84», «Зелёный базар» … | `series` | — | переход |
+| `exhibit` | «Назад» | `places` | — | возврат по IA |
+| `exhibit` | «Я на выставке» | `exhibit` | `com.apple.developer.networking.wifi-info` | entitlement, без alert |
+| `exhibit` | «Подключиться к Shtrikh-Guest» | `exhibit` | `com.apple.developer.networking.HotspotConfiguration` | доступ разрешён |
+| `exhibit` | «Код со стойки» | `scan` | — | переход |
+| `scan` | «Закрыть» | `exhibit` | — | возврат по IA |
+| `scan` | «Считать код» | `exhibit` | — | подтверждение |
+| `notif` | «Назад» | `places` | — | возврат по IA |
+| `notif` | «Ответы и реакции» | `notif` | `aps-environment` | доступ разрешён |
+| `events` | «Утро на Зелёном базаре», «Линии старого города» | `chat` | — | переход |
 | `events` | «Я пойду» | `events` | `NSCalendarsFullAccessUsageDescription` | доступ разрешён |
-| `events` | «Чат» | `conversation` | — | переход |
-| `events` | «Голосом» | `events` | `NSMicrophoneUsageDescription` | доступ разрешён |
-| `menu` | «Открыть настройки», «Настройки» | `settings` | — | переход |
+| `events` | «Места пленэра к утру» | `events` | `BGTaskSchedulerPermittedIdentifiers` | entitlement, без alert |
+| `menu` | «Настройки» | `settings` | — | переход |
 | `menu` | «Анна Разумова» | `profile` | — | переход |
-| `menu` | «Мои серии» | `chronicle` | — | переход |
-| `menu` | «Авторы» | `neighbors` | — | переход |
-| `menu` | «Экран выставки» | `guest` | — | переход |
-| `passwords` | «Замок черновиков» | `lock` | `NSFaceIDUsageDescription` | доступ разрешён |
-| `passwords` | «Замок черновиков» | `passwords` | `NSFaceIDUsageDescription` | отказ → fallback |
-| `passwords` | «Поиск среди контактов» | `neighbors` | `NSContactsUsageDescription` | доступ разрешён |
-| `passwords` | «Поиск среди контактов» | `passwords` | `NSContactsUsageDescription` | отказ → fallback |
-| `passwords` | «Персонализация рекламы» | `ads` | — | переход |
-| `passwords` | «Вход в веб-портфолио» | `fill` | `com.apple.developer.authentication-services.autofill-credential-provider` | entitlement, без alert |
-| `fill` | «Вернуться в приложение «Штрих»» | `passwords` | — | возврат по IA |
-| `neighbors` | «Назад в меню» | `menu` | — | возврат по IA |
-| `neighbors` | «Профиль Петра Ильина, кв. 12», «Профиль Марины Кольцовой, кв. 48» … | `profile` | — | переход |
-| `profile` | «•••» | `settings` | — | переход |
-| `chats` | «Открыть разговор» | `conversation` | — | переход |
-| `chats` | «Пётр Ильин» | `direct-petr` | — | переход |
-| `chats` | «Ирина Тепляк» | `direct-irina` | — | переход |
-| `conversation` | «Назад» | `chats` | — | возврат по IA |
-| `conversation` | «Утро на Зелёном базаре» | `events` | — | переход |
-| `conversation` | «Позвонить участникам» | `conversation` | `NSMicrophoneUsageDescription + UIBackgroundModes: voip` | доступ разрешён |
-| `conversation` | «Добавить работу» | `conversation` | `NSPhotoLibraryUsageDescription` | доступ разрешён |
-| `conversation` | «Записать голосовое» | `conversation` | `NSMicrophoneUsageDescription` | доступ разрешён |
-| `direct-petr` | «Назад» | `chats` | — | возврат по IA |
-| `direct-petr` | «Пётр Ильин» | `profile` | — | переход |
-| `direct-petr` | «Позвонить Петру» | `direct-petr` | `NSMicrophoneUsageDescription + UIBackgroundModes: voip` | доступ разрешён |
-| `direct-petr` | «Добавить работу» | `direct-petr` | `NSPhotoLibraryUsageDescription` | доступ разрешён |
-| `direct-petr` | «Записать голосовое» | `direct-petr` | `NSMicrophoneUsageDescription` | доступ разрешён |
-| `direct-irina` | «Назад» | `chats` | — | возврат по IA |
-| `direct-irina` | «Ирина Тепляк» | `profile` | — | переход |
-| `direct-irina` | «Позвонить Ирине» | `direct-irina` | `NSMicrophoneUsageDescription + UIBackgroundModes: voip` | доступ разрешён |
-| `direct-irina` | «Добавить работу» | `direct-irina` | `NSPhotoLibraryUsageDescription` | доступ разрешён |
-| `direct-irina` | «Записать голосовое» | `direct-irina` | `NSMicrophoneUsageDescription` | доступ разрешён |
-| `settings` | «Аккаунт» | `account` | — | переход |
-| `settings` | «Приватность» | `passwords` | — | переход |
-| `settings` | «Уведомления» | `meters` | — | переход |
-| `settings` | «Обновление в фоне» | `background` | `UIBackgroundModes: fetch` | entitlement, без alert |
+| `menu` | «Мои серии» | `series` | — | переход |
+| `menu` | «Авторы» | `authors` | — | переход |
+| `menu` | «Экран выставки» | `exhibit` | — | переход |
+| `menu` | «Приватность» | `privacy` | — | переход |
+| `privacy` | «Назад» | `menu` | — | возврат по IA |
+| `privacy` | «Замок черновиков» | `lock` | `NSFaceIDUsageDescription` | доступ разрешён |
+| `privacy` | «Замок черновиков» | `privacy` | `NSFaceIDUsageDescription` | отказ → fallback |
+| `privacy` | «Вход в веб-портфолио» | `fill` | `com.apple.developer.authentication-services.autofill-credential-provider` | entitlement, без alert |
+| `privacy` | «Реклама» | `ads` | — | переход |
+| `fill` | — | — | — | дальше переходов нет |
+| `authors` | «Назад» | `menu` | — | возврат по IA |
+| `authors` | «Найти среди контактов» | `authors` | `NSContactsUsageDescription` | доступ разрешён |
+| `authors` | «Пётр Ильин», «Алина Рахимова» … | `profile` | — | переход |
+| `profile` | «Назад» | `menu` | — | возврат по IA |
+| `profile` | «Написать» | `direct` | — | переход |
+| `profile` | «Работа 1», «Работа 2» … | `post` | — | переход |
+| `chats` | «Новое сообщение» | `authors` | — | переход |
+| `chats` | «Диалог: Утро на Зелёном базаре» | `chat` | — | переход |
+| `chats` | «Диалог: Пётр Ильин», «Диалог: Алина Рахимова» | `direct` | — | переход |
+| `chat` | «Назад» | `chats` | — | возврат по IA |
+| `chat` | «Позвонить» | `call` | `UIBackgroundModes: voip` | entitlement, без alert |
+| `chat` | «Сообщения пленэра с именами» | `chat` | `com.apple.developer.usernotifications.communication` | entitlement, без alert |
+| `chat` | «Вложение» | `picker` | — | переход |
+| `direct` | «Назад» | `chats` | — | возврат по IA |
+| `direct` | «Вложение» | `picker` | — | переход |
+| `call` | «Работа» | `picker` | — | переход |
+| `call` | «Выйти» | `chat` | — | возврат по IA |
+| `settings` | «Назад» | `menu` | — | возврат по IA |
+| `settings` | «Профиль и аккаунт» | `account` | — | переход |
+| `settings` | «Приватность» | `privacy` | — | переход |
+| `settings` | «Уведомления» | `notif` | — | переход |
 | `settings` | «Виджет места дня» | `widget` | `com.apple.security.application-groups` | entitlement, без alert |
-| `settings` | «Тихие обновления» | `background` | `UIBackgroundModes: remote-notification` | entitlement, без alert |
-| `ads` | «Закрыть экран про рекламу» | `settings` | — | возврат по IA |
+| `ads` | «Закрыть» | `settings` | — | возврат по IA |
 | `ads` | «Продолжить» | `menu` | `NSUserTrackingUsageDescription` | доступ разрешён |
 | `ads` | «Продолжить» | `ads` | `NSUserTrackingUsageDescription` | отказ → fallback |
-| `lock` | «Открыть черновики по Face ID» | `menu` | — | переход |
-| `lock` | «Ввести код-пароль вместо Face ID» | `settings` | — | возврат по IA |
-| `widget` | «Открыть Штрих из виджета» | `home` | `keychain-access-groups` | entitlement, без alert |
+| `lock` | — | — | — | дальше переходов нет |
+| `widget` | «Место дня», «Штрих» | `profile` | `keychain-access-groups` | entitlement, без alert |
 <!-- @end -->
