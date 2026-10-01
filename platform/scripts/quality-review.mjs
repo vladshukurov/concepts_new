@@ -219,7 +219,9 @@ function browserProbe() {
           const fontSize = parseFloat(cs.fontSize), fontWeight = parseFloat(cs.fontWeight) || 400;
           const largeText = fontSize >= 24 || (fontSize >= 18.66 && fontWeight >= 700);
           const minimumContrast = largeText ? 3 : 4.5;
-          if (contrast < minimumContrast) objective.push({ kind: 'low-contrast', ...item, computed: { color: cs.color, backgroundColor: cs.backgroundColor, contrast: contrast.toFixed(2), minimumContrast } });
+          /* Как в audit-visual: белый на фирменной заливке главной кнопки (#0077FF ВК, #FF7700 ОК) — сознательное исключение платформы */
+          const whiteOnBrand = fg.slice(0, 3).join() === '255,255,255' && ['0,119,255', '255,119,0'].includes(bg.slice(0, 3).join());
+          if (contrast < minimumContrast && !whiteOnBrand) objective.push({ kind: 'low-contrast', ...item, computed: { color: cs.color, backgroundColor: cs.backgroundColor, contrast: contrast.toFixed(2), minimumContrast } });
         }
         const border = [cs.borderTopWidth, cs.borderRightWidth, cs.borderBottomWidth, cs.borderLeftWidth].some((v) => parseFloat(v) > 0);
         const surfaceParent = el.parentElement?.closest('.card,.ios-card,.tile,[class*="-card"],[class*="surface"]');
@@ -238,7 +240,9 @@ function browserProbe() {
         if (value >= 3 && value <= 64) spaces.push({ value, selector: item.selector, prop, bbox: box });
       }
       if (text && cs.textOverflow === 'ellipsis' && el.scrollWidth > el.clientWidth + 1) objective.push({ kind: 'truncated', ...item, computed: { scrollWidth: el.scrollWidth, clientWidth: el.clientWidth } });
-      if (box.x < -1 || box.x + box.width > 376) objective.push({ kind: 'overflow-x', ...item });
+      /* Ряд с горизонтальной прокруткой (истории, полки) уходит за край намеренно */
+      const inScroller = (() => { for (let p = el.parentElement; p && p !== screen; p = p.parentElement) { if (/auto|scroll/.test(getComputedStyle(p).overflowX)) return true; } return false; })();
+      if (!inScroller && (box.x < -1 || box.x + box.width > 376)) objective.push({ kind: 'overflow-x', ...item });
       if (el.matches('button,a,[role="button"],[data-go],[data-ask],[data-back],[data-activate],[data-jump],[data-toast]') && !el.disabled && el.getAttribute('aria-disabled') !== 'true' && !el.classList.contains('tap') && (r.width < 43.5 || r.height < 43.5)) objective.push({ kind: 'small-tap', ...item });
     }
     const primary = [...screen.querySelectorAll('[data-primary]')].filter(shown);
@@ -392,7 +396,7 @@ export async function prepareQualityReview(slug, options = {}) {
      нужна вторая сборка до browser flows. */
   build(slug);
   const auditStages = [
-    runScriptStage('lint-concept.mjs', [slug]), runScriptStage('audit-visual.mjs', [slug]),
+    runScriptStage('lint-concept.mjs', [slug]), runScriptStage('audit-visual.mjs', [slug]), runScriptStage('access-strength.mjs', [slug, '--strict']),
     runScriptStage('audit-grid.mjs', [slug]), runScriptStage('test-flows.mjs', [slug]),
   ];
   findings.auditStages = auditStages;

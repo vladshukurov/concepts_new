@@ -11,6 +11,9 @@ platform/concepts/*/docs/*-docs.zip
 platform/concepts/*/assets/*-figma-screens.zip
 platform/concepts/*/assets/app-store/*-app-store-assets.zip
 
+# Прогоны npm run review: листы, кропы и находки — результат запуска, не исходник
+platform/concepts/*/artifacts/
+
 # Служебное
 platform/_sheet.html
 .DS_Store
