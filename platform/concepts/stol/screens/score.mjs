@@ -1,0 +1,17 @@
+import { THEME } from './_shared.mjs';
+import { score, tonight } from '../model.mjs';
+
+export default (ui) => ui.screen({
+  id: 'score', theme: THEME,
+  body: [
+    ui.nav({ title: `Счёт · раунд ${score.round}`, trailing: ui.iconButton({ icon: 'tv', label: 'Показать на экране', go: 'cast' }) }),
+    ui.scroll([
+      ui.section({ title: tonight.game, children: `<div class="st-board">${score.players.map(([name, pts, st], i) => `<div class="st-player${i === 1 ? ' is-now' : ''}">${ui.avatar(name.slice(0, 1))}<span class="ui-row-text"><strong>${name}</strong><span>${st}</span></span>${ui.iconButton({ icon: 'minus', label: `Минус очко: ${name}`, look: 'fill', toast: 'Минус одно очко' })}<span class="st-points">${pts}</span>${ui.iconButton({ icon: 'plus', label: `Плюс очко: ${name}`, look: 'fill', toast: 'Плюс одно очко' })}</div>`).join('')}</div>` }),
+      ui.section({ children: [
+        ui.actions([ui.button({ label: 'Назвать счёт', icon: 'mic', block: true, ask: 'speech+mic|score|score', primary: true })]),
+        ui.granted('speech,mic', 'Распознано: «Илья — шестьдесят шесть»'),
+        ui.denied('speech,mic', 'Счёт вводится кнопками плюс и минус'),
+      ] }),
+    ]),
+  ],
+});

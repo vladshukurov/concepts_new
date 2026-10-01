@@ -43,65 +43,144 @@
           "id": "player",
           "name": "Игрок",
           "identity": "профиль и игровой почерк",
-          "fields": ["name", "pace", "gamesCount", "followersCount"],
+          "fields": [
+            "name",
+            "pace",
+            "gamesCount",
+            "followersCount"
+          ],
           "relations": [
-            { "kind": "follows", "to": "player" },
-            { "kind": "has-many", "to": "seat" }
+            {
+              "kind": "follows",
+              "to": "player"
+            },
+            {
+              "kind": "has-many",
+              "to": "seat"
+            }
           ]
         },
         {
           "id": "game",
           "name": "Игра",
           "identity": "название и издание",
-          "fields": ["title", "duration", "complexity", "players"],
-          "relations": [{ "kind": "appears-in", "to": "session" }]
+          "fields": [
+            "title",
+            "duration",
+            "complexity",
+            "players"
+          ],
+          "relations": [
+            {
+              "kind": "appears-in",
+              "to": "session"
+            }
+          ]
         },
         {
           "id": "session",
           "name": "Партия",
           "identity": "игра, время и стол",
-          "fields": ["date", "place", "pace", "capacity", "status"],
+          "fields": [
+            "date",
+            "place",
+            "pace",
+            "capacity",
+            "status"
+          ],
           "relations": [
-            { "kind": "uses", "to": "game" },
-            { "kind": "has-many", "to": "seat" }
+            {
+              "kind": "uses",
+              "to": "game"
+            },
+            {
+              "kind": "has-many",
+              "to": "seat"
+            }
           ]
         },
         {
           "id": "seat",
           "name": "Место",
           "identity": "игрок и партия",
-          "fields": ["player", "color", "status", "score"],
+          "fields": [
+            "player",
+            "color",
+            "status",
+            "score"
+          ],
           "relations": [
-            { "kind": "belongs-to", "to": "player" },
-            { "kind": "belongs-to", "to": "session" }
+            {
+              "kind": "belongs-to",
+              "to": "player"
+            },
+            {
+              "kind": "belongs-to",
+              "to": "session"
+            }
           ]
         },
         {
           "id": "post",
           "name": "Публикация",
           "identity": "автор и время",
-          "fields": ["author", "text", "media", "reactionCount", "saved"],
+          "fields": [
+            "author",
+            "text",
+            "media",
+            "reactionCount",
+            "saved"
+          ],
           "relations": [
-            { "kind": "belongs-to", "to": "player" },
-            { "kind": "links-to", "to": "session" }
+            {
+              "kind": "belongs-to",
+              "to": "player"
+            },
+            {
+              "kind": "links-to",
+              "to": "session"
+            }
           ]
         },
         {
           "id": "conversation",
           "name": "Разговор",
           "identity": "участники и партия либо пара игроков",
-          "fields": ["kind", "session", "members", "unreadCount", "muted"],
+          "fields": [
+            "kind",
+            "session",
+            "members",
+            "unreadCount",
+            "muted"
+          ],
           "relations": [
-            { "kind": "may-belong", "to": "session" },
-            { "kind": "has-many", "to": "message" }
+            {
+              "kind": "may-belong",
+              "to": "session"
+            },
+            {
+              "kind": "has-many",
+              "to": "message"
+            }
           ]
         },
         {
           "id": "message",
           "name": "Сообщение",
           "identity": "автор, разговор и время",
-          "fields": ["sender", "kind", "text", "media", "createdAt"],
-          "relations": [{ "kind": "belongs-to", "to": "conversation" }]
+          "fields": [
+            "sender",
+            "kind",
+            "text",
+            "media",
+            "createdAt"
+          ],
+          "relations": [
+            {
+              "kind": "belongs-to",
+              "to": "conversation"
+            }
+          ]
         }
       ],
       "actions": [
@@ -113,7 +192,11 @@
           "effect": "запись попадает в ленту подписчиков",
           "screen": "compose",
           "result": "В ленте видны автор, игра, состав и время",
-          "capabilities": ["camera", "photos", "location"]
+          "capabilities": [
+            "camera",
+            "photos",
+            "location"
+          ]
         },
         {
           "id": "join-session",
@@ -123,7 +206,10 @@
           "effect": "место закрепляется за игроком",
           "screen": "table",
           "result": "Карточка показывает обновлённый состав и статус",
-          "capabilities": ["calendar", "push"]
+          "capabilities": [
+            "calendar",
+            "push"
+          ]
         },
         {
           "id": "record-score",
@@ -133,7 +219,10 @@
           "effect": "распознанное число добавляется игроку",
           "screen": "score",
           "result": "Табло пересчитывается для всех за физическим столом",
-          "capabilities": ["speech", "mic"]
+          "capabilities": [
+            "speech",
+            "mic"
+          ]
         },
         {
           "id": "listen-rules",
@@ -143,7 +232,9 @@
           "effect": "локальная памятка продолжает воспроизводиться",
           "screen": "audio",
           "result": "Правила доступны с погашенным экраном",
-          "capabilities": ["audio"]
+          "capabilities": [
+            "audio"
+          ]
         },
         {
           "id": "show-scoreboard",
@@ -153,7 +244,10 @@
           "effect": "табло открывается на экране в той же сети",
           "screen": "cast",
           "result": "Все участники видят общий счёт",
-          "capabilities": ["localnetwork", "wifiinfo"]
+          "capabilities": [
+            "localnetwork",
+            "wifiinfo"
+          ]
         },
         {
           "id": "share-session",
@@ -163,7 +257,9 @@
           "effect": "сессия доступна приложению и расширениям",
           "screen": "settings",
           "result": "Вход сохраняется при публикации из системного меню",
-          "capabilities": ["keychain"]
+          "capabilities": [
+            "keychain"
+          ]
         },
         {
           "id": "send-message",
@@ -173,7 +269,12 @@
           "effect": "сообщение появляется в разговоре конкретной партии",
           "screen": "conversation",
           "result": "участники видят текст, фото, голосовое или карточку стола",
-          "capabilities": ["push", "commnotif", "photos", "mic"]
+          "capabilities": [
+            "push",
+            "commnotif",
+            "photos",
+            "mic"
+          ]
         },
         {
           "id": "start-table-call",
@@ -183,7 +284,10 @@
           "effect": "начинает групповой аудиозвонок участников текущего стола",
           "screen": "conversation",
           "result": "участники получают системный вызов, связанный с партией",
-          "capabilities": ["mic", "voip"]
+          "capabilities": [
+            "mic",
+            "voip"
+          ]
         }
       ]
     }
@@ -211,7 +315,12 @@
       "compose",
       "table"
     ],
-    "referencePatterns": ["social-feed", "profile", "create-post"],
+    "referencePatterns": [
+      "social-feed",
+      "profile",
+      "create-post",
+      "messaging"
+    ],
     "referenceEvidence": [
       {
         "pattern": "social-feed",
@@ -227,6 +336,11 @@
         "pattern": "create-post",
         "screen": "compose",
         "behavior": "Композер собирает текст, фото, место и параметры стола на одной поверхности."
+      },
+      {
+        "pattern": "messaging",
+        "screen": "chats",
+        "behavior": "Мессенджер: чаты столов и личные диалоги, голосовые, звонок стола"
       }
     ]
   },
@@ -248,35 +362,67 @@
       {
         "objection": "Раздел столов может выглядеть как обычная афиша событий без социальной связи",
         "resolution": "Каждая партия принадлежит знакомому автору и показывает общий игровой опыт участников",
-        "evidenceScreens": ["feed", "tables", "table"]
+        "evidenceScreens": [
+          "feed",
+          "tables",
+          "table"
+        ]
       },
       {
         "objection": "Голосовой счёт может казаться избыточным по сравнению с ручным вводом",
         "resolution": "Он запускается только за активным столом, а кнопки плюс и минус всегда остаются доступны",
-        "evidenceScreens": ["score"]
+        "evidenceScreens": [
+          "score"
+        ]
       },
       {
         "objection": "Каталог игр может перетянуть ценность с людей на карточки коробок",
         "resolution": "Раздел показывает наличие у знакомых и ведёт к живой партии, а не к покупке или рейтингу",
-        "evidenceScreens": ["games", "tables"]
+        "evidenceScreens": [
+          "games",
+          "tables"
+        ]
       }
     ]
   },
   "brand": {
     "accent": "#0077FF",
-    "accentDark": "#0065D8",
+    "accentDark": "#0077FF",
     "fonts": "Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600",
-    "authIcon": "layout-grid"
+    "authIcon": "layout-grid",
+    "theme": "vk-light"
   },
   "start": "phone",
-  "auth": { "entryTarget": "feed" },
+  "auth": {
+    "entryTarget": "feed"
+  },
   "uiContractVersion": 3,
   "tabs": [
-    { "id": "feed", "label": "Лента", "role": "feed" },
-    { "id": "games", "label": "Игры", "role": "discovery" },
-    { "id": "tables", "label": "Столы", "role": "publishing" },
-    { "id": "chats", "label": "Чаты", "role": "messaging" },
-    { "id": "profile", "label": "Профиль", "role": "profile" }
+    {
+      "id": "feed",
+      "label": "Лента",
+      "role": "feed"
+    },
+    {
+      "id": "games",
+      "label": "Игры",
+      "role": "discovery"
+    },
+    {
+      "id": "tables",
+      "label": "Столы",
+      "role": "events"
+    },
+    {
+      "id": "chats",
+      "label": "Мессенджер",
+      "role": "messages"
+    },
+    {
+      "id": "profile",
+      "label": "Профиль",
+      "role": "profile"
+    }
   ],
   "permissions": [
     {
@@ -287,7 +433,7 @@
         "text": "Чтобы снять игровое поле для публикации."
       },
       "feature": "Снимок партии прямо в запись",
-      "gesture": "«Камера»",
+      "gesture": "«Снять поле» в новой записи",
       "screen": "compose",
       "target": "compose",
       "fallback": "Можно выбрать готовое фото или опубликовать запись без медиа",
@@ -295,7 +441,8 @@
       "risk": "low",
       "anchor": true,
       "conditional": false,
-      "grounding": "AVFoundation, снимок остаётся в черновике до публикации"
+      "grounding": "AVFoundation, снимок остаётся в черновике до публикации",
+      "reviewNote": "Доступ вызывается действием «Снять поле» в новой записи на экране «compose». При отказе или без режима: Можно выбрать готовое фото или опубликовать запись без медиа"
     },
     {
       "key": "photos",
@@ -305,7 +452,7 @@
         "text": "Чтобы выбрать снимок сыгранной партии."
       },
       "feature": "Выбор фото игрового поля",
-      "gesture": "«Фото»",
+      "gesture": "«Фото» в новой записи",
       "screen": "compose",
       "target": "compose",
       "fallback": "Можно снять новый кадр или оставить запись без медиа",
@@ -313,7 +460,8 @@
       "risk": "low",
       "anchor": true,
       "conditional": false,
-      "grounding": "PHPicker с выбором отдельного снимка"
+      "grounding": "PHPicker с выбором отдельного снимка",
+      "reviewNote": "Доступ вызывается действием «Фото» в новой записи на экране «compose». При отказе или без режима: Можно снять новый кадр или оставить запись без медиа"
     },
     {
       "key": "location",
@@ -323,7 +471,7 @@
         "text": "Чтобы предложить клуб или кафе рядом для этой партии."
       },
       "feature": "Место стола и партии рядом",
-      "gesture": "«Место»",
+      "gesture": "«Место» в новой записи",
       "screen": "compose",
       "target": "compose",
       "fallback": "Название места вводится вручную или не указывается",
@@ -331,7 +479,8 @@
       "risk": "low",
       "anchor": false,
       "conditional": false,
-      "grounding": "Core Location только при открытом композере"
+      "grounding": "Core Location только при открытом композере",
+      "reviewNote": "Доступ вызывается действием «Место» в новой записи на экране «compose». При отказе или без режима: Название места вводится вручную или не указывается"
     },
     {
       "key": "calendar",
@@ -341,7 +490,7 @@
         "text": "Чтобы добавить выбранную партию одним событием."
       },
       "feature": "Партия в личном календаре",
-      "gesture": "«В календарь»",
+      "gesture": "«В календарь» на столе",
       "screen": "table",
       "target": "table",
       "fallback": "Дата и время остаются в карточке, их можно перенести вручную",
@@ -349,7 +498,8 @@
       "risk": "low",
       "anchor": true,
       "conditional": false,
-      "grounding": "EventKit создаёт только выбранное событие после жеста"
+      "grounding": "EventKit создаёт только выбранное событие после жеста",
+      "reviewNote": "Доступ вызывается действием «В календарь» на столе на экране «table». При отказе или без режима: Дата и время остаются в карточке, их можно перенести вручную"
     },
     {
       "key": "push",
@@ -367,7 +517,8 @@
       "risk": "low",
       "anchor": false,
       "conditional": false,
-      "grounding": "APNs через SDK провайдера социальных данных"
+      "grounding": "APNs через SDK провайдера социальных данных",
+      "reviewNote": "Доступ вызывается действием «Следить за столом» на экране «table». При отказе или без режима: Изменения видны при следующем открытии карточки"
     },
     {
       "key": "speech",
@@ -377,7 +528,7 @@
         "text": "Чтобы превратить названный вслух счёт в число на табло."
       },
       "feature": "Голосовой ввод счёта",
-      "gesture": "«Назвать счёт»",
+      "gesture": "«Назвать счёт» на табло",
       "screen": "score",
       "target": "score",
       "fallback": "Счёт вводится кнопками плюс и минус",
@@ -385,7 +536,8 @@
       "risk": "low",
       "anchor": true,
       "conditional": false,
-      "grounding": "Speech framework распознаёт короткое числовое высказывание"
+      "grounding": "Speech framework распознаёт короткое числовое высказывание",
+      "reviewNote": "Доступ вызывается действием «Назвать счёт» на табло на экране «score». При отказе или без режима: Счёт вводится кнопками плюс и минус"
     },
     {
       "key": "mic",
@@ -395,7 +547,7 @@
         "text": "Чтобы услышать короткую команду со счётом или записать голосовое сообщение."
       },
       "feature": "Голосовой счёт и голосовые сообщения",
-      "gesture": "«Назвать счёт» или записать голосовое",
+      "gesture": "«Назвать счёт» на табло; голосовое в чате стола",
       "screen": "score",
       "target": "score",
       "fallback": "Счёт вводится кнопками, а сообщение — текстом",
@@ -403,7 +555,8 @@
       "risk": "low",
       "anchor": true,
       "conditional": false,
-      "grounding": "AVAudioEngine активен только пока удерживается кнопка"
+      "grounding": "AVAudioEngine активен только пока удерживается кнопка",
+      "reviewNote": "Доступ вызывается действием «Назвать счёт» на табло; голосовое в чате стола на экране «score». При отказе или без режима: Счёт вводится кнопками, а сообщение — текстом"
     },
     {
       "key": "audio",
@@ -424,7 +577,7 @@
       "grounding": "AVAudioSession playback и MPNowPlayingInfoCenter",
       "activate": true,
       "requires": "Реальная локальная аудиодорожка правил и remote-команды",
-      "reviewNote": "Открыть Игры → Лесные союзы → Слушать памятку, затем заблокировать экран; на локскрине видны глава и пауза."
+      "reviewNote": "Доступ вызывается действием «Слушать памятку» на экране «audio». При отказе или без режима: Текстовая памятка остаётся доступна на экране"
     },
     {
       "key": "localnetwork",
@@ -434,7 +587,7 @@
         "text": "Чтобы найти экран рядом и показать общее табло."
       },
       "feature": "Общее табло на телевизоре",
-      "gesture": "«Показать на экране»",
+      "gesture": "«Экран у большого стола»",
       "screen": "cast",
       "target": "cast",
       "fallback": "Табло остаётся на телефоне",
@@ -442,7 +595,8 @@
       "risk": "low",
       "anchor": false,
       "conditional": false,
-      "grounding": "Bonjour ищет устройства Google Cast в текущей сети"
+      "grounding": "Bonjour ищет устройства Google Cast в текущей сети",
+      "reviewNote": "Доступ вызывается действием «Экран у большого стола» на экране «cast». При отказе или без режима: Табло остаётся на телефоне"
     },
     {
       "key": "wifiinfo",
@@ -452,7 +606,7 @@
         "text": "Имя сети помогает понять, почему общий экран не найден."
       },
       "feature": "Имя текущей сети рядом со списком экранов",
-      "gesture": "«Проверить сеть»",
+      "gesture": "«Проверить сеть» на общем экране",
       "screen": "cast",
       "target": "cast",
       "fallback": "Устройства ищутся без подписи сети",
@@ -461,7 +615,8 @@
       "anchor": false,
       "conditional": false,
       "grounding": "NEHotspotNetwork.fetchCurrent после явного жеста",
-      "activate": true
+      "activate": true,
+      "reviewNote": "Доступ вызывается действием «Проверить сеть» на общем экране на экране «cast». При отказе или без режима: Устройства ищутся без подписи сети"
     },
     {
       "key": "keychain",
@@ -470,17 +625,18 @@
         "title": "Общая связка ключей",
         "text": "Одна сессия используется приложением и расширением публикации."
       },
-      "feature": "Единый вход для приложения и Share Extension",
-      "gesture": "«Общая сессия»",
-      "screen": "settings",
-      "target": "settings",
-      "fallback": "В расширении потребуется повторный вход",
+      "feature": "Вход на экране клуба с телефона без пароля",
+      "gesture": "«Войти на экране клуба»",
+      "screen": "cast",
+      "target": "cast",
+      "fallback": "На экране клуба вход по коду",
       "snack": "Общая сессия недоступна",
       "risk": "low",
       "anchor": false,
       "conditional": false,
       "grounding": "Keychain access group только для таргетов одной команды",
-      "activate": true
+      "activate": true,
+      "reviewNote": "Доступ вызывается действием «Войти на экране клуба» на экране «cast». При отказе или без режима: На экране клуба вход по коду"
     },
     {
       "key": "commnotif",
@@ -489,10 +645,10 @@
         "title": "Именные уведомления чатов",
         "text": "Показывать автора и название стола в уведомлении о сообщении."
       },
-      "feature": "Именные уведомления сообщений стола",
-      "gesture": "«Оповещения» в настройках",
-      "screen": "settings",
-      "target": "settings",
+      "feature": "Сообщения стола приходят с именем игрока",
+      "gesture": "«Сообщения стола с именами» в чате",
+      "screen": "chat",
+      "target": "chat",
       "fallback": "Новые сообщения остаются внутри вкладки «Чаты»",
       "snack": "Именные уведомления выключены",
       "risk": "low",
@@ -500,7 +656,7 @@
       "conditional": false,
       "grounding": "INSendMessageIntent и стабильный conversationIdentifier партии",
       "activate": true,
-      "reviewNote": "Именные уведомления включаются только в общих настройках приложения"
+      "reviewNote": "Доступ вызывается действием «Сообщения стола с именами» в чате на экране «chat». При отказе или без режима: Новые сообщения остаются внутри вкладки «Чаты»"
     },
     {
       "key": "voip",
@@ -509,18 +665,20 @@
         "title": "Звонок игрокам",
         "text": "Начать групповой аудиозвонок с участниками выбранного стола."
       },
-      "feature": "Групповой звонок участников стола",
-      "gesture": "Иконка телефона в топбаре разговора",
-      "screen": "conversation",
-      "target": "conversation",
+      "feature": "Звонок игроков стола перед партией",
+      "gesture": "«Позвонить» в шапке чата стола",
+      "screen": "chat",
+      "target": "call",
       "fallback": "Договориться о партии можно текстом в чате",
       "snack": "Звонок недоступен — напишите сообщение",
       "risk": "high",
       "anchor": false,
       "conditional": true,
-      "requires": ["mic"],
+      "requires": [
+        "mic"
+      ],
       "grounding": "PushKit используется только для настоящего группового VoIP-звонка; вызов передаётся CallKit и связан с конкретным столом",
-      "reviewNote": "Телефон в топбаре запускает реальный звонок участников текущего стола",
+      "reviewNote": "Доступ вызывается действием «Позвонить» в шапке чата стола на экране «chat». При отказе или без режима: Договориться о партии можно текстом в чате",
       "activate": true
     }
   ],
@@ -540,7 +698,11 @@
           "primary": "Зарезервированное место и поле номера телефона",
           "secondary": "Регистрация, гостевой вход, legal и помощь"
         },
-        "states": ["default", "error", "loading"],
+        "states": [
+          "default",
+          "error",
+          "loading"
+        ],
         "density": "low",
         "contentCases": [
           {
@@ -568,12 +730,16 @@
         "pattern": "collection",
         "navigation": "root",
         "purpose": "Показать партии и отчёты знакомых игроков",
-        "primaryAction": "Создать",
+        "primaryAction": "СР Собрать стол на вечер",
         "hierarchy": {
           "primary": "Карточки узнаваемых авторов и их публикации",
           "secondary": "Связанные игры, столы, реакции и сохранения"
         },
-        "states": ["default", "empty", "offline"],
+        "states": [
+          "default",
+          "empty",
+          "offline"
+        ],
         "density": "high",
         "contentCases": [
           {
@@ -601,12 +767,16 @@
         "pattern": "collection",
         "navigation": "root",
         "purpose": "Найти коробку по времени и сложности",
-        "primaryAction": "Лесные союзы",
+        "primaryAction": "Маршруты Севера",
         "hierarchy": {
           "primary": "Игры в коллекциях знакомых участников сети",
           "secondary": "Фильтры по длительности, составу и правилам"
         },
-        "states": ["default", "empty", "offline"],
+        "states": [
+          "default",
+          "empty",
+          "offline"
+        ],
         "density": "medium",
         "contentCases": [
           {
@@ -639,7 +809,11 @@
           "primary": "Сгруппированные по датам партии со свободными местами",
           "secondary": "Физическое место, игровой темп и текущий состав"
         },
-        "states": ["default", "empty", "offline"],
+        "states": [
+          "default",
+          "empty",
+          "offline"
+        ],
         "density": "medium",
         "contentCases": [
           {
@@ -667,12 +841,16 @@
         "pattern": "detail",
         "navigation": "root",
         "purpose": "Показать идентичность, связи и игровую активность",
-        "primaryAction": "Профиль",
+        "primaryAction": "Собрать стол",
         "hierarchy": {
           "primary": "Личность игрока, социальные связи и совместимость",
           "secondary": "Коллекция, игровые метрики и собственные публикации"
         },
-        "states": ["default", "empty", "offline"],
+        "states": [
+          "default",
+          "empty",
+          "offline"
+        ],
         "density": "medium",
         "contentCases": [
           {
@@ -701,12 +879,18 @@
         "pattern": "editor",
         "navigation": "push",
         "purpose": "Опубликовать отчёт или новый стол",
-        "primaryAction": "Готово",
+        "primaryAction": "Опубликовать",
         "hierarchy": {
           "primary": "Автор, текст и главное действие публикации",
           "secondary": "Фото, место, выбранная игра и параметры стола"
         },
-        "states": ["default", "loading", "error", "success", "denied"],
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "success",
+          "denied"
+        ],
         "density": "medium",
         "contentCases": [
           {
@@ -735,12 +919,16 @@
         "pattern": "detail",
         "navigation": "push",
         "purpose": "Показать запись и связанный результат",
-        "primaryAction": "Одно место свободно",
+        "primaryAction": "Открыть стол",
         "hierarchy": {
           "primary": "Узнаваемый автор, текст и медиаповерхность записи",
           "secondary": "Связанный состав партии, реакции и сохранение"
         },
-        "states": ["default", "offline", "error"],
+        "states": [
+          "default",
+          "offline",
+          "error"
+        ],
         "density": "medium",
         "contentCases": [
           {
@@ -769,12 +957,16 @@
         "pattern": "detail",
         "navigation": "push",
         "purpose": "Проверить состав и занять место",
-        "primaryAction": "Занять место",
+        "primaryAction": "Открыть счёт",
         "hierarchy": {
           "primary": "Игра, время и одно доступное место за столом",
           "secondary": "Участники, напоминания и календарное событие"
         },
-        "states": ["default", "loading", "denied"],
+        "states": [
+          "default",
+          "loading",
+          "denied"
+        ],
         "density": "medium",
         "contentCases": [
           {
@@ -808,7 +1000,11 @@
           "primary": "Текущие очки каждого участника живой партии",
           "secondary": "Ручные кнопки коррекции и вывод на общий экран"
         },
-        "states": ["default", "loading", "denied"],
+        "states": [
+          "default",
+          "loading",
+          "denied"
+        ],
         "density": "medium",
         "contentCases": [
           {
@@ -837,12 +1033,17 @@
         "pattern": "player",
         "navigation": "push",
         "purpose": "Освежить правила без чтения телефона",
-        "primaryAction": "Лесные союзы",
+        "primaryAction": "Слушать памятку",
         "hierarchy": {
           "primary": "Текущая глава, прогресс и управление воспроизведением",
           "secondary": "Полное оглавление текстовой памятки правил"
         },
-        "states": ["default", "loading", "offline", "error"],
+        "states": [
+          "default",
+          "loading",
+          "offline",
+          "error"
+        ],
         "density": "low",
         "contentCases": [
           {
@@ -871,12 +1072,17 @@
         "pattern": "collection",
         "navigation": "push",
         "purpose": "Показать счёт всем участникам",
-        "primaryAction": "Экран у большого стола",
+        "primaryAction": "Вернуться к счёту",
         "hierarchy": {
           "primary": "Найденные в локальной сети телевизоры и проекторы",
           "secondary": "Имя текущей сети и превью общего табло"
         },
-        "states": ["default", "loading", "denied", "empty"],
+        "states": [
+          "default",
+          "loading",
+          "denied",
+          "empty"
+        ],
         "density": "medium",
         "contentCases": [
           {
@@ -904,58 +1110,150 @@
         "pattern": "collection",
         "navigation": "root",
         "purpose": "Вернуться к активным столам и личным разговорам",
-        "primaryAction": "Лесные союзы · сегодня",
-        "hierarchy": { "primary": "Разговоры активных столов", "secondary": "Личные диалоги и непрочитанные сообщения" },
-        "states": ["default", "empty", "offline"],
+        "primaryAction": "Лесные союзы · 19:30",
+        "hierarchy": {
+          "primary": "Разговоры активных столов",
+          "secondary": "Личные диалоги и непрочитанные сообщения"
+        },
+        "states": [
+          "default",
+          "empty",
+          "offline"
+        ],
         "density": "medium",
         "contentCases": [
-          { "kind": "typical", "example": "Два активных стола и один личный диалог" },
-          { "kind": "stress", "example": "Длинное название игры и сообщение на несколько строк" },
-          { "kind": "failure", "example": "Офлайн доступны последние синхронизированные сообщения" }
+          {
+            "kind": "typical",
+            "example": "Два активных стола и один личный диалог"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное название игры и сообщение на несколько строк"
+          },
+          {
+            "kind": "failure",
+            "example": "Офлайн доступны последние синхронизированные сообщения"
+          }
         ]
       }
     },
     {
-      "id": "conversation",
-      "title": "Разговор стола",
+      "id": "chat",
+      "title": "Чат стола",
       "type": "push",
       "light": true,
       "parent": "chats",
-      "meta": "Сообщения · Voice · Communication Notifications",
+      "meta": "Сообщения, голосовые, звонок стола",
       "ui": {
         "pattern": "messaging",
         "navigation": "push",
         "purpose": "Согласовать детали партии, не теряя карточку стола",
-        "primaryAction": "Отправить сообщение",
-        "hierarchy": { "primary": "Сообщения участников", "secondary": "Карточка партии, вложения и уведомления" },
-        "states": ["default", "empty", "error", "offline", "denied"],
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Сообщения участников",
+          "secondary": "Карточка партии, вложения и уведомления"
+        },
+        "states": [
+          "default",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "medium",
         "contentCases": [
-          { "kind": "typical", "example": "Текст, голосовое и системное изменение состава" },
-          { "kind": "stress", "example": "Сообщение с длинным названием дополнения" },
-          { "kind": "failure", "example": "Без микрофона сообщение набирается текстом" }
+          {
+            "kind": "typical",
+            "example": "Текст, голосовое и системное изменение состава"
+          },
+          {
+            "kind": "stress",
+            "example": "Сообщение с длинным названием дополнения"
+          },
+          {
+            "kind": "failure",
+            "example": "Без микрофона сообщение набирается текстом"
+          }
         ]
       }
     },
     {
-      "id": "direct-sasha",
-      "title": "Саша Руденко",
+      "id": "direct",
+      "title": "Личный диалог",
       "type": "push",
       "light": true,
       "parent": "chats",
-      "meta": "Личный разговор с игроком",
+      "meta": "Переписка с игроком",
       "ui": {
         "pattern": "messaging",
         "navigation": "push",
         "purpose": "Договориться о следующей партии напрямую с игроком",
-        "primaryAction": "Отправить сообщение",
-        "hierarchy": { "primary": "История личной переписки с выбранным игроком", "secondary": "Композер, вложения, голосовые сообщения и звонок" },
-        "states": ["default", "empty", "error", "offline", "denied"],
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "История личной переписки с выбранным игроком",
+          "secondary": "Композер, вложения, голосовые сообщения и звонок"
+        },
+        "states": [
+          "default",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
         "density": "medium",
         "contentCases": [
-          { "kind": "typical", "example": "Договорённость о следующей партии" },
-          { "kind": "stress", "example": "Длинное личное сообщение" },
-          { "kind": "failure", "example": "Без микрофона доступен текст" }
+          {
+            "kind": "typical",
+            "example": "Договорённость о следующей партии"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное личное сообщение"
+          },
+          {
+            "kind": "failure",
+            "example": "Без микрофона доступен текст"
+          }
+        ]
+      }
+    },
+    {
+      "id": "call",
+      "title": "Звонок стола",
+      "type": "fullscreen",
+      "light": false,
+      "parent": "chat",
+      "meta": "Голосом с игроками · VoIP",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "fullscreen",
+        "purpose": "Согласовать детали партии, не теряя карточку стола",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Стол в звонке и завершение",
+          "secondary": "Микрофон, динамик и счёт партии"
+        },
+        "states": [
+          "default",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Текст, голосовое и системное изменение состава"
+          },
+          {
+            "kind": "stress",
+            "example": "Сообщение с длинным названием дополнения"
+          },
+          {
+            "kind": "failure",
+            "example": "Без микрофона сообщение набирается текстом"
+          }
         ]
       }
     },
@@ -970,12 +1268,16 @@
         "pattern": "settings",
         "navigation": "push",
         "purpose": "Управлять аккаунтом и техническими возможностями",
-        "primaryAction": "Саша Руденко",
+        "primaryAction": null,
         "hierarchy": {
           "primary": "Секционная карточка профиля и управления аккаунтом",
           "secondary": "Оповещения, приватность, доступы и сессия расширения"
         },
-        "states": ["default", "denied", "error"],
+        "states": [
+          "default",
+          "denied",
+          "error"
+        ],
         "density": "medium",
         "contentCases": [
           {
@@ -1006,9 +1308,6 @@
         "feed",
         "games",
         "tables",
-        "chats",
-        "conversation",
-        "direct-sasha",
         "profile",
         "compose",
         "post",
@@ -1016,6 +1315,10 @@
         "score",
         "audio",
         "cast",
+        "chats",
+        "chat",
+        "direct",
+        "call",
         "settings"
       ]
     },
@@ -1024,55 +1327,128 @@
       "label": "Место за столом",
       "note": "Уникальный тематический вход, регистрация и гостевой проход",
       "start": "phone",
-      "screens": ["phone", "feed"],
-      "stops": ["feed"]
+      "screens": [
+        "phone",
+        "feed"
+      ],
+      "stops": [
+        "feed"
+      ]
     },
     {
       "id": "publish",
       "label": "Опубликовать сыгранную партию",
       "note": "Запись с игрой, фотографией и конкретным столом",
       "start": "feed",
-      "screens": ["feed", "compose", "post", "table"],
-      "stops": ["post", "table"]
+      "screens": [
+        "feed",
+        "compose",
+        "post",
+        "table",
+        "tables",
+        "chat",
+        "score",
+        "games"
+      ],
+      "stops": [
+        "post",
+        "table",
+        "tables",
+        "chat",
+        "score",
+        "games"
+      ]
     },
     {
       "id": "join",
       "label": "Занять место за столом",
       "note": "Выбор партии, место в составе, календарь и оповещения",
       "start": "tables",
-      "screens": ["tables", "compose", "table", "score", "conversation"],
-      "stops": ["compose", "score", "conversation"]
+      "screens": [
+        "tables",
+        "compose",
+        "table",
+        "score",
+        "chat",
+        "direct"
+      ],
+      "stops": [
+        "compose",
+        "score",
+        "chat",
+        "direct"
+      ]
     },
     {
       "id": "score",
       "label": "Вести счёт партии",
       "note": "Общее табло, ручной и голосовой ввод очков",
       "start": "table",
-      "screens": ["table", "score", "conversation", "cast"],
-      "stops": ["conversation", "cast"]
+      "screens": [
+        "table",
+        "score",
+        "chat",
+        "cast",
+        "direct"
+      ],
+      "stops": [
+        "chat",
+        "cast",
+        "direct"
+      ]
     },
     {
       "id": "cast",
       "label": "Показать общее табло",
       "note": "Поиск экрана в локальной сети и понятный ручной fallback",
       "start": "score",
-      "screens": ["score", "cast"]
+      "screens": [
+        "score",
+        "cast"
+      ],
+      "stops": []
     },
     {
       "id": "messaging",
       "label": "Договориться в чате",
       "note": "Разговор стола, личный диалог, голосовые и звонок",
       "start": "chats",
-      "screens": ["chats", "conversation", "direct-sasha", "table", "profile"],
-      "stops": ["table", "profile"]
+      "screens": [
+        "chats",
+        "chat",
+        "direct",
+        "table",
+        "profile",
+        "call",
+        "compose",
+        "score"
+      ],
+      "stops": [
+        "table",
+        "profile",
+        "compose",
+        "score"
+      ]
     },
     {
       "id": "access",
       "label": "Аккаунт и доступы",
       "note": "Именные уведомления, общая сессия и управление аккаунтом",
       "start": "profile",
-      "screens": ["profile", "settings", "post"],
-      "stops": ["post"]
+      "screens": [
+        "profile",
+        "settings",
+        "post",
+        "compose",
+        "score",
+        "account"
+      ],
+      "stops": [
+        "post",
+        "compose",
+        "score",
+        "account"
+      ]
     }
   ],
   "backendless": [
@@ -1090,12 +1466,30 @@
     }
   ],
   "docs": [
-    { "file": "01-product-vision.md", "label": "Вижен" },
-    { "file": "02-architecture.md", "label": "Архитектура" },
-    { "file": "03-design-system.md", "label": "Дизайн-токены" },
-    { "file": "04-references.md", "label": "Референсы" },
-    { "file": "05-visual-audit.md", "label": "Визуальный аудит" },
-    { "file": "06-app-store.md", "label": "Карточка App Store" }
+    {
+      "file": "01-product-vision.md",
+      "label": "Вижен"
+    },
+    {
+      "file": "02-architecture.md",
+      "label": "Архитектура"
+    },
+    {
+      "file": "03-design-system.md",
+      "label": "Дизайн-токены"
+    },
+    {
+      "file": "04-references.md",
+      "label": "Референсы"
+    },
+    {
+      "file": "05-visual-audit.md",
+      "label": "Визуальный аудит"
+    },
+    {
+      "file": "06-app-store.md",
+      "label": "Карточка App Store"
+    }
   ],
   "appStore": {
     "name": "Стол — партии рядом",
@@ -1151,6 +1545,37 @@
       "phone": "+7 900 000-00-00",
       "code": "stol2026",
       "note": "Телефон и пароль предзаполнены; SMS не отправляется. Гостевой вход открывает тот же демо-снапшот."
+    },
+    "assets": {
+      "locale": "ru-RU",
+      "template": "studio",
+      "screens": [
+        {
+          "screen": "tables",
+          "headline": "Свободное место на вечер",
+          "body": "Живые столы знакомых: игра, время, кто уже сел"
+        },
+        {
+          "screen": "table",
+          "headline": "Состав и темп заранее",
+          "body": "Сколько займёт партия и кто объяснит правила"
+        },
+        {
+          "screen": "score",
+          "headline": "Счёт без бумажки",
+          "body": "Табло по раундам — голосом или кнопками"
+        },
+        {
+          "screen": "chat",
+          "headline": "Договоритесь у стола",
+          "body": "Кто что принесёт, голосовые и звонок стола"
+        },
+        {
+          "screen": "feed",
+          "headline": "Партии знакомых в ленте",
+          "body": "Итоги, расклады и приглашения на вечер"
+        }
+      ]
     }
   },
   "acceptance": [
@@ -1161,8 +1586,16 @@
       "given": "Игрок находится в ленте",
       "when": "Открывает композер, выбирает фото и публикует",
       "then": "Видит запись с автором, игрой и местом",
-      "screens": ["feed", "compose", "post"],
-      "capabilities": ["camera", "photos", "location"]
+      "screens": [
+        "feed",
+        "compose",
+        "post"
+      ],
+      "capabilities": [
+        "camera",
+        "photos",
+        "location"
+      ]
     },
     {
       "id": "join-table",
@@ -1171,8 +1604,14 @@
       "given": "У партии осталось одно место",
       "when": "Нажимает «Занять место» и добавляет событие",
       "then": "В составе появляется игрок, дата остаётся в календаре",
-      "screens": ["tables", "table"],
-      "capabilities": ["calendar", "push"]
+      "screens": [
+        "tables",
+        "table"
+      ],
+      "capabilities": [
+        "calendar",
+        "push"
+      ]
     },
     {
       "id": "voice-score",
@@ -1181,8 +1620,14 @@
       "given": "Партия уже началась",
       "when": "Нажимает «Назвать счёт» и произносит число",
       "then": "Число появляется у выбранного игрока",
-      "screens": ["table", "score"],
-      "capabilities": ["speech", "mic"]
+      "screens": [
+        "table",
+        "score"
+      ],
+      "capabilities": [
+        "speech",
+        "mic"
+      ]
     },
     {
       "id": "shared-board",
@@ -1191,8 +1636,14 @@
       "given": "Телефон и телевизор в одной сети",
       "when": "Выбирает «Показать на экране»",
       "then": "Устройство найдено, табло готово к показу",
-      "screens": ["score", "cast"],
-      "capabilities": ["localnetwork", "wifiinfo"]
+      "screens": [
+        "score",
+        "cast"
+      ],
+      "capabilities": [
+        "localnetwork",
+        "wifiinfo"
+      ]
     }
   ],
   "fixtures": {
@@ -1201,15 +1652,30 @@
         "title": "Маша Орлова",
         "subtitle": "спокойный темп · 18 общих партий"
       },
-      { "title": "Илья Левин", "subtitle": "любит евро · объясняет правила" }
+      {
+        "title": "Илья Левин",
+        "subtitle": "любит евро · объясняет правила"
+      }
     ],
     "games": [
-      { "title": "Лесные союзы", "subtitle": "2–4 игрока · 75 минут" },
-      { "title": "Маршруты Севера", "subtitle": "3–5 игроков · 50 минут" }
+      {
+        "title": "Лесные союзы",
+        "subtitle": "2–4 игрока · 75 минут"
+      },
+      {
+        "title": "Маршруты Севера",
+        "subtitle": "3–5 игроков · 50 минут"
+      }
     ],
     "sessions": [
-      { "title": "Сегодня в 19:30", "subtitle": "Лесные союзы · 1 место" },
-      { "title": "Суббота в 16:00", "subtitle": "Маршруты Севера · 2 места" }
+      {
+        "title": "Сегодня в 19:30",
+        "subtitle": "Лесные союзы · 1 место"
+      },
+      {
+        "title": "Суббота в 16:00",
+        "subtitle": "Маршруты Севера · 2 места"
+      }
     ]
   }
 }

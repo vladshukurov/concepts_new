@@ -1,5 +1,40 @@
 # Архитектура «Стола»
 
+## Модель домена
+
+<!-- @generated:domain-model -->
+| Сущность | Что это | Состояния | Экраны |
+|---|---|---|---|
+| Игрок | человек с коллекцией, темпом и сыгранными партиями | не подписаны → подписаны | `profile`, `feed` |
+| Стол | конкретная партия: игра, время, место, свободные места | набор → собран → идёт → сыгран | `tables`, `table`, `feed` |
+| Игра | коробка в коллекции: игроки, длительность, кто знает правила | хочу сыграть → в коллекции → сыграна | `games`, `audio` |
+| Партия | счёт по раундам и итог | идёт → завершена | `score`, `cast` |
+| Публикация | запись о столе или итоге партии | черновик → опубликована | `feed`, `post`, `compose` |
+| Диалог | чат стола или личная переписка | есть непрочитанные → прочитан | `chats`, `chat`, `direct`, `call` |
+<!-- @end -->
+
+## Сила доступов
+
+<!-- @generated:access-strength -->
+Сильных доступов: **13 из 13** (`npm run access -- stol`).
+
+| Ключ | Жест | Экран | Оценка |
+|---|---|---|---|
+| `camera` ⚓ | «Снять поле» в новой записи | `compose` | заслужен |
+| `photos` ⚓ | «Фото» в новой записи | `compose` | заслужен |
+| `location` | «Место» в новой записи | `compose` | заслужен |
+| `calendar` ⚓ | «В календарь» на столе | `table` | заслужен |
+| `push` | «Следить за столом» | `table` | заслужен |
+| `speech` ⚓ | «Назвать счёт» на табло | `score` | заслужен |
+| `mic` ⚓ | «Назвать счёт» на табло; голосовое в чате стола | `score` | заслужен |
+| `audio` | «Слушать памятку» | `audio` | заслужен |
+| `localnetwork` | «Экран у большого стола» | `cast` | заслужен |
+| `wifiinfo` | «Проверить сеть» на общем экране | `cast` | заслужен |
+| `keychain` | «Войти на экране клуба» | `cast` | заслужен |
+| `commnotif` | «Сообщения стола с именами» в чате | `chat` | заслужен |
+| `voip` | «Позвонить» в шапке чата стола | `chat` | заслужен |
+<!-- @end -->
+
 ## Слои
 
 - UI: пять корневых вкладок, социальная лента, карточки партий, контекстные разговоры, профиль, композер и сервисные секционные списки.
@@ -31,29 +66,30 @@
 ```
 Вход по номеру (phone) — старт, без таб-бара · открывается: старт
     ├─ Пароль (password) — push, без таб-бара · открывается: «Далее»
-    │   └─ Аккаунт (account) — push, без таб-бара · открывается: «Саша Руденко»
+    │   └─ Аккаунт (account) — push, без таб-бара · открывается: «Профиль и аккаунт»
     │       └─ Удаление аккаунта (deleteaccount) — push, без таб-бара · открывается: «Удалить аккаунт»
     └─ Создать аккаунт (register) — push, без таб-бара · открывается: «Создать аккаунт»
         └─ Пароль нового аккаунта (registerpassword) — push, без таб-бара · открывается: «Далее»
 
 Лента (feed) — tab (root) · открывается: «Продолжить без аккаунта», «Войти» …
-    ├─ Новая запись (compose) — push · открывается: «Создать запись», «Создать» … · camera, photos, location
-    └─ Публикация (post) — push · открывается: «Открыть публикацию Маши», «Открыть партию Лесные союзы» …
+    ├─ Новая запись (compose) — push · открывается: «Новая запись», «Собрать стол на вечер» … · camera, photos, location
+    └─ Публикация (post) — push · открывается: «Вечером раскладываем «Лесные союзы». Объясн…», ««Городские линии» вчетвером: 92 у меня, Жен…» …
 
-Игры (games) — tab (root) · открывается: вкладка таб-бара
-    └─ Памятка (audio) — push · открывается: «Открыть игру Лесные союзы» · audio
+Игры (games) — tab (root) · открывается: «Игра»
+    └─ Памятка (audio) — push · открывается: «Лесные союзы», «Городские линии» … · audio
 
-Столы (tables) — tab (root) · открывается: вкладка таб-бара
-    └─ Стол (table) — push · открывается: «Сегодня», «Суббота» … · calendar, push
-        └─ Счёт (score) — push · открывается: «Открыть счёт» · speech, mic
-            └─ Общий экран (cast) — push · открывается: «Показать на общем экране», «Показать на экране» · localnetwork, wifiinfo
+Столы (tables) — tab (root) · открывается: «Все столы», «Маршруты Севера» …
+    └─ Стол (table) — push · открывается: «Лесные союзы», «Маршруты Севера» … · calendar, push
+        └─ Счёт (score) — push · открывается: «Городские линии · 92 очка», «Лесные союзы · 71 очко» … · speech, mic
+            └─ Общий экран (cast) — push · открывается: «Показать на экране» · localnetwork, wifiinfo, keychain
 
-Профиль (profile) — tab (root) · открывается: «Саша Руденко»
-    └─ Настройки (settings) — push · открывается: «Открыть настройки» · keychain, commnotif
+Профиль (profile) — tab (root) · открывается: вкладка таб-бара
+    └─ Настройки (settings) — push · открывается: «Настройки»
 
 Чаты (chats) — tab (root) · открывается: вкладка таб-бара
-    ├─ Разговор стола (conversation) — push · открывается: «Открыть чат стола», «Лесные союзы · сегодня» … · voip
-    └─ Саша Руденко (direct-sasha) — push · открывается: «Саша Руденко»
+    ├─ Чат стола (chat) — push · открывается: «Комментарии», «Чат стола» … · commnotif, voip
+    │   └─ Звонок стола (call) — fullscreen · открывается: «Позвонить» (voip)
+    └─ Личный диалог (direct) — push · открывается: «Женя Ким», «Новое сообщение» …
 ```
 <!-- @end -->
 
@@ -75,48 +111,56 @@
 | `account` | «Удалить аккаунт» | `deleteaccount` | — | переход |
 | `deleteaccount` | «Назад» | `account` | — | возврат по IA |
 | `deleteaccount` | «Удалить аккаунт» | `phone` | — | переход |
-| `feed` | «Создать запись», «Создать» | `compose` | — | переход |
-| `feed` | «Сегодня», «Суббота» … | `table` | — | переход |
-| `feed` | «Открыть публикацию Маши» | `post` | — | переход |
-| `games` | «Открыть игру Лесные союзы» | `audio` | — | переход |
+| `feed` | «Новая запись», «Собрать стол на вечер» | `compose` | — | переход |
+| `feed` | «Все столы» | `tables` | — | переход |
+| `feed` | «Лесные союзы», «Маршруты Севера» … | `table` | — | переход |
+| `feed` | «Вечером раскладываем «Лесные союзы». Объясн…», ««Городские линии» вчетвером: 92 у меня, Жен…» | `post` | — | переход |
+| `feed` | «Комментарии» | `chat` | — | переход |
+| `feed` | «Городские линии · 92 очка» | `score` | — | переход |
+| `games` | «Все», «Евро» … | `games` | — | переход |
+| `games` | «Маршруты Севера», «Тихая гавань» | `tables` | — | переход |
+| `games` | «Лесные союзы», «Городские линии» … | `audio` | — | переход |
 | `tables` | «Собрать стол» | `compose` | — | переход |
-| `tables` | «Открыть стол Лесные союзы», «Открыть стол Городские линии» … | `table` | — | переход |
-| `profile` | «Открыть настройки» | `settings` | — | переход |
-| `profile` | «Открыть партию Лесные союзы», «Открыть партию Городские линии» … | `post` | — | переход |
-| `compose` | «Назад» | `feed` | — | возврат по IA |
-| `compose` | «Готово» | `post` | — | переход |
-| `compose` | «Камера» | `compose` | `NSCameraUsageDescription` | доступ разрешён |
+| `tables` | «Сегодня», «Выходные» … | `tables` | — | переход |
+| `tables` | «Лесные союзы», «Городские линии» … | `table` | — | переход |
+| `profile` | «Настройки» | `settings` | — | переход |
+| `profile` | «Собрать стол» | `compose` | — | переход |
+| `profile` | «Лесные союзы · 71 очко», «Городские линии · 54 очка» | `score` | — | переход |
+| `compose` | «Опубликовать» | `post` | — | переход |
+| `compose` | «Снять поле» | `compose` | `NSCameraUsageDescription` | доступ разрешён |
 | `compose` | «Фото» | `compose` | `NSPhotoLibraryUsageDescription` | доступ разрешён |
 | `compose` | «Место» | `compose` | `NSLocationWhenInUseUsageDescription` | доступ разрешён |
+| `compose` | «Игра» | `games` | — | переход |
 | `post` | «Назад» | `feed` | — | возврат по IA |
-| `post` | «Открыть связанный стол» | `table` | — | переход |
+| `post` | «Открыть стол» | `table` | — | переход |
+| `post` | «Вложение» | `compose` | — | переход |
 | `table` | «Назад» | `tables` | — | возврат по IA |
 | `table` | «Открыть счёт» | `score` | — | переход |
-| `table` | «Открыть чат стола» | `conversation` | — | переход |
-| `table` | «Добавить в календарь» | `table` | `NSCalendarsFullAccessUsageDescription` | доступ разрешён |
+| `table` | «Чат стола» | `chat` | — | переход |
+| `table` | «В календарь» | `table` | `NSCalendarsFullAccessUsageDescription` | доступ разрешён |
 | `table` | «Следить за столом» | `table` | `aps-environment` | доступ разрешён |
+| `table` | «Женя Ким» | `direct` | — | переход |
 | `score` | «Назад» | `table` | — | возврат по IA |
-| `score` | «Показать на общем экране», «Показать на экране» | `cast` | — | переход |
+| `score` | «Показать на экране» | `cast` | — | переход |
 | `score` | «Назвать счёт» | `score` | `NSSpeechRecognitionUsageDescription + NSMicrophoneUsageDescription` | доступ разрешён |
 | `audio` | «Назад» | `games` | — | возврат по IA |
 | `audio` | «Слушать памятку» | `audio` | `UIBackgroundModes: audio` | entitlement, без alert |
 | `cast` | «Назад» | `score` | — | возврат по IA |
+| `cast` | «Экран у большого стола» | `cast` | `NSLocalNetworkUsageDescription (+ NSBonjourServices: _googlecast._tcp)` | доступ разрешён |
 | `cast` | «Проверить сеть» | `cast` | `com.apple.developer.networking.wifi-info` | entitlement, без alert |
-| `cast` | «Экран у большого стола», «Проектор клуба» | `cast` | `NSLocalNetworkUsageDescription (+ NSBonjourServices: _googlecast._tcp)` | доступ разрешён |
-| `chats` | «Лесные союзы · сегодня», «Маршруты Севера» | `conversation` | — | переход |
-| `chats` | «Саша Руденко» | `direct-sasha` | — | переход |
-| `conversation` | «Назад» | `chats` | — | возврат по IA |
-| `conversation` | «Лесные союзы», «19:30» | `table` | — | переход |
-| `conversation` | «Позвонить игрокам» | `conversation` | `NSMicrophoneUsageDescription + UIBackgroundModes: voip` | доступ разрешён |
-| `conversation` | «Добавить фото» | `conversation` | `NSPhotoLibraryUsageDescription` | доступ разрешён |
-| `conversation` | «Записать голосовое» | `conversation` | `NSMicrophoneUsageDescription` | доступ разрешён |
-| `direct-sasha` | «Назад» | `chats` | — | возврат по IA |
-| `direct-sasha` | «Саша Руденко» | `profile` | — | переход |
-| `direct-sasha` | «Позвонить Саше» | `direct-sasha` | `NSMicrophoneUsageDescription + UIBackgroundModes: voip` | доступ разрешён |
-| `direct-sasha` | «Добавить фото» | `direct-sasha` | `NSPhotoLibraryUsageDescription` | доступ разрешён |
-| `direct-sasha` | «Записать голосовое» | `direct-sasha` | `NSMicrophoneUsageDescription` | доступ разрешён |
+| `cast` | «Войти на экране клуба» | `cast` | `keychain-access-groups` | entitlement, без alert |
+| `cast` | «Вернуться к счёту» | `score` | — | переход |
+| `chats` | «Новое сообщение», «Диалог: Женя Ким» | `direct` | — | переход |
+| `chats` | «Диалог: Лесные союзы · 19:30», «Диалог: Маршруты Севера» | `chat` | — | переход |
+| `chat` | «Назад» | `chats` | — | возврат по IA |
+| `chat` | «Позвонить» | `call` | `UIBackgroundModes: voip` | entitlement, без alert |
+| `chat` | «Сообщения стола с именами» | `chat` | `com.apple.developer.usernotifications.communication` | entitlement, без alert |
+| `chat` | «Вложение» | `compose` | — | переход |
+| `chat` | «Голосовое сообщение» | `chat` | `NSMicrophoneUsageDescription` | доступ разрешён |
+| `direct` | «Назад» | `chats` | — | возврат по IA |
+| `direct` | «Вложение» | `compose` | — | переход |
+| `call` | «Счёт» | `score` | — | переход |
+| `call` | «Завершить» | `chat` | — | возврат по IA |
 | `settings` | «Назад» | `profile` | — | возврат по IA |
-| `settings` | «Саша Руденко» | `account` | — | переход |
-| `settings` | «Оповещения» | `settings` | `com.apple.developer.usernotifications.communication` | entitlement, без alert |
-| `settings` | «Общая сессия» | `settings` | `keychain-access-groups` | entitlement, без alert |
+| `settings` | «Профиль и аккаунт» | `account` | — | переход |
 <!-- @end -->
