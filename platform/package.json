@@ -21,6 +21,7 @@
     "audit:grid": "node scripts/audit-grid.mjs",
     "access": "node scripts/access-strength.mjs",
     "sync": "node scripts/sync-spec.mjs",
+    "migrate:check": "node scripts/migrate-check.mjs",
     "proof": "node scripts/pipeline-proof.mjs",
     "review": "node scripts/quality-review.mjs",
     "test:quality": "node scripts/test-quality.mjs",
