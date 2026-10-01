@@ -1,4 +1,5 @@
 import { THEME, TABS } from './_shared.mjs';
+import { trip } from '../model.mjs';
 
 export default (ui) => ui.screen({
   id: 'feed', theme: THEME,
@@ -10,7 +11,7 @@ export default (ui) => ui.screen({
       ui.granted('fetch', 'Обновлено в 06:12 · четыре новые записи'),
     ] }),
     ui.section({ children: [
-      `<button class="kl-event" data-go="event"><small>Пятница, 12 сентября · выезд в 09:30</small><strong>Поездка на садовую ярмарку</strong><span>Записались 18 из 28 · осталось пять мест</span>${ui.progress({ fillClass: 'kl-w-64' })}</button>`,
+      `<button class="kl-event" data-go="event"><small>${trip.date[0].toUpperCase() + trip.date.slice(1)} · выезд в ${trip.departure}</small><strong>${trip.title}</strong><span>Записались ${trip.signed} из ${trip.seats} · осталось пять мест</span>${ui.progress({ fillClass: 'kl-w-64' })}</button>`,
       ui.list([ui.row({ lead: ui.avatar('СБ'), title: 'СНТ «Берёзка» · 28 участков', sub: 'В приложении 24, четверых ещё не позвали', go: 'classroom' })]),
     ] }),
     ui.post({

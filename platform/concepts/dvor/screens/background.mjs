@@ -1,17 +1,22 @@
 import { THEME } from './_shared.mjs';
+import { meters, outage, cleanup } from '../model.mjs';
 
-const log = [['04:12', 'Задача запущена системой'], ['04:12', 'Объявления дома: +2'], ['04:13', 'Срок показаний: 25 апреля'], ['04:13', 'Виджет обновлён'], ['09:41', 'Тема 4417-Б обновлена']];
+/* Сводка дома к утру: то, что обновилось ночью, а не журнал фоновой задачи */
 export default (ui) => ui.screen({
   id: 'background', theme: THEME,
   body: [
-    ui.nav({ title: 'Обновление в фоне' }),
+    ui.nav({ title: 'Дом к утру' }),
     ui.scroll([
-      ui.section({ children: ui.group({ cells: [
-        ui.cell({ icon: 'repeat-2', title: 'Режим', value: 'Раз в сутки' }),
-        ui.cell({ icon: 'clock', title: 'Последний запуск', value: '04:12' }),
-      ] }) }),
-      ui.section({ title: 'Журнал', meta: 'сегодня', children: ui.list(log.map(([t, s]) => ui.row({ lead: ui.leadIcon('', { text: t }), title: s }))) }),
-      ui.section({ children: ui.actions([ui.button({ label: 'Проверить задачу', block: true, activate: 'bgtask|meters' })]) }),
+      ui.section({ title: 'Обновилось в 06:10', children: ui.list([
+        ui.row({ lead: ui.leadIcon('megaphone', { accent: true }), title: 'Два объявления УК', sub: `${outage.title} ${outage.label}`, go: 'post' }),
+        ui.row({ lead: ui.leadIcon('wrench'), title: 'Доводчик, второй подъезд', sub: 'Мастер сегодня с 16:00', go: 'events' }),
+        ui.row({ lead: ui.leadIcon('gauge'), title: `Показания до ${meters.deadlineLabel}`, sub: `Осталось ${meters.left}`, go: 'meters' }),
+        ui.row({ lead: ui.leadIcon('trees'), title: cleanup.title, sub: `Завтра в ${cleanup.time}`, go: 'events' }),
+      ]) }),
+      ui.section({ children: [
+        ui.actions([ui.button({ label: 'Собирать сводку каждое утро', icon: 'sunrise', block: true, activate: 'bgtask|background', primary: true })]),
+        ui.granted('bgtask', 'Сводка будет готова к 07:00 каждый день'),
+      ] }),
     ]),
   ],
 });

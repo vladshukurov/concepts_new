@@ -32,7 +32,7 @@ export function check(slug, { lint = true } = {}) {
   const item = (ok, title, detail = '') => items.push({ ok, title, detail });
 
   const theme = expectedTheme(spec);
-  item(spec.brand?.theme === theme, `тема ${theme}`, spec.brand?.theme ? `сейчас ${spec.brand.theme}` : 'brand.theme не задана');
+  item(spec.brand?.theme === theme, `тема ${theme}`, spec.brand?.theme === theme ? '' : spec.brand?.theme ? `сейчас ${spec.brand.theme}` : 'brand.theme не задана');
   const notModules = ids.filter((id) => !files.includes(`${id}.mjs`));
   item(!notModules.length, 'экраны — модули на компонентах', notModules.length ? `на HTML: ${notModules.length} из ${ids.length}` : '');
   const offShell = ids.filter((id) => !/class="screen ui /.test(html(id)));

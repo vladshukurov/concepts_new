@@ -1,9 +1,10 @@
 import { THEME } from './_shared.mjs';
+import { cookalong } from '../model.mjs';
 
 export default (ui) => ui.screen({
   id: 'conversation', theme: THEME,
   body: [
-    ui.chatNav({ initial: 'АР', name: 'Ужин из одной сковороды', status: 'Амина ведёт · 8 участников', call: { activate: 'voip|call' } }),
+    ui.chatNav({ initial: 'АР', name: cookalong.title, status: `${cookalong.host.first} ведёт · ${cookalong.cooks} участников`, call: { activate: 'voip|call' } }),
     ui.scroll(ui.chat([
       ui.day('Сегодня'),
       ui.bubble({ attach: `<button class="pd-chat-card" data-go="cookalong"><b>02</b><span><strong>Обжарьте лук до прозрачности</strong><small>Осталось 4 минуты · средний огонь</small></span></button>`, text: 'Амина открыла шаг 2 для всех', time: '19:16' }),

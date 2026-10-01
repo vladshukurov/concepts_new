@@ -208,6 +208,7 @@ function probe(scr, cfg) {
 
   // 8–13. Правила интерфейса портфеля (CLAUDE.md → «Правила интерфейса»).
   //       Раньше жили только в голове ревьюера; каждое уже стоило правки.
+  const JARGON = /\b(?:app|group|com)\.[a-z]+\.[a-z][\w.]*|BGTask|App Group|Keychain|entitlement|bundle id|фонов(?:ая|ые|ой) задач|задача запущена|журнал задач|последний запуск|\bкэш|снимок виджета|silent push|тих(?:ий|ие) пуш/i;
   const EXPLAINER = /(кадр|фото|снимок|видео|данные|файл\S*)\s+не\s+(сохраня|отправля|загружа|покида|ухо)|(обработ\S*|хран\S*|оста[ёе]тся|анализ\S*)\s+на устройстве|как используются|доступ только к|по геопозиции|без отслеживания между|(камер\S*|фото|микрофон\S*|геопозиц\S*|доступ\S*)\s+(нужн\S*|требу\S*)|работают без н/i;
   const CAPS_OK = /^(ВК|ОК|СМС|МКАД|РФ|США|ТВ|ИП|ООО|ВУЗ|ГИБДД|ЖКХ|МФЦ|ПДД|ЕГЭ|ОГЭ|СНТ|ДНТ|ТСЖ|ЖК|ПВЗ|ТЦ|ДТП|ОСАГО|КАСКО|НДФЛ|ИНН|СНИЛС|ОМС|ДМС|МГУ|СПБ)$/;
   const lumOf = (v) => {
@@ -234,6 +235,8 @@ function probe(scr, cfg) {
       if (/[^.…]\.$/.test(ownText)) out.push({ kind: 'trailing-period', what: label(el) });
       // 10. интерфейс объясняет доступы
       if (EXPLAINER.test(ownText)) out.push({ kind: 'permission-explainer', what: label(el) });
+      /* Технический жаргон: человек видит устройство продукта вместо его результата */
+      if (JARGON.test(ownText)) out.push({ kind: 'tech-jargon', what: label(el), detail: ownText.match(JARGON)[0] });
       // 13. контраст текста ниже AA (крупный текст — от 3:1)
       const fg = lumOf(cs.color);
       let bgColor = null, overMedia = cs.textShadow !== 'none';
@@ -346,6 +349,7 @@ const KIND = {
   caps: 'капс',
   'trailing-period': 'точка в конце фразы',
   'permission-explainer': 'интерфейс объясняет доступы',
+  'tech-jargon': 'технический жаргон в интерфейсе',
   'fake-control': 'контрол-пустышка',
   'radius-nesting': 'вложенные скругления не по формуле',
   'contrast-aa': 'контраст текста ниже AA',

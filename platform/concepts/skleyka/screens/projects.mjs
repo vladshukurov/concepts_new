@@ -8,7 +8,7 @@ export default (ui) => ui.screen({
     ui.videoCard({
       art: 'm4', duration: '38 видео', progressClass: 'is-58', go: 'project', className: 'sk-first',
       avatar: '<span class="ui-avatar sk-place-ava"><svg><use href="#i-map-pin"/></svg></span>',
-      title: 'Выходные у озера', sub: 'Боровое · 16–18 августа · собрано 58 %',
+      title: 'Выходные у озера', sub: 'Боровое · 14–16 августа · собрано 58 %',
     }),
     ui.section({ title: 'Недавние', meta: '4 проекта', children: ui.list([
       ui.row({ thumb: 'm5', wide: true, duration: '2:46', title: 'День рождения Леры', sub: 'Черновик · вчера', end: { badge: 'Готов' }, go: 'draft' }),

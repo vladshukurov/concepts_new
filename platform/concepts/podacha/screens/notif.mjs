@@ -1,4 +1,5 @@
 import { THEME } from './_shared.mjs';
+import { cookalong } from '../model.mjs';
 
 export default (ui) => ui.screen({
   id: 'notif', theme: THEME,
@@ -7,7 +8,7 @@ export default (ui) => ui.screen({
     ui.scroll([
       ui.section({ title: 'Сегодня', children: ui.list([
         ui.row({ lead: ui.avatar('ЖК'), title: 'Жанна проверила вашу замену', sub: '«Кешью-паста работает, добавьте ещё лимона» · 12 минут назад', subWrap: true, go: 'direct-zhanna' }),
-        ui.row({ lead: ui.leadIcon('chef-hat', { accent: true }), title: 'Ужин из одной сковороды', sub: 'Начало в 19:00 · всё подготовлено', go: 'cookalong', primary: true }),
+        ui.row({ lead: ui.leadIcon('chef-hat', { accent: true }), title: cookalong.title, sub: `Начало в ${cookalong.start} · всё подготовлено`, go: 'cookalong', primary: true }),
       ]) }),
       ui.section({ children: [
         ui.list([ui.row({ lead: ui.leadIcon('badge-check'), title: 'Ответы авторов сразу', sub: 'Проверка замены приходит, даже когда «Подача» закрыта', activate: 'remotenotif|notif' })]),

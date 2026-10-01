@@ -1,4 +1,5 @@
 import { THEME, TABS, chain } from './_shared.mjs';
+import { lab } from '../model.mjs';
 
 export default (ui) => ui.screen({
   id: 'lab', theme: THEME,
@@ -6,7 +7,7 @@ export default (ui) => ui.screen({
     ui.largeTitle('Лаборатория', ui.iconButton({ icon: 'wifi', label: 'Сеть лаборатории', go: 'labnet' })),
     ui.section({ title: 'Lab-Red', meta: 'до 23:00', children: [
       chain([['Красный свет', 'занят до 20:10', ''], ['Сканер 02', 'ваше окно 20:20', 'now'], ['Печать', 'завтра', '']]),
-      ui.list([ui.row({ lead: ui.leadIcon('clock', { accent: true }), title: 'Ваше окно сегодня, 20:20', sub: 'Сканер 02 · до 20:50 · оператор Марат', toast: 'Выбор другого окна' })]),
+      ui.list([ui.row({ lead: ui.leadIcon('clock', { accent: true }), title: `Ваше окно сегодня, ${lab.window}`, sub: `${lab.scanner} · до ${lab.windowEnd} · оператор Марат`, toast: 'Выбор другого окна' })]),
     ] }),
     ui.section({ title: 'В процессе', children: ui.list([
       ui.row({ lead: `<span class="kt-num is-now kt-mono">06:42</span>`, title: 'HP5 · партия K-184', sub: 'DD-X 1+4 · 20 °C · переворот через 18 с', go: 'batch', primary: true }),

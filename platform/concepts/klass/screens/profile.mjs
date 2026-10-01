@@ -1,4 +1,5 @@
 import { THEME, TABS } from './_shared.mjs';
+import { trip } from '../model.mjs';
 
 export default (ui) => ui.screen({
   id: 'profile', theme: THEME,
@@ -8,7 +9,7 @@ export default (ui) => ui.screen({
     ui.section({ children: ui.list([
       ui.row({ lead: ui.avatar('СБ'), title: 'СНТ «Берёзка»', sub: '28 участков, четырёх ещё не позвали', end: { badge: '4' }, go: 'classroom', primary: true }),
       ui.row({ lead: ui.leadIcon('users'), title: 'Соседи', sub: '24 в приложении', go: 'parents' }),
-      ui.row({ lead: ui.leadIcon('calendar'), title: 'Поездка на ярмарку 12 сентября', sub: 'Вы едете · отправление от главного въезда', go: 'event' }),
+      ui.row({ lead: ui.leadIcon('calendar'), title: `Поездка на ярмарку ${trip.short}`, sub: 'Вы едете · отправление от главного въезда', go: 'event' }),
     ]) }),
     ui.section({ title: 'Мои публикации', meta: '17', children: '' }),
     ui.post({ author: { initial: 'ОЗ', name: 'Ольга Захарова', meta: 'сегодня, 08:20' }, text: 'Заявки на поездку принимают до четверга включительно. Я отметилась — осталось пять мест', likes: 12, comments: 5, views: 29, open: { go: 'post' }, discuss: { go: 'thread' }, menu: { toast: 'Закрепить · Изменить · Удалить' } }),

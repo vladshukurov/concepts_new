@@ -1,9 +1,10 @@
 import { THEME, TABS } from './_shared.mjs';
+import { house } from '../model.mjs';
 
 export default (ui) => ui.screen({
   id: 'home', theme: THEME,
   body: ui.scroll([
-    ui.top(ui.wordmark({ name: 'Полевая, 12', glyph: 'house' }), [
+    ui.top(ui.wordmark({ name: house.address, glyph: 'house' }), [
       ui.iconButton({ icon: 'plus', label: 'Сообщить о проблеме', go: 'problem' }),
     ]),
     ui.stories([

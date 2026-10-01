@@ -1,4 +1,5 @@
 import { THEME, TABS } from './_shared.mjs';
+import { meters } from '../model.mjs';
 
 export default (ui) => ui.screen({
   id: 'menu', theme: THEME,
@@ -10,7 +11,7 @@ export default (ui) => ui.screen({
     ] }),
     ui.section({ children: ui.group({ cells: [
       ui.cell({ icon: 'users', title: 'Соседи', value: '18', go: 'neighbors' }),
-      ui.cell({ icon: 'gauge', title: 'Счётчики', value: 'до 25 апреля', go: 'meters' }),
+      ui.cell({ icon: 'gauge', title: 'Счётчики', value: `до ${meters.deadlineLabel}`, go: 'meters' }),
       ui.cell({ icon: 'key', title: 'Пароли дома', value: '3', go: 'passwords' }),
       ui.cell({ icon: 'wifi', title: 'Гостевая сеть', go: 'guest' }),
       ui.cell({ icon: 'images', title: 'Хроника', go: 'chronicle' }),

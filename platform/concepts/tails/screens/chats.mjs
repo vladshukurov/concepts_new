@@ -1,4 +1,5 @@
 import { THEME, TABS, PET } from './_shared.mjs';
+import { visit } from '../model.mjs';
 
 export default (ui) => ui.screen({
   id: 'chats', theme: THEME,
@@ -8,7 +9,7 @@ export default (ui) => ui.screen({
     ui.section({ children: [
       ui.dialog({ face: PET.truffle, name: 'Ксения · Трюфель', text: 'Заберу Трюфеля в 19:15, если задержитесь', time: '9:38', unread: 2, online: true, go: 'chat', primary: true }),
       ui.dialog({ initial: 'ПУ', name: 'Прогулка у пруда · 6', text: 'Марат: вход с Каменноостровского закрыт, идём через Съезжинскую', time: '9:12', unread: 5, muted: true, go: 'chat' }),
-      ui.dialog({ initial: 'МТ', name: 'Мария Тенищева · клиника', text: 'Приём сдвинули на 19 мая, 09:15', time: 'вчера', go: 'chat' }),
+      ui.dialog({ initial: 'МТ', name: 'Мария Тенищева · клиника', text: `Приём сдвинули на ${visit.day}, ${visit.time}`, time: 'вчера', go: 'chat' }),
       ui.dialog({ face: PET.loki, name: 'Марат · Локи', text: 'Спасибо за совет про свисток', time: 'пн', you: true, go: 'chat' }),
       ui.dialog({ face: PET.mint, name: 'Алёна · Мята', text: 'Голосовое · 0:24', time: '12 мая', go: 'chat' }),
     ] }),

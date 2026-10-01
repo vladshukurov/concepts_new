@@ -1,4 +1,5 @@
 import { THEME, TABS } from './_shared.mjs';
+import { meeting } from '../model.mjs';
 
 export default (ui) => ui.screen({
   id: 'records', theme: THEME,
@@ -6,8 +7,8 @@ export default (ui) => ui.screen({
     ui.largeTitle('Записи', ui.iconButton({ icon: 'mic', label: 'Записать собрание', sr: 'Записать собрание', ask: 'mic|records|records' })),
     ui.denied('mic', 'Микрофон недоступен — остаются текстовый протокол и загрузка готовой записи'),
     ui.granted('mic', 'Идёт запись собрания · 00:12'),
-    ui.section({ title: 'Собрание сегодня', meta: 'в 19:00', children: [
-      `<div class="kl-live"><span class="kl-live-top"><i></i>Идёт · пункт 2 из 5</span><strong>Правление, северная дорога</strong><span>Смета на шлагбаум · слушают 38 собственников</span>${ui.actions([
+    ui.section({ title: 'Собрание сегодня', meta: `с ${meeting.start}`, children: [
+      `<div class="kl-live"><span class="kl-live-top"><i></i>Идёт · ${meeting.item}</span><strong>${meeting.title}</strong><span>${meeting.topic} · слушают ${meeting.listeners} собственников</span>${ui.actions([
         ui.button({ label: 'Войти в эфир', icon: 'phone', activate: 'voip|live' }),
         ui.button({ label: 'Свернуть', variant: 'secondary', toast: 'Трансляция свёрнута' }),
       ], { row: true })}</div>`,

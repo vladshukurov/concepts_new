@@ -12,7 +12,7 @@ export default (ui) => ui.screen({
     ]) }),
     ui.section({ title: 'Друзья', meta: '312', children: ui.list([
       ui.row({ lead: `<span class="tl-nearby-ico">${ui.icon('users')}</span>`, title: 'Найти среди контактов', sub: 'Сверка ещё не проводилась', ask: 'contacts|mates|mates' }),
-      ui.row({ thumb: `${PET.truffle} is-round`, title: 'Ксения · Трюфель', sub: 'Гуляли вместе 4 июня', end: { value: 'взаимно' }, go: 'pet' }),
+      ui.row({ thumb: `${PET.truffle} is-round`, title: 'Ксения · Трюфель', sub: 'Гуляли вместе 4 мая', end: { value: 'взаимно' }, go: 'pet' }),
       ui.row({ thumb: `${PET.mint} is-round`, title: 'Алёна · Мята', sub: 'Подписаны с марта', go: 'pet' }),
     ]) }),
     ui.section({ title: 'Публикации', meta: '86', children: `<div class="tl-gallery">${[PET.barni, PET.truffle, PET.barni, PET.loki, PET.barni, PET.mint].map((p, i) => `<button class="${p}" data-toast="Публикация ${i + 1}" aria-label="Публикация ${i + 1}"></button>`).join('')}</div>` }),

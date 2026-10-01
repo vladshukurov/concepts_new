@@ -710,8 +710,8 @@
         "title": "Тихие уведомления",
         "text": "Entitlement без системного запроса: тихий пуш обновляет показания и срок, пока приложение закрыто."
       },
-      "feature": "Тихий пуш обновляет счётчики и виджет при закрытом приложении",
-      "gesture": "«Обновлять в фоне»",
+      "feature": "Срок показаний и тарифы обновляются сами, если УК их меняет",
+      "gesture": "«Срок и тарифы без перезагрузки» в счётчиках",
       "screen": "meters",
       "target": "background",
       "activate": true,
@@ -749,12 +749,12 @@
         "title": "Идентификатор фоновой задачи",
         "text": "Entitlement без системного запроса: app.dvor.refresh объявлен в Info.plist и зарегистрирован в коде."
       },
-      "feature": "Идентификатор app.dvor.refresh — под ним планируется обновление",
-      "gesture": "«Проверить задачу»",
+      "feature": "Сводка дома к утру: объявления, заявки, сроки",
+      "gesture": "«Собирать сводку каждое утро»",
       "screen": "background",
-      "target": "meters",
+      "target": "background",
       "activate": true,
-      "fallback": "Незарегистрированный идентификатор — задача не запустится вообще",
+      "fallback": "Сводка собирается при открытии",
       "risk": "low",
       "anchor": false,
       "conditional": true,
@@ -1339,11 +1339,11 @@
     },
     {
       "id": "background",
-      "title": "Обновление в фоне",
+      "title": "Дом к утру",
       "type": "системная поверхность",
       "light": true,
       "parent": "meters",
-      "meta": "Background fetch · BGTaskScheduler",
+      "meta": "Сводка к утру · Background fetch · BGTask",
       "ui": {
         "states": [
           "default",
@@ -1354,7 +1354,7 @@
           "denied"
         ],
         "navigation": "push",
-        "primaryAction": null
+        "primaryAction": "Собирать сводку каждое утро"
       }
     },
     {
@@ -1696,12 +1696,16 @@
         "menu",
         "home",
         "meters",
-        "account"
+        "account",
+        "post",
+        "events"
       ],
       "stops": [
         "menu",
         "home",
-        "account"
+        "account",
+        "post",
+        "events"
       ]
     },
     {

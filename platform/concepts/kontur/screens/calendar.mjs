@@ -1,11 +1,12 @@
 import { THEME } from './_shared.mjs';
+import { walk } from '../model.mjs';
 
 export default (ui) => ui.screen({
   id: 'calendar', theme: THEME,
   body: [
     ui.nav({ title: 'Прогулка в календаре' }),
     ui.scroll([
-      `<div class="kt-batch"><small>Сегодня, 18:40–21:00</small><h1>Тени вдоль Малой Алматинки</h1><p class="ui-sub">Арбат → Lab-Red</p></div>`,
+      `<div class="kt-batch"><small>Сегодня, ${walk.hours}</small><h1>${walk.title}</h1><p class="ui-sub">Арбат → Lab-Red</p></div>`,
       ui.section({ children: [
         ui.group({ cells: [
           ui.cell({ icon: 'calendar', title: 'Календарь', value: 'Личный', toast: 'Календарь выбран' }),

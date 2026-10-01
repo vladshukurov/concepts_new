@@ -1,4 +1,5 @@
 import { THEME, TABS } from './_shared.mjs';
+import { cleanup, outage, meetingDay } from '../model.mjs';
 
 export default (ui) => ui.screen({
   id: 'events', theme: THEME,
@@ -13,11 +14,11 @@ export default (ui) => ui.screen({
     ui.granted('commnotif', 'Уведомления о заявке приходят с именем мастера'),
     ui.section({ title: 'Апрель', children: [
       ui.list([
-        ui.row({ lead: ui.leadIcon('', { text: '12' }), title: 'Субботник во дворе', sub: '11:00 · второй подъезд', end: { value: 'В Календарь', ask: 'calendar|events|events', primary: true, label: 'Добавить субботник в Календарь' } }),
-        ui.row({ lead: ui.leadIcon('', { text: '18' }), title: 'Собрание собственников', sub: '19:00 · холл · нужен кворум', go: 'post' }),
-        ui.row({ lead: ui.leadIcon('', { text: '14' }), title: 'Опрессовка стояка', sub: '14–17 апреля · без горячей воды', go: 'post' }),
+        ui.row({ lead: ui.leadIcon('', { text: '12' }), title: cleanup.title, sub: `${cleanup.time} · ${cleanup.where}`, end: { value: 'В Календарь', ask: 'calendar|events|events', primary: true, label: 'Добавить субботник в Календарь' } }),
+        ui.row({ lead: ui.leadIcon('', { text: String(outage.from) }), title: 'Опрессовка стояка', sub: `${outage.label} · без горячей воды`, go: 'post' }),
+        ui.row({ lead: ui.leadIcon('', { text: '18' }), title: meetingDay.title, sub: `${meetingDay.time} · ${meetingDay.where} · нужен кворум`, go: 'post' }),
       ]),
-      ui.granted('calendar', 'Субботник в Календаре · 12 апреля, 11:00'),
+      ui.granted('calendar', `Субботник в Календаре · ${cleanup.day}, ${cleanup.time}`),
       ui.denied('calendar', 'Без календаря событие остаётся здесь'),
     ] }),
   ], { root: true }),

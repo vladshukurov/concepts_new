@@ -1,4 +1,5 @@
 import { THEME, TABS } from './_shared.mjs';
+import { trip } from '../model.mjs';
 
 const topics = [
   ['Кто едет на ярмарку и где свободные места', 'Наталья Чернова · 9 ответов · час назад', '4'],
@@ -14,7 +15,7 @@ export default (ui) => ui.screen({
   body: ui.scroll([
     ui.largeTitle('Обсуждения', ui.iconButton({ icon: 'plus', label: 'Спросить', sr: 'Спросить', go: 'compose', primary: true })),
     ui.section({ children: ui.list(topics.map(([t, s, v], i) => ui.row({ lead: ui.avatar(s.split(' ').slice(0, 2).map((w) => w[0]).join('')), title: t, sub: i === 0 ? s : `${s} · ${v}`, wrap: true, end: i === 0 ? { badge: v } : undefined, go: 'thread' }))) }),
-    ui.section({ children: ui.list([ui.row({ lead: `<span class="ui-thumb ph"></span>`, title: 'Поездка на ярмарку 12 сентября', sub: 'Обсуждение привязано к поездке', go: 'event' })]) }),
+    ui.section({ children: ui.list([ui.row({ lead: `<span class="ui-thumb ph"></span>`, title: `Поездка на ярмарку ${trip.short}`, sub: 'Обсуждение привязано к поездке', go: 'event' })]) }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'discussions' }),
 });
