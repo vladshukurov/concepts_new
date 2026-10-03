@@ -29,10 +29,13 @@
     "test:quality": "node scripts/test-quality.mjs",
     "check": "node scripts/check.mjs",
     "app": "node scripts/build-app.mjs",
-    "app:run": "node scripts/run-app.mjs"
+    "app:run": "node scripts/run-app.mjs",
+    "conform": "node scripts/conform.mjs",
+    "pack:gen": "node scripts/gen-pack.mjs"
   },
   "license": "ISC",
   "devDependencies": {
+    "@vkontakte/vkui-tokens": "^4.93.0",
     "lucide-static": "^0.525.0",
     "playwright": "^1.49.0"
   }
