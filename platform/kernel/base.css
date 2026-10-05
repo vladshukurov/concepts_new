@@ -1382,8 +1382,9 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui-call-face { display:grid; place-items:center; width:120px; height:120px; margin-bottom:16px; border-radius:50%; background-color:var(--ui-ph); background-size:cover; background-position:center; font:600 40px/1 var(--ui-face); }
 .ui-call > strong { font:600 26px/32px var(--ui-face); }
 .ui-call > span { font:400 16px/20px var(--ui-face); color:var(--ui-text-2); }
-.ui-call-controls { display:grid; grid-template-columns:repeat(4,1fr); gap:16px 8px; width:100%; margin-top:auto; }
-.ui-call-ctl { display:flex; flex-direction:column; align-items:center; gap:6px; font:400 12px/14px var(--ui-face); color:var(--ui-text-2); }
+.ui-call-controls { display:flex; flex-wrap:wrap; justify-content:center; gap:16px 8px; width:100%; margin-top:auto; }
+/* Четверть ряда на кнопку: четыре встают как раньше, три и пять — по центру, а не прижаты влево */
+.ui-call-ctl { width:calc((100% - 24px) / 4); display:flex; flex-direction:column; align-items:center; gap:6px; font:400 12px/14px var(--ui-face); color:var(--ui-text-2); }
 .ui-call-btn { width:64px; height:64px; display:grid; place-items:center; border-radius:50%; background:var(--ui-fill-2); color:var(--ui-text); }
 .ui-call-btn svg { width:26px; height:26px; }
 .ui-call-btn.is-end { background:#e64646; color:#fff; }

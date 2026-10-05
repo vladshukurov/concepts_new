@@ -44,7 +44,7 @@ body { margin:0; background:#f6f6f7; color:#111; font:14px/1.45 -apple-system, B
 .sb-wrap > p { color:#555; max-width:720px; }
 section > h2 { margin:40px 0 12px; font:600 22px/1.2 inherit; }
 .sb-item { margin-bottom:28px; padding:16px; border:1px solid #e3e3e6; border-radius:16px; background:#fff; }
-.sb-item header { display:flex; gap:12px; align-items:baseline; margin-bottom:12px; } .sb-item h3 { margin:0; font:600 15px/1.3 ui-monospace, "SF Mono", monospace; } .sb-item header p { margin:0; color:#666; }
+.sb-item > header { display:flex; gap:12px; align-items:baseline; margin-bottom:12px; } .sb-item h3 { margin:0; font:600 15px/1.3 ui-monospace, "SF Mono", monospace; } .sb-item > header p { margin:0; color:#666; }
 .sb-themes { display:grid; grid-template-columns:repeat(3, 375px); gap:16px; overflow-x:auto; }
 figure { margin:0; } figcaption { margin-bottom:6px; color:#888; font-size:12px; }
 .sb-panel { --safe-top:0px; --safe-bottom:0px; position:relative; display:flex; flex-direction:column; border-radius:12px; overflow:hidden; }
