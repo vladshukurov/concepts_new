@@ -390,12 +390,16 @@ export const composerPrompt = ({ initial, face, placeholder, trailing = '', ...a
 const face = ({ face: f, initial }, cl) => initial ? `<span class="${cl} is-initial">${initial}</span>` : `<span class="${cl} ${f || 'ph'}"></span>`;
 
 /** Строка диалога: аватар с онлайном, имя и время, последнее сообщение и счётчик. */
-export const dialog = ({ name, text, time, unread, online = false, you = false, muted = false, face: f, initial, ...a }) =>
-  `<button class="ui-dialog"${act({ label: `Диалог: ${name}`, ...a })}><span class="ui-dialog-ava">${face({ face: f, initial }, 'ui-dialog-face')}${online ? '<i class="ui-online"></i>' : ''}</span><span class="ui-dialog-body"><span class="ui-dialog-top"><strong>${name}</strong><span>${time}</span></span><span class="ui-dialog-bottom"><span>${you ? '<b>Вы:</b> ' : ''}${text}</span>${unread ? `<span class="${cls('ui-unread', muted && 'is-muted')}">${unread}</span>` : ''}</span></span></button>`;
+/* tags — папка диалога для фильтра чипсами на месте (Поездки, Личные, Непрочитанные) */
+export const dialog = ({ name, text, time, unread, online = false, you = false, muted = false, face: f, initial, tags, ...a }) =>
+  `<button class="ui-dialog"${tagsAttr(tags)}${act({ label: `Диалог: ${name}`, ...a })}><span class="ui-dialog-ava">${face({ face: f, initial }, 'ui-dialog-face')}${online ? '<i class="ui-online"></i>' : ''}</span><span class="ui-dialog-body"><span class="ui-dialog-top"><strong>${name}</strong><span>${time}</span></span><span class="ui-dialog-bottom"><span>${you ? '<b>Вы:</b> ' : ''}${text}</span>${unread ? `<span class="${cls('ui-unread', muted && 'is-muted')}">${unread}</span>` : ''}</span></span></button>`;
 
 /** Шапка чата как в ВК: назад · аватар, имя и статус слева с зазором 12 · справа значок звонка. */
-export const chatNav = ({ name, status, call, ...who }) =>
-  `<header class="ui-nav ui-chat-nav">${iconButton({ icon: 'chevron-left', label: 'Назад', back: true })}<span class="ui-chat-who">${face(who, 'ui-chat-face')}<span class="ui-chat-text"><strong>${name}</strong><span>${status}</span></span></span>${call ? iconButton({ icon: 'phone', label: 'Позвонить', sr: 'Позвонить', ...call }) : '<span></span>'}</header>`;
+/* open — действие по касанию имени: сведения о чате или группе, как в Telegram и WhatsApp */
+export const chatNav = ({ name, status, call, open, ...who }) => {
+  const tag = open ? 'button' : 'span';
+  return `<header class="ui-nav ui-chat-nav">${iconButton({ icon: 'chevron-left', label: 'Назад', back: true })}<${tag} class="ui-chat-who${open ? ' tap' : ''}"${open ? act({ label: `Сведения: ${name}`, ...open }) : ''}>${face(who, 'ui-chat-face')}<span class="ui-chat-text"><strong>${name}</strong><span>${status}</span></span></${tag}>${call ? iconButton({ icon: 'phone', label: 'Позвонить', sr: 'Позвонить', ...call }) : '<span></span>'}</header>`;
+};
 
 export const day = (text) => `<p class="ui-day">${text}</p>`;
 /**
