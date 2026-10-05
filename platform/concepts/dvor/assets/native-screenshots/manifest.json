@@ -1,7 +1,7 @@
 {
   "slug": "dvor",
   "source": "swiftui",
-  "sourceHash": "83c3307d19b9c4c026d14fa68ce09b9905cbe3d26abbbac20a2b9eb6e0a3e788",
+  "sourceHash": "4e9fb5f3fe54ae4184c178c55aef249243b48ef5c9261188e051790e2903d2e2",
   "device": "iPhone 17 Pro",
   "size": {
     "width": 1206,
@@ -13,5 +13,5 @@
     "yard",
     "post"
   ],
-  "capturedAt": "2026-09-02T05:07:46.650Z"
+  "capturedAt": "2026-10-05T12:11:51.796Z"
 }

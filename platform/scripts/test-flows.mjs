@@ -355,6 +355,13 @@ async function run(slug) {
         screen
           .querySelectorAll("[data-toast]")
           .forEach((e) => add(from, e.dataset.toast.split("|")[1]));
+        /* Пункт листа действий «Камера>shoot» — такой же переход, только через меню */
+        screen.querySelectorAll("[data-menu]").forEach((e) =>
+          e.dataset.menu.split("|").forEach((item) => {
+            const to = item.split(">")[1];
+            if (to) add(from, to.split("=")[0]);
+          }),
+        );
         if (screen.querySelector("[data-back]")) add(from, parent[from]);
       }
 
@@ -681,6 +688,7 @@ async function run(slug) {
             "data-ask",
             "data-activate",
             "data-toast",
+            "data-menu",
           ].find((x) => e.hasAttribute(x));
           return `[data-screen="${s}"] [${a}="${e.getAttribute(a)}"]`;
         };
@@ -704,6 +712,13 @@ async function run(slug) {
             const t = e.dataset.toast.split("|")[1];
             if (t) add(t, e);
           });
+          /* Шаг через меню — два клика: «три точки», затем пункт листа */
+          s.querySelectorAll("[data-menu]").forEach((e) =>
+            e.dataset.menu.split("|").forEach((item) => {
+              const t = item.split(">")[1];
+              if (t && known.has(t)) edges[from].push({ to: t, sel: `${sel(e)}|||sheet:${t}` });
+            }),
+          );
         }
         const prev = { [start]: null };
         const queue = [start];
@@ -766,13 +781,23 @@ async function run(slug) {
       await reset();
       let broke = false;
       for (const s of [...step.route, step.sel]) {
-        const el = await page.$(`${H} ${s}`);
+        const [first, sheetTo] = s.split("|||sheet:");
+        const el = await page.$(`${H} ${first}`);
         if (!el) {
           broke = true;
           break;
         }
         await el.click();
         await page.waitForTimeout(45);
+        if (sheetTo) {
+          const item = await page.$(`${H} .action-sheet [data-sheet-go="${sheetTo}"]`);
+          if (!item) {
+            broke = true;
+            break;
+          }
+          await item.click();
+          await page.waitForTimeout(45);
+        }
         await grantAll();
       }
       const granted = broke

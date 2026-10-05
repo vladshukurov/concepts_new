@@ -11,7 +11,12 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'circle-check', title: 'Совпало', value: 'да' }),
         ui.cell({ icon: 'map-pin', title: 'До дома', value: '38 м из 150' }),
       ] }) }),
-      ui.section({ children: ui.actions([ui.button({ label: 'Проверить сеть', icon: 'wifi', block: true, activate: 'wifiinfo|home' })]) }),
+      ui.section({ title: 'Откроется', children: ui.list([
+        ui.row({ lead: ui.leadIcon('message-circle', { accent: true }), title: 'Чат 3 подъезда', sub: '18 жильцов · закреплён код калитки' }),
+        ui.row({ lead: ui.leadIcon('key', { accent: true }), title: 'Пароли дома', sub: 'Кабинет УК, видеонаблюдение, гостевая сеть' }),
+        ui.row({ lead: ui.leadIcon('wifi', { accent: true }), title: 'Гостевая сеть Dvor-Guest', sub: 'До 30 апреля' }),
+      ]) }),
+      ui.section({ children: ui.actions([ui.button({ label: 'Продолжить', block: true, activate: 'wifiinfo|home' })]) }),
     ]),
   ],
 });

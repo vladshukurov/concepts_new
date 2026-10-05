@@ -5,7 +5,7 @@ const apps = ['Телефон', 'Почта', 'Карты', 'Камера', 'З�
 export default (ui) => ui.screen({
   id: 'widget', theme: THEME, className: 'dv-home',
   body: [
-    `<button class="dv-widget" data-activate="keychain|home" aria-label="Виджет «Двор»"><small>${ui.icon('house')}Двор · ${house.address}</small><strong>${outage.title} ${outage.label}</strong><span>Показания — до ${meters.deadlineLabel} · ${meters.left}</span></button>`,
-    `<div class="dv-apps"><button class="dv-app is-ours" data-activate="keychain|home"><i>${ui.icon('house')}</i>Открыть Двор</button>${apps.map((a) => `<span class="dv-app"><i></i>${a}</span>`).join('')}</div>`,
+    `<button class="dv-widget" data-activate="keychain|home" aria-label="Виджет «В квартире»"><small>${ui.icon('house')}В квартире · ${house.address}</small><strong>${outage.title} ${outage.label}</strong><span>Показания — до ${meters.deadlineLabel} · ${meters.left}</span></button>`,
+    `<div class="dv-apps"><button class="dv-app is-ours" data-activate="keychain|home"><i>${ui.icon('house')}</i>В квартире</button>${apps.map((a) => `<span class="dv-app"><i></i>${a}</span>`).join('')}</div>`,
   ],
 });

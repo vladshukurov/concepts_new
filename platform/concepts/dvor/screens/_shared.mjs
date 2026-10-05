@@ -1,4 +1,4 @@
-/** Общее для экранов «Двора». Файл с «_» — не экран. */
+/** Общее для экранов «В квартире». Файл с «_» — не экран. */
 export const THEME = 'vk-light';
 export const TABS = [
   { id: 'home', label: 'Дом', icon: 'house' },

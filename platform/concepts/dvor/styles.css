@@ -4,32 +4,35 @@
    шахматка квартир, карточка гостевой сети и домофон. Фото нет — `.ph`. */
 
 /* Схема двора: корпуса, площадка, парковка и метки заявок */
-.dv-map { position:relative; height:220px; margin:0 16px; border-radius:12px; background:#eef1f4; overflow:hidden; }
-.dv-block { position:absolute; display:grid; place-items:center; border-radius:6px; background:#d5dbe2; font:600 13px/16px var(--ui-face); color:#4c5663; }
+.dv-map { position:relative; height:220px; margin:0 16px; border-radius:12px; background:var(--ui-card); box-shadow:inset 0 0 0 1px var(--ui-line); overflow:hidden; }
+.dv-block { position:absolute; display:grid; place-items:center; border-radius:6px; background:var(--ui-card); box-shadow:inset 0 0 0 1.5px var(--ui-line); font:600 13px/16px var(--ui-face); color:var(--ui-text-2); }
 .dv-b10 { left:6%; top:12%; width:26%; height:30%; }
-.dv-b12 { left:40%; top:10%; width:30%; height:36%; background:var(--ui-accent-soft); color:var(--ui-link); box-shadow:inset 0 0 0 2px var(--ui-accent); }
+.dv-b12 { left:40%; top:10%; width:30%; height:36%; background:var(--ui-accent-soft); color:var(--ui-text); box-shadow:inset 0 0 0 2px var(--ui-accent); }
 .dv-b14 { left:74%; top:14%; width:20%; height:44%; }
 .dv-zone { position:absolute; display:grid; place-items:center; border-radius:10px; border:1.5px dashed #aab4c0; font:500 12px/14px var(--ui-face); color:#5f6b78; }
 .dv-play { left:8%; top:56%; width:34%; height:32%; }
 .dv-park { left:48%; top:62%; width:44%; height:28%; }
-.dv-pin { position:absolute; width:14px; height:14px; margin:-7px 0 0 -7px; border-radius:50%; background:var(--ui-danger); box-shadow:0 0 0 3px #fff; }
-.dv-pin.p1 { left:55%; top:40%; } .dv-pin.p2 { left:22%; top:70%; }
+/* Метка заявки — акцент: красный в ядре только у ошибок */
+.dv-pin { position:absolute; width:16px; height:16px; margin:-8px 0 0 -8px; border-radius:50%; background:#fff; box-shadow:inset 0 0 0 4px var(--ui-accent); }
+.dv-pin.p1 { left:55%; top:40%; } .dv-pin.p2 { left:13%; top:63%; }
 .dv-me { position:absolute; left:60%; top:52%; width:16px; height:16px; margin:-8px 0 0 -8px; border-radius:50%; background:var(--ui-accent); box-shadow:0 0 0 4px rgba(0,119,255,.25); }
 
 /* Счётчики: барабан цифр */
 .dv-meter { padding:12px 16px; }
 .dv-drum { display:flex; gap:4px; margin:10px 0 6px; }
-.dv-drum > i { width:34px; height:44px; display:grid; place-items:center; border-radius:8px; background:var(--ui-card-2); font:600 22px/1 ui-monospace, "SF Mono", monospace; font-style:normal; }
-.dv-drum > i.is-frac { background:rgba(230,70,70,.1); color:#c42b2b; }
+.dv-drum > i { width:34px; height:44px; display:grid; place-items:center; border-radius:8px; background:var(--ui-card); box-shadow:inset 0 0 0 1px var(--ui-line); font:600 22px/1 ui-monospace, "SF Mono", monospace; font-style:normal; }
+/* Дробная часть — мягкий акцент: красный в ядре только у ошибок */
+.dv-drum > i.is-frac { background:var(--ui-accent-soft); box-shadow:none; color:var(--ui-link); }
 .dv-meter > p { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
 
 /* Шахматка квартир: подъезд — строка */
 .dv-flats { display:flex; flex-direction:column; gap:6px; padding:0 16px; }
 .dv-floor { display:grid; grid-template-columns:28px repeat(4,1fr); gap:6px; align-items:center; }
 .dv-floor > b { font:600 13px/16px var(--ui-face); color:var(--ui-text-2); text-align:center; }
-.dv-floor > button { min-height:44px; border-radius:10px; background:var(--ui-card-2); font:500 15px/20px var(--ui-face); font-variant-numeric:tabular-nums; }
-.dv-floor > button.is-me { background:var(--ui-accent); color:var(--ui-on-accent); }
-.dv-floor > button.is-known { background:var(--ui-accent-soft); color:var(--ui-link); }
+.dv-floor > :is(button, span) { display:grid; place-items:center; min-height:44px; border-radius:10px; background:var(--ui-card); box-shadow:inset 0 0 0 1px var(--ui-line); font:500 15px/20px var(--ui-face); font-variant-numeric:tabular-nums; }
+.dv-floor > .is-me { background:var(--ui-accent); color:var(--ui-on-accent); }
+.dv-floor > .is-known { background:var(--ui-accent-soft); box-shadow:none; color:var(--ui-link); }
+.dv-floor > .is-me { box-shadow:none; }
 
 /* Гостевая сеть */
 .dv-net { display:flex; gap:16px; align-items:center; padding:0 16px; }
@@ -41,6 +44,8 @@
 .dv-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
 .dv-grid > button { aspect-ratio:1; min-height:44px; }
 .dv-grid > .is-picked { box-shadow:inset 0 0 0 3px var(--ui-accent); }
+/* Выбранный кадр — галочка iOS в углу, а не одна рамка */
+.dv-grid > .is-picked::before { content:'✓'; position:absolute; top:6px; right:6px; z-index:1; width:22px; height:22px; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent); color:#fff; font:700 13px/1 var(--ui-face); box-shadow:0 0 0 2px #fff; }
 
 /* Камера, сканер, домофон — тёмные системные поверхности */
 .dv-cam { overflow:hidden; background:#000!important; color:#fff; }
@@ -107,3 +112,16 @@
 .dv-person { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 16px 16px; background:var(--ui-card); text-align:center; }
 .dv-person .ui-avatar { margin-bottom:8px; background:var(--ui-accent-soft); color:var(--ui-link); }
 .dv-net .dv-net-ico svg { width:28px; height:28px; }
+
+/* Расшифровка голосовой заявки: обычный текст секции, крупнее подписи */
+.dv-transcript { margin:0; padding:0 16px 8px; font:400 16px/22px var(--ui-face); }
+
+/* Поля ввода концепта: подпись над значением, как ячейка ВК, но в ячейке настоящий input */
+.dv-field { display:flex; flex-direction:column; gap:2px; margin:0 16px 12px; padding:8px 12px; border-radius:10px; background:var(--ui-card); box-shadow:inset 0 0 0 1px var(--ui-line); }
+.dv-field > span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.dv-field > :is(input, textarea) { padding:0; border:0; outline:0; background:none; color:var(--ui-text); font:400 16px/22px var(--ui-face); resize:none; }
+.dv-shots { display:flex; gap:8px; padding:0 16px; }
+.dv-shots > .ph { width:96px; height:96px; flex:none; border-radius:10px; }
+
+/* Инициалы на тёмном экране звонка: белые на полупрозрачном, мягкий акцент здесь не держит контраст */
+.dv-call .ui-call-face.is-initial { background:rgba(255,255,255,.16); color:#fff; }

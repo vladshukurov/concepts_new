@@ -12,6 +12,7 @@ export default (ui) => ui.screen({
           ui.button({ label: 'Сканировать QR с лавочки', icon: 'qr-code', variant: 'secondary', block: true, go: 'scan' }),
         ]),
         ui.denied('hotspot'),
+        ui.list([ui.row({ lead: ui.leadIcon('wifi', { round: true, accent: true }), title: 'Подключено к Dvor-Guest', sub: 'Сигнал отличный · до 30 апреля, 23:59', shownAfter: 'hotspot' })]),
         ui.denied('camera'),
       ] }),
       ui.section({ children: ui.group({ cells: [

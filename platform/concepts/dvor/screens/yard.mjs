@@ -7,7 +7,7 @@ export default (ui) => ui.screen({
     ui.largeTitle('Двор'),
     ui.section({ children: [
       `<div class="dv-map"><span class="dv-block dv-b10">10</span><span class="dv-block dv-b12">12</span><span class="dv-block dv-b14">14</span><span class="dv-zone dv-play">площадка</span><span class="dv-zone dv-park">парковка</span><i class="dv-pin p1"></i><i class="dv-pin p2"></i><i class="dv-me"></i></div>`,
-      ui.foot(`${house.address} · граница 150 м · красная метка — заявка`, 'is-block'),
+      ui.foot(`${house.address} · граница 150 м · точка — вы, кольцо — заявка`, 'is-block'),
     ] }),
     ui.denied('location'),
     ui.section({ title: 'Сервисы двора', children: ui.list([

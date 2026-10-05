@@ -5,11 +5,14 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Реклама', back: 'close' }),
     ui.scroll([
-      `<div class="dv-person"><h1 class="ui-title">Двор остаётся бесплатным</h1><p class="ui-sub">Между объявлениями соседей — реклама</p></div>`,
-      ui.section({ children: ui.group({ cells: [
-        ui.cell({ icon: 'map-pin', title: 'Местная', sub: 'Услуги с Полевой и соседних улиц' }),
+      ui.section({ title: 'Подбор', children: ui.group({ cells: [
+        ui.cell({ icon: 'map-pin', title: 'Местная', sub: 'Мастера и сервисы с Полевой и соседних улиц' }),
         ui.cell({ icon: 'shuffle', title: 'Случайная', check: true }),
       ] }) }),
+      ui.section({ title: 'Сейчас в ленте квартиры', meta: 'раз в день', children: ui.list([
+        ui.row({ lead: ui.leadIcon('wrench', { round: true }), title: 'Сантехник на выезд', sub: 'Реклама · Полевая, 10 · от 900 ₽', end: { badge: 'реклама' } }),
+        ui.row({ lead: ui.leadIcon('sparkles', { round: true }), title: 'Уборка после ремонта', sub: 'Реклама · от 3 400 ₽ за квартиру' }),
+      ]) }),
       ui.denied('tracking'),
       ui.section({ children: ui.actions([
         ui.button({ label: 'Продолжить', block: true, ask: 'tracking|menu|ads' }),

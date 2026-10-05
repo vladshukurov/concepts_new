@@ -126,11 +126,17 @@ export const leadIcon = (name, { round = false, accent = false, text } = {}) =>
 
 /* ── Секции и списки ── */
 /** Секция: заголовок title1 и справа — подпись или круглая стрелка «ещё». */
-export function section({ title, meta, more, children, className }) {
+/**
+ * shownAfter — ключ доступа: секция или строка — это данные, которые появляются только
+ * после разрешения (найденные контакты, подключённая сеть). Не пометка «Разрешено»,
+ * а сам плод доступа; движок показывает её по data-show-granted.
+ */
+const after = (key) => (key ? ` data-show-granted="${key}"` : '');
+export function section({ title, meta, more, children, className, shownAfter }) {
   const trailing = more ? iconButton({ icon: 'chevron-right', look: 'fill', ...more })
     : meta ? `<span class="ui-foot">${meta}</span>` : '';
   const head = title ? `<div class="ui-sec-head"><h2>${title}</h2>${trailing}</div>` : '';
-  return `<section class="${cls('ui-sec', className)}">${head}${join(children)}</section>`;
+  return `<section class="${cls('ui-sec', shownAfter && 'perm-hidden', className)}"${after(shownAfter)}>${head}${join(children)}</section>`;
 }
 export const list = (rows) => `<div class="ui-list">${join(rows)}</div>`;
 
@@ -141,7 +147,7 @@ export const list = (rows) => `<div class="ui-list">${join(rows)}</div>`;
  * Если у строки есть action и у хвоста своё действие — основная часть
  * становится отдельной кнопкой, чтобы кнопки не вкладывались друг в друга.
  */
-export function row({ thumb, wide = false, lead, title, sub, subWrap = false, wrap = false, end, now = false, className, duration: dur, ...a }) {
+export function row({ thumb, wide = false, lead, title, sub, subWrap = false, wrap = false, end, now = false, className, duration: dur, shownAfter, ...a }) {
   const leadHtml = lead || (thumb !== undefined ? `<span class="${cls('ui-thumb', wide && 'is-wide', thumb)}">${dur ? duration(dur) : ''}</span>` : '');
   const text = `<span class="ui-row-text"><strong>${title}</strong>${sub ? `<span${subWrap ? ' class="is-wrap"' : ''}>${sub}</span>` : ''}</span>`;
   let endHtml = '';
@@ -154,14 +160,14 @@ export function row({ thumb, wide = false, lead, title, sub, subWrap = false, wr
       ? `<button class="${cls('ui-row-end', end.value !== undefined && 'is-value is-action')}"${act(endAct)}>${inner}</button>`
       : `<span class="${cls('ui-row-end', end.value !== undefined && 'is-value', end.linkColor && 'ui-link')}">${inner}</span>`;
   } else if (end) endHtml = end;
-  const rowCls = cls('ui-row', now && 'is-now', wrap && 'is-wrap', className);
+  const rowCls = cls('ui-row', now && 'is-now', wrap && 'is-wrap', shownAfter && 'perm-hidden', className);
   /* Подпись строки-кнопки — её заголовок, а не инициалы в аватаре слева */
   if (isAction(a) && !a.label) a = { ...a, label: String(title).replace(/<[^>]+>/g, '') };
   if (isAction(a) && end && typeof end === 'object' && isAction(end)) {
-    return `<div class="${rowCls}"><button class="ui-row-main"${act(a)}>${leadHtml}${text}</button>${endHtml}</div>`;
+    return `<div class="${rowCls}"${after(shownAfter)}><button class="ui-row-main"${act(a)}>${leadHtml}${text}</button>${endHtml}</div>`;
   }
   const tag = isAction(a) ? 'button' : 'div';
-  return `<${tag} class="${rowCls}"${act(a)}>${leadHtml}${text}${endHtml}</${tag}>`;
+  return `<${tag} class="${rowCls}"${after(shownAfter)}${act(a)}>${leadHtml}${text}${endHtml}</${tag}>`;
 }
 
 /** Группа ячеек настроек с подписью сверху. */
@@ -347,6 +353,22 @@ export function comments({ count, items, more }) {
   const rest = count - items.length;
   const tail = rest > 0 && more ? `<button class="ui-comment-more"${act({ label: `Показать ещё ${rest}`, ...more })}>Показать ещё ${rest}</button>` : '';
   return section({ title: 'Комментарии', meta: String(count), children: `<div class="ui-comments">${items.map(one).join('')}${tail}</div>` });
+}
+
+/**
+ * Своя запись в ленте — как пост ВК, но без автора, лайков и комментариев: всё на
+ * главной создал сам человек. icon — тип записи; meta — когда и раздел; photos —
+ * сколько кадров-заглушек (кадр — суть записи); voice — { dur } голосовой заметки;
+ * attach — своя разметка вложения; status — { label, accent }; actions — кнопки
+ * под записью ({ label, icon, ...action }); menu — пункты «трёх точек»; open — переход.
+ */
+export function entry({ icon: ic, title, meta, text, photos = 0, voice, attach, status, actions: acts = [], menu, open, className }) {
+  const head = `<div class="ui-entry-head">${leadIcon(ic, { round: true, accent: true })}<span class="ui-entry-who"><strong>${title}</strong><span>${meta}</span></span>${status ? badge(status.label, { accent: status.accent }) : ''}${menu ? iconButton({ icon: 'ellipsis', label: `Действия с записью: ${String(title).replace(/<[^>]+>/g, '')}`, menu }) : ''}</div>`;
+  const body = text ? (open ? `<button class="ui-entry-text"${act({ label: String(title).replace(/<[^>]+>/g, ''), ...open })}>${text}</button>` : `<p class="ui-entry-text">${text}</p>`) : '';
+  const media = photos ? `<div class="${cls('ui-entry-photos', `is-${Math.min(photos, 3)}`)}">${Array.from({ length: Math.min(photos, 3) }, () => '<span class="ph"></span>').join('')}${photos > 3 ? `<b>+${photos - 3}</b>` : ''}</div>` : '';
+  const audio = voice ? `<div class="ui-entry-voice">${play({ size: 's', label: `Голосовая заметка ${voice.dur}`, toast: `Воспроизведение ${voice.dur}` })}${wave(voice.dur + title)}<span>${voice.dur}</span></div>` : '';
+  const foot = acts.length ? `<div class="ui-entry-actions">${acts.map(({ label, icon: bi, ...a }) => `<button class="ui-entry-act"${act({ label, ...a })}>${bi ? icon(bi) : ''}<span>${label}</span></button>`).join('')}</div>` : '';
+  return `<article class="${cls('ui-entry', className)}">${head}${body}${media}${audio}${attach ? `<div class="ui-entry-attach">${attach}</div>` : ''}${foot}</article>`;
 }
 
 /** Сегменты: переключают вид внутри экрана. */

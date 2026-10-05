@@ -1,22 +1,27 @@
 import { THEME } from './_shared.mjs';
+import { journal } from '../model.mjs';
 
+/* Своя запись целиком: заявка, её фото, голос и история — что ответила УК в чате */
 export default (ui) => ui.screen({
   id: 'post', theme: THEME,
   body: [
-    ui.nav({ title: 'Объявление', trailing: ui.iconButton({ icon: 'ellipsis', label: 'Действия с объявлением', menu: ['Скопировать ссылку', 'Пожаловаться старшему по дому'] }) }),
+    ui.nav({ title: 'Запись', trailing: ui.iconButton({ icon: 'ellipsis', label: 'Действия с записью', menu: ['Изменить', 'Отправить в чат подъезда>chat', 'Удалить'] }) }),
     ui.scroll([
-      ui.post({ author: { initial: 'УК', name: 'Управляющая компания', meta: 'вчера в 19:04 · официально' }, text: 'Горячую воду отключат с 14 по 17 апреля — плановая опрессовка стояка. Холодная вода остаётся. Бригада начнёт 14 апреля с 8:00 в подвале третьего подъезда, вход через калитку. Заявки на перерасчёт — в этой теме', likes: 34, comments: 12, views: 219 }),
+      ui.entry({
+        icon: 'wrench', title: journal.door.title, meta: `${journal.door.when} · заявка 4417-Б`,
+        status: { label: journal.door.status, accent: true }, text: journal.door.text, photos: journal.door.photos,
+        voice: { dur: '0:14' },
+      }),
+      ui.section({ title: 'История', children: ui.list([
+        ui.row({ lead: ui.leadIcon('', { text: '8:12' }), title: 'Создала заявку', sub: 'Два кадра с места и голосовое 0:14' }),
+        ui.row({ lead: ui.leadIcon('', { text: '8:14' }), title: 'Отправила в чат УК', sub: 'Диспетчер Елена прочитала в 8:20', go: 'ukchat' }),
+        ui.row({ lead: ui.leadIcon('', { text: '9:21' }), title: 'Ответ УК', sub: 'Мастер будет с 16:00, дверь откроет Марина из 48-й', subWrap: true, go: 'ukchat' }),
+        ui.row({ lead: ui.leadIcon('clock'), title: 'Закрытие', sub: 'Ждём мастера сегодня с 16:00' }),
+      ]) }),
       ui.section({ children: [
-        ui.group({ cells: [ui.cell({ icon: 'bell', title: 'Следить за темой', sub: 'Уведомление, когда УК ответит', toggle: false, ask: 'push|post|post' })] }),
-        ui.denied('push'),
+        ui.group({ cells: [ui.cell({ icon: 'bell', title: 'Сообщить, когда закроют', sub: 'Уведомление при смене статуса заявки', toggle: false, ask: 'push|post|post' })] }),
       ] }),
-      ui.comments({ count: 12, items: [
-        { initial: 'МК', name: 'Марина, кв. 48', text: 'Запишите перерасчёт, кв. 48. И доводчик на второй двери посмотрите', time: 'вчера, 19:31', likes: 9 },
-        { initial: 'УК', name: 'Управляющая компания', text: 'Перерасчёт будет в майской квитанции автоматически, доводчик поставим в заявку', time: 'вчера, 20:02', likes: 4, reply: true, author: true },
-        { initial: 'ПИ', name: 'Пётр, кв. 12', text: 'На 14-е беру отгул, встречу бригаду. Код калитки теперь 4417', time: 'сегодня, 7:48', liked: true, likes: 15 },
-        { initial: 'ИТ', name: 'Ирина, кв. 31', text: 'У нас в 31-й полотенцесушитель от горячей — его тоже перекроют?', time: 'сегодня, 10:12', likes: 2 },
-      ] }),
+      ui.section({ children: ui.actions([ui.button({ label: 'Открыть чат УК', icon: 'message-circle', block: true, go: 'ukchat', primary: true })]) }),
     ]),
-    ui.composer({ placeholder: 'Комментарий', attach: { label: 'Прикрепить', menu: ['Камера>shoot', 'Фото>chronicle'] }, send: { toast: 'Комментарий отправлен' } }),
   ],
 });

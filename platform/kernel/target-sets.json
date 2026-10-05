@@ -33,9 +33,9 @@
     "messenger": {
       "label": "Мессенджер", "reference": "мессенджер уровня Telegram и WhatsApp",
       "namePrefixes": [],
-      "must": ["push", "appgroups", "keychain", "commnotif", "hotspot", "faceid", "camera", "photos", "mic", "location", "audio", "fetch", "bgtask", "remotenotif", "processing", "calendar", "calendarwrite", "wifiinfo", "tracking", "voip", "contacts", "notifext", "shareext"],
+      "must": ["push", "associateddomains", "appgroups", "keychain", "commnotif", "hotspot", "faceid", "camera", "photos", "mic", "location", "audio", "fetch", "bgtask", "remotenotif", "processing", "calendar", "calendarwrite", "wifiinfo", "tracking", "voip", "contacts", "notifext", "shareext"],
       "nice": [],
-      "excluded": { "associateddomains": "диплинков не делаем (CLAUDE.md); в исходном списке набора — Universal Links для авторизации" }
+      "excluded": {}
     }
   }
 }

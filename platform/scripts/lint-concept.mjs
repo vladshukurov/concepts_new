@@ -136,7 +136,14 @@ function lint(slug) {
   /* Для VK-мимикрии недостаточно синего акцента и декларации в JSON. Лента
      обязана реально показывать нескольких авторов и набор публичных действий;
      сообщения, звонки и сообщества при этом не являются обязательными. */
-  if (spec.positioning?.mode === 'mimicry' && spec.targetSet === 'vkontakte') {
+  /* Контракт 4: ленты чужих авторов нет — мимикрию доказывает своя лента: записи самого человека */
+  if (spec.positioning?.mode === 'mimicry' && ['vkontakte', 'ok'].includes(spec.targetSet) && spec.qualityContractVersion >= 4) {
+    const evidence = (spec.positioning.referenceEvidence || []).find((row) => row.pattern === 'own-journal');
+    const journal = evidence ? effectiveMarkup[evidence.screen] || '' : '';
+    if (!evidence) P('мимикрия: нет экранного доказательства своей ленты (own-journal)');
+    else if ((journal.match(/class="ui-entry[\s"]/g) || []).length < 3) P(`мимикрия: на экране ${evidence.screen} меньше трёх своих записей (ui.entry) — лента не читается`);
+  }
+  if (spec.positioning?.mode === 'mimicry' && spec.targetSet === 'vkontakte' && !(spec.qualityContractVersion >= 4)) {
     const evidence = (spec.positioning.referenceEvidence || []).find((row) => row.pattern === 'social-feed');
     const feed = evidence ? effectiveMarkup[evidence.screen] || '' : '';
     if (!evidence) P('VK-мимикрия: нет экранного доказательства social-feed');
@@ -322,7 +329,7 @@ function lint(slug) {
   if (spec.qualityContractVersion >= 4) {
     const banned = [['ui-post', 'публикации ленты'], ['ui-comments', 'комментарии'], ['ui-stories', 'истории']];
     for (const [id, html] of Object.entries(effectiveMarkup)) {
-      for (const [cls, what] of banned) if (new RegExp(`class="[^"]*\\b${cls}\\b`).test(html)) P(`экран ${id}: ${what} (${cls}) — ленты нет, контент остаётся у человека`);
+      for (const [cls, what] of banned) if (new RegExp(`class="(?:[^"]*\\s)?${cls}[\\s"]`).test(html)) P(`экран ${id}: ${what} (${cls}) — ленты нет, контент остаётся у человека`);
       if (/>\s*Подписаться\s*</.test(html)) P(`экран ${id}: «Подписаться» — подписок на других людей нет`);
     }
   }

@@ -7,8 +7,8 @@ export default (ui) => ui.screen({
     ui.scroll(ui.chat([
       ui.day('Сегодня'),
       ui.bubble({ attach: '<span class="dv-chat-photo ph"></span>', text: 'Вот так висит доводчик', time: '8:12' }),
-      ui.bubble({ out: true, text: 'Приложила ваше фото к заявке 4417-Б', time: '8:40', read: true }),
-      ui.bubble({ attach: `<button class="dv-chat-card" data-go="events"><strong>Доводчик, второй подъезд</strong><span>Мастер сегодня с 16:00 до 18:00</span></button>`, text: 'УК ответила', time: '9:15' }),
+      ui.bubble({ out: true, text: 'Приложила ваше фото к заявке 4417-Б', time: '8:16', read: true }),
+      ui.bubble({ attach: `<button class="dv-chat-card" data-go="events"><strong>Доводчик, 3 подъезд</strong><span>Мастер сегодня с 16:00 до 18:00</span></button>`, text: 'УК ответила', time: '9:15' }),
       ui.voice({ dur: '0:14', time: '9:18' }),
       ui.bubble({ text: 'Мастер будет с 16:00, я открою подъезд', time: '9:21' }),
     ])),

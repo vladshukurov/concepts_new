@@ -1248,7 +1248,7 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 /* Светлые темы — белая поверхность, секции разделяет полоса 8 как в ВК. Первая секция стоит
    вплотную к шапке: полоса между шапкой и первым блоком отрывала его от экрана */
 .ui:is(.vk-light,.ok-light) .ui-sec { margin-top:0; padding:12px 0; background:var(--ui-card); }
-.ui:is(.vk-light,.ok-light) :is(.ui-sec, .ui-post, .ui-stories, .ui-prompt) ~ :is(.ui-sec, .ui-post) { border-top:8px solid var(--ui-sep); }
+.ui:is(.vk-light,.ok-light) :is(.ui-sec, .ui-post, .ui-entry, .ui-stories, .ui-prompt, .ui-chips) ~ :is(.ui-sec, .ui-post, .ui-entry) { border-top:8px solid var(--ui-sep); }
 .ui:is(.vk-light,.ok-light) .ui-post { margin-top:0; }
 /* Плитки на белой поверхности — серые, как поле поиска: белые сливались с фоном */
 .ui:is(.vk-light,.ok-light) .ui-tile { background:var(--ui-card-2); }
@@ -1271,7 +1271,9 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui:is(.vk-light,.ok-light) .ui-thumb.is-round { border-radius:50%; }
 /* Счётчики в светлой теме: ровные серые плитки, число и подпись по центру */
 .ui:is(.vk-light,.ok-light) .ui-stats { gap:8px; }
-.ui:is(.vk-light,.ok-light) .ui-stat { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; min-height:64px; padding:10px 8px; border-radius:12px; background:var(--ui-card-2)!important; text-align:center; }
+/* Счётчики профиля как в ВК: число и подпись без серой плашки, между ними тонкая линия */
+.ui:is(.vk-light,.ok-light) .ui-stat { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; min-height:56px; padding:6px 8px; border-radius:0; background:none!important; text-align:center; }
+.ui:is(.vk-light,.ok-light) .ui-stat + .ui-stat { box-shadow:inset 1px 0 0 var(--ui-line); }
 .ui:is(.vk-light,.ok-light) .ui-stat > strong { font:600 18px/22px var(--ui-face); }
 .ui:is(.vk-light,.ok-light) .ui-stat > span { font:400 13px/16px var(--ui-face); }
 /* Секция из групп ячеек — это экран настроек: белые группы на сером, без белой подложки */
@@ -1450,6 +1452,8 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui .dl { color:var(--ui-text-2); }
 .ui .dl.is-ready { color:var(--ui-link); }
 .ui .ph.on-dark, .ui .ph { background-color:var(--ui-ph); color:var(--ui-text-3); }
+/* .ph.on-dark — кадр на тёмной поверхности внутри светлой темы (домофон, камера): тёмный в любой теме */
+.ui .ph.on-dark { background-color:#2c2c2e; color:rgba(235,235,245,.28); }
 .ui.unified-auth [data-primary] { min-height:44px; border-radius:10px!important; font:500 16px/20px var(--ui-face); }
 .ui.unified-auth .auth-app-icon { border-radius:14px; }
 
@@ -1580,6 +1584,32 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .action-sheet-cancel { border-radius:14px; background:#fff; font-weight:600; }
 .ui.vk-dark .action-sheet-group { background:rgba(44,44,46,.96); } .ui.vk-dark .action-sheet-cancel { background:#2c2c2e; } .ui.vk-dark :is(.action-sheet-item, .action-sheet-cancel) { color:#0a84ff; } .ui.vk-dark .action-sheet-item.is-destructive { color:#ff453a; }
 @keyframes as-in { from { opacity:0; } }
+
+/* Своя запись в ленте: шапка как у поста (значок 44 вместо аватара), текст, медиа, действия */
+.ui-entry { padding:12px 0 4px; background:var(--ui-card); }
+.ui.vk-dark .ui-entry + .ui-entry { margin-top:8px; }
+.ui-entry-head { display:flex; align-items:center; gap:12px; padding:0 4px 0 16px; min-height:44px; }
+.ui-entry-head .ui-lead { width:44px; height:44px; }
+.ui-entry-head .ui-lead svg { width:22px; height:22px; }
+.ui-entry-who { flex:1; min-width:0; display:flex; flex-direction:column; }
+.ui-entry-who > strong { font:600 15px/20px var(--ui-face); }
+.ui-entry-who > span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.ui-entry-head > .ui-badge { margin-right:8px; }
+.ui-entry-text { display:block; width:100%; margin:0; padding:8px 16px 4px; font:400 15px/20px var(--ui-face); text-align:left; }
+.ui-entry-photos { display:grid; gap:2px; margin:8px 0 0; position:relative; }
+.ui-entry-photos.is-1 { grid-template-columns:1fr; } .ui-entry-photos.is-1 > .ph { aspect-ratio:4/3; }
+.ui-entry-photos.is-2 { grid-template-columns:1fr 1fr; } .ui-entry-photos.is-3 { grid-template-columns:2fr 1fr; grid-template-rows:1fr 1fr; }
+.ui-entry-photos.is-2 > .ph, .ui-entry-photos.is-3 > .ph { aspect-ratio:1; }
+.ui-entry-photos.is-3 > .ph:first-child { grid-row:span 2; aspect-ratio:auto; }
+.ui-entry-photos > b { position:absolute; right:8px; bottom:8px; padding:2px 8px; border-radius:10px; background:rgba(0,0,0,.55); color:#fff; font:600 13px/18px var(--ui-face); }
+.ui-entry-voice { display:flex; align-items:center; gap:10px; margin:8px 16px 0; padding:6px 12px 6px 6px; border-radius:22px; box-shadow:inset 0 0 0 1px var(--ui-line); width:fit-content; }
+.ui-entry-voice > span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); font-variant-numeric:tabular-nums; }
+.ui-entry-voice .ui-wave rect { fill:var(--ui-link); }
+.ui-entry-attach { margin:8px 16px 0; }
+.ui-entry-attach .ui-row { padding-left:0; padding-right:0; }
+.ui-entry-actions { display:flex; gap:4px; padding:4px 8px 0; }
+.ui-entry-act { display:inline-flex; align-items:center; gap:6px; min-height:44px; padding:0 8px; color:var(--ui-text-2); font:500 14px/18px var(--ui-face); }
+.ui-entry-act svg { width:20px; height:20px; }
 
 /* Отказ в доступе — пустое состояние iOS. Работает и в оболочке .ui, и на старых экранах:
    цвета берутся из токенов .ui, а без них — из акцента концепта (--accent-fill) */

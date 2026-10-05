@@ -1,4 +1,4 @@
-# Двор — App Store assets
+# В квартире — App Store assets
 
 Сгенерировано из живого прототипа командой `npm run app-store -- dvor`.
 
