@@ -602,6 +602,19 @@
     var SEL = '[data-ask], [data-go], [data-back], [data-activate], [data-jump], [data-toast], [data-menu]';
     screens.addEventListener('click', function (e) {
       var t = e.target.closest(SEL);
+      /* Фильтр на месте: выбранный чипс подсвечивается, на этом же экране остаётся только подходящее */
+      var f = e.target.closest('[data-filter]');
+      if (f) {
+        f.parentElement.querySelectorAll('[data-filter]').forEach(function (b) {
+          b.classList.toggle('is-on', b === f);
+          b.setAttribute('aria-pressed', String(b === f));
+        });
+        var val = f.dataset.filter;
+        (f.closest('.screen') || screens).querySelectorAll('[data-tags]').forEach(function (el) {
+          el.classList.toggle('is-filtered-out', val !== 'all' && el.dataset.tags.split(' ').indexOf(val) < 0);
+        });
+        return;
+      }
       if (!t) {
         var sw = e.target.closest(SWITCH);
         if (sw) flipSwitch(sw);

@@ -4,8 +4,7 @@ import { cleanup, outage, meetingDay } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'events', theme: THEME,
   body: ui.scroll([
-    ui.largeTitle('События', ui.iconButton({ icon: 'mic', label: 'Новая заявка голосом', sr: 'Новая заявка голосом', ask: 'mic+speech|dictate|events' })),
-    ui.denied('mic,speech'),
+    ui.largeTitle('События'),
     ui.section({ title: 'Заявки', meta: '2 открыты', children: ui.list([
       ui.row({ lead: ui.leadIcon('mic', { accent: true }), title: 'Черновик: дверь не закрывается', sub: '3 подъезд · распознано из записи 0:12', toast: 'Черновик заявки открыт' }),
       ui.row({ lead: ui.leadIcon('wrench'), title: 'Доводчик, 3 подъезд', sub: 'Елена назначена · мастер сегодня с 16:00', wrap: true, end: { badge: 'в работе' }, activate: 'commnotif|ukchat' }),

@@ -132,11 +132,18 @@ export const leadIcon = (name, { round = false, accent = false, text } = {}) =>
  * а сам плод доступа; движок показывает её по data-show-granted.
  */
 const after = (key) => (key ? ` data-show-granted="${key}"` : '');
-export function section({ title, meta, more, children, className, shownAfter }) {
+/**
+ * Фильтр на месте: чипс, сегмент или кнопка подраздела с filter прячет на своём же
+ * экране всё, у чего tags не содержит его значение ('all' показывает всё). Никуда
+ * не уводит — уводящий чипс воспринимается как сломанная навигация.
+ */
+const tagsAttr = (tags) => (tags?.length ? ` data-tags="${tags.join(' ')}"` : '');
+const pick = (filter, a) => (filter !== undefined ? ` data-filter="${filter}"` : act(a));
+export function section({ title, meta, more, children, className, shownAfter, tags }) {
   const trailing = more ? iconButton({ icon: 'chevron-right', look: 'fill', ...more })
     : meta ? `<span class="ui-foot">${meta}</span>` : '';
   const head = title ? `<div class="ui-sec-head"><h2>${title}</h2>${trailing}</div>` : '';
-  return `<section class="${cls('ui-sec', shownAfter && 'perm-hidden', className)}"${after(shownAfter)}>${head}${join(children)}</section>`;
+  return `<section class="${cls('ui-sec', shownAfter && 'perm-hidden', className)}"${after(shownAfter)}${tagsAttr(tags)}>${head}${join(children)}</section>`;
 }
 export const list = (rows) => `<div class="ui-list">${join(rows)}</div>`;
 
@@ -147,7 +154,7 @@ export const list = (rows) => `<div class="ui-list">${join(rows)}</div>`;
  * Если у строки есть action и у хвоста своё действие — основная часть
  * становится отдельной кнопкой, чтобы кнопки не вкладывались друг в друга.
  */
-export function row({ thumb, wide = false, lead, title, sub, subWrap = false, wrap = false, end, now = false, className, duration: dur, shownAfter, ...a }) {
+export function row({ thumb, wide = false, lead, title, sub, subWrap = false, wrap = false, end, now = false, className, duration: dur, shownAfter, tags, ...a }) {
   const leadHtml = lead || (thumb !== undefined ? `<span class="${cls('ui-thumb', wide && 'is-wide', thumb)}">${dur ? duration(dur) : ''}</span>` : '');
   const text = `<span class="ui-row-text"><strong>${title}</strong>${sub ? `<span${subWrap ? ' class="is-wrap"' : ''}>${sub}</span>` : ''}</span>`;
   let endHtml = '';
@@ -164,10 +171,10 @@ export function row({ thumb, wide = false, lead, title, sub, subWrap = false, wr
   /* Подпись строки-кнопки — её заголовок, а не инициалы в аватаре слева */
   if (isAction(a) && !a.label) a = { ...a, label: String(title).replace(/<[^>]+>/g, '') };
   if (isAction(a) && end && typeof end === 'object' && isAction(end)) {
-    return `<div class="${rowCls}"${after(shownAfter)}><button class="ui-row-main"${act(a)}>${leadHtml}${text}</button>${endHtml}</div>`;
+    return `<div class="${rowCls}"${after(shownAfter)}${tagsAttr(tags)}><button class="ui-row-main"${act(a)}>${leadHtml}${text}</button>${endHtml}</div>`;
   }
   const tag = isAction(a) ? 'button' : 'div';
-  return `<${tag} class="${rowCls}"${after(shownAfter)}${act(a)}>${leadHtml}${text}${endHtml}</${tag}>`;
+  return `<${tag} class="${rowCls}"${after(shownAfter)}${tagsAttr(tags)}${act(a)}>${leadHtml}${text}${endHtml}</${tag}>`;
 }
 
 /** Группа ячеек настроек с подписью сверху. */
@@ -266,8 +273,8 @@ export const placeholder = ({ icon: ic, title, sub, button: btn }) =>
   `<div class="ui-placeholder"><span class="ui-placeholder-ico">${icon(ic)}</span><strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}${btn ? button({ size: 'm', ...btn }) : ''}</div>`;
 
 /** SubnavigationBar: фильтры-кнопки со значком, прокрутка вбок. items: [{ icon, label, on, count, ...action }] */
-export const subnav = (items) => `<div class="ui-subnav">${items.map(({ icon: ic, label, on = false, count, ...a }) =>
-  `<button class="${cls('ui-subnav-btn', on && 'is-on')}" aria-pressed="${on}"${act(a)}>${ic ? icon(ic) : ''}<span>${label}</span>${count ? `<b>${count}</b>` : ''}</button>`).join('')}</div>`;
+export const subnav = (items) => `<div class="ui-subnav">${items.map(({ icon: ic, label, on = false, count, filter, ...a }) =>
+  `<button class="${cls('ui-subnav-btn', on && 'is-on')}" aria-pressed="${on}"${pick(filter, a)}>${ic ? icon(ic) : ''}<span>${label}</span>${count ? `<b>${count}</b>` : ''}</button>`).join('')}</div>`;
 
 /**
  * RichCell: аватар 48, над заголовком подпись, заголовок, текст, справа время,
@@ -283,8 +290,8 @@ export function richCell({ lead, over, title, sub, extra, after, afterCaption, a
 export const tiles = (items) => `<div class="ui-tiles">${items.map(({ title, sub, art, ...a }) =>
   `<button class="ui-tile"${act({ label: title, ...a })}><strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}${art ? `<span class="ui-tile-art ${art}"></span>` : ''}</button>`).join('')}</div>`;
 /** Чипсы. Каждый чипс — переход, не тост: фильтр-пустышку ловит аудит. */
-export const chips = (items) => `<div class="ui-chips">${items.map(({ label, on = false, ...a }) =>
-  `<button class="${cls('ui-chip', on && 'is-on')}" aria-pressed="${on}"${act(a)}><span>${label}</span></button>`).join('')}</div>`;
+export const chips = (items) => `<div class="ui-chips">${items.map(({ label, on = false, filter, ...a }) =>
+  `<button class="${cls('ui-chip', on && 'is-on')}" aria-pressed="${on}"${pick(filter, a)}><span>${label}</span></button>`).join('')}</div>`;
 /** Поле поиска: кнопка-вход или активное поле со значением. */
 export function search({ placeholder, value, clear, ...a }) {
   /* С действием — кнопка-вход на экран поиска; без него — поле, в которое печатают */
@@ -362,18 +369,18 @@ export function comments({ count, items, more }) {
  * attach — своя разметка вложения; status — { label, accent }; actions — кнопки
  * под записью ({ label, icon, ...action }); menu — пункты «трёх точек»; open — переход.
  */
-export function entry({ icon: ic, title, meta, text, photos = 0, voice, attach, status, actions: acts = [], menu, open, className }) {
+export function entry({ icon: ic, title, meta, text, photos = 0, voice, attach, status, actions: acts = [], menu, open, className, tags }) {
   const head = `<div class="ui-entry-head">${leadIcon(ic, { round: true, accent: true })}<span class="ui-entry-who"><strong>${title}</strong><span>${meta}</span></span>${status ? badge(status.label, { accent: status.accent }) : ''}${menu ? iconButton({ icon: 'ellipsis', label: `Действия с записью: ${String(title).replace(/<[^>]+>/g, '')}`, menu }) : ''}</div>`;
   const body = text ? (open ? `<button class="ui-entry-text"${act({ label: String(title).replace(/<[^>]+>/g, ''), ...open })}>${text}</button>` : `<p class="ui-entry-text">${text}</p>`) : '';
   const media = photos ? `<div class="${cls('ui-entry-photos', `is-${Math.min(photos, 3)}`)}">${Array.from({ length: Math.min(photos, 3) }, () => '<span class="ph"></span>').join('')}${photos > 3 ? `<b>+${photos - 3}</b>` : ''}</div>` : '';
   const audio = voice ? `<div class="ui-entry-voice">${play({ size: 's', label: `Голосовая заметка ${voice.dur}`, toast: `Воспроизведение ${voice.dur}` })}${wave(voice.dur + title)}<span>${voice.dur}</span></div>` : '';
   const foot = acts.length ? `<div class="ui-entry-actions">${acts.map(({ label, icon: bi, ...a }) => `<button class="ui-entry-act"${act({ label, ...a })}>${bi ? icon(bi) : ''}<span>${label}</span></button>`).join('')}</div>` : '';
-  return `<article class="${cls('ui-entry', className)}">${head}${body}${media}${audio}${attach ? `<div class="ui-entry-attach">${attach}</div>` : ''}${foot}</article>`;
+  return `<article class="${cls('ui-entry', className)}"${tagsAttr(tags)}>${head}${body}${media}${audio}${attach ? `<div class="ui-entry-attach">${attach}</div>` : ''}${foot}</article>`;
 }
 
 /** Сегменты: переключают вид внутри экрана. */
-export const segments = (items) => `<div class="ui-seg">${items.map(({ label, on = false, ...a }) =>
-  `<button${on ? ' class="is-on"' : ''} aria-pressed="${on}"${act(a)}>${label}</button>`).join('')}</div>`;
+export const segments = (items) => `<div class="ui-seg">${items.map(({ label, on = false, filter, ...a }) =>
+  `<button${on ? ' class="is-on"' : ''} aria-pressed="${on}"${pick(filter, a)}>${label}</button>`).join('')}</div>`;
 
 /** Строка «Что нового?» над лентой: аватар, приглашение написать, быстрые действия. */
 export const composerPrompt = ({ initial, face, placeholder, trailing = '', ...a }) =>

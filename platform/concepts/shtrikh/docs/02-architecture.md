@@ -166,7 +166,6 @@
 | `series` | «Работа серии 1», «Работа серии 2» … | `post` | — | переход |
 | `series` | «Добавить свой взгляд» | `compose` | — | переход |
 | `places` | «Рядом со мной» | `places` | `NSLocationWhenInUseUsageDescription` | доступ разрешён |
-| `places` | «Популярное», «Рядом» … | `places` | — | переход |
 | `places` | «Панфилова, 84», «Зелёный базар» … | `series` | — | переход |
 | `exhibit` | «Назад» | `places` | — | возврат по IA |
 | `exhibit` | «Я на выставке» | `exhibit` | `com.apple.developer.networking.wifi-info` | entitlement, без alert |

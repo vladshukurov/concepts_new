@@ -420,6 +420,8 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 /* Иконка из спрайта: геометрия — Lucide, размер и цвет — от родителя */
 .ico-svg { width:1em; height:1em; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; display:block; }
 .perm-hidden { display:none !important; }
+/* Скрыто фильтром чипсов или сегментов на этом же экране */
+.is-filtered-out { display:none !important; }
 [data-go], [data-ask], [data-back], [data-activate], [data-jump], [data-toast] { cursor:pointer; }
 .hints [data-go], .hints [data-ask], .hints [data-back], .hints [data-activate], .hints [data-jump], .hints [data-toast] { outline:2px solid var(--accent); outline-offset:1px; border-radius:5px; }
 .tap { position:relative; }
