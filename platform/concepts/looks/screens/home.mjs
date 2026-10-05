@@ -3,7 +3,7 @@ import { THEME, TABS, P, tags } from './_shared.mjs';
 export default (ui) => ui.screen({
   id: 'home', theme: THEME,
   body: ui.scroll([
-    ui.top(ui.wordmark({ name: 'Образы', glyph: 'shirt' }), [ui.iconButton({ icon: 'plus', label: 'Новая публикация', go: 'create' })]),
+    ui.top(ui.wordmark({ name: 'Образы' }), [ui.iconButton({ icon: 'plus', label: 'Новая публикация', go: 'create' })]),
     ui.stories([
       { label: 'История', icon: 'plus', seen: true, go: 'create' },
       { label: 'Лера', face: P.lera, go: 'post' },
@@ -16,7 +16,7 @@ export default (ui) => ui.screen({
       text: 'Три способа носить винтажный жакет — без ощущения, что вы собираетесь в офис',
       media: P.lera, attach: tags('Жакет · винтаж', 'Трикотаж', 'Прямые джинсы', 'Лоферы'),
       likes: 428, comments: 31, shares: 12, views: '4,1K', open: { go: 'post' }, discuss: { go: 'post' },
-      menu: { toast: 'Скрыть · Пожаловаться' },
+      menu: ['Скрыть', 'Пожаловаться'],
     }),
     ui.section({ title: 'Разбор гардероба', more: { go: 'talk', label: 'Все разборы' }, children: ui.list([
       ui.row({ lead: ui.leadIcon('headphones', { accent: true }), title: 'Разобрать шкаф за один вечер', sub: 'Аня Дёмина · пауза на 12:04', go: 'talk' }),

@@ -6,7 +6,7 @@ export default (ui) => ui.screen({
   body: ui.scroll([
     ui.largeTitle('Лаборатория', ui.iconButton({ icon: 'wifi', label: 'Сеть лаборатории', go: 'labnet' })),
     ui.section({ title: 'Lab-Red', meta: 'до 23:00', children: [
-      chain([['Красный свет', 'занят до 20:10', ''], ['Сканер 02', 'ваше окно 20:20', 'now'], ['Печать', 'завтра', '']]),
+      chain([['Красный свет', 'занят до 20:10'], ['Сканер 02', 'ваше окно 20:20', 'now'], ['Печать', 'завтра']]),
       ui.list([ui.row({ lead: ui.leadIcon('clock', { accent: true }), title: `Ваше окно сегодня, ${lab.window}`, sub: `${lab.scanner} · до ${lab.windowEnd} · оператор Марат`, toast: 'Выбор другого окна' })]),
     ] }),
     ui.section({ title: 'В процессе', children: ui.list([

@@ -16,7 +16,7 @@
                     </span>
                     Слушаю
                   </div>
-                  <div class="listen is-off perm-hidden" data-show-denied="speech,mic">Голос выключен</div>
+                  <div class="perm-hidden ui-denied" data-show-denied="speech,mic"><svg><use href="#i-audio-lines"/></svg><strong>Нет доступа к распознаванию речи</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
                   <div class="ios-stepper" aria-label="Ряд">
                     <button type="button" aria-label="Меньше"><svg class="ico-svg"><use href="#i-minus"/></svg></button>
                     <button type="button" aria-label="Больше"><svg class="ico-svg"><use href="#i-plus"/></svg></button>
@@ -36,15 +36,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="ios-list perm-hidden" style="background:#f2f2f7;margin-bottom:8px" data-show-denied="speech,mic">
-                  <div class="row" style="background:#f2f2f7">
-                    <div class="grow">
-                      <div class="t-body">Считайте кнопками − и +</div>
-                      <div class="t-caption">Без голоса счётчик считает кнопками − и +</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="t-footnote perm-hidden" style="color:var(--accent-fill);margin:0 0 8px;text-align:center" data-show-denied="speech">Доступ к распознаванию речи отклонён</div>
+                <div class="perm-hidden ui-denied" data-show-denied="speech,mic"><svg><use href="#i-audio-lines"/></svg><strong>Нет доступа к распознаванию речи</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
+                <div class="perm-hidden ui-denied" data-show-denied="speech"><svg><use href="#i-audio-lines"/></svg><strong>Нет доступа к распознаванию речи</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
               </div>
               <div class="sheet-footer">
                 <div class="btn-filled block" data-back>Готово</div>

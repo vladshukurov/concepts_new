@@ -10,8 +10,8 @@ export default (ui) => ui.screen({
         ui.row({ lead: ui.leadIcon('scan-line', { accent: true }), title: 'Сканировать лист', sub: 'Камерой телефона на подсветке', ask: 'camera|camera|compose' }),
         ui.row({ lead: ui.leadIcon('images', { accent: true }), title: 'Выбрать из Фото', sub: 'Только выбранные сканы', ask: 'photos|picker|compose' }),
       ]) }),
-      ui.denied('camera', 'Камера недоступна — выберите готовый скан или опишите кадр текстом'),
-      ui.denied('photos', 'Фото недоступны — отсканируйте лист камерой'),
+      ui.denied('camera'),
+      ui.denied('photos'),
       ui.section({ children: ui.group({ label: 'Плёнка и проявка', cells: [
         ui.cell({ icon: 'film', title: 'Плёнка', value: 'HP5 · EI 800', toast: 'Плёнка выбрана' }),
         ui.cell({ icon: 'flask-conical', title: 'Проявка', sub: 'DD-X 1+4 · 20 °C · 9:30', go: 'batch' }),

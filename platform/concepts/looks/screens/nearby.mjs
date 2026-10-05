@@ -5,7 +5,7 @@ export default (ui) => ui.screen({
   id: 'nearby', theme: THEME,
   body: ui.scroll([
     ui.largeTitle('Рядом', ui.iconButton({ icon: 'search', label: 'Поиск событий', toast: 'Поиск событий и авторов' })),
-    ui.denied('location', 'Город не определён — показываем Петербург, район выбирается вручную'),
+    ui.denied('location'),
     ui.section({ title: 'Свопы и встречи', children: ui.list([
       ui.row({ lead: ui.leadIcon('', { text: '23' }), title: swap.title, sub: `Идёт до ${swap.hours.split('–')[1]} · 2,4 км`, go: 'swap' }),
       ui.row({ lead: ui.leadIcon('', { text: '24' }), title: 'Барахолка на Ваське', sub: 'Воскресенье, 12:00 · 5,1 км', go: 'swap' }),

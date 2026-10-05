@@ -4,7 +4,7 @@ export default (ui) => ui.screen({
   id: 'walks', theme: THEME,
   body: ui.scroll([
     ui.largeTitle('Прогулки', ui.iconButton({ icon: 'navigation', label: 'Найти рядом', sr: 'Найти рядом', primary: true, ask: 'location|route|walks' })),
-    ui.denied('location', 'Геопозиция недоступна — выбран район Медеу'),
+    ui.denied('location'),
     ui.section({ title: 'Сегодня', children: [
       `<button class="ui-video" data-go="walk"><span class="ui-video-art ph">${ui.duration('18:40')}</span><span class="ui-video-meta"><span class="ui-video-text"><strong>Тени вдоль Малой Алматинки</strong><span>4,2 км · закат 19:21 · 7 участников</span></span></span></button>`,
     ] }),

@@ -57,7 +57,9 @@
 .kl-shoot .ui-icon-btn { color:#fff; }
 .kl-shoot-modes { position:absolute; left:0; right:0; bottom:calc(var(--safe-bottom) + 108px); display:flex; justify-content:center; gap:20px; font:600 13px/16px var(--ui-face); color:rgba(255,255,255,.7); }
 .kl-shoot-modes .is-on { color:var(--ui-accent); }
-.kl-shoot .ui-note { position:absolute; left:0; right:0; top:50%; }
+.kl-shoot .ui-denied { position:absolute; left:0; right:0; top:50%; transform:translateY(-50%); }
+.kl-shoot .ui-denied, .kl-shoot .ui-denied > span, .kl-shoot .ui-denied > svg { color:rgba(255,255,255,.85); }
+.kl-shoot .ui-denied-btn { color:#fff; }
 
 /* Выбор медиа */
 .kl-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }

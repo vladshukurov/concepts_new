@@ -23,7 +23,12 @@ export async function renderScreens(slug, { check = false } = {}) {
   const stale = [];
   for (const file of readdirSync(dir).filter((f) => f.endsWith('.mjs') && !f.startsWith('_')).sort()) {
     const mod = await import(pathToFileURL(join(dir, file)).href + `?t=${Date.now()}`);
-    const html = String(mod.default(ui)).replace(/\n\s*/g, '').trim() + '\n';
+    let html;
+    try { html = String(mod.default(ui)).replace(/\n\s*/g, '').trim() + '\n'; }
+    catch (e) { throw new Error(`${slug}/screens/${file}: ${e.message}`); }
+    /* Пропущенный обязательный параметр не роняет шаблон, а печатает «undefined» в разметку */
+    const hole = html.match(/.{0,60}(?:\bundefined\b|\[object Object\]|\bNaN\b|\$\{[\w.]+\}).{0,20}/);
+    if (hole) throw new Error(`${slug}/screens/${file}: пропущен параметр компонента — …${hole[0]}…`);
     const target = join(dir, file.replace(/\.mjs$/, '.html'));
     const current = existsSync(target) ? readFileSync(target, 'utf8') : '';
     if (check) { if (current !== html) stale.push(file.replace(/\.mjs$/, '.html')); continue; }

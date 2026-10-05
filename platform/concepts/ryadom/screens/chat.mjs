@@ -12,7 +12,7 @@ export default (ui) => ui.screen({
       ui.bubble({ out: true, text: 'Буду в 7:25, держу 6:10', time: '7:14', read: true }),
       ui.voice({ dur: '0:12', time: '7:16' }),
     ])),
-    ui.denied('voip', 'Эфир тренера выключен — изменения остаются в чате'),
-    ui.composer({ attach: { go: 'picker' }, mic: { toast: 'Запись голосового · отпустите, чтобы отправить' } }),
+    ui.denied('voip'),
+    ui.composer({ attach: { label: 'Прикрепить', menu: ['Камера>shoot', 'Фото>picker'] }, mic: { toast: 'Запись голосового · отпустите, чтобы отправить' } }),
   ],
 });

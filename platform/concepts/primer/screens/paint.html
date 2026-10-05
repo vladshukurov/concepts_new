@@ -50,16 +50,9 @@
                   </div>
                   <span class="ios-disclosure" aria-hidden="true"></span>
                 </div>
-                <div class="row tap has-lead perm-hidden" data-show-denied="camera" data-go="scanfail">
-                  <span class="pm-lead-ico" aria-hidden="true"><svg class="ico-svg"><use href="#i-plus"/></svg></span>
-                  <div class="grow">
-                    <div class="t-body">Ввести код краски</div>
-                    <div class="t-caption">Камера отклонена — карточка открывается по коду</div>
-                  </div>
-                  <span class="ios-disclosure" aria-hidden="true"></span>
-                </div>
+                <div class="perm-hidden ui-denied" data-show-denied="camera"><svg><use href="#i-camera"/></svg><strong>Нет доступа к камере</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
               </div>
-              <p class="t-footnote pm-fb perm-hidden" data-show-denied="camera">Нет доступа к камере — скан из карточки убран. Аналоги и рецепт остались: они считаются на устройстве по паку красок.</p>
+              <div class="perm-hidden ui-denied" data-show-denied="camera"><svg><use href="#i-camera"/></svg><strong>Нет доступа к камере</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
 
               <div class="group-head">Если ни одного нет под рукой — замешать</div>
               <div class="pm-recipe">

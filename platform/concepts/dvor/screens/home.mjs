@@ -4,7 +4,7 @@ import { house } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'home', theme: THEME,
   body: ui.scroll([
-    ui.top(ui.wordmark({ name: house.address, glyph: 'house' }), [
+    ui.top(ui.wordmark({ name: house.address }), [
       ui.iconButton({ icon: 'plus', label: 'Сообщить о проблеме', go: 'problem' }),
     ]),
     ui.stories([
@@ -13,11 +13,11 @@ export default (ui) => ui.screen({
       { label: 'Хроника', icon: 'images', seen: true, go: 'chronicle' },
       { label: 'Обмен', icon: 'repeat-2', seen: true, go: 'yard' },
     ]),
-    ui.denied('photos', 'Без медиатеки хроника собирается из съёмки в приложении'),
+    ui.denied('photos'),
     ui.post({
       author: { initial: 'УК', name: 'Управляющая компания', meta: 'вчера в 19:04 · официально' },
       text: 'Горячую воду отключат с 14 по 17 апреля — опрессовка стояка. Заявки на перерасчёт — в теме',
-      likes: 34, comments: 12, shares: 9, views: 219, open: { go: 'post' }, discuss: { go: 'post' }, menu: { toast: 'Пожаловаться · Скрыть' },
+      likes: 34, comments: 12, shares: 9, views: 219, open: { go: 'post' }, discuss: { go: 'post' }, menu: ['Пожаловаться', 'Скрыть'],
     }),
     ui.post({
       author: { initial: 'МК', name: 'Марина, кв. 48', meta: 'сегодня в 08:12 · 3 подъезд', action: { go: 'profile' } },

@@ -12,7 +12,7 @@ export default (ui) => ui.screen({
       ui.bubble({ out: true, text: 'Возьму линер и складной стул', time: '17:55', read: true }),
       ui.voice({ from: 'Лера Ян', dur: '0:09', time: '18:02' }),
     ])),
-    ui.denied('voip', 'Аудиоразбор выключен — продолжайте в сообщениях'),
-    ui.composer({ attach: { go: 'picker' }, mic: { toast: 'Запись голосового · отпустите, чтобы отправить' } }),
+    ui.denied('voip'),
+    ui.composer({ attach: { label: 'Прикрепить', menu: ['Камера>shoot', 'Фото>picker'] }, mic: { toast: 'Запись голосового · отпустите, чтобы отправить' } }),
   ],
 });

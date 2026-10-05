@@ -26,14 +26,8 @@
           <div class="r-end"><svg class="ico-svg ios-disclosure"><use href="#i-chevron-right"/></svg></div>
         </div>
       </div>
-      <div class="r-note" data-show-denied="camera" hidden>
-        <svg class="ico-svg"><use href="#i-info"/></svg>
-        <span>Без камеры остаётся выбор готового снимка из медиатеки, а публикацию можно отправить и без медиа.</span>
-      </div>
-      <div class="r-note" data-show-denied="photos" hidden>
-        <svg class="ico-svg"><use href="#i-info"/></svg>
-        <span>Без медиатеки остаётся съёмка на камеру: снятый кадр попадает в публикацию напрямую.</span>
-      </div>
+      <div class="perm-hidden ui-denied" data-show-denied="camera"><svg><use href="#i-camera"/></svg><strong>Нет доступа к камере</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
+      <div class="perm-hidden ui-denied" data-show-denied="photos"><svg><use href="#i-images"/></svg><strong>Нет доступа к фото</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
 
       <div class="r-sec-head"><h2>Куда и где</h2><span>район и место</span></div>
       <div class="r-card">
@@ -53,10 +47,7 @@
           <div class="r-end">2026</div>
         </div>
       </div>
-      <div class="r-note" data-show-denied="location" hidden>
-        <svg class="ico-svg"><use href="#i-info"/></svg>
-        <span>Без геопозиции место вписывается руками: публикация с ручной меткой ничем не отличается от подставленной.</span>
-      </div>
+      <div class="perm-hidden ui-denied" data-show-denied="location"><svg><use href="#i-map-pin"/></svg><strong>Нет доступа к геопозиции</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
 
       <div class="r-cta">
         <button class="btn-filled tap" data-primary data-go="object" aria-label="Опубликовать">Опубликовать</button>

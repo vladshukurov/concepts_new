@@ -12,8 +12,8 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'camera', title: 'Снять фото', sub: 'Деталь крупно, при свете', ask: 'camera|camera|update' }),
         ui.cell({ icon: 'image', title: 'Выбрать из Фото', sub: 'Снимки с прошлых этапов', ask: 'photos|photos|update' }),
       ] }) }),
-      ui.denied('camera', 'Камера выключена — выберите снимок из Фото'),
-      ui.denied('photos', 'Фото закрыты — этап сохранится без снимка'),
+      ui.denied('camera'),
+      ui.denied('photos'),
     ]),
   ],
 });

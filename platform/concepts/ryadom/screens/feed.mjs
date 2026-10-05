@@ -4,7 +4,7 @@ import { people, longrun, club } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'feed', theme: THEME,
   body: ui.scroll([
-    ui.top(ui.wordmark({ name: 'Рядом', glyph: 'route' }), [
+    ui.top(ui.wordmark({ name: 'Рядом' }), [
       ui.iconButton({ icon: 'bell', label: 'Уведомления', go: 'notif' }),
       ui.iconButton({ icon: 'plus', label: 'Новая публикация', go: 'compose' }),
     ]),
@@ -22,13 +22,12 @@ export default (ui) => ui.screen({
       author: { initial: people.alina.initial, name: people.alina.name, meta: `вчера, 21:04 · ${club.city}`, action: { go: 'friends' } },
       text: 'Первый спокойный выход после перерыва: 6,4 км по набережной, средний темп 6:12. На восточном мосту лёд — лучше свернуть к велодорожке',
       attach: ui.list([ui.row({ lead: ui.leadIcon('route', { accent: true }), title: 'Набережная · 6,4 км', sub: 'Темп 6:12 · 4 участника', go: 'player' })]),
-      likes: 14, comments: 9, shares: 2, open: { go: 'post' }, discuss: { go: 'post' }, menu: { toast: 'Пожаловаться · Скрыть · Копировать ссылку' },
+      likes: 14, comments: 9, shares: 2, open: { go: 'post' }, discuss: { go: 'post' }, menu: ['Пожаловаться', 'Скрыть', 'Копировать ссылку'],
     }),
     ui.section({ title: 'Реклама', children: [
       ui.list([ui.row({ lead: ui.leadIcon('store'), title: 'Беговой магазин на Абая', sub: 'Подбор кроссовок по стопе · −10 % участникам клуба' })]),
       ui.actions([ui.button({ label: 'Показывать подходящее', variant: 'secondary', block: true, ask: 'tracking|feed|feed' })], { className: 'ry-gap' }),
-      ui.granted('tracking', 'Подборка — по вашим тренировкам и маршрутам'),
-      ui.denied('tracking', 'Реклама остаётся общей для клуба'),
+      ui.denied('tracking'),
     ] }),
     ui.post({
       author: { initial: people.roman.initial, name: people.roman.name, meta: 'позавчера · видео техники', action: { go: 'videos' } },

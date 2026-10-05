@@ -2,8 +2,8 @@
   <div class="td-safe"></div>
   <header class="td-head"><button class="td-hit" data-back aria-label="Назад"><svg class="td-icon"><use href="#i-chevron-left"/></svg></button><div class="td-head-copy"><strong>План голосом</strong><span>2,4 секунды · разбор на устройстве</span></div><button class="td-hit" data-ask="mic|sayplan|sayplan" aria-label="Сказать план заново"><svg class="td-icon"><use href="#i-mic"/></svg></button></header>
   <div class="body-scroll td-form">
-    <div class="td-fallback perm-hidden" data-show-denied="mic">Микрофон недоступен — остаются текст и фото.</div>
-    <div class="td-fallback perm-hidden" data-show-denied="speech">Распознавание речи выключено — время и место выбираются списком, как раньше.</div>
+    <div class="perm-hidden ui-denied" data-show-denied="mic"><svg><use href="#i-mic"/></svg><strong>Нет доступа к микрофону</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
+    <div class="perm-hidden ui-denied" data-show-denied="speech"><svg><use href="#i-audio-lines"/></svg><strong>Нет доступа к распознаванию речи</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
     <label class="td-form-label">Расслышали</label>
     <div class="td-form-box" style="min-height:66px"><svg class="td-icon"><use href="#i-audio-lines"/></svg><div><strong style="line-height:19px">«В семь на катке, зову Мишу и Аню»</strong><span>аудио не покидало телефон и стёрто после разбора</span></div></div>
     <label class="td-form-label">Когда</label>

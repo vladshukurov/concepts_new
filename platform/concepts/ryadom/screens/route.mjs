@@ -7,7 +7,6 @@ export default (ui) => ui.screen({
     ui.nav({ title: 'Кто в пути' }),
     ui.scroll([
       ui.section({ children: [map([['ИМ', 'ry-x10', 'ry-y56'], ['ДО', 'ry-x34', 'ry-y70'], ['ВК', 'ry-x10', 'ry-y20']])] }),
-      ui.granted('locationalways', `Вы отмечены в пути · ${now.time}`),
       ui.section({ title: 'Идут к старту', children: ui.list([
         ui.row({ lead: ui.avatar(people.ilya.initial), title: people.ilya.name, sub: 'У клуба · раскладывает конусы' }),
         ui.row({ lead: ui.avatar(people.dasha.initial), title: people.dasha.name, sub: 'Идёт от метро · семь минут' }),

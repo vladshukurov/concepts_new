@@ -12,7 +12,7 @@ export default (ui) => ui.screen({
       ui.section({ children: ui.group({ label: 'Реклама', cells: [
         ui.cell({ icon: 'sparkles', title: 'Персональные рекомендации', toggle: false, ask: 'tracking|privacy|privacy' }),
       ] }) }),
-      ui.denied('tracking', 'Реклама остаётся контекстной'),
+      ui.denied('tracking'),
       ui.section({ children: ui.actions([ui.button({ label: 'Открыть политику', variant: 'tertiary', block: true, toast: 'podacha.app/privacy', primary: true })]) }),
     ]),
   ],

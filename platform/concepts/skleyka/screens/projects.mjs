@@ -3,7 +3,7 @@ import { TABS } from './_tabs.mjs';
 export default (ui) => ui.screen({
   id: 'projects', theme: 'vk-dark',
   body: ui.scroll([
-    ui.top(ui.wordmark({ name: 'Склейка', glyph: 'clapperboard' }),
+    ui.top(ui.wordmark({ name: 'Склейка' }),
       ui.iconButton({ icon: 'plus', label: 'Создать событие', sr: 'Создать событие', go: 'create', primary: true })),
     ui.videoCard({
       art: 'm4', duration: '38 видео', progressClass: 'is-58', go: 'project', className: 'sk-first',

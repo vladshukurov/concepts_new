@@ -18,8 +18,7 @@ export default (ui) => ui.screen({
         ui.button({ label: 'Я пойду', icon: 'calendar-plus', ask: 'calendar|events|events', primary: true }),
         ui.button({ label: 'Чат встречи', icon: 'message-circle', variant: 'secondary', go: 'chat' }),
       ], { row: true, className: 'sh-gap' }),
-      ui.granted('calendar', `Встреча в Календаре · ${pleinair.day}, ${pleinair.start}`),
-      ui.denied('calendar', 'Дата остаётся в карточке встречи'),
+      ui.denied('calendar'),
     ] }),
     ui.section({ title: 'Выставка', children: ui.list([ui.row({ thumb: 'sh-s6', title: exhibit.title, sub: `Работы участников на общем экране · до ${exhibit.until}`, go: 'exhibit' })]) }),
     ui.section({ title: 'Потом', children: ui.hscroll([

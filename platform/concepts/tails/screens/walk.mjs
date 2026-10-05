@@ -13,12 +13,11 @@ export default (ui) => ui.screen({
           ui.cell({ icon: 'route', title: 'От вас 12 минут пешком', sub: 'Через Съезжинскую' }),
         ] }),
       ] }),
-      ui.denied('push', 'Изменения прогулки отмечаются точкой на вкладке прогулок'),
+      ui.denied('push'),
       ui.section({ children: ui.actions([
         ui.button({ label: 'Я иду', icon: 'check', block: true, toast: 'Следим за прогулкой' }),
         ui.button({ label: 'Я на площадке', icon: 'map-pin', variant: 'secondary', block: true, activate: 'wifiinfo|walk' }),
         ui.button({ label: 'Сеть площадки', icon: 'qr-code', variant: 'secondary', block: true, go: 'netqr' }),
-        ui.granted('wifiinfo', 'Вы на площадке · отмечено в 18:42'),
       ]) }),
     ]),
   ],

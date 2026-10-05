@@ -14,7 +14,7 @@ export default (ui) => ui.screen({
           ui.row({ lead: ui.leadIcon('plus'), title: 'Вписать своё', sub: 'Для мест, которых нет на карте', toast: 'Ввести адрес вручную' }),
         ]),
       ] }),
-      ui.denied('location', 'Мест рядом не показать — впишите место руками'),
+      ui.denied('location'),
     ]),
   ],
 });

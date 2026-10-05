@@ -11,7 +11,7 @@
 
 | Токен | Значение | Роль |
 |---|---|---|
-| `--ui-bg` | `#f2f3f5` | фон страницы |
+| `--ui-bg` | `#fff` | фон страницы |
 | `--ui-card` | `#fff` | секция и карточка |
 | `--ui-card-2` | `#ebedf0` | поле и плитка внутри секции |
 | `--ui-text` | `#000` | основной текст |
@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `section` ×46, `cell` ×35, `row` ×32, `button` ×27, `leadIcon` ×25, `actions` ×21, `nav` ×19, `denied` ×16, `list` ×13, `group` ×12, `granted` ×9, `iconButton` ×7, `avatar` ×7, `tabBar` ×4, `textButton` ×3, `largeTitle` ×3, `stats` ×3, `bubble` ×2, `composerPrompt` ×1, `search` ×1, `top` ×1, `wordmark` ×1, `stories` ×1, `chat` ×1, `foot` ×1, `duration` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `section` ×46, `cell` ×35, `row` ×32, `button` ×27, `leadIcon` ×25, `actions` ×21, `nav` ×19, `denied` ×16, `list` ×13, `group` ×12, `iconButton` ×7, `avatar` ×7, `tabBar` ×4, `textButton` ×3, `largeTitle` ×3, `stats` ×3, `bubble` ×2, `composerPrompt` ×1, `search` ×1, `top` ×1, `wordmark` ×1, `stories` ×1, `chat` ×1, `foot` ×1, `duration` ×1.
 <!-- @end -->
 
 ## Свои компоненты

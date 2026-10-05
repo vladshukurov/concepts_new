@@ -12,9 +12,9 @@ export default (ui) => ui.screen({
       ui.bubble({ out: true, text: 'Можно заменить фасоль нутом?', time: '19:17', read: true }),
       ui.voice({ dur: '0:12', time: '19:18' }),
     ])),
-    ui.denied('voip', 'Звонок кухни выключен — задайте вопрос сообщением'),
-    ui.denied('mic', 'Голосовые выключены — напишите сообщение'),
-    ui.denied('photos', 'Фото можно отправить позже или описать результат'),
+    ui.denied('voip'),
+    ui.denied('mic'),
+    ui.denied('photos'),
     ui.composer({ attach: { ask: 'photos|conversation|conversation' }, mic: { ask: 'mic|conversation|conversation' } }),
   ],
 });

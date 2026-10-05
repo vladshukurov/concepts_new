@@ -11,7 +11,7 @@
 
 | Токен | Значение | Роль |
 |---|---|---|
-| `--ui-bg` | `#f2f3f5` | фон страницы |
+| `--ui-bg` | `#fff` | фон страницы |
 | `--ui-card` | `#fff` | секция и карточка |
 | `--ui-card-2` | `#ebedf0` | поле и плитка внутри секции |
 | `--ui-text` | `#000` | основной текст |
@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `section` ×39, `row` ×33, `cell` ×21, `button` ×20, `iconButton` ×16, `list` ×16, `leadIcon` ×16, `denied` ×15, `nav` ×14, `actions` ×11, `group` ×9, `tabBar` ×5, `granted` ×5, `dialog` ×4, `textButton` ×4, `bubble` ×3, `largeTitle` ×3, `post` ×3, `progress` ×2, `times` ×2, `composer` ×2, `search` ×2, `top` ×2, `callView` ×1, `chatNav` ×1, `chat` ×1, `day` ×1, `voice` ×1, `composerPrompt` ×1, `wordmark` ×1, `stories` ×1, `stats` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `section` ×38, `row` ×31, `cell` ×21, `button` ×19, `iconButton` ×16, `leadIcon` ×16, `denied` ×15, `list` ×15, `nav` ×14, `actions` ×10, `group` ×9, `tabBar` ×5, `dialog` ×4, `textButton` ×4, `bubble` ×3, `largeTitle` ×3, `post` ×3, `progress` ×2, `times` ×2, `composer` ×2, `search` ×2, `top` ×2, `callView` ×1, `chatNav` ×1, `chat` ×1, `day` ×1, `voice` ×1, `composerPrompt` ×1, `wordmark` ×1, `stories` ×1, `comments` ×1, `stats` ×1.
 <!-- @end -->
 
 ## Свои компоненты

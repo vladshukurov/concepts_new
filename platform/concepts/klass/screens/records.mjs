@@ -5,8 +5,7 @@ export default (ui) => ui.screen({
   id: 'records', theme: THEME,
   body: ui.scroll([
     ui.largeTitle('Записи', ui.iconButton({ icon: 'mic', label: 'Записать собрание', sr: 'Записать собрание', ask: 'mic|records|records' })),
-    ui.denied('mic', 'Микрофон недоступен — остаются текстовый протокол и загрузка готовой записи'),
-    ui.granted('mic', 'Идёт запись собрания · 00:12'),
+    ui.denied('mic'),
     ui.section({ title: 'Собрание сегодня', meta: `с ${meeting.start}`, children: [
       `<div class="kl-live"><span class="kl-live-top"><i></i>Идёт · ${meeting.item}</span><strong>${meeting.title}</strong><span>${meeting.topic} · слушают ${meeting.listeners} собственников</span>${ui.actions([
         ui.button({ label: 'Войти в эфир', icon: 'phone', activate: 'voip|live' }),

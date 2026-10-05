@@ -7,8 +7,7 @@ export default (ui) => ui.screen({
     ui.largeTitle('Свопы', ui.iconButton({ icon: 'calendar-plus', label: 'Добавить в Календарь', sr: 'Добавить в Календарь', ask: 'calendar|swap|swap' })),
     ui.section({ children: [
       `<div class="lk-swap"><small>Сегодня · ${swap.hours} · идёт</small><strong>${swap.title}</strong><span>${swap.where} · вход свободный</span></div>`,
-      ui.granted('calendar', 'Своп в Календаре · напомним за час'),
-      ui.denied('calendar', 'Дата остаётся в карточке свопа и в напоминании приложения'),
+      ui.denied('calendar'),
     ] }),
     ui.section({ title: 'Ваша вещь', children: [
       ui.list([ui.row({ thumb: P.marina, title: item.title, sub: `${item.host.first} проверит и подтвердит приём до ${item.acceptBy}`, subWrap: true })]),
@@ -16,8 +15,7 @@ export default (ui) => ui.screen({
         ui.button({ label: 'Ждать результат', block: true, activate: 'commnotif|swap', primary: true }),
         ui.button({ label: `Показать ${item.short} ведущей`, icon: 'message-circle', variant: 'secondary', block: true, go: 'chat' }),
       ]),
-      ui.granted('commnotif', `${item.host.first} напишет, как только проверит ${item.short}`),
-      ui.denied('commnotif', 'Результат появится в карточке свопа'),
+      ui.denied('commnotif'),
     ] }),
     ui.section({ title: 'На месте', children: ui.list([
       ui.row({ lead: ui.leadIcon('map-pin', { accent: true }), title: 'Отметиться на свопе', sub: 'После входа во двор Бутылки', go: 'checkin' }),

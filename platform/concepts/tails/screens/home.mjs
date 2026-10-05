@@ -3,7 +3,7 @@ import { THEME, TABS, PET } from './_shared.mjs';
 export default (ui) => ui.screen({
   id: 'home', theme: THEME,
   body: ui.scroll([
-    ui.top(ui.wordmark({ name: 'Хвосты', glyph: 'paw-print' }), [
+    ui.top(ui.wordmark({ name: 'Хвосты' }), [
       ui.iconButton({ icon: 'plus', label: 'Новая запись', go: 'create' }),
       ui.iconButton({ icon: 'users', label: 'Друзья из контактов', go: 'mates' }),
     ]),
@@ -15,12 +15,12 @@ export default (ui) => ui.screen({
       { label: 'Барни', face: PET.barni, seen: true, go: 'profile' },
     ]),
     `<button class="tl-nearby" data-ask="location|nearby|home"><span class="tl-nearby-ico">${ui.icon('map-pin')}</span><span class="ui-row-text"><strong>Кто гуляет рядом</strong><span>7 питомцев в Петроградском районе</span></span>${ui.icon('chevron-right')}</button>`,
-    ui.denied('location', 'Район можно выбрать вручную — прогулки останутся доступны'),
+    ui.denied('location'),
     ui.post({
       author: { face: PET.truffle, name: 'Ксения и Трюфель', meta: '18 минут назад · Петроградская', action: { go: 'pet' } },
       text: 'Трюфель впервые дошёл до дальнего пруда. Утки заинтересовали, но команда «рядом» победила',
       media: PET.truffle, likes: 184, comments: 16, shares: 3, views: '1,2K', liked: true,
-      menu: { toast: 'Скрыть · Пожаловаться' },
+      menu: ['Скрыть', 'Пожаловаться'],
     }),
     ui.post({
       author: { face: PET.loki, name: 'Марина Гурьева', meta: 'кинолог · сегодня в 08:30', action: { go: 'course' } },

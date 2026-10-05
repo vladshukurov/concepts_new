@@ -23,11 +23,6 @@
         </div>
       </div>
     </div>
-    <div class="state" data-show-denied="camera" hidden>
-      <div class="state-ico"><svg class="ico-svg"><use href="#i-camera"/></svg></div>
-      <div class="t-headline">Камера недоступна</div>
-      <div class="t-body">Разрешение можно выдать в настройках телефона. Пока публикация собирается из медиатеки.</div>
-      <div class="state-actions"><div class="btn-filled tap" data-go="library" aria-label="Выбрать из медиатеки">Выбрать из медиатеки</div></div>
-    </div>
+    <div class="perm-hidden ui-denied" data-show-denied="camera"><svg><use href="#i-camera"/></svg><strong>Нет доступа к камере</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
   </div>
 </div>

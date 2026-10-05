@@ -12,7 +12,7 @@ import { buildStorybook } from './gen-storybook.mjs';
 import { writeFileSync, mkdirSync, rmSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { DIST, conceptDir, listConcepts, esc, TARGET_PRODUCTS, POSITIONING_MODES } from './lib.mjs';
-import { build } from './build.mjs';
+import { build, UI_THEMES } from './build.mjs';
 import { writeUxSpec } from './ux-spec.mjs';
 
 /**
@@ -282,7 +282,9 @@ for (const slug of slugs) {
   const { spec, bytes } = build(slug);
   writeUxSpec(slug);
   const n = countKit(slug);
-  items.push({
+  /* В лаунчере пока только концепты на новом UI (тема оболочки .ui). Старые собираются
+     и открываются по своему адресу, но в галерею вернутся после миграции */
+  if (UI_THEMES.has(spec.brand?.theme)) items.push({
     slug,
     name: spec.name,
     tagline: spec.tagline,

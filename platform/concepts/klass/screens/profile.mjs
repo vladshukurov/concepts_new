@@ -12,8 +12,8 @@ export default (ui) => ui.screen({
       ui.row({ lead: ui.leadIcon('calendar'), title: `Поездка на ярмарку ${trip.short}`, sub: 'Вы едете · отправление от главного въезда', go: 'event' }),
     ]) }),
     ui.section({ title: 'Мои публикации', meta: '17', children: '' }),
-    ui.post({ author: { initial: 'ОЗ', name: 'Ольга Захарова', meta: 'сегодня, 08:20' }, text: 'Заявки на поездку принимают до четверга включительно. Я отметилась — осталось пять мест', likes: 12, comments: 5, views: 29, open: { go: 'post' }, discuss: { go: 'thread' }, menu: { toast: 'Закрепить · Изменить · Удалить' } }),
-    ui.post({ author: { initial: 'ОЗ', name: 'Ольга Захарова', meta: '19 августа' }, text: 'Дом правления после субботника вымыли, новые шторы повесила Наталья. Осталась одна стена под покраску', likes: 34, comments: 18, views: 96, open: { go: 'post' }, menu: { toast: 'Закрепить · Изменить · Удалить' } }),
+    ui.post({ author: { initial: 'ОЗ', name: 'Ольга Захарова', meta: 'сегодня, 08:20' }, text: 'Заявки на поездку принимают до четверга включительно. Я отметилась — осталось пять мест', likes: 12, comments: 5, views: 29, open: { go: 'post' }, discuss: { go: 'thread' }, menu: ['Закрепить', 'Изменить', 'Удалить'] }),
+    ui.post({ author: { initial: 'ОЗ', name: 'Ольга Захарова', meta: '19 августа' }, text: 'Дом правления после субботника вымыли, новые шторы повесила Наталья. Осталась одна стена под покраску', likes: 34, comments: 18, views: 96, open: { go: 'post' }, menu: ['Закрепить', 'Изменить', 'Удалить'] }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'profile' }),
 });

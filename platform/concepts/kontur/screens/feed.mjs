@@ -3,7 +3,7 @@ import { THEME, TABS, sheet, kit } from './_shared.mjs';
 export default (ui) => ui.screen({
   id: 'feed', theme: THEME,
   body: ui.scroll([
-    ui.top(ui.wordmark({ name: 'Контур', glyph: 'aperture' }), ui.iconButton({ icon: 'plus', label: 'Новый контакт-лист', go: 'compose' })),
+    ui.top(ui.wordmark({ name: 'Контур' }), ui.iconButton({ icon: 'plus', label: 'Новый контакт-лист', go: 'compose' })),
     ui.stories([
       { label: 'Алия', icon: 'aperture', go: 'photographer' },
       { label: 'Марат', icon: 'aperture', go: 'photographer' },

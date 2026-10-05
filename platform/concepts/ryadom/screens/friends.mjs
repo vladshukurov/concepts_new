@@ -10,7 +10,7 @@ export default (ui) => ui.screen({
         ui.button({ label: 'Найти знакомых', icon: 'users', block: true, ask: 'contacts|match|friends', primary: true }),
         ui.button({ label: 'Пригласить ссылкой', icon: 'link', variant: 'secondary', block: true, go: 'invite' }),
       ], { className: 'ry-gap' })] }),
-      ui.denied('contacts', 'Найдите участника по имени или пригласите ссылкой'),
+      ui.denied('contacts'),
       ui.section({ title: `В ${club.name}`, meta: String(club.members), children: ui.list(['alina', 'ilya', 'dasha', 'lera'].map((k) =>
         ui.row({ lead: ui.avatar(people[k].initial), title: people[k].name, sub: people[k].about, go: 'chat' }))) }),
     ]),

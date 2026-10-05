@@ -5,7 +5,7 @@
  */
 export const groups = [
   { title: 'Шапки', items: [
-    { name: 'top', note: 'Корень вкладки: бренд или профиль слева, иконки справа', render: (ui) => ui.top(ui.wordmark({ name: 'Образы', glyph: 'shirt' }), [ui.iconButton({ icon: 'search', label: 'Поиск' }), ui.iconButton({ icon: 'plus', label: 'Новая публикация' })]) },
+    { name: 'top', note: 'Корень вкладки: бренд или профиль слева, иконки справа', render: (ui) => ui.top(ui.wordmark({ name: 'Образы', logo: 'looks/assets/app-icon.png' }), [ui.iconButton({ icon: 'search', label: 'Поиск' }), ui.iconButton({ icon: 'plus', label: 'Новая публикация' })]) },
     { name: 'largeTitle', note: 'Корень вкладки с заголовком 24/30', render: (ui) => ui.largeTitle('Мессенджер', ui.iconButton({ icon: 'square-pen', label: 'Новое сообщение' })) },
     { name: 'nav', note: 'Вложенный экран: назад · заголовок · действие', render: (ui) => ui.nav({ title: 'Публикация', trailing: ui.iconButton({ icon: 'share', label: 'Поделиться' }) }) },
     { name: 'me', note: 'Профиль в шапке', render: (ui) => ui.top(ui.me({ name: 'Марина', initial: 'М' })) },
@@ -27,20 +27,15 @@ export const groups = [
       ui.cell({ icon: 'megaphone', title: 'Реклама', value: 'Без подбора', go: 'x' }),
       ui.cell({ icon: 'scan-face', title: 'Замок Face ID', toggle: false }),
     ] }) }) },
+    { name: 'foot', note: 'Подпись под секцией: когда сверено, сколько всего', render: (ui) => ui.section({ title: 'Счётчики', children: [ui.list([ui.row({ lead: ui.leadIcon('droplets'), title: 'Горячая вода', sub: '00412,38 м³' })]), ui.foot('Сверено сегодня в 9:12 · 214 номеров')] }) },
     { name: 'stats', note: 'Счётчики профиля', render: (ui) => ui.section({ children: ui.stats([['86', 'публикаций'], ['312', 'подписчиков'], ['148', 'подписок']]) }) },
     { name: 'search · chips · segments', note: 'Поиск; чипсы — переходы; сегменты внутри экрана', render: (ui) => ui.section({ children: [ui.search({ placeholder: 'Поиск по сообщениям' }), '<div class="sb-gap"></div>', ui.chips([{ label: 'Все', on: true }, { label: 'Быстро' }, { label: 'Выпечка' }]), '<div class="sb-gap"></div>', ui.segments([{ label: 'Для вас', on: true }, { label: 'Обновления' }])] }) },
   ] },
   { title: 'Доступы', items: [
-    { name: 'granted · denied · note', note: 'Результат после разрешения, fallback при отказе, нейтральная подсказка', render: (ui) => ui.section({ children: [
-      ui.granted('calendar', 'Своп в Календаре · напомним за час').replace('perm-hidden ', ''),
-      ui.denied('calendar', 'Дата остаётся в карточке свопа').replace('perm-hidden', ''),
-      ui.note('Сеть площадки — код на стойке у входа'),
-      ui.foot('Сверено сегодня в 9:12 · 214 номеров'),
-    ] }) },
+    { name: 'denied', note: 'Отказ в доступе, без которого фича не работает: пустое состояние iOS и вход в Настройки', render: (ui) => ui.denied('camera').replace('perm-hidden ', '') },
   ] },
-  { title: 'Меню и виджеты', items: [
+  { title: 'Меню', items: [
     { name: 'menu', note: 'Сервисы двумя колонками, как в меню ВК', render: (ui) => ui.menu([{ icon: 'images', label: 'Мои серии' }, { icon: 'users', label: 'Авторы', badge: 3 }, { icon: 'tv', label: 'Выставка' }, { icon: 'lock', label: 'Черновики' }, { icon: 'shield', label: 'Приватность' }, { icon: 'chevron-right', label: 'Ещё' }]) },
-    { name: 'widgets', note: 'Живые данные продукта карточками: у каждой одна роль и одно действие', render: (ui) => ui.widgets([{ title: 'Место дня', sub: 'Панфилова, 84 · 27 работ', art: 'ph', tall: true, button: { label: 'Нарисовать', toast: 'x' } }, { faces: ['МЛ', 'МК', 'ЛЯ'], title: 'Пленэр завтра в 9:00', sub: '18 участников', toast: 'x' }, { value: '+4', icon: 'images', title: 'Новые работы', sub: 'В ваших сериях', toast: 'x' }]) },
   ] },
   { title: 'Сведения о событии и людях', items: [
     { name: 'miniInfo · usersStack', note: 'Событие как в ВК: факты строками со значком и кто идёт', render: (ui) => ui.miniInfo([{ icon: 'calendar', text: 'Сегодня, 19:30 · 75 минут', accent: true }, { icon: 'map-pin', text: 'Клуб «Полка», Абая 44' }, { icon: 'info', text: 'Подробнее', more: true, toast: 'x' }]) + ui.usersStack({ faces: ['МО', 'ИЛ', 'ЖК'], text: 'Маша, Илья и ещё 2 идут', toast: 'x' }) },
@@ -52,7 +47,8 @@ export const groups = [
   { title: 'Соцсеть', items: [
     { name: 'stories', note: 'Фото, инициалы или значок; просмотренные — серое кольцо', render: (ui) => ui.stories([{ label: 'История', icon: 'plus', seen: true }, { label: 'Жанна', initial: 'ЖК' }, { label: 'Вместе', icon: 'chef-hat' }, { label: 'Тимур', initial: 'ТС', seen: true }]) },
     { name: 'composerPrompt', note: '«Что нового?» над лентой', render: (ui) => ui.composerPrompt({ initial: 'СЛ', placeholder: 'Что получилось сегодня?', trailing: ui.iconButton({ icon: 'camera', label: 'Снять' }) }) },
-    { name: 'post', note: 'Пост: автор, текст, вложение, реакции. Без фото — без пустого кадра', render: (ui) => ui.post({ author: { initial: 'ЖК', name: 'Жанна Ким', meta: 'сегодня, 12:14 · Алматы' }, text: 'Тот самый чечевичный суп, но без сливок', attach: ui.list([ui.row({ lead: ui.leadIcon('utensils'), title: 'Чечевичный суп', sub: '35 минут · проверили 34 раза' })]), likes: 126, comments: 18, shares: 9, views: '4,1K', menu: { toast: 'x' } }) },
+    { name: 'post', note: 'Пост: автор, текст, вложение, реакции. Без фото — без пустого кадра', render: (ui) => ui.post({ author: { initial: 'ЖК', name: 'Жанна Ким', meta: 'сегодня, 12:14 · Алматы' }, text: 'Тот самый чечевичный суп, но без сливок', attach: ui.list([ui.row({ lead: ui.leadIcon('utensils'), title: 'Чечевичный суп', sub: '35 минут · проверили 34 раза' })]), likes: 126, comments: 18, shares: 9, views: '4,1K', menu: ['Скрыть', 'Пожаловаться'] }) },
+    { name: 'comments', note: 'Комментарии под постом: ответ с отступом, метка автора, лайк справа', render: (ui) => ui.comments({ count: 9, items: [{ initial: 'РЛ', name: 'Роман Ли', text: 'На мосту сегодня в 7 утра тоже скользко', time: '22:17', likes: 6 }, { initial: 'АВ', name: 'Алина Ветрова', text: 'Спасибо, поведу группу по велодорожке', time: '22:40', likes: 2, reply: true, author: true }, { initial: 'ЛЮ', name: 'Лера Юдина', text: 'Темп 6:12 чистый или с остановками?', time: '8:03', liked: true, likes: 1 }] }) },
   ] },
   { title: 'Мессенджер', items: [
     { name: 'dialog', note: 'Строка диалога: онлайн, непрочитанные, «Вы:»', render: (ui) => [ui.dialog({ initial: 'ЛС', name: 'Лера Савина', text: 'Покажете жакет?', time: '9:36', unread: 2, online: true }), ui.dialog({ initial: 'ТС', name: 'Тимур Садыков', text: 'Рецепт · Хачапури', time: 'пн', you: true })].join('') },

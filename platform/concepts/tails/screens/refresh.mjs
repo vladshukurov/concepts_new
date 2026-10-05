@@ -12,7 +12,6 @@ export default (ui) => ui.screen({
           ui.row({ lead: ui.leadIcon('phone'), title: 'Дежурный ветеринар', sub: 'Круглосуточно · Приозерск' }),
         ]),
         ui.actions([ui.button({ label: 'Скачать к утру', icon: 'download', block: true, primary: true, activate: 'bgtask|refresh' })]),
-        ui.granted('bgtask', 'Всё на телефоне к 06:00 · 12 МБ, откроется без сети'),
       ] }),
     ]),
   ],

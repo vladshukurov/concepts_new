@@ -11,8 +11,7 @@ export default (ui) => ui.screen({
           ui.cell({ icon: 'monitor', title: 'Кухня, приставка', sub: 'Занята другим показом', toast: 'Приставка занята другим показом' }),
           ui.cell({ icon: 'repeat-2', title: 'Обновить список', activate: 'wifiinfo|tv' }),
         ] }),
-        ui.granted('wifiinfo', 'Сеть «Zaharov_5G» · два устройства'),
-        ui.denied('localnetwork', 'Устройства не найти — альбом открывается на телефоне'),
+        ui.denied('localnetwork'),
       ] }),
       ui.section({ children: ui.actions([
         ui.button({ label: 'Смотреть на телевизоре', icon: 'cast', block: true, primary: true, ask: 'localnetwork|cast|tv' }),

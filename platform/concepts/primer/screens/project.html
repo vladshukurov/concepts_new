@@ -52,14 +52,7 @@
                   </div>
                   <span class="ios-disclosure" aria-hidden="true"></span>
                 </div>
-                <div class="row tap has-lead perm-hidden" data-show-denied="camera" data-go="scanfail">
-                  <span class="pm-lead-ico" aria-hidden="true"><svg class="ico-svg"><use href="#i-plus"/></svg></span>
-                  <div class="grow">
-                    <div class="t-body">Ввести код краски</div>
-                    <div class="t-caption">Скана нет — код с баночки открывает ту же карточку</div>
-                  </div>
-                  <span class="ios-disclosure" aria-hidden="true"></span>
-                </div>
+                <div class="perm-hidden ui-denied" data-show-denied="camera"><svg><use href="#i-camera"/></svg><strong>Нет доступа к камере</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
                 <div class="row tap has-lead" data-hide-denied="photo" data-ask="photo|gallery|project">
                   <span class="pm-lead-ico" aria-hidden="true"><svg class="ico-svg"><use href="#i-image"/></svg></span>
                   <div class="grow">
@@ -69,8 +62,8 @@
                   <span class="ios-disclosure" aria-hidden="true"></span>
                 </div>
               </div>
-              <p class="t-footnote pm-fb perm-hidden" data-show-denied="camera">Нет доступа к камере — штрихкод прочитать нечем, строка скана убрана. Код с баночки вводится вручную.</p>
-              <p class="t-footnote pm-fb perm-hidden" data-show-denied="photo">Нет доступа к «Фото» — пипетки в палитре больше нет. Оттенки добавляются сканом баночки или кодом краски.</p>
+              <div class="perm-hidden ui-denied" data-show-denied="camera"><svg><use href="#i-camera"/></svg><strong>Нет доступа к камере</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
+              
 
               <div class="group-head">Заметки к шагам мастеркласса</div>
               <div class="ios-list pm-notes">

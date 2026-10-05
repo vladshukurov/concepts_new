@@ -79,18 +79,9 @@
           Включить подсказки в пути
         </button>
       </div>
-      <div class="m-note" data-show-granted="mic" hidden>
-        <svg class="ico-svg"><use href="#i-check" /></svg
-        ><span>Диктовка записана локально.</span>
-      </div>
-      <div class="m-note" data-show-granted="speech" hidden>
-        <svg class="ico-svg"><use href="#i-check" /></svg
-        ><span>Поля распознаны; публикация требует подтверждения.</span>
-      </div>
-      <div class="m-note" data-show-denied="mic,speech" hidden>
-        <svg class="ico-svg"><use href="#i-info" /></svg
-        ><span>Заполните тип риска и ориентир вручную.</span>
-      </div>
+      
+      
+      <div class="perm-hidden ui-denied" data-show-denied="mic,speech"><svg><use href="#i-mic"/></svg><strong>Нет доступа к микрофону</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
     </div>
   </div>
   <div class="home-ind" aria-hidden="true"></div>

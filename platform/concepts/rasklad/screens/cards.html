@@ -16,15 +16,7 @@
                   Сканировать карту вместо списка
                 </div>
               </div>
-              <div class="errbox perm-hidden" data-show-denied="camera">
-                <div class="errbox-ico" aria-hidden="true">
-                  <svg class="ico-svg"><use href="#i-circle-alert"/></svg>
-                </div>
-                <div class="grow">
-                  <div class="t-headline">Камера недоступна</div>
-                  <p class="t-footnote" style="margin:4px 0 0">Доступ отклонён, скан убран. Номер напечатан в углу карты — найдите его в списке, дальше всё то же.</p>
-                </div>
-              </div>
+              <div class="perm-hidden ui-denied" data-show-denied="camera"><svg><use href="#i-camera"/></svg><strong>Нет доступа к камере</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
 
               <div class="group-head">44 карты · 12 уже выпадали</div>
               <div class="ios-list" style="margin-bottom:16px">

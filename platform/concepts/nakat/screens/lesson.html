@@ -85,13 +85,7 @@
           </div>
           <span class="ios-disclosure" aria-hidden="true"></span>
         </div>
-        <div class="row has-lead perm-hidden" data-show-denied="location">
-          <div class="lead-ico gray"><svg class="ico-svg"><use href="#i-circle-alert"/></svg></div>
-          <div class="grow">
-            <div class="t-body">Адрес без расстояния</div>
-            <div class="nk-meta">Кабельная, 3. Без геопозиции точку «вы здесь» и время пешком не покажем</div>
-          </div>
-        </div>
+        <div class="perm-hidden ui-denied" data-show-denied="location"><svg><use href="#i-map-pin"/></svg><strong>Нет доступа к геопозиции</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
         <div class="row has-lead tap" data-ask="camera|scan|lesson" aria-label="Сканировать QR на стекле машины">
           <div class="lead-ico brand"><svg class="ico-svg"><use href="#i-qr-code"/></svg></div>
           <div class="grow">
@@ -100,13 +94,7 @@
           </div>
           <span class="ios-disclosure" aria-hidden="true"></span>
         </div>
-        <div class="row has-lead perm-hidden" data-show-denied="camera">
-          <div class="lead-ico gray"><svg class="ico-svg"><use href="#i-circle-alert"/></svg></div>
-          <div class="grow">
-            <div class="t-body">Номер машины — руками</div>
-            <div class="nk-meta">Без камеры начало занятия отмечает инструктор со своего телефона</div>
-          </div>
-        </div>
+        <div class="perm-hidden ui-denied" data-show-denied="camera"><svg><use href="#i-camera"/></svg><strong>Нет доступа к камере</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
       </div>
     </div>
 
@@ -130,13 +118,7 @@
             <div class="nk-meta">напоминание за час, адрес в событии</div>
           </div>
         </div>
-        <div class="row has-lead perm-hidden" data-show-denied="calendar">
-          <div class="lead-ico gray"><svg class="ico-svg"><use href="#i-bell"/></svg></div>
-          <div class="grow">
-            <div class="t-body">Напомним в приложении</div>
-            <div class="nk-meta">Без календаря событие остаётся только здесь</div>
-          </div>
-        </div>
+        
       </div>
     </div>
 

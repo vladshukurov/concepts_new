@@ -13,9 +13,8 @@ export default (ui) => ui.screen({
     ui.nav({ title: 'Наблюдение' }),
     ui.scroll([
       `<div class="tl-note-head"><h2>Трюфель, сегодня в 19:12</h2><p>Прогулка в Лопухинском саду · разобрано 4 из 5</p><div class="tl-wave">0:41<i></i>2,1 МБ</div></div>`,
-      ui.granted('mic', 'Наблюдение записано · 0:12'),
-      ui.denied('mic', 'Микрофон недоступен — запишите наблюдение текстом'),
-      ui.denied('speech', 'Заметка остаётся звуком: её можно слушать, но не искать словом'),
+      ui.denied('mic'),
+      ui.denied('speech'),
       ui.section({ title: 'Наблюдения', children: ui.list(lines.map(([t, title, sub, gap]) => ui.row({ lead: `<span class="tl-ts${gap ? ' is-gap' : ''}">${t}</span>`, title, sub, wrap: true, toast: `Правка строки ${t}` }))) }),
       ui.section({ children: ui.actions([
         ui.button({ label: 'Сохранить в карточку', block: true, primary: true, toast: 'Сохранено в карточку Трюфеля' }),

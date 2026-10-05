@@ -173,7 +173,7 @@ const dvorAccountAuthScreens = (spec, target) => {
 };
 
 /* Темы общего слоя `.ui` в kernel/base.css: вход рисуется в теме концепта. */
-const UI_THEMES = new Set(["vk-dark", "vk-light", "ok-light"]);
+export const UI_THEMES = new Set(["vk-dark", "vk-light", "ok-light"]);
 
 const accountAuthScreens = (spec, target, light = true, sourceClasses = "") => {
   const surface =

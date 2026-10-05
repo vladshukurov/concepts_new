@@ -7,9 +7,9 @@
   <div class="body-scroll">
     <div class="sk-sec-note" style="margin-top:0">Разбор своими руками ценнее чужого: снимайте узел, пока он открыт, — потом уже не переснять.</div>
 
-    <div class="sk-fallback perm-hidden" data-show-denied="camera">Камера недоступна: снять не получится, но готовое видео из медиатеки загрузить можно.</div>
-    <div class="sk-fallback perm-hidden" data-show-denied="mic">Без микрофона запишем только картинку — звук неисправности в такое видео не попадёт.</div>
-    <div class="sk-fallback perm-hidden" data-show-denied="photo">Доступа к медиатеке нет — снимите новое видео камерой.</div>
+    <div class="perm-hidden ui-denied" data-show-denied="camera"><svg><use href="#i-camera"/></svg><strong>Нет доступа к камере</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
+    <div class="perm-hidden ui-denied" data-show-denied="mic"><svg><use href="#i-mic"/></svg><strong>Нет доступа к микрофону</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
+    
 
     <div class="sk-pick tap" data-ask="camera+mic|camera|create" aria-label="Снять ремонт камерой">
       <div class="sk-pick-ico warm"><svg class="sk-icon"><use href="#i-video"/></svg></div>

@@ -57,7 +57,8 @@
 .kt-cam-tags { display:flex; justify-content:center; gap:8px; margin-top:16px; }
 .kt-cam-tags > span { padding:4px 10px; border-radius:8px; background:rgba(255,255,255,.14); font:500 12px/16px var(--ui-face); }
 .kt-cam .ui-actions { position:absolute; left:0; right:0; bottom:calc(var(--safe-bottom) + 16px); }
-.kt-cam .ui-note { background:rgba(255,255,255,.1); color:rgba(255,255,255,.8); }
+.kt-cam .ui-denied, .kt-cam .ui-denied > span, .kt-cam .ui-denied > svg { color:rgba(255,255,255,.85); }
+.kt-cam .ui-denied-btn { color:#fff; }
 
 /* Выбор сканов */
 .kt-picks { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
@@ -73,7 +74,8 @@
 .kt-widget span { display:block; font:400 13px/16px var(--ui-face); color:#5f6b78; }
 .kt-widget hr { margin:10px 0; border:0; border-top:1px solid #e1e3e6; }
 .kt-home .ui-actions { position:absolute; left:0; right:0; bottom:calc(var(--safe-bottom) + 16px); }
-.kt-home .ui-note { margin-top:16px; background:rgba(255,255,255,.14); color:rgba(255,255,255,.85); }
+.kt-home .ui-denied, .kt-home .ui-denied > span, .kt-home .ui-denied > svg { color:rgba(255,255,255,.85); }
+.kt-home .ui-denied-btn { color:#fff; }
 
 /* Профиль и фотограф */
 .kt-me { display:flex; align-items:center; gap:16px; padding:8px 16px 16px; background:var(--ui-card); }

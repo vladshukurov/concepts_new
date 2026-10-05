@@ -13,7 +13,7 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'key', title: 'Вход в веб-портфолио', value: 'portfolio.shtrikh.app', activate: 'autofill|fill' }),
         ui.cell({ icon: 'megaphone', title: 'Реклама', value: 'Случайная', go: 'ads' }),
       ] }) }),
-      ui.denied('faceid', 'Черновики открываются без замка'),
+      ui.denied('faceid'),
     ]),
   ],
 });

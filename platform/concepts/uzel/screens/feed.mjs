@@ -4,7 +4,7 @@ import { people, lamp, workshops } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'feed', theme: THEME,
   body: ui.scroll([
-    ui.top(ui.wordmark({ name: 'Узел', glyph: 'wrench' }), ui.iconButton({ icon: 'plus', label: 'Опубликовать этап', go: 'update' })),
+    ui.top(ui.wordmark({ name: 'Узел' }), ui.iconButton({ icon: 'plus', label: 'Опубликовать этап', go: 'update' })),
     ui.composerPrompt({ initial: people.me.initial, placeholder: 'Что починили сегодня?', go: 'update', primary: true, trailing: ui.iconButton({ icon: 'camera', label: 'Снять этап', go: 'update' }) }),
     ui.stories([
       { label: 'Ирина', initial: people.irina.initial, go: 'project' },
@@ -16,7 +16,7 @@ export default (ui) => ui.screen({
       author: { initial: people.irina.initial, name: people.irina.name, meta: `${lamp.title} · сегодня, 14:20`, action: { go: 'contacts' } },
       text: 'Заменили патрон и закрепили кабель — лампа снова включается. Осталось подобрать абажур',
       attach: `<button class="uz-item" data-go="project"><small>${workshops.revers.name} · этап ${lamp.stage} из ${lamp.stages}</small><strong>${lamp.title}</strong>${stages(lamp.stage, lamp.stages)}<span>Следующий шаг — ${lamp.next.toLowerCase()}</span></button>`,
-      likes: 24, comments: 5, shares: 3, open: { go: 'project' }, discuss: { go: 'chat' }, menu: { toast: 'Скрыть · Пожаловаться' },
+      likes: 24, comments: 5, shares: 3, open: { go: 'project' }, discuss: { go: 'chat' }, menu: ['Скрыть', 'Пожаловаться'],
     }),
     ui.post({
       author: { initial: people.anton.initial, name: people.anton.name, meta: `${workshops.electro.name} · вчера` },

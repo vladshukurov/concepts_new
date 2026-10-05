@@ -22,16 +22,7 @@
                   <div class="sheet-title" style="font-size:24px;line-height:30px">4 магазина рядом</div>
                   <div class="t-subhead" style="margin:0 0 16px">Поиск по картам Apple — по вашей геопозиции</div>
                 </div>
-                <div class="perm-hidden" data-show-denied="location">
-                  <div class="sheet-title" style="font-size:24px;line-height:30px">4 магазина в городе</div>
-                  <div class="t-subhead" style="margin:0 0 16px">Поиск по картам Apple. Город указан вручную — расстояний не покажем</div>
-                  <div class="ios-list" style="background:#f2f2f7;margin-bottom:16px">
-                    <div class="row" style="background:#f2f2f7">
-                      <div class="field-label">Город</div>
-                      <input class="field-input" type="text" value="Санкт-Петербург" readonly>
-                    </div>
-                  </div>
-                </div>
+                <div class="perm-hidden ui-denied" data-show-denied="location"><svg><use href="#i-map-pin"/></svg><strong>Нет доступа к геопозиции</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
 
                 <div class="ios-list" style="background:#f2f2f7;margin-bottom:14px">
                   <div class="row" style="background:#f2f2f7">
@@ -52,7 +43,7 @@
                   </div>
                 </div>
                 <p class="t-footnote" style="margin:0">Наличие уточняйте по телефону.</p>
-                <p class="t-footnote perm-hidden" style="color:var(--accent-fill);margin:10px 0 0" data-show-denied="location">Без геопозиции сортируем по названию, а не по близости.</p>
+                <div class="perm-hidden ui-denied" data-show-denied="location"><svg><use href="#i-map-pin"/></svg><strong>Нет доступа к геопозиции</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
                 <div class="push"></div>
               </div>
               <div class="cta-col">

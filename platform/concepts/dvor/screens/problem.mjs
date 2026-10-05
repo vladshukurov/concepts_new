@@ -12,7 +12,7 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'eye', title: 'Видно соседям', value: '18 жильцов' }),
         ui.cell({ icon: 'camera', title: 'Фото с места', sub: 'Пока не добавлено', ask: 'camera|shoot|problem' }),
       ] }) }),
-      ui.denied('camera', 'Без камеры — фото из медиатеки'),
+      ui.denied('camera'),
     ]),
   ],
 });

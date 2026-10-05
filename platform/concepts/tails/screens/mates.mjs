@@ -6,7 +6,7 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Друзья из контактов' }),
     ui.scroll([
-      ui.denied('contacts', 'Без контактов остаются поиск по кличке и ссылка-приглашение'),
+      ui.denied('contacts'),
       ui.section({ children: ui.search({ placeholder: 'Кличка или имя' }) }),
       ui.section({ title: 'Совпадения', meta: '9 из 214', children: ui.list([
         ui.row({ thumb: `${PET.barni} is-round`, title: 'Влада · Барни, лабрадор', sub: '12 общих прогулок', end: { value: 'взаимно' } }),

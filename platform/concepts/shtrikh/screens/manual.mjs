@@ -5,7 +5,7 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Город' }),
     ui.scroll([
-      ui.denied('location', 'Город не определился — выберите его из списка'),
+      ui.denied('location'),
       ui.section({ children: ui.search({ placeholder: 'Название города' }) }),
       ui.section({ title: 'Популярные', children: ui.list([
         ui.row({ lead: ui.leadIcon('', { text: 'Ал' }), title: 'Алматы', sub: '32 автора · 14 мест', go: 'home', primary: true }),

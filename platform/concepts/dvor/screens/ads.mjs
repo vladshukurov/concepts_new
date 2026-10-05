@@ -10,7 +10,7 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'map-pin', title: 'Местная', sub: 'Услуги с Полевой и соседних улиц' }),
         ui.cell({ icon: 'shuffle', title: 'Случайная', check: true }),
       ] }) }),
-      ui.denied('tracking', 'Отслеживание запрещено — реклама случайная'),
+      ui.denied('tracking'),
       ui.section({ children: ui.actions([
         ui.button({ label: 'Продолжить', block: true, ask: 'tracking|menu|ads' }),
         ui.button({ label: 'Не сейчас', variant: 'tertiary', block: true, back: true }),

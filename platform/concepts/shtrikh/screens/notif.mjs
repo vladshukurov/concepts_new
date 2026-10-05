@@ -11,8 +11,7 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'calendar', title: 'Встречи', sub: 'Перенос и точка сбора', toggle: true, toast: 'Уведомления о встречах включены' }),
         ui.cell({ icon: 'moon', title: 'Тихие часы', value: '23:00–08:00', toast: 'Тихие часы · 23:00–08:00' }),
       ] }) }),
-      ui.granted('commnotif', 'Сообщения приходят с именем и фото'),
-      ui.denied('push', 'Ответы видны при открытии приложения'),
+      ui.denied('push'),
     ]),
   ],
 });

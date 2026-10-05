@@ -6,7 +6,7 @@ export default (ui) => ui.screen({
     ui.nav({ title: 'Где автобус', trailing: ui.textButton({ label: 'Обновить', strong: true, toast: 'Список обновлён', primary: true }) }),
     ui.scroll([
       ui.section({ children: ui.stats([['24', 'в автобусе'], ['2', 'координатора'], ['15:40', 'вернутся']]) }),
-      ui.denied('locationalways', 'Отметки ставятся вручную — соседи видят их так же'),
+      ui.denied('locationalways'),
       ui.section({ title: 'Дорога', children: ui.list([
         ui.row({ lead: ui.leadIcon('', { text: '09:34' }), title: 'Автобус выехал', sub: 'Отметила Анна Викторовна, все 24 на местах' }),
         ui.row({ lead: ui.leadIcon('', { text: '10:12' }), title: 'Стоят на Гагарина', sub: 'Пробка · опаздывают минут на пятнадцать' }),

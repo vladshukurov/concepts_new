@@ -12,7 +12,7 @@ export default (ui) => ui.screen({
       ]) }),
       ui.section({ children: [
         ui.actions([ui.button({ label: 'Я у мастерской', icon: 'navigation', block: true, ask: 'location|verify|nearby', primary: true })]),
-        ui.denied('location', 'Выберите мастерскую вручную — дежурный подтвердит участие'),
+        ui.denied('location'),
       ] }),
     ]),
   ],

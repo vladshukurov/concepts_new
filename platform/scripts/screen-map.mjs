@@ -2,7 +2,7 @@
  * Карта экранов, выведенная из данных, а не написанная руками.
  *
  * Источник — тот же, что у прототипа: разметка экранов (data-go / data-jump /
- * data-ask / data-activate / data-toast / data-back) и concept.json (parent,
+ * data-ask / data-activate / data-toast / data-back / data-menu) и concept.json (parent,
  * tabs, start, permissions). Поэтому карта не может разойтись с прототипом:
  * разъезжаться нечему, это одни и те же байты.
  *
@@ -10,7 +10,12 @@
  * переход, в собранном файле выглядит как полноценный экран — и его нельзя
  * увидеть иначе, чем через раздел «Экраны».
  */
-import { esc } from './lib.mjs';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { esc, KERNEL } from './lib.mjs';
+
+/* Пустое состояние при отказе нужно только там, где без доступа фича не работает */
+const BLOCKING = new Set(Object.entries(JSON.parse(readFileSync(join(KERNEL, 'access-model.json'), 'utf8')).keys).filter(([, m]) => m.denied).map(([k]) => k));
 
 /* Теги без содержимого: в балансировке не участвуют. */
 const VOID = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',
@@ -42,7 +47,7 @@ const textOf = (inner) => {
   return first.length > 44 ? first.slice(0, 43).trimEnd() + '…' : first;
 };
 
-const TRIGGER_ATTRS = ['data-go', 'data-jump', 'data-ask', 'data-activate', 'data-toast', 'data-back'];
+const TRIGGER_ATTRS = ['data-go', 'data-jump', 'data-ask', 'data-activate', 'data-toast', 'data-back', 'data-menu'];
 
 /**
  * Все триггеры одного экрана, в порядке разметки. Разбор поточный: заодно
@@ -140,6 +145,13 @@ export function screenGraph(spec, markup) {
       if (/\bdata-back(=|[\s>])/.test(t.attrs) && s.parent) {
         edges.push({ ...base, to: s.parent, kind: 'back' });
       }
+      /* Лист действий: «Камера>shoot» — переход, «Снять поле?camera» — запрос доступа на месте */
+      for (const item of (attr(t.attrs, 'data-menu') || '').split('|').filter(Boolean)) {
+        const [name, to] = item.split('>');
+        if (to) edges.push({ ...base, to, kind: 'go', label: name });
+        const [, keys] = item.split('?');
+        if (keys) edges.push({ ...base, to: s.id, kind: 'ask', keys: keys.split('+'), label: item.split('?')[0] });
+      }
     }
   }
 
@@ -179,15 +191,16 @@ export function screenGraph(spec, markup) {
   for (const n of nodes) {
     if (!reached.has(n.id)) problems.push(`экран ${n.id} недостижим из старта ${spec.start}: в него не ведёт ни один переход`);
   }
-  /* Fallback должен лежать там, куда приводит отказ, — иначе его не увидят. */
+  /* Пустое состояние должно лежать там, куда приводит отказ, — иначе его не увидят.
+     Нужно оно только ключам, без которых фича не работает (камера, медиатека…). */
   for (const e of edges) {
     if (e.kind !== 'denied' || !markup[e.to]) continue;
     const shown = [...markup[e.to].matchAll(/data-show-denied="([^"]*)"/g)]
       .flatMap((m) => m[1].split(',').map((s) => s.trim()));
     const sw = [...markup[e.to].matchAll(/data-switch="([^"]*)"/g)].map((m) => m[1]);
     for (const k of e.keys || []) {
-      if (!shown.includes(k) && !sw.includes(k)) {
-        problems.push(`отказ в ${k} с «${e.from}» ведёт на ${e.to}, а fallback (data-show-denied) там не объявлен`);
+      if (BLOCKING.has(k) && !shown.includes(k) && !sw.includes(k)) {
+        problems.push(`отказ в ${k} с «${e.from}» ведёт на ${e.to}, а пустого состояния (ui.denied) там нет`);
       }
     }
   }
@@ -377,6 +390,17 @@ export function screenActions(spec, markup) {
       const isBack = /\bdata-back(=|[\s>])/.test(t.attrs);
       const role = t.inTab ? 'tab' : isBack ? 'back' : 'control';
       const label = t.label || (toast ? toast.split('|')[0] : '') || ROLE_WORD[role];
+      const menu = attr(t.attrs, 'data-menu');
+      if (menu) {
+        rows.push({
+          label, role,
+          does: `открывает лист действий: ${menu.split('|').map((i) => i.split(/[>?]/)[0]).join(' · ')}`,
+          to: menu.split('|').filter((i) => i.includes('>')).map((i) => { const to = i.split('>')[1]; return `${titleOf(to)} (${to})`; }).join(', ') || 'остаётся на экране',
+          onDeny: '—',
+          keys: menu.split('|').filter((i) => i.includes('?')).map((i) => i.split('?')[1]).map((k) => permByKey.get(k)?.plist || k).join(' + ') || '—',
+        });
+        continue;
+      }
 
       if (ask) {
         const [keys, then, other] = ask.split('|');

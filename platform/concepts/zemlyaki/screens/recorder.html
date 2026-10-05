@@ -22,12 +22,7 @@
           <div class="r-row-copy"><div class="r-row-t">Сохранить в архив</div><div class="r-row-s">попадёт в «Эфир»</div></div>
         </div>
       </div>
-      <div class="state" data-show-denied="mic" hidden>
-        <div class="state-ico"><svg class="ico-svg"><use href="#i-mic-off"/></svg></div>
-        <div class="t-headline">Микрофон недоступен</div>
-        <div class="t-body">Разрешение выдаётся в настройках телефона. Пока остаётся текст и вложение.</div>
-        <div class="state-actions"><div class="btn-filled tap" data-go="places" aria-label="Вернуться к месту">Написать текстом</div></div>
-      </div>
+      <div class="perm-hidden ui-denied" data-show-denied="mic"><svg><use href="#i-mic"/></svg><strong>Нет доступа к микрофону</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
     </div>
     <div class="sheet-footer">
       <button class="btn-filled tap" data-primary data-go="places" aria-label="Сохранить устную историю">Сохранить в архив</button>

@@ -307,7 +307,7 @@ function probe(scr, cfg) {
       const full = sc.getBoundingClientRect().width;
       for (const el of sc.children) {
         const r = el.getBoundingClientRect();
-        if (r.height < 24 || el.matches('.ui-sec, .ui-large, .ui-top, .ui-stories, .ui-post, .ui-prompt, .perm-hidden, .ui-group-label, .ui-group, .ui-note, .ui-foot, .ui-chat')) continue;
+        if (r.height < 24 || el.matches('.ui-sec, .ui-large, .ui-top, .ui-stories, .ui-post, .ui-prompt, .perm-hidden, .ui-group-label, .ui-group, .ui-foot, .ui-chat')) continue;
         if (!el.textContent.trim()) continue; // медиа во всю ширину — фото, сетка кадров
         const bg = bgOf(el);
         if (clear(bg) || (!white(bg) && r.width < full - 1)) out.push({ kind: 'on-gray', what: label(el), detail: clear(bg) ? 'без подложки' : 'цветная плашка на сером' });

@@ -13,9 +13,9 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'map-pin', title: 'Отметить место', sub: 'Точка старта', ask: 'location|place|compose' }),
         ui.cell({ icon: 'users', title: 'Позвать', value: '3 человека', go: 'friends' }),
       ] }) }),
-      ui.denied('camera', 'Камера выключена — выберите кадр из медиатеки'),
-      ui.denied('photos', 'Медиатека закрыта — снимите новый кадр'),
-      ui.denied('location', 'Геопозиция выключена — точку старта впишите вручную'),
+      ui.denied('camera'),
+      ui.denied('photos'),
+      ui.denied('location'),
     ]),
   ],
 });

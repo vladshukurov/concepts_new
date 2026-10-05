@@ -24,20 +24,8 @@
           </div>
           <span class="ios-disclosure" aria-hidden="true"></span>
         </div>
-        <div class="row has-lead perm-hidden" data-show-denied="speech">
-          <div class="lead-ico gray"><svg class="ico-svg"><use href="#i-circle-alert"/></svg></div>
-          <div class="grow">
-            <div class="t-body">Отмечайте пункты пальцем</div>
-            <div class="nk-meta">Без распознавания речи сверить сказанное не с чем — список работает как чек-лист</div>
-          </div>
-        </div>
-        <div class="row has-lead perm-hidden" data-show-denied="mic">
-          <div class="lead-ico gray"><svg class="ico-svg"><use href="#i-mic-off"/></svg></div>
-          <div class="grow">
-            <div class="t-body">Микрофон запрещён</div>
-            
-          </div>
-        </div>
+        <div class="perm-hidden ui-denied" data-show-denied="speech"><svg><use href="#i-audio-lines"/></svg><strong>Нет доступа к распознаванию речи</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
+        <div class="perm-hidden ui-denied" data-show-denied="mic"><svg><use href="#i-mic"/></svg><strong>Нет доступа к микрофону</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
       </div>
     </div>
 

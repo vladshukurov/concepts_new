@@ -32,12 +32,7 @@
         <div class="ph tap" data-go="chronicleadd" aria-label="Столовая"></div>
         <div class="ph tap" data-go="chronicleadd" aria-label="Лестница на третий"></div>
       </div>
-      <div class="state" data-show-denied="photos" hidden>
-        <div class="state-ico"><svg class="ico-svg"><use href="#i-images"/></svg></div>
-        <div class="t-headline">Медиатека недоступна</div>
-        <div class="t-body">Публикацию можно собрать из свежего кадра: камера работает независимо от этого доступа.</div>
-        <div class="state-actions"><div class="btn-filled tap" data-go="shoot" aria-label="Снять кадр">Снять кадр</div></div>
-      </div>
+      <div class="perm-hidden ui-denied" data-show-denied="photos"><svg><use href="#i-images"/></svg><strong>Нет доступа к фото</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
     </div>
     <div class="sheet-footer">
       <button class="btn-filled tap" data-primary data-go="chronicleadd" aria-label="Добавить выбранное">Добавить · 2</button>

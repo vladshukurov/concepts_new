@@ -10,7 +10,7 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'eye', title: 'Кто видит этапы', value: 'Все', toast: 'Этапы видны всем' }),
         ui.cell({ icon: 'megaphone', title: 'Реклама', value: 'Контекстная', go: 'ads' }),
       ] }) }),
-      ui.denied('faceid', 'Защищает код устройства'),
+      ui.denied('faceid'),
     ]),
   ],
 });

@@ -28,14 +28,8 @@
         <div>+</div>
       </div>
     </div>
-    <div class="cx-denied perm-hidden" data-show-denied="camera">
-      <b>Можно продолжить</b
-      ><span>Опишите состояние текстом или выберите готовый кадр.</span>
-    </div>
-    <div class="cx-denied perm-hidden" data-show-denied="photos">
-      <b>Можно продолжить</b
-      ><span>Снимите новый кадр или сохраните только текст.</span>
-    </div>
+    <div class="perm-hidden ui-denied" data-show-denied="camera"><svg><use href="#i-camera"/></svg><strong>Нет доступа к камере</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
+    <div class="perm-hidden ui-denied" data-show-denied="photos"><svg><use href="#i-images"/></svg><strong>Нет доступа к фото</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
     <button class="cx-row tap" data-primary data-ask="camera|record|create">
       <svg class="ico-svg"><use href="#i-camera" /></svg
       ><span

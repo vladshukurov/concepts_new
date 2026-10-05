@@ -40,9 +40,7 @@
         <span class="pz-row-main"><b>Сигналы о блокерах</b><span>только пока переезд активен · выключатся после разгрузки</span></span>
       </button>
     </div>
-    <div class="pz-state perm-hidden" data-show-denied="mic,push">
-      <b>Штаб остаётся доступен</b><span>Статусы меняются кнопками, а блокеры остаются в списке.</span>
-    </div>
+    <div class="perm-hidden ui-denied" data-show-denied="mic,push"><svg><use href="#i-mic"/></svg><strong>Нет доступа к микрофону</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
     <button
       class="pz-primary tap"
       data-primary
@@ -50,10 +48,7 @@
     >
       <svg class="ico-svg"><use href="#i-users" /></svg>Добавить из контактов
     </button>
-    <div class="pz-state perm-hidden" data-show-denied="contacts">
-      <b>Контакты недоступны</b
-      ><span>Введите номер помощника или покажите ему QR-приглашение.</span>
-    </div>
+    <div class="perm-hidden ui-denied" data-show-denied="contacts"><svg><use href="#i-users"/></svg><strong>Нет доступа к контактам</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
     <div class="pz-sec"><b>Кухня</b><span>1</span></div>
     <div class="pz-card">
       <div

@@ -7,21 +7,24 @@
       "gives": "съёмка фото и видео в момент действия",
       "strong": ["снять результат, который и есть единица контента (блюдо, образ, кадр заявки)", "скан кода или документа прямо в сценарии"],
       "weak": ["камера для аватарки как единственное применение"],
-      "result": "кадр появляется в черновике, заявке или сообщении", "settingsOk": false
+      "result": "кадр появляется в черновике, заявке или сообщении", "settingsOk": false,
+      "denied": { "title": "Нет доступа к камере", "icon": "camera" }
     },
     "mic": {
       "plist": "NSMicrophoneUsageDescription", "kind": "privacy", "prompt": true, "risk": "low",
       "gives": "запись звука",
       "strong": ["голосовое в чате", "звук у видео", "запись разговора или репетиции, которая становится объектом продукта"],
       "weak": ["микрофон «на будущее» без записи в сценарии"],
-      "result": "запись видна: волна, длительность, голосовое в ленте чата", "settingsOk": false
+      "result": "запись видна: волна, длительность, голосовое в ленте чата", "settingsOk": false,
+      "denied": { "title": "Нет доступа к микрофону", "icon": "mic" }
     },
     "photos": {
       "aliases": ["photo"], "plist": "NSPhotoLibraryUsageDescription", "kind": "privacy", "prompt": true, "risk": "low",
       "gives": "выбор готовых снимков из медиатеки",
       "strong": ["публикация из готовых кадров", "вложение в сообщение"],
       "weak": ["полный доступ к медиатеке там, где хватает PHPicker без промпта"],
-      "result": "выбранные кадры в черновике или сообщении", "settingsOk": false
+      "result": "выбранные кадры в черновике или сообщении", "settingsOk": false,
+      "denied": { "title": "Нет доступа к фото", "icon": "images" }
     },
     "photosadd": {
       "aliases": ["photoadd"], "plist": "NSPhotoLibraryAddUsageDescription", "kind": "privacy", "prompt": true, "risk": "low",
@@ -35,7 +38,8 @@
       "gives": "где человек сейчас",
       "strong": ["что происходит рядом прямо сейчас", "отметка места в публикации", "маршрут от текущей точки"],
       "weak": ["город для рекламы", "геопозиция при запуске без действия"],
-      "result": "расстояния, карта или список «рядом» пересобраны от точки", "settingsOk": false
+      "result": "расстояния, карта или список «рядом» пересобраны от точки", "settingsOk": false,
+      "denied": { "title": "Нет доступа к геопозиции", "icon": "map-pin" }
     },
     "locationalways": {
       "plist": "NSLocationAlwaysAndWhenInUseUsageDescription", "kind": "privacy", "prompt": true, "risk": "high",
@@ -43,14 +47,16 @@
       "strong": ["трек прогулки или поездки с экраном блокировки", "уведомление по прибытии на место"],
       "weak": ["«всегда» ради того же, что даёт «при использовании»"],
       "result": "идущий трек или гео-напоминание видно в продукте и на локскрине", "settingsOk": false,
-      "weakPhrases": ["в фоне без причины"]
+      "weakPhrases": ["в фоне без причины"],
+      "denied": { "title": "Нет доступа к геопозиции", "icon": "map-pin" }
     },
     "contacts": {
       "plist": "NSContactsUsageDescription", "kind": "privacy", "prompt": true, "risk": "medium",
       "gives": "адресная книга",
       "strong": ["найти знакомых, которые уже здесь", "пригласить конкретного человека в конкретное событие"],
       "weak": ["загрузка контактов без видимого сопоставления"],
-      "result": "список совпадений и приглашений", "settingsOk": false
+      "result": "список совпадений и приглашений", "settingsOk": false,
+      "denied": { "title": "Нет доступа к контактам", "icon": "users" }
     },
     "calendar": {
       "plist": "NSCalendarsFullAccessUsageDescription", "kind": "privacy", "prompt": true, "risk": "low",
@@ -64,7 +70,8 @@
       "gives": "речь в текст",
       "strong": ["субтитры к своему видео", "расшифровка голосового или заметки"],
       "weak": ["голосовой поиск как единственное применение"],
-      "result": "строки текста с метками времени", "settingsOk": false
+      "result": "строки текста с метками времени", "settingsOk": false,
+      "denied": { "title": "Нет доступа к распознаванию речи", "icon": "audio-lines" }
     },
     "faceid": {
       "plist": "NSFaceIDUsageDescription", "kind": "privacy", "prompt": true, "risk": "low",
@@ -159,7 +166,8 @@
       "gives": "устройства в домашней сети",
       "strong": ["показать на ТВ, колонке, кухонном экране"],
       "weak": ["сканирование сети без устройства в сценарии"],
-      "result": "список устройств и идущий показ", "settingsOk": false
+      "result": "список устройств и идущий показ", "settingsOk": false,
+      "denied": { "title": "Нет доступа к локальной сети", "icon": "wifi" }
     },
     "keychain": {
       "plist": "keychain-access-groups", "kind": "entitlement", "prompt": false, "risk": "low",
@@ -202,7 +210,8 @@
       "gives": "медиатека Apple Music",
       "strong": ["своя музыка из медиатеки в сценарии продукта"],
       "weak": [],
-      "result": "треки медиатеки в списке", "settingsOk": false
+      "result": "треки медиатеки в списке", "settingsOk": false,
+      "denied": { "title": "Нет доступа к медиатеке", "icon": "audio-lines" }
     }
   }
 }

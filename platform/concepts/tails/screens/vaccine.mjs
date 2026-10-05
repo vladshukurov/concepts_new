@@ -12,8 +12,7 @@ export default (ui) => ui.screen({
         ui.button({ label: 'Написать', icon: 'message-circle', go: 'chats' }),
         ui.button({ label: 'В Календарь', icon: 'calendar-plus', variant: 'secondary', primary: true, ask: 'calendar|vaccine|vaccine'}),
       ], { row: true })}</div>`,
-      ui.granted('calendar', `Приём в Календаре · ${visit.day}`),
-      ui.denied('calendar', 'Приём остаётся в ветпаспорте и напоминании приложения'),
+      ui.denied('calendar'),
       ui.list([
         ui.row({ lead: ui.leadIcon('bell'), title: 'Изменения приёма', sub: 'Перенос, отмена или подготовка от врача', go: 'chats' }),
         ui.row({ lead: ui.leadIcon('notebook-pen'), title: 'Наблюдения к приёму', sub: 'Сегодня: 4 из 5 разобрано', go: 'vetnote' }),

@@ -13,7 +13,7 @@ export default (ui) => ui.screen({
     ui.post({
       author: { initial: people.me.initial, name: people.me.name, meta: 'сегодня, 06:20' },
       text: 'Первый выезд после замены цепи: 24,7 км без щелчков. Кто в воскресенье на Медеу?',
-      likes: 18, comments: 4, shares: 1, menu: { toast: 'Закрепить · Изменить · Удалить' },
+      likes: 18, comments: 4, shares: 1, menu: ['Закрепить', 'Изменить', 'Удалить'],
     }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'profile' }),

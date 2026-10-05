@@ -1,4 +1,5 @@
 import { THEME, dish } from './_shared.mjs';
+import { people } from '../model.mjs';
 
 export default (ui) => ui.screen({
   id: 'post', theme: THEME,
@@ -16,9 +17,14 @@ export default (ui) => ui.screen({
           ui.button({ label: 'Открыть проверенный рецепт', block: true, go: 'recipe', primary: true }),
           ui.button({ label: 'Сохранить карточку в Фото', icon: 'download', variant: 'secondary', block: true, ask: 'photosadd|post|post' }),
         ]),
-        ui.granted('photosadd', 'Карточка сохранена в Фото'),
-        ui.denied('photosadd', 'Карточка остаётся в сохранённых рецептах'),
+        ui.denied('photosadd'),
+      ] }),
+      ui.comments({ count: 18, items: [
+        { initial: people.amina.initial, name: people.amina.name, text: 'Тахини какое брали — светлое или из обжаренного кунжута?', time: '12:40', likes: 4 },
+        { initial: people.zhanna.initial, name: people.zhanna.name, text: 'Светлое, две столовые ложки. С тёмным суп горчит', time: '12:52', likes: 6, reply: true, author: true },
+        { initial: people.timur.initial, name: people.timur.name, text: 'Сварил вчера на четверых, перец пёк в аэрогриле 12 минут — нормально', time: '14:09', liked: true, likes: 11 },
       ] }),
     ]),
+    ui.composer({ placeholder: 'Комментарий', attach: { label: 'Прикрепить', menu: ['Камера>camera', 'Фото>picker'] }, send: { toast: 'Комментарий отправлен' } }),
   ],
 });

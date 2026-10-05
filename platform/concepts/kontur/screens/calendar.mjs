@@ -13,7 +13,7 @@ export default (ui) => ui.screen({
           ui.cell({ icon: 'bell', title: 'Напомнить', value: 'За 45 минут', toast: 'Напоминание изменено' }),
           ui.cell({ icon: 'map-pin', title: 'Место', sub: 'Арбат, вход со стороны Панфилова' }),
         ] }),
-        ui.denied('calendar', 'Событие не добавлено — время и адрес останутся в карточке'),
+        ui.denied('calendar'),
       ] }),
       ui.section({ children: ui.actions([ui.button({ label: 'Добавить в календарь', icon: 'calendar-plus', block: true, primary: true, ask: 'calendar|walk|calendar' })]) }),
     ]),

@@ -8,7 +8,7 @@
       <button data-toast="Demo pack восстановлен"><span class="vl-action-icon vl-demo-icon"><svg><use href="#i-download"/></svg></span><span><strong>Bundled demo pack</strong><small>12 треков для пустого старта</small></span><svg><use href="#i-chevron-right"/></svg></button>
     </div>
     <div class="vl-media-state perm-hidden" data-show-granted="music"><svg><use href="#i-check"/></svg><span>Локальная медиатека подключена · индекс строится на устройстве</span></div>
-    <div class="vl-media-state vl-media-denied perm-hidden" data-show-denied="music"><svg><use href="#i-lock"/></svg><span>Медиатека выключена. Files и demo pack доступны.</span><button data-toast="Открыты системные Настройки">Настройки</button></div>
+    <div class="perm-hidden ui-denied" data-show-denied="music"><svg><use href="#i-audio-lines"/></svg><strong>Нет доступа к медиатеке</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
     <div class="vl-section-head"><h2>Сейчас</h2><span>12 из 12 импортировано</span></div>
     <section class="vl-import-progress">
       <div><span class="vl-progress-check"><svg><use href="#i-check"/></svg></span><p><strong>Metadata</strong><small>12 из 12 · title, artist, album, artwork</small></p></div>
@@ -19,8 +19,8 @@
       <button class="tap" data-ask="camera|import|import"><span class="vl-action-icon"><svg><use href="#i-scan-line"/></svg></span><span><strong>Сканировать этикетку</strong><small>Дозаполнит автора и альбом трека без metadata</small></span></button>
       <button class="tap" data-ask="photo|import|import"><span class="vl-action-icon"><svg><use href="#i-image"/></svg></span><span><strong>Выбрать обложку</strong><small>Из «Фото» — вместо плейсхолдера</small></span></button>
     </div>
-    <div class="vl-media-state vl-media-denied perm-hidden" data-show-denied="camera"><svg><use href="#i-lock"/></svg><span>Камера недоступна — впишите автора и альбом вручную в карточке трека.</span></div>
-    <div class="vl-media-state vl-media-denied perm-hidden" data-show-denied="photo"><svg><use href="#i-lock"/></svg><span>Нет доступа к «Фото» — трек остаётся с плейсхолдером обложки.</span></div>
+    <div class="perm-hidden ui-denied" data-show-denied="camera"><svg><use href="#i-camera"/></svg><strong>Нет доступа к камере</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
+    
     <p class="vl-import-foot"><svg><use href="#i-lock"/></svg><span>Security-scoped bookmarks · Core Data · FileManager. Сеть, аккаунт и облако не используются.</span></p>
   </div>
   <div class="home-ind" aria-hidden="true"></div>

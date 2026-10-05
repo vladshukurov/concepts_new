@@ -17,7 +17,7 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'scan-face', title: 'Замок Face ID', toggle: false, ask: 'faceid|lock|settings' }),
         ui.cell({ icon: 'megaphone', title: 'Реклама', value: 'Случайная', go: 'ads' }),
       ] }) }),
-      ui.denied('faceid', 'Face ID выключен — «Двор» открывается без замка'),
+      ui.denied('faceid'),
     ]),
   ],
 });

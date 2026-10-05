@@ -19,6 +19,6 @@ export default (ui) => ui.screen({
         ]),
       ] }),
     ]),
-    ui.composer({ placeholder: 'Ответить', attach: { go: 'album' }, send: { toast: 'Ответ отправлен', primary: true } }),
+    ui.composer({ placeholder: 'Ответить', attach: { label: 'Прикрепить', menu: ['Камера>shoot', 'Фото>picker'] }, send: { toast: 'Ответ отправлен', primary: true } }),
   ],
 });

@@ -13,7 +13,7 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Субтитры', trailing: ui.textButton({ label: 'Сохранить', strong: true, toast: 'Субтитры сохранены|create', primary: true }) }),
     ui.scroll([
-      ui.denied('speech', 'Распознавание выключено — строки набираются вручную'),
+      ui.denied('speech'),
       ui.section({ title: 'Клип-примерка', meta: '1:12 · 14 строк', children: ui.list(lines.map(([t, s, gap]) =>
         ui.row({ lead: `<span class="${gap ? 'lk-ts is-gap' : 'lk-ts'}">${t}</span>`, title: s, wrap: true, toast: `Правка строки ${t}` }))) }),
     ]),

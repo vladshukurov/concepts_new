@@ -3,7 +3,7 @@ import { THEME, TABS, dish } from './_shared.mjs';
 export default (ui) => ui.screen({
   id: 'feed', theme: THEME,
   body: ui.scroll([
-    ui.top(ui.wordmark({ name: 'Подача', glyph: 'utensils' }), [
+    ui.top(ui.wordmark({ name: 'Подача' }), [
       ui.iconButton({ icon: 'search', label: 'Поиск', go: 'discover' }),
       ui.iconButton({ icon: 'bell', label: 'Уведомления', go: 'notif' }),
     ]),
@@ -19,15 +19,14 @@ export default (ui) => ui.screen({
       text: 'Тот самый чечевичный суп, но без сливок: запекла перец заранее и добавила ложку тахини',
       attach: dish(ui, 'Чечевичный суп', '35 минут · проверили 34 раза'),
       likes: 126, comments: 18, shares: 9, open: { go: 'post' }, discuss: { go: 'post' },
-      menu: { toast: 'Скрыть · Пожаловаться · Скопировать ссылку' },
+      menu: ['Скрыть', 'Пожаловаться', 'Скопировать ссылку'],
     }),
     ui.section({ title: 'Рекомендации', children: [
       ui.list([
         ui.row({ lead: ui.leadIcon('sparkles', { accent: true }), title: 'Сезонные блюда рядом', sub: 'Реклама · рынок «Зелёный базар»' }),
       ]),
       ui.actions([ui.button({ label: 'Настроить рекомендации', variant: 'secondary', block: true, ask: 'tracking|feed|feed' })], { className: 'pd-gap' }),
-      ui.granted('tracking', 'Подборка собрана по авторам, которых вы читаете'),
-      ui.denied('tracking', 'Остаются общие сезонные рекомендации'),
+      ui.denied('tracking'),
     ] }),
     ui.post({
       author: { initial: 'ТС', name: 'Тимур Садыков', meta: 'вчера, 20:40', action: { go: 'direct-timur' } },

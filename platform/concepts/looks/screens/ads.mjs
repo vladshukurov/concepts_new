@@ -10,7 +10,7 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'store', title: 'Марки и магазины', sub: 'Что носят в вашем районе' }),
         ui.cell({ icon: 'shuffle', title: 'Без подбора', check: true }),
       ] }) }),
-      ui.denied('tracking', 'Реклама остаётся без подбора'),
+      ui.denied('tracking'),
       ui.section({ children: ui.actions([
         ui.button({ label: 'Продолжить', block: true, ask: 'tracking|profile|ads', primary: true }),
         ui.button({ label: 'Не сейчас', variant: 'tertiary', block: true, back: true }),

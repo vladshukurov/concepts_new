@@ -15,7 +15,7 @@ export default (ui) => ui.screen({
           ui.button({ label: 'Определить город', icon: 'navigation', block: true, ask: 'location|home|manual', primary: true }),
           ui.button({ label: 'Выбрать вручную', variant: 'tertiary', block: true, go: 'manual' }),
         ]),
-        ui.denied('location', 'Город выбирается из списка'),
+        ui.denied('location'),
       ] }),
     ]),
   ],

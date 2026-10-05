@@ -13,7 +13,7 @@ export default (ui) => ui.screen({
       ]) }),
       ui.section({ children: [
         ui.actions([ui.button({ label: 'Найти знакомых', icon: 'user-plus', variant: 'secondary', block: true, ask: 'contacts|matches|following', primary: true })]),
-        ui.denied('contacts', 'Контакты закрыты — ищите авторов по имени или ссылке'),
+        ui.denied('contacts'),
       ] }),
     ]),
   ],

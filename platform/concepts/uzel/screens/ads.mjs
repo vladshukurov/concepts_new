@@ -10,7 +10,7 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'wrench', title: 'По вашим деталям', sub: 'Категории из ваших проектов' }),
         ui.cell({ icon: 'hammer', title: 'По мастерской', sub: 'Тема мастерской', check: true }),
       ] }) }),
-      ui.denied('tracking', 'Реклама остаётся по теме мастерской'),
+      ui.denied('tracking'),
       ui.section({ children: ui.actions([
         ui.button({ label: 'Настроить персонализацию', block: true, ask: 'tracking|privacy|ads', primary: true }),
         ui.button({ label: 'Не сейчас', variant: 'tertiary', block: true, back: true }),

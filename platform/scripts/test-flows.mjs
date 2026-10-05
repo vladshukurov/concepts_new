@@ -8,9 +8,16 @@
  *   node scripts/test-flows.mjs            # все концепты
  */
 import { chromium } from "playwright";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { DIST, readSpec, readMarkup, listConcepts } from "./lib.mjs";
+import { DIST, KERNEL, readSpec, readMarkup, listConcepts } from "./lib.mjs";
+
+/* Ключи, без которых фича не работает: после отказа у них пустое состояние iOS */
+const BLOCKING = new Set(
+  Object.entries(JSON.parse(readFileSync(join(KERNEL, "access-model.json"), "utf8")).keys)
+    .filter(([, m]) => m.denied)
+    .map(([k]) => k),
+);
 import { prepareEmailRegistration } from "./build.mjs";
 
 async function run(slug) {
@@ -498,13 +505,38 @@ async function run(slug) {
         },
         { k: p.key, h: H },
       );
+      /* Для остальных ключей отказ ничего не показывает — проверяем, что экран жив */
       ok(
-        `${p.key}: отказ с «${t.screen}» → виден fallback на «${await cur()}»`,
-        shown,
+        BLOCKING.has(p.key)
+          ? `${p.key}: отказ с «${t.screen}» → пустое состояние на «${await cur()}»`
+          : `${p.key}: отказ с «${t.screen}» → экран «${await cur()}» на месте`,
+        BLOCKING.has(p.key) ? shown : !!(await cur()),
       );
     }
     await reset();
   }
+
+  /* —— обходной вход: обычный переход на экран, который открывается только после
+     разрешения, тоже спрашивает доступ (иначе камера в ленте открывается без алерта) —— */
+  const bypass = await page.evaluate((h) => {
+    const gated = {};
+    document.querySelectorAll(h + " [data-ask]").forEach((e) => {
+      const [keys, to, deny] = e.dataset.ask.split("|");
+      const isTab = document.querySelector(`${h} .tabbar [data-go="${to}"]`);
+      if (to && to !== deny && !isTab) gated[to] = keys;
+    });
+    return [...document.querySelectorAll(h + " [data-go]")]
+      .filter((e) => gated[e.dataset.go] && !e.closest(".tabbar"))
+      .map((e) => ({ screen: e.closest(".screen").dataset.screen, go: e.dataset.go, keys: gated[e.dataset.go] }));
+  }, H);
+  for (const b of bypass) {
+    await reset();
+    await goto(b.screen);
+    await page.click(`${H} [data-screen="${b.screen}"] [data-go="${b.go}"]`);
+    await page.waitForTimeout(60);
+    ok(`переход «${b.screen}» → «${b.go}» спрашивает ${b.keys}`, await alertOn());
+  }
+  await reset();
 
   /* —— цепочки: отказ на первом шаге не спрашивает второй —— */
   const chains = await page.evaluate(() =>

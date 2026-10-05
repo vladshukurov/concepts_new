@@ -11,6 +11,6 @@ export default (ui) => ui.screen({
       ui.bubble({ out: true, text: 'Да, давай в четверг после работы', time: '18:45', read: true }),
       ui.bubble({ text: 'Отлично, я принесу «Архив острова»', time: '18:47' }),
     ])),
-    ui.composer({ attach: { go: 'compose' }, send: { toast: 'Сообщение отправлено', primary: true } }),
+    ui.composer({ attach: { label: 'Прикрепить', menu: ['Снять поле?camera', 'Фото из галереи?photos'] }, send: { toast: 'Сообщение отправлено', primary: true } }),
   ],
 });

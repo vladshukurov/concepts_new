@@ -6,7 +6,7 @@ export default (ui) => ui.screen({
   id: 'nearby', theme: THEME,
   body: ui.scroll([
     ui.largeTitle('Рядом', ui.iconButton({ icon: 'search', label: 'Площадки', go: 'places' })),
-    ui.denied('location', 'Район выбран вручную: Петроградская'),
+    ui.denied('location'),
     ui.section({ title: 'Прогулки сегодня', meta: 'Петроградская', children: [
       walk({ title: 'Спокойный круг у пруда', time: '18:40', sub: 'Трюфель и ещё 5 · старт через 20 минут', tags: ['35 минут', 'малые и средние', '1,8 км'], pets: [PET.truffle, PET.mint, PET.barni] }),
       walk({ title: 'Быстро по набережной', time: '19:30', sub: 'Бруно и ещё 2', tags: ['50 минут', 'активный темп', '3,4 км'], pets: [PET.barni, PET.truffle] }),

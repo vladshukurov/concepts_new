@@ -5,7 +5,7 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Добавить дом' }),
     ui.scroll([
-      ui.denied('location', 'Геопозиция выключена — выберите дом из справочника'),
+      ui.denied('location'),
       ui.section({ children: ui.group({ cells: [
         ui.cell({ icon: 'map-pin', title: 'Улица', value: 'Полевая' }),
         ui.cell({ icon: 'house', title: 'Дом', value: '12' }),

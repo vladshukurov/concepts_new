@@ -11,7 +11,7 @@ export default (ui) => ui.screen({
         ui.row({ lead: ui.leadIcon('coffee'), title: 'Кофейня «Дом»', sub: 'Панфилова, 98 · 600 м', toast: 'Место добавлено|compose' }),
         ui.row({ lead: ui.leadIcon('house'), title: 'Дома', sub: 'Без адреса в публикации', toast: 'Место добавлено|compose' }),
       ]) }),
-      ui.denied('location', 'Геопозиция выключена — напишите название места', ui.actions([ui.button({ label: 'Указать вручную', variant: 'secondary', block: true, toast: 'Введите название места|compose' })])),
+      ui.denied('location'),
     ]),
   ],
 });

@@ -46,8 +46,8 @@
 <use href="#i-chevron-right"/>
 </svg>
 </button>
-<p class="perm-hidden cx-fallback" data-show-denied="camera">Камера выключена — запишите звук без обложки.</p>
-<p class="perm-hidden cx-fallback" data-show-denied="mic">Микрофон выключен — используйте готовые лупы из каталога.</p>
+<div class="perm-hidden ui-denied" data-show-denied="camera"><svg><use href="#i-camera"/></svg><strong>Нет доступа к камере</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
+<div class="perm-hidden ui-denied" data-show-denied="mic"><svg><use href="#i-mic"/></svg><strong>Нет доступа к микрофону</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
 <button data-ask="photo|pick|studio">
 <span class="lp-icon violet">
 <svg>
@@ -62,7 +62,7 @@
 <use href="#i-chevron-right"/>
 </svg>
 </button>
-<p class="perm-hidden cx-fallback" data-show-denied="photo">Нет доступа к «Фото» — используйте камеру или цвет.</p>
+
 <button data-ask="mic|capture|studio">
 <span class="lp-icon amber">
 <svg>

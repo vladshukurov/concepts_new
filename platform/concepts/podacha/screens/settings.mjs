@@ -17,8 +17,8 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'headphones', title: 'Рецепт вслух', sub: 'Шаги звучат в фоне', go: 'audio' }),
         ui.cell({ icon: 'tv', title: 'Общий экран', sub: 'Крупные шаги и таймер', go: 'kitchen' }),
       ] }) }),
-      ui.denied('push', 'Напоминания видны внутри приложения'),
-      ui.denied('commnotif', 'Сообщения остаются во вкладке «Мессенджер»'),
+      ui.denied('push'),
+      ui.denied('commnotif'),
     ]),
   ],
 });

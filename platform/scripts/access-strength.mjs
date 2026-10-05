@@ -68,8 +68,8 @@ export function assess(slug) {
     if (key === 'commnotif' && !hasMessenger) issues.push('уведомления о сообщениях без мессенджера');
     if (key === 'voip' && !/ui-call|callView|звон/i.test(markup[p.target] || '')) issues.push('после разрешения нет звонка');
     if (key === 'tracking' && !/реклам/i.test(text)) issues.push('ATT без рекламы в продукте');
-    /* Отказ бывает только у доступа с системным запросом */
-    if (model.prompt && !new RegExp(`data-show-denied="([^"]*,)?${p.key}(,[^"]*)?"`).test(all)) issues.push('нет состояния при отказе');
+    /* Пустое состояние при отказе — только у доступа, без которого фича не работает */
+    if (model.denied && !new RegExp(`data-show-denied="([^"]*,)?${p.key}(,[^"]*)?"`).test(all)) issues.push('нет состояния при отказе');
     rows.push({ key: p.key, anchor: !!p.anchor, screen: screenId, issues });
   }
   return { slug, name: spec.name, rows };

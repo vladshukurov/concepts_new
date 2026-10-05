@@ -12,7 +12,7 @@ export default (ui) => ui.screen({
       ui.bubble({ text: 'Покажете жакет? Посмотрю подкладку и ярлык', time: '9:36' }),
       ui.voice({ dur: '0:09', time: '9:37' }),
     ])),
-    ui.denied('voip', 'Звонки выключены — отправьте фото подкладки и ярлыка'),
-    ui.composer({ attach: { go: 'media' }, mic: { toast: 'Запись голосового · отпустите, чтобы отправить' } }),
+    ui.denied('voip'),
+    ui.composer({ attach: { label: 'Прикрепить', menu: ['Камера>camera', 'Фото>media'] }, mic: { toast: 'Запись голосового · отпустите, чтобы отправить' } }),
   ],
 });

@@ -5,7 +5,7 @@ import { THEME, TABS } from './_shared.mjs';
  * Сборка превращает этот модуль в home.html; руками HTML не правят.
  *
  * Доступ вызывается явным жестом: ask: 'ключ|куда при разрешении|куда при отказе'.
- * На экране, куда приводит отказ, лежит ui.denied('ключ', 'что работает вместо').
+ * На экране, куда приводит отказ, лежит ui.denied('ключ').
  * Своё у продукта — композиция и доменные компоненты в styles.css с префиксом концепта.
  */
 export default (ui) => ui.screen({
@@ -15,7 +15,7 @@ export default (ui) => ui.screen({
     ui.section({ title: 'Раздел', children: ui.list([
       ui.row({ lead: ui.leadIcon('camera', { accent: true }), title: 'Действие, которому нужен доступ', sub: 'Что пользователь получит', ask: 'camera|home|home', primary: true }),
     ]) }),
-    ui.denied('camera', 'Нет доступа к камере — что остаётся работать вместо неё'),
+    ui.denied('camera'),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'home' }),
 });

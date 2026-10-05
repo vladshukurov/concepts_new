@@ -388,6 +388,10 @@
         var rec = state[e.dataset.switch];
         e.classList.toggle('is-on', !!rec && rec.answer === 'granted');
       });
+      root.querySelectorAll('[data-switch-aria]').forEach(function (e) {
+        var rec = state[e.dataset.switchAria];
+        e.setAttribute('aria-checked', String(!!rec && rec.answer === 'granted'));
+      });
     }
 
     /**
@@ -470,13 +474,15 @@
       if (!pending) return;
       ask.classList.remove('is-on');
       show(pending.then);
+      var done = pending.done;
       pending = null;
+      if (done) done();
     }
     /**
      * Запрос доступа. keys — одна цепочка вида "speech+mic": iOS показывает такие
      * алерты подряд, и отказ на любом шаге уводит на fallback-экран.
      */
-    function request(keys, thenTo, elseTo) {
+    function request(keys, thenTo, elseTo, done) {
       var list = keys.split('+').filter(function (k) { return permByKey(k); });
       if (!list.length) { console.warn('нет доступа', keys); return; }
       var target = elseTo || thenTo;
@@ -486,8 +492,8 @@
         if (state[list[0]].answer !== 'granted') { show(target); denySnack(list[0]); return; }
         list.shift();
       }
-      if (!list.length) { show(thenTo); return; }
-      pending = { queue: list, then: thenTo, other: target, where: where };
+      if (!list.length) { show(thenTo); if (done) done(); return; }
+      pending = { queue: list, then: thenTo, other: target, where: where, done: done };
       advanceRequest();
     }
 
@@ -510,10 +516,104 @@
       advanceRequest();
     });
 
-    var SEL = '[data-ask], [data-go], [data-back], [data-activate], [data-jump], [data-toast]';
+    /* —— «Три точки»: лист действий iOS. data-menu="Скрыть|Пожаловаться",
+       пункт «Подпись=Тост» задаёт подтверждение явно, иначе оно из словаря —— */
+    var MENU_TOAST = [
+      [/^Пожаловаться/, 'Жалоба отправлена'], [/^Скрыть/, 'Скрыто из ленты'], [/ссылку$/, 'Ссылка скопирована'],
+      [/^Поделиться/, 'Ссылка скопирована'], [/^Удалить/, 'Удалено'], [/^Закрепить/, 'Закреплено'],
+      [/^Изменить/, 'Открыт режим правки'], [/^Скачать/, 'Скачивание началось'], [/^Сохранить/, 'Сохранено'],
+      [/^Подписаться/, 'Вы подписались'], [/^Добавить/, 'Добавлено'], [/^Слушать следующим/, 'Будет следующим'],
+      [/^Не показывать/, 'Таких рекомендаций станет меньше'], [/^По /, 'Порядок изменён']
+    ];
+    var DESTRUCTIVE = /^(Удалить|Пожаловаться|Выйти)/;
+    function menuToast(label) {
+      for (var i = 0; i < MENU_TOAST.length; i++) if (MENU_TOAST[i][0].test(label)) return MENU_TOAST[i][1];
+      return label;
+    }
+    function openMenu(items) {
+      var host = screens.querySelector('.screen.is-on') || screens;
+      var sheet = document.createElement('div');
+      sheet.className = 'action-sheet';
+      sheet.innerHTML = '<div class="action-sheet-group"></div><button class="action-sheet-cancel" type="button">Отмена</button>';
+      var group = sheet.firstChild;
+      items.split('|').forEach(function (raw) {
+        var parts = raw.split('=');
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'action-sheet-item' + (DESTRUCTIVE.test(parts[0]) ? ' is-destructive' : '');
+        var go = parts[0].split('>'), need = parts[0].split('?');
+        b.textContent = go.length > 1 ? go[0] : need[0];
+        if (go.length > 1) b.dataset.sheetGo = go[1];
+        else if (need.length > 1) b.dataset.sheetAsk = need[1];
+        else b.dataset.sheetToast = parts[1] || menuToast(parts[0]);
+        group.appendChild(b);
+      });
+      sheet.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var item = e.target.closest('[data-sheet-toast], [data-sheet-go], [data-sheet-ask]');
+        if (item && item.dataset.sheetGo) { sheet.remove(); goTo(item.dataset.sheetGo); return; }
+        if (item && item.dataset.sheetAsk) { sheet.remove(); var here = curId(); request(item.dataset.sheetAsk, here, here, function () { toast('Прикреплено', true); }); return; }
+        if (item) toast(item.dataset.sheetToast, true);
+        if (item || e.target === sheet || e.target.closest('.action-sheet-cancel')) sheet.remove();
+      });
+      host.appendChild(sheet);
+      var first = group.querySelector('button');
+      if (first) first.focus();
+    }
+
+    /* —— Свитч без запроса доступа переключается сам; со своим ключом (data-switch) — только после разрешения —— */
+    var SWITCH = '[role="switch"], .ui-switch, .switch, .s-switch, .p-switch, .tr-toggle';
+    function flipSwitch(el) {
+      if (el.closest('[data-switch], [data-switch-aria]') || el.querySelector('[data-switch]')) return false;
+      var knob = el.matches('.ui-switch, .switch, .s-switch, .p-switch, .tr-toggle') ? el : el.querySelector('.ui-switch, .switch, .s-switch, .p-switch, .tr-toggle');
+      var on = !(knob || el).classList.contains('is-on');
+      if (knob) knob.classList.toggle('is-on', on);
+      var aria = el.closest('[role="switch"]') || el;
+      if (aria.getAttribute('role') === 'switch') aria.setAttribute('aria-checked', String(on));
+      return true;
+    }
+
+    /* —— Поле сообщения: текст меняет микрофон на «Отправить», отправка очищает поле —— */
+    screens.addEventListener('input', function (e) {
+      var c = e.target.closest('.ui-composer');
+      if (c) c.classList.toggle('has-text', !!e.target.value.trim());
+    });
+
+    /* Куда ведёт разрешение: экран → ключи и куда уйти при отказе. Собирается из разметки */
+    var GATED = {};
+    screens.querySelectorAll('[data-ask]').forEach(function (e) {
+      var a = e.dataset.ask.split('|');
+      /* Вкладку не закрываем: после отказа она открывается, просто без плода доступа */
+      var isTab = screens.querySelector('.tabbar [data-go="' + a[1] + '"]');
+      if (a[1] && a[1] !== a[2] && !isTab && !GATED[a[1]]) GATED[a[1]] = { keys: a[0], deny: a[2] || a[1] };
+    });
+
+    /* Экран, который открывается только после разрешения (цель data-ask), спрашивает
+       доступ при любом входе: иначе обычный переход в камеру обходит системный алерт */
+    function goTo(id) {
+      var gate = GATED[id];
+      if (gate && gate.keys.split('+').some(function (k) { return !state[k] || state[k].answer !== 'granted'; })) {
+        request(gate.keys, id, gate.deny);
+        return;
+      }
+      show(id);
+    }
+
+    var SEL = '[data-ask], [data-go], [data-back], [data-activate], [data-jump], [data-toast], [data-menu]';
     screens.addEventListener('click', function (e) {
       var t = e.target.closest(SEL);
-      if (!t) return;
+      if (!t) {
+        var sw = e.target.closest(SWITCH);
+        if (sw) flipSwitch(sw);
+        return;
+      }
+      if (t.hasAttribute('data-menu')) { openMenu(t.dataset.menu); return; }
+      var composer = t.closest('.ui-composer-send') && t.closest('.ui-composer');
+      if (composer) {
+        var field = composer.querySelector('.ui-composer-field');
+        if (field) field.value = '';
+        composer.classList.remove('has-text');
+      }
       if (t.getAttribute('aria-disabled') === 'true') return;
       if (t.hasAttribute('data-back')) { back(); return; }
       if (t.hasAttribute('data-ask')) {
@@ -528,20 +628,32 @@
         return;
       }
       if (t.hasAttribute('data-jump')) { jump(t.dataset.jump); return; }
+
       if (t.hasAttribute('data-toast')) {
         var c = t.dataset.toast.split('|');
         if (c[1]) jump(c[1]);
         toast(c[0], true);
         return;
       }
-      show(t.dataset.go);
+      goTo(t.dataset.go);
     });
     screens.addEventListener('keydown', function (e) {
       if (e.key !== 'Enter' && e.key !== ' ') return;
+      /* В поле сообщения Enter отправляет, пробел — просто пробел */
+      if (e.target.matches('input, textarea')) {
+        var c = e.target.closest('.ui-composer');
+        if (e.key === 'Enter' && c && e.target.value.trim()) { e.preventDefault(); c.querySelector('.ui-composer-send button').click(); }
+        return;
+      }
+      if (!e.target.closest(SEL) && e.target.closest(SWITCH)) { e.preventDefault(); flipSwitch(e.target.closest(SWITCH)); return; }
       var t = e.target.closest(SEL);
       if (!t) return;
       e.preventDefault();
       t.click();
+    });
+    /* Свитч, который не кнопка, всё равно достижим с клавиатуры */
+    screens.querySelectorAll('[role="switch"]').forEach(function (e) {
+      if (!e.matches('button, input') && !e.hasAttribute('tabindex')) e.setAttribute('tabindex', '0');
     });
     screens.querySelectorAll(SEL).forEach(function (e) {
       if (e.hasAttribute('role')) return;

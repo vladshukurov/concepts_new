@@ -8,8 +8,7 @@ export default (ui) => ui.screen({
       ui.section({ children: [
         `<div class="tl-qr"><span class="tl-qr-code">${ui.icon('qr-code')}</span><div><strong>Lopuhinka-Dogpark-Guest</strong><span>Код с калитки Лопухинского · считан в 18:22</span><span>WPA2 · пароль живёт до 02:22</span></div></div>`,
         ui.actions([ui.button({ label: 'Подключиться', icon: 'wifi', block: true, primary: true, ask: 'hotspot|netqr|netqr' })], { className: 'tl-qr-actions' }),
-        ui.granted('hotspot', 'Вы в сети площадки'),
-        ui.denied('hotspot', 'Сеть выбирается вручную в Настройках: Lopuhinka-Dogpark-Guest'),
+        ui.denied('hotspot'),
       ] }),
       ui.section({ title: 'Сейчас', children: ui.list([
         ui.row({ lead: ui.leadIcon('wifi'), title: 'Вы в этой сети', sub: 'С 18:24, держится 9 минут' }),

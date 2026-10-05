@@ -21,20 +21,34 @@
  * Тексты — доверенная разметка автора концепта: «ёлочки» и <br> допустимы.
  */
 
+import { readFileSync } from 'node:fs';
+const ACCESS = JSON.parse(readFileSync(new URL('./access-model.json', import.meta.url), 'utf8')).keys;
+
 const attr = (name, value) => (value === undefined || value === null || value === false ? '' : value === true ? ` ${name}` : ` ${name}="${String(value).replace(/"/g, '&quot;')}"`);
 
-/** Атрибуты действия: data-* и aria-label. */
+const ACTION_KEYS = new Set(['primary', 'go', 'ask', 'activate', 'toast', 'back', 'menu', 'label']);
+/**
+ * Атрибуты действия: data-* и aria-label. Всё, что компонент не разобрал сам,
+ * приходит сюда — поэтому незнакомый ключ здесь означает опечатку в вызове
+ * (`fillClas` вместо `fillClass`), и сборка падает, а не теряет его молча.
+ */
 export function act(a = {}) {
+  const unknown = Object.keys(a).filter((k) => !ACTION_KEYS.has(k) && a[k] !== undefined);
+  if (unknown.length) throw new Error(`неизвестный параметр: ${unknown.join(', ')}`);
   return attr('data-primary', a.primary)
     + attr('data-go', a.go)
     + attr('data-ask', a.ask)
     + attr('data-activate', a.activate)
     + attr('data-toast', a.toast)
     + attr('data-back', a.back)
+    + attr('data-menu', Array.isArray(a.menu) ? a.menu.join('|') : a.menu)
     + attr('aria-label', a.label);
 }
-const isAction = (a) => a && (a.go || a.ask || a.activate || a.toast || a.back);
+const isAction = (a) => a && (a.go || a.ask || a.activate || a.toast || a.back || a.menu);
 const cls = (...names) => names.filter(Boolean).join(' ');
+/** Лицо: «МК» — инициалы (заглавные буквы), `ph`, `face-3` — класс фото. */
+const isInitials = (f) => /^\p{Lu}{1,3}$/u.test(f);
+const facesHtml = (faces) => faces.map((f) => (isInitials(f) ? `<i class="is-initial">${f.slice(0, 1)}</i>` : `<i class="${f}"></i>`)).join('');
 const join = (items) => (Array.isArray(items) ? items.filter(Boolean).join('') : items || '');
 
 /* ── Иконки ── */
@@ -62,14 +76,15 @@ export function nav({ title = '', back = 'back', trailing = '', over = false, cl
     : iconButton({ icon: 'chevron-left', label: 'Назад', back: true });
   return `<header class="${cls('ui-nav', over && 'is-over', className)}">${lead}<strong>${title}</strong>${trailing || '<span></span>'}</header>`;
 }
-/** Заголовок корня вкладки 34/41 и действия справа. */
+/** Заголовок корня вкладки 24/30 (--ui-page) и действия справа. */
 export const largeTitle = (title, trailing = '') => `<header class="ui-large"><h1>${title}</h1>${join(trailing)}</header>`;
 /** Шапка корня с брендом или профилем слева. */
 export const top = (lead, trailing = '') => `<header class="ui-top">${lead}${join(trailing)}</header>`;
 export const me = ({ name, initial, go = 'profile' }) =>
   `<button class="ui-me"${act({ go, label: 'Профиль' })}>${avatar(initial)}<strong>${name}</strong>${icon('chevron-right')}</button>`;
-export const wordmark = ({ name, glyph, className }) =>
-  `<strong class="${cls('ui-wordmark', className)}"><span class="ui-wordmark-logo">${icon(glyph)}</span>${name}</strong>`;
+/** Бренд в шапке: иконка приложения концепта (assets/app-icon.png), а не значок из спрайта. */
+export const wordmark = ({ name, logo = 'assets/app-icon.png', className }) =>
+  `<strong class="${cls('ui-wordmark', className)}"><img class="ui-wordmark-logo" src="${logo}" alt=""/>${name}</strong>`;
 
 /* ── Кнопки ── */
 /** variant: primary | secondary | tertiary; size: l (44) | m (36). */
@@ -99,7 +114,8 @@ export const avatar = (initial, { large = false, hidden = false } = {}) =>
   `<span class="${cls('ui-avatar', large && 'is-large')}"${hidden ? ' aria-hidden="true"' : ''}>${initial}</span>`;
 export const badge = (text, { accent = false } = {}) => `<span class="${cls('ui-badge', accent && 'is-blue')}">${text}</span>`;
 export const duration = (text) => `<span class="ui-duration">${text}</span>`;
-export const toggle = (on = false) => `<span class="${cls('ui-switch', on && 'is-on')}"></span>`;
+/** Свитч без своего действия: состояние читается скринридером, не только цветом. */
+export const toggle = (on = false) => `<span class="${cls('ui-switch', on && 'is-on')}" role="switch" aria-checked="${on}"></span>`;
 /** Прогресс. value — класс доли из styles.css концепта (inline-style запрещён UI v3). */
 export const progress = ({ fillClass, white = false }) => `<div class="${cls('ui-progress', white && 'is-white')}"><i class="${fillClass}"></i></div>`;
 export const times = (a, b) => `<div class="ui-times"><span>${a}</span><span>${b}</span></div>`;
@@ -133,8 +149,9 @@ export function row({ thumb, wide = false, lead, title, sub, subWrap = false, wr
     const inner = end.badge ? badge(end.badge, { accent: true })
       : end.value !== undefined ? end.value
       : end.icon ? icon(end.icon) : '';
+    const { value: _v, icon: _i, badge: _b, linkColor: _l, ...endAct } = end;
     endHtml = isAction(end)
-      ? `<button class="${cls('ui-row-end', end.value !== undefined && 'is-value is-action')}"${act({ ...end, label: end.label })}>${inner}</button>`
+      ? `<button class="${cls('ui-row-end', end.value !== undefined && 'is-value is-action')}"${act(endAct)}>${inner}</button>`
       : `<span class="${cls('ui-row-end', end.value !== undefined && 'is-value', end.linkColor && 'ui-link')}">${inner}</span>`;
   } else if (end) endHtml = end;
   const rowCls = cls('ui-row', now && 'is-now', wrap && 'is-wrap', className);
@@ -159,10 +176,12 @@ export function cell({ icon: ic, lead, title, sub, value, toggle: sw, check = fa
   const chevron = a.go || a.ask || a.activate ? icon('chevron-right') : '';
   /* Свитч у ячейки с запросом доступа включается сам после разрешения (data-switch движка) */
   const permKey = (a.ask || a.activate || '').split('|')[0].split('+')[0];
-  const tail = sw !== undefined ? (permKey ? `<span class="${cls('ui-switch', sw && 'is-on')}" data-switch="${permKey}"></span>` : toggle(sw))
+  /* Свитч в ячейке озвучивается ячейкой целиком (role=switch), сам знак скрыт — иначе два элемента на одно состояние */
+  const tail = sw !== undefined ? `<span class="${cls('ui-switch', sw && 'is-on')}"${permKey ? ` data-switch="${permKey}"` : ''} aria-hidden="true"></span>`
     : `<span class="${cls('ui-cell-end', check && 'ui-link')}">${value ?? ''}${check ? icon('check') : sw === undefined && !a.toast ? chevron : ''}</span>`;
   const tag = isAction(a) ? 'button' : 'div';
-  return `<${tag} class="${cls('ui-cell', !ic && !lead && 'no-ico', className)}"${act(a)}>${lead || (ic ? icon(ic) : '')}<span class="ui-cell-text"><strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}</span>${tail}</${tag}>`;
+  const sws = sw !== undefined ? ` role="switch" aria-checked="${!!sw}"${permKey ? ` data-switch-aria="${permKey}"` : ''}` : '';
+  return `<${tag} class="${cls('ui-cell', !ic && !lead && 'no-ico', className)}"${act(a)}${sws}>${lead || (ic ? icon(ic) : '')}<span class="ui-cell-text"><strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}</span>${tail}</${tag}>`;
 }
 
 /* ── Карточки и ленты ── */
@@ -191,7 +210,7 @@ export function player({ art, at, total, fillClass, chapters = [], chapter, play
   const top = `<div class="ui-player-top">${collapse ? iconButton({ icon: 'chevron-down', label: 'Свернуть', look: 'glass', ...collapse }) : '<span></span>'}<span class="ui-player-gap"></span>${join(extra)}${cast ? iconButton({ icon: 'cast', label: 'Смотреть на телевизоре', look: 'glass', ...cast }) : ''}${settings ? iconButton({ icon: 'settings-2', label: 'Качество и скорость', look: 'glass', ...settings }) : ''}</div>`;
   const mid = `<div class="ui-player-mid">${iconButton({ icon: 'rotate-ccw', label: 'Назад на 10 секунд', toast: 'Назад на 10 секунд' })}${play({ size: 'xl', pause: playing, label: playing ? 'Пауза' : 'Смотреть', toast: playing ? `Пауза · ${at}` : `Воспроизведение с ${at}`, ...playAction })}${iconButton({ icon: 'rotate-cw', label: 'Вперёд на 10 секунд', toast: 'Вперёд на 10 секунд' })}</div>`;
   const scrub = chapters.length
-    ? `<div class="ui-player-scrub">${chapters.map((c) => `<span class="${cls('ui-player-ch', `is-w${c.w || 1}`, c.state && `is-${c.state}`)}" title="${c.label}">${c.state === 'now' ? `<i class="${fillClass}"></i>` : ''}</span>`).join('')}</div>`
+    ? `<div class="ui-player-scrub">${chapters.map((c) => `<span class="${cls('ui-player-ch', `is-w${c.w || 1}`, c.state && `is-${c.state}`)}" ${attr('title', c.label)}>${c.state === 'now' ? `<i class="${fillClass}"></i>` : ''}</span>`).join('')}</div>`
     : `<div class="ui-player-scrub"><span class="ui-player-ch is-w9 is-now"><i class="${fillClass}"></i></span></div>`;
   const row = `<div class="ui-player-row"><span class="ui-player-time">${at} / ${total}</span>${chapter ? `<span class="ui-player-chapter">${chapter}</span>` : '<span class="ui-player-gap"></span>'}${pip ? iconButton({ icon: 'picture-in-picture-2', label: 'Картинка в картинке', ...pip }) : ''}${fullscreen ? iconButton({ icon: 'maximize', label: 'Во весь экран', ...fullscreen }) : ''}</div>`;
   return `<div class="${cls('ui-player', art, className)}">${top}${mid}<div class="ui-player-bottom">${scrub}${row}</div></div>`;
@@ -203,24 +222,6 @@ export function player({ art, at, total, fillClass, chapters = [], chapter, play
  */
 export const menu = (items) => `<nav class="ui-menu" aria-label="Сервисы">${items.map(({ icon: ic, label, badge: b, ...a }) =>
   `<button class="ui-menu-item"${act({ label, ...a })}>${icon(ic)}<span>${label}</span>${b ? `<span class="ui-menu-badge">${b}</span>` : ''}</button>`).join('')}</nav>`;
-
-/**
- * Виджеты как в меню ВК: карточки в две колонки с живыми данными продукта.
- * items: [{ title, sub, value (крупное число), faces: [классы фото | инициалы],
- * icon, art (класс картинки), tall (карточка на две строки), button: { label, ...action }, ...action }].
- * У виджета одна роль и одно действие: не «ещё один список», а повод зайти.
- */
-export function widgets(items) {
-  const one = ({ title, sub, value, faces, icon: ic, art, tall = false, button: btn, className, ...a }) => {
-    const top = faces ? `<span class="ui-widget-faces">${faces.map((f) => (f.length <= 3 ? `<i class="is-initial">${f.slice(0, 1)}</i>` : `<i class="${f}"></i>`)).join('')}</span>`
-      : value ? `<span class="ui-widget-value">${value}${ic ? icon(ic) : ''}</span>`
-      : ic ? `<span class="ui-widget-ico">${icon(ic)}</span>` : '';
-    const body = `${art ? `<span class="ui-widget-art ${art}"></span>` : ''}${top}<strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}${btn ? button({ variant: 'secondary', block: true, ...btn }) : ''}`;
-    const tag = !btn && isAction(a) ? 'button' : 'div';
-    return `<${tag} class="${cls('ui-widget', tall && 'is-tall', className)}"${tag === 'button' ? act({ label: title, ...a }) : ''}>${body}</${tag}>`;
-  };
-  return `<div class="ui-widgets">${items.map(one).join('')}</div>`;
-}
 
 /* ── Компоненты VKUI для сведений о событии, людях и пустых состояниях ── */
 
@@ -240,7 +241,7 @@ export const infoRows = (items) => `<div class="ui-info-rows">${items.map(([labe
 /** UsersStack: стопка аватаров и подпись «Маша, Илья и ещё 2 идут». faces — классы фото или инициалы. */
 export const usersStack = ({ faces, text, ...a }) => {
   const tag = isAction(a) ? 'button' : 'div';
-  return `<${tag} class="ui-users-stack"${tag === 'button' ? act({ label: text, ...a }) : ''}><span class="ui-users-faces">${faces.slice(0, 3).map((f) => (f.length <= 3 ? `<i class="is-initial">${f.slice(0, 1)}</i>` : `<i class="${f}"></i>`)).join('')}</span><span>${text}</span></${tag}>`;
+  return `<${tag} class="ui-users-stack"${tag === 'button' ? act({ label: text, ...a }) : ''}><span class="ui-users-faces">${facesHtml(faces.slice(0, 3))}</span><span>${text}</span></${tag}>`;
 };
 
 /**
@@ -260,7 +261,7 @@ export const placeholder = ({ icon: ic, title, sub, button: btn }) =>
 
 /** SubnavigationBar: фильтры-кнопки со значком, прокрутка вбок. items: [{ icon, label, on, count, ...action }] */
 export const subnav = (items) => `<div class="ui-subnav">${items.map(({ icon: ic, label, on = false, count, ...a }) =>
-  `<button class="${cls('ui-subnav-btn', on && 'is-on')}"${act(a)}>${ic ? icon(ic) : ''}<span>${label}</span>${count ? `<b>${count}</b>` : ''}</button>`).join('')}</div>`;
+  `<button class="${cls('ui-subnav-btn', on && 'is-on')}" aria-pressed="${on}"${act(a)}>${ic ? icon(ic) : ''}<span>${label}</span>${count ? `<b>${count}</b>` : ''}</button>`).join('')}</div>`;
 
 /**
  * RichCell: аватар 48, над заголовком подпись, заголовок, текст, справа время,
@@ -277,21 +278,28 @@ export const tiles = (items) => `<div class="ui-tiles">${items.map(({ title, sub
   `<button class="ui-tile"${act({ label: title, ...a })}><strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}${art ? `<span class="ui-tile-art ${art}"></span>` : ''}</button>`).join('')}</div>`;
 /** Чипсы. Каждый чипс — переход, не тост: фильтр-пустышку ловит аудит. */
 export const chips = (items) => `<div class="ui-chips">${items.map(({ label, on = false, ...a }) =>
-  `<button class="${cls('ui-chip', on && 'is-on')}"${act(a)}><span>${label}</span></button>`).join('')}</div>`;
+  `<button class="${cls('ui-chip', on && 'is-on')}" aria-pressed="${on}"${act(a)}><span>${label}</span></button>`).join('')}</div>`;
 /** Поле поиска: кнопка-вход или активное поле со значением. */
 export function search({ placeholder, value, clear, ...a }) {
-  const content = value ? `<strong>${value}</strong>${clear ? iconButton({ icon: 'circle-x', look: 'muted', label: 'Очистить запрос', ...clear }) : ''}` : `<span>${placeholder}</span>`;
-  const tag = isAction(a) ? 'button' : 'div';
-  return `<${tag} class="ui-search"${act(a)}>${icon('search')}${content}</${tag}>`;
+  /* С действием — кнопка-вход на экран поиска; без него — поле, в которое печатают */
+  if (isAction(a)) return `<button class="ui-search"${act(a)}>${icon('search')}${value ? `<strong>${value}</strong>` : `<span>${placeholder}</span>`}</button>`;
+  const clr = clear ? iconButton({ icon: 'circle-x', look: 'muted', label: 'Очистить запрос', ...clear }) : '';
+  return `<label class="ui-search">${icon('search')}<input type="search"${attr('value', value)}${attr('placeholder', placeholder)}${attr('aria-label', placeholder || value)}/>${clr}</label>`;
 }
 export const stats = (items) => `<div class="ui-stats">${items.map(([v, l]) => `<div class="ui-stat"><strong>${v}</strong><span>${l}</span></div>`).join('')}</div>`;
-/** Сообщение при отказе в доступе: показывается движком по data-show-denied. */
-export const denied = (key, text, extra = '') =>
-  `<div class="perm-hidden" data-show-denied="${key}"><p class="ui-note">${icon('info')}<span>${text}</span></p>${extra}</div>`;
-/** Результат действия после разрешения: движок показывает его по data-show-granted. */
-export const granted = (key, text) =>
-  `<p class="perm-hidden ui-note is-ok" data-show-granted="${key}">${icon('circle-check')}<span>${text}</span></p>`;
-export const note = (text) => `<p class="ui-note">${icon('info')}<span>${text}</span></p>`;
+/**
+ * Отказ в доступе — пустое состояние iOS: значок, «Нет доступа к камере» и
+ * «Открыть Настройки». Рисуется только для ключей, без которых фича не
+ * работает (`denied` в access-model.json); после отказа в остальных ключах
+ * экран остаётся как есть. keys — 'camera' или 'mic,speech'. Движок
+ * показывает блок по data-show-denied.
+ */
+export const denied = (keys) => {
+  const key = String(keys).split(/[,|+]/).map((k) => k.trim()).find((k) => ACCESS[k]?.denied);
+  if (!key) return '';
+  const { title, icon: ic } = ACCESS[key].denied;
+  return `<div class="perm-hidden ui-denied" data-show-denied="${keys}">${icon(ic)}<strong>${title}</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn"${act({ toast: 'Откроются Настройки iOS' })}>Открыть Настройки</button></div>`;
+};
 export const foot = (text, className) => `<p class="${cls('ui-foot', className)}">${text}</p>`;
 
 /* ── Нижняя панель ── */
@@ -305,7 +313,7 @@ export const miniPlayer = ({ face, title, sub, open, add, playAction, progressCl
  */
 export const tabBar = ({ items, active, mini = '' }) =>
   `<nav class="ui-tabs tabbar" aria-label="Основная навигация">${mini}<div class="ui-tabrow">${items.map((t) =>
-    `<button class="${cls('ui-tab tab', t.id === active && 'is-on')}" data-go="${t.id}">${icon(t.icon)}<span>${t.label}</span></button>`).join('')}</div></nav>`;
+    `<button class="${cls('ui-tab tab', t.id === active && 'is-on')}"${t.id === active ? ' aria-current="page"' : ''} data-go="${t.id}">${icon(t.icon)}<span>${t.label}</span></button>`).join('')}</div></nav>`;
 /** Нижний лист поверх экрана. */
 export const sheet = (children, className) => `<section class="${cls('ui-sheet', className)}"><span class="ui-sheet-grab"></span>${join(children)}</section>`;
 
@@ -317,18 +325,33 @@ export const stories = (items) => `<div class="ui-stories">${items.map(({ label,
 /**
  * Пост ленты. author: { face, name, meta, action }. media — класс фото,
  * attach — своя разметка вложения (карточка курса, прогулки).
- * likes/comments/shares — числа; liked — лайк уже стоит.
+ * likes/comments/shares — числа; liked — лайк уже стоит. menu — пункты листа
+ * действий под «тремя точками»: ['Скрыть', 'Пожаловаться'].
  */
 export function post({ author, text, media, attach, likes, comments, shares, views, liked = false, menu, open, discuss, className }) {
   const ava = author.initial ? `<span class="ui-post-ava is-initial">${author.initial}</span>` : `<span class="ui-post-ava ${author.face || ''}"></span>`;
-  const head = `<div class="ui-post-head"><button class="ui-post-author"${act({ label: author.name, ...author.action })}>${ava}<span class="ui-post-who"><strong>${author.name}</strong><span>${author.meta}</span></span></button>${menu ? iconButton({ icon: 'ellipsis', label: 'Действия с записью', ...menu }) : ''}</div>`;
+  const head = `<div class="ui-post-head"><button class="ui-post-author"${act({ label: author.name, ...author.action })}>${ava}<span class="ui-post-who"><strong>${author.name}</strong><span>${author.meta}</span></span></button>${menu ? iconButton({ icon: 'ellipsis', label: 'Действия с записью', menu }) : ''}</div>`;
   const bar = `<div class="ui-post-bar">${likes !== undefined ? `<button class="${cls('ui-post-act', liked && 'is-on')}"${act({ toast: liked ? 'Лайк убран' : 'Понравилось', label: 'Нравится' })}>${icon('heart')}${likes}</button>` : ''}${comments !== undefined ? `<button class="ui-post-act"${act({ ...(discuss || { toast: 'Комментарии' }), label: 'Комментарии' })}>${icon('message-circle')}${comments}</button>` : ''}${shares !== undefined ? `<button class="ui-post-act"${act({ toast: 'Ссылка скопирована', label: 'Поделиться' })}>${icon('share')}${shares}</button>` : ''}${views ? `<span class="ui-post-views">${icon('eye')}${views}</span>` : ''}</div>`;
   return `<article class="${cls('ui-post', className)}">${head}${text ? (open ? `<button class="ui-post-text"${act(open)}>${text}</button>` : `<p class="ui-post-text">${text}</p>`) : ''}${media ? (open ? `<button class="ui-post-media ${media}"${act({ label: 'Открыть публикацию', ...open })}></button>` : `<div class="ui-post-media ${media}"></div>`) : ''}${attach ? `<div class="ui-post-attach">${attach}</div>` : ''}${bar}</article>`;
 }
 
+/**
+ * Комментарии под постом, как в ВК: заголовок со счётчиком, у каждого —
+ * аватар, имя, текст, время · «Ответить» и лайк справа. Если показаны не все,
+ * внизу «Показать ещё N». items: [{ initial | face, name, text, time, likes,
+ * liked, reply (вложенный ответ), author (ответ автора поста) }]; more — действие «ещё».
+ */
+export function comments({ count, items, more }) {
+  const one = ({ initial, face: f, name, text, time, likes, liked = false, reply = false, author = false }) =>
+    `<div class="${cls('ui-comment', reply && 'is-reply')}">${face({ face: f, initial }, 'ui-comment-face')}<div class="ui-comment-body"><strong>${name}${author ? '<span class="ui-comment-badge">автор</span>' : ''}</strong><p>${text}</p><span class="ui-comment-meta">${time}<button${act({ toast: `Ответ для ${name.split(' ')[0]}`, label: `Ответить: ${name}` })}>Ответить</button></span></div><button class="${cls('ui-comment-like', liked && 'is-on')}" aria-pressed="${liked}"${act({ toast: liked ? 'Лайк убран' : 'Понравилось', label: `Нравится комментарий: ${name}` })}>${icon('heart')}${likes ? `<span>${likes}</span>` : ''}</button></div>`;
+  const rest = count - items.length;
+  const tail = rest > 0 && more ? `<button class="ui-comment-more"${act({ label: `Показать ещё ${rest}`, ...more })}>Показать ещё ${rest}</button>` : '';
+  return section({ title: 'Комментарии', meta: String(count), children: `<div class="ui-comments">${items.map(one).join('')}${tail}</div>` });
+}
+
 /** Сегменты: переключают вид внутри экрана. */
 export const segments = (items) => `<div class="ui-seg">${items.map(({ label, on = false, ...a }) =>
-  `<button class="${on ? 'is-on' : ''}"${act(a)}>${label}</button>`).join('')}</div>`;
+  `<button${on ? ' class="is-on"' : ''} aria-pressed="${on}"${act(a)}>${label}</button>`).join('')}</div>`;
 
 /** Строка «Что нового?» над лентой: аватар, приглашение написать, быстрые действия. */
 export const composerPrompt = ({ initial, face, placeholder, trailing = '', ...a }) =>
@@ -338,8 +361,8 @@ export const composerPrompt = ({ initial, face, placeholder, trailing = '', ...a
 const face = ({ face: f, initial }, cl) => initial ? `<span class="${cl} is-initial">${initial}</span>` : `<span class="${cl} ${f || 'ph'}"></span>`;
 
 /** Строка диалога: аватар с онлайном, имя и время, последнее сообщение и счётчик. */
-export const dialog = ({ name, text, time, unread, online = false, you = false, muted = false, ...a }) =>
-  `<button class="ui-dialog"${act({ label: `Диалог: ${name}`, ...a })}><span class="ui-dialog-ava">${face(a, 'ui-dialog-face')}${online ? '<i class="ui-online"></i>' : ''}</span><span class="ui-dialog-body"><span class="ui-dialog-top"><strong>${name}</strong><span>${time}</span></span><span class="ui-dialog-bottom"><span>${you ? '<b>Вы:</b> ' : ''}${text}</span>${unread ? `<span class="${cls('ui-unread', muted && 'is-muted')}">${unread}</span>` : ''}</span></span></button>`;
+export const dialog = ({ name, text, time, unread, online = false, you = false, muted = false, face: f, initial, ...a }) =>
+  `<button class="ui-dialog"${act({ label: `Диалог: ${name}`, ...a })}><span class="ui-dialog-ava">${face({ face: f, initial }, 'ui-dialog-face')}${online ? '<i class="ui-online"></i>' : ''}</span><span class="ui-dialog-body"><span class="ui-dialog-top"><strong>${name}</strong><span>${time}</span></span><span class="ui-dialog-bottom"><span>${you ? '<b>Вы:</b> ' : ''}${text}</span>${unread ? `<span class="${cls('ui-unread', muted && 'is-muted')}">${unread}</span>` : ''}</span></span></button>`;
 
 /** Шапка чата как в ВК: назад · аватар, имя и статус слева с зазором 12 · справа значок звонка. */
 export const chatNav = ({ name, status, call, ...who }) =>
@@ -366,8 +389,9 @@ export const voice = ({ out = false, from, dur, time, ...a }) =>
 /** Лента сообщений. */
 export const chat = (items) => `<div class="ui-chat">${join(items)}</div>`;
 /** Поле ввода: вложение, текст, голосовое или отправка. */
+/* Поле — настоящий input: пока пусто, справа микрофон; с текстом — «Отправить», после отправки поле очищается (движок) */
 export const composer = ({ placeholder = 'Сообщение', attach, mic, send }) =>
-  `<div class="ui-composer">${iconButton({ icon: 'paperclip', label: 'Вложение', ...attach })}<span class="ui-composer-field">${placeholder}</span>${mic ? iconButton({ icon: 'mic', label: 'Голосовое сообщение', ...mic }) : iconButton({ icon: 'send', label: 'Отправить', ...send })}</div>`;
+  `<div class="${cls('ui-composer', mic && 'has-mic')}">${iconButton({ icon: 'paperclip', label: 'Вложение', ...attach })}<input class="ui-composer-field"${attr('placeholder', placeholder)}${attr('aria-label', placeholder)}/>${mic ? `<span class="ui-composer-mic">${iconButton({ icon: 'mic', label: 'Голосовое сообщение', ...mic })}</span>` : ''}<span class="ui-composer-send">${iconButton({ icon: 'send', label: 'Отправить', ...(send || { toast: 'Отправлено' }) })}</span></div>`;
 
 /** Экран звонка: крупный аватар, имя, статус и ряд круглых кнопок. controls: [{ icon, label, end, ...action }]. */
 export const callView = ({ name, status, controls, ...who }) =>

@@ -14,15 +14,7 @@
                   <p class="t-footnote" style="margin:4px 0 0">Текст мелкий, бликует или этикетка помята.</p>
                 </div>
               </div>
-              <div class="errbox perm-hidden" data-show-denied="camera">
-                <div class="errbox-ico" aria-hidden="true">
-                  <svg class="ico-svg"><use href="#i-circle-alert"/></svg>
-                </div>
-                <div class="grow">
-                  <div class="t-headline">Камера недоступна</div>
-                  <p class="t-footnote" style="margin:4px 0 0">Доступ к камере отклонён — сканировать нечем. Впишите данные с мотка сами или включите камеру в Настройках.</p>
-                </div>
-              </div>
+              <div class="perm-hidden ui-denied" data-show-denied="camera"><svg><use href="#i-camera"/></svg><strong>Нет доступа к камере</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
               <div style="display:flex;gap:8px;margin:0 0 22px" data-hide-denied="camera">
                 <div class="btn-tinted block tap" data-back>Сканировать ещё раз</div>
               </div>

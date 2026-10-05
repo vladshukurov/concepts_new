@@ -5,7 +5,7 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Замок на ветпаспорте' }),
     ui.scroll([
-      ui.denied('faceid', 'Face ID выключен — карточку откроет код-пароль устройства'),
+      ui.denied('faceid'),
       ui.section({ children: ui.group({ cells: [
         ui.cell({ icon: 'scan-face', title: 'Замок Face ID', sub: 'Ветпаспорт и место выгула', toggle: true, primary: true, toast: 'Замок включён' }),
         ui.cell({ icon: 'lock', title: 'Закрывать в фоне', sub: 'Когда «Хвосты» сворачиваются', toggle: false, toast: 'Будем закрывать в фоне' }),

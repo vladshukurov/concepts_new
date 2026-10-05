@@ -49,14 +49,8 @@
         </div>
         <span class="pm-caret" aria-hidden="true"><svg class="ico-svg"><use href="#i-chevron-right"/></svg></span>
       </div>
-      <div class="pm-note perm-hidden" data-show-denied="mic">
-        <svg class="ico-svg"><use href="#i-circle-alert"/></svg>
-        <span>Без микрофона брифинг набирается текстом — поле открывается той же кнопкой.</span>
-      </div>
-      <div class="pm-note perm-hidden" data-show-denied="speech">
-        <svg class="ico-svg"><use href="#i-circle-alert"/></svg>
-        <span>Без распознавания речи запись уйдёт без расшифровки: в зале её придётся слушать звуком.</span>
-      </div>
+      <div class="perm-hidden ui-denied" data-show-denied="mic"><svg><use href="#i-mic"/></svg><strong>Нет доступа к микрофону</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
+      <div class="perm-hidden ui-denied" data-show-denied="speech"><svg><use href="#i-audio-lines"/></svg><strong>Нет доступа к распознаванию речи</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
     </div>
 
     <div class="pm-sec">

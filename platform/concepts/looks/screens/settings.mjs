@@ -20,8 +20,8 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'scan-face', title: 'Замок Face ID', sub: 'На сохранённом и черновиках', toggle: false, ask: 'faceid|lock|settings' }),
         ui.cell({ icon: 'megaphone', title: 'Реклама', value: 'Без подбора', go: 'ads' }),
       ] }) }),
-      ui.denied('push', 'Уведомления выключены — новые образы отмечаются точкой'),
-      ui.denied('faceid', 'Face ID выключен — сохранённое открывается без замка'),
+      ui.denied('push'),
+      ui.denied('faceid'),
     ]),
   ],
 });

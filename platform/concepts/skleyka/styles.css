@@ -29,10 +29,7 @@
 .sk-cover-btn { position:absolute; right:12px; bottom:12px; background:rgba(0,0,0,.5)!important; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
 .sk-form .ui-cell-text > span:first-child { order:-1; font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
 .sk-form-hint { padding:8px 32px 0; }
-.sk-denied .ui-actions { margin-top:8px; }
 .sk-bottom { margin-top:24px; }
-.sk-note-actions { margin-top:8px; justify-content:flex-start; }
-.sk-note-actions > * { flex:none; }
 .sk-center { padding:16px 32px 0; text-align:center; }
 
 /* Карта: тёмная тема iOS поверх светлых тайлов */

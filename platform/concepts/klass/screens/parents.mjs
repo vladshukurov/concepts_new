@@ -9,7 +9,7 @@ export default (ui) => ui.screen({
         ui.row({ lead: ui.leadIcon('search', { accent: true }), title: 'Найти соседей', sub: 'Сверим номера из книги с участниками', ask: 'contacts|match|parents', primary: true }),
         ui.row({ lead: ui.leadIcon('link', { accent: true }), title: 'Пригласить ссылкой', sub: 'Ссылка на 7 дней', go: 'invite' }),
       ]) }),
-      ui.denied('contacts', 'Без записной книжки соседа зовут ссылкой'),
+      ui.denied('contacts'),
       ui.section({ title: 'В приложении', meta: '24', children: ui.list([
         who(ui, 'АВ', 'Анна Викторовна', 'Председатель · пишет каждый вечер', { go: 'classroom' }),
         who(ui, 'ЕС', 'Елена Соколова', 'Участок 24 · секретарь правления', { go: 'classroom' }),

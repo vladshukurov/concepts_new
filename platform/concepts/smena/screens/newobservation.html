@@ -6,7 +6,7 @@
     <div class="s-fact-types"><button class="is-on">Питание</button><button>Поведение</button><button>Состояние</button></div>
     <h3 class="s-section-label">Подтверждение</h3>
     <div class="s-media-actions"><button class="tap" data-ask="camera|camera|newobservation" aria-label="Открыть камеру в новом наблюдении"><svg class="ico-svg"><use href="#i-camera"/></svg><span><b>Снять сейчас</b><small>Камера</small></span></button><button class="tap" data-ask="photos|library|newobservation" aria-label="Выбрать из Фото"><svg class="ico-svg"><use href="#i-images"/></svg><span><b>Выбрать снимок</b><small>Фото</small></span></button><button class="tap" data-go="voice"><svg class="ico-svg"><use href="#i-mic"/></svg><span><b>Надиктовать</b><small>До 30 секунд</small></span></button></div>
-    <div class="s-denied perm-hidden" data-show-denied="camera">Можно сохранить факт без снимка</div><div class="s-denied perm-hidden" data-show-denied="photos">Можно снять новый кадр или оставить только текст</div>
+    <div class="perm-hidden ui-denied" data-show-denied="camera"><svg><use href="#i-camera"/></svg><strong>Нет доступа к камере</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div><div class="perm-hidden ui-denied" data-show-denied="photos"><svg><use href="#i-images"/></svg><strong>Нет доступа к фото</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
     <button class="btn-filled tap s-primary" data-primary data-go="observation">Сохранить наблюдение</button><div class="s-space"></div>
   </div><div class="home-ind" aria-hidden="true"></div>
 </div>

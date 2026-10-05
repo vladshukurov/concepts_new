@@ -13,13 +13,13 @@ export default (ui) => ui.screen({
     ui.post({
       author: { initial: 'АВ', name: 'Анна Викторовна', meta: 'председатель · вчера, 19:40', action: { go: 'classroom' } },
       text: 'Завтра субботник на улице: нужны рабочие перчатки и куртка потеплее, зал заняли под ярмарку. Кто забыл — форму даст Марина Игоревна',
-      likes: 9, comments: 4, views: 21, menu: { toast: 'Пожаловаться · Скрыть · Копировать ссылку' },
+      likes: 9, comments: 4, views: 21, menu: ['Пожаловаться', 'Скрыть', 'Копировать ссылку'],
       open: { go: 'post' }, discuss: { go: 'thread' },
     }),
     ui.post({
       author: { initial: 'ЕС', name: 'Елена Соколова', meta: 'участок 24 · сегодня, 09:12', action: { go: 'classroom' } },
       text: 'Ярмарка удалась: привезли саженцы для общей клумбы и договорились о доставке щебня. Наталья обещала выложить список сортов',
-      likes: 26, comments: 11, views: 63, open: { go: 'post' }, discuss: { go: 'thread' }, menu: { toast: 'Пожаловаться · Скрыть · Копировать ссылку' },
+      likes: 26, comments: 11, views: 63, open: { go: 'post' }, discuss: { go: 'thread' }, menu: ['Пожаловаться', 'Скрыть', 'Копировать ссылку'],
     }),
     ui.post({
       author: { initial: 'ИМ', name: 'Илья Макаров', meta: 'участок 18 · 2 сентября', action: { go: 'classroom' } },

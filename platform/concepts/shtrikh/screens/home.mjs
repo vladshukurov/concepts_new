@@ -4,7 +4,7 @@ import { people, places } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'home', theme: THEME,
   body: ui.scroll([
-    ui.top(ui.wordmark({ name: 'Штрих', glyph: 'pen-line' }), [
+    ui.top(ui.wordmark({ name: 'Штрих' }), [
       ui.iconButton({ icon: 'search', label: 'Поиск мест и авторов', go: 'places' }),
       ui.iconButton({ icon: 'plus', label: 'Новая зарисовка', go: 'compose' }),
     ]),
@@ -19,7 +19,7 @@ export default (ui) => ui.screen({
       author: { initial: people.alina.initial, name: people.alina.name, meta: `12 минут назад · ${places.panfilova.name}`, action: { go: 'profile' } },
       text: 'Поймала тень от липы до того, как включили фонари',
       media: 'sh-s2', attach: tools('Линер 0.3', 'Бумага 160 г', '20 минут'),
-      likes: 146, comments: 18, shares: 7, views: '1,2K', open: { go: 'post' }, discuss: { go: 'post' }, menu: { toast: 'Скрыть · Пожаловаться' },
+      likes: 146, comments: 18, shares: 7, views: '1,2K', open: { go: 'post' }, discuss: { go: 'post' }, menu: ['Скрыть', 'Пожаловаться'],
     }),
     ui.section({ title: 'Серия места', more: { go: 'series', label: 'Открыть серию' }, children: ui.list([
       ui.row({ thumb: places.panfilova.art, title: places.panfilova.series, sub: `${places.panfilova.name} · ${places.panfilova.works} работ · ${places.panfilova.authors} авторов`, go: 'series' }),

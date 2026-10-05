@@ -18,12 +18,8 @@
     ><button class="rd-chip" type="button">Документальное</button>
   </nav>
   <div class="body-scroll rd-feed rd-vk-feed">
-    <div class="rd-fallback perm-hidden" data-show-denied="location">
-      Выберите район вручную — лента продолжит работать.
-    </div>
-    <div class="rd-fallback perm-hidden" data-show-denied="tracking">
-      Показываем обычную рекламу без персонализации.
-    </div>
+    <div class="perm-hidden ui-denied" data-show-denied="location"><svg><use href="#i-map-pin"/></svg><strong>Нет доступа к геопозиции</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
+    
     <article class="rd-video-card" data-go="watch">
       <div class="rd-thumb cinema"><span class="rd-duration">18:42</span></div>
       <div class="rd-video-info">

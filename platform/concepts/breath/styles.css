@@ -51,7 +51,7 @@
 .br-controls { display:flex; align-items:center; justify-content:space-around; margin:12px 0 auto; }
 .br-controls .ui-icon-btn svg { width:30px; height:30px; }
 .br-player-actions { padding:0; gap:8px; margin-top:16px; }
-.br-player .ui-note { margin:12px 0 0; }
+.br-player .ui-denied { padding:16px 0 0; }
 
 /* Итог */
 .br-result-main { flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 0 calc(var(--safe-bottom) + 12px); text-align:center; }

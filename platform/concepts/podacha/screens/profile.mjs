@@ -13,7 +13,7 @@ export default (ui) => ui.screen({
       author: { initial: 'СЛ', name: 'Саша Левина', meta: 'вчера, 18:40', action: { go: 'profile' } },
       text: 'Пирог с грушей на цельнозерновой муке. Сахара вдвое меньше, результат всё равно мягкий',
       attach: dish(ui, 'Грушевый пирог', '55 минут · повторили 6 раз'),
-      likes: 64, comments: 7, shares: 3, open: { go: 'post' }, menu: { toast: 'Изменить · Удалить · Скопировать ссылку' },
+      likes: 64, comments: 7, shares: 3, open: { go: 'post' }, menu: ['Изменить', 'Удалить', 'Скопировать ссылку'],
     }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'profile' }),

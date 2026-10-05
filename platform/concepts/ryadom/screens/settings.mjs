@@ -9,7 +9,7 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'user', title: 'Профиль и аккаунт', sub: '+7 900 123-45-67', go: 'account' }),
         ui.cell({ icon: 'bell', title: 'Уведомления', value: 'Тренировки', go: 'notif' }),
         ui.cell({ icon: 'message-circle', title: 'Сообщения', sub: 'С именем и фото отправителя', toggle: false, activate: 'commnotif|settings' }),
-      ] }), ui.granted('commnotif', 'Сообщения приходят с именем и фото')] }),
+      ] })] }),
       ui.section({ children: ui.group({ label: 'Приватность', cells: [
         ui.cell({ icon: 'eye', title: 'Кто видит тренировки', value: 'Клуб', toast: 'Тренировки видны клубу' }),
         ui.cell({ icon: 'route', title: 'Кто видит меня в пути', value: 'Группа', toast: 'Отметки видит только группа тренировки' }),

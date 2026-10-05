@@ -1024,17 +1024,17 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
   --ui-row-h:64px; --ui-row-pad:10px;
 }
 .ui.vk-light {
-  --ui-bg:#f2f3f5; --ui-card:#fff; --ui-card-2:#ebedf0; --ui-modal:#fff; --ui-ph:#e1e3e6;
+  --ui-bg:#fff; --ui-card:#fff; --ui-card-2:#ebedf0; --ui-modal:#fff; --ui-ph:#e1e3e6;
   --ui-fill:rgba(0,28,61,.06); --ui-fill-2:rgba(0,28,61,.1); --ui-line:#d7d8d9;
-  --ui-text:#000; --ui-text-2:#5f6b78; --ui-text-3:#99a2ad;
+  --ui-text:#000; --ui-text-2:#5f6b78; --ui-text-3:#99a2ad; --ui-sep:#f2f3f5;
   --ui-accent:#0077ff; --ui-on-accent:#fff; --ui-link:#0067db; --ui-accent-soft:rgba(0,119,255,.1);
   --ui-bubble-in:#ebedf0; --ui-bubble-out:#cce4ff; --ui-bubble-out-text:#000; --ui-chat-bg:#fff;
   --ui-play-bg:#0077ff; --ui-play-fg:#fff; --ui-danger:#c42b2b; --ui-seg-on:#fff; --ui-shadow:rgba(0,16,61,.16);
 }
 .ui.ok-light {
-  --ui-bg:#f2f3f5; --ui-card:#fff; --ui-card-2:#ebedf0; --ui-modal:#fff; --ui-ph:#e1e3e6;
+  --ui-bg:#fff; --ui-card:#fff; --ui-card-2:#ebedf0; --ui-modal:#fff; --ui-ph:#e1e3e6;
   --ui-fill:rgba(0,0,0,.05); --ui-fill-2:rgba(0,0,0,.09); --ui-line:#d7d8d9;
-  --ui-text:#000; --ui-text-2:#5f6b78; --ui-text-3:#99a2ad;
+  --ui-text:#000; --ui-text-2:#5f6b78; --ui-text-3:#99a2ad; --ui-sep:#f2f3f5;
   --ui-accent:#ff7700; --ui-on-accent:#fff; --ui-link:#b34d00; --ui-accent-soft:rgba(255,119,0,.12);
   --ui-bubble-in:#ebedf0; --ui-bubble-out:#ffe2c6; --ui-bubble-out-text:#000; --ui-chat-bg:#fff;
   --ui-play-bg:#ff7700; --ui-play-fg:#fff; --ui-danger:#c42b2b; --ui-seg-on:#fff; --ui-shadow:rgba(0,0,0,.14);
@@ -1083,8 +1083,7 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 
 /* Вордмарк продукта в шапке корня */
 .ui-wordmark { flex:1; display:flex; align-items:center; gap:8px; font:600 24px/28px var(--ui-face); letter-spacing:-.01em; }
-.ui-wordmark-logo { width:32px; height:32px; display:grid; place-items:center; border-radius:9px; background:var(--ui-accent); color:var(--ui-on-accent); }
-.ui-wordmark-logo svg { width:18px; height:18px; stroke-width:2.2; }
+.ui-wordmark-logo { width:32px; height:32px; flex:none; border-radius:8px; object-fit:cover; }
 
 /* Кнопки-иконки: 44 касание, 24 значок */
 .ui-icon-btn { width:44px; height:44px; flex:none; display:grid; place-items:center; border-radius:50%; color:var(--ui-text); }
@@ -1189,6 +1188,9 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui-search { display:flex; align-items:center; gap:8px; min-height:44px; margin:0 16px; padding:0 12px; border-radius:10px; background:var(--ui-card-2); color:var(--ui-text-2); font:400 16px/20px var(--ui-face); width:calc(100% - 32px); }
 .ui-search > svg { width:18px; height:18px; }
 .ui-search > strong { flex:1; font-weight:400; color:var(--ui-text); }
+.ui-search > input { flex:1; min-width:0; height:44px; padding:0; border:0; outline:0; background:none; color:var(--ui-text); font:inherit; }
+.ui-search > input::placeholder { color:var(--ui-text-2); }
+.ui-search > input::-webkit-search-cancel-button { display:none; }
 
 /* Сгруппированные ячейки настроек */
 .ui-group { margin:0 16px; border-radius:12px; background:var(--ui-card); overflow:hidden; }
@@ -1242,8 +1244,17 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui-hero::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,10,.36) 0%, rgba(10,10,10,.08) 34%, rgba(10,10,10,.5) 70%, var(--ui-bg) 100%); pointer-events:none; }
 .ui-hero > * { position:relative; z-index:1; }
 
-/* ── Светлые темы: контент — белые блоки на сером, как в ВК и ОК ── */
-.ui:is(.vk-light,.ok-light) .ui-sec { margin-top:8px; padding:16px 0; background:var(--ui-card); }
+/* ── Светлые темы: белая поверхность, секции разделены полосой, первая — вплотную к шапке ── */
+/* Светлые темы — белая поверхность, секции разделяет полоса 8 как в ВК. Первая секция стоит
+   вплотную к шапке: полоса между шапкой и первым блоком отрывала его от экрана */
+.ui:is(.vk-light,.ok-light) .ui-sec { margin-top:0; padding:12px 0; background:var(--ui-card); }
+.ui:is(.vk-light,.ok-light) :is(.ui-sec, .ui-post, .ui-stories, .ui-prompt) ~ :is(.ui-sec, .ui-post) { border-top:8px solid var(--ui-sep); }
+.ui:is(.vk-light,.ok-light) .ui-post { margin-top:0; }
+/* Плитки на белой поверхности — серые, как поле поиска: белые сливались с фоном */
+.ui:is(.vk-light,.ok-light) .ui-tile { background:var(--ui-card-2); }
+/* Сегменты, чипсы и поиск без заголовка — часть шапки: прижаты к ней, без своих полей */
+.ui:is(.vk-light,.ok-light) .ui-sec:not(:has(> .ui-sec-head)):has(> :is(.ui-seg, .ui-chips, .ui-search):first-child) { padding-top:0; }
+.ui:is(.vk-light,.ok-light) .ui-sec:not(:has(> .ui-sec-head)):has(> :is(.ui-seg, .ui-chips, .ui-search):only-child) { padding:0 0 8px; }
 .ui:is(.vk-light,.ok-light) .ui-sec-head { min-height:32px; margin-bottom:8px; }
 /* Воздух: действия отделены от содержимого секции и друг от друга */
 .ui:is(.vk-light,.ok-light) .ui-actions { gap:12px; }
@@ -1264,7 +1275,10 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui:is(.vk-light,.ok-light) .ui-stat > strong { font:600 18px/22px var(--ui-face); }
 .ui:is(.vk-light,.ok-light) .ui-stat > span { font:400 13px/16px var(--ui-face); }
 /* Секция из групп ячеек — это экран настроек: белые группы на сером, без белой подложки */
-.ui:is(.vk-light,.ok-light) .ui-sec:has(> .ui-group) { margin-top:16px; padding:0; background:none; }
+.ui:is(.vk-light,.ok-light) .ui-sec:has(> .ui-group) { padding:8px 0; }
+/* Группа ячеек — обычный белый список, как остальной экран, а не вставная карточка на сером */
+.ui:is(.vk-light,.ok-light) .ui-group { margin:0; border-radius:0; }
+.ui:is(.vk-light,.ok-light) .ui-group-label { padding:8px 16px 4px; }
 .ui:is(.vk-light,.ok-light) .ui-sec:has(> .ui-group) > .ui-sec-head { padding-top:4px; }
 .ui:is(.vk-light,.ok-light) .ui-nav,
 .ui:is(.vk-light,.ok-light) .ui-large,
@@ -1272,7 +1286,7 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui:is(.vk-light,.ok-light) .ui-scroll.is-root { background:linear-gradient(var(--ui-card) 0 var(--safe-top), transparent var(--safe-top)); }
 /* Мессенджер — одна белая поверхность, как в ВК: шапка, поиск и диалоги без серых полос между ними */
 .ui:is(.vk-light,.ok-light) .ui-scroll.is-root:has(> .ui-sec > .ui-dialog) { background:var(--ui-card); }
-.ui:is(.vk-light,.ok-light) .ui-scroll:has(> .ui-sec > .ui-dialog) > .ui-sec { margin-top:0; padding:0; }
+.ui:is(.vk-light,.ok-light) .ui-scroll:has(> .ui-sec > .ui-dialog) > .ui-sec { margin-top:0; padding:0; border-top:0; }
 .ui:is(.vk-light,.ok-light) .ui-scroll:has(> .ui-sec > .ui-dialog) > .ui-sec:has(> .ui-search) { padding:4px 0 8px; }
 .ui:is(.vk-light,.ok-light) .ui-tabs { background:var(--ui-card); box-shadow:inset 0 .5px 0 var(--ui-line); }
 .ui:is(.vk-light,.ok-light) .ui-mini { background:var(--ui-card); box-shadow:0 2px 12px var(--ui-shadow); }
@@ -1289,9 +1303,14 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui-thumb.is-sm { width:40px; height:40px; }
 
 /* Сегменты */
-.ui-seg { display:flex; margin:8px 16px; padding:2px; border-radius:12px; background:var(--ui-fill); }
-.ui-seg > button { flex:1; min-height:44px; border-radius:10px; font:500 14px/18px var(--ui-face); color:var(--ui-text-2); text-align:center; }
-.ui-seg > button.is-on { background:var(--ui-seg-on); color:var(--ui-text); box-shadow:0 1px 3px var(--ui-shadow); }
+/* Сегменты 36 по VKUI; зона касания кнопки 44 выходит за подложку на 5 сверху и снизу */
+.ui-seg { display:flex; margin:4px 16px 8px; padding:2px; border-radius:10px; background:var(--ui-fill); }
+.ui-seg > button { position:relative; flex:1; min-height:44px; margin:-5px 0; font:500 14px/18px var(--ui-face); color:var(--ui-text-2); text-align:center; }
+/* Белая «таблетка» 32 внутри зоны касания 44: красится псевдоэлемент, а не кнопка */
+.ui-seg > button::before { content:""; position:absolute; inset:6px 0; z-index:-1; border-radius:8px; }
+.ui-seg > button.is-on { color:var(--ui-text); }
+.ui-seg > button.is-on::before { background:var(--ui-seg-on); box-shadow:0 1px 3px var(--ui-shadow); }
+.ui-seg { position:relative; z-index:0; }
 
 /* Истории: круги 64 с кольцом акцента у непросмотренных */
 .ui-stories { display:flex; gap:12px; overflow-x:auto; scrollbar-width:none; padding:8px 16px 12px; }
@@ -1320,6 +1339,8 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui-prompt-main { flex:1; min-width:0; display:flex; align-items:center; gap:12px; min-height:44px; font:400 16px/20px var(--ui-face); color:var(--ui-text-2); text-align:left; }
 .ui-post-media { width:100%; aspect-ratio:4/3; background-color:var(--ui-ph); background-size:cover; background-position:center; }
 .ui-post-attach { margin:0 16px 8px; }
+/* Поле 16 уже даёт вложение: строка внутри не добавляет своё, иначе значок уезжает на 32 от края текста */
+.ui-post-attach .ui-row { padding-left:0; padding-right:0; }
 .ui-post-bar { display:flex; align-items:center; gap:4px; padding:4px 8px 0; }
 .ui-post-act { display:inline-flex; align-items:center; gap:6px; min-height:44px; padding:0 10px; border-radius:22px; font:500 14px/18px var(--ui-face); color:var(--ui-text-2); }
 .ui-post-act svg { width:22px; height:22px; }
@@ -1373,11 +1394,17 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui-voice-play svg { width:18px; height:18px; margin-left:2px; }
 .ui-voice-body { display:flex; flex-direction:column; gap:2px; }
 .ui-wave { display:block; width:120px; height:24px; fill:var(--ui-link); opacity:.7; }
+/* Общее правило иконок обводит всё внутри svg — у столбиков волны обводка делала их вдвое толще и чёрными */
+.ui-wave rect { stroke:none; }
 .ui-voice .ui-bubble-meta { float:none; display:flex; justify-content:space-between; gap:8px; margin:0; }
 /* Фон ленты сообщений тянется до поля ввода */
 .ui-scroll:has(> .ui-chat) { background:var(--ui-chat-bg); }
 .ui-composer { flex:none; display:flex; align-items:center; gap:4px; padding:6px 4px calc(var(--safe-bottom) + 4px); background:var(--ui-card); box-shadow:inset 0 .5px 0 var(--ui-line); }
-.ui-composer-field { flex:1; min-height:36px; display:flex; align-items:center; padding:0 14px; border-radius:18px; background:var(--ui-card-2); font:400 16px/20px var(--ui-face); color:var(--ui-text-2); }
+.ui-composer-field { flex:1; min-width:0; min-height:36px; padding:0 14px; border:0; outline:0; border-radius:18px; background:var(--ui-card-2); font:400 16px/20px var(--ui-face); color:var(--ui-text); }
+.ui-composer-field::placeholder { color:var(--ui-text-2); }
+/* Микрофон, пока поле пустое; «Отправить», когда есть текст */
+.ui-composer.has-mic:not(.has-text) .ui-composer-send, .ui-composer.has-text .ui-composer-mic { display:none; }
+.ui-composer-send .ui-icon-btn { color:var(--ui-link); }
 .ui-call { flex:1; display:flex; flex-direction:column; align-items:center; gap:6px; padding:calc(var(--safe-top) + 72px) 24px calc(var(--safe-bottom) + 32px); text-align:center; }
 .ui-call-face { display:grid; place-items:center; width:120px; height:120px; margin-bottom:16px; border-radius:50%; background-color:var(--ui-ph); background-size:cover; background-position:center; font:600 40px/1 var(--ui-face); }
 .ui-call > strong { font:600 26px/32px var(--ui-face); }
@@ -1390,9 +1417,6 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui-call-btn.is-end { background:#e64646; color:#fff; }
 
 /* Подпись отказа и тихие пометки */
-.ui-note { display:flex; gap:10px; margin:12px 16px 0; padding:12px; border-radius:12px; background:var(--ui-card); font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
-.ui-note > svg { width:20px; height:20px; margin-top:0; color:var(--ui-text-2); }
-.ui-note.is-ok > svg { color:var(--ui-link); }
 .ui-badge { display:inline-flex; align-items:center; min-height:20px; padding:0 6px; border-radius:6px; background:var(--ui-fill-2); font:600 12px/16px var(--ui-face); color:var(--ui-text); }
 .ui-badge.is-blue { background:var(--ui-accent-soft); color:var(--ui-link); }
 
@@ -1441,6 +1465,11 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui-player { position:relative; flex:none; display:flex; flex-direction:column; justify-content:space-between; width:100%; aspect-ratio:16/9; overflow:hidden; background-color:#000; background-size:cover; background-position:center; color:#fff; }
 .ui-player::before { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.5), rgba(0,0,0,.08) 34%, rgba(0,0,0,.08) 62%, rgba(0,0,0,.62)); pointer-events:none; }
 .ui-player > * { position:relative; z-index:1; }
+/* Кадр-плейсхолдер: .ph центрирует содержимое ради значка камеры и сжимал бы управление в кучу.
+   Раскладка остаётся плеерной, значок лежит под управлением по центру кадра */
+.ui .ui-player.ph:not(.on-dark) { align-items:stretch; justify-content:space-between; background:#1c1c1e; color:#fff; }
+/* Кадр видео тёмный в любой теме: на светлом плейсхолдере белое управление не читается */
+.ui-player.ph::after { position:absolute; inset:0; margin:auto; width:44px; background:rgba(235,235,245,.28); }
 .ui-player .ui-icon-btn { color:#fff; }
 .ui-player-top { display:flex; align-items:center; padding:4px 4px 0; }
 .ui-player-gap { flex:1; }
@@ -1473,24 +1502,8 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui-menu-item > svg { width:28px; height:28px; flex:none; color:var(--ui-text); stroke-width:1.6; }
 .ui-menu-item > span:first-of-type { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .ui-menu-badge { min-width:20px; height:20px; padding:0 6px; border-radius:10px; background:var(--ui-accent); color:var(--ui-on-accent); font:600 12px/20px var(--ui-face); text-align:center; }
-.ui-widgets { display:grid; grid-template-columns:1fr 1fr; grid-auto-flow:row dense; gap:12px; padding:4px 16px 16px; }
-.ui-widget { display:flex; flex-direction:column; align-items:flex-start; gap:4px; min-height:132px; padding:14px; border-radius:16px; background:var(--ui-card); text-align:left; overflow:hidden; }
-.ui-widget.is-tall { grid-row:span 2; }
-.ui-widget > strong { font:600 16px/20px var(--ui-face); }
-.ui-widget > span:not([class]) { font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
-.ui-widget > .ui-btn { margin-top:auto; }
-.ui-widget-faces { display:flex; margin-bottom:8px; }
-.ui-widget-faces > i { width:40px; height:40px; margin-right:-10px; border-radius:50%; box-shadow:0 0 0 2px var(--ui-card); background-size:cover; background-position:center; }
-.ui-widget-faces > i.is-initial { display:grid; place-items:center; background:var(--ui-accent-soft); color:var(--ui-link); font:600 16px/1 var(--ui-face); font-style:normal; }
-.ui-widget-value { display:flex; align-items:center; justify-content:space-between; width:100%; margin-bottom:4px; font:600 32px/38px var(--ui-face); font-variant-numeric:tabular-nums; }
-.ui-widget-value > svg { width:36px; height:36px; color:var(--ui-link); }
-.ui-widget-ico { width:40px; height:40px; margin-bottom:8px; display:grid; place-items:center; border-radius:12px; background:var(--ui-accent-soft); color:var(--ui-link); }
-.ui-widget-ico svg { width:24px; height:24px; }
-.ui-widget-art { align-self:stretch; height:120px; margin:-14px -14px 10px; background-size:cover; background-position:center; }
-.ui-widget.is-tall .ui-widget-art { height:180px; }
-/* Светлая тема: меню на белой подложке, виджеты — белые карточки на сером */
+/* Светлая тема: меню на белой подложке */
 .ui:is(.vk-light,.ok-light) .ui-menu { background:var(--ui-card); }
-.ui.vk-dark .ui-widget { background:var(--ui-card); }
 
 /* ── Компоненты VKUI: размеры из исходников VKUI (тема vkIOS) ── */
 /* MiniInfoCell: отступ 6 сверху и снизу, значок 20, зазор 12, подпись Subhead 14/18 */
@@ -1510,7 +1523,8 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .ui-users-faces { display:flex; flex:none; }
 .ui-users-faces > i { width:28px; height:28px; margin-right:-8px; border-radius:50%; box-shadow:0 0 0 2px var(--ui-card); background-size:cover; background-position:center; }
 .ui-users-faces > i:last-child { margin-right:0; }
-.ui-users-faces > i.is-initial { display:grid; place-items:center; background:var(--ui-accent-soft); color:var(--ui-link); font:600 13px/1 var(--ui-face); font-style:normal; }
+/* Мягкий акцент полупрозрачен: без подложки цвета карточки соседний кружок просвечивает сквозь край */
+.ui-users-faces > i.is-initial { display:grid; place-items:center; background:linear-gradient(var(--ui-accent-soft), var(--ui-accent-soft)), var(--ui-card); color:var(--ui-link); font:600 13px/1 var(--ui-face); font-style:normal; }
 /* HorizontalScroll + HorizontalCell */
 .ui-hscroll { display:flex; gap:12px; overflow-x:auto; scrollbar-width:none; padding:4px 16px 8px; }
 .ui-hscroll::-webkit-scrollbar { display:none; }
@@ -1536,6 +1550,44 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .ui-banner-body > span { font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
 .ui-banner-actions { display:flex; gap:8px; margin-top:12px; }
 /* Placeholder: значок 56, Title3, Text, действие через 16 */
+/* Комментарии, как в ВК: аватар 36, имя 15/20, текст 15/20, мета 13/16, лайк в зоне 44 справа */
+.ui-comments { display:flex; flex-direction:column; }
+.ui-comment { display:flex; align-items:flex-start; gap:12px; padding:8px 4px 8px 16px; }
+.ui-comment.is-reply { padding-left:64px; }
+.ui-comment-face { width:36px; height:36px; flex:none; display:grid; place-items:center; border-radius:50%; background-color:var(--ui-ph); background-size:cover; background-position:center; font:600 13px/1 var(--ui-face); }
+.ui-comment-face.is-initial { background:var(--ui-accent-soft); color:var(--ui-link); }
+.ui-comment.is-reply .ui-comment-face { width:28px; height:28px; font-size:11px; }
+.ui-comment-body { flex:1; min-width:0; }
+.ui-comment-body > strong { display:flex; align-items:center; gap:6px; font:600 15px/20px var(--ui-face); }
+.ui-comment-badge { padding:0 6px; border-radius:4px; background:var(--ui-accent-soft); color:var(--ui-link); font:500 11px/16px var(--ui-face); }
+.ui-comment-body > p { margin:2px 0 0; font:400 15px/20px var(--ui-face); }
+.ui-comment-meta { display:flex; align-items:center; gap:12px; font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.ui-comment-meta > button { min-height:44px; margin:-14px 0; padding:0; border:0; background:none; color:var(--ui-text-2); font:500 13px/16px var(--ui-face); }
+.ui-comment-like { width:44px; min-height:44px; flex:none; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; color:var(--ui-text-2); font:400 12px/14px var(--ui-face); font-variant-numeric:tabular-nums; }
+.ui-comment-like svg { width:18px; height:18px; }
+/* Красное только сердце: число красным на белом не держит 4.5:1 */
+.ui-comment-like.is-on svg { color:#e64646; fill:currentColor; }
+.ui-comment-more { align-self:flex-start; min-height:44px; margin-left:64px; padding:0; border:0; background:none; color:var(--ui-link); font:500 15px/20px var(--ui-face); }
+
+/* Лист действий iOS под «тремя точками»: две группы, пункты 57, «Отмена» отдельно и жирным.
+   Живёт поверх экрана в любой теме и на старых экранах, поэтому цвета свои */
+.action-sheet { position:absolute; inset:0; z-index:60; display:flex; flex-direction:column; justify-content:flex-end; gap:8px; padding:0 8px calc(var(--safe-bottom, 34px) + 8px); background:rgba(0,0,0,.4); animation:as-in .2s ease-out; }
+.action-sheet-group { display:flex; flex-direction:column; overflow:hidden; border-radius:14px; background:rgba(242,242,247,.96); }
+.action-sheet-item, .action-sheet-cancel { display:block; width:100%; min-height:57px; padding:0 16px; border:0; background:none; text-align:center; color:#007aff; font:400 20px/24px -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif; cursor:pointer; }
+.action-sheet-item + .action-sheet-item { box-shadow:inset 0 .5px 0 rgba(60,60,67,.29); }
+.action-sheet-item.is-destructive { color:#ff3b30; }
+.action-sheet button:focus:not(:focus-visible) { outline:none; }
+.action-sheet-cancel { border-radius:14px; background:#fff; font-weight:600; }
+.ui.vk-dark .action-sheet-group { background:rgba(44,44,46,.96); } .ui.vk-dark .action-sheet-cancel { background:#2c2c2e; } .ui.vk-dark :is(.action-sheet-item, .action-sheet-cancel) { color:#0a84ff; } .ui.vk-dark .action-sheet-item.is-destructive { color:#ff453a; }
+@keyframes as-in { from { opacity:0; } }
+
+/* Отказ в доступе — пустое состояние iOS. Работает и в оболочке .ui, и на старых экранах:
+   цвета берутся из токенов .ui, а без них — из акцента концепта (--accent-fill) */
+.ui-denied { display:flex; flex-direction:column; align-items:center; gap:6px; padding:28px 32px; text-align:center; font-family:var(--ui-face, inherit); color:var(--ui-text, inherit); }
+.ui-denied > svg { width:48px; height:48px; margin-bottom:6px; fill:none; stroke:currentColor; stroke-width:1.4; color:var(--ui-text-2, currentColor); opacity:.8; }
+.ui-denied > strong { font:600 17px/22px var(--ui-face, inherit); }
+.ui-denied > span { font:400 15px/20px var(--ui-face, inherit); color:var(--ui-text-2, inherit); opacity:.85; }
+.ui-denied-btn { min-height:44px; margin-top:6px; padding:0 16px; border:0; background:none; color:var(--ui-link, var(--accent, #0077FF)); font:500 16px/20px var(--ui-face, inherit); cursor:pointer; }
 .ui-placeholder { display:flex; flex-direction:column; align-items:center; gap:8px; padding:32px 32px; text-align:center; }
 .ui-placeholder-ico { width:56px; height:56px; margin-bottom:8px; display:grid; place-items:center; color:var(--ui-text-2); }
 .ui-placeholder-ico svg { width:56px; height:56px; stroke-width:1.4; }

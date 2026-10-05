@@ -12,8 +12,8 @@ export default (ui) => ui.screen({
       ui.bubble({ out: true, text: 'Беру дополнение и жетоны', time: '12:11', read: true }),
       ui.voice({ dur: '0:12', time: '12:14' }),
     ])),
-    ui.denied('voip', 'Звонок стола выключен — договоритесь в сообщениях'),
-    ui.denied('mic', 'Голосовые выключены — напишите сообщение'),
-    ui.composer({ attach: { go: 'compose' }, mic: { ask: 'mic|chat|chat' } }),
+    ui.denied('voip'),
+    ui.denied('mic'),
+    ui.composer({ attach: { label: 'Прикрепить', menu: ['Снять поле?camera', 'Фото из галереи?photos'] }, mic: { ask: 'mic|chat|chat' } }),
   ],
 });

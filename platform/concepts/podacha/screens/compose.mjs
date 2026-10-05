@@ -12,8 +12,8 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'map-pin', title: 'Место', sub: 'Кухня, рынок или кафе рядом', ask: 'location|place|place' }),
         ui.cell({ icon: 'utensils', title: 'Проверенный рецепт', sub: 'Ингредиенты, замены и шаги', go: 'recipe' }),
       ] }) }),
-      ui.denied('camera', 'Камера выключена — выберите готовый кадр или опубликуйте текст'),
-      ui.denied('photos', 'Медиатека закрыта — снимите новый кадр'),
+      ui.denied('camera'),
+      ui.denied('photos'),
     ]),
   ],
 });

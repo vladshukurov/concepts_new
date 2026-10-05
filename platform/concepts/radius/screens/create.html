@@ -22,12 +22,8 @@
       </div>
     </div>
     <div class="rd-create-cancel" data-go="create">Отмена</div>
-    <div class="rd-denied-box perm-hidden" data-show-denied="camera,mic">
-      Камера или микрофон недоступны. Можно загрузить готовое видео.
-    </div>
-    <div class="rd-denied-box perm-hidden" data-show-denied="photo">
-      Медиатека недоступна. Можно снять новое видео.
-    </div>
+    <div class="perm-hidden ui-denied" data-show-denied="camera,mic"><svg><use href="#i-camera"/></svg><strong>Нет доступа к камере</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
+    
   </div>
   <div class="tabbar rd-tabs">
     <div class="tab" data-go="home" aria-label="Раздел Главная">

@@ -30,36 +30,9 @@
       <div class="group-foot wide">Метки: эстакада · ручник · откат. По ним заметка найдётся из плана занятия.</div>
     </div>
 
-    <div class="nk-group perm-hidden" data-show-denied="mic">
-      <div class="errbox">
-        <span class="errbox-ico"><svg class="ico-svg"><use href="#i-mic-off"/></svg></span>
-        <div>
-          <div class="t-headline">Микрофон запрещён</div>
-          <div class="nk-meta">Заметка набирается текстом — привязка к времени и месту остаётся</div>
-        </div>
-      </div>
-      <div class="nk-list">
-        <div class="row">
-          <span class="field-label">Время</span>
-          <input class="field-input" type="text" value="7:41" readonly aria-label="Время заметки">
-        </div>
-        <div class="row">
-          <span class="field-label is-error">Заметка</span>
-          <input class="field-input is-error" type="text" placeholder="Что случилось" readonly aria-label="Текст заметки">
-        </div>
-      </div>
-      <p class="field-caption is-error">Без микрофона текст обязателен — иначе заметку не к чему привязать</p>
-    </div>
+    <div class="perm-hidden ui-denied" data-show-denied="mic"><svg><use href="#i-mic"/></svg><strong>Нет доступа к микрофону</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
 
-    <div class="nk-group perm-hidden" data-show-denied="speech">
-      <div class="errbox">
-        <span class="errbox-ico"><svg class="ico-svg"><use href="#i-circle-alert"/></svg></span>
-        <div>
-          <div class="t-headline">Расшифровки не будет</div>
-          <div class="nk-meta">Заметка осталась звуком: её можно слушать, но не искать словом</div>
-        </div>
-      </div>
-    </div>
+    <div class="perm-hidden ui-denied" data-show-denied="speech"><svg><use href="#i-audio-lines"/></svg><strong>Нет доступа к распознаванию речи</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
 
     <div class="nk-group">
       <div class="sec-head">

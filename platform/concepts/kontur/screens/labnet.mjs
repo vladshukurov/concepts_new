@@ -10,13 +10,11 @@ export default (ui) => ui.screen({
           ui.cell({ icon: 'wifi', title: 'Lab-Red', sub: 'Сканер Noritsu доступен', value: '5 ГГц' }),
           ui.cell({ icon: 'repeat-2', title: 'Проверить сеть', activate: 'wifiinfo|labnet', primary: true }),
         ] }),
-        ui.granted('wifiinfo', 'Вы в сети Lab-Red · сканер рядом'),
-        ui.denied('wifiinfo', 'Имя сети не читается — выберите лабораторию вручную'),
+        ui.denied('wifiinfo'),
       ] }),
       ui.section({ children: [
         ui.actions([ui.button({ label: 'Подключиться к Lab-Red', icon: 'wifi', variant: 'secondary', block: true, ask: 'hotspot|labnet|labnet' })]),
-        ui.granted('hotspot', 'Подключено к Lab-Red'),
-        ui.denied('hotspot', 'Подключитесь через Настройки iOS и вернитесь'),
+        ui.denied('hotspot'),
       ] }),
       ui.section({ children: ui.group({ cells: [
         ui.cell({ icon: 'scan-line', title: 'Сканер', sub: 'Noritsu HS-1800 · свободен' }),

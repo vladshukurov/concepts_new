@@ -15,7 +15,7 @@ export default (ui) => ui.screen({
           ui.cell({ icon: 'map-pin', title: 'Мы на месте', sub: 'Отметка для соседей', toast: 'Отмечено: группа на месте' }),
           ui.cell({ icon: 'route', title: 'Где автобус', sub: 'Автобус выехал в 09:34', go: 'route' }),
         ] }),
-        ui.denied('locationalways', 'Дорогу можно отметить кнопкой «Мы на месте»'),
+        ui.denied('locationalways'),
       ] }),
       ui.section({ title: 'Кто едет', meta: '24', children: ui.list([
         who(ui, 'АВ', 'Анна Викторовна', 'Старшая группы, у ворот с 09:10'),

@@ -16,9 +16,9 @@ export const direct = (ui, { id, initial, name, status, items }) => ui.screen({
   body: [
     ui.chatNav({ initial, name, status, call: { activate: 'voip|call' } }),
     ui.scroll(ui.chat(items)),
-    ui.denied('voip', 'Звонки выключены — остаются сообщения и голосовые'),
-    ui.denied('photos', 'Фото можно отправить позже'),
-    ui.denied('mic', 'Голосовые выключены — напишите сообщение'),
+    ui.denied('voip'),
+    ui.denied('photos'),
+    ui.denied('mic'),
     ui.composer({ attach: { ask: `photos|${id}|${id}` }, mic: { ask: `mic|${id}|${id}` } }),
   ],
 });

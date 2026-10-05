@@ -18,9 +18,8 @@ export default (ui) => ui.screen({
           ui.cell({ icon: 'calendar-plus', title: 'В календарь', sub: `Сегодня, ${tonight.start}`, ask: 'calendar|table|table' }),
           ui.cell({ icon: 'bell', title: 'Следить за столом', sub: 'Если место освободится или время сдвинут', toggle: false, ask: 'push|table|table' }),
         ] }),
-        ui.granted('calendar', `Партия в календаре · сегодня, ${tonight.start}`),
-        ui.denied('calendar', 'Время остаётся в карточке стола'),
-        ui.denied('push', 'Изменения видны в карточке стола'),
+        ui.denied('calendar'),
+        ui.denied('push'),
       ] }),
       ui.section({ title: 'За столом', meta: `${tonight.taken} из ${tonight.seats}`, children: ui.list([
         ui.row({ lead: ui.avatar(people.masha.initial), title: people.masha.name, sub: 'Собрала стол' }),

@@ -6,15 +6,14 @@ export default (ui) => ui.screen({
     ui.nav({ title: 'Защита и вход' }),
     ui.scroll([
       ui.section({ children: ui.actions([ui.button({ label: 'Включить Face ID', icon: 'scan-face', block: true, primary: true, ask: 'faceid|security|security' })]) }),
-      ui.granted('faceid', 'Лабораторный журнал открывается по Face ID'),
-      ui.denied('faceid', 'Face ID недоступен — используется код устройства'),
+      ui.denied('faceid'),
       ui.section({ children: [
         ui.group({ cells: [
           ui.cell({ icon: 'key', title: 'Вход на сайте', sub: 'Аккаунт kontur.photo', toggle: false, activate: 'autofill|security' }),
           ui.cell({ icon: 'lock', title: 'Код устройства', sub: 'Резервный способ', value: 'Включён', toast: 'Код устройства включён' }),
           ui.cell({ icon: 'smartphone', title: 'Активные устройства', sub: 'iPhone и лабораторный Mac', toast: 'Устройства открыты' }),
         ] }),
-        ui.denied('autofill', 'Вход на сайте доступен вручную'),
+        ui.denied('autofill'),
       ] }),
     ]),
   ],

@@ -16,7 +16,7 @@ export default (ui) => ui.screen({
           ui.cell({ icon: 'bell', title: 'Следить за проектом', sub: 'Когда появится новый этап', toggle: false, ask: 'push|project|project' }),
           ui.cell({ icon: 'layout-grid', title: 'Виджет проекта', sub: 'Следующий шаг на экране «Домой»', activate: 'appgroups|widget' }),
         ], className: 'uz-gap' }),
-        ui.denied('push', 'Новые этапы видны в ленте'),
+        ui.denied('push'),
       ] }),
     ]),
   ],

@@ -7,8 +7,7 @@ export default (ui) => ui.screen({
     ui.nav({ title: 'Участники клуба' }),
     ui.scroll([
       ui.section({ children: [ui.search({ placeholder: 'Имя, навык или мастерская' }), ui.actions([ui.button({ label: 'Найти участников', icon: 'users', variant: 'secondary', block: true, ask: 'contacts|contacts|contacts', primary: true })], { className: 'uz-gap' })] }),
-      ui.granted('contacts', 'Двое из ваших контактов уже в клубе'),
-      ui.denied('contacts', 'Ищите по имени, навыку или мастерской'),
+      ui.denied('contacts'),
       ui.section({ title: 'Знакомые', children: ui.list(['marina', 'anton', 'irina'].map((k) => ui.row({ lead: ui.avatar(people[k].initial), title: people[k].name, sub: people[k].about, go: 'chat' }))) }),
     ]),
   ],

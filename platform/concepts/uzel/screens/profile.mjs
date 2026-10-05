@@ -11,7 +11,7 @@ export default (ui) => ui.screen({
       ui.cell({ icon: 'key', title: 'Каталоги деталей', value: '2 входа', go: 'credentials' }),
       ui.cell({ icon: 'shield', title: 'Приватность', go: 'privacy' }),
       ui.cell({ icon: 'user', title: 'Аккаунт', sub: '+7 900 123-45-67', go: 'account' }),
-    ] }), ui.granted('commnotif', 'Сообщения приходят с именем и фото')] }),
+    ] })] }),
     ui.section({ title: 'Публичная активность', children: ui.list([
       ui.row({ lead: ui.leadIcon('lamp', { accent: true }), title: `Новый этап · ${lamp.title}`, sub: 'Сегодня · 24 отметки «Полезно»', go: 'project' }),
     ]) }),

@@ -15,8 +15,7 @@ export default (ui) => ui.screen({
       ]) }),
       ui.section({ children: [
         ui.actions([ui.button({ label: 'Включить уведомления', icon: 'bell', block: true, ask: 'push|notif|notif', primary: true })]),
-        ui.granted('push', 'Уведомления включены · накануне и при изменениях'),
-        ui.denied('push', 'Новое видно при открытии приложения'),
+        ui.denied('push'),
       ] }),
     ]),
   ],

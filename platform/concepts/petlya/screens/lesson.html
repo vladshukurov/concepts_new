@@ -37,12 +37,7 @@
                 <svg class="ico-svg" style="width:17px;height:17px"><use href="#i-mic"/></svg>
                 Считать голосом
               </div>
-              <div class="perm-hidden" data-show-denied="speech,mic">
-                <div class="ios-stepper" aria-label="Ряд">
-                  <button type="button" aria-label="Меньше"><svg class="ico-svg"><use href="#i-minus"/></svg></button>
-                  <button type="button" aria-label="Больше"><svg class="ico-svg"><use href="#i-plus"/></svg></button>
-                </div>
-              </div>
+              <div class="perm-hidden ui-denied" data-show-denied="speech,mic"><svg><use href="#i-audio-lines"/></svg><strong>Нет доступа к распознаванию речи</strong><span>Разрешите доступ в Настройках</span><button class="ui-denied-btn" data-toast="Откроются Настройки iOS">Открыть Настройки</button></div>
             </div>
 
             <div class="body-scroll chart-scroll light">
@@ -56,7 +51,7 @@
                 <span><b>/</b>убавка вправо</span>
                 <span><b>\</b>убавка влево</span>
               </div>
-              <div class="t-footnote perm-hidden" style="color:var(--accent-fill);margin-top:14px" data-show-denied="localnet">Cast недоступен — нет доступа к локальной сети</div>
+              
             </div>
             <div class="home-ind" aria-hidden="true"></div>
           </div>

@@ -10,7 +10,7 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'message-circle', title: 'Сообщения', sub: 'С именем и фото отправителя', toggle: false, activate: 'commnotif|settings' }),
         ui.cell({ icon: 'eye', title: 'Кто видит партии', value: 'Подписчики', toast: 'Партии видят подписчики' }),
         ui.cell({ icon: 'dices', title: 'Коллекция', value: 'Видна всем', toast: 'Коллекция видна всем' }),
-      ] }), ui.granted('commnotif', 'Сообщения приходят с именем и фото')] }),
+      ] })] }),
     ]),
   ],
 });
