@@ -18,8 +18,9 @@ export const POSITIONING_MODES = {
 /**
  * Модель контента (контракт 4): только то, что создаёт сам человек, и оно остаётся у него.
  * Готовый контент из библиотек — курсы, стриминг, каталоги — не годится: доступ
- * тогда заслуживает чужой контент, а не фича. Лента и обмен с другими тоже нет.
- * Исключение одно — набор «Мессенджер»: переписка и есть его продукт.
+ * тогда заслуживает чужой контент, а не фича. Ленты нет: ни публикаций для других,
+ * ни комментариев, ни подписок. Переписка и звонки с людьми остаются в любом концепте;
+ * у набора «Мессенджер» переписка — сам контент (kind: messages).
  */
 export const CONTENT_KINDS = {
   diary: 'дневник',
@@ -34,6 +35,10 @@ export const namePrefixes = (targetSet) => TARGET_SETS[targetSet]?.namePrefixes 
 export const targetSetKeys = (targetSet) => TARGET_SETS[targetSet] || null;
 
 export const archetypeFor = (targetSet) => ARCHETYPES[targetSet] || null;
+/* Контракт 4 судит по профилям без ленты; контракты 1–3 ещё принимают прежние паттерны и вкладки */
+const isV4 = (spec) => (spec.qualityContractVersion || 1) >= 4;
+export const archetypePatterns = (archetype, spec) => (isV4(spec) ? archetype.patterns : { ...archetype.patterns, ...archetype.legacyPatterns });
+const archetypeNavRoles = (archetype, spec) => (isV4(spec) ? archetype.requiredNavigationRoles : archetype.legacyNavigationRoles || archetype.requiredNavigationRoles) || [];
 
 const nonEmptyList = (value, min = 1) => Array.isArray(value)
   && value.length >= min
@@ -92,12 +97,12 @@ export function assessConceptReadiness(spec, ids = new Set((spec.screens || []).
     const evidence = spec.positioning.referenceEvidence;
     if (!itemList(evidence, 3)) add('positioning.referenceEvidence: для мимикрии нужно минимум 3 связи pattern → screen → behavior');
     else evidence.forEach((row, index) => {
-      if (!archetype.patterns[row.pattern]) add(`positioning.referenceEvidence[${index}].pattern: «${row.pattern}» отсутствует в архетипе`);
+      if (!archetypePatterns(archetype, spec)[row.pattern]) add(`positioning.referenceEvidence[${index}].pattern: «${row.pattern}» отсутствует в архетипе`);
       if (!ids.has(row.screen)) add(`positioning.referenceEvidence[${index}].screen: «${row.screen}» не существует`);
       if (vague(row.behavior)) add(`positioning.referenceEvidence[${index}].behavior: нужно наблюдаемое поведение`);
     });
     const navRoles = new Set((spec.tabs || []).map((tab) => tab.role));
-    for (const role of archetype.requiredNavigationRoles || []) if (!navRoles.has(role)) add(`tabs: мимикрия ${spec.targetSet} не покрывает обязательную роль «${role}»`);
+    for (const role of archetypeNavRoles(archetype, spec)) if (!navRoles.has(role)) add(`tabs: мимикрия ${spec.targetSet} не покрывает обязательную роль «${role}»`);
   }
   return { issues, summary: { contract: spec.qualityContractVersion, research: readiness.referenceResearch?.length || 0, critiques: readiness.productCritique?.length || 0, passes: spec.qualityContractVersion >= 3 ? 'evidence' : (readiness.visualPasses?.length || 0) } };
 }
@@ -111,7 +116,7 @@ function validateContract4(spec) {
   else if ((content.kind === 'messages') !== messenger) err.push(messenger ? 'product.content.kind: у мессенджера контент — переписка (messages)' : 'product.content.kind: переписка допустима только в наборе «Мессенджер»');
   if (content.library !== false) err.push('product.content.library: готового контента из библиотек нет — ожидается false');
   if (content.feed !== false) err.push('product.content.feed: ленты нет — ожидается false');
-  if (!messenger && content.sharing !== false) err.push('product.content.sharing: контент остаётся у человека — ожидается false');
+  if (!messenger && content.sharing !== false) err.push('product.content.sharing: свои записи не публикуются для других — ожидается false');
   if (vague(content.what)) err.push('product.content.what: что именно создаёт человек — конкретно');
 
   const prefixes = namePrefixes(spec.targetSet);
@@ -170,7 +175,7 @@ export function validateConceptQuality(spec, ids) {
     else {
       if (!categories.includes(archetype.category)) err.push(`мимикрия под ${spec.targetSet}: категория App Store должна включать ${archetype.category}`);
       if (!nonEmptyList(positioning.referencePatterns, 3)) err.push('positioning.referencePatterns: для мимикрии нужно минимум 3 паттерна референса');
-      else for (const pattern of positioning.referencePatterns) if (!archetype.patterns[pattern]) err.push(`positioning.referencePatterns: «${pattern}» отсутствует в профиле ${spec.targetSet}`);
+      else for (const pattern of positioning.referencePatterns) if (!archetypePatterns(archetype, spec)[pattern]) err.push(`positioning.referencePatterns: «${pattern}» отсутствует в профиле ${spec.targetSet}`);
     }
   }
   return err;

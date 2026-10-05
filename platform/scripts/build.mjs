@@ -40,7 +40,7 @@ import {
   transitionTable,
   screenActionsHtml,
 } from "./screen-map.mjs";
-import { archetypeFor } from "./concept-quality.mjs";
+import { archetypeFor, archetypePatterns } from "./concept-quality.mjs";
 import { renderMarkdown } from "./markdown.mjs";
 
 const read = (f) => readFileSync(f, "utf8");
@@ -1043,7 +1043,7 @@ const productContract = (spec) => {
   const slice = spec.product.verticalSlice;
   const archetype = archetypeFor(spec.targetSet);
   const referencePatterns = (spec.positioning.referencePatterns || []).map(
-    (id) => archetype?.patterns[id] || id,
+    (id) => (archetype ? archetypePatterns(archetype, spec)[id] : null) || id,
   );
   return `<div class="product-contract">
   <div class="product-facts">

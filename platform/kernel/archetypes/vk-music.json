@@ -2,20 +2,44 @@
   "id": "vk-music",
   "label": "ВК Музыка",
   "category": "Music",
-  "contentModel": ["track", "release", "artist", "playlist"],
-  "navigation": ["home", "search", "library", "profile"],
-  "requiredNavigationRoles": ["home", "search", "library"],
+  "contentModel": [
+    "track",
+    "release",
+    "artist",
+    "playlist"
+  ],
+  "navigation": [
+    "home",
+    "search",
+    "library",
+    "profile"
+  ],
+  "requiredNavigationRoles": [
+    "home",
+    "library"
+  ],
+  "legacyNavigationRoles": [
+    "home",
+    "search",
+    "library"
+  ],
   "productInvariants": [
-    "Контент можно запустить не глубже чем за два действия от главной",
+    "Своя запись запускается не глубже чем за два действия от главной",
     "Текущий playback не теряется при переходе между корневыми разделами",
-    "Поиск, библиотека и контекст произведения решают разные пользовательские задачи"
+    "Библиотека — только записи человека: демо, голосовые, репетиции; каталога и стриминга нет"
   ],
   "patterns": {
+    "own-recordings": "Библиотека своих записей",
+    "record": "Запись голоса или инструмента",
+    "audio-player": "Плеер с обложкой, прогрессом и управлением",
+    "background-playback": "Звук продолжается с погашенным экраном, Now Playing на локскрине",
+    "playlists": "Свои подборки из своих записей"
+  },
+  "legacyPatterns": {
     "audio-library": "Библиотека произведений и сохранённого",
-    "audio-player": "Плеер с очередью и контекстом произведения",
-    "background-playback": "Продолжение сценария при погашенном экране",
     "release-detail": "Карточка релиза, программы или коллекции",
     "search-discovery": "Поиск и открытие нового контента"
   },
-  "density": "library-first"
+  "density": "library-first",
+  "$comment": "patterns и requiredNavigationRoles — контракт 4 (личный UGC без ленты); legacy* принимаются только контрактами 1–3"
 }

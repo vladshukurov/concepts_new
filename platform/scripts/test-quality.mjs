@@ -50,7 +50,7 @@ const materialize = (mode, targetSet, category, patterns) => JSON.parse(template
   .replaceAll('__REFERENCE_PATTERN_2__', patterns[1])
   .replaceAll('__REFERENCE_PATTERN_3__', patterns[2]));
 
-const draftMimicry = materialize('mimicry', 'vk-video', 'Photo & Video', ['video-feed', 'vertical-clips', 'immersive-player']);
+const draftMimicry = materialize('mimicry', 'vk-video', 'Photo & Video', ['own-library', 'vertical-clips', 'immersive-player']);
 const draftDifferentiation = materialize('differentiation', 'vk-music', 'Utilities', ['Паттерн 1', 'Паттерн 2', 'Паттерн 3']);
 validate(draftMimicry, 'smoke-mimicry');
 validate(draftDifferentiation, 'smoke-differentiation');

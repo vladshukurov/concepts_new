@@ -2,20 +2,46 @@
   "id": "vkontakte",
   "label": "ВКонтакте",
   "category": "Social Networking",
-  "contentModel": ["person", "post", "relationship", "media"],
-  "navigation": ["feed", "discovery", "publishing", "profile"],
-  "requiredNavigationRoles": ["feed", "profile"],
+  "contentModel": [
+    "person",
+    "post",
+    "relationship",
+    "media"
+  ],
+  "navigation": [
+    "feed",
+    "discovery",
+    "publishing",
+    "profile"
+  ],
+  "requiredNavigationRoles": [
+    "home",
+    "messenger",
+    "profile"
+  ],
+  "legacyNavigationRoles": [
+    "feed",
+    "profile"
+  ],
   "productInvariants": [
-    "Лента состоит из публикаций узнаваемых авторов или сообществ, а не из редакционных карточек",
-    "Профиль показывает идентичность, связи и собственную активность",
-    "Подписки, публичные действия и создание публикации доступны из устойчивой социальной навигации"
+    "Главная — свои записи и дела человека по времени, а не лента чужих публикаций",
+    "Мессенджер — полноценный раздел: диалоги, чат, голосовые и звонок",
+    "Профиль показывает идентичность, свои коллекции и активность — без подписчиков и подписок",
+    "Создание записи с медиа доступно из устойчивой навигации"
   ],
   "patterns": {
-    "social-feed": "Лента обновлений от знакомого графа",
+    "own-journal": "Свои записи по времени: заметки, фото, голосовые — как лента, но только свои",
+    "create-post": "Создание записи с медиа",
     "messaging": "Личные и групповые разговоры",
-    "profile": "Идентичность, связи и собственная активность",
-    "create-post": "Создание публикации с медиа",
+    "calls": "Аудио- и видеозвонок из диалога",
+    "profile": "Идентичность, свои коллекции и активность",
+    "albums": "Альбомы и коллекции своих записей",
+    "services-menu": "Меню сервисов двумя колонками"
+  },
+  "legacyPatterns": {
+    "social-feed": "Лента обновлений от знакомого графа",
     "communities": "Группа как отдельный социальный контекст"
   },
-  "density": "social-dense"
+  "density": "social-dense",
+  "$comment": "patterns и requiredNavigationRoles — контракт 4 (личный UGC без ленты); legacy* принимаются только контрактами 1–3"
 }
