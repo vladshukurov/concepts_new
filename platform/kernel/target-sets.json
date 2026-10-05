@@ -1,0 +1,41 @@
+{
+  "$comment": "Целевые наборы доступов: продукт-референс, правило названия и ключи модели (kernel/access-model.json). must — концепт несёт каждый; nice — распределяются между вариантами как отличие; excluded — ключи набора, которые проект не заявляет, с причиной. Наборы раньше жили только текстом в PLAYBOOK §3, и проверить их было нечем.",
+  "version": 1,
+  "sets": {
+    "vkontakte": {
+      "label": "ВКонтакте", "reference": "соцсеть",
+      "namePrefixes": ["В", "Вк", "В к"],
+      "must": ["push", "appgroups", "keychain", "camera", "photos", "mic", "location", "fetch", "remotenotif", "bgtask", "commnotif", "autofill", "wifiinfo"],
+      "nice": ["tracking", "contacts", "speech", "faceid", "voip", "calendar", "audio", "hotspot"],
+      "excluded": { "associateddomains": "диплинков не делаем (CLAUDE.md)" }
+    },
+    "vk-video": {
+      "label": "ВК Видео", "reference": "видеосервис",
+      "namePrefixes": ["Ви", "В"],
+      "must": ["photosadd", "localnetwork", "mic", "location", "tracking", "camera", "photos", "audio", "push"],
+      "nice": [],
+      "excluded": { "associateddomains": "диплинков не делаем (CLAUDE.md)" }
+    },
+    "vk-music": {
+      "label": "ВК Музыка", "reference": "музыкальное приложение",
+      "namePrefixes": ["М", "Му"],
+      "must": ["camera", "photos", "audio", "push"],
+      "nice": [],
+      "excluded": { "associateddomains": "диплинков не делаем (CLAUDE.md)" }
+    },
+    "ok": {
+      "label": "Одноклассники", "reference": "соцсеть",
+      "namePrefixes": ["О", "Ок"],
+      "must": ["camera", "photos", "photosadd", "mic", "contacts", "location", "locationalways", "localnetwork", "wifiinfo", "push", "commnotif", "voip", "audio", "remotenotif", "fetch", "processing", "bgtask", "keychain", "tracking"],
+      "nice": [],
+      "excluded": { "associateddomains": "диплинков не делаем (CLAUDE.md)" }
+    },
+    "messenger": {
+      "label": "Мессенджер", "reference": "мессенджер уровня Telegram и WhatsApp",
+      "namePrefixes": [],
+      "must": ["push", "appgroups", "keychain", "commnotif", "hotspot", "faceid", "camera", "photos", "mic", "location", "audio", "fetch", "bgtask", "remotenotif", "processing", "calendar", "calendarwrite", "wifiinfo", "tracking", "voip", "contacts", "notifext", "shareext"],
+      "nice": [],
+      "excluded": { "associateddomains": "диплинков не делаем (CLAUDE.md); в исходном списке набора — Universal Links для авторизации" }
+    }
+  }
+}

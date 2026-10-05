@@ -4,12 +4,34 @@ import { ROOT } from './paths.mjs';
 
 const readJson = (file) => JSON.parse(readFileSync(join(ROOT, 'kernel', file), 'utf8'));
 const RECIPES = readJson('screen-recipes.json');
-const ARCHETYPES = Object.fromEntries(['vk-music', 'vk-video', 'vkontakte', 'ok'].map((id) => [id, readJson(`archetypes/${id}.json`)]));
+const ARCHETYPES = Object.fromEntries(['vk-music', 'vk-video', 'vkontakte', 'ok', 'messenger'].map((id) => [id, readJson(`archetypes/${id}.json`)]));
+const TARGET_SETS = readJson('target-sets.json').sets;
+const ACCESS = readJson('access-model.json').keys;
 
+/* Ключи режимов остались прежними, смысл уточнён: полная мимикрия — категория референса
+   (соцсеть, музыка, видео, мессенджер), частичная — наш интерфейс, но другая категория */
 export const POSITIONING_MODES = {
-  mimicry: { label: 'Мимикрия', description: 'Знакомая грамматика продукта-референса в собственной нише' },
-  differentiation: { label: 'Отстройка', description: 'Самостоятельный продукт на том же наборе доступов' },
+  mimicry: { label: 'Полная мимикрия', description: 'Категория референса — соцсеть, музыка, видео или мессенджер — в его же грамматике' },
+  differentiation: { label: 'Частичная мимикрия', description: 'Интерфейс референса, но своя категория: садоводам, бегунам, мастерам' },
 };
+
+/**
+ * Модель контента (контракт 4): только то, что создаёт сам человек, и оно остаётся у него.
+ * Готовый контент из библиотек — курсы, стриминг, каталоги — не годится: доступ
+ * тогда заслуживает чужой контент, а не фича. Лента и обмен с другими тоже нет.
+ * Исключение одно — набор «Мессенджер»: переписка и есть его продукт.
+ */
+export const CONTENT_KINDS = {
+  diary: 'дневник',
+  'av-notes': 'видео- и аудиозаметки',
+  todo: 'список дел',
+  editor: 'простой редактор',
+  messages: 'переписка (только набор «Мессенджер»)',
+};
+
+/** Название начинается с одного из префиксов набора; пустой список — без правила. */
+export const namePrefixes = (targetSet) => TARGET_SETS[targetSet]?.namePrefixes || [];
+export const targetSetKeys = (targetSet) => TARGET_SETS[targetSet] || null;
 
 export const archetypeFor = (targetSet) => ARCHETYPES[targetSet] || null;
 
@@ -17,7 +39,7 @@ const nonEmptyList = (value, min = 1) => Array.isArray(value)
   && value.length >= min
   && value.every((item) => typeof item === 'string' && item.trim());
 
-const PLACEHOLDER = /(?:заполн|замен|пример|паттерн\s*\d|как\s+пользователь\s+узна[её]т\s+паттерн|причина\s+вернуться\s*\d|шаг\s*\d|ось\s+отстройки|одна\s+фраза|кто\s+конкретно|в\s+какой\s+наблюдаемой|что\s+сейчас|какой\s+наблюдаемый|почему\s+это|что\s+продукт\s+сознательно|какая\s+соседняя\s+задача|действие,\s+которому)/i;
+const PLACEHOLDER = /(?:заполн|замен|пример|паттерн\s*\d|как\s+пользователь\s+узна[её]т\s+паттерн|причина\s+вернуться\s*\d|шаг\s*\d|ось\s+отстройки|одна\s+фраза|кто\s+конкретно|в\s+какой\s+наблюдаемой|что\s+сейчас|какой\s+наблюдаемый|почему\s+это|что\s+продукт\s+сознательно|какая\s+соседняя\s+задача|действие,\s+которому|в\s+какой\s+момент\s+дня\s+и\s+сценария|почему\s+без\s+этого\s+доступа|что\s+оста[её]тся\s+у\s+человека\s+после|что\s+именно\s+создаёт\s+человек)/i;
 const vague = (value) => typeof value !== 'string' || value.trim().length < 18 || PLACEHOLDER.test(value);
 const itemList = (value, min = 1) => Array.isArray(value) && value.length >= min && value.every((item) => item && typeof item === 'object');
 
@@ -62,6 +84,9 @@ export function assessConceptReadiness(spec, ids = new Set((spec.screens || []).
     });
   }
 
+  /* Контракт 4 — требование готовности: черновик собирается, proof и публикация — нет */
+  if (spec.qualityContractVersion >= 4) validateContract4(spec).forEach(add);
+
   const archetype = archetypeFor(spec.targetSet);
   if (spec.positioning?.mode === 'mimicry' && archetype) {
     const evidence = spec.positioning.referenceEvidence;
@@ -77,10 +102,45 @@ export function assessConceptReadiness(spec, ids = new Set((spec.screens || []).
   return { issues, summary: { contract: spec.qualityContractVersion, research: readiness.referenceResearch?.length || 0, critiques: readiness.productCritique?.length || 0, passes: spec.qualityContractVersion >= 3 ? 'evidence' : (readiness.visualPasses?.length || 0) } };
 }
 
+/** Контракт 4: модель контента, правило названия, обоснование доступов и полнота набора. Входит в readiness. */
+function validateContract4(spec) {
+  const err = [];
+  const content = spec.product?.content || {};
+  const messenger = spec.targetSet === 'messenger';
+  if (!CONTENT_KINDS[content.kind]) err.push(`product.content.kind: ожидается одно из ${Object.keys(CONTENT_KINDS).join(', ')}`);
+  else if ((content.kind === 'messages') !== messenger) err.push(messenger ? 'product.content.kind: у мессенджера контент — переписка (messages)' : 'product.content.kind: переписка допустима только в наборе «Мессенджер»');
+  if (content.library !== false) err.push('product.content.library: готового контента из библиотек нет — ожидается false');
+  if (content.feed !== false) err.push('product.content.feed: ленты нет — ожидается false');
+  if (!messenger && content.sharing !== false) err.push('product.content.sharing: контент остаётся у человека — ожидается false');
+  if (vague(content.what)) err.push('product.content.what: что именно создаёт человек — конкретно');
+
+  const prefixes = namePrefixes(spec.targetSet);
+  const name = String(spec.name || '');
+  if (prefixes.length && !prefixes.some((p) => name.toLowerCase().startsWith(p.toLowerCase()))) {
+    err.push(`name «${name}»: в наборе ${spec.targetSet} название начинается с ${prefixes.map((p) => `«${p}»`).join(', ')}`);
+  }
+
+  const set = targetSetKeys(spec.targetSet);
+  const keys = new Set((spec.permissions || []).map((p) => p.key));
+  if (set) {
+    for (const key of set.must) if (!keys.has(key)) err.push(`permissions: набор ${spec.targetSet} требует ${key}`);
+    for (const key of Object.keys(set.excluded || {})) if (keys.has(key)) err.push(`permissions: ${key} не заявляем — ${set.excluded[key]}`);
+  }
+  /* Обоснование — четыре ответа, без которых доступ не защитить на ревью */
+  for (const p of spec.permissions || []) {
+    const r = p.rationale || {};
+    for (const [field, question] of [['who', 'кто'], ['moment', 'в какой момент'], ['need', 'почему без доступа фича не работает'], ['without', 'что остаётся без него']]) {
+      if (vague(r[field])) err.push(`permissions.${p.key}.rationale.${field}: ${question} — конкретно`);
+    }
+    if (!ACCESS[p.key]) err.push(`permissions.${p.key}: ключа нет в access-model.json`);
+  }
+  return err;
+}
+
 export function validateConceptQuality(spec, ids) {
   const err = [];
   const product = spec.product || {};
-  if (![1, 2, 3].includes(spec.qualityContractVersion)) err.push('qualityContractVersion: ожидается 1, 2 или 3');
+  if (![1, 2, 3, 4].includes(spec.qualityContractVersion)) err.push('qualityContractVersion: ожидается 1–4');
   if (!nonEmptyList(product.returnReasons, 3)) err.push('product.returnReasons: нужно минимум 3 конкретные причины вернуться');
 
   const slice = product.verticalSlice;

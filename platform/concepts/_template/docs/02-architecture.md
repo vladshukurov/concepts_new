@@ -33,6 +33,13 @@
 <!-- @generated:perm-matrix -->
 <!-- @end -->
 
+## Обоснование доступов
+
+Кто, когда и почему без доступа фича не работает — из `permissions[].rationale`.
+
+<!-- @generated:access-rationale -->
+<!-- @end -->
+
 ## Почему здесь нет бэкенда
 
 <!-- @generated:backendless -->

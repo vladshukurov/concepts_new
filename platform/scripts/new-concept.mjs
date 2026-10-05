@@ -30,11 +30,11 @@ if (requestedMode === 'mimicry' && !TARGET_PRODUCTS[targetSet]) { console.error(
 
 /* Тема оболочки `.ui` (kernel/base.css) выводится из набора и стратегии:
    мимикрия ВК Музыки и ВК Видео — тёмная, всё остальное — светлое.
-   Наборы ОК — оранжевый акцент, остальные — синий ВК. Отстройка берёт ту же
+   Наборы ОК — оранжевый акцент, остальные — синий ВК. Частичная мимикрия берёт ту же
    оболочку: самобытность даёт композиция экранов и доменные компоненты,
    а не свой цвет. */
 const theme = requestedMode === 'mimicry' && ['vk-music', 'vk-video'].includes(targetSet) ? 'vk-dark'
-  : targetSet === 'ok' ? 'ok-light' : 'vk-light';
+  : targetSet === 'ok' ? 'ok-light' : 'vk-light'; /* мессенджер — тоже vk-light: UI по нашим правилам, продукт как у Telegram и WhatsApp */
 const [accent, accentDark] = targetSet === 'ok' ? ['#FF7700', '#FF7700'] : ['#0077FF', '#0077FF'];
 
 const dir = conceptDir(slug);

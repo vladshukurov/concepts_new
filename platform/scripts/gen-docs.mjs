@@ -82,6 +82,16 @@ const BLOCKS = {
       return `| \`${p.plist}\` | ${cell(p.gesture)} | ${cell(screen)} | ${cell(p.fallback)} | ${risk} |`;
     }),
   ],
+  /* Обоснование доступа: кто, когда, почему без него фича не работает и что остаётся.
+     Пишется один раз в concept.json (permissions[].rationale), здесь только выводится */
+  'access-rationale': (spec) => [
+    '| Ключ | Кто | Когда | Почему без доступа не работает | Что остаётся после отказа |',
+    '|---|---|---|---|---|',
+    ...spec.permissions.map((p) => {
+      const r = p.rationale || {};
+      return `| \`${p.key}\` | ${cell(r.who || '—')} | ${cell(r.moment || '—')} | ${cell(r.need || '—')} | ${cell(r.without || '—')} |`;
+    }),
+  ],
   'store-meta': (spec) => {
     const a = spec.appStore;
     const row = (k, v, limit) => `| ${k} | ${cell(v)} | ${limit ? `${[...String(v)].length} / ${limit}` : '—'} |`;

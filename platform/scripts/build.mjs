@@ -1060,7 +1060,7 @@ const productContract = (spec) => {
     <ol>${spec.product.coreLoop.map((step) => `<li>${esc(step)}</li>`).join("")}</ol>
     <b>Знакомые паттерны</b>
     <ul>${spec.positioning.familiarPatterns.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
-    <b>Отстройка</b>
+    <b>Свои отличия</b>
     <ul>${spec.positioning.distinctions.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
     ${referencePatterns.length ? `<b>Паттерны референса</b><ul>${referencePatterns.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>` : ""}
     <b>Вертикальный срез</b>

@@ -315,6 +315,19 @@ function lint(slug) {
     if (ev.pattern === 'immersive-player' && !/class="ui-player\b/.test(effectiveMarkup[ev.screen] || '')) P(`паттерн immersive-player заявлен на экране ${ev.screen}, а плеера (ui.player) там нет`);
   }
 
+  /* —— контракт 4: только свой контент, без ленты и обмена —— */
+  /* Спека может сказать «ленты нет», а экраны — собраны из постов и комментариев.
+     Проверяется разметка: чужие публикации, комментарии, истории, подписки, а вне
+     набора «Мессенджер» — ещё и переписка */
+  if (spec.qualityContractVersion >= 4) {
+    const banned = [['ui-post', 'публикации ленты'], ['ui-comments', 'комментарии'], ['ui-stories', 'истории'], ['ui-users-stack', 'кто идёт из других людей']];
+    if (spec.targetSet !== 'messenger') banned.push(['ui-dialog', 'диалоги'], ['ui-chat', 'переписка'], ['ui-call', 'звонок']);
+    for (const [id, html] of Object.entries(effectiveMarkup)) {
+      for (const [cls, what] of banned) if (new RegExp(`class="[^"]*\\b${cls}\\b`).test(html)) P(`экран ${id}: ${what} (${cls}) — контент остаётся у человека, без ленты и обмена`);
+      if (/>\s*Подписаться\s*</.test(html)) P(`экран ${id}: «Подписаться» — подписок на других людей нет`);
+    }
+  }
+
   /* —— жест доступа совпадает с кнопкой —— */
   /* Спека обещает ревьюеру «нажмите «Проверить кадр»», а на экране кнопка
      давно называется иначе — такой маршрут в review notes ведёт в никуда. */

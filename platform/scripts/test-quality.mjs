@@ -58,6 +58,8 @@ assert.ok(assessConceptReadiness(draftMimicry).issues.length > 5, 'чернов�
 assert.ok(assessConceptReadiness(draftDifferentiation).issues.length > 5, 'черновая отстройка не должна считаться готовой');
 
 const ready = materialize('mimicry', 'vk-video', 'Photo & Video', ['video-feed', 'vertical-clips', 'immersive-player']);
+/* Эталон readiness v3: видеокаталог с концертами — по контракту 4 это готовый контент, его покрывают v4-тесты ниже */
+ready.qualityContractVersion = 3;
 Object.assign(ready.product, {
   audience: 'Зрители локальных концертов, которые следят за конкретными артистами',
   situation: 'Пользователь открывает приложение перед эфиром или после пропущенного выступления',
@@ -175,4 +177,28 @@ const belowTargetAge = materialize('differentiation', 'vk-music', 'Utilities', [
 belowTargetAge.appStore.ageRating = '9+';
 assert.throws(() => validate(belowTargetAge, 'smoke-differentiation'), /ниже 13\+ у ВК Музыка/);
 
-console.log(`контракт качества: ${listConcepts().length} концептов · 13 негативных evals · detector fixtures · readiness v2/v3 · UI v3`);
+/* —— контракт 4: модель контента, название, обоснование, полнота набора —— */
+const RATIONALE = { who: 'Мама второклассника перед родительским собранием', moment: 'Вечером, когда записывает вопросы к учителю', need: 'Голосовая заметка пишется только с микрофона, текстом вопрос не успеть', without: 'Остаётся текстовая заметка с тем же вопросом и сроком' };
+const v4 = (targetSet, name, keys) => ({
+  qualityContractVersion: 4, targetSet, name,
+  product: { content: { kind: targetSet === 'messenger' ? 'messages' : 'av-notes', what: 'Голосовые и видеозаметки к своим делам', library: false, feed: false, sharing: false } },
+  permissions: keys.map((key) => ({ key, rationale: { ...RATIONALE } })),
+});
+const v4Issues = (spec) => assessConceptReadiness(spec).issues.filter((i) => /content|name|rationale|permissions/.test(i));
+const fullSet = (id) => JSON.parse(readFileSync(new URL('../kernel/target-sets.json', import.meta.url), 'utf8')).sets[id].must;
+assert.deepEqual(v4Issues(v4('vk-music', 'Мурашки', fullSet('vk-music'))), [], 'корректный v4-концепт ВК Музыки');
+assert.deepEqual(v4Issues(v4('messenger', 'Сверка', fullSet('messenger'))), [], 'мессенджер без правила букв и с перепиской');
+assert.ok(v4Issues(v4('vkontakte', 'Двор', fullSet('vkontakte'))).some((i) => /начинается с «В»/.test(i)), 'название ВКонтакте не с «В» отклоняется');
+assert.ok(v4Issues(v4('ok', 'Соседи', fullSet('ok'))).some((i) => /«О»/.test(i)), 'название ОК не с «О» отклоняется');
+const library = v4('vk-music', 'Мурашки', fullSet('vk-music')); library.product.content.library = true;
+assert.ok(v4Issues(library).some((i) => /library/.test(i)), 'готовый контент отклоняется');
+const feed = v4('vk-video', 'Видеодневник', fullSet('vk-video')); feed.product.content.feed = true;
+assert.ok(v4Issues(feed).some((i) => /feed/.test(i)), 'лента отклоняется');
+const chatOutside = v4('vkontakte', 'Вкладыш', fullSet('vkontakte')); chatOutside.product.content.kind = 'messages';
+assert.ok(v4Issues(chatOutside).some((i) => /только в наборе/.test(i)), 'переписка вне мессенджера отклоняется');
+const noRationale = v4('vk-music', 'Мурашки', fullSet('vk-music')); delete noRationale.permissions[0].rationale;
+assert.ok(v4Issues(noRationale).some((i) => /rationale\.who/.test(i)), 'доступ без обоснования отклоняется');
+assert.ok(v4Issues(v4('messenger', 'Сверка', ['push'])).some((i) => /требует voip/.test(i)), 'неполный набор мессенджера отклоняется');
+assert.ok(v4Issues(v4('vk-music', 'Мурашки', [...fullSet('vk-music'), 'associateddomains'])).some((i) => /диплинков/.test(i)), 'associated-domains не заявляется');
+
+console.log(`контракт качества: ${listConcepts().length} концептов · 23 негативных evals · detector fixtures · readiness v2/v3/v4 · UI v3`);

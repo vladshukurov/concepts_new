@@ -198,8 +198,8 @@ const gallery = (items) => {
       <span class="control-label">Стратегия</span>
       <nav class="mode-tabs" aria-label="Стратегия концепта">
         <button class="mode-tab is-on" type="button" data-mode-filter="all" aria-pressed="true">Все</button>
-        <button class="mode-tab" type="button" data-mode-filter="mimicry" aria-pressed="false">Мимикрия</button>
-        <button class="mode-tab" type="button" data-mode-filter="differentiation" aria-pressed="false">Отстройка</button>
+        <button class="mode-tab" type="button" data-mode-filter="mimicry" aria-pressed="false">${POSITIONING_MODES.mimicry.label}</button>
+        <button class="mode-tab" type="button" data-mode-filter="differentiation" aria-pressed="false">${POSITIONING_MODES.differentiation.label}</button>
       </nav>
     </div>
     <label class="set-picker">

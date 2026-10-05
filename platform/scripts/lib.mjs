@@ -13,6 +13,7 @@ export const TARGET_PRODUCTS = {
   'vk-video': { label: 'ВК Видео', short: 'Видео', ageRating: '13+' },
   vkontakte: { label: 'ВКонтакте', short: 'ВКонтакте', ageRating: '13+' },
   ok: { label: 'Одноклассники', short: 'ОК', ageRating: '13+' },
+  messenger: { label: 'Мессенджер', short: 'Мессенджер', ageRating: '13+' },
 };
 
 const CURRENT_AGE_RATINGS = new Set(['4+', '9+', '13+', '16+', '18+']);
