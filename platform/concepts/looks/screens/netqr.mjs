@@ -10,6 +10,7 @@ export default (ui) => ui.screen({
         ui.list([ui.row({ lead: ui.leadIcon('qr-code', { round: true }), title: swap.network, sub: `Код со стойки у входа · ${swap.networkUntil}` })]),
         ui.actions([ui.button({ label: 'Подключиться', icon: 'wifi', block: true, ask: 'hotspot|netqr|netqr', primary: true })]),
         ui.denied('hotspot'),
+        ui.list([ui.row({ lead: ui.leadIcon('wifi', { round: true, accent: true }), title: 'Подключено', sub: `${swap.network} · сигнал отличный`, shownAfter: 'hotspot' })]),
       ] }),
       ui.section({ title: 'Сети площадок', children: ui.group({ cells: [
         ui.cell({ icon: 'wifi', title: 'Новая Голландия', value: 'рядом' }),

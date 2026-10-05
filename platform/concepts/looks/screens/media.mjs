@@ -1,6 +1,6 @@
 import { THEME, P } from './_shared.mjs';
 
-const shots = [P.marina, P.lera, P.yulia, P.mark, P.marina, P.lera, P.yulia, P.mark, P.marina];
+const shots = Array.from({ length: 9 }, (_, i) => (i === 0 ? P.marina : 'ph'));
 export default (ui) => ui.screen({
   id: 'media', theme: THEME,
   body: [

@@ -4,22 +4,22 @@ import { swap } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'nearby', theme: THEME,
   body: ui.scroll([
-    ui.largeTitle('Рядом', ui.iconButton({ icon: 'search', label: 'Поиск событий', toast: 'Поиск событий и авторов' })),
+    ui.largeTitle('Рядом'),
+    ui.section({ children: [
+      ui.actions([ui.button({ label: 'Показать рядом со мной', icon: 'navigation', variant: 'secondary', block: true, ask: 'location|nearby|nearby' })]),
+      ui.list([ui.row({ lead: ui.leadIcon('navigation', { round: true, accent: true }), title: 'Ближе всего: своп в Новой Голландии', sub: '2,4 км · 31 минута пешком', go: 'swap', shownAfter: 'location' })]),
+    ] }),
     ui.denied('location'),
     ui.section({ title: 'Свопы и встречи', children: ui.list([
       ui.row({ lead: ui.leadIcon('', { text: '23' }), title: swap.title, sub: `Идёт до ${swap.hours.split('–')[1]} · 2,4 км`, go: 'swap' }),
-      ui.row({ lead: ui.leadIcon('', { text: '24' }), title: 'Барахолка на Ваське', sub: 'Воскресенье, 12:00 · 5,1 км', go: 'swap' }),
-      ui.row({ lead: ui.leadIcon('', { text: '28' }), title: 'Разбор гардероба на Рубинштейна', sub: '19:30 · 1,2 км', go: 'talk' }),
+      ui.row({ lead: ui.leadIcon('', { text: '24' }), title: 'Барахолка на Ваське', sub: 'Воскресенье, 12:00 · 5,1 км' }),
+      ui.row({ lead: ui.leadIcon('', { text: '28' }), title: 'Разбор гардероба на Рубинштейна', sub: '19:30 · 1,2 км' }),
     ]) }),
-    ui.section({ title: 'Авторы рядом', meta: '24', children: ui.list([
-      ui.row({ thumb: `${P.lera} is-round`, title: 'Лера Савина', sub: 'Петроградская · 18 общих', end: { value: 'подписаны' }, go: 'post' }),
-      ui.row({ thumb: `${P.yulia} is-round`, title: 'Юля Карпова', sub: 'Васильевский · 12 общих', end: { value: 'Подписаться', toast: 'Вы подписались на Юлю', label: 'Подписаться на Юлю' } }),
-      ui.row({ thumb: `${P.mark} is-round`, title: 'Марк Зотов', sub: 'Коломна · 9 общих', end: { value: 'Подписаться', toast: 'Вы подписались на Марка', label: 'Подписаться на Марка' } }),
+    ui.section({ title: 'Винтаж и ателье рядом', meta: '9', children: ui.list([
+      ui.row({ lead: ui.leadIcon('store'), title: 'Винтаж на Большой Пушкарской', sub: '600 м · пальто и жакеты 90‑х · до 21:00' }),
+      ui.row({ lead: ui.leadIcon('scissors'), title: 'Ателье «Подшив»', sub: '1,1 км · подшить джинсы за день, от 700 ₽' }),
+      ui.row({ lead: ui.leadIcon('store'), title: 'Комиссионка на Кронверкском', sub: '1,8 км · принимают по четвергам' }),
     ]) }),
-    ui.section({ title: 'Что носят в районе', children: [
-      ui.list([ui.row({ thumb: P.marina, title: 'Петроградская сторона', sub: 'Спокойные фактуры и длинные пальто · 84 публикации', go: 'clip', primary: true })]),
-      ui.actions([ui.button({ label: 'Смотреть подборку', variant: 'secondary', block: true, go: 'clip' })], { className: 'lk-gap' }),
-    ] }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'nearby' }),
 });

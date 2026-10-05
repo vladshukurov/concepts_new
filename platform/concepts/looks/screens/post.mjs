@@ -1,17 +1,25 @@
 import { THEME, P, tags } from './_shared.mjs';
+import { own } from '../model.mjs';
 
+/* Свой образ целиком: кадры, вещи, когда носила — и отправить Лере в чат, если нужен совет */
 export default (ui) => ui.screen({
   id: 'post', theme: THEME,
   body: [
-    ui.nav({ title: 'Публикация', trailing: ui.iconButton({ icon: 'share', label: 'Поделиться', toast: 'Ссылка скопирована' }) }),
+    ui.nav({ title: 'Образ', trailing: ui.iconButton({ icon: 'ellipsis', label: 'Действия с образом', menu: ['Изменить', 'Отправить Лере>chat', 'Удалить'] }) }),
     ui.scroll([
-      ui.post({ author: { face: P.lera, name: 'Лера Савина', meta: '12 минут назад · Санкт-Петербург', action: { go: 'swap' } }, text: 'Три способа носить винтажный жакет. В первом — тонкий трикотаж и прямые джинсы, остальные в карусели', media: P.lera, attach: tags('Жакет · винтаж', 'Трикотаж', 'Джинсы', 'Лоферы'), likes: 428, comments: 31, shares: 12 }),
-      ui.section({ children: ui.actions([ui.button({ label: 'Написать Лере', icon: 'message-circle', variant: 'secondary', block: true, go: 'chat' })]) }),
-      ui.comments({ count: 31, items: [
-        { face: P.yulia, name: 'Юля Карпова', text: 'Очень нравится пропорция. А какая длина у жакета?', time: '8 мин', likes: 12 },
-        { face: P.lera, name: 'Лера Савина', text: 'Чуть ниже бедра, примерно 74 см — это даёт вертикаль', time: '5 мин', likes: 9, reply: true, author: true },
-      ] }),
+      ui.entry({ icon: 'shirt', title: own.today.title, meta: `${own.today.when} · ${own.today.worn}`, photos: [P.marina], text: 'Жакет поверх тонкого трикотажа, джинсы прямые — в офис и на своп одинаково' }),
+      ui.section({ title: 'Вещи', meta: '4', children: ui.list([
+        ui.row({ lead: ui.leadIcon('shirt'), title: 'Жакет · винтаж', sub: 'Надевала 9 раз · с ноября', tags: ['item'] }),
+        ui.row({ lead: ui.leadIcon('shirt'), title: 'Тонкий трикотаж, серый', sub: 'Надевала 14 раз · любимая основа' }),
+        ui.row({ lead: ui.leadIcon('shirt'), title: 'Прямые джинсы', sub: 'Надевала 22 раза · пора подшить' }),
+        ui.row({ lead: ui.leadIcon('footprints'), title: 'Лоферы', sub: 'Надевала 6 раз · натирают в дождь' }),
+      ]) }),
+      ui.section({ title: 'Когда носила', children: ui.list([
+        ui.row({ lead: ui.leadIcon('', { text: '23' }), title: 'Сегодня, своп в Новой Голландии', sub: '+14°, солнце' }),
+        ui.row({ lead: ui.leadIcon('', { text: '12' }), title: '12 мая, встреча с Юрой', sub: '+11°, ветер · жакет оказался кстати' }),
+        ui.row({ lead: ui.leadIcon('', { text: '2' }), title: '2 мая, работа', sub: '+9° · без трикотажа было холодно' }),
+      ]) }),
+      ui.section({ children: ui.actions([ui.button({ label: 'Отправить Лере', icon: 'message-circle', variant: 'secondary', block: true, go: 'chat' })]) }),
     ]),
-    ui.composer({ placeholder: 'Комментарий', attach: { label: 'Прикрепить', menu: ['Камера>camera', 'Фото>media'] }, send: { toast: 'Комментарий отправлен' } }),
   ],
 });

@@ -365,14 +365,16 @@ export function comments({ count, items, more }) {
 /**
  * Своя запись в ленте — как пост ВК, но без автора, лайков и комментариев: всё на
  * главной создал сам человек. icon — тип записи; meta — когда и раздел; photos —
- * сколько кадров-заглушек (кадр — суть записи); voice — { dur } голосовой заметки;
+ * сколько кадров-заглушек (кадр — суть записи) или список классов фото; voice — { dur } голосовой заметки;
  * attach — своя разметка вложения; status — { label, accent }; actions — кнопки
  * под записью ({ label, icon, ...action }); menu — пункты «трёх точек»; open — переход.
  */
 export function entry({ icon: ic, title, meta, text, photos = 0, voice, attach, status, actions: acts = [], menu, open, className, tags }) {
-  const head = `<div class="ui-entry-head">${leadIcon(ic, { round: true, accent: true })}<span class="ui-entry-who"><strong>${title}</strong><span>${meta}</span></span>${status ? badge(status.label, { accent: status.accent }) : ''}${menu ? iconButton({ icon: 'ellipsis', label: `Действия с записью: ${String(title).replace(/<[^>]+>/g, '')}`, menu }) : ''}</div>`;
+  const head = `<div class="ui-entry-head">${leadIcon(ic, { round: true, accent: true })}${open ? `<button class="ui-entry-who"${act({ label: String(title).replace(/<[^>]+>/g, ''), ...open })}><strong>${title}</strong><span>${meta}</span></button>` : `<span class="ui-entry-who"><strong>${title}</strong><span>${meta}</span></span>`}${status ? badge(status.label, { accent: status.accent }) : ''}${menu ? iconButton({ icon: 'ellipsis', label: `Действия с записью: ${String(title).replace(/<[^>]+>/g, '')}`, menu }) : ''}</div>`;
   const body = text ? (open ? `<button class="ui-entry-text"${act({ label: String(title).replace(/<[^>]+>/g, ''), ...open })}>${text}</button>` : `<p class="ui-entry-text">${text}</p>`) : '';
-  const media = photos ? `<div class="${cls('ui-entry-photos', `is-${Math.min(photos, 3)}`)}">${Array.from({ length: Math.min(photos, 3) }, () => '<span class="ph"></span>').join('')}${photos > 3 ? `<b>+${photos - 3}</b>` : ''}</div>` : '';
+  /* photos — число кадров-заглушек или список классов фото концепта */
+  const shots = Array.isArray(photos) ? photos : Array.from({ length: photos }, () => 'ph');
+  const media = shots.length ? `<div class="${cls('ui-entry-photos', `is-${Math.min(shots.length, 3)}`)}">${shots.slice(0, 3).map((c) => `<span class="${c}"></span>`).join('')}${shots.length > 3 ? `<b>+${shots.length - 3}</b>` : ''}</div>` : '';
   const audio = voice ? `<div class="ui-entry-voice">${play({ size: 's', label: `Голосовая заметка ${voice.dur}`, toast: `Воспроизведение ${voice.dur}` })}${wave(voice.dur + title)}<span>${voice.dur}</span></div>` : '';
   const foot = acts.length ? `<div class="ui-entry-actions">${acts.map(({ label, icon: bi, ...a }) => `<button class="ui-entry-act"${act({ label, ...a })}>${bi ? icon(bi) : ''}<span>${label}</span></button>`).join('')}</div>` : '';
   return `<article class="${cls('ui-entry', className)}"${tagsAttr(tags)}>${head}${body}${media}${audio}${attach ? `<div class="ui-entry-attach">${attach}</div>` : ''}${foot}</article>`;

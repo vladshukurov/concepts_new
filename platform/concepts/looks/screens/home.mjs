@@ -1,32 +1,40 @@
 import { THEME, TABS, P, tags } from './_shared.mjs';
+import { own, item } from '../model.mjs';
 
+/* Свой лукбук: всё на главной сняла и записала сама Марина. Чужих образов, лайков
+   и подписок нет — с людьми говорят в мессенджере и встречаются на свопах */
 export default (ui) => ui.screen({
   id: 'home', theme: THEME,
   body: ui.scroll([
-    ui.top(ui.wordmark({ name: 'Образы' }), [ui.iconButton({ icon: 'plus', label: 'Новая публикация', go: 'create' })]),
-    ui.stories([
-      { label: 'История', icon: 'plus', seen: true, go: 'create' },
-      { label: 'Лера', face: P.lera, go: 'post' },
-      { label: 'Юля', face: P.yulia, go: 'clip' },
-      { label: 'Марк', face: P.mark, seen: true, go: 'profile' },
-      { label: 'Рядом', icon: 'map-pin', seen: true, ask: 'location|nearby|nearby' },
-    ]),
-    ui.post({
-      author: { face: P.lera, name: 'Лера Савина', meta: '12 минут назад · Санкт-Петербург', action: { go: 'post' } },
-      text: 'Три способа носить винтажный жакет — без ощущения, что вы собираетесь в офис',
-      media: P.lera, attach: tags('Жакет · винтаж', 'Трикотаж', 'Прямые джинсы', 'Лоферы'),
-      likes: 428, comments: 31, shares: 12, views: '4,1K', open: { go: 'post' }, discuss: { go: 'post' },
-      menu: ['Скрыть', 'Пожаловаться'],
-    }),
-    ui.section({ title: 'Разбор гардероба', more: { go: 'talk', label: 'Все разборы' }, children: ui.list([
-      ui.row({ lead: ui.leadIcon('headphones', { accent: true }), title: 'Разобрать шкаф за один вечер', sub: 'Аня Дёмина · пауза на 12:04', go: 'talk' }),
-      ui.row({ lead: ui.leadIcon('headphones'), title: 'Три пары брюк на осень', sub: '34:06 · вышел вчера', end: '<span class="ui-row-end is-value"><span class="dl is-busy"><svg><use href="#i-loader-circle"/></svg>62 %</span></span>', go: 'talk' }),
+    ui.top(ui.wordmark({ name: 'Вешалка' }), [ui.iconButton({ icon: 'plus', label: 'Новый образ', go: 'create' })]),
+    ui.section({ children: ui.chips([
+      { label: 'Все', on: true, filter: 'all' },
+      { label: 'Образы', filter: 'look' },
+      { label: 'Вещи', filter: 'item' },
+      { label: 'На своп', filter: 'swap' },
     ]) }),
-    ui.post({
-      author: { face: P.yulia, name: 'Юля Карпова', meta: 'час назад · Васильевский остров', action: { go: 'clip' } },
-      text: 'Один яркий цвет и три спокойных сочетания к нему',
-      media: P.yulia, likes: 196, comments: 14, shares: 6, open: { go: 'clip' },
+    ui.entry({
+      icon: 'cloud-rain', title: own.plan.title, meta: `${own.plan.weather} · собрано к утру`,
+      attach: tags(...own.plan.items), actions: [{ label: 'Надену', icon: 'check', toast: 'План на завтра сохранён' }], tags: ['look'],
     }),
+    ui.entry({
+      icon: 'shirt', title: own.today.title, meta: `${own.today.when} · ${own.today.worn}`, photos: [P.marina],
+      attach: tags(...own.today.items), open: { go: 'post' }, menu: ['Изменить', 'Удалить'], tags: ['look', 'item'],
+    }),
+    ui.entry({
+      icon: 'repeat-2', title: `${own.swapItem.title} · ${own.swapItem.count}`, meta: 'своп сегодня до 15:00', status: { label: 'на проверке', accent: true },
+      text: `${item.title}. ${own.swapItem.note}`, actions: [{ label: 'Открыть своп', icon: 'repeat-2', go: 'swap' }], tags: ['swap', 'item'],
+    }),
+    ui.entry({ icon: 'mic', title: own.voice.title, meta: `${own.voice.when} · разбор голосом`, voice: { dur: own.voice.dur }, open: { go: 'talk' }, tags: ['item'] }),
+    ui.entry({
+      icon: 'megaphone', title: 'Винтаж на Большой Пушкарской', meta: '600 м · реклама',
+      text: 'Пальто и жакеты из 90‑х, примерка без записи до 21:00', actions: [{ label: 'Настроить рекламу', icon: 'sliders-horizontal', go: 'ads' }],
+    }),
+    ui.entry({
+      icon: 'link', title: own.find.title, meta: `${own.find.when} · из Safari`, text: `${own.find.price} · ${own.find.site} · под серое пальто, померить рукав`,
+      actions: [{ label: 'В план', icon: 'plus', toast: 'Добавлено в план образа' }], tags: ['item'],
+    }),
+    ui.entry({ icon: 'video', title: own.clip.title, meta: `${own.clip.when} · клип ${own.clip.dur}`, photos: [P.marina], open: { go: 'clip' }, tags: ['look'] }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'home' }),
 });

@@ -1592,16 +1592,17 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .ui-entry-head { display:flex; align-items:center; gap:12px; padding:0 4px 0 16px; min-height:44px; }
 .ui-entry-head .ui-lead { width:44px; height:44px; }
 .ui-entry-head .ui-lead svg { width:22px; height:22px; }
-.ui-entry-who { flex:1; min-width:0; display:flex; flex-direction:column; }
+.ui-entry-who { flex:1; min-width:0; min-height:44px; display:flex; flex-direction:column; justify-content:center; padding:0; text-align:left; }
 .ui-entry-who > strong { font:600 15px/20px var(--ui-face); }
 .ui-entry-who > span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
 .ui-entry-head > .ui-badge { margin-right:8px; }
 .ui-entry-text { display:block; width:100%; margin:0; padding:8px 16px 4px; font:400 15px/20px var(--ui-face); text-align:left; }
 .ui-entry-photos { display:grid; gap:2px; margin:8px 0 0; position:relative; }
-.ui-entry-photos.is-1 { grid-template-columns:1fr; } .ui-entry-photos.is-1 > .ph { aspect-ratio:4/3; }
+.ui-entry-photos.is-1 { grid-template-columns:1fr; } .ui-entry-photos.is-1 > span { aspect-ratio:4/3; }
 .ui-entry-photos.is-2 { grid-template-columns:1fr 1fr; } .ui-entry-photos.is-3 { grid-template-columns:2fr 1fr; grid-template-rows:1fr 1fr; }
-.ui-entry-photos.is-2 > .ph, .ui-entry-photos.is-3 > .ph { aspect-ratio:1; }
-.ui-entry-photos.is-3 > .ph:first-child { grid-row:span 2; aspect-ratio:auto; }
+.ui-entry-photos.is-2 > span, .ui-entry-photos.is-3 > span { aspect-ratio:1; }
+.ui-entry-photos.is-3 > span:first-child { grid-row:span 2; aspect-ratio:auto; }
+.ui-entry-photos > span { background-size:cover; background-position:center top; }
 .ui-entry-photos > b { position:absolute; right:8px; bottom:8px; padding:2px 8px; border-radius:10px; background:rgba(0,0,0,.55); color:#fff; font:600 13px/18px var(--ui-face); }
 .ui-entry-voice { display:flex; align-items:center; gap:10px; margin:8px 16px 0; padding:6px 12px 6px 6px; border-radius:22px; box-shadow:inset 0 0 0 1px var(--ui-line); width:fit-content; }
 .ui-entry-voice > span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); font-variant-numeric:tabular-nums; }

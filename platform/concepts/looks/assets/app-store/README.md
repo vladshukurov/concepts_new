@@ -1,4 +1,4 @@
-# Образы — App Store assets
+# Вешалка — App Store assets
 
 Сгенерировано из живого прототипа командой `npm run app-store -- looks`.
 

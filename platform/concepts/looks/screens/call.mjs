@@ -6,7 +6,7 @@ export default (ui) => ui.screen({
   body: ui.callView({ face: P.lera, name: people.lera.name, status: `Проверка: ${item.short} · 00:48`, controls: [
     { icon: 'mic-off', label: 'Микрофон', toast: 'Микрофон выключен' },
     { icon: 'video', label: 'Камера', toast: 'Камера включена' },
-    { icon: 'repeat-2', label: 'Повернуть', toast: 'Задняя камера' },
+    { icon: 'switch-camera', label: 'Повернуть', toast: 'Задняя камера' },
     { icon: 'phone-off', label: 'Завершить', end: true, go: 'swap', primary: true },
   ] }),
 });

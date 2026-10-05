@@ -8,11 +8,10 @@
 .lk-p2 { background-image:url(assets/media/photo-2.jpg); }
 .lk-p3 { background-image:url(assets/media/photo-3.jpg); }
 .lk-p4 { background-image:url(assets/media/photo-4.jpg); }
-.ui-post-media.lk-p1, .ui-post-media.lk-p2, .ui-post-media.lk-p3, .ui-post-media.lk-p4 { aspect-ratio:4/5; }
 
 /* Отмеченные вещи под образом */
 .lk-tags { display:flex; flex-wrap:wrap; gap:6px; }
-.lk-tags > span { display:inline-flex; align-items:center; gap:4px; padding:4px 10px; border-radius:14px; background:var(--ui-card-2); font:500 13px/16px var(--ui-face); }
+.lk-tags > span { display:inline-flex; align-items:center; gap:4px; padding:4px 10px; border-radius:14px; box-shadow:inset 0 0 0 1px var(--ui-line); font:500 13px/16px var(--ui-face); }
 .lk-tags svg { width:14px; height:14px; color:var(--ui-link); }
 
 /* Своп: карточка события */
@@ -115,7 +114,7 @@
 .lk-quicktype { position:absolute; left:0; right:0; bottom:0; padding:8px 8px calc(var(--safe-bottom) + 8px); background:#d1d4d9; }
 .lk-quicktype > button { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; min-height:44px; border-radius:8px; background:#fff; font:500 15px/20px var(--ui-face); color:#000; }
 .lk-quicktype > button svg { width:18px; height:18px; color:var(--ui-accent); }
-.lk-gap { margin-top:12px; }
 .lk-author strong { white-space:nowrap; }
 .lk-clip .ui-btn.is-secondary { background:rgba(255,255,255,.2); color:#fff; }
 .lk-note-text { padding:0 16px; font:400 16px/22px var(--ui-face); }
+
