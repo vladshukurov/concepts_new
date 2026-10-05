@@ -1271,9 +1271,8 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui:is(.vk-light,.ok-light) .ui-thumb.is-round { border-radius:50%; }
 /* Счётчики в светлой теме: ровные серые плитки, число и подпись по центру */
 .ui:is(.vk-light,.ok-light) .ui-stats { gap:8px; }
-/* Счётчики профиля как в ВК: число и подпись без серой плашки, между ними тонкая линия */
-.ui:is(.vk-light,.ok-light) .ui-stat { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; min-height:56px; padding:6px 8px; border-radius:0; background:none!important; text-align:center; }
-.ui:is(.vk-light,.ok-light) .ui-stat + .ui-stat { box-shadow:inset 1px 0 0 var(--ui-line); }
+/* Счётчики профиля — серые плитки на белом: решение владельца продукта, не дефект gray-in-white */
+.ui:is(.vk-light,.ok-light) .ui-stat { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; min-height:64px; padding:10px 8px; border-radius:12px; background:var(--ui-card-2)!important; text-align:center; }
 .ui:is(.vk-light,.ok-light) .ui-stat > strong { font:600 18px/22px var(--ui-face); }
 .ui:is(.vk-light,.ok-light) .ui-stat > span { font:400 13px/16px var(--ui-face); }
 /* Секция из групп ячеек — это экран настроек: белые группы на сером, без белой подложки */

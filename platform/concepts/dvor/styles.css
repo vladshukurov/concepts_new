@@ -4,8 +4,8 @@
    шахматка квартир, карточка гостевой сети и домофон. Фото нет — `.ph`. */
 
 /* Схема двора: корпуса, площадка, парковка и метки заявок */
-.dv-map { position:relative; height:220px; margin:0 16px; border-radius:12px; background:var(--ui-card); box-shadow:inset 0 0 0 1px var(--ui-line); overflow:hidden; }
-.dv-block { position:absolute; display:grid; place-items:center; border-radius:6px; background:var(--ui-card); box-shadow:inset 0 0 0 1.5px var(--ui-line); font:600 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.dv-map { position:relative; height:220px; margin:0 16px; border-radius:12px; background:#eef1f4; overflow:hidden; }
+.dv-block { position:absolute; display:grid; place-items:center; border-radius:6px; background:#d5dbe2; font:600 13px/16px var(--ui-face); color:#4c5663; }
 .dv-b10 { left:6%; top:12%; width:26%; height:30%; }
 .dv-b12 { left:40%; top:10%; width:30%; height:36%; background:var(--ui-accent-soft); color:var(--ui-text); box-shadow:inset 0 0 0 2px var(--ui-accent); }
 .dv-b14 { left:74%; top:14%; width:20%; height:44%; }
