@@ -16,9 +16,14 @@ export default (ui) => ui.screen({
         ui.denied('camera'),
       ] }),
       ui.section({ children: ui.group({ cells: [
-        ui.cell({ icon: 'wifi', title: 'Сеть', value: 'Dvor-Guest' }),
         ui.cell({ icon: 'key', title: 'Пароль', value: 'dvor-2026', toast: 'Пароль скопирован' }),
+        ui.cell({ icon: 'clock', title: 'Действует', value: 'до 30 апреля' }),
       ] }) }),
+      ui.section({ title: 'Где ловит', children: ui.list([
+        ui.row({ lead: ui.leadIcon('map-pin'), title: 'Лавочки у 3 подъезда', sub: 'Роутер на козырьке · сигнал отличный' }),
+        ui.row({ lead: ui.leadIcon('map-pin'), title: 'Детская площадка', sub: 'Слабо, у горки пропадает' }),
+        ui.row({ lead: ui.leadIcon('map-pin'), title: 'Колясочная', sub: 'Не ловит' }),
+      ]) }),
     ]),
   ],
 });

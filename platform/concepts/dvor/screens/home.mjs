@@ -26,7 +26,7 @@ export default (ui) => ui.screen({
       actions: [{ label: 'Все счётчики', icon: 'gauge', go: 'meters' }], tags: ['meters'],
     }),
     ui.entry({
-      icon: 'megaphone', title: 'Сантехник на выезд', meta: 'Полевая, 10 · реклама',
+      icon: 'megaphone', title: 'Сантехник на выезд', meta: 'по городу · реклама',
       text: 'Замена доводчика и смесителя от 900 ₽, приедут сегодня до 18:00', actions: [{ label: 'Настроить рекламу', icon: 'sliders-horizontal', go: 'ads' }],
     }),
     ui.entry({ icon: 'mic', title: journal.voice.title, meta: `${journal.voice.when} · заметка`, voice: { dur: journal.voice.dur }, menu: ['Изменить', 'Удалить'], tags: ['repair'] }),

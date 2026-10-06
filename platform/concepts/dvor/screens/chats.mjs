@@ -10,6 +10,8 @@ export default (ui) => ui.screen({
       ui.dialog({ initial: '3П', name: '3 подъезд · 18 жильцов', text: 'Пётр: код калитки теперь 4417', time: '9:07', unread: 7, muted: true, go: 'chat' }),
       ui.dialog({ initial: 'ПИ', name: 'Пётр Ильин, кв. 66', text: 'На 14-е беру отгул, встречу бригаду', time: 'вчера', you: true, go: 'chat' }),
       ui.dialog({ initial: 'УК', name: 'Управляющая компания', text: 'Елена: мастер будет с 16:00', time: '9:21', unread: 1, go: 'ukchat' }),
+      ui.dialog({ initial: 'СД', name: 'Совет дома · 6', text: 'Ольга: смету на крышу пришлю к пятнице', time: 'пн', go: 'chat' }),
+      ui.dialog({ initial: 'ДН', name: 'Денис, кв. 79', text: 'Шуметь будем до 19:00, простите', time: '1 апреля', go: 'chat' }),
       ui.dialog({ initial: 'ИТ', name: 'Ирина, кв. 78', text: 'Голосовое · 0:31', time: '3 апреля', go: 'chat' }),
     ] }),
   ], { root: true }),

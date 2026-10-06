@@ -31,7 +31,6 @@
 .dv-floor > b { font:600 13px/16px var(--ui-face); color:var(--ui-text-2); text-align:center; }
 .dv-floor > :is(button, span) { display:grid; place-items:center; min-height:44px; border-radius:10px; background:var(--ui-card); box-shadow:inset 0 0 0 1px var(--ui-line); font:500 15px/20px var(--ui-face); font-variant-numeric:tabular-nums; }
 .dv-floor > .is-me { background:var(--ui-accent); color:var(--ui-on-accent); }
-.dv-floor > .is-known { background:var(--ui-accent-soft); box-shadow:none; color:var(--ui-link); }
 .dv-floor > .is-me { box-shadow:none; }
 
 /* Гостевая сеть */

@@ -20,7 +20,7 @@
     "returnReasons": [
       "Утром готов план образа по прогнозу",
       "Своп сегодня — вещь на проверке у ведущей",
-      "Новая находка из Safari ждёт примерки в плане"
+      "Находка по ссылке ждёт примерки в плане"
     ],
     "verticalSlice": {
       "entry": "phone",
@@ -39,7 +39,7 @@
     ],
     "content": {
       "kind": "diary",
-      "what": "Свои образы с фото и вещами, клипы-примерки, голосовые разборы шкафа и находки из Safari",
+      "what": "Свои образы с фото и вещами, клипы-примерки, голосовые разборы шкафа и находки по ссылке",
       "library": false,
       "feed": false,
       "sharing": false
@@ -378,7 +378,7 @@
         "who": "Человек, который открывает лукбук из виджета",
         "moment": "Нажимает на виджет на экране «Домой»",
         "need": "Сессия хранится в общей связке ключей — иначе из виджета открывается вход",
-        "without": "Повторный вход по почте"
+        "without": "Повторный вход по номеру и паролю"
       }
     },
     {
@@ -393,7 +393,7 @@
       "gesture": "«Вход на сайте»",
       "screen": "settings",
       "target": "fill",
-      "fallback": "Вход вручную почтой и паролем",
+      "fallback": "Вход вручную по номеру и паролю",
       "risk": "low",
       "anchor": false,
       "conditional": false,
@@ -579,32 +579,6 @@
         "moment": "На вкладке «Свопы» нажимает «Добавить в Календарь»",
         "need": "Полный доступ нужен, чтобы перенести уже добавленный своп, если ведущая сдвинет время",
         "without": "Своп и напоминание остаются в приложении"
-      }
-    },
-    {
-      "key": "shareext",
-      "plist": "NSExtensionPointIdentifier: com.apple.share-services",
-      "alert": {
-        "title": "Расширение «Поделиться»",
-        "text": "Отдельный target: «Вешалка» появится в системном меню «Поделиться»."
-      },
-      "activate": true,
-      "feature": "Поделиться в «Вешалку» из Safari и «Фото» — находка ложится в лукбук",
-      "gesture": "«Поделиться» в другом приложении",
-      "screen": "settings",
-      "target": "shareext",
-      "fallback": "Остаётся сохранение внутри приложения",
-      "risk": "low",
-      "anchor": false,
-      "conditional": true,
-      "requires": "Отдельный target расширения; черновик кладётся в общий контейнер App Group",
-      "grounding": "Share Extension пишет вложение в App Group, приложение забирает его в лукбук",
-      "reviewNote": "Расширение не открывает приложение и не ходит в сеть: оно кладёт ссылку или кадр в общий контейнер, разбор происходит при следующем запуске.",
-      "rationale": {
-        "who": "Человек, нашедший вещь на сайте магазина",
-        "moment": "В Safari нажимает «Поделиться» → «Вешалка»",
-        "need": "Находка ложится в лукбук рядом с образами только через расширение",
-        "without": "Ссылка копируется вручную"
       }
     },
     {
@@ -1355,35 +1329,6 @@
         ],
         "navigation": "modal"
       }
-    },
-    {
-      "id": "shareext",
-      "title": "Поделиться в «Вешалку»",
-      "type": "системная поверхность",
-      "light": true,
-      "parent": "settings",
-      "meta": "Share Extension · отдельный target",
-      "ui": {
-        "pattern": "system",
-        "purpose": "Принять ссылку или кадр из другого приложения в черновик",
-        "primaryAction": "Сохранить",
-        "states": [
-          "default",
-          "loading",
-          "empty",
-          "error",
-          "offline",
-          "denied",
-          "success"
-        ],
-        "density": "medium",
-        "contentCases": [
-          "ссылка из Safari",
-          "кадр из «Фото»",
-          "черновик уже есть"
-        ],
-        "navigation": "system"
-      }
     }
   ],
   "prototypes": [
@@ -1417,8 +1362,7 @@
         "background",
         "swap",
         "checkin",
-        "netqr",
-        "shareext"
+        "netqr"
       ],
       "stops": [],
       "authTarget": "home"
@@ -1460,13 +1404,11 @@
         "home",
         "camera",
         "media",
-        "subtitles",
-        "shareext"
+        "subtitles"
       ],
       "stops": [
         "home",
-        "subtitles",
-        "shareext"
+        "subtitles"
       ]
     },
     {
@@ -1637,7 +1579,7 @@
     }
   },
   "auth": {
-    "mode": "email",
+    "mode": "phone",
     "confirmation": false,
     "entryTarget": "home"
   },

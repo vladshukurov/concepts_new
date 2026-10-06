@@ -9,7 +9,7 @@ export default (ui) => ui.screen({
       ui.section({ children: ui.search({ placeholder: 'Имя или номер' }) }),
       ui.section({ title: 'Готовим вместе', meta: '3', children: ui.list([
         ui.row({ lead: ui.avatar('ЖК'), title: 'Жанна Ким', sub: 'Супы · 4 ужина вместе', go: 'direct-zhanna' }),
-        ui.row({ lead: ui.avatar('ТС'), title: 'Тимур Садыков', sub: 'Тесто · звали на хачапури в пятницу', go: 'direct-timur' }),
+        ui.row({ lead: ui.avatar('ТС'), title: 'Тимур Садыков', sub: 'Тесто · прислал хачапури в понедельник', go: 'direct-timur' }),
         ui.row({ lead: ui.avatar('АР'), title: 'Амина Рахимова', sub: 'Ведёт ужин сегодня в 19:00', go: 'cookalong' }),
       ]) }),
       ui.section({ children: [

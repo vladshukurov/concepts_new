@@ -10,8 +10,8 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'shuffle', title: 'Случайная', check: true }),
       ] }) }),
       ui.section({ title: 'Сейчас в ленте квартиры', meta: 'раз в день', children: ui.list([
-        ui.row({ lead: ui.leadIcon('wrench', { round: true }), title: 'Сантехник на выезд', sub: 'Реклама · Полевая, 10 · от 900 ₽', end: { badge: 'реклама' } }),
-        ui.row({ lead: ui.leadIcon('sparkles', { round: true }), title: 'Уборка после ремонта', sub: 'Реклама · от 3 400 ₽ за квартиру' }),
+        ui.row({ lead: ui.leadIcon('megaphone', { round: true }), title: 'Сантехник на выезд', sub: 'По городу · от 900 ₽' }),
+        ui.row({ lead: ui.leadIcon('sparkles', { round: true }), title: 'Уборка после ремонта', sub: 'По городу · от 3 400 ₽ за квартиру' }),
       ]) }),
       ui.denied('tracking'),
       ui.section({ children: ui.actions([

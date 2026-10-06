@@ -19,8 +19,10 @@ export default (ui) => ui.screen({
         ui.row({ lead: ui.leadIcon('repeat-2', { accent: true }), title: 'Сахар 120 → 60 г', sub: 'Проверила вчера · мягкий, не сухой' }),
         ui.row({ lead: ui.leadIcon('repeat-2'), title: 'Пшеничная мука → цельнозерновая', sub: '2 сентября · пересушила на 5 минут' }),
       ]) }),
-      ui.section({ title: 'Видео шагов', children: ui.list([
-        ui.row({ lead: ui.leadIcon('film'), title: 'Собрано ночью из 9 фото', sub: '0:48 · только на телефоне' }),
+      ui.section({ title: 'Как печь', children: ui.list([
+        ui.row({ lead: ui.leadIcon('', { text: '01' }), title: 'Груши дольками', sub: 'Сбрызнуть лимоном' }),
+        ui.row({ lead: ui.leadIcon('', { text: '02' }), title: 'Тесто: яйца, сахар, мука', sub: 'Взбить 5 минут до светлого' }),
+        ui.row({ lead: ui.leadIcon('', { text: '03' }), title: 'Печь 40 минут при 180°', sub: 'На 25-й минуте накрыть фольгой' }),
       ]) }),
       ui.section({ children: ui.actions([ui.button({ label: 'Записать, как получилось', block: true, go: 'compose', primary: true })]) }),
     ]),

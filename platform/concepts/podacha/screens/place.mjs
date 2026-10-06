@@ -11,6 +11,10 @@ export default (ui) => ui.screen({
         ui.row({ lead: ui.leadIcon('coffee'), title: 'Кофейня «Дом»', sub: 'Панфилова, 98 · 600 м', toast: 'Место добавлено|compose' }),
         ui.row({ lead: ui.leadIcon('house'), title: 'Дома', sub: 'Без адреса в записи', toast: 'Место добавлено|compose' }),
       ]) }),
+      ui.section({ title: 'Недавние', children: ui.list([
+        ui.row({ lead: ui.leadIcon('map-pin'), title: 'Дача Жанны', sub: 'Каскелен · 3 записи', toast: 'Место добавлено|compose' }),
+        ui.row({ lead: ui.leadIcon('map-pin'), title: 'Зелёный рынок', sub: 'Груши и тыква · 5 записей', toast: 'Место добавлено|compose' }),
+      ]) }),
       ui.denied('location'),
     ]),
   ],

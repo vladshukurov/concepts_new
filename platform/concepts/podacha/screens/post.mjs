@@ -20,10 +20,8 @@ export default (ui) => ui.screen({
       ui.section({ children: [
         ui.actions([
           ui.button({ label: 'Открыть рецепт', block: true, go: 'recipe', primary: true }),
-          ui.button({ label: 'Сохранить карточку в Фото', icon: 'download', variant: 'secondary', block: true, ask: 'photosadd|post|post' }),
+          ui.button({ label: 'Спросить Жанну', icon: 'message-circle', variant: 'secondary', block: true, go: 'direct-zhanna' }),
         ]),
-        ui.denied('photosadd'),
-        ui.list([ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Карточка в Фото', sub: 'Альбом «Вкусно» · 1080 × 1350', shownAfter: 'photosadd' })]),
       ] }),
     ]),
   ],

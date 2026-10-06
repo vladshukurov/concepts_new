@@ -16,7 +16,7 @@ export default (ui) => ui.screen({
       ] }),
       ui.section({ title: 'На телефоне', children: ui.list([
         ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: `Шаги скачаны · ${cookalong.steps} из ${cookalong.steps}`, sub: 'С таймерами — готовить можно без сети' }),
-        ui.row({ lead: ui.leadIcon('users'), title: 'Участники', sub: 'Вы, Тимур, Жанна и ещё 5 · у всех шаг 2' }),
+        ui.row({ lead: ui.leadIcon('users'), title: 'Участники', sub: 'Амина, вы, Тимур, Жанна и ещё 4 · у всех шаг 2' }),
       ]) }),
     ]),
   ],

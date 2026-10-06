@@ -6,7 +6,6 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Экран на кухне', trailing: ui.iconButton({ icon: 'headphones', label: 'Рецепт вслух', go: 'audio' }) }),
     `<div class="pd-big"><small>Ужин · шаг ${step.n} из ${cookalong.steps}</small><strong>${step.timer}</strong><p>${step.title} — следующий шаг появится сам</p><div class="pd-ticks"><i class="is-on"></i><i class="is-on"></i><i></i><i></i><i></i><i></i></div></div>`,
-    ui.denied('localnetwork'),
-    ui.actions([ui.button({ label: 'Найти экран на кухне', icon: 'tv', block: true, ask: 'localnetwork|cast|kitchen', primary: true })]),
+    ui.actions([ui.button({ label: 'Вывести на телевизор', icon: 'tv', block: true, go: 'cast', primary: true })]),
   ],
 });

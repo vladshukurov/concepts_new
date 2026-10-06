@@ -10,6 +10,11 @@ export default (ui) => ui.screen({
       ui.section({ title: 'Расшифровка', children: [
         `<p class="dv-transcript">В третьем подъезде вторая дверь не закрывается, доводчик висит на одном болте. Коляску не завезти, дверь хлопает</p>`,
       ] }),
+      ui.section({ title: 'Заявка', children: ui.list([
+        ui.row({ lead: ui.leadIcon('wrench'), title: 'Двери и доводчики', sub: 'Категория по словам «дверь», «доводчик»' }),
+        ui.row({ lead: ui.leadIcon('house'), title: '3 подъезд, вторая дверь', sub: 'Из расшифровки' }),
+        ui.row({ lead: ui.leadIcon('message-circle'), title: 'Уйдёт в чат УК', sub: 'Диспетчер Елена · обычно отвечает за час' }),
+      ]) }),
       ui.section({ children: ui.actions([
         ui.button({ label: 'Сделать заявкой', block: true, go: 'problem', primary: true }),
         ui.button({ label: 'Записать заново', icon: 'rotate-ccw', variant: 'secondary', block: true, toast: 'Запись начата заново' }),

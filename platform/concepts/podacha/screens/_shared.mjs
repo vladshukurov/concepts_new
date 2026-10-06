@@ -9,7 +9,7 @@ export const TABS = [
 ];
 /** Карточка блюда под постом: ведёт в проверенный рецепт. */
 export const dish = (ui, title, sub) =>
-  `<button class="pd-dish" data-go="recipe" aria-label="Рецепт: ${title}"><span>${ui.icon('utensils')}</span><span><strong>${title}</strong><small>${sub}</small></span></button>`;
+  `<button class="pd-dish" data-go="recipe" aria-label="Рецепт: ${title}"><span>${ui.icon('book-open')}</span><span><strong>${title}</strong><small>${sub}</small></span></button>`;
 /** Личный диалог со знакомым. */
 export const direct = (ui, { id, initial, name, status, items }) => ui.screen({
   id, theme: THEME,

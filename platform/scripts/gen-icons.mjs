@@ -36,7 +36,7 @@ export const ICONS = [
   'circle-alert', 'triangle-alert', 'circle-x', 'search-x', 'loader-circle',
   // соседская сеть: разделы, дом и его инфраструктура
   'house', 'message-circle', 'users', 'wifi', 'qr-code', 'key', 'scan-face',
-  'gauge', 'droplets', 'zap', 'trash-2', 'clock', 'calendar', 'calendar-plus', 'calendar-check', 'cloud-rain', 'cloud-sun', 'footprints', 'switch-camera', 'shopping-basket', 'circle',
+  'gauge', 'droplets', 'zap', 'trash-2', 'clock', 'calendar', 'calendar-plus', 'calendar-check', 'cloud-rain', 'cloud-sun', 'footprints', 'switch-camera', 'shopping-basket', 'circle', 'activity', 'target', 'heart-pulse',
   // лента и чат
   'heart', 'eye', 'repeat-2', 'pin', 'send', 'paperclip', 'badge-check', 'chevron-down',
   // звонок: CallKit-поверхность

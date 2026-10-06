@@ -12,6 +12,10 @@ export default (ui) => ui.screen({
       ] }) }),
       ui.denied('wifiinfo'),
       ui.section({ shownAfter: 'wifiinfo', children: ui.list([ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Кухня · Apple TV подключена', sub: `Шаг ${step.n} из ${cookalong.steps} на экране` })]) }),
+      ui.section({ title: 'Показывали раньше', children: ui.list([
+        ui.row({ lead: ui.leadIcon('tv'), title: 'Кухня · Apple TV', sub: 'Вчера · грушевый пирог, 6 шагов' }),
+        ui.row({ lead: ui.leadIcon('monitor'), title: 'Гостиная · Smart TV', sub: '2 сентября · плов, отключился на 4-м шаге' }),
+      ]) }),
       ui.section({ children: ui.actions([ui.button({ label: 'Показать шаги', block: true, toast: `Шаг ${step.n} на экране кухни|kitchen`, primary: true })]) }),
     ]),
   ],

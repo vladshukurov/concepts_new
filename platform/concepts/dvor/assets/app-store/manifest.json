@@ -33,7 +33,7 @@
     }
   ],
   "captureSource": "swiftui",
-  "nativeSourceHash": "4e9fb5f3fe54ae4184c178c55aef249243b48ef5c9261188e051790e2903d2e2",
+  "nativeSourceHash": "5afb741147d0990130e7453b797627f479393e97af5eb38c3d60b8d0b1db4c0c",
   "targets": {
     "iphone-6.9": {
       "label": "iPhone 6.9″",
