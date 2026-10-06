@@ -1,0 +1,70 @@
+{
+  "requirementsChecked": "2026-09-01",
+  "slug": "sbor",
+  "locale": "ru-RU",
+  "template": "studio",
+  "tone": "light",
+  "devices": [
+    "iphone-6.9",
+    "iphone-6.5",
+    "iphone-6.3",
+    "iphone-6.1"
+  ],
+  "screens": [
+    {
+      "screen": "trip",
+      "headline": "Сбор и перекличка в чате поездки",
+      "body": "Новое время — в закрепе, кто на месте — одним касанием"
+    },
+    {
+      "screen": "rollcall",
+      "headline": "Видно, кого ждать",
+      "body": "Отметка по Wi‑Fi отеля, отставшему — звонок"
+    },
+    {
+      "screen": "program",
+      "headline": "Программа в Календаре",
+      "body": "Перенос сбора правит уже добавленное событие"
+    },
+    {
+      "screen": "chats",
+      "headline": "Обычные чаты тоже здесь",
+      "body": "Голосовые, кружки, звонки и избранное"
+    }
+  ],
+  "captureSource": "web-prototype",
+  "targets": {
+    "iphone-6.9": {
+      "label": "iPhone 6.9″",
+      "width": 1320,
+      "height": 2868,
+      "source": "phone",
+      "orientation": "portrait",
+      "required": true
+    },
+    "iphone-6.5": {
+      "label": "iPhone 6.5″",
+      "width": 1284,
+      "height": 2778,
+      "source": "phone",
+      "orientation": "portrait",
+      "required": false
+    },
+    "iphone-6.3": {
+      "label": "iPhone 6.3″",
+      "width": 1206,
+      "height": 2622,
+      "source": "phone",
+      "orientation": "portrait",
+      "required": false
+    },
+    "iphone-6.1": {
+      "label": "iPhone 6.1″",
+      "width": 1170,
+      "height": 2532,
+      "source": "phone",
+      "orientation": "portrait",
+      "required": false
+    }
+  }
+}
