@@ -12,7 +12,7 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Наблюдение' }),
     ui.scroll([
-      `<div class="tl-note-head"><h2>Трюфель, сегодня в 19:12</h2><p>Прогулка в Лопухинском саду · разобрано 4 из 5</p><div class="tl-wave">0:41<i></i>2,1 МБ</div></div>`,
+      `<div class="tl-note-head"><h2>Трюфель, вчера в 19:50</h2><p>После круга у пруда · разобрано 4 из 5</p><div class="tl-wave">0:41<i></i>2,1 МБ</div></div>`,
       ui.denied('mic'),
       ui.denied('speech'),
       ui.section({ shownAfter: 'mic', children: ui.list([ui.row({ lead: ui.leadIcon('mic', { round: true, accent: true }), title: 'Записано · 0:41', sub: 'Строки ниже разобраны из записи' })]) }),

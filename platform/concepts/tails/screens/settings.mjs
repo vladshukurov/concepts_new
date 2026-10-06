@@ -11,7 +11,7 @@ export default (ui) => ui.screen({
       ] }) }),
       ui.section({ children: [
         ui.group({ label: 'Уведомления', cells: [
-          ui.cell({ icon: 'bell', title: 'Прогулки и ответы', toggle: false, ask: 'push|settings|settings' }),
+          ui.cell({ icon: 'bell', title: 'Прогулки и переносы', toggle: false, ask: 'push|settings|settings' }),
           ui.cell({ icon: 'message-circle', title: 'Сообщения', sub: 'С именем и фото отправителя', toggle: false, activate: 'commnotif|settings' }),
           ui.cell({ icon: 'stethoscope', title: 'Здоровье', sub: 'Прививки и приёмы', toggle: true }),
         ] }),

@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×51, `section` ×40, `leadIcon` ×31, `cell` ×29, `list` ×21, `button` ×14, `denied` ×14, `nav` ×12, `group` ×11, `actions` ×8, `iconButton` ×8, `bubble` ×6, `entry` ×6, `dialog` ×5, `tabBar` ×5, `largeTitle` ×4, `foot` ×4, `search` ×3, `day` ×2, `textButton` ×2, `stats` ×2, `callView` ×1, `chatNav` ×1, `chat` ×1, `voice` ×1, `composer` ×1, `safariFill` ×1, `top` ×1, `wordmark` ×1, `chips` ×1, `avatar` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×51, `section` ×40, `leadIcon` ×39, `cell` ×29, `list` ×21, `button` ×14, `denied` ×14, `nav` ×12, `group` ×11, `actions` ×8, `iconButton` ×8, `entry` ×6, `bubble` ×5, `dialog` ×5, `tabBar` ×5, `largeTitle` ×4, `foot` ×4, `search` ×3, `day` ×2, `textButton` ×2, `stats` ×2, `callView` ×1, `chatNav` ×1, `chat` ×1, `voice` ×1, `composer` ×1, `safariFill` ×1, `top` ×1, `wordmark` ×1, `chips` ×1, `avatar` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -40,11 +40,11 @@
 | Компонент | Классы |
 |---|---|
 | Фото питомцев: один кадр — одна кличка | `.tl-p1` `.tl-p2` `.tl-p3` `.tl-p4` |
-| Главная: вход в прогулки рядом — одна строка под историями | `.tl-nearby-ico` |
+| Главная: вход в прогулки рядом — одна строка | `.tl-nearby-ico` |
 | Карточка прогулки: название, данные, кто идёт | `.tl-walk` `.tl-walk-head` `.tl-walk-time` `.tl-walk-sub` `.tl-walk-tags` `.tl-faces` |
 | Прогулка | `.tl-walk-page` |
 | Профиль питомца: фото во всю ширину | `.tl-hero` `.tl-hero-nav` `.tl-pet-head` |
-| Галерея публикаций | `.tl-gallery` |
+| Галерея фото питомца | `.tl-gallery` |
 | Профиль пользователя | `.tl-me` `.tl-me-ava` `.tl-me-block` |
 | Новая запись | `.tl-composer` `.tl-composer-who` `.tl-composer-field` `.tl-attach-row` `.tl-attach-btn` |
 | Камера и выбор фото — системные поверхности | `.tl-camera` `.tl-camera-view` `.tl-camera-shade` `.tl-shutter` `.tl-picker` |

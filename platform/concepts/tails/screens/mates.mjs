@@ -10,7 +10,7 @@ export default (ui) => ui.screen({
       ui.section({ title: 'Уже в «Выгуле»', meta: '8 из 214', children: ui.list([
         ui.row({ thumb: `${PET.barni} is-round`, title: 'Влада · Барни, лабрадор', sub: '12 прогулок вместе', go: 'chat' }),
                 ui.row({ thumb: `${PET.loki} is-round`, title: 'Марат · Локи, шпиц', sub: '5 общих прогулок', end: { value: 'Позвать', toast: 'Приглашение на прогулку отправлено', label: 'Позвать Марата гулять' } }),
-        ui.row({ thumb: `${PET.mint} is-round`, title: 'Илья · Мята, кошка', sub: '3 общих прогулки', end: { value: 'Позвать', toast: 'Приглашение на прогулку отправлено', label: 'Позвать Илью гулять' } }),
+        ui.row({ thumb: `${PET.mint} is-round`, title: 'Алёна · Мята, кошка', sub: '3 общих прогулки', end: { value: 'Позвать', toast: 'Приглашение на прогулку отправлено', label: 'Позвать Алёну гулять' } }),
         ui.row({ lead: ui.leadIcon('users', { round: true }), title: 'Ещё 5 совпадений', sub: 'Сортировка по общим прогулкам', toast: 'Показаны все 8 совпадений' }),
       ]) }),
       ui.section({ title: 'Пригласить', children: ui.list([

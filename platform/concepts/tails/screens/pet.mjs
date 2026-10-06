@@ -11,7 +11,7 @@ export default (ui) => ui.screen({
     ])}</div>`,
     ui.section({ title: 'Здоровье', children: ui.list([
       ui.row({ lead: ui.leadIcon('syringe'), title: 'Прививки и обработки', sub: `Ревакцинация через ${revaccination.left}`, go: 'vaccine' }),
-      ui.row({ lead: ui.leadIcon('notebook-pen'), title: 'Наблюдения владельца', sub: 'Последнее 14 мая: чесал правое ухо', go: 'vetnote' }),
+      ui.row({ lead: ui.leadIcon('notebook-pen'), title: 'Наблюдения владельца', sub: 'Последнее вчера: хромает на левую заднюю', go: 'vetnote' }),
     ]) }),
     ui.section({ title: 'Прогулки', meta: '24', children: ui.list([
       ui.row({ lead: ui.leadIcon('route'), title: 'Круг у пруда · 2,4 км', sub: 'Вчера · 41 минута' }),

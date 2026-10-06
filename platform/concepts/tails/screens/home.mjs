@@ -14,10 +14,10 @@ export default (ui) => ui.screen({
       { label: 'Заметки', filter: 'note' },
     ]) }),
     ui.entry({
-      icon: 'paw-print', title: 'Спокойный круг у пруда · 18:40', meta: 'сегодня · Лопухинский сад · с Барни и Мятой', status: { label: 'сегодня', accent: true },
+      icon: 'paw-print', title: 'Спокойный круг у пруда · 18:40', meta: 'сегодня · Лопухинский сад · с Барни, Мятой и Локи', status: { label: 'сегодня', accent: true },
       attach: faces(PET.barni, PET.mint, PET.loki), actions: [{ label: 'Открыть прогулку', icon: 'map-pin', go: 'walk', primary: true }], tags: ['walk'],
     }),
-    ui.entry({ icon: 'route', title: own.walk.title, meta: `${own.walk.when} · ${own.walk.dur}`, text: own.walk.text, photos: 1, menu: ['Изменить', 'Удалить'], tags: ['walk'] }),
+    ui.entry({ icon: 'route', title: own.walk.title, meta: `${own.walk.when} · ${own.walk.dur}`, text: own.walk.text, attach: `<span class="tl-chat-photo ${PET.truffle}"></span>`, menu: ['Изменить', 'Удалить'], tags: ['walk'] }),
     ui.entry({
       icon: 'syringe', title: `Ревакцинация через ${revaccination.left}`, meta: `${revaccination.vaccine} · ${revaccination.day}, ${revaccination.time}`,
       text: 'Обработку от клещей пропустили на 4 дня', actions: [{ label: 'Открыть здоровье', icon: 'stethoscope', go: 'vaccine' }], tags: ['health'],

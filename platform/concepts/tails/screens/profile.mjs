@@ -8,7 +8,7 @@ export default (ui) => ui.screen({
     `<div class="tl-me-block">${ui.stats([['24', 'прогулки'], ['23', 'заметки'], ['5', 'друзей']])}${ui.actions([ui.button({ label: 'Карточка Трюфеля', variant: 'secondary', block: true, primary: true, go: 'pet' })])}</div>`,
     ui.denied('tracking'),
     ui.section({ title: 'Ближайшая прогулка', meta: 'сегодня', children: ui.list([
-      ui.row({ thumb: PET.barni, title: 'Спокойный круг у пруда', sub: '18:40 · Лопухинский сад · с Барни', go: 'walk' }),
+      ui.row({ lead: ui.leadIcon('paw-print', { accent: true }), title: 'Спокойный круг у пруда', sub: '18:40 · Лопухинский сад · с Барни', go: 'walk' }),
     ]) }),
     ui.section({ title: 'С кем гуляем', meta: '5', children: ui.list([
       ui.row({ lead: `<span class="tl-nearby-ico">${ui.icon('users')}</span>`, title: 'Найти среди контактов', sub: 'Сверка ещё не проводилась', ask: 'contacts|mates|mates' }),

@@ -1,6 +1,6 @@
 import { THEME, PET } from './_shared.mjs';
 
-const photos = [PET.barni, PET.truffle, PET.loki, PET.mint, PET.barni, PET.truffle, PET.loki, PET.barni, PET.mint, PET.truffle, PET.barni, PET.loki];
+const photos = [PET.truffle, PET.truffle, PET.barni, PET.truffle, PET.truffle, PET.truffle, PET.mint, PET.truffle, PET.truffle, PET.truffle, PET.barni, PET.truffle];
 export default (ui) => ui.screen({
   id: 'media', theme: THEME, className: 'tl-picker',
   body: [

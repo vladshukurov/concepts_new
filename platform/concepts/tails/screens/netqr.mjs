@@ -6,14 +6,14 @@ export default (ui) => ui.screen({
     ui.nav({ title: 'Сеть площадки', back: 'close' }),
     ui.scroll([
       ui.section({ children: [
-        `<div class="tl-qr"><span class="tl-qr-code">${ui.icon('qr-code')}</span><div><strong>Lopuhinka-Dogpark-Guest</strong><span>Код с калитки Лопухинского · считан в 18:22</span><span>WPA2 · пароль живёт до 02:22</span></div></div>`,
+        `<div class="tl-qr"><span class="tl-qr-code">${ui.icon('qr-code')}</span><div><strong>Lopuhinka-Dogpark-Guest</strong><span>Код с калитки Лопухинского · считан вчера в 19:05</span><span>WPA2 · пароль живёт до 02:22</span></div></div>`,
         ui.actions([ui.button({ label: 'Подключиться', icon: 'wifi', block: true, primary: true, ask: 'hotspot|netqr|netqr' })], { className: 'tl-qr-actions' }),
         ui.denied('hotspot'),
       ] }),
       ui.section({ title: 'Сейчас', children: ui.list([
         ui.row({ lead: ui.leadIcon('wifi', { round: true, accent: true }), title: 'Подключено к сети парка', sub: 'Можно отметиться на площадке', shownAfter: 'hotspot' }),
-        ui.row({ lead: ui.leadIcon('map-pin'), title: 'Вернуться к отметке', sub: 'Отметились 6 из 9, старт в 18:40', go: 'walk' }),
-        ui.row({ lead: ui.leadIcon('wifi-off'), title: 'В 18:19 пароль не подошёл', sub: 'Наклейка от 6 мая, сеть просит код от 15-го' }),
+        ui.row({ lead: ui.leadIcon('map-pin'), title: 'Вернуться к отметке', sub: 'Отметка откроется в 18:30, старт в 18:40', go: 'walk' }),
+        ui.row({ lead: ui.leadIcon('wifi-off'), title: 'Вчера пароль не подошёл', sub: 'Наклейка от 6 мая, сеть пересоздали' }),
       ]) }),
       ui.section({ title: 'Сети площадок', children: ui.list([
         ui.row({ lead: ui.leadIcon('wifi'), title: 'Лопухинский сад', sub: 'У дальних ворот сигнал пропадает' }),

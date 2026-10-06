@@ -16,7 +16,7 @@ export default (ui) => ui.screen({
       ui.list([ui.row({ lead: ui.leadIcon('calendar-check', { round: true, accent: true }), title: 'Приём в календаре', sub: 'Вторник, 09:15 · напоминание за час', shownAfter: 'calendar' })]),
       ui.list([
         ui.row({ lead: ui.leadIcon('bell'), title: 'Изменения приёма', sub: 'Перенос, отмена или подготовка от врача', go: 'chats' }),
-        ui.row({ lead: ui.leadIcon('notebook-pen'), title: 'Наблюдения к приёму', sub: 'Сегодня: 4 из 5 разобрано', go: 'vetnote' }),
+        ui.row({ lead: ui.leadIcon('notebook-pen'), title: 'Наблюдения к приёму', sub: 'Вчера: 4 из 5 разобрано', go: 'vetnote' }),
       ]),
     ] }),
     ui.section({ title: 'Впереди', meta: '4 срока', children: ui.list([
