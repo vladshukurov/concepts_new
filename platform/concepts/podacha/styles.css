@@ -1,5 +1,5 @@
-/* «Подача» — мимикрия ВКонтакте, светлая тема `.ui.vk-light`.
-   Оболочка, лента и мессенджер — из ядра. Своё: карточка блюда под
+/* «Вкусно» — мимикрия ВКонтакте, светлая тема `.ui.vk-light`.
+   Оболочка, записи и мессенджер — из ядра. Своё: карточка блюда под
    постом, текущий шаг совместной готовки, кухонный таймер, рецепт вслух
    и показ на экране. Фото нет — кадры `.ph`. */
 
@@ -14,7 +14,7 @@
 .pd-now { display:flex; gap:12px; align-items:center; margin:0 16px; padding:12px; border-radius:14px; background:var(--ui-accent-soft); }
 .pd-now > b { width:48px; height:48px; flex:none; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent); color:#fff; font:600 17px/22px var(--ui-face); font-variant-numeric:tabular-nums; }
 .pd-now small { display:block; font:600 13px/16px var(--ui-face); color:var(--ui-link); }
-.pd-now strong { display:block; font:600 17px/22px var(--ui-face); }
+.pd-now strong { display:block; font:600 17px/22px var(--ui-face); color:var(--ui-text); }
 .pd-now span { display:block; font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
 
 /* Шапка готовки и рецепта */
@@ -76,3 +76,4 @@
 .pd-link small { display:block; font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
 .pd-gap { margin-top:12px; }
 .pd-text { padding:0 16px; font:400 17px/24px var(--ui-face); }
+.pd-call .ui-call-face.is-initial { background:rgba(255,255,255,.18); color:#fff; }

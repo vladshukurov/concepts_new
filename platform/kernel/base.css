@@ -1613,6 +1613,32 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .ui-entry-act { display:inline-flex; align-items:center; gap:6px; min-height:44px; padding:0 8px; color:var(--ui-text-2); font:500 14px/18px var(--ui-face); }
 .ui-entry-act svg { width:20px; height:20px; }
 
+/* Экран «Домой» с виджетом: тёмные обои, белый виджет, сетка иконок */
+.ui.ui-hs { overflow:hidden; background:linear-gradient(180deg, #3d4a5c, #14181e)!important; color:#fff; }
+.ui-hs-widget { display:block; width:calc(100% - 40px); margin:calc(var(--safe-top) + 16px) 20px 0; padding:14px; border-radius:22px; background:rgba(255,255,255,.92); color:#000; text-align:left; }
+.ui-hs-widget small { display:flex; align-items:center; gap:6px; font:600 12px/14px var(--ui-face); color:var(--ui-link); }
+.ui-hs-widget small svg { width:14px; height:14px; }
+.ui-hs-widget strong { display:block; margin-top:8px; font:600 17px/22px var(--ui-face); }
+.ui-hs-widget span { display:block; font:400 13px/16px var(--ui-face); color:#5f6b78; }
+.ui-hs-apps { display:grid; grid-template-columns:repeat(4,1fr); gap:20px 12px; padding:20px; }
+.ui-hs-app { display:flex; flex-direction:column; align-items:center; gap:4px; font:400 12px/14px var(--ui-face); color:#fff; }
+.ui-hs-app > i { width:60px; height:60px; border-radius:14px; background:rgba(255,255,255,.22); }
+.ui-hs-app.is-ours > i { display:grid; place-items:center; background:var(--ui-accent); }
+.ui-hs-app.is-ours svg { width:30px; height:30px; color:#fff; }
+/* Safari с автозаполнением: адресная строка, страница сайта, подсказка над клавиатурой */
+.ui.ui-sf { background:#f2f2f7!important; color:#000; }
+.ui-sf-bar { display:flex; align-items:center; justify-content:center; gap:6px; margin:calc(var(--safe-top) + 4px) 16px 0; min-height:36px; border-radius:10px; background:rgba(118,118,128,.12); font:400 15px/20px var(--ui-face); color:#000; }
+.ui-sf-bar svg { width:14px; height:14px; }
+.ui-sf-page { margin:16px; padding:20px 16px; border-radius:14px; background:#fff; }
+.ui-sf-page h1 { font:700 22px/26px var(--ui-face); }
+.ui-sf-page p { margin:4px 0 16px; font:400 14px/18px var(--ui-face); color:#5f6b78; }
+.ui-sf-field { display:flex; flex-direction:column; gap:2px; margin-bottom:8px; padding:8px 12px; border-radius:10px; box-shadow:inset 0 0 0 1px #d7d8d9; font:400 16px/20px var(--ui-face); }
+.ui-sf-field > span { font:400 12px/14px var(--ui-face); color:#5f6b78; }
+.ui-sf-field.is-focus { box-shadow:inset 0 0 0 2px var(--ui-accent); }
+.ui-sf-quicktype { position:absolute; left:0; right:0; bottom:0; padding:8px 8px calc(var(--safe-bottom) + 8px); background:#d1d4d9; }
+.ui-sf-quicktype > button { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; min-height:44px; border-radius:8px; background:#fff; font:500 15px/20px var(--ui-face); color:#000; }
+.ui-sf-quicktype > button svg { width:18px; height:18px; color:var(--ui-link); }
+
 /* Отказ в доступе — пустое состояние iOS. Работает и в оболочке .ui, и на старых экранах:
    цвета берутся из токенов .ui, а без них — из акцента концепта (--accent-fill) */
 .ui-denied { display:flex; flex-direction:column; align-items:center; gap:6px; padding:28px 32px; text-align:center; font-family:var(--ui-face, inherit); color:var(--ui-text, inherit); }

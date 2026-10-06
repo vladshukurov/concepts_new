@@ -1,19 +1,28 @@
 import { THEME } from './_shared.mjs';
+import { own } from '../model.mjs';
 
+/* Свой рецепт грушевого пирога: замены и проверки — только свои */
 export default (ui) => ui.screen({
   id: 'recipe', theme: THEME,
   body: [
-    ui.nav({ title: 'Рецепт', trailing: ui.iconButton({ icon: 'bookmark', label: 'Сохранить', toast: 'Сохранено в рецепты' }) }),
+    ui.nav({ title: 'Рецепт', trailing: ui.iconButton({ icon: 'square-pen', label: 'Изменить рецепт', toast: 'Рецепт открыт для правки' }) }),
     ui.scroll([
-      `<div class="pd-head"><small>Проверено 34 раза</small><h1>Суп с печёным перцем</h1><p class="ui-sub">Жанна Ким · 35 минут · 4 порции</p></div>`,
+      `<div class="pd-head"><small>Мой рецепт · пекла ${own.dish.times} раз</small><h1>${own.dish.title}</h1><p class="ui-sub">55 минут · форма 22 см · последний раз ${own.dish.when}</p></div>`,
       ui.section({ title: 'Ингредиенты', children: ui.group({ cells: [
-        ui.cell({ title: 'Красная чечевица', value: '180 г' }),
-        ui.cell({ title: 'Сладкий перец', value: '2 шт' }),
-        ui.cell({ title: 'Тахини', value: '1 ложка' }),
-        ui.cell({ title: 'Лимон', value: '½ шт' }),
+        ui.cell({ title: 'Груши', value: '4 шт' }),
+        ui.cell({ title: 'Мука цельнозерновая', value: '180 г' }),
+        ui.cell({ title: 'Сахар', value: '60 г' }),
+        ui.cell({ title: 'Яйца', value: '3 шт' }),
+        ui.cell({ title: 'Мёд', value: '2 ложки' }),
       ] }) }),
-      ui.section({ title: 'Рабочая замена', children: ui.list([ui.row({ lead: ui.leadIcon('repeat-2', { accent: true }), title: 'Нет тахини — 2 ложки кешью-пасты', sub: 'Проверили 11 человек', wrap: true })]) }),
-      ui.section({ children: ui.actions([ui.button({ label: 'Готовить по шагам', block: true, go: 'cookalong', primary: true })]) }),
+      ui.section({ title: 'Мои замены', children: ui.list([
+        ui.row({ lead: ui.leadIcon('repeat-2', { accent: true }), title: 'Сахар 120 → 60 г', sub: 'Проверила вчера · мягкий, не сухой' }),
+        ui.row({ lead: ui.leadIcon('repeat-2'), title: 'Пшеничная мука → цельнозерновая', sub: '2 сентября · пересушила на 5 минут' }),
+      ]) }),
+      ui.section({ title: 'Видео шагов', children: ui.list([
+        ui.row({ lead: ui.leadIcon('film'), title: 'Собрано ночью из 9 фото', sub: '0:48 · только на телефоне' }),
+      ]) }),
+      ui.section({ children: ui.actions([ui.button({ label: 'Записать, как получилось', block: true, go: 'compose', primary: true })]) }),
     ]),
   ],
 });

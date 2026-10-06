@@ -5,15 +5,15 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Конфиденциальность' }),
     ui.scroll([
-      ui.section({ children: ui.group({ label: 'Публикации', cells: [
-        ui.cell({ icon: 'eye', title: 'Кто видит публикации', value: 'Все', toast: 'Публикации видны всем' }),
-        ui.cell({ icon: 'map-pin', title: 'Место в публикациях', value: 'Район', toast: 'Показываем только район' }),
+      ui.section({ children: ui.group({ label: 'Звонки и заметки', cells: [
+        ui.cell({ icon: 'phone', title: 'Звонки ужина', value: 'Только знакомые' }),
+        ui.cell({ icon: 'mic', title: 'Голосовые заметки', value: 'Только на телефоне' }),
       ] }) }),
       ui.section({ children: ui.group({ label: 'Реклама', cells: [
-        ui.cell({ icon: 'sparkles', title: 'Персональные рекомендации', toggle: false, ask: 'tracking|privacy|privacy' }),
+        ui.cell({ icon: 'sparkles', title: 'Настроить рекомендации', toggle: false, ask: 'tracking|privacy|privacy' }),
       ] }) }),
       ui.denied('tracking'),
-      ui.section({ children: ui.actions([ui.button({ label: 'Открыть политику', variant: 'tertiary', block: true, toast: 'podacha.app/privacy', primary: true })]) }),
+      ui.section({ children: ui.actions([ui.button({ label: 'Открыть политику', variant: 'tertiary', block: true, toast: 'vkusno.app/privacy', primary: true })]) }),
     ]),
   ],
 });

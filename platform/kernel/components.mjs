@@ -380,6 +380,27 @@ export function entry({ icon: ic, title, meta, text, photos = 0, voice, attach, 
   return `<article class="${cls('ui-entry', className)}"${tagsAttr(tags)}>${head}${body}${media}${audio}${attach ? `<div class="ui-entry-attach">${attach}</div>` : ''}${foot}</article>`;
 }
 
+/* ── Системные поверхности: экран «Домой» с виджетом и Safari с автозаполнением ──
+   Нужны каждому концепту с appgroups/keychain и autofill; раньше каждый верстал их сам */
+/**
+ * Экран «Домой» iOS с виджетом приложения. widget: { icon, kicker, title, sub, ...action };
+ * app: { name, icon, ...action } — своя иконка среди системных; apps — подписи остальных.
+ */
+export const homeScreen = ({ widget: w, app, apps = ['Телефон', 'Почта', 'Карты', 'Камера', 'Заметки', 'Погода', 'Настройки'] }) => {
+  const { icon: wi, kicker, title, sub, ...wa } = w;
+  const { name, icon: ai, ...aa } = app;
+  return `<button class="ui-hs-widget"${act({ label: `Виджет «${name}»`, ...wa })}><small>${icon(wi)}${kicker}</small><strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}</button>`
+    + `<div class="ui-hs-apps"><button class="ui-hs-app is-ours"${act({ label: name, ...aa })}><i>${icon(ai)}</i>${name}</button>${apps.map((x) => `<span class="ui-hs-app"><i></i>${x}</span>`).join('')}</div>`;
+};
+/**
+ * Страница сайта в Safari с подсказкой пароля над клавиатурой (Credential Provider).
+ * site — домен в адресной строке; fields: [[подпись, значение, фокус]]; suggestion: { app, login, toast }.
+ */
+export const safariFill = ({ site, title, sub, fields, submit = 'Войти', suggestion }) =>
+  `<div class="ui-sf-bar">${icon('lock')}${site}</div>`
+  + `<div class="ui-sf-page"><h1>${title}</h1>${sub ? `<p>${sub}</p>` : ''}${fields.map(([l, v, focus]) => `<div class="${cls('ui-sf-field', focus && 'is-focus')}"><span>${l}</span>${v}</div>`).join('')}${button({ label: submit, block: true, toast: 'Вход выполнен' })}${button({ label: 'Вернуться в приложение', variant: 'tertiary', block: true, back: true, primary: true })}</div>`
+  + `<div class="ui-sf-quicktype"><button${act({ toast: suggestion.toast || `Подставлено из «${suggestion.app}»` })}>${icon('key')}${suggestion.app} · ${suggestion.login}</button></div>`;
+
 /** Сегменты: переключают вид внутри экрана. */
 export const segments = (items) => `<div class="ui-seg">${items.map(({ label, on = false, filter, ...a }) =>
   `<button${on ? ' class="is-on"' : ''} aria-pressed="${on}"${pick(filter, a)}>${label}</button>`).join('')}</div>`;

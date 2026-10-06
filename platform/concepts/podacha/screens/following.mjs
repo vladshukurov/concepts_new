@@ -1,15 +1,16 @@
 import { THEME } from './_shared.mjs';
 
+/* Знакомые — люди, с которыми готовят вместе по звонку и переписываются */
 export default (ui) => ui.screen({
   id: 'following', theme: THEME,
   body: [
-    ui.nav({ title: 'Подписки' }),
+    ui.nav({ title: 'Знакомые' }),
     ui.scroll([
-      ui.section({ children: ui.search({ placeholder: 'Имя или ссылка на автора' }) }),
-      ui.section({ children: ui.list([
-        ui.row({ lead: ui.avatar('ЖК'), title: 'Жанна Ким', sub: 'Простые супы · 18 проверенных блюд', go: 'direct-zhanna' }),
-        ui.row({ lead: ui.avatar('ТС'), title: 'Тимур Садыков', sub: 'Тесто и сковорода · 41 публикация', go: 'direct-timur' }),
-        ui.row({ lead: ui.avatar('АР'), title: 'Амина Рахимова', sub: 'Ужины вместе · ведёт сегодня', go: 'cookalong' }),
+      ui.section({ children: ui.search({ placeholder: 'Имя или номер' }) }),
+      ui.section({ title: 'Готовим вместе', meta: '3', children: ui.list([
+        ui.row({ lead: ui.avatar('ЖК'), title: 'Жанна Ким', sub: 'Супы · 4 ужина вместе', go: 'direct-zhanna' }),
+        ui.row({ lead: ui.avatar('ТС'), title: 'Тимур Садыков', sub: 'Тесто · звали на хачапури в пятницу', go: 'direct-timur' }),
+        ui.row({ lead: ui.avatar('АР'), title: 'Амина Рахимова', sub: 'Ведёт ужин сегодня в 19:00', go: 'cookalong' }),
       ]) }),
       ui.section({ children: [
         ui.actions([ui.button({ label: 'Найти знакомых', icon: 'user-plus', variant: 'secondary', block: true, ask: 'contacts|matches|following', primary: true })]),

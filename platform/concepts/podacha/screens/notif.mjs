@@ -7,11 +7,12 @@ export default (ui) => ui.screen({
     ui.nav({ title: 'Уведомления' }),
     ui.scroll([
       ui.section({ title: 'Сегодня', children: ui.list([
-        ui.row({ lead: ui.avatar('ЖК'), title: 'Жанна проверила вашу замену', sub: '«Кешью-паста работает, добавьте ещё лимона» · 12 минут назад', subWrap: true, go: 'direct-zhanna' }),
-        ui.row({ lead: ui.leadIcon('chef-hat', { accent: true }), title: cookalong.title, sub: `Начало в ${cookalong.start} · всё подготовлено`, go: 'cookalong', primary: true }),
+        ui.row({ lead: ui.avatar('АР'), title: 'Амина в чате ужина', sub: 'Голосовое · 0:12 · 19:18', go: 'conversation' }),
+        ui.row({ lead: ui.leadIcon('chef-hat', { accent: true }), title: cookalong.title, sub: `Начало в ${cookalong.start} · шаги скачаны`, go: 'cookalong', primary: true }),
       ]) }),
       ui.section({ title: 'Вчера', children: ui.list([
-        ui.row({ lead: ui.leadIcon('repeat-2'), title: 'Ваш пирог повторили 6 раз', sub: 'Два автора добавили фото результата', go: 'post' }),
+        ui.row({ lead: ui.avatar('ЖК'), title: 'Жанна ответила в чате', sub: '«Густым йогуртом и немного лимона» · 20:16', subWrap: true, go: 'direct-zhanna' }),
+        ui.row({ lead: ui.leadIcon('shopping-basket'), title: 'Покупки к пятнице', sub: 'Осталось 3 · фарш, сметана, лавровый лист', go: 'feed' }),
       ]) }),
     ]),
   ],

@@ -1,20 +1,17 @@
-import { THEME, TABS, dish } from './_shared.mjs';
+import { THEME, TABS } from './_shared.mjs';
+import { own } from '../model.mjs';
 
+/* Свой профиль: что готовила, свои рецепты и ужины вместе — без подписчиков */
 export default (ui) => ui.screen({
   id: 'profile', theme: THEME,
   body: ui.scroll([
     ui.top('<span></span>', ui.iconButton({ icon: 'settings', label: 'Настройки', go: 'settings' })),
-    `<div class="pd-me">${ui.avatar('СЛ', { large: true })}<h1>Саша Левина</h1><p class="ui-sub">Готовлю дома · Алматы</p>${ui.stats([['42', 'публикации'], ['218', 'подписчиков'], ['27', 'проверено']])}${ui.actions([ui.button({ label: 'Опубликовать', go: 'compose', primary: true }), ui.button({ label: 'Пригласить', variant: 'secondary', go: 'invite' })], { row: true })}</div>`,
+    `<div class="pd-me">${ui.avatar('СЛ', { large: true })}<h1>Саша Левина</h1><p class="ui-sub">Готовлю дома · Алматы</p>${ui.stats([[String(own.saved.dishes), 'блюда'], [String(own.saved.recipes), 'рецептов'], [String(own.saved.together), 'ужинов вместе']])}</div>`,
     ui.section({ children: ui.list([
-      ui.row({ lead: ui.leadIcon('users', { accent: true }), title: 'Подписки', sub: '31 автор · 6 новых блюд сегодня', go: 'following' }),
-      ui.row({ lead: ui.leadIcon('bookmark'), title: 'Мои проверки', sub: '27 блюд с результатом', go: 'recipes' }),
+      ui.row({ lead: ui.leadIcon('users', { accent: true }), title: 'Знакомые', sub: 'С кем готовим вместе · 3', go: 'following' }),
+      ui.row({ lead: ui.leadIcon('book-open'), title: 'Мои рецепты', sub: `${own.saved.recipes} рецептов · 4 с заменами`, go: 'recipes' }),
     ]) }),
-    ui.post({
-      author: { initial: 'СЛ', name: 'Саша Левина', meta: 'вчера, 18:40', action: { go: 'profile' } },
-      text: 'Пирог с грушей на цельнозерновой муке. Сахара вдвое меньше, результат всё равно мягкий',
-      attach: dish(ui, 'Грушевый пирог', '55 минут · повторили 6 раз'),
-      likes: 64, comments: 7, shares: 3, open: { go: 'post' }, menu: ['Изменить', 'Удалить', 'Скопировать ссылку'],
-    }),
+    ui.entry({ icon: 'utensils', title: own.dish.title, meta: own.dish.when, text: own.dish.text, photos: own.dish.photos, open: { go: 'post' }, menu: ['Изменить', 'Удалить'] }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'profile' }),
 });
