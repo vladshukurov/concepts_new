@@ -28,7 +28,7 @@
 .re-date { width:56px; height:56px; flex:none; display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:8px; background:var(--ui-card); font:400 12px/14px var(--ui-face); color:var(--ui-text-2); }
 .re-date b { font:600 20px/24px var(--ui-face); color:var(--ui-text); }
 
-/* Подписки */
+/* Строки прогонов */
 
 /* Профиль */
 .re-me { display:flex; align-items:center; gap:16px; padding:8px 16px 20px; }
@@ -36,7 +36,7 @@
 .re-audio { display:grid; place-items:center; color:var(--ui-text-2); }
 .re-audio > svg { width:24px; height:24px; }
 
-/* Плеер урока и разбора */
+/* Плеер разбора */
 .re-square { flex:none!important; width:44px; padding:0; }
 
 /* Настройка прогона */
@@ -143,12 +143,8 @@
 .re-now-pause svg { width:34px!important; height:34px!important; }
 .re-open-app { position:absolute; left:0; right:0; bottom:calc(var(--safe-bottom) + 16px); min-height:44px; font:500 15px/20px var(--ui-face); color:rgba(255,255,255,.8); text-align:center; }
 
-/* Кадры прогонов и уроков — нарисованы кодом (media.mjs): сцена, слайд, спикер */
-.re-fr1 { background-image:url(assets/media/frame-1.svg); background-size:cover; background-position:center; }
-.re-fr2 { background-image:url(assets/media/frame-2.svg); background-size:cover; background-position:center; }
-.re-fr3 { background-image:url(assets/media/frame-3.svg); background-size:cover; background-position:center; }
-.re-fr4 { background-image:url(assets/media/frame-4.svg); background-size:cover; background-position:center; }
-.re-fr5 { background-image:url(assets/media/frame-5.svg); background-size:cover; background-position:center; }
-.re-fr6 { background-image:url(assets/media/frame-6.svg); background-size:cover; background-position:center; }
 .re-moment-actions { margin-top:16px; gap:8px; }
 .re-moment-actions > .ui-btn:first-child { flex:1; }
+
+/* Сетка импорта: чек и длительность — внутри плитки */
+.re-picker-grid > button { position:relative; }
