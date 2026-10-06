@@ -1,4 +1,4 @@
-# Хвосты — App Store assets
+# Выгул — App Store assets
 
 Сгенерировано из живого прототипа командой `npm run app-store -- tails`.
 

@@ -79,7 +79,7 @@
 .tl-vet-head .ui-thumb { width:56px; height:56px; }
 .tl-vet-head h2 { font:600 20px/24px var(--ui-face); }
 .tl-vet-head p { font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
-.tl-appt { margin:0 16px; padding:12px; border-radius:12px; background:var(--ui-accent-soft); }
+.tl-appt { margin:0 16px; padding:12px; border-radius:12px; box-shadow:inset 0 0 0 1px var(--ui-line); }
 .tl-appt-when { font:600 15px/20px var(--ui-face); color:var(--ui-link); }
 .tl-appt strong { display:block; margin-top:4px; font:600 17px/22px var(--ui-face); }
 .tl-appt > span { display:block; font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
