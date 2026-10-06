@@ -7,6 +7,7 @@ export default (ui) => ui.screen({
   id: 'record', theme: THEME,
   body: [
     ui.chatNav({ initial: trip.initial, name: trip.name, status: `${trip.people} участников, ${trip.online} в сети`, open: { go: 'tripinfo' } }),
+    `<button class="sb-pin" data-go="rollcall" aria-label="Перекличка: сбор в ${meet.time}">${ui.icon('pin')}<span><strong>Сбор в ${meet.time} ${meet.place}</strong><span>Перекличка · на месте ${meet.here} из ${trip.people}</span></span>${ui.icon('chevron-right')}</button>`,
     ui.scroll(ui.chat([
       ui.bubble({ from: people.igor.name, attach: `<span class="sb-net"><span class="sb-net-ico">${ui.icon('wifi')}</span><span><strong>${trip.ssid}</strong><span>Wi‑Fi отеля из QR · вчера</span></span></span>`, time: '22:14' }),
       `<p class="sb-sys">${meet.movedBy} перенесла сбор: ${meet.was} → ${meet.time}</p>`,
