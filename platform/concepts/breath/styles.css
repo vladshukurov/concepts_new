@@ -117,5 +117,3 @@
 .br-breath-status i { width:6px; height:6px; border-radius:50%; background:var(--ui-accent); }
 
 /* «Любимое»: текущая сессия карточкой над разделами */
-.br-now-row { display:flex; align-items:center; gap:12px; margin:4px 16px 0; padding:8px; border-radius:16px; background:var(--ui-card); }
-.br-now-row .ui-thumb { width:56px; height:56px; }

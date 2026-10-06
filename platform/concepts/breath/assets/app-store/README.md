@@ -1,4 +1,4 @@
-# Дыхание — App Store assets
+# Мантра — App Store assets
 
 Сгенерировано из живого прототипа командой `npm run app-store -- breath`.
 
