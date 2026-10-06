@@ -1,19 +1,19 @@
 import { THEME } from './_shared.mjs';
-import { people, tonight } from '../model.mjs';
+import { own } from '../model.mjs';
 
+/* Своя партия целиком: итог, кадр поля и что запомнить к следующему разу */
 export default (ui) => ui.screen({
   id: 'post', theme: THEME,
   body: [
-    ui.nav({ title: 'Публикация' }),
+    ui.nav({ title: 'Партия', trailing: ui.iconButton({ icon: 'ellipsis', label: 'Действия с партией', menu: ['Изменить', 'Отправить Илье>direct', 'Удалить'] }) }),
     ui.scroll([
-      ui.post({ author: { initial: people.masha.initial, name: people.masha.name, meta: `сегодня, 12:14 · ${tonight.where}` }, text: `Вечером раскладываем «${tonight.game}». Объяснение — минут десять, играем спокойно, без гонки за первым ходом`, likes: 18, comments: 6, shares: 4 }),
-      ui.section({ children: [ui.list([ui.row({ lead: ui.leadIcon('dices', { accent: true }), title: `${tonight.game} · ${tonight.start}`, sub: `${tonight.minutes} минут · ${tonight.pace}` })]), ui.actions([ui.button({ label: 'Открыть стол', block: true, go: 'table', primary: true })], { className: 'st-gap' })] }),
-      ui.comments({ count: 6, items: [
-        { initial: people.ilya.initial, name: people.ilya.name, text: 'Возьму дополнение с портами, если никто не против — партия станет на полчаса длиннее', time: '12:30', likes: 3 },
-        { initial: people.masha.initial, name: people.masha.name, text: 'Сегодня без дополнения, двое играют впервые', time: '12:41', likes: 4, reply: true, author: true },
-        { initial: people.zhenya.initial, name: people.zhenya.name, text: 'Опоздаю минут на пятнадцать, начинайте без меня объяснение', time: '13:05', likes: 1 },
-      ] }),
+      ui.entry({ icon: 'trophy', title: `${own.last.game} · ${own.last.points} очка`, meta: `${own.last.when} · ${own.last.minutes} минут`, text: own.last.note, photos: 1 }),
+      ui.section({ title: 'Итог', meta: '4 игрока', children: ui.list(own.last.result.map(([n, p], i) => ui.row({ lead: ui.leadIcon('', { text: String(i + 1) }), title: n === 'Саша' ? 'Саша · вы' : n, sub: `${p} очков` }))) }),
+      ui.section({ title: 'Запомнить', children: ui.list([
+        ui.row({ lead: ui.leadIcon('pin'), title: 'Длинный маршрут — с 3-го раунда', sub: 'Илья начал его раньше и выиграл' }),
+        ui.row({ lead: ui.leadIcon('clock'), title: 'Объяснение заняло 12 минут', sub: 'Двое играли впервые' }),
+      ]) }),
+      ui.section({ children: ui.actions([ui.button({ label: 'Позвать на реванш', icon: 'message-circle', block: true, go: 'chat', primary: true })]) }),
     ]),
-    ui.composer({ placeholder: 'Комментарий', attach: { label: 'Прикрепить', menu: ['Снять поле?camera', 'Фото из галереи?photos'] }, send: { toast: 'Комментарий отправлен' } }),
   ],
 });

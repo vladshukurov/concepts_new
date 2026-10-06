@@ -14,7 +14,7 @@ export default (ui) => ui.screen({
       ui.section({ title: 'Маршрут', children: [map([['ИМ', 'ry-x10', 'ry-y56']]), ui.actions([ui.button({ label: 'Показать, где я, группе', icon: 'navigation', block: true, ask: 'location|route|meetup', primary: true })], { className: 'ry-gap' }), ui.denied('location')] }),
       ui.section({ title: 'Не пропустить', children: [
         ui.group({ cells: [
-          ui.cell({ icon: 'bell', title: 'Напомнить накануне', sub: 'В пятницу в 21:00', toggle: false, ask: 'push|meetup|meetup' }),
+          ui.cell({ icon: 'bell', title: 'Сообщить о переносе', sub: 'Если Илья сдвинет время или точку старта', toggle: false, ask: 'push|meetup|meetup' }),
         ] }),
         ui.denied('push'),
       ] }),

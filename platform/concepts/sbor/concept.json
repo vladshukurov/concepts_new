@@ -19,7 +19,8 @@
     "returnReasons": [
       "Каждое утро поездки — сбор и перекличка в чате поездки",
       "Новый день — фильм вчерашнего дня собран ночью и ждёт в альбоме",
-      "Между поездками — обычные личные чаты, звонки и следующая поездка в списке"
+      "Между поездками — обычные личные чаты, звонки и следующая поездка в списке",
+      "В поездке видно, кто кому должен, — рассчитаться можно за минуту"
     ],
     "verticalSlice": {
       "entry": "trip",
@@ -1266,7 +1267,7 @@
           "denied"
         ],
         "navigation": "root",
-        "primaryAction": "Казань · осень"
+        "primaryAction": "Сбор через 19 минут"
       }
     },
     {
@@ -1446,6 +1447,56 @@
         "primaryAction": null
       },
       "parent": "tripinfo"
+    },
+    {
+      "id": "pack",
+      "title": "Кто что везёт",
+      "type": "push",
+      "light": true,
+      "meta": "Общий список вещей с ответственными",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": "Термосы × 2",
+        "purpose": "Распределить общие вещи между участниками",
+        "hierarchy": {
+          "primary": "Общие вещи и кто их везёт",
+          "secondary": "Свой список вещей"
+        }
+      },
+      "parent": "trips"
+    },
+    {
+      "id": "expenses",
+      "title": "Расходы",
+      "type": "push",
+      "light": true,
+      "meta": "Общий кошелёк поездки",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": "Лене · 1 240 ₽",
+        "purpose": "Показать траты группы, кто кому должен, и рассчитаться",
+        "hierarchy": {
+          "primary": "Сумма поездки и кому вы должны",
+          "secondary": "Траты с фильтром и кто платил"
+        }
+      },
+      "parent": "trips"
     },
     {
       "id": "invite",
@@ -1787,6 +1838,8 @@
         "program",
         "album",
         "docs",
+        "pack",
+        "expenses",
         "invite",
         "sms",
         "join",
@@ -1834,12 +1887,14 @@
         "call",
         "tripinfo",
         "attach",
-        "record"
+        "record",
+        "expenses"
       ],
       "stops": [
         "tripinfo",
         "attach",
-        "record"
+        "record",
+        "expenses"
       ]
     },
     {
@@ -1856,13 +1911,15 @@
         "tripinfo",
         "rollcall",
         "wifi",
-        "chat"
+        "chat",
+        "expenses"
       ],
       "stops": [
         "tripinfo",
         "rollcall",
         "wifi",
-        "chat"
+        "chat",
+        "expenses"
       ]
     },
     {
@@ -1883,7 +1940,9 @@
         "contacts",
         "docs",
         "lockscreen",
-        "trip"
+        "trip",
+        "expenses",
+        "pack"
       ],
       "stops": [
         "rollcall",
@@ -1894,7 +1953,9 @@
         "contacts",
         "docs",
         "lockscreen",
-        "trip"
+        "trip",
+        "expenses",
+        "pack"
       ]
     },
     {
@@ -1916,7 +1977,9 @@
         "chat",
         "docs",
         "lockscreen",
-        "trip"
+        "trip",
+        "expenses",
+        "pack"
       ],
       "stops": [
         "rollcall",
@@ -1927,7 +1990,9 @@
         "chat",
         "docs",
         "lockscreen",
-        "trip"
+        "trip",
+        "expenses",
+        "pack"
       ]
     },
     {
@@ -1953,7 +2018,9 @@
         "account",
         "saved",
         "ads",
-        "calls"
+        "calls",
+        "expenses",
+        "pack"
       ],
       "stops": [
         "rollcall",
@@ -1968,7 +2035,9 @@
         "account",
         "saved",
         "ads",
-        "calls"
+        "calls",
+        "expenses",
+        "pack"
       ]
     },
     {

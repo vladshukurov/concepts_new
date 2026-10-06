@@ -29,7 +29,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×79, `section` ×64, `avatar` ×51, `list` ×32, `leadIcon` ×32, `cell` ×30, `bubble` ×26, `nav` ×13, `button` ×12, `group` ×10, `actions` ×9, `iconButton` ×9, `day` ×9, `dialog` ×9, `denied` ×5, `tabBar` ×5, `chatNav` ×5, `chat` ×5, `largeTitle` ×4, `composer` ×4, `segments` ×3, `textButton` ×3, `search` ×3, `voice` ×2, `callView` ×1, `chips` ×1, `usersStack` ×1, `miniInfo` ×1, `top` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×85, `section` ×71, `avatar` ×52, `list` ×37, `leadIcon` ×37, `cell` ×33, `bubble` ×27, `nav` ×15, `iconButton` ×12, `button` ×11, `group` ×10, `day` ×9, `dialog` ×9, `actions` ×8, `denied` ×5, `tabBar` ×5, `chatNav` ×5, `chat` ×5, `segments` ×4, `largeTitle` ×4, `composer` ×4, `search` ×3, `hue` ×3, `textButton` ×2, `voice` ×2, `callView` ×1, `chips` ×1, `usersStack` ×1, `miniInfo` ×1, `top` ×1.
 <!-- @end -->
 
 ## Доменные компоненты
@@ -57,6 +57,8 @@
 | Экран блокировки: Now Playing и уведомления | `.sb-lock` `.sb-lock-clock` `.sb-np` `.sb-np-face` `.sb-np-text` `.sb-np-bar` |
 | Экран «Домой» с виджетом | `.sb-home` `.sb-widget` `.sb-widget-bar` `.sb-apps` `.sb-app` |
 | Профиль в настройках: крупное фото, имя и номер по центру, как в Telegram | `.sb-me` |
+| Пульт идущей поездки: что дальше и кто на месте — крупно, как карточка звонка в чате | `.sb-now` |
+| Сводка кошелька поездки | `.sb-money` |
 <!-- @end -->
 
 Главные из них:

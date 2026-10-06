@@ -5,13 +5,13 @@ import { people } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'contacts', theme: THEME,
   body: ui.scroll([
-      ui.largeTitle('Контакты', ui.iconButton({ icon: 'user-plus', label: 'Добавить контакт', go: 'invite' })),
+      ui.largeTitle('Контакты', ui.iconButton({ icon: 'user-plus', label: 'Добавить контакт', menu: ['По номеру телефона=Новый контакт: имя и номер', 'Пригласить ссылкой>invite'] })),
       ui.section({ children: ui.search({ placeholder: 'Имя или номер' }) }),
-      ui.section({ children: ui.list([
-        ui.row({ lead: ui.leadIcon('link', { round: true, accent: true }), title: 'Пригласить в «Сбор»', sub: 'Ссылка на вход в поездку', go: 'invite' }),
-      ]) }),
       ui.section({ children: [
-        ui.actions([ui.button({ label: 'Найти знакомых из контактов', icon: 'users', variant: 'secondary', block: true, ask: 'contacts|contacts|contacts', primary: true })]),
+        ui.list([
+          ui.row({ lead: ui.leadIcon('users', { round: true, accent: true }), title: 'Найти знакомых из контактов', sub: 'Кто из адресной книги уже в «Сборе»', ask: 'contacts|contacts|contacts', primary: true }),
+          ui.row({ lead: ui.leadIcon('link', { round: true, accent: true }), title: 'Пригласить в «Сбор»', sub: 'Ссылка на вход в поездку', go: 'invite' }),
+        ]),
         ui.denied('contacts'),
       ] }),
       ui.section({ title: 'Уже в «Сборе»', meta: '23', shownAfter: 'contacts', children: ui.list([

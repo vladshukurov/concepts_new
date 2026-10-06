@@ -13,7 +13,7 @@ export default (ui) => ui.screen({
         [people.marat.initial, 'Марат', ' data-toast="Место отправлено Марату"'],
         [people.lena.initial, 'Лена', ' data-toast="Место отправлено Лене"'],
         ['ИЗ', 'Избранное', ' data-toast="Место сохранено в Избранное"'],
-      ].map(([ini, name, a]) => `<button class="sb-share-to"${a} aria-label="Отправить в «Сбор»: ${name}"><span class="sb-share-face">${ini}<i>${ui.icon('route')}</i></span><span>${name}</span></button>`).join('')}</div>
+      ].map(([ini, name, a]) => `<button class="sb-share-to"${a} aria-label="Отправить в «Сбор»: ${name}"><span class="sb-share-face is-initial ${ui.hue(ini)}">${ini}<i>${ui.icon('route')}</i></span><span>${name}</span></button>`).join('')}</div>
       <div class="sb-share-apps">${[['send', 'Сбор'], ['message-circle', 'Сообщения'], ['mail', 'Почта'], ['bookmark', 'Заметки']].map(([ic, name]) => `<span class="sb-share-app"><i>${ui.icon(ic)}</i>${name}</span>`).join('')}</div>
       <div class="sb-share-list"><button data-toast="Ссылка скопирована" aria-label="Скопировать">Скопировать${ui.icon('copy')}</button><button data-toast="Добавлено в путеводитель Карт" aria-label="Добавить в путеводитель">Добавить в путеводитель${ui.icon('bookmark')}</button></div>
     </section>`,

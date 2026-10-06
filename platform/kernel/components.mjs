@@ -49,8 +49,8 @@ const cls = (...names) => names.filter(Boolean).join(' ');
 /** Лицо: «МК» — инициалы (заглавные буквы), `ph`, `face-3` — класс фото. */
 const isInitials = (f) => /^\p{Lu}{1,3}$/u.test(f);
 /* Оттенок фона инициалов h0–h6 — стабильный по буквам, как в Telegram. Палитра — в base.css */
-const hue = (t) => `h${[...String(t || '')].reduce((n, c) => n + c.codePointAt(0), 0) % 7}`;
-const facesHtml = (faces) => faces.map((f) => (isInitials(f) ? `<i class="is-initial">${f.slice(0, 1)}</i>` : `<i class="${f}"></i>`)).join('');
+export const hue = (t) => `h${[...String(t || '')].reduce((n, c) => n + c.codePointAt(0), 0) % 7}`;
+const facesHtml = (faces) => faces.map((f) => (isInitials(f) ? `<i class="is-initial ${hue(f)}">${f.slice(0, 1)}</i>` : `<i class="${f}"></i>`)).join('');
 const join = (items) => (Array.isArray(items) ? items.filter(Boolean).join('') : items || '');
 
 /* ── Иконки ── */

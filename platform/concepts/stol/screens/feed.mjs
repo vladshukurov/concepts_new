@@ -1,26 +1,31 @@
 import { THEME, TABS, seats } from './_shared.mjs';
-import { people, tonight, saturday } from '../model.mjs';
+import { own, tonight } from '../model.mjs';
 
+/* Свой дневник партий: всё на главной сыграл, купил или записал сам Саша.
+   Чужих публикаций, лайков и подписок нет — с друзьями собирают стол и пишут в чат */
 export default (ui) => ui.screen({
   id: 'feed', theme: THEME,
   body: ui.scroll([
-    ui.top(ui.wordmark({ name: 'Стол' }), ui.iconButton({ icon: 'plus', label: 'Новая запись', go: 'compose' })),
-    ui.composerPrompt({ initial: people.me.initial, placeholder: 'Собрать стол на вечер', go: 'compose', primary: true }),
-    ui.section({ title: 'Ближайшие столы', more: { go: 'tables', label: 'Все столы' }, children: ui.list([
-      ui.row({ lead: ui.leadIcon('', { text: tonight.start }), title: tonight.game, sub: `Сегодня · ${tonight.where}`, end: seats(tonight.taken, tonight.seats), go: 'table' }),
-      ui.row({ lead: ui.leadIcon('', { text: 'сб' }), title: saturday.game, sub: `${saturday.start} · ${saturday.where}`, end: seats(saturday.taken, saturday.seats), go: 'table' }),
+    ui.top(ui.wordmark({ name: 'В кругу' }), ui.iconButton({ icon: 'plus', label: 'Новая запись', go: 'compose' })),
+    ui.section({ children: ui.chips([
+      { label: 'Все', on: true, filter: 'all' },
+      { label: 'Партии', filter: 'match' },
+      { label: 'Коллекция', filter: 'box' },
+      { label: 'Заметки', filter: 'note' },
     ]) }),
-    ui.post({
-      author: { initial: people.masha.initial, name: people.masha.name, meta: `сегодня, 12:14 · ${tonight.where}`, action: { go: 'table' } },
-      text: `Вечером раскладываем «${tonight.game}». Объяснение — минут десять, играем спокойно, без гонки за первым ходом`,
-      attach: ui.list([ui.row({ lead: ui.leadIcon('dices', { accent: true }), title: `${tonight.game} · ${tonight.start}`, sub: `${tonight.minutes} минут · объясним правила`, go: 'table' })]),
-      likes: 18, comments: 6, shares: 4, open: { go: 'post' }, discuss: { go: 'chat' }, menu: ['Скрыть', 'Пожаловаться', 'Скопировать ссылку'],
+    ui.entry({
+      icon: 'dices', title: `${tonight.game} · ${tonight.start}`, meta: `сегодня · ${tonight.where} · состав обновлён к 9:00`, status: { label: 'сегодня', accent: true },
+      attach: seats(tonight.taken, tonight.seats), actions: [{ label: 'Открыть стол', icon: 'calendar', go: 'table', primary: true }], tags: ['match'],
     }),
-    ui.post({
-      author: { initial: people.ilya.initial, name: people.ilya.name, meta: 'вчера · итог партии' },
-      text: '«Городские линии» вчетвером: 92 у меня, Женя на два очка позади. Финальный раунд решил всё',
-      attach: ui.list([ui.row({ lead: ui.leadIcon('trophy'), title: 'Городские линии · 92 очка', sub: '4 игрока · 48 минут', go: 'score' })]),
-      likes: 24, comments: 3, open: { go: 'post' },
+    ui.entry({ icon: 'trophy', title: `${own.last.game} · ${own.last.points} очка`, meta: `${own.last.when} · ${own.last.minutes} минут · ${own.last.place}`, text: own.last.note, photos: 1, open: { go: 'post' }, menu: ['Изменить', 'Удалить'], tags: ['match'] }),
+    ui.entry({ icon: 'mic', title: own.voice.title, meta: `${own.voice.when} · памятка себе`, voice: { dur: own.voice.dur }, tags: ['note'] }),
+    ui.entry({ icon: 'package', title: `В коллекции · ${own.box.title}`, meta: `${own.box.when} · ${own.box.about}`, text: 'Подарили на день рождения, ещё в плёнке. Сыграть с Женей вдвоём в пятницу, пока не забыли правила', open: { go: 'games' }, tags: ['box'] }),
+    ui.entry({
+      icon: 'calendar', title: `Сентябрь · ${own.month.games} партий`, meta: `${own.month.wins} победы · ${own.month.newGames} новые игры`,
+      attach: ui.list([
+        ui.row({ lead: ui.leadIcon('trophy', { round: true, accent: true }), title: 'Лесные союзы', sub: 'Победа · 71 очко' }),
+        ui.row({ lead: ui.leadIcon('dices', { round: true }), title: 'Архив острова', sub: 'Кооператив · не успели к рассвету' }),
+      ]), tags: ['match'],
     }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'feed' }),

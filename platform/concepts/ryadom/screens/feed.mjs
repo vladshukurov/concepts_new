@@ -25,8 +25,9 @@ export default (ui) => ui.screen({
     ui.entry({
       icon: 'target', title: `Неделя · ${own.week.done} из ${own.week.goal} км`, meta: `${own.week.runs} пробежки · осталось ${own.week.left} км`,
       attach: ui.list([
-        ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Вт · интервалы 6 × 400', sub: '7,1 км' }),
-        ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Чт · восстановительная', sub: '5,0 км' }),
+        ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Вт · интервалы 6 × 400', sub: '9,6 км' }),
+        ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Чт · восстановительная', sub: '7,4 км' }),
+        ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Пт · Набережная', sub: '6,4 км · вчера' }),
         ui.row({ lead: ui.leadIcon('circle', { round: true }), title: 'Сб · лонгран с клубом', sub: `${longrun.km} км · сегодня` }),
       ]), tags: ['run'],
     }),

@@ -11,7 +11,7 @@ export default (ui) => ui.screen({
       ] }) }),
       ui.section({ title: 'Сейчас в лукбуке', meta: 'одна карточка в день', children: ui.list([
         ui.row({ lead: ui.leadIcon('store', { round: true }), title: 'Винтаж на Большой Пушкарской', sub: 'Реклама · 600 м · до 21:00' }),
-        ui.row({ lead: ui.leadIcon('scissors', { round: true }), title: 'Ателье «Подшив»', sub: 'Реклама · подшить джинсы за день, от 700 ₽' }),
+        ui.row({ lead: ui.leadIcon('scissors', { round: true }), title: 'Ателье «Подшив»', sub: 'Реклама · джинсы за день, 700 ₽' }),
       ]) }),
       ui.denied('tracking'),
       ui.section({ children: ui.actions([

@@ -1686,3 +1686,5 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial).h4 { background:linear-gradient(180deg, #53edd6, #28c9b7); }
 .ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial).h5 { background:linear-gradient(180deg, #72d5fd, #2a9ef1); }
 .ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial).h6 { background:linear-gradient(180deg, #e0a2f3, #d669ed); }
+/* Инициалы в круге звонка — 40 % диаметра, иначе круг читается пустым */
+.ui-call-face.is-initial { font-size:44px; }

@@ -46,4 +46,3 @@
 .st-call .ui-call-btn:not(.is-end) { background:rgba(255,255,255,.16); color:#fff; }
 .st-call .ui-call-face { background:rgba(255,255,255,.16); color:#fff; }
 .st-text { padding:0 16px; font:400 17px/24px var(--ui-face); }
-.st-gap { margin-top:12px; }

@@ -9,7 +9,7 @@ export default (ui) => ui.screen({
       ui.day('Сегодня'),
       ui.bubble({ text: `${people.marina.first}, привет! Вещи принимаю до ${item.acceptBy}`, time: '9:20' }),
       ui.bubble({ out: true, attach: `<span class="lk-chat-photo ${P.marina}"></span>`, text: 'Вот жакет, шерсть, размер 46', time: '9:28', read: true }),
-      ui.bubble({ text: 'Покажете жакет? Посмотрю подкладку и ярлык', time: '9:36' }),
+      ui.bubble({ text: 'Покажешь жакет? Посмотрю подкладку и ярлык', time: '9:36' }),
       ui.voice({ dur: '0:09', time: '9:37' }),
     ])),
     ui.denied('voip'),

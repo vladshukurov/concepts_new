@@ -13,10 +13,6 @@ export default (ui) => ui.screen({
       ui.section({ title: 'Вчера', children: ui.list([
         ui.row({ lead: ui.leadIcon('target', { accent: true }), title: 'До цели недели 6,6 км', sub: 'Субботний лонгран закроет её с запасом', go: 'feed' }),
       ]) }),
-      ui.section({ children: [
-        ui.actions([ui.button({ label: 'Включить уведомления', icon: 'bell', block: true, ask: 'push|notif|notif', primary: true })]),
-        ui.denied('push'),
-      ] }),
     ]),
   ],
 });

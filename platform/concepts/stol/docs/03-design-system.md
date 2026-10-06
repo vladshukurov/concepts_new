@@ -1,6 +1,6 @@
-# Стол — дизайн-система
+# В кругу — дизайн-система
 
-Мимикрия ВКонтакте для настольных игроков: лента, коллекция игр, живые столы, мессенджер и профиль. Своё у «Стола» — места за столом кружками-стульями, табло счёта по раундам, общий экран клуба и памятка правил вслух. Фото партий нет: игроки — инициалы, игра — значок и цифры.
+Мимикрия ВКонтакте для настольных игроков: свой дневник, коллекция, столы, мессенджер и профиль. Своё у «В кругу» — места за столом кружками-стульями, табло счёта по раундам, общий экран клуба и памятка правил вслух. Фото партий нет: игроки — инициалы, игра — значок и цифры.
 
 Оболочка, кегли, цвета и компоненты — из ядра (`kernel/base.css`, `kernel/components.mjs`). Концепт добавляет только свои доменные блоки в `styles.css` и не перекрашивает компоненты ядра. Правила интерфейса — в корневом `CLAUDE.md`.
 
@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `section` ×25, `row` ×20, `leadIcon` ×16, `iconButton` ×12, `cell` ×12, `list` ×11, `denied` ×9, `button` ×8, `nav` ×7, `bubble` ×6, `avatar` ×6, `actions` ×5, `tabBar` ×5, `group` ×4, `composer` ×3, `largeTitle` ×3, `dialog` ×3, `post` ×3, `chatNav` ×2, `chat` ×2, `day` ×2, `top` ×2, `progress` ×1, `times` ×1, `callView` ×1, `voice` ×1, `search` ×1, `textButton` ×1, `wordmark` ×1, `composerPrompt` ×1, `chips` ×1, `comments` ×1, `stats` ×1, `segments` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `section` ×34, `row` ×31, `leadIcon` ×27, `list` ×20, `cell` ×14, `iconButton` ×12, `denied` ×8, `nav` ×7, `button` ×6, `bubble` ×6, `entry` ×6, `avatar` ×6, `group` ×5, `tabBar` ×5, `actions` ×4, `largeTitle` ×3, `dialog` ×3, `chatNav` ×2, `chat` ×2, `day` ×2, `composer` ×2, `top` ×2, `chips` ×2, `progress` ×1, `times` ×1, `callView` ×1, `voice` ×1, `search` ×1, `textButton` ×1, `wordmark` ×1, `safariFill` ×1, `stats` ×1, `segments` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -45,11 +45,11 @@
 | Памятка правил вслух | `.st-rules` `.st-controls` `.st-w-40` |
 | Общий экран клуба: что увидят игроки | `.st-screen` |
 | Профиль | `.st-me` |
-| Мессенджер и звонок стола | `.st-call` `.st-text` `.st-gap` |
+| Мессенджер и звонок стола | `.st-call` `.st-text` |
 <!-- @end -->
 
 ## Актуальная навигация
 
 <!-- @generated:navigation -->
-Лента · Игры · Столы · Мессенджер · Профиль
+Дневник · Игры · Столы · Мессенджер · Профиль
 <!-- @end -->

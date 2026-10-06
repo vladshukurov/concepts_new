@@ -1,4 +1,4 @@
-# Рядом — App Store assets
+# Выбег — App Store assets
 
 Сгенерировано из живого прототипа командой `npm run app-store -- ryadom`.
 

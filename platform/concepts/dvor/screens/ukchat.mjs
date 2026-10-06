@@ -12,7 +12,7 @@ export default (ui) => ui.screen({
       ui.day('Сегодня'),
       ui.bubble({ out: true, attach: '<span class="dv-chat-photo ph"></span>', text: 'Заявка 4417-Б: доводчик на второй двери, 3 подъезд, сорвало', time: '8:14', read: true }),
       ui.voice({ out: true, dur: '0:14', time: '8:14' }),
-      ui.bubble({ from: 'Елена, диспетчер', text: 'Приняли. Мастер будет с 16:00 до 18:00, дверь откроет Марина из 48-й', time: '9:21' }),
+      ui.bubble({ from: 'Елена, диспетчер', text: 'Приняли. Мастер будет с 16:00 до 18:00, дверь откроет Марина из 63-й', time: '9:21' }),
     ])),
     ui.composer({ attach: { label: 'Прикрепить', menu: ['Камера>shoot', 'Фото>chronicle'] }, mic: { toast: 'Запись голосового · отпустите, чтобы отправить' } }),
   ],

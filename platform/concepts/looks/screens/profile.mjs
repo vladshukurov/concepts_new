@@ -6,7 +6,7 @@ export default (ui) => ui.screen({
   id: 'profile', theme: THEME,
   body: ui.scroll([
     ui.top('<span></span>', [ui.iconButton({ icon: 'plus', label: 'Новый образ', go: 'create' }), ui.iconButton({ icon: 'settings', label: 'Настройки', go: 'settings' })]),
-    `<div class="lk-me"><span class="lk-me-ava ${P.marina}"></span><h1>Марина Орлова</h1><p class="ui-sub">Собираю спокойный гардероб и ищу винтаж в Петербурге</p>${ui.stats([['86', 'образов'], ['143', 'вещи'], ['7', 'свопов']])}${ui.actions([ui.button({ label: 'Редактировать', variant: 'secondary', toast: 'Редактирование профиля' }), ui.button({ label: 'Отложить на своп', variant: 'secondary', go: 'swap' })], { row: true })}</div>`,
+    `<div class="lk-me"><span class="lk-me-ava ${P.marina}"></span><h1>Марина Орлова</h1><p class="ui-sub">Собираю спокойный гардероб и ищу винтаж в Петербурге</p>${ui.stats([['86', 'образов'], ['143', 'вещи'], ['7', 'свопов']])}${ui.actions([ui.button({ label: 'Редактировать', variant: 'secondary', go: 'account' }), ui.button({ label: 'Отложить на своп', variant: 'secondary', go: 'swap' })], { row: true })}</div>`,
     ui.section({ children: ui.list([
       ui.row({ lead: ui.leadIcon('users', { accent: true }), title: 'Найти среди контактов', sub: 'Кто из знакомых ходит на свопы', ask: 'contacts|mates|mates' }),
       ui.row({ lead: ui.leadIcon('lock'), title: 'Сохранённое', sub: `${own.saved.looks} образов и ${own.saved.drafts} черновика`, go: 'lock' }),

@@ -5,12 +5,13 @@ import { me } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'settings', theme: THEME,
   body: ui.scroll([
-    ui.top('<span></span>', ui.textButton({ label: 'Изменить', go: 'account' })),
+    ui.top('<span></span>', ui.iconButton({ icon: 'qr-code', label: 'Мой QR-код', toast: 'QR-код профиля на экране' })),
     ui.section({ children: `<div class="sb-me">${ui.avatar(me.initial, { large: true })}<h1>${me.name}</h1><p class="ui-sub">${me.phone} · @nika_r</p></div>` }),
     ui.section({ children: ui.group({ cells: [
-      ui.cell({ icon: 'camera', title: 'Изменить фото', go: 'account' }),
-      ui.cell({ icon: 'at-sign', title: 'Имя пользователя', value: '@nika_r', go: 'account' }),
-      ui.cell({ icon: 'info', title: 'О себе', value: 'Казань · вожу группы', go: 'account' }),
+      ui.cell({ icon: 'camera', title: 'Изменить фото', menu: ['Снять фото>camera', 'Выбрать из медиатеки>attach'] }),
+      ui.cell({ icon: 'at-sign', title: 'Имя пользователя', value: '@nika_r' }),
+      ui.cell({ icon: 'info', title: 'О себе', value: 'Казань · вожу группы' }),
+      ui.cell({ icon: 'user', title: 'Аккаунт', value: 'Номер, выход', go: 'account' }),
     ] }) }),
     ui.section({ children: ui.group({ cells: [
       ui.cell({ icon: 'bookmark', title: 'Избранное', value: '38', go: 'saved' }),

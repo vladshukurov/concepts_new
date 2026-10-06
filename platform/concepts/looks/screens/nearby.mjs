@@ -17,7 +17,7 @@ export default (ui) => ui.screen({
     ]) }),
     ui.section({ title: 'Винтаж и ателье рядом', meta: '9', children: ui.list([
       ui.row({ lead: ui.leadIcon('store'), title: 'Винтаж на Большой Пушкарской', sub: '600 м · пальто и жакеты 90‑х · до 21:00' }),
-      ui.row({ lead: ui.leadIcon('scissors'), title: 'Ателье «Подшив»', sub: '1,1 км · подшить джинсы за день, от 700 ₽' }),
+      ui.row({ lead: ui.leadIcon('scissors'), title: 'Ателье «Подшив»', sub: '1,1 км · джинсы за день, 700 ₽' }),
       ui.row({ lead: ui.leadIcon('store'), title: 'Комиссионка на Кронверкском', sub: '1,8 км · принимают по четвергам' }),
     ]) }),
   ], { root: true }),

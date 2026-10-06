@@ -4,15 +4,15 @@ import { score, club } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'cast', theme: THEME,
   body: [
-    ui.nav({ title: 'Общий экран' }),
+    ui.nav({ title: 'Счёт на экране' }),
     ui.scroll([
       ui.section({ title: 'Что увидят игроки', children: `<div class="st-screen"><strong>${score.players[0][1]}</strong><span>${score.players[0][0]} лидирует · ${score.players.slice(1).map(([n, p]) => `${n} ${p}`).join(' · ')} · раунд ${score.round}</span></div>` }),
       ui.section({ children: [
         ui.group({ label: `Сеть ${club.network}`, cells: [
-          ui.cell({ icon: 'tv', title: 'Экран у большого стола', sub: 'Готов к показу', ask: 'localnetwork|cast|cast' }),
+          ui.cell({ icon: 'tv', title: 'Экран у большого стола', sub: 'AirPlay · готов к показу', toast: 'Счёт на экране у большого стола' }),
           ui.cell({ icon: 'repeat-2', title: 'Проверить сеть', activate: 'wifiinfo|cast' }),
         ] }),
-        ui.denied('localnetwork'),
+        ui.list([ui.row({ lead: ui.leadIcon('wifi', { round: true, accent: true }), title: `Вы в сети ${club.network}`, sub: 'Экран клуба в той же сети', shownAfter: 'wifiinfo' })]),
       ] }),
       ui.section({ children: ui.actions([ui.button({ label: 'Вернуться к счёту', variant: 'secondary', block: true, go: 'score', primary: true })]) }),
     ]),

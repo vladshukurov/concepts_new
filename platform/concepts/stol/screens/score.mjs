@@ -10,6 +10,8 @@ export default (ui) => ui.screen({
       ui.section({ children: [
         ui.actions([ui.button({ label: 'Назвать счёт', icon: 'mic', block: true, ask: 'speech+mic|score|score', primary: true })]),
         ui.denied('speech,mic'),
+        ui.list([ui.row({ lead: ui.leadIcon('mic', { round: true, accent: true }), title: 'Голос записан · 0:02', sub: '«Илье плюс четыре»', shownAfter: 'mic' })]),
+        ui.list([ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Счёт обновлён', sub: 'Распознано · Илья 68', shownAfter: 'speech' })]),
       ] }),
     ]),
   ],

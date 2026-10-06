@@ -27,7 +27,7 @@ export const longrun = {
 export const recovery = { title: 'Восстановительная группа', start: '07:40', km: '5', pace: '6:35–6:50', from: 'набережная' };
 export const technique = { title: 'Техника бега на Медеу', iso: '2026-09-15', day: dateLabel('2026-09-15'), start: '18:30', host: people.dasha, left: 3 };
 
-export const route = { name: 'Набережная', km: '8,2', climb: '46 м', done: '2,4', left: '5,8', hint: { at: '5,2 км', len: '0:18' }, size: '18 МБ' };
+export const route = { name: 'Набережная', km: '8,2', climb: '46 м', done: '2,4', left: '5,8', hint: { at: '2,8 км', len: '0:18' }, size: '18 МБ' };
 
 /* Свой дневник Влада: только то, что он пробежал, записал и снял сам — неровные, живые состояния */
 export const own = {
@@ -35,7 +35,7 @@ export const own = {
   voice: { title: 'Что с коленом на спуске', when: 'сегодня, 6:48', dur: '0:24' },
   week: { done: '23,4', goal: '30', runs: 3, left: '6,6' },
   clip: { title: 'Постановка стопы на темпе', when: 'позавчера', dur: '0:42', by: 'снял Роман на мой телефон' },
-  stats: { runs: 62, km: '418', withClub: 83 },
+  stats: { runs: 62, km: '418', withClub: 21 },
 };
 
 export const entities = [

@@ -276,6 +276,30 @@
           "capabilities": [
             "tracking"
           ]
+        },
+        {
+          "id": "use-appgroups",
+          "name": "Поставить виджет шага",
+          "actor": "person",
+          "entity": "friend",
+          "effect": "Выносит текущий шаг и таймер на экран «Домой»",
+          "screen": "widget",
+          "result": "Шаг и таймер видны без открытия приложения",
+          "capabilities": [
+            "appgroups"
+          ]
+        },
+        {
+          "id": "use-autofill",
+          "name": "Войти на сайте доставки",
+          "actor": "person",
+          "entity": "entry",
+          "effect": "Подставляет сохранённый вход на сайте доставки продуктов",
+          "screen": "fill",
+          "result": "Продукты к ужину заказываются без ввода пароля",
+          "capabilities": [
+            "autofill"
+          ]
         }
       ]
     }

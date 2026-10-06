@@ -27,6 +27,8 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'calendar-days', title: 'Программа', sub: 'Кремль в 10:30, катер в Свияжск в 15:00', value: `${programCount} пунктов`, go: 'program' }),
         ui.cell({ icon: 'wifi', title: 'Wi‑Fi отеля', sub: `${trip.hotel} · добавил Игорь из QR`, value: trip.ssid, go: 'wifi' }),
         ui.cell({ icon: 'images', title: 'Альбом поездки', sub: 'Фильм пятницы готов, 3:42', value: `${trip.photos} фото`, go: 'album' }),
+        ui.cell({ icon: 'wallet', title: 'Расходы', sub: 'Вы должны Лене 1 240 ₽', value: '61 870 ₽', go: 'expenses' }),
+        ui.cell({ icon: 'luggage', title: 'Кто что везёт', sub: 'Дождевики на вас', value: '3 из 6', go: 'pack' }),
         ui.cell({ icon: 'lock', title: 'Документы', sub: 'Брони, билеты, список группы', value: '7 файлов', ask: 'faceid|docs|tripinfo' }),
       ] }) }),
       ui.section({ children: ui.group({ cells: [

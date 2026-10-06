@@ -13,6 +13,7 @@ export default (ui) => ui.screen({
       ui.day('Сегодня'),
       ui.bubble({ from: people.igor.name, attach: '<span class="sb-photo ph"></span>', text: 'Завтрак до 9:45, кто ещё наверху — спускайтесь', time: '9:12' }),
       ui.bubble({ from: people.marat.name, text: 'Проспал, догоню у Кремля', time: '9:23' }),
+      ui.bubble({ from: people.lena.name, attach: `<button class="sb-net" data-go="expenses"><span class="sb-net-ico">${ui.icon('wallet')}</span><span><strong>Музей Кремля · 9 600 ₽</strong><span>Трата на 16 · по 600 ₽</span></span></button>`, text: 'Купила билеты на всех, верните по 600', time: '9:31' }),
       ui.bubble({ from: people.anya.name, text: 'Спускаюсь, 3 минуты', time: '9:39' }),
       `<div class="sb-shared perm-hidden" data-show-granted="shareext">${ui.bubble({ out: true, attach: `<span class="sb-place"><span class="sb-place-ico">${ui.icon('utensils')}</span><span><strong>Тюбетей</strong><span>Баумана, 64 · татарская кухня · до 23:00</span></span></span>`, text: 'На обед сюда?', time: '9:41' })}</div>`,
     ])),

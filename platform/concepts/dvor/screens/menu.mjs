@@ -7,7 +7,7 @@ export default (ui) => ui.screen({
     ui.largeTitle('Меню', ui.iconButton({ icon: 'settings', label: 'Настройки', go: 'settings' })),
     ui.section({ children: [
       ui.list([ui.row({ lead: ui.avatar('АР'), title: 'Анна Разумова', sub: 'Кв. 74 · 3 подъезд · дом подтверждён', go: 'settings' })]),
-      ui.stats([['18', 'соседей в чате'], ['2', 'открытые заявки'], [meters.left.split(' ')[0], `${meters.left.split(' ')[1]} до показаний`]]),
+      ui.stats([['18', 'соседей в чате'], ['1', 'открытая заявка'], [meters.left.split(' ')[0], `${meters.left.split(' ')[1]} до показаний`]]),
     ] }),
     ui.section({ children: ui.group({ cells: [
       ui.cell({ icon: 'users', title: 'Соседи', value: '18', go: 'neighbors' }),

@@ -11,14 +11,13 @@ export default (ui) => ui.screen({
         ui.row({ lead: ui.leadIcon('play', { accent: true }), title: 'Бежать с голосом', sub: `Набор ${route.climb} · покрытие сухое`, go: 'player', primary: true }),
       ]),
     ] }),
-    ui.section({ title: 'Подсказка тренера', children: [
-      ui.list([ui.row({ lead: ui.leadIcon('mic', { accent: true }), title: 'Записать подсказку', sub: `До 30 секунд · прозвучит на ${route.hint.at}`, ask: 'mic|music|music' })]),
-      ui.denied('mic'),
-      ui.list([ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Подсказка на 5,2 км записана', sub: '0:18 · «на мосту держись правее»', shownAfter: 'mic' })]),
-    ] }),
+    ui.section({ title: 'Мои подсказки', meta: '2', children: ui.list([
+      ui.row({ lead: ui.leadIcon('mic', { accent: true }), title: `На ${route.hint.at} · мост`, sub: `${route.hint.len} · «держись правее, у перил лёд»`, toast: 'Подсказка играет' }),
+      ui.row({ lead: ui.leadIcon('mic'), title: 'На 6,0 км · разворот', sub: '0:09 · «пей сейчас, дальше колонок нет»', toast: 'Подсказка играет' }),
+    ]) }),
     ui.section({ title: 'Ещё маршруты', children: ui.list([
       ui.row({ lead: ui.leadIcon('route'), title: 'Медеу, нижняя площадка', sub: '5,4 км · набор 120 м', go: 'player' }),
-      ui.row({ lead: ui.leadIcon('film'), title: 'Мои видео техники', sub: '7 роликов · смотреть на телевизоре', go: 'videos' }),
+      ui.row({ lead: ui.leadIcon('film'), title: 'Мои видео техники', sub: '3 ролика · смотреть на телевизоре', go: 'videos' }),
     ]) }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'music' }),
