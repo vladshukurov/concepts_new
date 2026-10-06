@@ -13,18 +13,8 @@ export default (ui) => ui.screen({
         lead: ui.avatar('ЛК'), title: `${who} · ${sum} ₽`, sub: why,
         end: { value: 'Рассчитаться', toast: `Отмечено: вы вернули ${who} ${sum} ₽`, label: `Рассчитаться: ${who}` }, primary: true,
       }))) }),
-      ui.section({ title: 'Вам должны', children: ui.list(money.owed.map(([who, sum, why]) => ui.row({
-        lead: ui.avatar(who === 'Марат' ? 'МГ' : 'СП'), title: `${who} · ${sum} ₽`, sub: why,
-        end: { value: 'Напомнить', toast: `${who} получит напоминание в личном чате`, label: `Напомнить: ${who}` },
-      }))) }),
-      ui.section({ children: ui.segments([
-        { label: 'Все', on: true, filter: 'all' },
-        { label: 'Дорога', filter: 'transport' },
-        { label: 'Еда', filter: 'food' },
-        { label: 'Прочее', filter: 'other' },
-      ]) }),
-      ui.section({ title: 'Траты', meta: String(money.spent.length), children: ui.list(money.spent.map(([ic, title, who, sum, sub, kind]) => ui.row({
-        lead: ui.leadIcon(ic, { round: true }), title: `${title} · ${sum} ₽`, sub: `платил${who === 'Лена' ? 'а' : ''} ${who} · ${sub}`, tags: [kind === 'fun' || kind === 'stay' ? 'other' : kind],
+      ui.section({ title: 'Траты', meta: String(money.spent.length), children: ui.list(money.spent.map(([ic, title, who, sum, sub]) => ui.row({
+        lead: ui.leadIcon(ic, { round: true }), title: `${title} · ${sum} ₽`, sub: `платил${who === 'Лена' ? 'а' : ''} ${who} · ${sub}`,
       }))) }),
     ]),
   ],

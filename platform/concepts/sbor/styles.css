@@ -251,7 +251,6 @@
 .sb-now .sb-roll-bar { margin-top:8px; }
 .sb-now .sb-roll-bar i { background:rgba(255,255,255,.32); }
 .sb-now .sb-roll-bar i.is-on { background:#fff; }
-.sb-now + .sb-acts { margin-top:12px; }
 /* Сводка кошелька поездки */
 .sb-money { display:flex; flex-direction:column; gap:2px; padding:0 16px; }
 .sb-money small { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }

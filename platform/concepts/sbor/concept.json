@@ -1449,31 +1449,6 @@
       "parent": "tripinfo"
     },
     {
-      "id": "pack",
-      "title": "Кто что везёт",
-      "type": "push",
-      "light": true,
-      "meta": "Общий список вещей с ответственными",
-      "ui": {
-        "states": [
-          "default",
-          "loading",
-          "empty",
-          "error",
-          "offline",
-          "denied"
-        ],
-        "navigation": "push",
-        "primaryAction": "Термосы × 2",
-        "purpose": "Распределить общие вещи между участниками",
-        "hierarchy": {
-          "primary": "Общие вещи и кто их везёт",
-          "secondary": "Свой список вещей"
-        }
-      },
-      "parent": "trips"
-    },
-    {
       "id": "expenses",
       "title": "Расходы",
       "type": "push",
@@ -1490,10 +1465,10 @@
         ],
         "navigation": "push",
         "primaryAction": "Лене · 1 240 ₽",
-        "purpose": "Показать траты группы, кто кому должен, и рассчитаться",
+        "purpose": "Показать траты группы и кому вы должны",
         "hierarchy": {
           "primary": "Сумма поездки и кому вы должны",
-          "secondary": "Траты с фильтром и кто платил"
+          "secondary": "Траты: что, кто платил, на скольких"
         }
       },
       "parent": "trips"
@@ -1838,7 +1813,6 @@
         "program",
         "album",
         "docs",
-        "pack",
         "expenses",
         "invite",
         "sms",
@@ -1941,8 +1915,7 @@
         "docs",
         "lockscreen",
         "trip",
-        "expenses",
-        "pack"
+        "expenses"
       ],
       "stops": [
         "rollcall",
@@ -1954,8 +1927,7 @@
         "docs",
         "lockscreen",
         "trip",
-        "expenses",
-        "pack"
+        "expenses"
       ]
     },
     {
@@ -1978,8 +1950,7 @@
         "docs",
         "lockscreen",
         "trip",
-        "expenses",
-        "pack"
+        "expenses"
       ],
       "stops": [
         "rollcall",
@@ -1991,8 +1962,7 @@
         "docs",
         "lockscreen",
         "trip",
-        "expenses",
-        "pack"
+        "expenses"
       ]
     },
     {
@@ -2019,8 +1989,7 @@
         "saved",
         "ads",
         "calls",
-        "expenses",
-        "pack"
+        "expenses"
       ],
       "stops": [
         "rollcall",
@@ -2036,8 +2005,7 @@
         "saved",
         "ads",
         "calls",
-        "expenses",
-        "pack"
+        "expenses"
       ]
     },
     {
