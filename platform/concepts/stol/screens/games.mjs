@@ -6,7 +6,7 @@ export default (ui) => ui.screen({
     ui.largeTitle('Игры'),
     ui.section({ children: ui.chips([{ label: 'Все', on: true, filter: 'all' }, { label: 'Евро', filter: 'euro' }, { label: 'Кооперативы', filter: 'coop' }, { label: 'До 60 минут', filter: 'short' }]) }),
     ui.section({ title: 'Хочу сыграть', meta: '2', tags: ['euro', 'coop', 'short'], children: ui.list([
-      ui.row({ lead: ui.leadIcon('dices', { accent: true }), title: 'Маршруты Севера', sub: 'Есть у Маши · 3–5 игроков · 50 минут', go: 'tables', primary: true, tags: ['euro', 'short'] }),
+      ui.row({ lead: ui.leadIcon('dices', { accent: true }), title: 'Остров сокровищ', sub: 'Есть у Маши · 3–5 игроков · 50 минут', go: 'tables', primary: true, tags: ['euro', 'short'] }),
       ui.row({ lead: ui.leadIcon('dices'), title: 'Тихая гавань', sub: 'Уже в коллекции, в плёнке · 2 игрока · кооператив', go: 'tables', tags: ['coop', 'short'] }),
     ]) }),
     ui.section({ title: 'Моя коллекция', meta: '17', tags: ['euro', 'coop', 'short'], children: ui.list([

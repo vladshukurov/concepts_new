@@ -8,10 +8,10 @@ export default (ui) => ui.screen({
     ui.section({ children: ui.segments([{ label: 'Сегодня', on: true, filter: 'today' }, { label: 'Выходные', filter: 'weekend' }, { label: 'Рядом', filter: 'near' }]) }),
     ui.section({ title: `Сегодня, ${now.short}`, tags: ['today', 'near'], children: ui.list([
       ui.row({ lead: ui.leadIcon('', { text: tonight.start }), title: tonight.game, sub: `${tonight.where} · ${tonight.pace}`, end: seats(tonight.taken, tonight.seats), go: 'table', primary: true, tags: ['today', 'near'] }),
-      ui.row({ lead: ui.leadIcon('', { text: '20:15' }), title: 'Городские линии', sub: 'У Жени дома · знают правила', end: seats(2, 4), go: 'table', tags: ['today'] }),
+      ui.row({ lead: ui.leadIcon('', { text: '20:15' }), title: 'Городские линии', sub: 'У Ани дома · знают правила', end: seats(2, 4), tags: ['today'] }),
     ]) }),
     ui.section({ title: saturday.date[0].toUpperCase() + saturday.date.slice(1), tags: ['weekend', 'near'], className: 'is-filtered-out', children: ui.list([
-      ui.row({ lead: ui.leadIcon('', { text: saturday.start }), title: saturday.game, sub: `${saturday.where} · объясним правила`, end: { value: 'Занять место', toast: `Место за вами · ${saturday.start}, ${saturday.where}`, label: 'Занять место за субботним столом' }, tags: ['weekend', 'near'] }),
+      ui.row({ lead: ui.leadIcon('', { text: saturday.start }), title: saturday.game, sub: `${saturday.where} · ${saturday.taken} из ${saturday.seats} мест · объясним правила`, end: { value: 'Занять место', toast: `Место за вами · стол ${saturday.taken + 1} из ${saturday.seats}`, label: 'Занять место за субботним столом' }, tags: ['weekend', 'near'] }),
     ]) }),
     ui.section({ title: 'Сыграли', meta: 'сентябрь', children: ui.list([
       ui.row({ lead: ui.leadIcon('', { text: 'вт' }), title: 'Городские линии', sub: 'У Жени дома · 48 минут · Илья 92' }),

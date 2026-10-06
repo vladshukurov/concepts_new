@@ -8,7 +8,7 @@ export default (ui) => ui.screen({
       ui.denied('faceid'),
       ui.section({ children: ui.group({ cells: [
         ui.cell({ icon: 'scan-face', title: 'Замок Face ID', sub: 'Ветпаспорт и место выгула', toggle: true, primary: true, toast: 'Замок включён' }),
-        ui.cell({ icon: 'lock', title: 'Закрывать в фоне', sub: 'Когда «Хвосты» сворачиваются', toggle: false, toast: 'Будем закрывать в фоне' }),
+        ui.cell({ icon: 'lock', title: 'Закрывать в фоне', sub: 'Когда «Выгул» сворачивается', toggle: false, toast: 'Будем закрывать в фоне' }),
       ] }) }),
       ui.section({ children: ui.group({ label: 'Спрашивать', cells: [
         ui.cell({ title: 'Сразу', sub: 'Дольше открывается карточка', toast: 'Спрашивать сразу' }),

@@ -12,7 +12,7 @@ export default (ui) => ui.screen({
           ui.cell({ icon: 'tv', title: 'Экран у большого стола', sub: 'AirPlay · готов к показу', toast: 'Счёт на экране у большого стола' }),
           ui.cell({ icon: 'repeat-2', title: 'Проверить сеть', activate: 'wifiinfo|cast' }),
         ] }),
-        ui.list([ui.row({ lead: ui.leadIcon('wifi', { round: true, accent: true }), title: `Вы в сети ${club.network}`, sub: 'Экран клуба в той же сети', shownAfter: 'wifiinfo' })]),
+        ui.list([ui.row({ lead: ui.leadIcon('wifi', { round: true, accent: true }), title: `Телефон в сети ${club.network}`, sub: 'Экран клуба в той же сети', shownAfter: 'wifiinfo' })]),
       ] }),
       ui.section({ children: ui.actions([ui.button({ label: 'Вернуться к счёту', variant: 'secondary', block: true, go: 'score', primary: true })]) }),
     ]),

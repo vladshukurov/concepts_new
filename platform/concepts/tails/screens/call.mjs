@@ -3,7 +3,7 @@ import { THEME, PET } from './_shared.mjs';
 export default (ui) => ui.screen({
   id: 'call', theme: THEME, className: 'tl-call',
   body: ui.callView({
-    face: PET.truffle, name: 'Ксения · Трюфель', status: 'Хвосты · 02:14',
+    face: PET.barni, name: 'Влада · Барни', status: 'Выгул · 02:14',
     controls: [
       { icon: 'mic-off', label: 'Микрофон', toast: 'Микрофон выключен' },
       { icon: 'volume-2', label: 'Динамик', toast: 'Звук на динамике' },

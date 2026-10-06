@@ -13,6 +13,7 @@ export default (ui) => ui.screen({
         ui.button({ label: 'В Календарь', icon: 'calendar-plus', variant: 'secondary', primary: true, ask: 'calendar|vaccine|vaccine'}),
       ], { row: true })}</div>`,
       ui.denied('calendar'),
+      ui.list([ui.row({ lead: ui.leadIcon('calendar-check', { round: true, accent: true }), title: 'Приём в календаре', sub: 'Вторник, 09:15 · напоминание за час', shownAfter: 'calendar' })]),
       ui.list([
         ui.row({ lead: ui.leadIcon('bell'), title: 'Изменения приёма', sub: 'Перенос, отмена или подготовка от врача', go: 'chats' }),
         ui.row({ lead: ui.leadIcon('notebook-pen'), title: 'Наблюдения к приёму', sub: 'Сегодня: 4 из 5 разобрано', go: 'vetnote' }),

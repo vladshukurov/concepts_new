@@ -17,7 +17,7 @@ export default (ui) => ui.screen({
       icon: 'dices', title: `${tonight.game} · ${tonight.start}`, meta: `сегодня · ${tonight.where} · раунд 4`, status: { label: 'идёт', accent: true },
       attach: seats(tonight.taken, tonight.seats), actions: [{ label: 'Открыть счёт', icon: 'list-ordered', go: 'score', primary: true }], tags: ['match'],
     }),
-    ui.entry({ icon: 'trophy', title: `${own.last.game} · ${own.last.points} очка`, meta: `${own.last.when} · ${own.last.minutes} минут · ${own.last.place}`, text: own.last.note, open: { go: 'post' }, menu: ['Изменить', 'Удалить'], tags: ['match'] }),
+    ui.entry({ icon: 'dices', title: `${own.last.game} · ${own.last.points} очка`, meta: `${own.last.when} · ${own.last.minutes} минут · ${own.last.place}`, text: own.last.note, open: { go: 'post' }, menu: ['Изменить', 'Удалить'], tags: ['match'] }),
     ui.entry({ icon: 'mic', title: own.voice.title, meta: `${own.voice.when} · памятка себе`, voice: { dur: own.voice.dur }, tags: ['note'] }),
     ui.entry({ icon: 'package', title: `В коллекции · ${own.box.title}`, meta: `${own.box.when} · ${own.box.about}`, text: 'Подарили на день рождения, ещё в плёнке. Сыграть с Женей вдвоём в пятницу, пока не забыли правила', open: { go: 'games' }, tags: ['box'] }),
     ui.entry({

@@ -15,9 +15,9 @@ export default (ui) => ui.screen({
         ]),
       ] }),
       ui.section({ title: 'Кто ходит на Лопухинский', children: ui.list([
-        ui.row({ thumb: `${PET.truffle} is-round`, title: 'Трюфель · Ксения', sub: 'Ретривер, 2 года · гуляли вместе 4 мая', end: { value: 'часто' }, go: 'pet' }),
-        ui.row({ thumb: `${PET.loki} is-round`, title: 'Локи · Марат', sub: 'Щенок 7 месяцев', end: { value: 'впервые' }, go: 'pet' }),
-        ui.row({ thumb: `${PET.barni} is-round`, title: 'Бруно · Аня', sub: 'Метис, 5 лет · не любит игры на бегу', end: { value: 'часто' }, go: 'pet' }),
+        ui.row({ thumb: `${PET.barni} is-round`, title: 'Барни · Влада', sub: 'Лабрадор, 4 года · гуляли вместе 4 мая', end: { value: 'часто' }, go: 'chat' }),
+        ui.row({ thumb: `${PET.loki} is-round`, title: 'Локи · Марат', sub: 'Щенок 7 месяцев', end: { value: 'впервые' } }),
+        ui.row({ lead: ui.avatar('БА'), title: 'Бруно · Аня', sub: 'Метис, 5 лет · не любит игры на бегу', end: { value: 'часто' } }),
       ]) }),
       ui.foot('Карта площадок обновлена 12 мая · данные от 34 владельцев', 'is-block'),
     ]),

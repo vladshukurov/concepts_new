@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `section` ×40, `row` ×30, `leadIcon` ×27, `cell` ×18, `list` ×18, `nav` ×15, `button` ×15, `denied` ×13, `actions` ×8, `dialog` ×7, `entry` ×7, `group` ×6, `iconButton` ×6, `avatar` ×5, `bubble` ×5, `tabBar` ×5, `search` ×4, `largeTitle` ×3, `textButton` ×3, `chatNav` ×2, `chat` ×2, `day` ×2, `composer` ×2, `top` ×2, `chips` ×2, `callView` ×1, `voice` ×1, `miniInfo` ×1, `usersStack` ×1, `safariFill` ×1, `wordmark` ×1, `stats` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `section` ×42, `row` ×38, `leadIcon` ×35, `list` ×20, `cell` ×18, `nav` ×15, `button` ×14, `denied` ×13, `actions` ×8, `iconButton` ×7, `dialog` ×7, `entry` ×7, `group` ×6, `avatar` ×5, `bubble` ×5, `tabBar` ×5, `search` ×4, `largeTitle` ×3, `textButton` ×3, `chatNav` ×2, `chat` ×2, `day` ×2, `composer` ×2, `top` ×2, `chips` ×2, `callView` ×1, `voice` ×1, `miniInfo` ×1, `usersStack` ×1, `safariFill` ×1, `wordmark` ×1, `stats` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -40,12 +40,12 @@
 | Компонент | Классы |
 |---|---|
 | Материалы под работой: линер, бумага, время наброска | `.sh-tools` |
-| Серия места: работы разных авторов одной точки | `.sh-series` `.sh-head` |
+| Серия места: свои зарисовки одной точки в разную погоду | `.sh-series` `.sh-head` |
 | Профиль | `.sh-me` |
 | Съёмка рисунка и сканер QR | `.sh-cam` `.sh-viewfinder` `.sh-frame` `.sh-caption` `.sh-shutter` |
 | Мессенджер и аудиоразбор | `.sh-chat-art` `.sh-call` |
 | Системные поверхности: «Домой» с виджетом, Safari, замок | `.sh-lock` `.sh-lock-body` `.sh-text` `.sh-gap` |
-| Пустой кадр серии: ждёт своей погоды | `.sh-empty` |
+| Серия с подписями под кадрами; пустой кадр — той же формы, ждёт своей погоды | `.sh-series` `.sh-empty` |
 <!-- @end -->
 
 ## Актуальная навигация

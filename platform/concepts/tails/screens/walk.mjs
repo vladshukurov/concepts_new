@@ -3,7 +3,7 @@ import { THEME, PET, faces } from './_shared.mjs';
 export default (ui) => ui.screen({
   id: 'walk', theme: THEME,
   body: [
-    ui.nav({ title: 'Прогулка', trailing: ui.iconButton({ icon: 'share', label: 'Поделиться прогулкой', toast: 'Ссылка на прогулку скопирована' }) }),
+    ui.nav({ title: 'Прогулка', trailing: ui.iconButton({ icon: 'message-circle', label: 'Чат прогулки', go: 'chat' }) }),
     ui.scroll([
       `<div class="tl-walk-page"><h1 class="ui-title">Спокойный круг у пруда</h1><p class="ui-sub">Сегодня, 18:40 · спокойный темп</p>${faces(PET.truffle, PET.mint, PET.barni, PET.loki)}<p class="ui-sub">Трюфель, Мята, Барни и ещё 3</p></div>`,
       ui.section({ children: [
@@ -19,6 +19,7 @@ export default (ui) => ui.screen({
         ui.button({ label: 'Я на площадке', icon: 'map-pin', variant: 'secondary', block: true, activate: 'wifiinfo|walk' }),
         ui.button({ label: 'Сеть площадки', icon: 'qr-code', variant: 'secondary', block: true, go: 'netqr' }),
       ]) }),
+      ui.section({ shownAfter: 'wifiinfo', children: ui.list([ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Вы на площадке', sub: 'Сеть Lopukhinka-Dog · отмечены в 18:38' })]) }),
     ]),
   ],
 });

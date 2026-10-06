@@ -17,22 +17,21 @@ export default (ui) => ui.screen({
         ] }),
         ui.denied('push'),
       ] }),
-      ui.section({ children: ui.group({ label: 'Лента', cells: [
+      ui.section({ children: ui.group({ label: 'Без сети', cells: [
         ui.cell({ icon: 'download', title: 'Без сети', value: 'Ветпаспорт', go: 'refresh', primary: true }),
-        ui.cell({ icon: 'download', title: 'Качество загрузки', value: 'Высокое', toast: 'Высокое · 1,4 ГБ за месяц' }),
+        ui.cell({ icon: 'download', title: 'Фото в дневнике', value: 'Высокое качество' }),
       ] }) }),
       ui.section({ children: ui.group({ label: 'На устройстве', cells: [
         ui.cell({ icon: 'layout-grid', title: 'Виджет', value: 'Не добавлен', activate: 'appgroups|widget' }),
-        ui.cell({ icon: 'key', title: 'Вход на сайте', value: 'tails.social', activate: 'autofill|fill' }),
-        ui.cell({ icon: 'share', title: 'Поделиться в «Хвосты»', value: '3 черновика', activate: 'shareext|shareext' }),
+        ui.cell({ icon: 'key', title: 'Вход в кабинет клиники', value: 'svoi-vet.ru', activate: 'autofill|fill' }),
       ] }) }),
       ui.section({ children: ui.group({ label: 'Приватность', cells: [
         ui.cell({ icon: 'scan-face', title: 'Замок Face ID', value: 'Ветпаспорт', ask: 'faceid|lock|lock' }),
         ui.cell({ icon: 'megaphone', title: 'Реклама', value: 'Без подбора', go: 'ads' }),
-        ui.cell({ icon: 'shield', title: 'Жалобы и блокировки', toast: 'Жалобы, скрытые публикации и заблокированные' }),
-        ui.cell({ icon: 'eye', title: 'Кто видит профиль Барни', value: 'Друзья', toast: 'Видят друзья' }),
+        ui.cell({ icon: 'shield', title: 'Жалобы и блокировки', toast: 'Жалобы и заблокированные' }),
+        ui.cell({ icon: 'eye', title: 'Дневник Трюфеля', value: 'Только я' }),
       ] }) }),
-      ui.foot('Хвосты 1.4.2', 'is-block'),
+      ui.foot('Выгул 1.4.2', 'is-block'),
     ]),
   ],
 });

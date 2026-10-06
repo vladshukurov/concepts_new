@@ -10,11 +10,11 @@ export const city = { name: 'Алматы', authors: 32, places: 14 };
 
 /* Рисунков кодом нет: кадр зарисовки — плейсхолдер .ph, люди — инициалы */
 export const people = {
-  me: { name: 'Анна Разумова', first: 'Анна', initial: 'АР', about: 'это вы · 36 работ' },
-  alina: { name: 'Алина Рахимова', first: 'Алина', initial: 'АЛ', about: 'линер, акварель · 128 работ' },
+  me: { name: 'Анна Разумова', first: 'Анна', initial: 'АР', about: 'это вы' },
+  alina: { name: 'Алина Рахимова', first: 'Алина', initial: 'АЛ', about: 'линер, акварель · ходит на встречи' },
   misha: { name: 'Миша Ким', first: 'Миша', initial: 'МК', about: 'быстрые наброски' },
   lera: { name: 'Лера Ян', first: 'Лера', initial: 'ЛЯ', about: 'акварель' },
-  petr: { name: 'Пётр Ильин', first: 'Пётр', initial: 'ПИ', about: 'линер · в контактах «Петя»' },
+  petr: { name: 'Пётр Ильин', first: 'Пётр', initial: 'ПИ', about: 'линер · рисовали двор в июле' },
   marina: { name: 'Марина Ли', first: 'Марина', initial: 'МЛ', about: 'ведёт встречи' },
 };
 
@@ -26,7 +26,7 @@ export const places = {
 
 export const pleinair = { title: 'Утро на Зелёном базаре', iso: '2026-09-19', day: dateLabel('2026-09-19'), date: dayLabel('2026-09-19'), start: '09:00', where: 'главный вход, у часов', people: 18, host: people.marina };
 export const walk = { title: 'Линии старого города', iso: '2026-09-26', day: dateLabel('2026-09-26'), start: '16:30', where: 'сквер у театра', people: 24 };
-export const exhibit = { title: 'Город в линиях', network: 'Shtrikh-Guest', until: '30 сентября' };
+export const exhibit = { title: 'Город в линиях', network: 'Lines-Guest', until: '30 сентября' };
 
 /* Свой скетчбук Анны: только то, что она нарисовала и записала сама — неровные, живые состояния */
 export const own = {

@@ -1,42 +1,33 @@
 <!-- @overview:vision -->
-<p class="deck">Знакомые люди из одного спортивного клуба публикуют тренировки, зовут на локальные маршруты и собираются по предметным сообществам.</p>
+<p class="deck">«Выбег» — свой беговой дневник: пробежки с отрезками и самочувствием, голосовые заметки, видео своей техники и цель недели. С клубом — тренировки, чат и эфир тренера.</p>
 <div class="utp-box"><strong>Ограничение продукта.</strong> {{TAGLINE}}</div>
-<p>Если убрать подтверждённый клуб, знакомых участников, темп, дистанцию и точку старта, останется обычная социальная лента. Эти связи — продукт, а не оформление.</p>
+<p>Если убрать свои пробежки и заметки, останется трекер. Продукт — то, как прошла пробежка и что поменять в следующий раз.</p>
 {{FEAT_GRID}}
 <!-- @end -->
 
 <!-- @overview:arch -->
-<p class="deck">Знакомая социальная навигация ведёт к клубным объектам: публикации, предметные сообщества, тренировки, маршруты и профиль участника.</p>
-<div class="flow"><span class="chip">Лента клуба</span><span class="arr">→</span><span class="chip">Что нового?</span><span class="arr">→</span><span class="chip">камера / медиатека / место</span><span class="arr">→</span><span class="chip">пост тренировки</span></div>
-<div class="flow"><span class="chip">Сообщества</span><span class="arr">→</span><span class="chip">Бег · утренняя группа</span><span class="arr">→</span><span class="chip">6 км · темп 6:10</span><span class="arr">→</span><span class="chip">тренировка</span></div>
-<div class="flow"><span class="chip">Маршруты</span><span class="arr">→</span><span class="chip">Набережная 8 км</span><span class="arr">→</span><span class="chip">голосовой пейсинг</span><span class="arr">→</span><span class="chip">локскрин</span></div>
-<div class="flow"><span class="chip">Тренировка</span><span class="arr">→</span><span class="chip">Отмечать дорогу</span><span class="arr">→</span><span class="chip">кто в пути</span><span class="arr">→</span><span class="chip">точка старта</span></div>
-
-<div class="arch" style="margin-top:var(--s-lg)">
-  <div class="arch-layer"><h3>UI</h3><p>Пять устойчивых вкладок, карточная лента, публичные карточки тренировок, предметные сообщества и профиль. Системные permission-поверхности остаются из ядра.</p></div>
-  <div class="arch-layer"><h3>Domain</h3><p>Клуб, участник, секция, публикация, тренировка, маршрут, отрезок и точка старта. Сообщество — секция реального клуба, не роль и не админская сущность.</p></div>
-  <div class="arch-layer"><h3>Services</h3><p>PermissionsService, PhoneAuth SDK, Core Location, AVFoundation, Photos, Contacts, APNs, BackgroundTasks, Bonjour/Cast и AVAudioSession.</p></div>
-  <div class="arch-layer"><h3>Data</h3><p>Локальные черновики, скачанные маршруты и индекс видео — Core Data / FileManager. Сессия расширений — Keychain group.</p></div>
-  <div class="arch-layer"><h3>External</h3><p>Лента и секции — Firestore с security rules; медиа — Storage; пуши — Cloud Messaging. Своего серверного обработчика нет.</p></div>
-</div>
+<p class="deck">Свой дневник, тренировки, мессенджер, маршруты и профиль — в грамматике ВКонтакте.</p>
+<div class="flow"><span class="chip">Пробежать</span><span class="arr">→</span><span class="chip">надиктовать заметку</span><span class="arr">→</span><span class="chip">дневник</span></div>
+<div class="flow"><span class="chip">Свой маршрут</span><span class="arr">→</span><span class="chip">подсказки на отрезках</span><span class="arr">→</span><span class="chip">локскрин</span></div>
+<div class="flow"><span class="chip">Тренировка</span><span class="arr">→</span><span class="chip">показать, где я</span><span class="arr">→</span><span class="chip">кто идёт к старту</span></div>
 <!-- @end -->
 
 <section class="section" id="perm-matrix">
   <h2>Матрица доступов</h2>
-  <p class="deck">Каждый ключ привязан к наблюдаемой клубной фиче и единственной точке запроса.</p>
+  <p class="deck">Каждый ключ привязан к наблюдаемой фиче и единственной точке запроса.</p>
   {{PERM_MATRIX}}
   <div class="note-box"><p><strong>Не заявлено:</strong> associated domains. Концепт не проектирует диплинки; приглашение отправляет обычную веб-страницу клуба через системное меню.</p></div>
 </section>
 
 <section class="section" id="no-backend">
   <h2>Почему здесь нет своего бэкенда</h2>
-  <p class="deck">Удалённые социальные данные обслуживаются SDK провайдера и его security rules; серверный код концепта не пишется.</p>
+  <p class="deck">Данные дневника обслуживаются SDK провайдера и его security rules; серверный код концепта не пишется.</p>
   {{BACKENDLESS}}
 </section>
 
 <section class="section" id="screen-table">
   <h2>Экраны и доступы</h2>
-  <p class="deck">Двадцать четыре исходных экрана: пять корней, продуктовые детали, создание, системные поверхности и состояния отказа.</p>
+  <p class="deck">Экраны: пять корней, продуктовые детали, создание, системные поверхности и состояния отказа.</p>
   {{SCREEN_TABLE}}
 </section>
 

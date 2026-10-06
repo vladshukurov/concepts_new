@@ -1,7 +1,3 @@
-/* «Штрих» — мимикрия ВКонтакте, светлая тема `.ui.vk-light`.
-   Оболочка, лента и мессенджер — из ядра. Своё: зарисовки линером,
-   нарисованные кодом, серия одного места разными авторами, карточка
-   пленэра и экран выставки. */
 
 /* Зарисовки: один рисунок — один класс */
 
@@ -9,7 +5,7 @@
 .sh-tools { display:flex; flex-wrap:wrap; gap:6px; }
 .sh-tools > span { padding:4px 10px; border-radius:14px; background:var(--ui-accent-soft); color:var(--ui-link); font:500 13px/16px var(--ui-face); }
 
-/* Серия места: работы разных авторов одной точки */
+/* Серия места: свои зарисовки одной точки в разную погоду */
 .sh-series { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
 .sh-series > button { aspect-ratio:4/3; min-height:44px; }
 .sh-head { display:flex; flex-direction:column; gap:4px; padding:0 16px; }
@@ -54,5 +50,12 @@
 .sh-gap { margin-top:12px; }
 
 /* Пустой кадр серии: ждёт своей погоды */
-.sh-empty { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; aspect-ratio:1; border:1px dashed var(--ui-line); border-radius:8px; color:var(--ui-text-2); font:400 13px/16px var(--ui-face); }
+
+/* Серия с подписями под кадрами; пустой кадр — той же формы, ждёт своей погоды */
+.sh-series.is-captioned { gap:8px; padding:0 16px; }
+.sh-series.is-captioned > button, .sh-series.is-captioned > .sh-empty { display:flex; flex-direction:column; gap:2px; text-align:left; aspect-ratio:auto; }
+.sh-series.is-captioned .ph, .sh-empty > span { display:grid; place-items:center; aspect-ratio:4/3; border-radius:8px; }
+.sh-empty > span { border:1px dashed var(--ui-line); color:var(--ui-text-2); }
 .sh-empty svg { width:24px; height:24px; }
+.sh-series.is-captioned b { font:500 15px/20px var(--ui-face); }
+.sh-series.is-captioned small { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }

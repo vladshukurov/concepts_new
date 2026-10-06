@@ -3,7 +3,7 @@ import { people, pleinair } from '../model.mjs';
 
 export default (ui) => ui.screen({
   id: 'call', theme: THEME, className: 'sh-call',
-  body: ui.callView({ initial: people.marina.initial, name: 'Разбор работ после встречи', status: `${pleinair.title} · 6 в разговоре · 12:40`, controls: [
+  body: ui.callView({ initial: people.marina.initial, name: 'Сбор перед встречей', status: `${pleinair.title} · 6 в разговоре · 04:10`, controls: [
     { icon: 'mic-off', label: 'Микрофон', toast: 'Микрофон выключен' },
     { icon: 'hand', label: 'Слово', toast: 'Вы в очереди на разбор · вторая' },
     { icon: 'image', label: 'Работа', go: 'picker' },

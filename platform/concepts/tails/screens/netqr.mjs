@@ -11,7 +11,7 @@ export default (ui) => ui.screen({
         ui.denied('hotspot'),
       ] }),
       ui.section({ title: 'Сейчас', children: ui.list([
-        ui.row({ lead: ui.leadIcon('wifi'), title: 'Вы в этой сети', sub: 'С 18:24, держится 9 минут' }),
+        ui.row({ lead: ui.leadIcon('wifi', { round: true, accent: true }), title: 'Подключено к сети парка', sub: 'Можно отметиться на площадке', shownAfter: 'hotspot' }),
         ui.row({ lead: ui.leadIcon('map-pin'), title: 'Вернуться к отметке', sub: 'Отметились 6 из 9, старт в 18:40', go: 'walk' }),
         ui.row({ lead: ui.leadIcon('wifi-off'), title: 'В 18:19 пароль не подошёл', sub: 'Наклейка от 6 мая, сеть просит код от 15-го' }),
       ]) }),

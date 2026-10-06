@@ -1,38 +1,37 @@
-import { THEME, TABS, PET } from './_shared.mjs';
+import { THEME, TABS, PET, faces } from './_shared.mjs';
+import { own, revaccination } from '../model.mjs';
 
+/* Дневник Трюфеля: прогулки, заметки и здоровье — всё своё. Чужих публикаций,
+   лайков и подписок нет — с друзьями гуляют вместе и пишут в чат */
 export default (ui) => ui.screen({
   id: 'home', theme: THEME,
   body: ui.scroll([
-    ui.top(ui.wordmark({ name: 'Хвосты' }), [
-      ui.iconButton({ icon: 'plus', label: 'Новая запись', go: 'create' }),
-      ui.iconButton({ icon: 'users', label: 'Друзья из контактов', go: 'mates' }),
-    ]),
-    ui.stories([
-      { label: 'История', icon: 'plus', seen: true, go: 'create' },
-      { label: 'Трюфель', face: PET.truffle, go: 'pet' },
-      { label: 'Мята', face: PET.mint, go: 'pet' },
-      { label: 'Локи', face: PET.loki, seen: true, go: 'pet' },
-      { label: 'Барни', face: PET.barni, seen: true, go: 'profile' },
-    ]),
-    `<button class="tl-nearby" data-ask="location|nearby|home"><span class="tl-nearby-ico">${ui.icon('map-pin')}</span><span class="ui-row-text"><strong>Кто гуляет рядом</strong><span>7 питомцев в Петроградском районе</span></span>${ui.icon('chevron-right')}</button>`,
+    ui.top(ui.wordmark({ name: 'Выгул' }), ui.iconButton({ icon: 'plus', label: 'Новая запись', go: 'create' })),
+    ui.section({ children: ui.chips([
+      { label: 'Все', on: true, filter: 'all' },
+      { label: 'Прогулки', filter: 'walk' },
+      { label: 'Здоровье', filter: 'health' },
+      { label: 'Заметки', filter: 'note' },
+    ]) }),
+    ui.entry({
+      icon: 'paw-print', title: 'Спокойный круг у пруда · 18:40', meta: 'сегодня · Лопухинский сад · с Барни и Мятой', status: { label: 'сегодня', accent: true },
+      attach: faces(PET.barni, PET.mint, PET.loki), actions: [{ label: 'Открыть прогулку', icon: 'map-pin', go: 'walk', primary: true }], tags: ['walk'],
+    }),
+    ui.entry({ icon: 'route', title: own.walk.title, meta: `${own.walk.when} · ${own.walk.dur}`, text: own.walk.text, photos: 1, menu: ['Изменить', 'Удалить'], tags: ['walk'] }),
+    ui.entry({
+      icon: 'syringe', title: `Ревакцинация через ${revaccination.left}`, meta: `${revaccination.vaccine} · ${revaccination.day}, ${revaccination.time}`,
+      text: 'Обработку от клещей пропустили на 4 дня', actions: [{ label: 'Открыть здоровье', icon: 'stethoscope', go: 'vaccine' }], tags: ['health'],
+    }),
+    ui.entry({ icon: 'mic', title: own.note.title, meta: `${own.note.when} · наблюдение`, voice: { dur: own.note.dur }, open: { go: 'vetnote' }, tags: ['note', 'health'] }),
+    ui.entry({
+      icon: 'megaphone', title: 'Корм для активных собак −20 %', meta: 'зоомагазин на Большом · реклама',
+      text: 'Доставка в день заказа по Петроградской', actions: [{ label: 'Почему эта реклама', icon: 'sliders-horizontal', go: 'ads' }],
+    }),
+    ui.entry({
+      icon: 'map-pin', title: 'Кто гуляет рядом', meta: 'Петроградская · сейчас',
+      text: 'Площадки и прогулки поблизости — по вашему месту', actions: [{ label: 'Показать рядом', icon: 'navigation', ask: 'location|nearby|home' }], tags: ['walk'],
+    }),
     ui.denied('location'),
-    ui.post({
-      author: { face: PET.truffle, name: 'Ксения и Трюфель', meta: '18 минут назад · Петроградская', action: { go: 'pet' } },
-      text: 'Трюфель впервые дошёл до дальнего пруда. Утки заинтересовали, но команда «рядом» победила',
-      media: PET.truffle, likes: 184, comments: 16, shares: 3, views: '1,2K', liked: true,
-      menu: ['Скрыть', 'Пожаловаться'],
-    }),
-    ui.post({
-      author: { face: PET.loki, name: 'Марина Гурьева', meta: 'кинолог · сегодня в 08:30', action: { go: 'course' } },
-      text: 'Новое занятие курса: учимся отпускать с поводка на площадке без забора',
-      attach: `<button class="tl-attach" data-go="course"><span class="ui-thumb ${PET.loki}"></span><span class="ui-row-text"><strong>Подзыв в парке с отвлечениями</strong><span>Осталось 7:39 из 14:20 · занятие 4 из 12</span></span></button>`,
-      likes: 61, comments: 9, views: 804,
-    }),
-    ui.post({
-      author: { face: PET.mint, name: 'Алёна и Мята', meta: 'вчера в 21:14', action: { go: 'pet' } },
-      text: 'Главное место в доме занято. Наблюдение за двором началось ровно в 06:40',
-      media: PET.mint, likes: 92, comments: 7, views: 640,
-    }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'home' }),
 });

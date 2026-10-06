@@ -13,13 +13,13 @@ export default (ui) => ui.screen({
           ui.button({ label: 'Чат стола', icon: 'message-circle', variant: 'secondary', block: true, go: 'chat' }),
         ]),
       ] }),
-      ui.section({ title: 'Не пропустить', children: [
+      ui.section({ title: 'Следующий раз', children: [
         ui.group({ cells: [
-          ui.cell({ icon: 'calendar-plus', title: 'В календарь', sub: `Сегодня, ${tonight.start}`, ask: 'calendar|table|table' }),
-          ui.cell({ icon: 'bell', title: 'Следить за столом', sub: 'Если место освободится или время сдвинут', toggle: false, ask: 'push|table|table' }),
+          ui.cell({ icon: 'calendar-plus', title: 'Реванш в календарь', sub: 'Четверг, 19:30 · те же четверо', ask: 'calendar|table|table' }),
+          ui.cell({ icon: 'bell', title: 'Следить за субботним столом', sub: 'Если освободится место в «Маршрутах Севера»', toggle: false, ask: 'push|table|table' }),
         ] }),
         ui.denied('calendar'),
-        ui.list([ui.row({ lead: ui.leadIcon('calendar-check', { round: true, accent: true }), title: 'Стол в календаре', sub: 'Сегодня, 19:30 · напоминание за час', shownAfter: 'calendar' })]),
+        ui.list([ui.row({ lead: ui.leadIcon('calendar-check', { round: true, accent: true }), title: 'Реванш в календаре', sub: 'Четверг, 19:30 · напоминание за час', shownAfter: 'calendar' })]),
         ui.denied('push'),
       ] }),
       ui.section({ title: 'На телефоне', children: ui.list([
@@ -29,7 +29,7 @@ export default (ui) => ui.screen({
       ui.section({ title: 'За столом', meta: `${tonight.taken} из ${tonight.seats}`, children: ui.list([
         ui.row({ lead: ui.avatar(people.masha.initial), title: people.masha.name, sub: 'Собрала стол' }),
         ui.row({ lead: ui.avatar(people.ilya.initial), title: people.ilya.name, sub: 'Объяснил правила' }),
-        ui.row({ lead: ui.avatar(people.me.initial), title: people.me.name, sub: 'Вы · играли 9 раз' }),
+        ui.row({ lead: ui.avatar(people.me.initial), title: people.me.name, sub: 'Играл 9 раз' }),
         ui.row({ lead: ui.avatar(people.zhenya.initial), title: people.zhenya.name, sub: 'Принесёт дополнение', go: 'direct' }),
       ]) }),
     ]),

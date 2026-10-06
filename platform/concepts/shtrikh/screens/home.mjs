@@ -14,12 +14,12 @@ export default (ui) => ui.screen({
       { label: 'Заметки', filter: 'note' },
     ]) }),
     ui.entry({
-      icon: 'calendar', title: `${pleinair.title} · завтра`, meta: `${pleinair.start} · ${pleinair.where} · ${pleinair.people} идут · обновлено к 7:00`, status: { label: 'завтра', accent: true },
+      icon: 'calendar', title: pleinair.title, meta: `${pleinair.start} · ${pleinair.where} · ${pleinair.people} идут`, status: { label: 'завтра', accent: true },
       text: 'Взять линер, складной стул и бумагу потолще', actions: [{ label: 'Открыть встречу', icon: 'calendar', go: 'events', primary: true }],
     }),
     ui.entry({ icon: 'pen-line', title: own.today.title, meta: own.today.when, text: own.today.text, photos: 1, attach: tools(...own.today.tools), open: { go: 'post' }, menu: ['Изменить', 'Удалить'], tags: ['sketch'] }),
     ui.entry({
-      icon: 'images', title: `${places.panfilova.series} · ${own.series.done} из ${own.series.of}`, meta: `${places.panfilova.name} · ${own.series.next}`,
+      icon: 'layers', title: `${places.panfilova.series} · ${own.series.done} из ${own.series.of}`, meta: `${places.panfilova.name} · ${own.series.next}`,
       attach: ui.list([
         ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Лето', sub: 'Июль · тень липы' }),
         ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Дождь', sub: 'Август · мокрый асфальт' }),

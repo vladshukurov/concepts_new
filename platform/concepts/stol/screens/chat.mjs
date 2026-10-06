@@ -11,6 +11,7 @@ export default (ui) => ui.screen({
       ui.bubble({ from: `${people.masha.name}`, text: `Я принесу базовую коробку. Кто возьмёт дополнение?`, time: '12:08' }),
       ui.bubble({ out: true, text: 'Беру дополнение и жетоны', time: '12:11', read: true }),
       ui.voice({ dur: '0:12', time: '12:14' }),
+      ui.bubble({ from: `${people.masha.name}`, text: 'Илья ходит, не подсказывайте', time: '21:02' }),
     ])),
     ui.denied('voip'),
     ui.denied('mic'),

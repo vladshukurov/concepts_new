@@ -1,7 +1,7 @@
-/** Общее для экранов «Хвостов». Файл с «_» — не экран. */
+/** Общее для экранов «Выгула». Файл с «_» — не экран. */
 export const THEME = 'vk-light';
 export const TABS = [
-  { id: 'home', label: 'Главная', icon: 'house' },
+  { id: 'home', label: 'Дневник', icon: 'house' },
   { id: 'nearby', label: 'Рядом', icon: 'map-pin' },
   { id: 'chats', label: 'Мессенджер', icon: 'message-circle' },
   { id: 'vaccine', label: 'Здоровье', icon: 'stethoscope' },

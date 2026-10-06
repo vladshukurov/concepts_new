@@ -6,7 +6,7 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Новая зарисовка', back: 'cancel', trailing: ui.textButton({ label: 'Сохранить', strong: true, toast: 'Зарисовка в скетчбуке|home', primary: true }) }),
     ui.scroll([
-      ui.section({ children: '<p class="sh-text">Двор на Панфилова в первом снегу — успела до того, как дворник прошёл</p>' }),
+      ui.section({ children: '<p class="sh-text">Навес над овощными рядами, пока не открылись ларьки. Перспектива поплыла — в следующий раз начать с крыши</p>' }),
       ui.section({ children: ui.group({ cells: [
         ui.cell({ icon: 'camera', title: 'Снять рисунок', sub: 'Лист целиком, без бликов', ask: 'camera|shoot|compose' }),
         ui.cell({ icon: 'image', title: 'Из медиатеки', sub: 'Готовая работа или скан', ask: 'photos|picker|compose' }),
@@ -19,8 +19,8 @@ export default (ui) => ui.screen({
       ui.denied('location'),
       ui.denied('mic'),
       ui.denied('speech'),
-      ui.section({ shownAfter: 'mic', children: ui.list([ui.row({ lead: ui.leadIcon('mic', { round: true, accent: true }), title: 'Заметка записана · 0:22', sub: 'Пахнет мокрой листвой, во дворе гитара' })]) }),
-      ui.section({ shownAfter: 'speech', children: ui.list([ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Расшифровано', sub: '«Пахнет мокрой листвой, во дворе кто-то играет на гитаре»' })]) }),
+      ui.section({ shownAfter: 'mic', children: ui.list([ui.row({ lead: ui.leadIcon('mic', { round: true, accent: true }), title: 'Заметка записана · 0:15', sub: 'Грузчики спорят про цены, пахнет укропом' })]) }),
+      ui.section({ shownAfter: 'speech', children: ui.list([ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Расшифровано', sub: '«Грузчики спорят про цены, пахнет укропом»' })]) }),
     ]),
   ],
 });

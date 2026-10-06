@@ -1,6 +1,6 @@
-# Хвосты — дизайн-система
+# Выгул — дизайн-система
 
-Мимикрия ВКонтакте: лента питомцев, «Рядом», мессенджер, здоровье и профиль. Своё у «Хвостов» — карточка питомца с прививками, прогулка рядом и запись к ветеринару. Фото назначены питомцам, а не экранам.
+Мимикрия ВКонтакте: свой дневник питомца, «Рядом», мессенджер, здоровье и профиль. Своё у «Выгула» — карточка питомца с прививками, прогулка рядом и запись к ветеринару. Фото назначены питомцам, а не экранам.
 
 Оболочка, кегли, цвета и компоненты — из ядра (`kernel/base.css`, `kernel/components.mjs`). Концепт добавляет только свои доменные блоки в `styles.css` и не перекрашивает компоненты ядра. Правила интерфейса — в корневом `CLAUDE.md`: без капса и точек в конце фраз, вторичная кнопка — мягкий акцент, ни одного серого куска на белом, свой блок — только внутри секции.
 
@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×52, `section` ×44, `cell` ×33, `leadIcon` ×25, `button` ×20, `list` ×18, `nav` ×14, `iconButton` ×14, `denied` ×14, `group` ×12, `actions` ×9, `bubble` ×6, `dialog` ×5, `tabBar` ×5, `largeTitle` ×4, `foot` ×4, `search` ×3, `textButton` ×3, `post` ×3, `progress` ×2, `times` ×2, `day` ×2, `stats` ×2, `callView` ×1, `chatNav` ×1, `chat` ×1, `voice` ×1, `composer` ×1, `top` ×1, `wordmark` ×1, `stories` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×51, `section` ×40, `leadIcon` ×31, `cell` ×29, `list` ×21, `button` ×14, `denied` ×14, `nav` ×12, `group` ×11, `actions` ×8, `iconButton` ×8, `bubble` ×6, `entry` ×6, `dialog` ×5, `tabBar` ×5, `largeTitle` ×4, `foot` ×4, `search` ×3, `day` ×2, `textButton` ×2, `stats` ×2, `callView` ×1, `chatNav` ×1, `chat` ×1, `voice` ×1, `composer` ×1, `safariFill` ×1, `top` ×1, `wordmark` ×1, `chips` ×1, `avatar` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -40,28 +40,23 @@
 | Компонент | Классы |
 |---|---|
 | Фото питомцев: один кадр — одна кличка | `.tl-p1` `.tl-p2` `.tl-p3` `.tl-p4` |
-| Главная: вход в прогулки рядом — одна строка под историями | `.tl-nearby` `.tl-nearby-ico` |
-| Вложение в пост: карточка курса | `.tl-attach` |
+| Главная: вход в прогулки рядом — одна строка под историями | `.tl-nearby-ico` |
 | Карточка прогулки: название, данные, кто идёт | `.tl-walk` `.tl-walk-head` `.tl-walk-time` `.tl-walk-sub` `.tl-walk-tags` `.tl-faces` |
 | Прогулка | `.tl-walk-page` |
-| Профиль питомца: фото во всю ширину | `.tl-hero` `.tl-hero-nav` `.tl-pet-head` `.tl-match` |
+| Профиль питомца: фото во всю ширину | `.tl-hero` `.tl-hero-nav` `.tl-pet-head` |
 | Галерея публикаций | `.tl-gallery` |
 | Профиль пользователя | `.tl-me` `.tl-me-ava` `.tl-me-block` |
 | Новая запись | `.tl-composer` `.tl-composer-who` `.tl-composer-field` `.tl-attach-row` `.tl-attach-btn` |
 | Камера и выбор фото — системные поверхности | `.tl-camera` `.tl-camera-view` `.tl-camera-shade` `.tl-shutter` `.tl-picker` |
 | Ветпаспорт | `.tl-vet-head` `.tl-appt` `.tl-appt-when` `.tl-days` |
 | Расшифровка наблюдения | `.tl-note-head` `.tl-wave` `.tl-ts` |
-| Курс | `.tl-course-cover` `.tl-course-copy` `.tl-player` `.tl-controls` |
 | QR сети площадки | `.tl-qr` `.tl-qr-code` |
-| Поделиться в «Хвосты» — лист расширения | `.tl-share-note` |
-| Автозаполнение в Safari — чужая страница, свой вид | `.tl-web` `.tl-web-bar` `.tl-web-page` `.tl-web-field` `.tl-quicktype` |
-| Системные поверхности iOS: локскрин и экран «Домой» | `.tl-lock` `.tl-lock-time` `.tl-glass` `.tl-glass-top` `.tl-glass-controls` `.tl-notif` |
-| Доли прогресса | `.tl-w-46` `.tl-qr-actions` |
+| Доли прогресса | `.tl-qr-actions` |
 | Мессенджер: фото и карточка прогулки внутри сообщения | `.tl-chat-photo` `.tl-walk` `.tl-call` |
 <!-- @end -->
 
 ## Актуальная навигация
 
 <!-- @generated:navigation -->
-Главная · Рядом · Мессенджер · Здоровье · Профиль
+Дневник · Рядом · Мессенджер · Здоровье · Профиль
 <!-- @end -->
