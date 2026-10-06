@@ -17,7 +17,7 @@ export default (ui) => ui.screen({
       ] }),
       ui.section({ title: 'Дальше по программе', children: ui.list([
         ...program.sat.items.slice(1, 4).map(([time, title, sub]) => ui.row({ lead: ui.leadIcon('', { text: time }), title, sub })),
-        ...program.sun.items.slice(1, 2).map(([time, title, sub]) => ui.row({ lead: ui.leadIcon('', { text: 'Вс' }), title: `${time} · ${title}`, sub })),
+        ...program.sun.items.slice(1, 2).map(([time, title, sub]) => ui.row({ lead: ui.leadIcon('', { text: time }), title, sub: `воскресенье · ${sub}` })),
       ]) }),
       ui.section({ children: ui.miniInfo([
         { icon: 'map-pin', text: `Живут в ${trip.hotel.replace('отель', 'отеле')}, ${trip.hotelAddr}` },

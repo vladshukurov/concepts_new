@@ -8,7 +8,7 @@ export default (ui) => ui.screen({
     ui.section({ children: ui.list([ui.row({ lead: ui.avatar(me.initial), title: me.name, sub: `${me.phone} · Профиль и аккаунт`, go: 'account' })]) }),
     ui.section({ children: ui.group({ cells: [
       ui.cell({ icon: 'bookmark', title: 'Избранное', value: '38', go: 'saved' }),
-      ui.cell({ icon: 'users', title: 'Контакты', value: '23 здесь', go: 'contacts' }),
+      ui.cell({ icon: 'users', title: 'Контакты', value: '27 из поездок', go: 'contacts' }),
       ui.cell({ icon: 'layout-grid', title: 'Виджет «Ближайший сбор»', value: 'Не добавлен', activate: 'appgroups|widget' }),
     ] }) }),
     ui.section({ children: ui.group({ label: 'Уведомления', cells: [

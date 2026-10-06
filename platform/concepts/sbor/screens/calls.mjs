@@ -11,7 +11,7 @@ export default (ui) => ui.screen({
       { label: 'Пропущенные', filter: 'missed' },
     ]) }),
     ui.section({ title: 'Сегодня', children: ui.list([
-      ui.row({ lead: ui.avatar(people.marat.initial), title: people.marat.name, sub: 'Исходящий · 9:25 · 0:47', end: { icon: 'phone', go: 'call', label: `Позвонить: ${people.marat.name}` }, go: 'chat', tags: ['out'] }),
+      ui.row({ lead: ui.avatar(people.marat.initial), title: people.marat.name, sub: 'Исходящий · 9:25 · 0:47', go: 'chat', tags: ['out'] }),
       ui.row({ lead: ui.avatar(people.sveta.initial), title: people.sveta.name, sub: 'Исходящий · 9:18 · не ответила', go: 'rollcall', tags: ['out'] }),
     ]) }),
     ui.section({ title: 'Вчера', children: ui.list([

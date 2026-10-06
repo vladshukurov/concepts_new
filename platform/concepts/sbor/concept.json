@@ -484,13 +484,13 @@
       },
       {
         "pattern": "voice-message",
-        "screen": "trip",
-        "behavior": "Голосовое Рустама с волной и длительностью; микрофон в поле ввода начинает запись"
+        "screen": "chat",
+        "behavior": "Голосовое Марата 0:38 с волной и длительностью; микрофон в поле ввода чата поездки начинает запись"
       },
       {
         "pattern": "video-note",
-        "screen": "trip",
-        "behavior": "Кружок Лены 0:21 в ленте чата и кружки в альбоме поездки"
+        "screen": "lena",
+        "behavior": "Кружок Лены 0:17 в личном чате и кружки в альбоме поездки"
       },
       {
         "pattern": "calls",
@@ -515,7 +515,7 @@
     ]
   },
   "readiness": {
-    "status": "draft",
+    "status": "reviewed",
     "referenceResearch": [
       {
         "source": "Telegram для iOS, раздел «Чаты» и групповой чат",

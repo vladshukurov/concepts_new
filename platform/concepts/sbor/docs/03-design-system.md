@@ -29,7 +29,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×65, `section` ×62, `avatar` ×41, `list` ×31, `cell` ×27, `leadIcon` ×27, `bubble` ×26, `nav` ×14, `button` ×12, `group` ×10, `day` ×10, `actions` ×9, `dialog` ×9, `iconButton` ×8, `denied` ×5, `chatNav` ×5, `chat` ×5, `largeTitle` ×4, `tabBar` ×4, `voice` ×4, `composer` ×4, `segments` ×3, `search` ×3, `textButton` ×2, `miniInfo` ×2, `callView` ×1, `chips` ×1, `usersStack` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×79, `section` ×62, `avatar` ×51, `list` ×32, `leadIcon` ×31, `cell` ×25, `bubble` ×23, `nav` ×14, `button` ×12, `actions` ×9, `dialog` ×9, `group` ×9, `iconButton` ×8, `day` ×8, `denied` ×5, `chatNav` ×5, `chat` ×5, `largeTitle` ×4, `tabBar` ×4, `composer` ×4, `segments` ×3, `search` ×3, `textButton` ×2, `voice` ×2, `callView` ×1, `chips` ×1, `usersStack` ×1, `miniInfo` ×1.
 <!-- @end -->
 
 ## Доменные компоненты
@@ -40,7 +40,8 @@
 | Закреплённый сбор под шапкой чата поездки | `.sb-pin` |
 | Системная строка в ленте сообщений: перенос сбора, запись в Календарь | `.sb-sys` |
 | Карточка Wi‑Fi в пузыре и на экране сети | `.sb-net` `.sb-net-ico` `.sb-netcard` |
-| Кружок — видеосообщение | `.sb-in-media` `.sb-circle` `.sb-circle-dur` `.sb-photo` |
+| Кружок — видеосообщение | `.sb-in-media` `.sb-circle` `.sb-circle-dur` `.sb-photo` `.ui-bubble-media` |
+| Переписка прижата к полю ввода: короткая история стоит внизу, как в мессенджерах | `.ui-scroll` |
 | Место из Карт в пузыре | `.sb-shared` `.sb-place` `.sb-place-ico` |
 | Файл в пузыре | `.sb-file` `.sb-file-ico` `.ui-bubble` |
 | Дата в сообщении — ссылка, которая кладёт встречу в Календарь | `.sb-date` |

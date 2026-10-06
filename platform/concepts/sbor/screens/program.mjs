@@ -20,7 +20,6 @@ export default (ui) => ui.screen({
         { label: 'Вс 11', filter: 'sun' },
       ]) }),
       ui.section({ children: [
-        ui.list([ui.row({ lead: ui.leadIcon('history', { round: true, accent: true }), title: `Сбор перенесён: ${meet.was} → ${meet.time}`, sub: `${meet.movedBy}, вчера в ${meet.movedAt} · видно всем с утра`, go: 'trip' })]),
         ui.actions([ui.button({ label: 'Вся программа в Календарь', icon: 'calendar-plus', block: true, ask: 'calendar|program|program', primary: true })]),
       ] }),
       ui.section({ shownAfter: 'calendar', children: ui.list([
@@ -31,7 +30,7 @@ export default (ui) => ui.screen({
       day(ui, 'sat', program.sat, false),
       day(ui, 'sun', program.sun, true),
       ui.section({ children: ui.list([
-        ui.row({ lead: ui.leadIcon('map-pin', { round: true, accent: true }), title: 'Место из Карт', sub: 'Кафе, музей или причал — пунктом программы', go: 'share' }),
+        ui.row({ lead: ui.leadIcon('map-pin', { round: true, accent: true }), title: 'Место из Карт', sub: 'Последнее — Тюбетей, Баумана, 64', go: 'share' }),
       ]) }),
     ]),
   ],
