@@ -60,9 +60,6 @@
 /* Шапка сведений о поездке и приглашения */
 .sb-head { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 16px 16px; background:var(--ui-card); text-align:center; }
 .sb-head .ui-avatar { margin-bottom:8px; }
-.sb-acts { display:grid; grid-template-columns:repeat(4, 1fr); gap:8px; padding:0 16px; }
-.sb-act { display:flex; flex-direction:column; align-items:center; gap:6px; min-height:72px; padding:10px 4px; border-radius:12px; background:var(--ui-accent-soft); color:var(--ui-link); font:500 13px/16px var(--ui-face); }
-.sb-act svg { width:24px; height:24px; }
 
 /* Перекличка: сколько на месте и шкала из людей */
 .sb-roll { display:flex; flex-direction:column; gap:2px; padding:0 16px; }

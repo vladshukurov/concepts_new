@@ -6,7 +6,7 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Нашлись в книге' }),
     ui.scroll([ui.section({ title: 'Похоже, из клуба', meta: '9', children: ui.list([
-        ui.row({ lead: ui.avatar('ЛК'), title: 'Людмила Ковалёва', sub: 'Плавание по четвергам', end: add('Людмила Ковалёва') }),
+        ui.row({ lead: ui.avatar('ЛК'), title: 'Людмила Ковалёва', sub: 'Бегает по четвергам', end: add('Людмила Ковалёва') }),
         ui.row({ lead: ui.avatar('МГ'), title: 'Максим Громов', sub: 'В книге «Максим вело» · бегает по средам', end: add('Максим Громов') }),
         ui.row({ lead: ui.avatar('ЕС'), title: 'Елена Сон', sub: 'Утренняя группа · в клубе с весны', end: add('Елена Сон') }),
       ]) }),

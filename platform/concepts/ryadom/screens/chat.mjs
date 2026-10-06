@@ -10,7 +10,7 @@ export default (ui) => ui.screen({
       ui.bubble({ from: `${people.ilya.name}`, text: `На мосту лёд, побежим через велодорожку`, time: '6:58' }),
       ui.bubble({ attach: '<span class="ry-chat-map"></span>', from: `${people.ilya.name}`, text: `Точка старта — у главного входа`, time: '7:12' }),
       ui.bubble({ out: true, text: 'Буду в 7:25, держу 6:10', time: '7:14', read: true }),
-      ui.voice({ dur: '0:12', time: '7:16' }),
+      ui.voice({ from: people.dasha.name, dur: '0:12', time: '7:16' }),
     ])),
     ui.denied('voip'),
     ui.composer({ attach: { label: 'Прикрепить', menu: ['Камера>shoot', 'Фото>picker'] }, mic: { toast: 'Запись голосового · отпустите, чтобы отправить' } }),

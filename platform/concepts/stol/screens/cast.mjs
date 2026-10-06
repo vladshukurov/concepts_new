@@ -6,9 +6,9 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Счёт на экране' }),
     ui.scroll([
-      ui.section({ title: 'Что увидят игроки', children: `<div class="st-screen"><strong>${score.players[0][1]}</strong><span>${score.players[0][0]} лидирует · ${score.players.slice(1).map(([n, p]) => `${n} ${p}`).join(' · ')} · раунд ${score.round}</span></div>` }),
+      ui.section({ title: 'Что увидят игроки', children: `<div class="st-screen"><strong>${score.players[0][2]}</strong><span>${score.players[0][0]} лидирует · ${score.players.slice(1).map(([n, , p]) => `${n} ${p}`).join(' · ')} · раунд ${score.round}</span></div>` }),
       ui.section({ children: [
-        ui.group({ label: `Сеть ${club.network}`, cells: [
+        ui.group({ label: 'Экран клуба', cells: [
           ui.cell({ icon: 'tv', title: 'Экран у большого стола', sub: 'AirPlay · готов к показу', toast: 'Счёт на экране у большого стола' }),
           ui.cell({ icon: 'repeat-2', title: 'Проверить сеть', activate: 'wifiinfo|cast' }),
         ] }),

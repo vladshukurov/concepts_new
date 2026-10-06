@@ -14,16 +14,16 @@ export default (ui) => ui.screen({
       { label: 'Заметки', filter: 'note' },
     ]) }),
     ui.entry({
-      icon: 'dices', title: `${tonight.game} · ${tonight.start}`, meta: `сегодня · ${tonight.where} · состав обновлён к 9:00`, status: { label: 'сегодня', accent: true },
-      attach: seats(tonight.taken, tonight.seats), actions: [{ label: 'Открыть стол', icon: 'calendar', go: 'table', primary: true }], tags: ['match'],
+      icon: 'dices', title: `${tonight.game} · ${tonight.start}`, meta: `сегодня · ${tonight.where} · раунд 4`, status: { label: 'идёт', accent: true },
+      attach: seats(tonight.taken, tonight.seats), actions: [{ label: 'Открыть счёт', icon: 'list-ordered', go: 'score', primary: true }], tags: ['match'],
     }),
-    ui.entry({ icon: 'trophy', title: `${own.last.game} · ${own.last.points} очка`, meta: `${own.last.when} · ${own.last.minutes} минут · ${own.last.place}`, text: own.last.note, photos: 1, open: { go: 'post' }, menu: ['Изменить', 'Удалить'], tags: ['match'] }),
+    ui.entry({ icon: 'trophy', title: `${own.last.game} · ${own.last.points} очка`, meta: `${own.last.when} · ${own.last.minutes} минут · ${own.last.place}`, text: own.last.note, open: { go: 'post' }, menu: ['Изменить', 'Удалить'], tags: ['match'] }),
     ui.entry({ icon: 'mic', title: own.voice.title, meta: `${own.voice.when} · памятка себе`, voice: { dur: own.voice.dur }, tags: ['note'] }),
     ui.entry({ icon: 'package', title: `В коллекции · ${own.box.title}`, meta: `${own.box.when} · ${own.box.about}`, text: 'Подарили на день рождения, ещё в плёнке. Сыграть с Женей вдвоём в пятницу, пока не забыли правила', open: { go: 'games' }, tags: ['box'] }),
     ui.entry({
       icon: 'calendar', title: `Сентябрь · ${own.month.games} партий`, meta: `${own.month.wins} победы · ${own.month.newGames} новые игры`,
       attach: ui.list([
-        ui.row({ lead: ui.leadIcon('trophy', { round: true, accent: true }), title: 'Лесные союзы', sub: 'Победа · 71 очко' }),
+        ui.row({ lead: ui.leadIcon('trophy', { round: true, accent: true }), title: 'Лесные союзы', sub: 'Победа · 83 очка' }),
         ui.row({ lead: ui.leadIcon('dices', { round: true }), title: 'Архив острова', sub: 'Кооператив · не успели к рассвету' }),
       ]), tags: ['match'],
     }),

@@ -23,12 +23,12 @@ export default (ui) => ui.screen({
         ui.denied('push'),
       ] }),
       ui.section({ title: 'На телефоне', children: ui.list([
-        ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Памятка правил скачана', sub: 'Голосом 4:20 · откроется без сети', go: 'audio' }),
+        ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Памятка правил скачана', sub: 'Голосом 10:12 · откроется без сети', go: 'audio' }),
         ui.row({ lead: ui.leadIcon('users', { round: true }), title: 'Состав обновился в 12:14', sub: 'Женя подтвердил — стол собран' }),
       ]) }),
       ui.section({ title: 'За столом', meta: `${tonight.taken} из ${tonight.seats}`, children: ui.list([
         ui.row({ lead: ui.avatar(people.masha.initial), title: people.masha.name, sub: 'Собрала стол' }),
-        ui.row({ lead: ui.avatar(people.ilya.initial), title: people.ilya.name, sub: 'Объяснит правила' }),
+        ui.row({ lead: ui.avatar(people.ilya.initial), title: people.ilya.name, sub: 'Объяснил правила' }),
         ui.row({ lead: ui.avatar(people.me.initial), title: people.me.name, sub: 'Вы · играли 9 раз' }),
         ui.row({ lead: ui.avatar(people.zhenya.initial), title: people.zhenya.name, sub: 'Принесёт дополнение', go: 'direct' }),
       ]) }),

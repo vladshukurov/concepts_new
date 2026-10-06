@@ -8,7 +8,7 @@ export default (ui) => ui.screen({
     ui.scroll(ui.chat([
       ui.day('Сегодня'),
       ui.bubble({ from: `${people.marina.name}`, text: `Встречаемся у главного входа, возле часов`, time: '17:38' }),
-      ui.bubble({ attach: `<span class="sh-chat-art ${places.bazar.art}"></span>`, from: `${people.misha.name}`, text: `Вот ракурс с прошлого раза`, time: '17:52' }),
+      ui.bubble({ attach: `<span class="sh-chat-art ph"></span>`, from: `${people.misha.name}`, text: `Вот ракурс с прошлого раза`, time: '17:52' }),
       ui.bubble({ out: true, text: 'Возьму линер и складной стул', time: '17:55', read: true }),
       ui.voice({ from: 'Лера Ян', dur: '0:09', time: '18:02' }),
     ])),

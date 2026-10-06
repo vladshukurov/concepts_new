@@ -29,7 +29,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×77, `section` ×66, `avatar` ×51, `list` ×33, `cell` ×32, `leadIcon` ×30, `bubble` ×27, `nav` ×14, `button` ×11, `iconButton` ×11, `group` ×10, `day` ×9, `dialog` ×9, `actions` ×8, `denied` ×5, `tabBar` ×5, `chatNav` ×5, `chat` ×5, `largeTitle` ×4, `composer` ×4, `segments` ×3, `search` ×3, `hue` ×3, `textButton` ×2, `voice` ×2, `callView` ×1, `chips` ×1, `usersStack` ×1, `miniInfo` ×1, `top` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×77, `section` ×65, `avatar` ×50, `list` ×33, `cell` ×32, `leadIcon` ×31, `bubble` ×27, `nav` ×14, `button` ×11, `iconButton` ×11, `group` ×10, `day` ×9, `dialog` ×9, `actions` ×8, `denied` ×5, `tabBar` ×5, `chatNav` ×5, `chat` ×5, `largeTitle` ×4, `composer` ×4, `segments` ×3, `search` ×3, `hue` ×3, `textButton` ×2, `voice` ×2, `callView` ×1, `chips` ×1, `usersStack` ×1, `miniInfo` ×1, `top` ×1.
 <!-- @end -->
 
 ## Доменные компоненты
@@ -45,7 +45,7 @@
 | Место из Карт в пузыре | `.sb-shared` `.sb-place` `.sb-place-ico` |
 | Файл в пузыре | `.sb-file` `.sb-file-ico` `.ui-bubble` |
 | Дата в сообщении — ссылка, которая кладёт встречу в Календарь | `.sb-date` |
-| Шапка сведений о поездке и приглашения | `.sb-head` `.sb-acts` `.sb-act` |
+| Шапка сведений о поездке и приглашения | `.sb-head` |
 | Перекличка: сколько на месте и шкала из людей | `.sb-roll` `.sb-roll-bar` |
 | Сетка кадров: альбом и выбор вложения | `.sb-grid` `.ui` `.sb-tile` `.sb-tick` `.sb-cam-tile` `.sb-attach-bar` |
 | QR и ссылка-приглашение: QR нарисован кодом из ссылки | `.sb-qr` `.sb-link` |

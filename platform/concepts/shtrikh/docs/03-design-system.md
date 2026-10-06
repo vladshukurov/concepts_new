@@ -1,6 +1,6 @@
-# Штрих — дизайн-система
+# В карандаше — дизайн-система
 
-Мимикрия ВКонтакте для городских скетчеров: лента работ, места с сериями, встречи, мессенджер и сервисы. Своё у «Штриха» — зарисовки линером, нарисованные кодом, серия одного места глазами разных авторов, материалы под работой и экран выставки. Работа — главный медиаобъект, поэтому кадры не заглушки: фасады, липа, навес базара и мост терренкура нарисованы как данные.
+Мимикрия ВКонтакте для городских скетчеров: свой скетчбук, свои места и серии, встречи, мессенджер и профиль. Своё у «В карандаше» — материалы под листом и пустой кадр серии, который ждёт своей погоды. Рисунков кодом нет: лист — плейсхолдер `.ph`.
 
 Оболочка, кегли, цвета и компоненты — из ядра (`kernel/base.css`, `kernel/components.mjs`). Концепт добавляет только свои доменные блоки в `styles.css` и не перекрашивает компоненты ядра. Правила интерфейса — в корневом `CLAUDE.md`.
 
@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `section` ×35, `cell` ×19, `button` ×19, `nav` ×15, `denied` ×15, `iconButton` ×11, `row` ×10, `actions` ×9, `list` ×8, `dialog` ×7, `group` ×6, `bubble` ×5, `tabBar` ×5, `leadIcon` ×5, `search` ×4, `avatar` ×3, `composer` ×3, `largeTitle` ×3, `textButton` ×3, `hscroll` ×3, `post` ×3, `chatNav` ×2, `chat` ×2, `day` ×2, `top` ×2, `stats` ×2, `callView` ×1, `voice` ×1, `miniInfo` ×1, `usersStack` ×1, `wordmark` ×1, `composerPrompt` ×1, `stories` ×1, `subnav` ×1, `comments` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `section` ×40, `row` ×30, `leadIcon` ×27, `cell` ×18, `list` ×18, `nav` ×15, `button` ×15, `denied` ×13, `actions` ×8, `dialog` ×7, `entry` ×7, `group` ×6, `iconButton` ×6, `avatar` ×5, `bubble` ×5, `tabBar` ×5, `search` ×4, `largeTitle` ×3, `textButton` ×3, `chatNav` ×2, `chat` ×2, `day` ×2, `composer` ×2, `top` ×2, `chips` ×2, `callView` ×1, `voice` ×1, `miniInfo` ×1, `usersStack` ×1, `safariFill` ×1, `wordmark` ×1, `stats` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -39,17 +39,17 @@
 <!-- @generated:domain-components -->
 | Компонент | Классы |
 |---|---|
-| Зарисовки: один рисунок — один класс | `.sh-s1` `.sh-s2` `.sh-s3` `.sh-s4` `.sh-s5` `.sh-s6` |
 | Материалы под работой: линер, бумага, время наброска | `.sh-tools` |
 | Серия места: работы разных авторов одной точки | `.sh-series` `.sh-head` |
 | Профиль | `.sh-me` |
 | Съёмка рисунка и сканер QR | `.sh-cam` `.sh-viewfinder` `.sh-frame` `.sh-caption` `.sh-shutter` |
 | Мессенджер и аудиоразбор | `.sh-chat-art` `.sh-call` |
-| Системные поверхности: «Домой» с виджетом, Safari, замок | `.sh-home` `.sh-widget` `.sh-apps` `.sh-app` `.sh-web` `.sh-web-bar` |
+| Системные поверхности: «Домой» с виджетом, Safari, замок | `.sh-lock` `.sh-lock-body` `.sh-text` `.sh-gap` |
+| Пустой кадр серии: ждёт своей погоды | `.sh-empty` |
 <!-- @end -->
 
 ## Актуальная навигация
 
 <!-- @generated:navigation -->
-Главная · Места · Встречи · Мессенджер · Профиль
+Скетчбук · Места · Встречи · Мессенджер · Профиль
 <!-- @end -->

@@ -4,14 +4,6 @@
    пленэра и экран выставки. */
 
 /* Зарисовки: один рисунок — один класс */
-.sh-s1, .sh-s2, .sh-s3, .sh-s4, .sh-s5, .sh-s6 { background-size:cover; background-position:center; background-repeat:no-repeat; }
-.sh-s1 { background-image:url(assets/media/sketch-1.svg); }
-.sh-s2 { background-image:url(assets/media/sketch-2.svg); }
-.sh-s3 { background-image:url(assets/media/sketch-3.svg); }
-.sh-s4 { background-image:url(assets/media/sketch-4.svg); }
-.sh-s5 { background-image:url(assets/media/sketch-5.svg); }
-.sh-s6 { background-image:url(assets/media/sketch-6.svg); }
-.ui-post-media.sh-s1, .ui-post-media.sh-s2, .ui-post-media.sh-s3, .ui-post-media.sh-s4, .ui-post-media.sh-s5, .ui-post-media.sh-s6 { aspect-ratio:4/3; }
 
 /* Материалы под работой: линер, бумага, время наброска */
 .sh-tools { display:flex; flex-wrap:wrap; gap:6px; }
@@ -50,30 +42,6 @@
 .sh-call .ui-call-face { background:rgba(255,255,255,.16); color:#fff; }
 
 /* Системные поверхности: «Домой» с виджетом, Safari, замок */
-.sh-home { overflow:hidden; background:linear-gradient(180deg, #4a4236, #17140f)!important; color:#fff; }
-.sh-widget { display:block; width:calc(100% - 40px); margin:calc(var(--safe-top) + 16px) 20px 0; padding:12px; border-radius:22px; background:rgba(255,255,255,.94); color:#000; text-align:left; }
-.sh-widget > i { display:block; height:96px; margin-bottom:10px; border-radius:12px; }
-.sh-widget small { display:flex; align-items:center; gap:6px; font:600 12px/14px var(--ui-face); color:var(--ui-accent); }
-.sh-widget small svg { width:14px; height:14px; }
-.sh-widget strong { display:block; margin-top:6px; font:600 17px/22px var(--ui-face); }
-.sh-widget span { display:block; font:400 13px/16px var(--ui-face); color:#5f6b78; }
-.sh-apps { display:grid; grid-template-columns:repeat(4,1fr); gap:20px 12px; padding:20px; }
-.sh-app { display:flex; flex-direction:column; align-items:center; gap:4px; font:400 12px/14px var(--ui-face); color:#fff; }
-.sh-app > i { width:60px; height:60px; border-radius:14px; background:rgba(255,255,255,.22); }
-.sh-app.is-ours > i { display:grid; place-items:center; background:var(--ui-accent); }
-.sh-app.is-ours svg { width:30px; height:30px; color:#fff; }
-.sh-web { background:#f2f2f7!important; color:#000; }
-.sh-web-bar { display:flex; align-items:center; justify-content:center; gap:6px; margin:calc(var(--safe-top) + 4px) 16px 0; min-height:36px; border-radius:10px; background:rgba(118,118,128,.12); font:400 15px/20px var(--ui-face); color:#3c3c43; }
-.sh-web-bar svg { width:14px; height:14px; }
-.sh-web-page { margin:16px; padding:20px 16px; border-radius:14px; background:#fff; }
-.sh-web-page h1 { font:700 22px/26px var(--ui-face); }
-.sh-web-page p { margin:4px 0 16px; font:400 14px/18px var(--ui-face); color:#5f6b78; }
-.sh-web-field { display:flex; flex-direction:column; gap:2px; margin-bottom:8px; padding:8px 12px; border-radius:10px; background:#f2f3f5; font:400 16px/20px var(--ui-face); }
-.sh-web-field > span { font:400 12px/14px var(--ui-face); color:#5f6b78; }
-.sh-web-field.is-focus { box-shadow:inset 0 0 0 2px var(--ui-accent); }
-.sh-quicktype { position:absolute; left:0; right:0; bottom:0; padding:8px 8px calc(var(--safe-bottom) + 8px); background:#d1d4d9; }
-.sh-quicktype > button { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; min-height:44px; border-radius:8px; background:#fff; font:500 15px/20px var(--ui-face); color:#000; }
-.sh-quicktype > button svg { width:18px; height:18px; color:var(--ui-accent); }
 .sh-lock { overflow:hidden; background:linear-gradient(180deg, #2c3a4a, #11161d)!important; color:#fff; }
 .sh-lock-body { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; padding:0 32px; text-align:center; }
 .sh-lock-body > span { width:72px; height:72px; margin-bottom:8px; display:grid; place-items:center; border-radius:20px; background:rgba(255,255,255,.14); }
@@ -84,3 +52,7 @@
 .sh-lock .ui-btn.is-tertiary { color:#fff; }
 .sh-text { padding:0 16px; font:400 17px/24px var(--ui-face); }
 .sh-gap { margin-top:12px; }
+
+/* Пустой кадр серии: ждёт своей погоды */
+.sh-empty { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; aspect-ratio:1; border:1px dashed var(--ui-line); border-radius:8px; color:var(--ui-text-2); font:400 13px/16px var(--ui-face); }
+.sh-empty svg { width:24px; height:24px; }

@@ -7,7 +7,7 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Новая запись', back: 'cancel', trailing: ui.textButton({ label: 'Сохранить', strong: true, toast: 'Запись в дневнике|feed', primary: true }) }),
     ui.scroll([
-      ui.section({ children: `<p class="st-text">«${tonight.game}» вчетвером, двое впервые. Объяснял я — уложился в 10 минут, начали с короткой партии</p>` }),
+      ui.section({ children: `<p class="st-text">«${tonight.game}» вчетвером, Женя впервые. Илья объяснил за 10 минут, к четвёртому раунду я отстаю на 13</p>` }),
       ui.section({ children: ui.group({ cells: [
         ui.cell({ icon: 'camera', title: 'Снять поле', sub: 'Расклад или итог партии', ask: 'camera|compose|compose' }),
         ui.cell({ icon: 'image', title: 'Фото', sub: 'Готовый снимок поля', ask: 'photos|compose|compose' }),
@@ -21,7 +21,7 @@ export default (ui) => ui.screen({
       ui.section({ shownAfter: 'photos', children: ui.list([ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Добавлено 2 снимка', sub: 'Расклад до партии и после' })]) }),
       ui.section({ shownAfter: 'location', children: ui.list([ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Клуб «Полка», Абая, 44', sub: 'Место партии в записи' })]) }),
       ui.section({ title: 'Счёт', children: ui.list([
-        ui.row({ lead: ui.leadIcon('list-ordered'), title: 'Из табло партии', sub: 'Маша 71 · Илья 64 · Саша 58 · раунд 4', go: 'score' }),
+        ui.row({ lead: ui.leadIcon('list-ordered'), title: 'Из табло партии', sub: 'Маша 71 · Илья 64 · Саша 58 · Женя 52 · раунд 4', go: 'score' }),
       ]) }),
     ]),
   ],

@@ -1,35 +1,38 @@
 import { THEME, TABS, tools } from './_shared.mjs';
-import { people, places } from '../model.mjs';
+import { own, places, pleinair } from '../model.mjs';
 
+/* Свой скетчбук: всё на главной нарисовала и записала сама Анна.
+   Чужих работ, лайков и подписок нет — с людьми рисуют вместе на встречах */
 export default (ui) => ui.screen({
   id: 'home', theme: THEME,
   body: ui.scroll([
-    ui.top(ui.wordmark({ name: 'Штрих' }), [
-      ui.iconButton({ icon: 'search', label: 'Поиск мест и авторов', go: 'places' }),
-      ui.iconButton({ icon: 'plus', label: 'Новая зарисовка', go: 'compose' }),
-    ]),
-    ui.composerPrompt({ initial: people.me.initial, placeholder: 'Что заметили в городе?', go: 'compose', primary: true, trailing: ui.iconButton({ icon: 'camera', label: 'Снять рисунок', go: 'compose' }) }),
-    ui.stories([
-      { label: 'Алина', face: 'sh-s2', go: 'post' },
-      { label: 'Базар', face: places.bazar.art, go: 'series' },
-      { label: 'Миша', face: 'sh-s6', seen: true, go: 'profile' },
-      { label: 'Мост', face: places.terrenkur.art, seen: true, go: 'series' },
-    ]),
-    ui.post({
-      author: { initial: people.alina.initial, name: people.alina.name, meta: `12 минут назад · ${places.panfilova.name}`, action: { go: 'profile' } },
-      text: 'Поймала тень от липы до того, как включили фонари',
-      media: 'sh-s2', attach: tools('Линер 0.3', 'Бумага 160 г', '20 минут'),
-      likes: 146, comments: 18, shares: 7, views: '1,2K', open: { go: 'post' }, discuss: { go: 'post' }, menu: ['Скрыть', 'Пожаловаться'],
-    }),
-    ui.section({ title: 'Серия места', more: { go: 'series', label: 'Открыть серию' }, children: ui.list([
-      ui.row({ thumb: places.panfilova.art, title: places.panfilova.series, sub: `${places.panfilova.name} · ${places.panfilova.works} работ · ${places.panfilova.authors} авторов`, go: 'series' }),
+    ui.top(ui.wordmark({ name: 'В карандаше' }), ui.iconButton({ icon: 'plus', label: 'Новая зарисовка', go: 'compose' })),
+    ui.section({ children: ui.chips([
+      { label: 'Все', on: true, filter: 'all' },
+      { label: 'Зарисовки', filter: 'sketch' },
+      { label: 'Серии', filter: 'series' },
+      { label: 'Заметки', filter: 'note' },
     ]) }),
-    ui.post({
-      author: { initial: people.misha.initial, name: people.misha.name, meta: `сегодня в 09:40 · ${places.bazar.name}`, action: { go: 'profile' } },
-      text: 'Пять минут на прилавок с яблоками, пока продавец не заметил',
-      media: places.bazar.art, attach: tools('Карандаш', '5 минут'),
-      likes: 88, comments: 9, shares: 3, open: { go: 'post' },
+    ui.entry({
+      icon: 'calendar', title: `${pleinair.title} · завтра`, meta: `${pleinair.start} · ${pleinair.where} · ${pleinair.people} идут · обновлено к 7:00`, status: { label: 'завтра', accent: true },
+      text: 'Взять линер, складной стул и бумагу потолще', actions: [{ label: 'Открыть встречу', icon: 'calendar', go: 'events', primary: true }],
     }),
+    ui.entry({ icon: 'pen-line', title: own.today.title, meta: own.today.when, text: own.today.text, photos: 1, attach: tools(...own.today.tools), open: { go: 'post' }, menu: ['Изменить', 'Удалить'], tags: ['sketch'] }),
+    ui.entry({
+      icon: 'images', title: `${places.panfilova.series} · ${own.series.done} из ${own.series.of}`, meta: `${places.panfilova.name} · ${own.series.next}`,
+      attach: ui.list([
+        ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Лето', sub: 'Июль · тень липы' }),
+        ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Дождь', sub: 'Август · мокрый асфальт' }),
+        ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Осень', sub: 'Сегодня · первые жёлтые листья' }),
+        ui.row({ lead: ui.leadIcon('circle', { round: true }), title: 'Снег', sub: 'Ждёт первого снега' }),
+      ]), open: { go: 'series' }, tags: ['series'],
+    }),
+    ui.entry({ icon: 'mic', title: own.voice.title, meta: `${own.voice.when} · ${places.bazar.name}`, voice: { dur: own.voice.dur }, tags: ['note'] }),
+    ui.entry({
+      icon: 'megaphone', title: 'Бумага для скетчей −15 %', meta: 'художественная лавка · реклама',
+      text: 'Блоки 160 г и линеры на Панфилова, 90', actions: [{ label: 'Почему эта реклама', icon: 'sliders-horizontal', go: 'ads' }],
+    }),
+    ui.entry({ icon: 'pen-line', title: own.apples.title, meta: `${own.apples.when} · ${places.bazar.name}`, text: own.apples.text, photos: 1, attach: tools(...own.apples.tools), tags: ['sketch'] }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'home' }),
 });

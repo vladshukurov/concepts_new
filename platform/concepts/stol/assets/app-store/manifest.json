@@ -1,0 +1,75 @@
+{
+  "requirementsChecked": "2026-09-01",
+  "slug": "stol",
+  "locale": "ru-RU",
+  "template": "studio",
+  "tone": "light",
+  "devices": [
+    "iphone-6.9",
+    "iphone-6.5",
+    "iphone-6.3",
+    "iphone-6.1"
+  ],
+  "screens": [
+    {
+      "screen": "tables",
+      "headline": "Свободное место на вечер",
+      "body": "Живые столы знакомых: игра, время, кто уже сел"
+    },
+    {
+      "screen": "table",
+      "headline": "Состав и темп заранее",
+      "body": "Сколько займёт партия и кто объяснит правила"
+    },
+    {
+      "screen": "score",
+      "headline": "Счёт без бумажки",
+      "body": "Табло по раундам — голосом или кнопками"
+    },
+    {
+      "screen": "chat",
+      "headline": "Договоритесь у стола",
+      "body": "Кто что принесёт, голосовые и звонок стола"
+    },
+    {
+      "screen": "feed",
+      "headline": "Свои партии в дневнике",
+      "body": "Итоги, расклады и приглашения на вечер"
+    }
+  ],
+  "captureSource": "web-prototype",
+  "targets": {
+    "iphone-6.9": {
+      "label": "iPhone 6.9″",
+      "width": 1320,
+      "height": 2868,
+      "source": "phone",
+      "orientation": "portrait",
+      "required": true
+    },
+    "iphone-6.5": {
+      "label": "iPhone 6.5″",
+      "width": 1284,
+      "height": 2778,
+      "source": "phone",
+      "orientation": "portrait",
+      "required": false
+    },
+    "iphone-6.3": {
+      "label": "iPhone 6.3″",
+      "width": 1206,
+      "height": 2622,
+      "source": "phone",
+      "orientation": "portrait",
+      "required": false
+    },
+    "iphone-6.1": {
+      "label": "iPhone 6.1″",
+      "width": 1170,
+      "height": 2532,
+      "source": "phone",
+      "orientation": "portrait",
+      "required": false
+    }
+  }
+}

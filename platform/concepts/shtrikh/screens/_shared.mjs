@@ -1,7 +1,7 @@
-/** Общее для экранов «Штриха». Файл с «_» — не экран. */
+/** Общее для экранов «В карандаше». Файл с «_» — не экран. */
 export const THEME = 'vk-light';
 export const TABS = [
-  { id: 'home', label: 'Главная', icon: 'house' },
+  { id: 'home', label: 'Скетчбук', icon: 'house' },
   { id: 'places', label: 'Места', icon: 'map-pin' },
   { id: 'events', label: 'Встречи', icon: 'calendar' },
   { id: 'chats', label: 'Мессенджер', icon: 'message-circle' },
