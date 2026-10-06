@@ -5,8 +5,8 @@ export default (ui) => ui.screen({
   id: 'events', theme: THEME,
   body: ui.scroll([
     ui.largeTitle('События'),
-    ui.section({ title: 'Заявки', meta: '2 открыты', children: ui.list([
-      ui.row({ lead: ui.leadIcon('mic', { accent: true }), title: 'Черновик: дверь не закрывается', sub: '3 подъезд · распознано из записи 0:12', go: 'dictate' }),
+    ui.section({ title: 'Заявки', meta: '1 открыта · 1 черновик', children: ui.list([
+      ui.row({ lead: ui.leadIcon('mic', { accent: true }), title: 'Черновик: в лифте не горит свет', sub: '3 подъезд · распознано из записи 0:12', go: 'dictate' }),
       ui.row({ lead: ui.leadIcon('wrench'), title: 'Доводчик, 3 подъезд', sub: 'Елена назначена · мастер сегодня с 16:00', wrap: true, end: { badge: 'в работе' }, activate: 'commnotif|ukchat' }),
     ]) }),
     ui.section({ title: 'Апрель', children: [

@@ -1,9 +1,10 @@
 /** Общее для экранов «Сбора». Файл с «_» — не экран, сборка его пропускает. */
 export const THEME = 'vk-light';
 export const TABS = [
+  { id: 'contacts', label: 'Контакты', icon: 'circle-user' },
+  { id: 'calls', label: 'Звонки', icon: 'phone' },
   { id: 'chats', label: 'Чаты', icon: 'message-circle' },
   { id: 'trips', label: 'Поездки', icon: 'route' },
-  { id: 'calls', label: 'Звонки', icon: 'phone' },
   { id: 'settings', label: 'Настройки', icon: 'settings' },
 ];
 

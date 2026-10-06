@@ -12,7 +12,7 @@ export const house = { address: 'Полевая, 12', buildings: 3, flats: 214 }
 /* Фото нет: жильцы — инициалы и номер квартиры */
 export const people = {
   me: { name: 'Анна Разумова', initial: 'АР', flat: 74, entrance: 3, about: 'это вы' },
-  marina: { name: 'Марина Кольцова', initial: 'МК', flat: 48 },
+  marina: { name: 'Марина Кольцова', initial: 'МК', flat: 63 },
   petr: { name: 'Пётр Ильин', initial: 'ПИ', flat: 66 },
   irina: { name: 'Ирина Тепляк', initial: 'ИТ', flat: 78 },
 };

@@ -47,7 +47,7 @@
 | Съёмка блюда | `.pd-cam` `.pd-viewfinder` `.pd-cam-caption` `.pd-shutter` |
 | Медиатека | `.pd-grid` |
 | Мессенджер и звонок | `.pd-chat-card` `.pd-call` |
-| Приглашение: системный лист «Поделиться» | `.pd-share` `.pd-link` `.pd-gap` `.pd-text` `.pd-call` |
+| Приглашение: системный лист «Поделиться» | `.pd-share` `.pd-link` `.pd-gap` `.pd-text` `.pd-call` `.pd-chat-card` |
 <!-- @end -->
 
 ## Актуальная навигация

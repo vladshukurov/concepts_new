@@ -48,6 +48,8 @@ const isAction = (a) => a && (a.go || a.ask || a.activate || a.toast || a.back |
 const cls = (...names) => names.filter(Boolean).join(' ');
 /** Лицо: «МК» — инициалы (заглавные буквы), `ph`, `face-3` — класс фото. */
 const isInitials = (f) => /^\p{Lu}{1,3}$/u.test(f);
+/* Оттенок фона инициалов h0–h6 — стабильный по буквам, как в Telegram. Палитра — в base.css */
+const hue = (t) => `h${[...String(t || '')].reduce((n, c) => n + c.codePointAt(0), 0) % 7}`;
 const facesHtml = (faces) => faces.map((f) => (isInitials(f) ? `<i class="is-initial">${f.slice(0, 1)}</i>` : `<i class="${f}"></i>`)).join('');
 const join = (items) => (Array.isArray(items) ? items.filter(Boolean).join('') : items || '');
 
@@ -111,7 +113,7 @@ export const actions = (buttons, { row = false, className } = {}) =>
 
 /* ── Мелкие ── */
 export const avatar = (initial, { large = false, hidden = false } = {}) =>
-  `<span class="${cls('ui-avatar', large && 'is-large')}"${hidden ? ' aria-hidden="true"' : ''}>${initial}</span>`;
+  `<span class="${cls('ui-avatar', large && 'is-large', hue(initial))}"${hidden ? ' aria-hidden="true"' : ''}>${initial}</span>`;
 export const badge = (text, { accent = false } = {}) => `<span class="${cls('ui-badge', accent && 'is-blue')}">${text}</span>`;
 export const duration = (text) => `<span class="ui-duration">${text}</span>`;
 /** Свитч без своего действия: состояние читается скринридером, не только цветом. */
@@ -410,7 +412,7 @@ export const composerPrompt = ({ initial, face, placeholder, trailing = '', ...a
   `<div class="ui-prompt"><button class="ui-prompt-main"${act({ label: placeholder, ...a })}>${initial ? `<span class="ui-post-ava is-initial">${initial}</span>` : `<span class="ui-post-ava ${face}"></span>`}<span>${placeholder}</span></button>${join(trailing)}</div>`;
 
 /* ── Мессенджер: диалоги, чат, звонок ── */
-const face = ({ face: f, initial }, cl) => initial ? `<span class="${cl} is-initial">${initial}</span>` : `<span class="${cl} ${f || 'ph'}"></span>`;
+const face = ({ face: f, initial }, cl) => initial ? `<span class="${cl} is-initial ${hue(initial)}">${initial}</span>` : `<span class="${cl} ${f || 'ph'}"></span>`;
 
 /** Строка диалога: аватар с онлайном, имя и время, последнее сообщение и счётчик. */
 /* tags — папка диалога для фильтра чипсами на месте (Поездки, Личные, Непрочитанные) */

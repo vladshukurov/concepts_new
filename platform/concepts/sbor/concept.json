@@ -581,6 +581,16 @@
   "start": "phone",
   "tabs": [
     {
+      "id": "contacts",
+      "label": "Контакты",
+      "role": "contacts"
+    },
+    {
+      "id": "calls",
+      "label": "Звонки",
+      "role": "calls"
+    },
+    {
       "id": "chats",
       "label": "Чаты",
       "role": "chats"
@@ -589,11 +599,6 @@
       "id": "trips",
       "label": "Поездки",
       "role": "trips"
-    },
-    {
-      "id": "calls",
-      "label": "Звонки",
-      "role": "calls"
     },
     {
       "id": "settings",
@@ -1288,7 +1293,7 @@
       "title": "Настройки",
       "type": "tab (root)",
       "light": true,
-      "meta": "Профиль, виджет, уведомления, реклама",
+      "meta": "Профиль и настройки, как в Telegram",
       "ui": {
         "states": [
           "default",
@@ -1665,9 +1670,9 @@
     {
       "id": "contacts",
       "title": "Контакты",
-      "type": "modal",
+      "type": "tab (root)",
       "light": true,
-      "meta": "Кто уже здесь · Contacts",
+      "meta": "Люди из поездок и адресная книга",
       "ui": {
         "states": [
           "default",
@@ -1677,10 +1682,9 @@
           "offline",
           "denied"
         ],
-        "navigation": "modal",
+        "navigation": "root",
         "primaryAction": "Найти знакомых из контактов"
-      },
-      "parent": "chats"
+      }
     },
     {
       "id": "ads",
@@ -1948,7 +1952,8 @@
         "trip",
         "account",
         "saved",
-        "ads"
+        "ads",
+        "calls"
       ],
       "stops": [
         "rollcall",
@@ -1962,7 +1967,8 @@
         "trip",
         "account",
         "saved",
-        "ads"
+        "ads",
+        "calls"
       ]
     },
     {

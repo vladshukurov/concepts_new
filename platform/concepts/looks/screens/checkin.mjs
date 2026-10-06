@@ -16,7 +16,7 @@ export default (ui) => ui.screen({
         ui.row({ thumb: `${P.lera} is-round`, title: people.lera.name, sub: '9:30 · ведёт своп' }),
         ui.row({ thumb: `${P.mark} is-round`, title: people.mark.name, sub: '9:31 · первый после ведущей' }),
         ui.row({ thumb: `${P.yulia} is-round`, title: people.yulia.name, sub: '9:35 · по коду со стойки' }),
-        ui.row({ lead: ui.leadIcon('', { text: 'ОТ', round: true }), title: 'Оля Тимченко', sub: '9:36 · принесла 4 вещи' }),
+        ui.row({ lead: ui.leadIcon('', { text: 'НГ', round: true }), title: 'Ника Гаврилова', sub: '9:36 · принесла 2 вещи' }),
         ui.row({ lead: ui.leadIcon('', { text: 'АБ', round: true }), title: 'Аня Белова', sub: '9:38 · вещь на проверке у Леры' }),
         ui.row({ lead: ui.leadIcon('', { text: 'ДС', round: true }), title: 'Даша Соколова', sub: '9:40 · пришла с подругой' }),
       ]) }),

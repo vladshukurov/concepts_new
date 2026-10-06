@@ -13,7 +13,7 @@ export default (ui) => ui.screen({
         voice: { dur: '0:14' },
       }),
       ui.section({ title: 'История', children: ui.list([
-        ui.row({ lead: ui.leadIcon('', { text: '8:12' }), title: 'Создала заявку', sub: 'Два кадра с места и голосовое 0:14' }),
+        ui.row({ lead: ui.leadIcon('', { text: '8:12' }), title: 'Создала заявку', sub: 'Кадр с места и голосовое 0:14' }),
         ui.row({ lead: ui.leadIcon('', { text: '8:14' }), title: 'Отправила в чат УК', sub: 'Диспетчер Елена прочитала в 8:20', go: 'ukchat' }),
         ui.row({ lead: ui.leadIcon('', { text: '9:21' }), title: 'Ответ УК', sub: 'Мастер будет с 16:00, дверь откроет Марина из 48-й', subWrap: true, go: 'ukchat' }),
         ui.row({ lead: ui.leadIcon('clock'), title: 'Закрытие', sub: 'Ждём мастера сегодня с 16:00' }),

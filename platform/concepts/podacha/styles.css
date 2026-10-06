@@ -77,3 +77,6 @@
 .pd-gap { margin-top:12px; }
 .pd-text { padding:0 16px; font:400 17px/24px var(--ui-face); }
 .pd-call .ui-call-face.is-initial { background:rgba(255,255,255,.18); color:#fff; }
+
+.pd-chat-card > b.is-ico { background:var(--ui-accent-soft); color:var(--ui-link); }
+.pd-chat-card > b.is-ico svg { width:20px; height:20px; }

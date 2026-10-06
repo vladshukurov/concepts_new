@@ -610,8 +610,18 @@
           b.setAttribute('aria-pressed', String(b === f));
         });
         var val = f.dataset.filter;
+        var parents = [];
         (f.closest('.screen') || screens).querySelectorAll('[data-tags]').forEach(function (el) {
           el.classList.toggle('is-filtered-out', val !== 'all' && el.dataset.tags.split(' ').indexOf(val) < 0);
+          if (parents.indexOf(el.parentElement) < 0) parents.push(el.parentElement);
+        });
+        /* Соседи без тегов (реклама, объявление) не подходят ни под один фильтр — видны только на «Все» */
+        parents.forEach(function (p) {
+          Array.prototype.forEach.call(p.children, function (el) {
+            if (el.hasAttribute('data-tags') || el.querySelector('[data-filter]') || el.classList.contains('ui-denied')) return;
+            if (!el.matches('.ui-entry, .ui-sec, .ui-row, .ui-dialog, .ui-post')) return;
+            el.classList.toggle('is-filtered-out', val !== 'all');
+          });
         });
         return;
       }

@@ -12,7 +12,7 @@ export default (ui) => ui.screen({
       ] }) }),
       ui.section({ children: ui.group({ label: 'Квартира', cells: [
         ui.cell({ icon: 'layout-grid', title: 'Виджет на экран «Домой»', value: 'Не добавлен', activate: 'appgroups|widget' }),
-        ui.cell({ icon: 'gauge', title: 'Счётчики', value: 'Вода ×2, свет' }),
+        ui.cell({ icon: 'gauge', title: 'Счётчики', value: 'Вода, свет' }),
         ui.cell({ icon: 'users', title: 'Живут со мной', value: '2 человека' }),
       ] }) }),
       ui.section({ children: ui.group({ label: 'Приватность', cells: [

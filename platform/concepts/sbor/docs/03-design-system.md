@@ -29,7 +29,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×79, `section` ×62, `avatar` ×51, `list` ×32, `leadIcon` ×31, `bubble` ×26, `cell` ×25, `nav` ×14, `button` ×12, `actions` ×9, `day` ×9, `dialog` ×9, `group` ×9, `iconButton` ×8, `denied` ×5, `chatNav` ×5, `chat` ×5, `largeTitle` ×4, `tabBar` ×4, `composer` ×4, `segments` ×3, `search` ×3, `textButton` ×2, `voice` ×2, `callView` ×1, `chips` ×1, `usersStack` ×1, `miniInfo` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×79, `section` ×64, `avatar` ×51, `list` ×32, `leadIcon` ×32, `cell` ×30, `bubble` ×26, `nav` ×13, `button` ×12, `group` ×10, `actions` ×9, `iconButton` ×9, `day` ×9, `dialog` ×9, `denied` ×5, `tabBar` ×5, `chatNav` ×5, `chat` ×5, `largeTitle` ×4, `composer` ×4, `segments` ×3, `textButton` ×3, `search` ×3, `voice` ×2, `callView` ×1, `chips` ×1, `usersStack` ×1, `miniInfo` ×1, `top` ×1.
 <!-- @end -->
 
 ## Доменные компоненты
@@ -56,6 +56,7 @@
 | «Поделиться» в Картах | `.sb-sys-surface` `.sb-sheet` `.sb-sheet-head` `.sb-sheet-x` `.sb-share-people` `.sb-share-to` |
 | Экран блокировки: Now Playing и уведомления | `.sb-lock` `.sb-lock-clock` `.sb-np` `.sb-np-face` `.sb-np-text` `.sb-np-bar` |
 | Экран «Домой» с виджетом | `.sb-home` `.sb-widget` `.sb-widget-bar` `.sb-apps` `.sb-app` |
+| Профиль в настройках: крупное фото, имя и номер по центру, как в Telegram | `.sb-me` |
 <!-- @end -->
 
 Главные из них:
@@ -74,5 +75,5 @@
 ## Навигация
 
 <!-- @generated:navigation -->
-Чаты · Поездки · Звонки · Настройки
+Контакты · Звонки · Чаты · Поездки · Настройки
 <!-- @end -->

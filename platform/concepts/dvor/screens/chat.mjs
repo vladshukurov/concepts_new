@@ -3,7 +3,7 @@ import { THEME } from './_shared.mjs';
 export default (ui) => ui.screen({
   id: 'chat', theme: THEME,
   body: [
-    ui.chatNav({ initial: 'МК', name: 'Марина, кв. 48', status: 'в сети', call: { activate: 'voip|call' } }),
+    ui.chatNav({ initial: 'МК', name: 'Марина, кв. 63', status: 'в сети', call: { activate: 'voip|call' } }),
     ui.scroll(ui.chat([
       ui.day('Сегодня'),
       ui.bubble({ attach: '<span class="dv-chat-photo ph"></span>', text: 'Вот так висит доводчик', time: '8:12' }),

@@ -14,8 +14,8 @@ export default (ui) => ui.screen({
         ui.row({ lead: ui.leadIcon('', { text: '03' }), title: 'Печь 40 минут при 180°', sub: 'На 25-й минуте накрыть фольгой' }),
       ]) }),
       ui.section({ title: 'Когда готовила', children: ui.list([
-        ui.row({ lead: ui.leadIcon('', { text: '15' }), title: 'Вчера, для мамы', sub: 'Мягкий, но груш мало' }),
-        ui.row({ lead: ui.leadIcon('', { text: '2' }), title: '2 сентября', sub: 'Пересушила на 5 минут' }),
+        ui.row({ lead: ui.leadIcon('calendar'), title: 'Вчера, для мамы', sub: 'Мягкий, но груш мало' }),
+        ui.row({ lead: ui.leadIcon('calendar'), title: '2 сентября', sub: 'Пересушила на 5 минут' }),
       ]) }),
       ui.section({ children: [
         ui.actions([

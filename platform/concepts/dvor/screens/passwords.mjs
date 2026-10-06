@@ -11,6 +11,11 @@ export default (ui) => ui.screen({
         ui.row({ lead: ui.leadIcon('video'), title: 'Видеонаблюдение', sub: 'Логин anna74', end: { value: 'Копировать', toast: 'Пароль скопирован', label: 'Копировать пароль видеонаблюдения' } }),
         ui.row({ lead: ui.leadIcon('wifi'), title: 'Гостевая сеть', sub: 'Dvor-Guest · WPA2', end: { value: 'Копировать', toast: 'Пароль скопирован', label: 'Копировать пароль сети' } }),
       ]) }),
+      ui.section({ title: 'Обновлялись', children: ui.list([
+        ui.row({ lead: ui.leadIcon('clock'), title: 'Видеонаблюдение', sub: '3 апреля · сменил старший по дому' }),
+        ui.row({ lead: ui.leadIcon('clock'), title: 'Гостевая сеть', sub: '1 апреля · до 30 апреля' }),
+        ui.row({ lead: ui.leadIcon('clock'), title: 'Кабинет УК', sub: 'Март · пароль на 90 дней' }),
+      ]) }),
       ui.section({ title: 'Последние подстановки', shownAfter: 'autofill', children: ui.list([
         ui.row({ lead: ui.leadIcon('', { text: '9:02' }), title: 'Кабинет УК в Safari', sub: 'Сегодня · передача показаний' }),
         ui.row({ lead: ui.leadIcon('', { text: '3 апр' }), title: 'Видеонаблюдение', sub: 'Пароль сменился, запись обновлена' }),

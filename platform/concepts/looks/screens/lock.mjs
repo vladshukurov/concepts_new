@@ -6,7 +6,7 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Сохранённое' }),
     ui.scroll([
-      `<div class="lk-me"><span class="ui-lead is-round is-accent">${ui.icon('scan-face')}</span><h1>Под замком</h1><p class="ui-sub">Сохранённое и черновики открываются по Face ID</p></div>`,
+      `<div class="lk-me"><span class="ui-lead is-round is-accent">${ui.icon('scan-face')}</span><h1>Под замком</h1></div>`,
       ui.section({ children: ui.group({ cells: [
         ui.cell({ icon: 'bookmark', title: 'Образы', value: String(own.saved.looks) }),
         ui.cell({ icon: 'file-text', title: 'Черновики', value: String(own.saved.drafts) }),

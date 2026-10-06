@@ -1672,3 +1672,17 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .ui-rich-after { flex:none; display:flex; flex-direction:column; align-items:flex-end; gap:2px; }
 .ui-rich-after > b { font:500 15px/20px var(--ui-face); }
 .ui-rich-after > small { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+
+/* Чат открывается у поля ввода, как в любом мессенджере: длинная история уходит под шапку, а не последние сообщения — под клавиатуру */
+.ui-scroll:has(> .ui-chat:only-child) { display:flex; flex-direction:column-reverse; }
+.ui-scroll:has(> .ui-chat:only-child) > .ui-chat { flex:none; }
+
+/* Инициалы без фото — на своём цвете, как в ВК и Telegram: оттенок h0–h6 ставит components.mjs по буквам */
+.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial):is(.h0, .h1, .h2, .h3, .h4, .h5, .h6) { color:#fff; }
+.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial).h0 { background:linear-gradient(180deg, #ff885e, #ff516a); }
+.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial).h1 { background:linear-gradient(180deg, #ffcd6a, #ffa85c); }
+.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial).h2 { background:linear-gradient(180deg, #82b1ff, #665fff); }
+.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial).h3 { background:linear-gradient(180deg, #a0de7e, #54cb68); }
+.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial).h4 { background:linear-gradient(180deg, #53edd6, #28c9b7); }
+.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial).h5 { background:linear-gradient(180deg, #72d5fd, #2a9ef1); }
+.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial).h6 { background:linear-gradient(180deg, #e0a2f3, #d669ed); }

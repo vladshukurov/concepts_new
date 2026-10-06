@@ -15,7 +15,7 @@ export default (ui) => ui.screen({
       ui.denied('tracking'),
       ui.section({ children: ui.group({ label: 'Дневник', cells: [
         ui.cell({ icon: 'download', title: 'Скачать дневник', sub: '42 блюда, 27 рецептов · архив 186 МБ', toast: 'Архив готовится — пришлём в чат' }),
-        ui.cell({ icon: 'trash-2', title: 'Голосовые старше года', value: '14 заметок', toast: 'Старые голосовые удалены' }),
+        ui.cell({ icon: 'trash-2', title: 'Голосовые старше года', value: '14 заметок', menu: ['Удалить 14 заметок=Старые голосовые удалены'] }),
       ] }) }),
       ui.section({ children: ui.actions([ui.button({ label: 'Открыть политику', variant: 'tertiary', block: true, toast: 'vkusno.app/privacy', primary: true })]) }),
     ]),

@@ -17,7 +17,7 @@ export default (ui) => ui.screen({
           ui.cell({ icon: 'layout-grid', title: 'Раздел', value: 'Подъезд', menu: ['Подъезд', 'Двор', 'Лифт', 'Вода'] }),
           ui.cell({ icon: 'map-pin', title: 'Место', value: '3 подъезд, вторая дверь' }),
           ui.cell({ icon: 'send', title: 'Куда', value: 'Чат УК' }),
-          ui.cell({ icon: 'mic', title: 'Добавить голосом', sub: 'Надиктовать, текст распознается сам', ask: 'mic+speech|dictate|problem' }),
+          ui.cell({ icon: 'mic', title: 'Добавить голосом', sub: 'Надиктовать заявку', ask: 'mic+speech|dictate|problem' }),
         ] }),
         ui.denied('mic,speech'),
       ] }),
