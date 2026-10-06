@@ -1,4 +1,4 @@
-# Репетиция — App Store assets
+# Второй дубль — App Store assets
 
 Сгенерировано из живого прототипа командой `npm run app-store -- rehearsal`.
 

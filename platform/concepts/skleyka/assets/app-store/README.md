@@ -1,4 +1,4 @@
-# Склейка — App Store assets
+# Встык — App Store assets
 
 Сгенерировано из живого прототипа командой `npm run app-store -- skleyka`.
 

@@ -1,4 +1,4 @@
-# Склейка — quality evidence
+# Встык — quality evidence
 
 ## Primary observations
 

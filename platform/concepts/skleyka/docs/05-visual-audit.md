@@ -1,4 +1,4 @@
-# Склейка — visual audit
+# Встык — visual audit
 
 ## Pass 1
 

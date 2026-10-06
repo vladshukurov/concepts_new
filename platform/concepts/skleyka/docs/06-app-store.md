@@ -1,8 +1,8 @@
-# Склейка — App Store и review notes
+# Встык — App Store и review notes
 
 Photo & Video. Аккаунт опционален: «Продолжить без аккаунта» сразу открывает проекты. Core loop доступен в авиарежиме.
 
-Заявлены девять достижимых возможностей: Camera, Microphone, Photos read, Photos add, Location When In Use, Local Network/Bonjour, Background Audio, Push (новые шаблоны титров через FCM topic) и ATT (бесплатная версия с рекламой). Associated Domains не заявлен: диплинков нет.
+Заявлены девять достижимых возможностей: Camera, Microphone, Photos read, Photos add, Location When In Use, Local Network/Bonjour, Background Audio, Push (новые наборы титров через FCM topic) и ATT (бесплатная версия с рекламой). Associated Domains не заявлен: диплинков нет.
 
 Review route:
 
@@ -12,7 +12,7 @@ Review route:
 4. «Собрать черновик» показывает on-device stages и ведёт в editor/viewer.
 5. Плеер → Cast спрашивает Local Network; «В фоне» включает фоновое аудио и Now Playing.
 6. Export → «Сохранить в Фото» спрашивает add-only; Share Sheet и Files остаются fallback.
-7. Профиль → «Новые шаблоны титров» спрашивает уведомления; отказ оставляет пометку «новое» в черновике.
+7. Профиль → «Напоминать о черновике» спрашивает уведомления; отказ оставляет пометку «новое» в черновике.
 8. Главная → рекламная карточка или Профиль → «Реклама» → «Показывать по интересам» показывает ATT; отказ оставляет обычную рекламу.
 
 ## Метаданные
@@ -20,7 +20,7 @@ Review route:
 <!-- @generated:store-meta -->
 | Поле | Значение | Знаков |
 |---|---|---|
-| App Name | Склейка | 7 / 30 |
+| App Name | Встык — фильм из роликов | 24 / 30 |
 | Subtitle | Локальный фильм из ваших видео | 30 / 30 |
 | Promotional Text | Соберите фильм из видео друзей: получите ролики через AirDrop или сообщения, импортируйте из «Фото» и «Файлов», поправьте порядок и сохраните. | 142 / 170 |
 | Keywords | монтаж,событие,друзья,камера,черновик,видеопроект,поездка,праздник,экспорт | 74 / 100 |
@@ -28,10 +28,10 @@ Review route:
 | Secondary Category | Lifestyle | — |
 | Age Rating | 13+ | — |
 | Price | Бесплатно, с рекламой | — |
-| Support URL | https://skleyka.video/support | — |
-| Marketing URL | https://skleyka.video | — |
-| Privacy Policy URL | https://skleyka.video/privacy | — |
-| Encryption | ITSAppUsesNonExemptEncryption = NO — только HTTPS-загрузка контента | — |
+| Support URL | https://vstyk.app/support | — |
+| Marketing URL | https://vstyk.app | — |
+| Privacy Policy URL | https://vstyk.app/privacy | — |
+| Encryption | ITSAppUsesNonExemptEncryption = NO — только HTTPS для входа, рекламы и наборов титров | — |
 <!-- @end -->
 
 ## Privacy-лейблы
@@ -42,7 +42,7 @@ Review route:
 | Фото и видео | `User Content → Photos or Videos` | Совместный приватный видеопроект | Нет | Нет |
 | Геопозиция | `Location → Coarse Location` | Место события; только после явного выбора | Нет | Нет |
 | Идентификатор устройства | `Identifiers → Device ID` | Передаётся рекламному SDK только после согласия в ATT | Нет | **Да** |
-| Токен push-уведомлений | `Identifiers → Device ID` | Подписка на тему новых шаблонов титров через FCM | Нет | Нет |
+| Токен push-уведомлений | `Identifiers → Device ID` | Подписка на тему новых наборов титров через Cloud Messaging | Нет | Нет |
 | Номер телефона | `Contact Info → Phone Number` | Опциональные вход, регистрация и восстановление доступа | Да | Нет |
 <!-- @end -->
 
@@ -51,4 +51,13 @@ Review route:
 <!-- @generated:store-review -->
 | Ключ | Что написать ревьюеру |
 |---|---|
+| `NSCameraUsageDescription` | Доступ вызывается действием «Снять» в локальном проекте на экране «project». При отказе: Остаётся импорт готового видео и переход в Настройки |
+| `NSMicrophoneUsageDescription` | Доступ вызывается действием «Снять» в локальном проекте на экране «project». При отказе: Камера записывает немое видео; микрофон можно включить в Настройках |
+| `NSPhotoLibraryUsageDescription` | Доступ вызывается действием «Из Фото» в локальном проекте на экране «project». При отказе: Остаются камера и импорт из Files через системный document picker |
+| `NSLocationWhenInUseUsageDescription` | Доступ вызывается действием Строка «Место» в новом событии на экране «create». При отказе: Место вводится вручную; группировка по времени и metadata продолжает работать |
+| `NSLocalNetworkUsageDescription (+ NSBonjourServices)` | Доступ вызывается действием Кнопка Cast в плеере на экране «viewer». При отказе: Фильм продолжает играть на iPhone; локальный файл и редактор доступны |
+| `UIBackgroundModes: audio` | Доступ вызывается действием «В фоне» в плеере на экране «viewer». При отказе: Пока экран активен, локальный плеер работает без фонового режима |
+| `NSPhotoLibraryAddUsageDescription` | Доступ вызывается действием «Сохранить в Фото» на экране «export». При отказе: Готовый файл остаётся в локальном проекте и доступен через Share Sheet или Files |
+| `aps-environment (Push Notifications capability)` | Доступ вызывается действием Свитч «Новые наборы титров» в профиле на экране «settings». При отказе: Новый набор появится в черновике с пометкой «Новое» |
+| `NSUserTrackingUsageDescription` | Доступ вызывается действием «Подбирать рекламу» на экране «Реклама» на экране «ads». При отказе: Показывается обычная реклама, монтаж и экспорт доступны полностью |
 <!-- @end -->
