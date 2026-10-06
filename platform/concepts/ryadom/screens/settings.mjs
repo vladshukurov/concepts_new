@@ -10,8 +10,12 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'bell', title: 'Уведомления', value: 'Тренировки', go: 'notif' }),
         ui.cell({ icon: 'message-circle', title: 'Сообщения', sub: 'С именем и фото отправителя', toggle: false, activate: 'commnotif|settings' }),
       ] })] }),
+      ui.section({ children: ui.group({ label: 'Вне приложения', cells: [
+        ui.cell({ icon: 'layout-grid', title: 'Виджет на экран «Домой»', sub: 'Неделя и ближайшая тренировка', activate: 'appgroups|widget' }),
+        ui.cell({ icon: 'key', title: 'Вход на сайте забегов', value: 'start-zabeg.kz', activate: 'autofill|fill' }),
+      ] }) }),
       ui.section({ children: ui.group({ label: 'Приватность', cells: [
-        ui.cell({ icon: 'eye', title: 'Кто видит тренировки', value: 'Клуб', toast: 'Тренировки видны клубу' }),
+        ui.cell({ icon: 'eye', title: 'Мой дневник', value: 'Только я' }),
         ui.cell({ icon: 'route', title: 'Кто видит меня в пути', value: 'Группа', toast: 'Отметки видит только группа тренировки' }),
       ] }) }),
     ]),

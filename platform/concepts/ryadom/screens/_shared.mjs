@@ -1,7 +1,7 @@
-/** Общее для экранов «Рядом». Файл с «_» — не экран. */
+/** Общее для экранов «Выбега». Файл с «_» — не экран. */
 export const THEME = 'vk-light';
 export const TABS = [
-  { id: 'feed', label: 'Лента', icon: 'house' },
+  { id: 'feed', label: 'Дневник', icon: 'house' },
   { id: 'events', label: 'Тренировки', icon: 'calendar' },
   { id: 'chats', label: 'Мессенджер', icon: 'message-circle' },
   { id: 'music', label: 'Маршруты', icon: 'route' },

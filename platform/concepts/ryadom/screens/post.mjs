@@ -1,29 +1,29 @@
-import { THEME } from './_shared.mjs';
-import { people, club } from '../model.mjs';
+import { THEME, map } from './_shared.mjs';
+import { people, own } from '../model.mjs';
 
+/* Своя пробежка целиком: схема, отрезки, с кем бежал — и повторить маршрут */
 export default (ui) => ui.screen({
   id: 'post', theme: THEME,
   body: [
-    ui.nav({ title: 'Публикация' }),
+    ui.nav({ title: 'Пробежка', trailing: ui.iconButton({ icon: 'ellipsis', label: 'Действия с пробежкой', menu: ['Изменить', 'Отправить Илье>chat', 'Удалить'] }) }),
     ui.scroll([
-      ui.post({ author: { initial: people.alina.initial, name: people.alina.name, meta: `вчера, 21:04 · ${club.city}` }, text: 'Первый спокойный выход после перерыва: 6,4 км по набережной, средний темп 6:12. На восточном мосту лёд — лучше свернуть к велодорожке', likes: 14, comments: 9, shares: 2 }),
+      ui.entry({ icon: 'activity', title: own.run.title, meta: `${own.run.when} · ${own.run.time}`, text: own.run.note }),
       ui.section({ title: 'Схема', children: [
         `<div class="ry-map"><span class="ry-river"></span><span class="ry-path"></span><span class="ry-pin ry-x10 ry-y36">С</span><span class="ry-pin ry-x58 ry-y28">!</span></div>`,
-        ui.actions([ui.button({ label: 'Сохранить схему в Фото', icon: 'download', variant: 'secondary', block: true, ask: 'photosadd|post|post' })], { className: 'ry-gap' }),
-        ui.denied('photosadd'),
       ] }),
-      ui.section({ title: 'Шли вместе', meta: '4', children: ui.list([
-        ui.row({ lead: ui.avatar(people.ilya.initial), title: people.ilya.name, sub: 'Держал темп 6:10 и отметил объезд', go: 'profile' }),
-        ui.row({ lead: ui.avatar(people.dasha.initial), title: people.dasha.name, sub: 'Вернулась после паузы, 4 км', go: 'profile' }),
+      ui.section({ title: 'Отрезки', meta: '6', children: ui.list([
+        ui.row({ lead: '<span class="ry-km">1</span>', title: '6:31', sub: 'Разминка от клуба' }),
+        ui.row({ lead: '<span class="ry-km">2</span>', title: '6:08', sub: 'Вдоль реки' }),
+        ui.row({ lead: '<span class="ry-km">3</span>', title: '6:44', sub: 'Объезд моста по велодорожке' }),
+        ui.row({ lead: '<span class="ry-km">4</span>', title: '6:02', sub: 'Самый ровный' }),
+        ui.row({ lead: '<span class="ry-km">5</span>', title: '5:58', sub: 'Догнал Илью' }),
+        ui.row({ lead: '<span class="ry-km">6</span>', title: '6:09', sub: 'Заминка, 400 м шагом' }),
       ]) }),
-      ui.section({ children: ui.actions([ui.button({ label: 'Пойти в субботу', block: true, go: 'meetup', primary: true })]) }),
-      ui.comments({ count: 9, items: [
-        { initial: people.roman.initial, name: people.roman.name, text: 'На мосту сегодня в 7 утра тоже скользко, у перил песок только с одной стороны', time: '22:17', likes: 6 },
-        { initial: people.alina.initial, name: people.alina.name, text: 'Спасибо, в субботу поведу группу по велодорожке', time: '22:40', likes: 2, reply: true, author: true },
-        { initial: people.lera.initial, name: people.lera.name, text: 'А темп 6:12 — это с остановкой у светофора или чистый?', time: 'сегодня, 8:03', likes: 1 },
-        { initial: people.dasha.initial, name: people.dasha.name, text: 'Я после перерыва начинала с 4 км, к третьему выходу дошла до шести', time: 'сегодня, 9:26', liked: true, likes: 3 },
-      ] }),
+      ui.section({ title: 'Бежали вместе', meta: '2', children: ui.list([
+        ui.row({ lead: ui.avatar(people.ilya.initial), title: people.ilya.name, sub: 'Держал темп 6:10 и показал объезд', go: 'chat' }),
+        ui.row({ lead: ui.avatar(people.dasha.initial), title: people.dasha.name, sub: 'Сошла на 4-м км, догнала у клуба' }),
+      ]) }),
+      ui.section({ children: ui.actions([ui.button({ label: 'Бежать этот маршрут снова', block: true, go: 'player', primary: true })]) }),
     ]),
-    ui.composer({ placeholder: 'Комментарий', attach: { label: 'Прикрепить', menu: ['Камера>shoot', 'Фото>picker'] }, send: { toast: 'Комментарий отправлен' } }),
   ],
 });

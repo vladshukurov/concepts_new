@@ -11,7 +11,7 @@ export default (ui) => ui.screen({
         ui.row({ lead: ui.avatar(people.dasha.initial), title: `${people.dasha.first} идёт на лонгран`, sub: '07:02', go: 'route' }),
       ]) }),
       ui.section({ title: 'Вчера', children: ui.list([
-        ui.row({ lead: ui.avatar(people.alina.initial), title: `${people.alina.first} отметила вас в публикации`, sub: 'Набережная · 6,4 км', go: 'post' }),
+        ui.row({ lead: ui.leadIcon('target', { accent: true }), title: 'До цели недели 6,6 км', sub: 'Субботний лонгран закроет её с запасом', go: 'feed' }),
       ]) }),
       ui.section({ children: [
         ui.actions([ui.button({ label: 'Включить уведомления', icon: 'bell', block: true, ask: 'push|notif|notif', primary: true })]),

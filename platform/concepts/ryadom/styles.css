@@ -10,7 +10,6 @@
 .ry-plan > strong { font:600 20px/26px var(--ui-face); }
 .ry-plan > span { font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
 .ry-plan .ui-progress { margin-top:8px; }
-.ry-w-64 { width:64%; }
 .ry-w-30 { width:30%; }
 
 /* Темп и дистанция крупно */

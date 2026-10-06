@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `section` ×41, `row` ×35, `leadIcon` ×21, `list` ×20, `iconButton` ×18, `button` ×15, `nav` ×15, `cell` ×15, `avatar` ×14, `denied` ×13, `actions` ×12, `group` ×6, `tabBar` ×5, `progress` ×4, `dialog` ×4, `post` ×4, `bubble` ×3, `largeTitle` ×3, `search` ×3, `composer` ×2, `textButton` ×2, `top` ×2, `callView` ×1, `chatNav` ×1, `chat` ×1, `day` ×1, `voice` ×1, `wordmark` ×1, `composerPrompt` ×1, `stories` ×1, `comments` ×1, `stats` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×46, `section` ×44, `leadIcon` ×27, `list` ×23, `iconButton` ×18, `cell` ×17, `nav` ×15, `avatar` ×13, `button` ×11, `actions` ×9, `denied` ×9, `entry` ×8, `group` ×7, `tabBar` ×5, `dialog` ×4, `progress` ×3, `bubble` ×3, `largeTitle` ×3, `search` ×3, `textButton` ×2, `top` ×2, `callView` ×1, `chatNav` ×1, `chat` ×1, `day` ×1, `voice` ×1, `composer` ×1, `wordmark` ×1, `chips` ×1, `safariFill` ×1, `stats` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -39,7 +39,7 @@
 <!-- @generated:domain-components -->
 | Компонент | Классы |
 |---|---|
-| Карточка тренировки: дата, время старта, темп, сколько подтвердили | `.ry-plan` `.ry-w-64` `.ry-w-30` |
+| Карточка тренировки: дата, время старта, темп, сколько подтвердили | `.ry-plan` `.ry-w-30` |
 | Темп и дистанция крупно | `.ry-figures` |
 | Карта маршрута: набережная, река, отрезки и метки людей — кодом | `.ry-map` `.ry-river` `.ry-path` `.ry-pin` `.ry-x10` `.ry-y20` |
 | Голосовой пейсинг: пройдено и осталось крупно | `.ry-run` `.ry-run-km` `.ry-controls` |
@@ -52,5 +52,5 @@
 ## Актуальная навигация
 
 <!-- @generated:navigation -->
-Лента · Тренировки · Мессенджер · Маршруты · Профиль
+Дневник · Тренировки · Мессенджер · Маршруты · Профиль
 <!-- @end -->
