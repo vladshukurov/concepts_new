@@ -32,7 +32,7 @@ try {
   /* В галерее — концепты на новом UI и на модели своего контента (тот же фильтр, что в build-all) */
   const shown = concepts.filter((slug) => {
     const spec = readSpec(slug);
-    return UI_THEMES.has(spec.brand?.theme) && spec.product?.content && spec.qualityContractVersion >= 4;
+    return spec.published !== false && UI_THEMES.has(spec.brand?.theme) && spec.product?.content && spec.qualityContractVersion >= 4;
   });
   const cards = page.locator('.card');
   assert.equal(await cards.count(), shown.length, 'в лаунчере должен быть каждый концепт на своём контенте');

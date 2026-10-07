@@ -11,7 +11,7 @@ import { sync as syncDocs } from './gen-docs.mjs';
 import { buildStorybook } from './gen-storybook.mjs';
 import { writeFileSync, mkdirSync, rmSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { DIST, conceptDir, listConcepts, esc, TARGET_PRODUCTS, POSITIONING_MODES } from './lib.mjs';
+import { DIST, conceptDir, listConcepts, readSpec, esc, TARGET_PRODUCTS, POSITIONING_MODES } from './lib.mjs';
 import { build, UI_THEMES } from './build.mjs';
 import { writeUxSpec } from './ux-spec.mjs';
 
@@ -272,7 +272,11 @@ ${items.length ? ['mimicry', 'differentiation'].map(group).join('\n') : '    <p 
 `;
 };
 
-const slugs = listConcepts();
+/* "published": false в спеке — концепт не попадает ни в галерею, ни в dist, а значит и на Pages.
+   Локально он собирается как обычно: npm run build -- <slug> */
+const hidden = listConcepts().filter((slug) => readSpec(slug).published === false);
+const slugs = listConcepts().filter((slug) => !hidden.includes(slug));
+if (hidden.length) console.log(`не публикуются: ${hidden.join(', ')}`);
 if (!slugs.length) { console.error('нет концептов в concepts/'); process.exit(1); }
 
 rmSync(DIST, { recursive: true, force: true });
