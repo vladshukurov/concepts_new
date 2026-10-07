@@ -1,6 +1,6 @@
 /* «Встык» — мимикрия ВК Видео. Оболочка, кегли и цвета — из слоя `.ui`
    в ядре; здесь только своё: кадры события, баннер проекта, материалы,
-   таймлайн, камера, карта, системные листы и локскрин. */
+   таймлайн, камера, карта, системные листы, картинка в картинке и показ на ТВ. */
 
 /* Кадры одного события: атлас 3×2. `300% auto` держит пропорции кадра
    в квадратных и широких превью; высокие поверхности переключаются на `auto 200%`. */
@@ -17,7 +17,9 @@
 .sk-place-ava { width:36px; height:36px; }
 .sk-place-ava svg { width:18px; height:18px; color:var(--ui-text-2); }
 .sk-ad { display:flex; align-items:center; gap:12px; width:calc(100% - 32px); margin:0 16px; padding:8px; border-radius:16px; background:var(--ui-card); }
-.sk-ad-art { width:72px; height:48px; flex:none; border-radius:8px; }
+.sk-ad-art { width:72px; height:48px; flex:none; display:grid; place-items:center; border-radius:8px; background:var(--ui-card-2); color:var(--ui-accent); }
+.sk-ad-art svg { width:24px; height:24px; }
+.sk-ad.is-static { cursor:default; }
 
 /* Фильмы и профиль */
 .sk-archive-cta { margin-top:16px; }
@@ -25,11 +27,11 @@
 .sk-me .ui-avatar { width:44px; height:44px; font-size:17px; }
 
 /* Форма события */
-.sk-cover { position:relative; height:176px; margin:8px 16px 16px; border-radius:12px; }
-.sk-cover-btn { position:absolute; right:12px; bottom:12px; background:rgba(0,0,0,.5)!important; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
 .sk-form .ui-cell-text > span:first-child { order:-1; font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
 .sk-form-hint { padding:8px 32px 0; }
 .sk-bottom { margin-top:24px; }
+.sk-input { width:100%; min-width:0; padding:0; border:0; outline:0; background:none; color:var(--ui-text); font:500 17px/22px var(--ui-face); }
+.sk-input::placeholder { color:var(--ui-text-2); }
 
 /* Карта: тёмная тема iOS поверх светлых тайлов */
 .sk-place { overflow:hidden; }
@@ -53,10 +55,11 @@
 /* Проект: баннер как у канала */
 .sk-banner { height:148px; margin:0 16px; border-radius:12px; }
 .sk-channel { display:flex; flex-direction:column; gap:4px; padding:16px 16px 12px; }
-.sk-add-row { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; padding:0 16px; }
+.sk-add-row { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; padding:0 16px; }
 .sk-add { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; min-height:72px; border-radius:12px; background:var(--ui-card); font:500 14px/18px var(--ui-face); }
 .sk-add svg { color:var(--ui-accent); }
 .sk-media-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:0 16px; }
+.sk-new { display:contents; }
 .sk-media { position:relative; aspect-ratio:16/10; border-radius:10px; }
 .ui-thumb.is-wide .ui-duration { right:4px; bottom:4px; }
 
@@ -82,7 +85,6 @@
 .sk-camera-meta > span { display:flex; align-items:center; gap:4px; }
 .sk-camera-meta svg { width:14px; height:14px; }
 .sk-camera-bar { position:absolute; left:24px; right:24px; bottom:calc(var(--safe-bottom) + 16px); z-index:1; display:flex; align-items:center; justify-content:space-between; }
-.sk-gallery { width:48px; height:48px; border-radius:10px; box-shadow:0 0 0 2px rgba(255,255,255,.8); }
 .sk-shutter { position:relative; width:76px; height:76px; border-radius:50%; box-shadow:inset 0 0 0 4px #fff; }
 .sk-shutter > span:first-child { position:absolute; inset:9px; border-radius:50%; background:#ff3b30; }
 .sk-camera-spacer { width:48px; }
@@ -92,8 +94,9 @@
 .sk-picker-meta { padding:0 16px 12px; }
 .sk-picker-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
 .sk-picker-grid > button { position:relative; aspect-ratio:1; min-height:44px; }
-.sk-picker-grid .ui-duration { right:4px; bottom:4px; background:none; padding:0; text-shadow:0 1px 3px rgba(0,0,0,.8); }
+.sk-picker-grid .ui-duration { z-index:1; right:4px; bottom:4px; background:none; padding:0; text-shadow:0 1px 3px rgba(0,0,0,.8); }
 .sk-picker-grid i { position:absolute; right:6px; top:6px; width:24px; height:24px; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent); box-shadow:0 0 0 2px #fff; font:600 13px/1 var(--ui-face); font-style:normal; color:#fff; }
+.sk-picker-grid .is-in::after { content:""; position:absolute; inset:0; background:rgba(0,0,0,.5); }
 .sk-picker-grid .is-picked::after { content:""; position:absolute; inset:0; background:rgba(255,255,255,.2); }
 
 /* Сборка */
@@ -125,7 +128,6 @@
 .sk-viewer-body > .ui-title, .sk-viewer-body > .ui-sub { margin-left:16px; margin-right:16px; }
 .sk-viewer-title { margin-top:12px; }
 .sk-viewer-actions { margin-top:16px; gap:8px; }
-.sk-viewer-actions > .ui-btn:first-child { flex:1.4; }
 
 /* Итог экспорта */
 .sk-saved { padding-top:8px; }
@@ -133,29 +135,27 @@
 .sk-saved-check svg { width:30px; height:30px; stroke-width:2.4; }
 .sk-saved-copy { display:flex; flex-direction:column; gap:4px; padding:20px 16px 0; text-align:center; }
 
-/* Локскрин iOS */
-.sk-lock { overflow:hidden; }
-.sk-lock-wall { position:absolute; inset:0; background-size:auto 200%; filter:blur(22px); opacity:.8; }
-.sk-lock-shade { position:absolute; inset:0; background:rgba(0,0,0,.34); }
-.sk-lock-time { position:relative; margin-top:88px; text-align:center; font:300 80px/84px var(--ui-face); letter-spacing:-.02em; color:#fff; }
-.sk-lock-time small { display:block; margin-top:4px; font:500 18px/22px var(--ui-face); letter-spacing:0; }
-.sk-now { position:absolute; left:12px; right:12px; bottom:calc(var(--safe-bottom) + 24px); padding:14px 16px 8px; border-radius:24px; background:rgba(40,40,44,.62); backdrop-filter:blur(30px) saturate(1.6); -webkit-backdrop-filter:blur(30px) saturate(1.6); }
-.sk-now-top { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
-.sk-now-top .ui-thumb { width:48px; height:48px; }
-.sk-now-top .ui-row-text > span, .sk-now .ui-times { color:rgba(255,255,255,.66); }
-.sk-now-controls { display:flex; justify-content:space-around; margin-top:4px; }
-.sk-now-controls .ui-icon-btn svg { width:28px; height:28px; }
-.sk-now-pause svg { width:34px!important; height:34px!important; }
-.sk-airplay { display:flex; align-items:center; justify-content:center; gap:6px; width:100%; min-height:44px; font:500 13px/16px var(--ui-face); color:rgba(255,255,255,.8); }
-.sk-airplay svg { width:16px; height:16px; }
+/* Картинка в картинке поверх экрана «Домой» */
+.sk-pip { margin:calc(var(--safe-top) + 12px) 16px 0 auto; width:236px; }
+.sk-pip-frame { position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden; box-shadow:0 12px 32px rgba(0,0,0,.5); }
+.sk-pip-frame::before { content:""; position:absolute; inset:0; background:rgba(0,0,0,.32); }
+.sk-pip-back { position:absolute; left:4px; top:4px; z-index:2; }
+.sk-pip-controls { position:absolute; inset:0; z-index:1; pointer-events:none; display:flex; align-items:center; justify-content:center; gap:4px; color:#fff; }
+.sk-pip-controls > * { pointer-events:auto; }
+.sk-pip-bar { position:absolute; left:10px; right:10px; bottom:8px; z-index:1; }
+
+/* Показ на телевизоре: телефон становится пультом */
+.sk-tv-player { background:#101215; }
+.sk-tv-now { display:flex; flex-direction:column; align-items:center; gap:4px; text-align:center; font:400 13px/16px var(--ui-face); color:rgba(255,255,255,.72); }
+.sk-tv-now svg { width:36px; height:36px; color:var(--ui-accent); margin-bottom:4px; }
+.sk-tv-now strong { font:600 17px/22px var(--ui-face); color:#fff; }
+.sk-remote { display:flex; align-items:center; justify-content:center; gap:32px; padding:24px 16px 8px; }
 
 /* Экран «Реклама» */
-.sk-ads-head { display:flex; flex-direction:column; align-items:center; gap:8px; padding:16px 24px 0; text-align:center; }
-.sk-ads-ico { width:64px; height:64px; margin-bottom:8px; display:grid; place-items:center; border-radius:50%; background:var(--ui-card-2); color:var(--ui-text-2); }
-.sk-ads-ico svg { width:28px; height:28px; }
 .sk-ads-actions { margin-top:24px; }
 
 /* Доли прогресса */
 .is-58 { width:58%; }
 .is-38 { width:38%; }
 .ui-row-text > strong.sk-wrap { white-space:normal; }
+.sk-build { margin-top:16px; }
