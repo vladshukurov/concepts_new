@@ -1600,7 +1600,8 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .action-sheet-item.is-destructive { color:#ff3b30; }
 .action-sheet button:focus:not(:focus-visible) { outline:none; }
 .action-sheet-cancel { border-radius:14px; background:#fff; font-weight:600; }
-.ui.vk-dark .action-sheet-group { background:rgba(44,44,46,.96); } .ui.vk-dark .action-sheet-cancel { background:#2c2c2e; } .ui.vk-dark :is(.action-sheet-item, .action-sheet-cancel) { color:#0a84ff; } .ui.vk-dark .action-sheet-item.is-destructive { color:#ff453a; }
+/* В светлой теме приложения (переключатель Музыки и Видео) лист светлый, как в iOS */
+:root:not([data-app-theme="light"]) .ui.vk-dark .action-sheet-group { background:rgba(44,44,46,.96); } :root:not([data-app-theme="light"]) .ui.vk-dark .action-sheet-cancel { background:#2c2c2e; } :root:not([data-app-theme="light"]) .ui.vk-dark :is(.action-sheet-item, .action-sheet-cancel) { color:#0a84ff; } :root:not([data-app-theme="light"]) .ui.vk-dark .action-sheet-item.is-destructive { color:#ff453a; }
 @keyframes as-in { from { opacity:0; } }
 
 /* Своя запись в ленте: шапка как у поста (значок 44 вместо аватара), текст, медиа, действия */
