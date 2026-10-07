@@ -1025,6 +1025,18 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
   --ui-bubble-in:#232324; --ui-bubble-out:#264a73; --ui-bubble-out-text:#fff; --ui-chat-bg:#0a0a0a;
   --ui-play-bg:#fff; --ui-play-fg:#000; --ui-danger:#ff5c5c; --ui-seg-on:#626364; --ui-shadow:rgba(0,0,0,.45);
 }
+:root[data-app-theme="light"] .ui.vk-dark:not([class*="camera"]):not([class*="lock"]):not([class*="capture"]):not([class*="player"]):not(.ui-hs) {
+  /* Светлая тема Музыки и Видео — переключатель на странице (?theme=light). Разметка та же, меняются токены:
+     нейтрали VKUI vkontakteIOS, карточки серые на белом, как в светлом ВК Видео. Камера, локскрин,
+     полноэкранный плеер и экран «Домой» остаются тёмными, как в iOS */
+  --ui-bg:#fff; --ui-card:#f2f3f5; --ui-card-2:#ebedf0; --ui-modal:#fff; --ui-ph:#e1e3e6;
+  --ui-fill:rgba(0,28,61,.06); --ui-fill-2:rgba(0,28,61,.1); --ui-line:rgba(0,0,0,.12);
+  --ui-text:#000; --ui-text-2:#5f6b78; --ui-text-3:#818c99;
+  --ui-accent:#0077ff; --ui-on-accent:#fff; --ui-link:#0067db; --ui-accent-soft:rgba(0,119,255,.1);
+  --ui-bubble-in:#ebedf0; --ui-bubble-out:#cce4ff; --ui-bubble-out-text:#000; --ui-chat-bg:#fff;
+  --ui-play-bg:#0077ff; --ui-play-fg:#fff; --ui-danger:#c42b2b; --ui-seg-on:#fff; --ui-shadow:rgba(0,16,61,.16);
+}
+:root[data-app-theme="light"] .device:has(.screens > .screen.ui.vk-dark.is-on:not([class*="camera"]):not([class*="lock"]):not([class*="capture"]):not([class*="player"]):not(.ui-hs)) .status { color:#000; text-shadow:none; }
 .ui.vk-light, .ui.ok-light {
   --ui-row-h:64px; --ui-row-pad:10px;
 }

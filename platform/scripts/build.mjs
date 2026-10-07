@@ -1588,6 +1588,15 @@ export function build(slug, { outDir } = {}) {
   </div>`
       : "";
 
+  /* Мимикрия Музыки и Видео тёмная по умолчанию, светлая — той же разметкой на токенах */
+  const themeToggle =
+    spec.brand?.theme === "vk-dark"
+      ? `<div class="view-switch" data-theme-switch role="group" aria-label="Тема приложения">
+    <button type="button" data-app-theme="dark" aria-pressed="true">Тёмная</button>
+    <button type="button" data-app-theme="light" aria-pressed="false">Светлая</button>
+  </div>`
+      : "";
+
   packAppStore(slug, dir);
   const html = fill(read(join(KERNEL, "page.html")), {
     NAME: esc(spec.name),
@@ -1615,7 +1624,7 @@ export function build(slug, { outDir } = {}) {
     ].join("\n"),
     ICON_SPRITE: read(join(KERNEL, "icons.svg")).trim(),
     HERO_DEVICE: heroDevice,
-    VIEW_TOGGLE: viewToggle,
+    VIEW_TOGGLE: themeToggle + viewToggle,
     PROTO_CARDS: protoCards,
     VISION_BODY: grab("vision"),
     PRODUCT_CONTRACT: productContract(spec),
