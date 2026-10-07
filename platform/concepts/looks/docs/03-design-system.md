@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×48, `section` ×37, `leadIcon` ×25, `list` ×22, `bubble` ×16, `cell` ×15, `nav` ×13, `button` ×13, `iconButton` ×12, `avatar` ×10, `actions` ×8, `group` ×7, `denied` ×7, `entry` ×7, `chatNav` ×4, `chat` ×4, `day` ×4, `composer` ×4, `dialog` ×4, `tabBar` ×4, `textButton` ×3, `progress` ×2, `times` ×2, `voice` ×2, `largeTitle` ×2, `search` ×2, `foot` ×2, `top` ×2, `callView` ×1, `safariFill` ×1, `wordmark` ×1, `chips` ×1, `stats` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×48, `section` ×36, `leadIcon` ×25, `list` ×22, `bubble` ×16, `cell` ×15, `button` ×13, `nav` ×12, `avatar` ×10, `iconButton` ×9, `actions` ×8, `group` ×7, `denied` ×7, `entry` ×7, `chatNav` ×4, `chat` ×4, `day` ×4, `composer` ×4, `dialog` ×4, `tabBar` ×4, `voice` ×2, `largeTitle` ×2, `search` ×2, `foot` ×2, `textButton` ×2, `top` ×2, `lockScreen` ×1, `callView` ×1, `safariFill` ×1, `wordmark` ×1, `chips` ×1, `photoPicker` ×1, `stats` ×1, `progress` ×1, `times` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -47,11 +47,12 @@
 | Клип-примерка: вертикальное видео | `.lk-clip` `.lk-clip-frame` `.lk-clip-shade` `.lk-clip-body` `.lk-clip-side` `.lk-author` |
 | Камера и выбор фото | `.lk-cam` `.lk-viewfinder` `.lk-shutter` `.lk-grid` |
 | Мессенджер | `.lk-chat-photo` `.lk-call` |
-| Системные поверхности: локскрин, «Домой», Safari | `.lk-lock` `.lk-lock-time` `.lk-stack` `.lk-glass` `.lk-glass-top` `.lk-glass-controls` |
+| Системные поверхности: локскрин, «Домой», Safari | `.lk-author` `.lk-clip` |
 | План на завтра: три действия переносятся, напоминание — плод разрешения на уведомления | `.lk-plan` `.lk-remind` |
 | Заметка к образу — настоящее поле | `.lk-note` |
 | Субтитры вручную после отказа в распознавании | `.lk-sub-line` |
 | Камера: примерка слева от затвора | `.lk-cam-bar` `.lk-cam` `.lk-idle-foot` `.ui-bubble-media` |
+| Выбор фото из ядра: iOS-синий на белом не проходит AA | `.ui-pk-text` `.ui-pk-tile` |
 <!-- @end -->
 
 ## Актуальная навигация

@@ -29,7 +29,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×79, `section` ×69, `avatar` ×50, `list` ×35, `leadIcon` ×33, `cell` ×32, `bubble` ×29, `nav` ×15, `button` ×12, `day` ×11, `iconButton` ×11, `group` ×10, `actions` ×9, `dialog` ×9, `chatNav` ×7, `chat` ×7, `composer` ×6, `denied` ×5, `tabBar` ×5, `largeTitle` ×4, `segments` ×3, `search` ×3, `hue` ×3, `textButton` ×2, `voice` ×2, `usersStack` ×2, `callView` ×1, `chips` ×1, `miniInfo` ×1, `top` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×79, `section` ×69, `avatar` ×50, `list` ×35, `leadIcon` ×33, `cell` ×32, `bubble` ×29, `nav` ×15, `button` ×12, `day` ×11, `iconButton` ×11, `group` ×10, `actions` ×9, `dialog` ×9, `chatNav` ×7, `chat` ×7, `composer` ×6, `denied` ×5, `tabBar` ×5, `largeTitle` ×4, `segments` ×3, `search` ×3, `textButton` ×2, `voice` ×2, `usersStack` ×2, `callView` ×1, `chips` ×1, `miniInfo` ×1, `lockScreen` ×1, `top` ×1, `hue` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Доменные компоненты
@@ -54,11 +54,9 @@
 | Тёмные поверхности: камера, звонок | `.sb-cam` `.sb-viewfinder` `.sb-qr-found` `.sb-modes` `.sb-cam-row` `.sb-cam-thumb` |
 | «Сообщения» iOS — системная поверхность приглашённого | `.sb-ios` `.sb-ios-who` `.sb-ios-day` `.sb-ios-bubble` `.sb-ios-link` `.sb-ios-link-ico` |
 | «Поделиться» в Картах | `.sb-sys-surface` `.sb-sheet` `.sb-sheet-head` `.sb-sheet-x` `.sb-share-people` `.sb-share-to` |
-| Экран блокировки: Now Playing и уведомления | `.sb-lock` `.sb-lock-clock` `.sb-np` `.sb-np-face` `.sb-np-text` `.sb-np-bar` |
-| Экран «Домой» с виджетом | `.sb-home` `.sb-widget` `.sb-widget-bar` `.sb-apps` `.sb-app` |
 | Профиль в настройках: крупное фото, имя и номер по центру, как в Telegram | `.sb-me` |
 | Пульт идущей поездки: что дальше и кто на месте — крупно, как карточка звонка в чате | `.sb-now` |
-| Сводка кошелька поездки | `.sb-money` |
+| Сводка кошелька поездки | `.sb-money` `.ui-progress` |
 <!-- @end -->
 
 Главные из них:

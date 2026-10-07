@@ -155,6 +155,8 @@ const SEL = '[data-ask], [data-go], [data-back], [data-activate], [data-jump], [
       const rec = { screen: id, label: a.label, keys: a.keys, to: a.to, deny: a.deny };
       for (const v of ['grant', 'deny']) {
         const r = await reach(id); if (!r.ok) { rec.error = 'не дошёл до экрана'; break; }
+        const before = await page.evaluate(() => [...document.querySelectorAll('.perm[data-state="granted"]')].map((e) => e.dataset.key));
+        if (v === 'grant') rec.preGranted = a.keys.split('+').every((k) => before.includes(k));
         await clickAct(id, a.i); if (a.menu) await clickMenu(a.menu);
         const alerts = [];
         for (let k = 0; k < 6; k++) { const t = await alertOn(); if (!t) break; alerts.push(t); if (k === 0) await shot(`ask-${id}-${a.i}-alert`); await answer(v === 'grant' ? 'grant' : (k === 0 ? 'deny' : 'deny')); if (v === 'deny') break; }
@@ -165,7 +167,8 @@ const SEL = '[data-ask], [data-go], [data-back], [data-activate], [data-jump], [
         const deniedVisible = await page.evaluate(H => { const s = document.querySelector('#' + H + ' .screen.is-on'); const d = s && s.querySelector('.ui-denied'); return !!(d && d.getBoundingClientRect().height && !d.closest('.perm-hidden')); }, H);
         rec[v] = { alerts, landed, snack: sn, deniedState: deniedVisible };
       }
-      if (rec.grant && !rec.grant.alerts.length) issues.push({ type: 'ask-without-alert', screen: id, label: a.label, keys: a.keys });
+      /* Уже выданный по пути доступ iOS второй раз не спрашивает — это не ошибка */
+      if (rec.grant && !rec.grant.alerts.length && !rec.preGranted) issues.push({ type: 'ask-without-alert', screen: id, label: a.label, keys: a.keys });
       if (rec.grant && rec.grant.landed !== a.to) issues.push({ type: 'ask-grant-wrong-screen', screen: id, label: a.label, expected: a.to, landed: rec.grant.landed });
       asks.push(rec);
     }

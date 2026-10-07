@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×51, `section` ×40, `leadIcon` ×39, `cell` ×29, `list` ×21, `button` ×14, `denied` ×14, `nav` ×12, `group` ×11, `actions` ×8, `iconButton` ×8, `bubble` ×6, `entry` ×6, `dialog` ×5, `tabBar` ×5, `largeTitle` ×4, `foot` ×4, `day` ×3, `search` ×3, `chatNav` ×2, `chat` ×2, `composer` ×2, `textButton` ×2, `stats` ×2, `callView` ×1, `voice` ×1, `safariFill` ×1, `top` ×1, `wordmark` ×1, `chips` ×1, `avatar` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×51, `section` ×40, `leadIcon` ×39, `cell` ×29, `list` ×21, `button` ×14, `denied` ×14, `nav` ×11, `group` ×11, `actions` ×8, `iconButton` ×8, `bubble` ×6, `entry` ×6, `dialog` ×5, `tabBar` ×5, `largeTitle` ×4, `foot` ×4, `day` ×3, `search` ×3, `chatNav` ×2, `chat` ×2, `composer` ×2, `stats` ×2, `callView` ×1, `voice` ×1, `textButton` ×1, `safariFill` ×1, `top` ×1, `wordmark` ×1, `chips` ×1, `photoPicker` ×1, `avatar` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -47,12 +47,13 @@
 | Галерея фото питомца | `.tl-gallery` |
 | Профиль пользователя | `.tl-me` `.tl-me-ava` `.tl-me-block` |
 | Новая запись | `.tl-composer` `.tl-composer-who` `.tl-composer-field` `.tl-attach-row` `.tl-attach-btn` |
-| Камера и выбор фото — системные поверхности | `.tl-camera` `.tl-camera-view` `.tl-camera-shade` `.tl-shutter` `.tl-picker` |
+| Камера и выбор фото — системные поверхности | `.tl-camera` `.tl-camera-view` `.tl-camera-shade` `.tl-shutter` |
 | Ветпаспорт | `.tl-vet-head` `.tl-appt` `.tl-appt-when` `.tl-days` |
 | Расшифровка наблюдения | `.tl-note-head` `.tl-wave` `.tl-ts` |
 | QR сети площадки | `.tl-qr` `.tl-qr-code` |
 | Доли прогресса | `.tl-qr-actions` |
 | Мессенджер: фото и карточка прогулки внутри сообщения | `.tl-chat-photo` `.tl-walk` `.tl-call` |
+| Выбор фото из ядра: iOS-синий на белом не проходит AA | `.ui-pk-text` `.ui-pk-tile` |
 <!-- @end -->
 
 ## Актуальная навигация

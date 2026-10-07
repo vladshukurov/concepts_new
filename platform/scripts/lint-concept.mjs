@@ -70,7 +70,7 @@ function lint(slug) {
   /* —— спека против разметки —— */
   /* Экран рендерится в каждый прототип, где он есть: id уникален на странице. */
   const rendered = html.slice(html.indexOf('</style>'));
-  const inHtml = new Set([...rendered.matchAll(/data-screen="([a-z-]+)"/g)].map((m) => m[1]));
+  const inHtml = new Set([...rendered.matchAll(/data-screen="([a-z0-9-]+)"/g)].map((m) => m[1]));
   for (const s of spec.screens) if (!inHtml.has(s.id)) P(`экран ${s.id} есть в спеке, но не в разметке`);
   for (const id of inHtml) if (!spec.screens.some((s) => s.id === id)) P(`экран ${id} есть в разметке, но не в спеке`);
   for (const p of spec.prototypes || []) {

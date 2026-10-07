@@ -189,8 +189,7 @@
 | `compose` | «Расшифровать заметку» | `compose` | `NSSpeechRecognitionUsageDescription` | доступ разрешён |
 | `shoot` | «Закрыть» | `compose` | — | возврат по IA |
 | `shoot` | «Снять» | `compose` | — | подтверждение |
-| `picker` | «Закрыть» | `compose` | — | возврат по IA |
-| `picker` | «Добавить», «Работа 1» … | `compose` | — | переход |
+| `picker` | «Добавить» | `compose` | — | переход |
 | `series` | «Назад» | `home` | — | возврат по IA |
 | `series` | «Лето, июль», «Дождь, август» … | `post` | — | переход |
 | `series` | «Добавить зарисовку» | `compose` | — | переход |

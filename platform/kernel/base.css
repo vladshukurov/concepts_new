@@ -1634,7 +1634,10 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .ui-entry-photos.is-3 > span:first-child { grid-row:span 2; aspect-ratio:auto; }
 .ui-entry-photos > span { background-size:cover; background-position:center top; }
 .ui-entry-photos > b { position:absolute; right:8px; bottom:8px; padding:2px 8px; border-radius:10px; background:rgba(0,0,0,.55); color:#fff; font:600 13px/18px var(--ui-face); }
-.ui-entry-voice { display:flex; align-items:center; gap:10px; margin:8px 16px 0; padding:6px 12px 6px 6px; border-radius:22px; box-shadow:inset 0 0 0 1px var(--ui-line); width:fit-content; }
+/* Голосовое в записи — не пузырь из чата: строка по колонке текста, акцентный круг, волна, длительность */
+.ui-entry-voice { display:flex; align-items:center; gap:12px; margin:8px 16px 4px; }
+.ui-entry-voice .ui-play { width:36px; height:36px; background:var(--ui-accent); color:#fff; }
+.ui-entry-voice .ui-wave { flex:none; width:160px; height:24px; }
 .ui-entry-voice > span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); font-variant-numeric:tabular-nums; }
 .ui-entry-voice .ui-wave rect { fill:var(--ui-link); }
 .ui-entry-attach { margin:8px 16px 0; }
@@ -1796,7 +1799,8 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 :root[data-app-theme="light"] .ui.vk-dark .ui-pk { background:#fff; color:#000; --pk-fill:rgba(118,118,128,.12); --pk-sub:rgba(60,60,67,.6); }
 .screen:has(> .ui-pk) { background:#000!important; }
 .ui-pk-bar { display:flex; align-items:center; justify-content:space-between; gap:8px; min-height:52px; padding:0 16px; }
-.ui-pk-text { min-height:44px; font:400 17px/22px var(--ui-face); color:#007aff; }
+.ui-pk-text { min-height:44px; font:400 17px/22px var(--ui-face); color:#0066d6; }
+.ui.vk-dark .ui-pk-text:not(.is-off) { color:#0a84ff; }
 .ui-pk-text.is-strong { font-weight:600; }
 .ui-pk-text.is-off { color:var(--pk-sub); }
 .ui-pk-seg { display:flex; padding:2px; border-radius:9px; background:var(--pk-fill); }
@@ -1846,3 +1850,18 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .ui .ui-np-like.is-on svg { fill:currentColor; }
 /* Фокус после клика мышью не обводим — только с клавиатуры */
 .device :is(button, [role="button"], a):focus:not(:focus-visible) { outline:none; box-shadow:none; }
+
+/* ── Чек-лист (checklist) ── */
+.ui-checklist { display:flex; flex-direction:column; padding:2px 0; }
+.ui-check { display:flex; align-items:center; gap:12px; width:100%; min-height:44px; padding:6px 16px; text-align:left; color:var(--ui-text); }
+.ui-check-box { width:22px; height:22px; flex:none; display:grid; place-items:center; border-radius:50%; box-shadow:inset 0 0 0 1.5px var(--ui-text-3); color:transparent; }
+.ui-check-box svg { width:14px; height:14px; stroke-width:3; }
+.ui-check-text { flex:1; min-width:0; display:flex; flex-direction:column; }
+.ui-check-text strong { font:400 16px/20px var(--ui-face); }
+.ui-check-text span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.ui-check-value { flex:none; font:400 14px/18px var(--ui-face); color:var(--ui-text-2); font-variant-numeric:tabular-nums; }
+.ui .ui-check[data-toggle="on"].is-on { color:var(--ui-text); }
+.ui .ui-check.is-on .ui-check-box { background:var(--ui-accent); box-shadow:none; }
+.ui .ui-check.is-on .ui-check-box svg { color:#fff; }
+.ui .ui-check.is-on .ui-check-text strong { color:var(--ui-text-2); text-decoration:line-through; }
+.ui-entry-attach .ui-check { padding-left:0; padding-right:0; }

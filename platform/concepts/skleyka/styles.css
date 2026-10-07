@@ -92,12 +92,6 @@
 /* Системный выбор видео */
 .sk-picker { background:#000!important; }
 .sk-picker-meta { padding:0 16px 12px; }
-.sk-picker-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
-.sk-picker-grid > button { position:relative; aspect-ratio:1; min-height:44px; }
-.sk-picker-grid .ui-duration { z-index:1; right:4px; bottom:4px; background:none; padding:0; text-shadow:0 1px 3px rgba(0,0,0,.8); }
-.sk-picker-grid i { position:absolute; right:6px; top:6px; width:24px; height:24px; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent); box-shadow:0 0 0 2px #fff; font:600 13px/1 var(--ui-face); font-style:normal; color:#fff; }
-.sk-picker-grid .is-in::after { content:""; position:absolute; inset:0; background:rgba(0,0,0,.5); }
-.sk-picker-grid .is-picked::after { content:""; position:absolute; inset:0; background:rgba(255,255,255,.2); }
 
 /* Сборка */
 .sk-process-copy { display:flex; flex-direction:column; gap:4px; padding:16px 16px 20px; }
@@ -162,18 +156,7 @@
 
 /* Звук фильма при погашенном экране: карточка Now Playing на локскрине */
 .is-20 { width:20%; }
-.sk-lock { overflow:hidden; }
-.sk-lock-wall { position:absolute; inset:0; background-size:auto 200%; filter:blur(24px); opacity:.75; }
-.sk-lock-shade { position:absolute; inset:0; background:rgba(0,0,0,.34); }
-.sk-lock-time { position:relative; margin-top:88px; text-align:center; font:300 80px/84px var(--ui-face); letter-spacing:-.02em; color:#fff; }
-.sk-lock-time small { display:block; margin-top:4px; font:500 18px/22px var(--ui-face); letter-spacing:0; }
-.sk-now-card { position:absolute; left:12px; right:12px; bottom:calc(var(--safe-bottom) + 84px); padding:14px 16px 12px; border-radius:24px; background:rgba(40,40,44,.62); color:#fff; backdrop-filter:blur(30px) saturate(1.6); -webkit-backdrop-filter:blur(30px) saturate(1.6); }
-.sk-now-top { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
-.sk-now-top .ui-thumb { width:48px; height:48px; background-size:auto 200%; }
-.sk-now-top .ui-row-text > span, .sk-now-app, .sk-now-card .ui-times { color:rgba(255,255,255,.66); }
-.sk-now-app svg { width:20px; height:20px; }
-.sk-lock-controls { display:flex; justify-content:space-around; margin-top:4px; }
-.sk-lock-controls .ui-icon-btn { color:#fff; }
-.sk-lock-controls .ui-icon-btn svg { width:28px; height:28px; }
-.sk-lock-pause svg { width:34px!important; height:34px!important; }
-.sk-lock-foot { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 24px); }
+
+/* Выбор фото из ядра: iOS-синий на тёмном и белом знак не проходят AA */
+.ui-pk-text:not(.is-off) { color:#5aaaff; }
+.ui-pk-tile > i { background:#0064d2; }

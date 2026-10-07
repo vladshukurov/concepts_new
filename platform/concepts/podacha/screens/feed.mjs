@@ -24,7 +24,7 @@ export default (ui) => ui.screen({
     ui.entry({ icon: 'mic', title: own.voice.title, meta: `${own.voice.when} · заметка у плиты`, voice: { dur: own.voice.dur }, tags: ['recipe'] }),
     ui.entry({
       icon: 'shopping-basket', title: own.list.title, meta: `осталось ${own.list.left} из ${own.list.left + own.list.done}`,
-      attach: ui.list(own.list.items.map((t) => ui.row({ lead: ui.leadIcon('circle'), title: t }))), tags: ['list'],
+      attach: ui.checklist(own.list.items.map((t) => ({ title: t }))), tags: ['list'],
     }),
     ui.entry({
       icon: 'megaphone', title: 'Лавка «Грядка» · сезонные овощи', meta: 'доставка по городу · реклама',

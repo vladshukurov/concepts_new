@@ -1,7 +1,9 @@
 {
   "slug": "ryadom",
   "name": "Выбег",
-  "formerNames": ["Рядом"],
+  "formerNames": [
+    "Рядом"
+  ],
   "eyebrow": "Выбег · Беговой дневник с клубом · iOS",
   "targetSet": "vkontakte",
   "domain": "vybeg.app",

@@ -5,10 +5,12 @@ import { route, parts, people, dashaLate, now } from '../model.mjs';
 const elapsed = '22:10';
 const next = parts[2];
 export default (ui) => ui.screen({
-  id: 'background', theme: THEME, className: 'ry-dark ry-lock',
-  body: [
-    `<div class="ry-lock-time">7:52<small>${now.date}</small></div>`,
-    `<div class="ry-notifs"><button class="ry-notif" data-activate="commnotif|direct" aria-label="Уведомление: ${people.dasha.name}"><span class="ry-notif-face is-initial ${ui.hue(people.dasha.initial)}">${people.dasha.initial}<i>${ui.icon('dumbbell')}</i></span><span class="ry-notif-body"><span class="ry-notif-top"><strong>${people.dasha.name}</strong><span>${dashaLate.time}</span></span><span class="ry-notif-text">${dashaLate.text}</span></span></button></div>`,
-    `<div class="ry-glass"><span class="ui-row-text"><strong>${route.name} · ${route.km} км</strong><span>${elapsed} · через 9:50 «${next[1]}»</span></span>${ui.progress({ fillClass: 'ry-w-44', white: true })}<div class="ry-glass-controls">${ui.iconButton({ icon: 'rotate-ccw', label: 'Повторить подсказку', toast: 'Подсказка повторена' })}${ui.iconButton({ icon: 'pause', fill: true, label: 'Пауза', go: 'player', primary: true })}${ui.iconButton({ icon: 'skip-forward', label: 'Следующий отрезок', toast: `Следующий отрезок · ${next[1]}` })}</div></div>`,
-  ],
+  id: 'background', theme: THEME, className: 'ui-lock',
+  body: ui.lockScreen({
+    time: '7:52', date: now.date[0].toUpperCase() + now.date.slice(1), appIcon: 'dumbbell',
+    notifications: [
+      { initials: people.dasha.initial, title: people.dasha.name, text: dashaLate.text, time: dashaLate.time, activate: 'commnotif|direct', label: `Уведомление: ${people.dasha.name}` },
+    ],
+    nowPlaying: { title: `${route.name} · ${route.km} км`, sub: `${elapsed} · через 9:50 «${next[1]}»`, at: elapsed, left: '−27:50', fillClass: 'ry-w-44', go: 'player', label: 'Открыть плеер' },
+  }),
 });

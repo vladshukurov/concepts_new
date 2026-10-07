@@ -32,11 +32,11 @@ export default (ui) => ui.screen({
     ui.entry({ icon: 'mic', title: own.voice.title, meta: `${own.voice.when} · заметка после разминки`, voice: { dur: own.voice.dur }, tags: ['note'] }),
     ui.entry({
       icon: 'target', title: `Неделя · ${own.week.done} из ${own.week.goal} км`, meta: `${own.week.runs} пробежки · осталось ${own.week.left} км`,
-      attach: ui.list([
-        ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Вт · интервалы 6 × 400', sub: '9,6 км' }),
-        ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Чт · восстановительная', sub: '7,4 км' }),
-        ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: `Пт · ${own.run.short.toLowerCase()}`, sub: '6,4 км · вчера' }),
-        ui.row({ lead: ui.leadIcon('circle', { round: true }), title: 'Сб · лонгран с клубом', sub: `${longrun.km} км · сегодня` }),
+      attach: ui.checklist([
+        { title: 'Вт · интервалы 6 × 400', value: '9,6 км', done: true },
+        { title: 'Чт · восстановительная', value: '7,4 км', done: true },
+        { title: `Пт · ${own.run.short.toLowerCase()}`, value: '6,4 км', done: true },
+        { title: 'Сб · лонгран с клубом', value: `${longrun.km} км` },
       ]), tags: ['run'],
     }),
     ui.entry({ icon: 'video', title: own.clip.title, meta: `${own.clip.when} · ${own.clip.dur} · ${own.clip.by}`, photos: 1, open: { go: 'videos' }, tags: ['video'] }),

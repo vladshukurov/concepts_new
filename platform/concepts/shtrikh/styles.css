@@ -59,3 +59,7 @@
 .sh-empty svg { width:24px; height:24px; }
 .sh-series.is-captioned b { font:500 15px/20px var(--ui-face); }
 .sh-series.is-captioned small { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+
+/* Выбор фото из ядра: iOS-синий на белом не проходит AA */
+.ui-pk-text:not(.is-off) { color:#0064d2; }
+.ui-pk-tile > i { background:#0064d2; }

@@ -20,14 +20,6 @@
 .br-player-main { position:relative; flex:1; min-height:0; display:flex; flex-direction:column; padding:8px 24px calc(var(--safe-bottom) + 12px); }
 .br-player-art { width:100%; aspect-ratio:1; border-radius:12px; }
 .br-player-art.br-ico > svg { width:96px; height:96px; stroke-width:1.25; }
-.br-now { display:flex; align-items:center; gap:12px; margin:24px 0 16px; }
-.br-now .ui-row-text > strong { font:600 20px/24px var(--ui-face); }
-.br-now .ui-row-text > span { font-size:16px; line-height:20px; }
-.br-mark-now { display:flex; align-items:center; gap:8px; margin-top:8px; font:500 13px/16px var(--ui-face); color:var(--ui-text-2); }
-.br-mark-now > i { width:6px; height:6px; border-radius:50%; background:var(--ui-accent); }
-.br-controls { display:flex; align-items:center; justify-content:space-around; margin:12px 0 auto; }
-.br-controls .ui-icon-btn svg { width:30px; height:30px; }
-.br-player-actions { padding:0; gap:8px; margin-top:16px; }
 
 /* Сохранённая версия */
 .br-result-main { flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 0 calc(var(--safe-bottom) + 12px); text-align:center; }
@@ -51,31 +43,8 @@
 .br-capture-foot { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 24px); z-index:1; display:flex; justify-content:center; }
 
 /* Системный пикер «Фото» — тёмная тема iOS */
-.br-pick { background:#000!important; }
-.br-pick .ui-nav { margin-bottom:8px; }
-.br-pick-label { padding:16px 16px 8px; }
-.br-photo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; overflow:hidden; }
-.br-photo-grid > button, .br-photo-grid > span { position:relative; width:100%; aspect-ratio:1; min-height:44px; }
-.br-photo-grid > .is-picked::before { content:""; position:absolute; inset:0; z-index:1; box-shadow:inset 0 0 0 3px var(--ui-accent); }
-.br-photo-grid > .is-picked > svg { position:absolute; right:6px; top:6px; z-index:1; width:22px; height:22px; padding:3px; border-radius:50%; background:var(--ui-accent); color:#fff; stroke-width:3; box-shadow:0 0 0 2px #fff; }
-.br-dur { position:absolute; left:6px; bottom:4px; z-index:1; font:600 12px/16px var(--ui-face); color:#fff; }
 
 /* Локскрин iOS: системный виджет Now Playing */
-.br-lock { overflow:hidden; background:linear-gradient(180deg, #1d2430, #0a0a0a 70%)!important; }
-.br-lock-time { position:relative; margin-top:88px; text-align:center; font:300 80px/84px var(--ui-face); letter-spacing:-.02em; color:#fff; }
-.br-lock-time small { display:block; margin-top:4px; font:500 18px/22px var(--ui-face); letter-spacing:0; }
-.br-now-card { position:absolute; left:12px; right:12px; bottom:calc(var(--safe-bottom) + 84px); padding:14px 16px 12px; border-radius:24px; background:rgba(40,40,44,.72); backdrop-filter:blur(30px) saturate(1.6); -webkit-backdrop-filter:blur(30px) saturate(1.6); }
-.br-now-top { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
-.br-now-top .ui-thumb { width:48px; height:48px; }
-.br-now-top .ui-row-text > span { color:rgba(255,255,255,.66); }
-.br-now-app { color:rgba(255,255,255,.66); }
-.br-now-app svg { width:20px; height:20px; }
-.br-now-card .ui-times { color:rgba(255,255,255,.66); }
-.br-now-card .br-mark-now { justify-content:center; color:rgba(255,255,255,.8); }
-.br-lock-controls { display:flex; justify-content:space-around; margin-top:4px; }
-.br-lock-controls .ui-icon-btn svg { width:28px; height:28px; }
-.br-lock-pause svg { width:34px!important; height:34px!important; }
-.br-lock-foot { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 24px); }
 
 /* Новый набросок: поле, выбор записи */
 .br-field { display:block; width:calc(100% - 32px); margin:0 16px; min-height:44px; padding:10px 12px; border-radius:10px; border:0; background:var(--ui-fill); color:var(--ui-text); font:400 17px/22px var(--ui-face); }
@@ -95,3 +64,8 @@
 .br-hero-copy { display:flex; flex-direction:column; align-items:center; gap:4px; min-height:44px; text-align:center!important; }
 .br-hero-copy > strong { color:#fff; }
 .br-hero-copy > span { font:400 16px/20px var(--ui-face); color:rgba(255,255,255,.8); }
+.br-w-34 { width:34%; }
+
+/* Выбор фото из ядра: iOS-синий на тёмном и белом знак не проходят AA */
+.ui-pk-text:not(.is-off) { color:#5aaaff; }
+.ui-pk-tile > i { background:#0064d2; }

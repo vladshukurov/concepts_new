@@ -550,3 +550,10 @@ export const musicControls = ({ title, sub, at, left, pct = 0, mark, playing = t
     + `<div class="ui-np-bottom">${bottomLeft ? ib({ className: 'ui-np-small', ...bottomLeft }) : '<span></span>'}${bottomRight ? ib({ className: 'ui-np-small', ...bottomRight }) : '<span></span>'}</div>`
     + `</div>`;
 };
+
+/**
+ * Чек-лист: кружок-галочка слева, текст, значение справа. Отметка ставится и снимается на месте
+ * (движок, data-toggle), отмеченное зачёркнуто. items: [{ title, sub?, value?, done? }].
+ */
+export const checklist = (items) => `<div class="ui-checklist">${items.map(({ title, sub, value, done = false }) =>
+  `<button class="${cls('ui-check', done && 'is-on')}" data-toggle="on" aria-pressed="${done}" aria-label="${String(title).replace(/<[^>]+>/g, '')}"><span class="ui-check-box">${icon('check')}</span><span class="ui-check-text"><strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}</span>${value ? `<span class="ui-check-value">${value}</span>` : ''}</button>`).join('')}</div>`;

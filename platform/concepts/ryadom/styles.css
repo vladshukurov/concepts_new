@@ -54,9 +54,6 @@
 .ry-modes .is-on { color:#fff; }
 .ry-shutter { position:absolute; left:50%; bottom:calc(var(--safe-bottom) + 24px); width:76px; height:76px; margin-left:-38px; border-radius:50%; box-shadow:inset 0 0 0 4px #fff; }
 .ry-shutter > span:first-child { position:absolute; inset:8px; border-radius:50%; background:#fff; }
-.ry-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
-.ry-grid > * { aspect-ratio:1; min-height:44px; }
-.ry-grid > .is-picked { box-shadow:inset 0 0 0 3px var(--ui-accent); }
 
 /* Тёмные поверхности: звонок, показ на ТВ, экран блокировки */
 .ry-dark { overflow:hidden; background:#101214!important; color:#fff; }
@@ -72,28 +69,16 @@
 .ry-tv-copy h1 { font:600 22px/26px var(--ui-face); }
 .ry-tv-copy p { font:400 14px/18px var(--ui-face); color:rgba(255,255,255,.72); }
 .ry-dark .ui-progress { margin:20px 16px 0; background:rgba(255,255,255,.2); }
-.ry-glass-controls { display:flex; justify-content:space-around; margin-top:12px; }
 .ry-dark .ui-actions { position:absolute; left:0; right:0; bottom:calc(var(--safe-bottom) + 16px); }
-.ry-lock { background:linear-gradient(180deg, #2c3a4a, #11161d)!important; }
-.ry-lock-time { margin-top:72px; text-align:center; font:300 80px/84px var(--ui-face); letter-spacing:-.02em; }
-.ry-lock-time small { display:block; margin-top:4px; font:500 18px/22px var(--ui-face); letter-spacing:0; }
-.ry-glass { position:absolute; left:12px; right:12px; bottom:calc(var(--safe-bottom) + 24px); padding:14px 16px 8px; border-radius:24px; background:rgba(255,255,255,.18); backdrop-filter:blur(30px); -webkit-backdrop-filter:blur(30px); }
-.ry-glass .ui-row-text > span { color:rgba(255,255,255,.72); }
-.ry-glass .ui-progress { margin:8px 0 0; background:rgba(255,255,255,.24); }
 .ry-gap { margin-top:12px; }
 .ry-chat-map { display:block; width:220px; height:120px; border-radius:12px; background:linear-gradient(160deg, #e9eef3, #d7e3ef); position:relative; }
 .ry-chat-map::after { content:""; position:absolute; left:24px; top:28px; width:150px; height:56px; border:3px solid var(--ui-accent); border-radius:28px 10px 28px 10px; }
 .ry-text { padding:0 16px; font:400 17px/24px var(--ui-face); }
 .ry-w-44 { width:44%; }
 /* Уведомление о сообщении на экране блокировки: инициалы отправителя и значок приложения */
-.ry-notifs { display:flex; flex-direction:column; gap:8px; margin:24px 12px 0; }
-.ry-notif { display:flex; align-items:flex-start; gap:10px; width:100%; padding:12px; border-radius:20px; background:rgba(255,255,255,.88); color:#000; text-align:left; }
-.ry-notif-face { position:relative; width:40px; height:40px; flex:none; display:grid; place-items:center; border-radius:50%; color:#fff; font:600 14px/1 var(--ui-face); }
-.ry-notif-face > i { position:absolute; right:-6px; bottom:-6px; width:18px; height:18px; display:grid; place-items:center; border-radius:5px; background:var(--ui-accent); color:#fff; box-shadow:0 0 0 2px #fff; }
-.ry-notif-face > i svg { width:12px; height:12px; }
-.ry-notif-body { flex:1; min-width:0; display:flex; flex-direction:column; }
-.ry-notif-top { display:flex; justify-content:space-between; gap:8px; }
-.ry-notif-top strong { font:600 15px/20px var(--ui-face); }
-.ry-notif-top span { font:400 13px/20px var(--ui-face); color:#5f6b78; }
-.ry-notif-text { font:400 15px/20px var(--ui-face); }
 .ry-moved { font-weight:500!important; }
+.ry-glass-controls { display:flex; justify-content:space-around; margin-top:12px; }
+
+/* Выбор фото из ядра: iOS-синий на белом не проходит AA */
+.ui-pk-text:not(.is-off) { color:#0064d2; }
+.ui-pk-tile > i { background:#0064d2; }

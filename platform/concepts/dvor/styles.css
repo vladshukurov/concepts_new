@@ -66,17 +66,6 @@
 .dv-intercom .ui-btn.is-secondary { background:rgba(255,255,255,.14); color:#fff; }
 
 /* Экран «Домой» и Safari */
-.dv-home { overflow:hidden; background:linear-gradient(180deg, #3b5068, #151c24)!important; color:#fff; }
-.dv-widget { display:block; width:calc(100% - 40px); margin:calc(var(--safe-top) + 16px) 20px 0; padding:14px; border-radius:22px; background:rgba(255,255,255,.92); color:#000; text-align:left; }
-.dv-widget small { display:flex; align-items:center; gap:6px; font:600 12px/14px var(--ui-face); color:var(--ui-accent); }
-.dv-widget small svg { width:14px; height:14px; }
-.dv-widget strong { display:block; margin-top:8px; font:600 17px/22px var(--ui-face); }
-.dv-widget span { display:block; font:400 13px/16px var(--ui-face); color:#5f6b78; }
-.dv-apps { display:grid; grid-template-columns:repeat(4,1fr); gap:20px 12px; padding:20px; }
-.dv-app { display:flex; flex-direction:column; align-items:center; gap:4px; font:400 12px/14px var(--ui-face); color:#fff; }
-.dv-app > i { width:60px; height:60px; border-radius:14px; background:rgba(255,255,255,.22); }
-.dv-app.is-ours > i { display:grid; place-items:center; background:var(--ui-accent); }
-.dv-app.is-ours svg { width:30px; height:30px; color:#fff; }
 .dv-web { background:#f2f2f7!important; color:#000; }
 .dv-web-bar { display:flex; align-items:center; justify-content:center; gap:6px; margin:calc(var(--safe-top) + 4px) 16px 0; min-height:36px; border-radius:10px; background:rgba(118,118,128,.12); font:400 15px/20px var(--ui-face); color:#3c3c43; }
 .dv-web-bar svg { width:14px; height:14px; }
@@ -124,3 +113,7 @@
 
 /* Инициалы на тёмном экране звонка: белые на полупрозрачном, мягкий акцент здесь не держит контраст */
 .dv-call .ui-call-face.is-initial { background:rgba(255,255,255,.16); color:#fff; }
+
+/* Выбор фото из ядра: iOS-синий на белом не проходит AA */
+.ui-pk-text:not(.is-off) { color:#0064d2; }
+.ui-pk-tile > i { background:#0064d2; }

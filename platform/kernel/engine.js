@@ -308,6 +308,7 @@
         var row = document.createElement('div');
         row.className = 'perm';
         row.dataset.state = s;
+        row.dataset.key = p[0];
         var name = document.createElement('div');
         name.className = 'perm-name';
         name.textContent = p[1];

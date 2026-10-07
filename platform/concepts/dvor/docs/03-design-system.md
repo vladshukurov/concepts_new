@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `section` ×59, `row` ×55, `leadIcon` ×47, `cell` ×31, `button` ×26, `list` ×22, `nav` ×18, `actions` ×16, `group` ×13, `denied` ×12, `avatar` ×10, `bubble` ×8, `entry` ×8, `dialog` ×7, `tabBar` ×5, `day` ×4, `largeTitle` ×4, `iconButton` ×4, `chatNav` ×3, `chat` ×3, `composer` ×3, `voice` ×2, `search` ×2, `textButton` ×2, `foot` ×2, `stats` ×2, `callView` ×1, `top` ×1, `wordmark` ×1, `chips` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `section` ×57, `row` ×55, `leadIcon` ×47, `cell` ×31, `button` ×26, `list` ×22, `nav` ×17, `actions` ×16, `group` ×13, `denied` ×12, `avatar` ×10, `bubble` ×8, `entry` ×8, `dialog` ×7, `tabBar` ×5, `day` ×4, `largeTitle` ×4, `iconButton` ×4, `chatNav` ×3, `chat` ×3, `composer` ×3, `voice` ×2, `search` ×2, `stats` ×2, `callView` ×1, `photoPicker` ×1, `top` ×1, `wordmark` ×1, `chips` ×1, `textButton` ×1, `homeScreen` ×1, `foot` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -48,11 +48,12 @@
 | Хроника: сетка кадров | `.dv-grid` |
 | Выбранный кадр — галочка iOS в углу, а не одна рамка | `.dv-grid` |
 | Камера, сканер, домофон — тёмные системные поверхности | `.dv-cam` `.dv-viewfinder` `.dv-frame` `.dv-cam-caption` `.dv-shutter` `.dv-intercom` |
-| Экран «Домой» и Safari | `.dv-home` `.dv-widget` `.dv-apps` `.dv-app` `.dv-web` `.dv-web-bar` |
+| Экран «Домой» и Safari | `.dv-web` `.dv-web-bar` `.dv-web-page` `.dv-web-field` `.dv-quicktype` `.dv-lock` |
 | Мессенджер | `.dv-chat-photo` `.dv-chat-card` `.dv-call` `.dv-gap` `.dv-scan-actions` `.dv-person` |
 | Расшифровка голосовой заявки: обычный текст секции, крупнее подписи | `.dv-transcript` |
 | Поля ввода концепта: подпись над значением, как ячейка ВК, но в ячейке настоящий input | `.dv-field` `.dv-shots` |
 | Инициалы на тёмном экране звонка: белые на полупрозрачном, мягкий акцент здесь не держит контраст | `.dv-call` |
+| Выбор фото из ядра: iOS-синий на белом не проходит AA | `.ui-pk-text` `.ui-pk-tile` |
 <!-- @end -->
 
 ## Актуальная навигация

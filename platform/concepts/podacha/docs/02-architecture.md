@@ -169,7 +169,6 @@
 | `camera` | «Закрыть» | `compose` | — | возврат по IA |
 | `camera` | «Снять с пояснением» | `post` | `NSCameraUsageDescription + NSMicrophoneUsageDescription` | доступ разрешён |
 | `camera` | «Снять с пояснением» | `camera` | `NSCameraUsageDescription + NSMicrophoneUsageDescription` | отказ → fallback |
-| `picker` | «Закрыть» | `compose` | — | возврат по IA |
 | `picker` | «Добавить 2 фото» | `compose` | `NSPhotoLibraryUsageDescription` | доступ разрешён |
 | `place` | «Назад» | `compose` | — | возврат по IA |
 | `place` | «Лавка «Грядка»», «Кофейня «Дом»» … | `compose` | — | подтверждение |

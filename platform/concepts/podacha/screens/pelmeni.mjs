@@ -7,12 +7,12 @@ export default (ui) => ui.screen({
     ui.nav({ title: 'Ужин в пятницу', trailing: ui.iconButton({ icon: 'message-circle', label: 'Написать Жанне', go: 'direct-zhanna' }) }),
     ui.scroll([
       `<div class="pd-head"><small>Пятница · 19:30</small><h1>Пельмени втроём</h1><p class="ui-sub">Жанна ведёт · вы и Тимур · 6 шагов · около 2 часов</p></div>`,
-      ui.section({ title: 'Купить заранее', meta: '2 из 5', children: ui.list([
-        ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Мука', sub: '1 кг · куплено' }),
-        ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Лук', sub: '3 шт · дома' }),
-        ui.row({ lead: ui.leadIcon('circle', { round: true }), title: 'Фарш говяжий', sub: '700 г · Жанна советует пополам со свининой' }),
-        ui.row({ lead: ui.leadIcon('circle', { round: true }), title: 'Сметана', sub: '20 % · 2 банки' }),
-        ui.row({ lead: ui.leadIcon('circle', { round: true }), title: 'Лавровый лист' }),
+      ui.section({ title: 'Купить заранее', meta: '2 из 5', children: ui.checklist([
+        { title: 'Мука', sub: '1 кг · куплено', done: true },
+        { title: 'Лук', sub: '3 шт · дома', done: true },
+        { title: 'Фарш говяжий', sub: '700 г · Жанна советует пополам со свининой' },
+        { title: 'Сметана', sub: '20 % · 2 банки' },
+        { title: 'Лавровый лист' },
       ]) }),
       ui.section({ title: 'Не пропустить', children: [
         ui.group({ cells: [

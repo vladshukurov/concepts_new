@@ -71,30 +71,6 @@
 .lk-call .ui-call-face { width:100%; height:300px; border-radius:20px; background-position:center 20%; }
 
 /* Системные поверхности: локскрин, «Домой», Safari */
-.lk-lock { overflow:hidden; background:linear-gradient(180deg, #3a3346, #15131a)!important; color:#fff; }
-.lk-lock-time { margin-top:72px; text-align:center; font:300 80px/84px var(--ui-face); letter-spacing:-.02em; }
-.lk-lock-time small { display:block; margin-top:4px; font:500 18px/22px var(--ui-face); letter-spacing:0; }
-.lk-stack { position:absolute; left:0; right:0; bottom:calc(var(--safe-bottom) + 12px); }
-.lk-stack .ui-btn { width:calc(100% - 24px); margin:4px 12px 0; }
-.lk-stack .ui-btn.is-secondary { background:rgba(255,255,255,.16); color:#fff; }
-.lk-glass { margin:0 12px 8px; padding:12px 14px; border-radius:20px; background:rgba(255,255,255,.18); backdrop-filter:blur(30px); -webkit-backdrop-filter:blur(30px); }
-.lk-glass .ui-row-text > span, .lk-glass .ui-times { color:rgba(255,255,255,.72); }
-.lk-glass .ui-progress { background:rgba(255,255,255,.24); }
-.lk-glass-top { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
-.lk-glass-top .ui-thumb { width:44px; height:44px; }
-.lk-glass-controls { display:flex; justify-content:space-around; margin-top:4px; }
-.lk-glass-controls .ui-icon-btn { color:#fff; }
-.lk-glass-controls .ui-icon-btn svg { width:28px; height:28px; }
-.lk-notif { display:flex; gap:10px; }
-.lk-notif { width:calc(100% - 24px); text-align:left; color:#fff; }
-.lk-notif-face { position:relative; width:38px; height:38px; flex:none; border-radius:50%; }
-.lk-notif-face > i { position:absolute; right:-3px; bottom:-3px; width:18px; height:18px; display:grid; place-items:center; border-radius:5px; background:var(--ui-accent); color:#fff; }
-.lk-notif-face svg { width:12px; height:12px; }
-.lk-np-ico { width:44px; height:44px; flex:none; display:grid; place-items:center; border-radius:10px; background:rgba(255,255,255,.2); }
-.lk-np-ico svg { width:24px; height:24px; }
-.lk-glass-top { width:100%; text-align:left; color:#fff; }
-.lk-notif-body { flex:1; min-width:0; font:400 14px/18px var(--ui-face); }
-.lk-notif-body strong { display:flex; justify-content:space-between; font:600 13px/16px var(--ui-face); color:rgba(255,255,255,.72); }
 .lk-author strong { white-space:nowrap; }
 .lk-clip .ui-btn.is-secondary { background:rgba(255,255,255,.2); color:#fff; }
 
@@ -123,3 +99,7 @@
 .lk-cam .ui-denied { position:absolute; left:16px; right:16px; top:calc(var(--safe-top) + 120px); z-index:2; border-radius:14px; background:var(--ui-card); color:var(--ui-text); }
 .lk-idle-foot { padding:8px 16px 0; }
 .ui-bubble-media > .lk-chat-photo.ph { display:flex!important; }
+
+/* Выбор фото из ядра: iOS-синий на белом не проходит AA */
+.ui-pk-text:not(.is-off) { color:#0064d2; }
+.ui-pk-tile > i { background:#0064d2; }
