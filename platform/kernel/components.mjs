@@ -26,7 +26,7 @@ const ACCESS = JSON.parse(readFileSync(new URL('./access-model.json', import.met
 
 const attr = (name, value) => (value === undefined || value === null || value === false ? '' : value === true ? ` ${name}` : ` ${name}="${String(value).replace(/"/g, '&quot;')}"`);
 
-const ACTION_KEYS = new Set(['primary', 'go', 'ask', 'activate', 'toast', 'back', 'menu', 'label']);
+const ACTION_KEYS = new Set(['primary', 'go', 'ask', 'activate', 'toast', 'back', 'menu', 'label', 'toggle']);
 /**
  * Атрибуты действия: data-* и aria-label. Всё, что компонент не разобрал сам,
  * приходит сюда — поэтому незнакомый ключ здесь означает опечатку в вызове
@@ -42,6 +42,7 @@ export function act(a = {}) {
     + attr('data-toast', a.toast)
     + attr('data-back', a.back)
     + attr('data-menu', Array.isArray(a.menu) ? a.menu.join('|') : a.menu)
+    + attr('data-toggle', a.toggle)
     + attr('aria-label', a.label);
 }
 const isAction = (a) => a && (a.go || a.ask || a.activate || a.toast || a.back || a.menu);
@@ -106,8 +107,10 @@ export const iconButton = ({ icon: ic, label, look, fill = false, sr, ...a }) =>
 export const textButton = ({ label, strong = false, ...a }) =>
   `<button class="${cls('ui-text-btn', strong && 'is-strong')}"${act(a)}>${label}</button>`;
 /** Круглый play: s 44 · m 56 · xl 88. */
+/* Без перехода play — переключатель на месте (пауза ↔ слушать), а не тост: движок меняет иконку сам */
+const inPlace = (a) => (a.go || a.ask || a.activate || a.back || a.menu ? a : (({ toast: _t, ...r }) => ({ ...r, toggle: 'play' }))(a));
 export const play = ({ size = 'm', pause = false, label, sr, ...a }) =>
-  `<button class="${cls('ui-play', size === 's' && 'is-sm', size === 'xl' && 'is-xl', pause && 'is-pause')}"${act({ ...a, label })}>${icon(pause ? 'pause' : 'play')}${sr ? `<span class="ui-sr">${sr}</span>` : ''}</button>`;
+  `<button class="${cls('ui-play', size === 's' && 'is-sm', size === 'xl' && 'is-xl', pause && 'is-pause')}"${act({ ...inPlace(a), label })}>${icon(pause ? 'pause' : 'play')}${sr ? `<span class="ui-sr">${sr}</span>` : ''}</button>`;
 export const actions = (buttons, { row = false, className } = {}) =>
   `<div class="${cls('ui-actions', row && 'is-row', className)}">${join(buttons)}</div>`;
 
@@ -320,7 +323,7 @@ export const foot = (text, className) => `<p class="${cls('ui-foot', className)}
 /* ── Нижняя панель ── */
 /** Мини-плеер: открывает плеер, «+» и play. */
 export const miniPlayer = ({ face, title, sub, open, add, playAction, progressClass }) =>
-  `<div class="ui-mini"><button class="ui-mini-main"${act({ label: 'Открыть плеер', ...open })}><span class="ui-mini-face ${face}"></span><span class="ui-mini-text"><strong>${title}</strong><span>${sub}</span></span></button>${add ? iconButton({ icon: 'plus', ...add }) : ''}${iconButton({ icon: 'play', fill: true, ...playAction })}<span class="ui-mini-bar"><i class="${progressClass}"></i></span></div>`;
+  `<div class="ui-mini"><button class="ui-mini-main"${act({ label: 'Открыть плеер', ...open })}><span class="ui-mini-face ${face}"></span><span class="ui-mini-text"><strong>${title}</strong><span>${sub}</span></span></button>${add ? iconButton({ icon: 'plus', ...(add.go || add.ask || add.activate ? add : (({ toast: _t, ...r }) => ({ ...r, toggle: 'on' }))(add)) }) : ''}${iconButton({ icon: 'play', fill: true, ...inPlace(playAction || {}) })}<span class="ui-mini-bar"><i class="${progressClass}"></i></span></div>`;
 /**
  * Таб-бар корня. items: [{ id, label, icon }], active — id текущей вкладки.
  * Носит `.tabbar`: так его находят сборка (вырезает из сценарных срезов)
@@ -388,11 +391,24 @@ export function entry({ icon: ic, title, meta, text, photos = 0, voice, attach, 
  * Экран «Домой» iOS с виджетом приложения. widget: { icon, kicker, title, sub, ...action };
  * app: { name, icon, ...action } — своя иконка среди системных; apps — подписи остальных.
  */
-export const homeScreen = ({ widget: w, app, apps = ['Телефон', 'Почта', 'Карты', 'Камера', 'Заметки', 'Погода', 'Настройки'] }) => {
-  const { icon: wi, kicker, title, sub, ...wa } = w;
+/* Системные приложения на экране «Домой»: цвет значка и глиф, как у iOS. Неизвестное имя — серый значок */
+const IOS_APPS = {
+  'Телефон': ['phone', 'is-green'], 'Сообщения': ['message-circle', 'is-green'], 'Почта': ['mail', 'is-blue'],
+  'Карты': ['map', 'is-maps'], 'Камера': ['camera', 'is-gray'], 'Фото': ['image', 'is-white'], 'Заметки': ['notebook-pen', 'is-yellow'],
+  'Погода': ['cloud-sun', 'is-sky'], 'Настройки': ['settings', 'is-gray'], 'Календарь': ['calendar', 'is-white'],
+  'Часы': ['clock', 'is-black'], 'Музыка': ['music', 'is-red'], 'Файлы': ['folder', 'is-blue'],
+};
+const iosIcon = (name) => { const [g, c] = IOS_APPS[name] || ['circle', 'is-gray']; return `<i class="${cls('ui-hs-ico', c)}">${icon(g)}</i>`; };
+/**
+ * Экран «Домой» iOS: виджет приложения (с подписью под ним), сетка значков 4 в ряд, «Поиск», док.
+ * widget: { icon, kicker, title, sub, lines?: [[подпись, значение]], ...action }; app: { name, icon, ...action }.
+ */
+export const homeScreen = ({ widget: w, app, apps = ['Телефон', 'Почта', 'Карты', 'Камера', 'Заметки', 'Погода', 'Настройки'], dock = ['Телефон', 'Сообщения', 'Фото', 'Камера'] }) => {
+  const { icon: wi, kicker, title, sub, lines = [], ...wa } = w;
   const { name, icon: ai, ...aa } = app;
-  return `<button class="ui-hs-widget"${act({ label: `Виджет «${name}»`, ...wa })}><small>${icon(wi)}${kicker}</small><strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}</button>`
-    + `<div class="ui-hs-apps"><button class="ui-hs-app is-ours"${act({ label: name, ...aa })}><i>${icon(ai)}</i>${name}</button>${apps.map((x) => `<span class="ui-hs-app"><i></i>${x}</span>`).join('')}</div>`;
+  const widget = `<div class="ui-hs-wrap"><button class="ui-hs-widget"${act({ label: `Виджет «${name}»`, ...wa })}><small><i class="ui-hs-wico">${icon(ai)}</i>${kicker}</small><strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}${lines.length ? `<span class="ui-hs-lines">${lines.map(([l, v]) => `<span><b>${l}</b>${v}</span>`).join('')}</span>` : ''}</button><em>${name}</em></div>`;
+  const grid = `<div class="ui-hs-apps"><button class="ui-hs-app is-ours"${act({ label: name, ...aa })}><i class="ui-hs-ico">${icon(ai)}</i>${name}</button>${apps.map((x) => `<span class="ui-hs-app">${iosIcon(x)}${x}</span>`).join('')}</div>`;
+  return `<div class="ui-hs-wall"></div>${widget}${grid}<div class="ui-hs-search">${icon('search')}Поиск</div><div class="ui-hs-dock">${dock.map((x) => `<span class="ui-hs-app">${iosIcon(x)}</span>`).join('')}</div>`;
 };
 /**
  * Страница сайта в Safari с подсказкой пароля над клавиатурой (Credential Provider).
@@ -459,15 +475,44 @@ export const callView = ({ name, status, controls, ...who }) =>
 /* ── Повторяющиеся фичи доступов: одна строка в экране вместо своей разметки в каждом концепте ── */
 
 /**
- * Тело локскрина с Now Playing — плод фонового аудио. Экран: ui.screen({ className: 'ui-lock', body: ui.lockNowPlaying({...}) }).
- * art — класс своей обложки или пусто (тогда значок волны); open — куда ведёт «Открыть «…»».
+ * Тело экрана блокировки iOS: дата над крупным временем, стопка уведомлений, карточка «Сейчас играет»,
+ * фонарик и камера по углам. Экран: ui.screen({ className: 'ui-lock', body: ui.lockScreen({...}) }).
+ * notifications: [{ app, title, text, time, initials?, thumb?, ...action }] — с initials это сообщение от человека
+ * (аватар со значком приложения), без — значок приложения. nowPlaying: { art?, title, sub, at, left, fillClass, status?, ...action }.
  */
-export const lockNowPlaying = ({ time, date, art, title, sub, at, left, fillClass, status, open }) =>
-  `<div class="${cls('ui-lock-wall', art)}"></div><div class="ui-lock-shade"></div><div class="ui-lock-time">${time}<small>${date}</small></div>`
-  + `<section class="ui-now"><div class="ui-now-top"><span class="${cls('ui-thumb', art || 'is-icon')}">${art ? '' : icon('audio-lines')}</span><span class="ui-row-text"><strong>${title}</strong><span>${sub}</span></span></div>`
-  + `${progress({ fillClass, white: true })}<div class="ui-times"><span>${at}</span><span>${left}</span></div>`
-  + `<div class="ui-now-controls">${iconButton({ icon: 'rotate-ccw', label: 'Назад на 15 секунд', toast: 'Назад на 15 секунд' })}${iconButton({ icon: 'pause', fill: true, label: 'Пауза', toast: `Пауза на ${at}` })}${iconButton({ icon: 'rotate-cw', label: 'Вперёд на 15 секунд', toast: 'Вперёд на 15 секунд' })}</div>`
-  + `${status ? `<p class="ui-now-status">${status}</p>` : ''}</section><div class="ui-lock-foot">${button({ variant: 'secondary', block: true, ...open })}</div>`;
+export const lockScreen = ({ time, date, notifications = [], nowPlaying, appIcon = 'message-circle' }) => {
+  const note = ({ app, title, text, time: t, initials, thumb, ...a }) =>
+    `<button class="ui-ln"${act({ label: `${title}: ${String(text).replace(/<[^>]+>/g, '')}`, ...a })}>`
+    + (initials ? `<span class="${cls('ui-ln-face', hue(initials))}">${initials}<i>${icon(appIcon)}</i></span>` : `<span class="ui-ln-app">${icon(appIcon)}</span>`)
+    + `<span class="ui-ln-body"><span class="ui-ln-top"><b>${title}</b><time>${t}</time></span>${app ? `<small>${app}</small>` : ''}<span class="ui-ln-text">${text}</span></span>${thumb ? `<span class="${cls('ui-ln-thumb', thumb)}"></span>` : ''}</button>`;
+  let np = '';
+  if (nowPlaying) {
+    const { art, title, sub, at, left, fillClass, status, ...a } = nowPlaying;
+    np = `<section class="ui-now"><button class="ui-now-top"${act({ label: `Открыть: ${title}`, ...a })}><span class="${cls('ui-thumb', art || 'is-icon')}">${art ? '' : icon('audio-lines')}</span><span class="ui-row-text"><strong>${title}</strong><span>${sub}</span></span></button>`
+      + `${progress({ fillClass, white: true })}<div class="ui-times"><span>${at}</span><span>${left}</span></div>`
+      + `<div class="ui-now-controls">${iconButton({ icon: 'skip-back', fill: true, label: 'Предыдущий', toast: 'Предыдущий' })}${iconButton({ icon: 'pause', fill: true, label: 'Пауза', toggle: 'play' })}${iconButton({ icon: 'skip-forward', fill: true, label: 'Следующий', toast: 'Следующий' })}</div>`
+      + `${status ? `<p class="ui-now-status">${status}</p>` : ''}</section>`;
+  }
+  return `<div class="ui-lock-wall"></div><div class="ui-lock-clock"><span>${date}</span><b>${time}</b></div>`
+    + `<div class="ui-lock-stack">${notifications.map(note).join('')}${np}</div>`
+    + `<div class="ui-lock-corners"><span>${icon('flashlight')}</span><span>${icon('camera')}</span></div>`;
+};
+/** Совместимость: локскрин только с «Сейчас играет». open — куда ведёт тап по карточке. */
+export const lockNowPlaying = ({ time, date, art, title, sub, at, left, fillClass, status, open = {} }) => {
+  const { label: _l, variant: _v, ...go } = open;
+  return lockScreen({ time, date, nowPlaying: { art, title, sub, at, left, fillClass, status, ...go } });
+};
+
+/**
+ * Окно выбора фото iOS (PHPicker) листом: «Отмена · Фото | Альбомы · Добавить», поиск, сетка 3 в ряд.
+ * tiles: [{ art?, duration?, picked? (номер выбора) }]; без art — плейсхолдер .ph. add/cancel — действия кнопок.
+ */
+export const photoPicker = ({ tiles, add = {}, cancel = { back: true }, addLabel = 'Добавить', section }) => {
+  const count = tiles.filter((t) => t.picked).length;
+  return `<div class="ui-pk"><div class="ui-pk-bar"><button class="ui-pk-text"${act(cancel)}>Отмена</button><span class="ui-pk-seg"><span class="is-on">Фото</span><span>Альбомы</span></span><button class="${cls('ui-pk-text is-strong', !count && 'is-off')}"${act({ label: addLabel, ...add })}>${addLabel}</button></div>`
+    + `<div class="ui-pk-search">${icon('search')}Фото, люди, места…</div>${section ? `<p class="ui-pk-section">${section}</p>` : ''}`
+    + `<div class="ui-pk-grid">${tiles.map(({ art, duration: d, picked }) => `<span class="${cls('ui-pk-tile', art || 'ph', picked && 'is-picked')}">${d ? `<small>${d}</small>` : ''}${picked ? `<i>${picked}</i>` : ''}</span>`).join('')}</div></div>`;
+};
 
 /**
  * Карточка рекламы, которая меняется после ATT: подпись «по интересам» видна только после разрешения.
@@ -482,3 +527,26 @@ export const adCard = ({ icon: ic, title, sub, subGranted, ...a }) =>
  */
 export const reminder = ({ title, titleGranted, sub, here, icon: ic = 'bell' }) =>
   row({ lead: leadIcon(ic, { round: true, accent: true }), title: `<span data-hide-granted="push">${title}</span><span class="perm-hidden" data-show-granted="push">${titleGranted}</span>`, sub, ask: `push|${here}|${here}`, label: title });
+
+/**
+ * Управление полноэкранного аудиоплеера, как в музыкальных сервисах (Spotify, ВК Музыка):
+ * название и подпись слева, «нравится» справа; тонкая шкала с ползунком и время; ряд
+ * перемешать · назад · play · вперёд · повтор (назад и вперёд — залитые, переход к соседнему);
+ * внизу по краям две иконки. pct — доля прослушанного 0–100; mark — строка-пометка под временем.
+ * like, prev, next, play, shuffle, repeat — действия; bottomLeft/bottomRight: { icon, label, ...action }.
+ */
+export const musicControls = ({ title, sub, at, left, pct = 0, mark, playing = true, like = {}, prev = {}, next = {}, play: pa = {}, shuffle = {}, repeat = {}, bottomLeft, bottomRight }) => {
+  const ib = ({ icon: ic, label, fill = false, className, ...a }) =>
+    `<button class="${cls('ui-icon-btn', className)}"${act({ label, ...a })}>${icon(ic, { fill })}</button>`;
+  return `<div class="ui-np">`
+    + `<div class="ui-np-meta"><span class="ui-np-title"><strong>${title}</strong><span>${sub}</span></span>${ib({ icon: 'heart-plus', label: 'Сохранить в «Любимое»', toggle: 'on', className: 'ui-np-like', ...like })}</div>`
+    + `<div class="ui-np-bar"><i style="width:${pct}%"></i><b style="left:${pct}%"></b></div><div class="ui-np-times"><span>${at}</span><span>${left}</span></div>`
+    + `${mark ? `<p class="ui-np-mark"><i></i>${mark}</p>` : ''}`
+    + `<div class="ui-np-row">${ib({ icon: 'shuffle', label: 'Перемешать', toggle: 'on', className: 'ui-np-side', ...shuffle })}`
+    + `${ib({ icon: 'skip-back', fill: true, label: 'Предыдущий', toast: 'Предыдущий', className: 'ui-np-skip', ...prev })}`
+    + `<button class="ui-np-play"${act({ label: playing ? 'Пауза' : 'Слушать', toggle: 'play', ...pa })}>${icon(playing ? 'pause' : 'play', { fill: true })}</button>`
+    + `${ib({ icon: 'skip-forward', fill: true, label: 'Следующий', toast: 'Следующий', className: 'ui-np-skip', ...next })}`
+    + `${ib({ icon: 'repeat', label: 'Повтор', toggle: 'on', className: 'ui-np-side', ...repeat })}</div>`
+    + `<div class="ui-np-bottom">${bottomLeft ? ib({ className: 'ui-np-small', ...bottomLeft }) : '<span></span>'}${bottomRight ? ib({ className: 'ui-np-small', ...bottomRight }) : '<span></span>'}</div>`
+    + `</div>`;
+};

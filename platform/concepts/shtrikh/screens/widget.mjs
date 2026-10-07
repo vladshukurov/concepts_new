@@ -5,7 +5,7 @@ import { places, own } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'widget', theme: THEME, className: 'ui-hs',
   body: ui.homeScreen({
-    widget: { icon: 'pen-line', kicker: 'В карандаше · серия', title: `${places.panfilova.name} · ${own.series.done} из ${own.series.of}`, sub: own.series.next, activate: 'keychain|series' },
-    app: { name: 'В карандаше', icon: 'pen-line', activate: 'keychain|home', primary: true },
+    widget: { icon: 'pen-line', kicker: 'Вглядись · серия', title: `${places.panfilova.name} · ${own.series.done} из ${own.series.of}`, sub: own.series.next, activate: 'keychain|series' },
+    app: { name: 'Вглядись', icon: 'pen-line', activate: 'keychain|home', primary: true },
   }),
 });

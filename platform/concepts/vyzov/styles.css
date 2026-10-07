@@ -2,6 +2,27 @@
    здесь только своё: карточка задания точки, вертикальный клип, камера задания,
    выбор из «Фото», страница квеста как канал, счёт, ТВ и карта точки. */
 
+/* Кадры роликов — настоящие фото.
+   Атлас команды 3×2 (team-atlas.jpg): m1 команда в пути · m2 кухня · m3 компания за столом
+   m4 у озера · m5 торт · m6 прогулка в лесу. Город: двор вечером, переулок, набережная */
+.m1,.m2,.m3,.m4,.m5,.m6 { background-image:url(assets/media/team-atlas.jpg); background-size:300% auto; background-repeat:no-repeat; background-color:#2a2b2c; }
+.m1 { background-position:0 0; }
+.m2 { background-position:50% 0; }
+.m3 { background-position:100% 0; }
+.m4 { background-position:0 100%; }
+.m5 { background-position:50% 100%; }
+.m6 { background-position:100% 100%; }
+:is(.ui-video-art,.ui-player,.ui-thumb.is-wide,.vz-banner,.vz-tv):is(.m1,.m2,.m3) { background-size:300% auto; background-position-y:18%; }
+:is(.ui-video-art,.ui-player,.ui-thumb.is-wide,.vz-banner,.vz-tv):is(.m4,.m5,.m6) { background-size:300% auto; background-position-y:82%; }
+.vz-clip-frame:is(.m1,.m2,.m3,.m4,.m5,.m6) { background-size:auto 200%; }
+.vz-yard,.vz-bakery,.vz-street,.vz-window,.vz-sea { background-repeat:no-repeat; background-color:#2a2b2c; }
+.vz-yard { background-image:url(assets/media/courtyard-cinema.jpg); background-size:cover; background-position:50% 60%; }
+.vz-bakery { background-image:url(assets/media/morning-bakery.jpg); background-size:cover; background-position:30% 50%; }
+.vz-street { background-image:url(assets/media/morning-bakery.jpg); background-size:240% auto; background-position:88% 30%; }
+.vz-window { background-image:url(assets/media/morning-bakery.jpg); background-size:180% auto; background-position:100% 60%; }
+.vz-sea { background-image:url(assets/media/northern-sea.jpg); background-size:cover; background-position:60% 70%; }
+.ui-player:is(.vz-yard,.vz-bakery,.vz-sea) { background-size:cover; }
+
 /* Доли прогресса */
 .vz-p33 { width:33%; }
 .vz-p40 { width:40%; }
@@ -35,6 +56,7 @@
 
 /* Лист «Создать» */
 .vz-create { overflow:hidden; }
+.vz-behind { display:flex; flex-direction:column; gap:20px; padding:calc(var(--safe-top) + 16px) 16px 0; }
 .vz-dim { position:absolute; inset:0; background-color:rgba(0,0,0,.6); }
 .vz-create-sheet { padding-bottom:16px; }
 .vz-sheet-head { display:flex; flex-direction:column; gap:4px; padding:0 16px 12px; }

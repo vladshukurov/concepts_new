@@ -1,4 +1,4 @@
-# В карандаше — App Store assets
+# Вглядись — App Store assets
 
 Сгенерировано из живого прототипа командой `npm run app-store -- shtrikh`.
 

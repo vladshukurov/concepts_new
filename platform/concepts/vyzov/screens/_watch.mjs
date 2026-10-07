@@ -1,5 +1,5 @@
 /** Плеер ролика с точки: общий для трёх роликов. Файл с «_» — не экран. */
-import { THEME, frame } from './_shared.mjs';
+import { THEME } from './_shared.mjs';
 import { videos, vMeta, oldTown, sokolniki } from '../model.mjs';
 
 const TASKS = {
@@ -16,7 +16,7 @@ export const watchScreen = (ui, key, { at = '0:07', fill = 'vz-p33' } = {}) => {
     id: v.id, theme: THEME, className: 'vz-wrap',
     body: ui.scroll([
       ui.player({
-        art: frame, at, total: v.dur, fillClass: fill, playing: true,
+        art: v.art, at, total: v.dur, fillClass: fill, playing: true, className: 'is-root',
         chapter: `Точка ${v.point} · ${v.team.name}`,
         collapse: { go: 'home', label: 'Свернуть в мини-плеер' },
         settings: { menu: 'Качество · 1080p=Качество 1080p|Скорость · 1×=Скорость 1×', label: 'Качество и скорость' },
@@ -30,10 +30,10 @@ export const watchScreen = (ui, key, { at = '0:07', fill = 'vz-p33' } = {}) => {
         ui.row({ lead: ui.avatar(v.who.initial), title: v.who.name, sub: `Команда «${v.team.name}» · задание: ${TASKS[key].toLowerCase()}` }),
         isOld
           ? ui.row({ lead: ui.leadIcon('flag', { round: true, accent: true }), title: oldTown.title, sub: `${oldTown.meta} · идёт сейчас`, go: 'quest' })
-          : ui.row({ lead: ui.leadIcon('trophy', { round: true, accent: true }), title: sokolniki.finalTitle, sub: sokolniki.meta, go: 'final' }),
+          : ui.row({ lead: ui.leadIcon('trophy', { round: true }), title: `Квест «${sokolniki.title}»`, sub: sokolniki.result }),
       ]) }),
       ui.section({ title: 'Ещё ролики с точек', children: ui.list(others.map((o) =>
-        ui.row({ thumb: frame, wide: true, duration: o.dur, title: o.title, sub: vMeta(o), go: o.id }))) }),
+        ui.row({ thumb: o.art, wide: true, duration: o.dur, title: o.title, sub: vMeta(o), go: o.id }))) }),
     ]),
   });
 };

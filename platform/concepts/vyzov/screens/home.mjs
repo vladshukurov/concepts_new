@@ -1,4 +1,4 @@
-import { THEME, TABS, MINI, frame, videoCard } from './_shared.mjs';
+import { THEME, TABS, MINI, videoCard } from './_shared.mjs';
 import { videos, oldTown, hereLine, sokolniki, embankment } from '../model.mjs';
 
 /* Главная в грамматике ВК Видео: чипсы и крупные кадры роликов со своих квестов */
@@ -24,7 +24,7 @@ export default (ui) => ui.screen({
     ui.section({ tags: ['best'], children: videoCard(videos.boat) }),
     ui.section({ tags: ['mine'], title: 'Мои квесты', children: ui.list([
       ui.row({ lead: ui.leadIcon('calendar', { round: true, accent: true }), title: embankment.title, sub: `Старт в ${embankment.when} · ${embankment.meta}`, go: 'embankment' }),
-      ui.row({ thumb: frame, wide: true, duration: sokolniki.film, title: sokolniki.finalTitle, sub: `Сова ${sokolniki.score.owl} : ${sokolniki.score.hedgehog} Ёж · ${sokolniki.day}`, go: 'final' }),
+      ui.row({ lead: ui.leadIcon('trophy', { round: true }), title: sokolniki.title, sub: `${sokolniki.result} · придумали вы` }),
     ]) }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'home', mini: MINI }),

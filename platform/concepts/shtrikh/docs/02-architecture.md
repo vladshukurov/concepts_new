@@ -1,4 +1,4 @@
-# В карандаше — архитектура
+# Вглядись — архитектура
 
 ## Модель домена
 
@@ -30,7 +30,7 @@
 | `fetch` ⚓ | Без жеста — фоновый режим | `home` | нет trace: строка на экране, по которой видно, что режим отработал |
 | `bgtask` | Без жеста — фоновый режим | `events` | нет trace: строка на экране, по которой видно, что режим отработал |
 | `appgroups` | «Виджет серии» в настройках | `settings` | заслужен |
-| `keychain` | Тап по виджету «В карандаше» | `widget` | заслужен |
+| `keychain` | Тап по виджету «Вглядись» | `widget` | заслужен |
 | `autofill` | «Вход в магазин материалов» в приватности | `privacy` | заслужен |
 | `hotspot` | «Подключиться к сети площадки» | `exhibit` | заслужен |
 | `contacts` ⚓ | «Найти среди контактов» | `authors` | заслужен |
@@ -118,7 +118,7 @@
     ├─ Новая зарисовка (compose) — sheet · открывается: «Новая зарисовка», «Добавить» …, «Снять» · location, camera, photos, mic, speech
     │   ├─ Камера рисунка (shoot) — системная поверхность · открывается: «Снять рисунок» (camera), «Камера»
     │   └─ Медиатека (picker) — modal · открывается: «Из медиатеки» (photos), «Фото», «Показать работу»
-    └─ Серия (series) — push · открывается: «Один двор, четыре погоды · 3 из 4», «Панфилова, 84» …, «Виджет «В карандаше»» (keychain)
+    └─ Серия (series) — push · открывается: «Один двор, четыре погоды · 3 из 4», «Панфилова, 84» …, «Виджет «Вглядись»» (keychain)
 
 Мои места (places) — tab (root) · открывается: «Отметить место» (location)
     ├─ Экран выставки (exhibit) — push · открывается: «Считать код», «Город в линиях» · wifiinfo, hotspot
@@ -250,8 +250,8 @@
 | `ads` | «Продолжить» | `home` | `NSUserTrackingUsageDescription` | доступ разрешён |
 | `ads` | «Продолжить» | `ads` | `NSUserTrackingUsageDescription` | отказ → fallback |
 | `lock` | — | — | — | дальше переходов нет |
-| `widget` | «Виджет «В карандаше»» | `series` | `keychain-access-groups` | entitlement, без alert |
-| `widget` | «В карандаше» | `home` | `keychain-access-groups` | entitlement, без alert |
+| `widget` | «Виджет «Вглядись»» | `series` | `keychain-access-groups` | entitlement, без alert |
+| `widget` | «Вглядись» | `home` | `keychain-access-groups` | entitlement, без alert |
 | `direct-lera` | «Назад» | `chats` | — | возврат по IA |
 | `direct-lera` | «Камера» | `shoot` | — | переход |
 | `direct-lera` | «Фото» | `picker` | — | переход |

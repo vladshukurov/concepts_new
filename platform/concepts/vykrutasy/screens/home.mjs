@@ -1,8 +1,8 @@
-import { THEME, TABS, MINI, frame } from './_shared.mjs';
+import { THEME, TABS, MINI } from './_shared.mjs';
 import { highlights, hlMeta, lenaEvening, tonight, dimaEvening } from '../model.mjs';
 
 const card = (ui, h, when) => ui.videoCard({
-  art: frame, duration: h.dur, go: h.id,
+  art: h.art, duration: h.dur, go: h.id,
   avatar: ui.avatar(h.who.initial), title: h.title, sub: hlMeta(h, when),
 });
 
@@ -25,7 +25,7 @@ export default (ui) => ui.screen({
     ui.section({ tags: ['mine'], children: card(ui, highlights.mine) }),
     ui.section({ tags: ['ev'], title: 'Вечера', children: ui.list([
       ui.row({ lead: ui.leadIcon('tv', { round: true, accent: true }), title: tonight.title, sub: `Сегодня, ${tonight.time} · ${tonight.players.length} игроков · 5 раундов`, go: 'room' }),
-      ui.row({ thumb: frame, wide: true, duration: '1:24', title: lenaEvening.title, sub: `${lenaEvening.meta} · вчера`, go: 'evening' }),
+      ui.row({ thumb: lenaEvening.art, wide: true, duration: '1:24', title: lenaEvening.title, sub: `${lenaEvening.meta} · вчера`, go: 'evening' }),
       ui.row({ lead: ui.leadIcon('history', { round: true }), title: dimaEvening.title, sub: `${dimaEvening.meta} · ${dimaEvening.day}` }),
     ]) }),
   ], { root: true }),

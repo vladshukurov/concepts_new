@@ -1,4 +1,4 @@
-import { THEME, frame } from './_shared.mjs';
+import { THEME } from './_shared.mjs';
 import { invite, people } from '../model.mjs';
 
 /* Приглашение на вечер у Лены: когда, куда идти, кто будет, напоминание */
@@ -7,7 +7,7 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Приглашение' }),
     ui.scroll([
-      `<div class="vy-banner ${frame}"></div>`,
+      `<div class="vy-banner ${invite.art}"></div>`,
       ui.section({ children: [
         `<div class="vy-channel">${ui.avatar(people.lena.initial, { large: true })}<span class="ui-row-text"><strong>${invite.title}</strong><span>Зовёт Лена Орлова · 5 раундов</span></span></div>`,
         ui.miniInfo([

@@ -1,4 +1,4 @@
-import { THEME, frame } from './_shared.mjs';
+import { THEME } from './_shared.mjs';
 import { videos, vMeta, oldTown, embankment } from '../model.mjs';
 
 /* Уведомления — события своих квестов: новые ролики команд и старты */
@@ -8,8 +8,8 @@ export default (ui) => ui.screen({
     ui.nav({ title: 'Уведомления' }),
     ui.scroll([
       ui.section({ title: 'Сегодня', children: ui.list([
-        ui.row({ thumb: frame, wide: true, duration: videos.door.dur, title: `Ёж снял точку 4: ${videos.door.title.toLowerCase()}`, sub: vMeta(videos.door), go: videos.door.id }),
-        ui.row({ thumb: frame, wide: true, duration: videos.fountain.dur, title: `Дима снял точку 3: ${videos.fountain.title.toLowerCase()}`, sub: vMeta(videos.fountain), go: videos.fountain.id }),
+        ui.row({ thumb: videos.door.art, wide: true, duration: videos.door.dur, title: `Ёж снял точку 4: ${videos.door.title.toLowerCase()}`, sub: vMeta(videos.door), go: videos.door.id }),
+        ui.row({ thumb: videos.fountain.art, wide: true, duration: videos.fountain.dur, title: `Дима снял точку 3: ${videos.fountain.title.toLowerCase()}`, sub: vMeta(videos.fountain), go: videos.fountain.id }),
       ]) }),
       ui.section({ title: 'Квесты', children: ui.list([
         ui.row({ lead: ui.leadIcon('flag', { round: true, accent: true }), title: oldTown.title, sub: `Лена: финал ${oldTown.finale}`, go: 'quest' }),

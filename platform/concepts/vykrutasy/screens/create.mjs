@@ -1,11 +1,14 @@
 import { THEME, TABS } from './_shared.mjs';
-import { tonight, tasks } from '../model.mjs';
+import { tonight, tasks, highlights, hlMeta } from '../model.mjs';
 
 /* «Создать» — лист поверх главной: новый вечер, задания и ответ на текущий раунд */
 export default (ui) => ui.screen({
   id: 'create', theme: THEME, className: 'vy-create',
   body: [
-    '<div class="vy-fill"><div class="vy-dim"></div>',
+    '<div class="vy-fill">',
+    /* Под листом — лента главной, а не пустота */
+    `<div class="vy-behind" aria-hidden="true">${['cat', 'prom'].map((k) => { const h = highlights[k]; return ui.videoCard({ art: h.art, duration: h.dur, avatar: ui.avatar(h.who.initial), title: h.title, sub: hlMeta(h) }); }).join('')}</div>`,
+    '<div class="vy-dim"></div>',
     ui.sheet([
       `<div class="vy-sheet-head"><h1 class="ui-title">Создать</h1><p class="ui-sub">${tonight.title} · сегодня, ${tonight.time}</p></div>`,
       ui.group({ cells: [

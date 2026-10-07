@@ -15,8 +15,7 @@ export default (ui) => ui.screen({
       ]) }),
       ui.section({ tags: ['own'], title: 'Свои', meta: `${ownSet.length} задания`, children: [
         ui.group({ cells: ownSet.map((k) => ui.cell({ icon: 'pen-line', title: tasks[k], sub: inEvening(k) ? `В вечере · раунд ${tonight.rounds.indexOf(k) + 1}` : 'Не в вечере', check: inEvening(k), toast: inEvening(k) ? 'Убрано из вечера' : 'Добавлено в вечер у Саши' })) }),
-        `<label class="vy-add">${ui.icon('plus')}<input class="vy-input" placeholder="Придумать своё задание" aria-label="Своё задание"/></label>`,
-        ui.actions(ui.button({ label: 'Добавить задание', variant: 'secondary', block: true, toast: 'Задание добавлено в вечер у Саши' }), { className: 'vy-add-actions' }),
+        `<div class="vy-add">${ui.icon('plus')}<input class="vy-input" placeholder="Своё задание" aria-label="Своё задание"/>${ui.textButton({ label: 'Добавить', toast: 'Задание добавлено в вечер у Саши' })}</div>`,
       ] }),
       ui.section({ tags: ['game'], title: 'От игры', meta: `${gameSet.length} заданий`, children: ui.group({ cells: gameSet.map((k) =>
         ui.cell({ icon: k === 'prom' ? 'images' : 'video', title: tasks[k], sub: inEvening(k) ? `В вечере · раунд ${tonight.rounds.indexOf(k) + 1}` : k === 'prom' ? 'Ответ из галереи' : 'Ответ на камеру', check: inEvening(k), toast: inEvening(k) ? 'Убрано из вечера' : 'Добавлено в вечер у Саши' })) }) }),

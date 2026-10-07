@@ -1,11 +1,14 @@
 import { THEME, TABS } from './_shared.mjs';
-import { current, oldTown } from '../model.mjs';
+import { current, oldTown, videos, vQuest } from '../model.mjs';
 
 /* «Создать» — лист поверх главной: новый квест или снять задание текущей точки */
 export default (ui) => ui.screen({
   id: 'create', theme: THEME, className: 'vz-create',
   body: [
-    '<div class="vz-fill"><div class="vz-dim"></div>',
+    '<div class="vz-fill">',
+    /* Под листом — лента главной, а не пустота */
+    `<div class="vz-behind" aria-hidden="true">${['fountain', 'door'].map((k) => { const v = videos[k]; return ui.videoCard({ art: v.art, duration: v.dur, avatar: ui.avatar(v.who.initial), title: v.title, sub: vQuest(v) }); }).join('')}</div>`,
+    '<div class="vz-dim"></div>',
     ui.sheet([
       `<div class="vz-sheet-head"><h1 class="ui-title">Создать</h1><p class="ui-sub">Квест «${oldTown.title}» идёт · вы на точке ${current.n}</p></div>`,
       ui.group({ cells: [

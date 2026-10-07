@@ -360,7 +360,7 @@
       "ui": {
         "pattern": "player",
         "purpose": "Слушать версию своей песни и знать, какая часть звучит",
-        "primaryAction": "Слушать в фоне",
+        "primaryAction": null,
         "states": [
           "default",
           "loading",

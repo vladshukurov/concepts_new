@@ -7,7 +7,7 @@ import { moment, dayLabel, dateLabel, addDays, distance } from '../../kernel/wor
 
 export const now = moment('2026-10-10', '19:40');
 
-/* Фото нет: игроки — инициалы */
+/* Фото людей нет: игроки — инициалы. Кадры ответов — классы m1…m6 (атлас в styles.css) */
 export const people = {
   me: { name: 'Саша Котова', short: 'Саша', initial: 'СК', about: 'это вы' },
   lena: { name: 'Лена Орлова', short: 'Лена', initial: 'ЛО' },
@@ -41,17 +41,18 @@ export const tonight = {
   tvModel: 'Samsung · 55 дюймов',
   players: [people.me, people.olya, people.gosha, people.nastya, people.ilya],
   rounds: ['desk', 'prom', 'call', 'fishing', 'queue'],
+  art: 'm1',
 };
 export const roomLine = `${tonight.tv} · ${tonight.players.length} игроков в комнате`;
 
 /* Ответ, который снимают в первом раунде */
-export const myAnswer = { dur: '0:09', meta: 'Саша · раунд 1 · 0:09 · только что' };
+export const myAnswer = { art: 'm3', dur: '0:09', meta: 'Саша · раунд 1 · 0:09 · только что' };
 export const roundAnswers = [
-  { who: people.olya, dur: '0:08', sub: 'Оля · раунд 1 · 0:08 · 2 мин назад' },
-  { who: people.gosha, dur: '0:10', sub: 'Гоша · раунд 1 · 0:10 · минуту назад' },
-  { who: people.nastya, dur: '0:07', sub: 'Настя · раунд 1 · 0:07 · только что' },
+  { who: people.olya, art: 'm2', dur: '0:08', sub: 'Оля · раунд 1 · 0:08 · 2 мин назад' },
+  { who: people.gosha, art: 'm5', dur: '0:10', sub: 'Гоша · раунд 1 · 0:10 · минуту назад' },
+  { who: people.nastya, art: 'm1', dur: '0:07', sub: 'Настя · раунд 1 · 0:07 · только что' },
 ];
-export const galleryAnswer = { title: 'Выпускной 2014', dur: '0:18', sub: 'Из «Фото» · снято 21 июня 2014' };
+export const galleryAnswer = { art: 'm4', title: 'Выпускной 2014', dur: '0:18', sub: 'Из «Фото» · снято 21 июня 2014' };
 
 /* Вчерашний вечер у Лены: 6 игроков, 14 ответов, 4 хайлайта на 1:24 */
 export const lenaEvening = {
@@ -59,6 +60,7 @@ export const lenaEvening = {
   iso: addDays(now.iso, -1),
   players: 6,
   answers: 14,
+  art: 'm3',
   rounds: [
     { n: 1, task: 'monday', answers: 5 },
     { n: 2, task: 'prom', answers: 4 },
@@ -69,10 +71,10 @@ lenaEvening.day = dayLabel(lenaEvening.iso);
 lenaEvening.meta = `${lenaEvening.players} игроков · ${lenaEvening.answers} ответов`;
 
 export const highlights = {
-  cat: { id: 'watch', who: people.lena, title: 'Кот увидел огурец', round: 3, dur: '0:12', votes: 5 },
-  prom: { id: 'watchdance', who: people.dima, title: 'Выпускной 2009: танец со шваброй', round: 2, dur: '0:42', votes: 4 },
-  monday: { id: 'clips', who: people.olya, title: 'Утро понедельника без слов', round: 1, dur: '0:09', votes: 3 },
-  mine: { id: 'watchmine', who: people.me, title: 'Утро понедельника: будильник', round: 1, dur: '0:21', votes: 3 },
+  cat: { id: 'watch', who: people.lena, title: 'Кот увидел огурец', art: 'm2', round: 3, dur: '0:12', votes: 5 },
+  prom: { id: 'watchdance', who: people.dima, title: 'Выпускной 2009: танец со шваброй', art: 'm5', round: 2, dur: '0:42', votes: 4 },
+  monday: { id: 'clips', who: people.olya, title: 'Утро понедельника без слов', art: 'm4', round: 1, dur: '0:09', votes: 3 },
+  mine: { id: 'watchmine', who: people.me, title: 'Утро понедельника: будильник', art: 'm6', round: 1, dur: '0:21', votes: 3 },
 };
 export const hlMeta = (h, when = 'вчера') => `${h.who.short} · раунд ${h.round} · ${h.dur} · ${when}`;
 export const highlightsTotal = '1:24';
@@ -88,6 +90,7 @@ export const invite = {
   address: 'Тихая улица, 8, кв. 14',
   walk: `12 мин пешком · ${distance(950)}`,
   going: ['ЛО', 'ДЧ', 'ОМ'],
+  art: 'm3',
 };
 invite.day = dayLabel(invite.iso);
 invite.when = `${invite.day}, ${invite.time}`;

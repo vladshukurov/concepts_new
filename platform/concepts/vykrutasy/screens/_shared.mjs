@@ -14,11 +14,11 @@ export const TABS = [
 /* Свёрнутый плеер: хайлайт досматривается над таб-баром */
 const h = highlights.cat;
 export const MINI = ui.miniPlayer({
-  face: 'ph on-dark', title: h.title, sub: `${h.who.short} · 0:04 из ${h.dur}`,
+  face: h.art, title: h.title, sub: `${h.who.short} · 0:04 из ${h.dur}`,
   open: { go: 'watch' }, playAction: { toast: 'Продолжаем с 0:04', label: 'Продолжить' }, progressClass: 'vy-p33',
 });
 
-/** Кадр 16:9 с длительностью */
+/** Пустой кадр — только там, где снимка ещё нет (ответ снимается, ищут в галерее) */
 export const frame = 'ph on-dark';
 
 /** Карточка задания раунда: номер, задание крупно, как отвечать */

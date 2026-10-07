@@ -19,7 +19,7 @@ const VERSION = '0.525.0';
 /** Набор проекта. Добавляя иконку на экран — впиши её сюда, а не рисуй руками. */
 export const ICONS = [
   // навигация и системное
-  'chevron-left', 'chevron-right', 'x', 'check', 'plus', 'minus', 'ellipsis',
+  'chevron-left', 'chevron-right', 'x', 'check', 'plus', 'minus', 'ellipsis', 'map', 'flashlight', 'music', 'skip-back', 'skip-forward', 'shuffle', 'repeat', 'list-music', 'monitor-speaker',
   'search', 'settings', 'info', 'external-link', 'share', 'lock', 'menu', 'copy',
   // вход по почте
   'mail',

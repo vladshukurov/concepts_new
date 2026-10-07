@@ -6,7 +6,7 @@ import { own, places, pleinair } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'home', theme: THEME,
   body: ui.scroll([
-    ui.top(ui.wordmark({ name: 'В карандаше' }), ui.iconButton({ icon: 'plus', label: 'Новая зарисовка', go: 'compose' })),
+    ui.top(ui.wordmark({ name: 'Вглядись' }), ui.iconButton({ icon: 'plus', label: 'Новая зарисовка', go: 'compose' })),
     ui.section({ children: ui.chips([
       { label: 'Все', on: true, filter: 'all' },
       { label: 'Зарисовки', filter: 'sketch' },

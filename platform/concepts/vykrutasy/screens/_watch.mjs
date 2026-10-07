@@ -1,5 +1,5 @@
 /** Плеер хайлайта: общий для трёх хайлайтов вечера у Лены. Файл с «_» — не экран. */
-import { THEME, frame } from './_shared.mjs';
+import { THEME } from './_shared.mjs';
 import { highlights, hlMeta, lenaEvening, tasks } from '../model.mjs';
 
 const TASK = { 1: 'monday', 2: 'prom', 3: 'cat' };
@@ -11,7 +11,7 @@ export const watchScreen = (ui, key, { pip = false, at = '0:04', fill = 'vy-p33'
     id: h.id, theme: THEME, className: 'vy-wrap',
     body: ui.scroll([
       ui.player({
-        art: frame, at, total: h.dur, fillClass: fill, playing: true, className: 'is-root',
+        art: h.art, at, total: h.dur, fillClass: fill, playing: true, className: 'is-root',
         chapter: `Раунд ${h.round} · ${h.votes} голосов`,
         collapse: { go: 'home', label: 'Свернуть в мини-плеер' },
         settings: { menu: 'Качество · 1080p=Качество 1080p|Скорость · 1×=Скорость 1×|Звук при погашенном экране>lock', label: 'Настройки просмотра' },
@@ -27,7 +27,7 @@ export const watchScreen = (ui, key, { pip = false, at = '0:04', fill = 'vy-p33'
         ui.row({ lead: ui.leadIcon('tv', { round: true, accent: true }), title: lenaEvening.title, sub: `${lenaEvening.meta} · вчера`, go: 'evening' }),
       ]) }),
       ui.section({ title: 'Ещё хайлайты вечера', children: ui.list(others.map(([, o]) =>
-        ui.row({ thumb: frame, wide: true, duration: o.dur, title: o.title, sub: hlMeta(o), go: o.id }))) }),
+        ui.row({ thumb: o.art, wide: true, duration: o.dur, title: o.title, sub: hlMeta(o), go: o.id }))) }),
     ]),
   });
 };

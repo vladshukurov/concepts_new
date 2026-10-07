@@ -1644,17 +1644,6 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .ui-entry-act svg { width:20px; height:20px; }
 
 /* Экран «Домой» с виджетом: тёмные обои, белый виджет, сетка иконок */
-.ui.ui-hs { overflow:hidden; background:linear-gradient(180deg, #3d4a5c, #14181e)!important; color:#fff; }
-.ui-hs-widget { display:block; width:calc(100% - 40px); margin:calc(var(--safe-top) + 16px) 20px 0; padding:14px; border-radius:22px; background:rgba(255,255,255,.92); color:#000; text-align:left; }
-.ui-hs-widget small { display:flex; align-items:center; gap:6px; font:600 12px/14px var(--ui-face); color:var(--ui-link); }
-.ui-hs-widget small svg { width:14px; height:14px; }
-.ui-hs-widget strong { display:block; margin-top:8px; font:600 17px/22px var(--ui-face); }
-.ui-hs-widget span { display:block; font:400 13px/16px var(--ui-face); color:#5f6b78; }
-.ui-hs-apps { display:grid; grid-template-columns:repeat(4,1fr); gap:20px 12px; padding:20px; }
-.ui-hs-app { display:flex; flex-direction:column; align-items:center; gap:4px; font:400 12px/14px var(--ui-face); color:#fff; }
-.ui-hs-app > i { width:60px; height:60px; border-radius:14px; background:rgba(255,255,255,.22); }
-.ui-hs-app.is-ours > i { display:grid; place-items:center; background:var(--ui-accent); }
-.ui-hs-app.is-ours svg { width:30px; height:30px; color:#fff; }
 /* Safari с автозаполнением: адресная строка, страница сайта, подсказка над клавиатурой */
 .ui.ui-sf { background:#f2f2f7!important; color:#000; }
 .ui-sf-bar { display:flex; align-items:center; justify-content:center; gap:6px; margin:calc(var(--safe-top) + 4px) 16px 0; min-height:36px; border-radius:10px; background:rgba(118,118,128,.12); font:400 15px/20px var(--ui-face); color:#000; }
@@ -1708,35 +1697,18 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .ui-scroll:has(> .ui-chat:only-child) > .ui-chat { flex:none; }
 
 /* Инициалы без фото — на своём цвете, как в ВК и Telegram: оттенок h0–h6 ставит components.mjs по буквам */
-.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial):is(.h0, .h1, .h2, .h3, .h4, .h5, .h6) { color:#fff; }
-.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial).h0 { background:linear-gradient(180deg, #ff885e, #ff516a); }
-.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial).h1 { background:linear-gradient(180deg, #ffcd6a, #ffa85c); }
-.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial).h2 { background:linear-gradient(180deg, #82b1ff, #665fff); }
-.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial).h3 { background:linear-gradient(180deg, #a0de7e, #54cb68); }
-.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial).h4 { background:linear-gradient(180deg, #53edd6, #28c9b7); }
-.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial).h5 { background:linear-gradient(180deg, #72d5fd, #2a9ef1); }
-.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial).h6 { background:linear-gradient(180deg, #e0a2f3, #d669ed); }
+.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial, .ui-ln-face):is(.h0, .h1, .h2, .h3, .h4, .h5, .h6) { color:#fff; }
+.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial, .ui-ln-face).h0 { background:linear-gradient(180deg, #ff885e, #ff516a); }
+.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial, .ui-ln-face).h1 { background:linear-gradient(180deg, #ffcd6a, #ffa85c); }
+.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial, .ui-ln-face).h2 { background:linear-gradient(180deg, #82b1ff, #665fff); }
+.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial, .ui-ln-face).h3 { background:linear-gradient(180deg, #a0de7e, #54cb68); }
+.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial, .ui-ln-face).h4 { background:linear-gradient(180deg, #53edd6, #28c9b7); }
+.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial, .ui-ln-face).h5 { background:linear-gradient(180deg, #72d5fd, #2a9ef1); }
+.ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial, .ui-ln-face).h6 { background:linear-gradient(180deg, #e0a2f3, #d669ed); }
 /* Инициалы в круге звонка — 40 % диаметра, иначе круг читается пустым */
 .ui-call-face.is-initial { font-size:44px; }
 
-/* ── Повторяющиеся фичи доступов (lockNowPlaying, adCard) ── */
-.ui-lock { overflow:hidden; background:#0b0d12!important; color:#fff; }
-.ui-lock-wall { position:absolute; inset:0; background-size:auto 200%; filter:blur(24px); opacity:.75; background-image:linear-gradient(180deg, #1c2433, #0b0d12); }
-.ui-lock-shade { position:absolute; inset:0; background:rgba(0,0,0,.34); }
-.ui-lock-time { position:relative; margin-top:88px; text-align:center; font:300 80px/84px var(--ui-face); letter-spacing:-.02em; color:#fff; }
-.ui-lock-time small { display:block; margin-top:4px; font:500 18px/22px var(--ui-face); letter-spacing:0; }
-.ui-now { position:absolute; left:12px; right:12px; bottom:calc(var(--safe-bottom) + 84px); padding:14px 16px 12px; border-radius:24px; background:rgba(40,40,44,.62); color:#fff; backdrop-filter:blur(30px) saturate(1.6); -webkit-backdrop-filter:blur(30px) saturate(1.6); }
-.ui-now-top { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
-.ui-now-top .ui-thumb { width:48px; height:48px; background-size:auto 200%; }
-.ui-now-top .ui-thumb.is-icon { display:grid; place-items:center; background:rgba(255,255,255,.12); color:#fff; }
-.ui-now-top .ui-row-text > span, .ui-now .ui-times, .ui-now-status { color:rgba(255,255,255,.66); }
-.ui-now-controls { display:flex; justify-content:space-around; margin-top:4px; }
-.ui-now-controls .ui-icon-btn { color:#fff; }
-.ui-now-controls .ui-icon-btn svg { width:28px; height:28px; }
-.ui-now-status { margin-top:6px; text-align:center; font:500 13px/16px var(--ui-face); }
-.ui-lock-foot { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 24px); }
-/* Тёмный локскрин и в светлой теме: кнопка — полупрозрачная белая, а не мягкий акцент */
-.ui-lock .ui-lock-foot .ui-btn { background:rgba(255,255,255,.16)!important; color:#fff!important; }
+/* ── Повторяющиеся фичи доступов (adCard) ── */
 .ui-ad { display:flex; align-items:center; gap:12px; width:calc(100% - 32px); margin:0 16px; padding:8px; border-radius:20px; background:var(--ui-card-2); text-align:left; }
 .ui-ad-art { width:48px; height:48px; flex:none; display:grid; place-items:center; border-radius:12px; background:var(--ui-accent-soft); color:var(--ui-link); }
 .ui-ad-art svg { width:24px; height:24px; }
@@ -1745,3 +1717,132 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 
 /* Локскрин: время крупно по центру, в статус-баре его нет — как в iOS */
 .device:has(.screen.is-on:is(.ui-lock, [class*="lock"], [data-screen*="lock"])) .status > span:first-child { visibility:hidden; }
+
+/* ══ Системные поверхности iOS: экран «Домой», экран блокировки, выбор фото ══
+   Один в один с iOS 17 на iPhone 375 pt: размеры значков, скругления, материалы.
+   Концепт поставляет данные, но не рисует их заново. */
+
+/* Экран «Домой» */
+.ui.ui-hs { overflow:hidden; background:#0d1b3a!important; color:#fff; }
+.ui-hs-wall { position:absolute; inset:0; background:radial-gradient(120% 70% at 15% 0%, #4f6bd8 0%, transparent 60%), radial-gradient(110% 80% at 100% 35%, #8a4fc9 0%, transparent 55%), radial-gradient(120% 90% at 30% 100%, #13306b 0%, transparent 70%), #0d1b3a; }
+.ui-hs-wrap, .ui-hs-apps, .ui-hs-search, .ui-hs-dock { position:relative; }
+.ui-hs-wrap { margin:calc(var(--safe-top) + 14px) 22px 0; text-align:center; }
+.ui-hs-widget { display:flex; flex-direction:column; align-items:flex-start; width:100%; min-height:155px; padding:16px; border-radius:22px; background:#fff; color:#000; text-align:left; box-shadow:0 6px 24px rgba(0,0,0,.18); }
+.ui-hs-widget small { display:flex; align-items:center; gap:6px; font:600 13px/16px var(--ui-face); color:#0067db; }
+.ui-hs-wico { width:20px; height:20px; display:grid; place-items:center; border-radius:5px; background:var(--ui-accent); color:#fff; }
+.ui-hs-wico svg { width:13px; height:13px; }
+.ui-hs-widget strong { display:block; margin-top:auto; padding-top:10px; font:600 20px/24px var(--ui-face); letter-spacing:-.01em; }
+.ui-hs-widget > span { display:block; margin-top:2px; font:400 14px/18px var(--ui-face); color:#5f6b78; }
+.ui-hs-lines { display:flex !important; gap:16px; margin-top:8px !important; }
+.ui-hs-lines > span { display:flex; flex-direction:column; font:400 12px/15px var(--ui-face); color:#6b7280; }
+.ui-hs-lines b { font:600 15px/18px var(--ui-face); color:#000; }
+.ui-hs-wrap > em { display:block; margin-top:6px; font:500 12px/14px var(--ui-face); font-style:normal; color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.35); }
+.ui-hs-apps { display:grid; grid-template-columns:repeat(4, 60px); justify-content:space-between; row-gap:22px; padding:22px 27px 0; }
+.ui-hs-app { display:flex; flex-direction:column; align-items:center; gap:5px; width:60px; font:400 12px/14px var(--ui-face); color:#fff; text-align:center; white-space:nowrap; text-shadow:0 1px 3px rgba(0,0,0,.35); }
+.ui-hs-ico { width:60px; height:60px; display:grid; place-items:center; border-radius:13.5px; color:#fff; box-shadow:0 1px 2px rgba(0,0,0,.12); }
+.ui-hs-ico svg { width:30px; height:30px; stroke-width:1.9; }
+.ui-hs-app.is-ours .ui-hs-ico { background:linear-gradient(160deg, #3d8bff, #0057d8); }
+.ui-hs-ico.is-green { background:linear-gradient(180deg, #5cf27a, #2bc84d); }
+.ui-hs-ico.is-blue { background:linear-gradient(180deg, #4fb4ff, #1676f2); }
+.ui-hs-ico.is-sky { background:linear-gradient(180deg, #57a8f5, #2a6fdc); }
+.ui-hs-ico.is-gray { background:linear-gradient(180deg, #a2a6ad, #6e737b); }
+.ui-hs-ico.is-black { background:#111; }
+.ui-hs-ico.is-red { background:linear-gradient(180deg, #ff6a7e, #fa2a4d); }
+.ui-hs-ico.is-yellow { background:linear-gradient(180deg, #ffe066 0 26%, #fff 26%); color:#e1a800; }
+.ui-hs-ico.is-white { background:#fff; color:#ff3b30; }
+.ui-hs-ico.is-maps { background:linear-gradient(135deg, #e9f6e4 0 45%, #b9e2a8 45% 60%, #f6efe0 60%); color:#2c7be5; }
+.ui-hs-search { display:flex; align-items:center; gap:4px; width:max-content; margin:26px auto 0; padding:6px 12px; border-radius:16px; background:rgba(255,255,255,.22); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); font:600 13px/16px var(--ui-face); }
+.ui-hs-search svg { width:13px; height:13px; stroke-width:2.6; }
+.ui-hs-dock { position:absolute; left:10px; right:10px; bottom:calc(var(--safe-bottom) + 6px); display:flex; justify-content:space-between; padding:17px 17px; border-radius:32px; background:rgba(255,255,255,.24); backdrop-filter:blur(30px) saturate(1.6); -webkit-backdrop-filter:blur(30px) saturate(1.6); }
+
+/* Экран блокировки */
+.ui-lock { overflow:hidden; background:#0b0d12!important; color:#fff; }
+.ui-lock-wall { position:absolute; inset:0; background:radial-gradient(120% 70% at 20% 0%, #33507e 0%, transparent 60%), radial-gradient(120% 80% at 100% 60%, #4a3a6e 0%, transparent 55%), #0b0d12; background-size:cover; }
+.ui-lock-wall.ph, .ui-lock-wall[class*=" m"], .ui-lock-wall[class*="cover"] { filter:blur(28px) saturate(1.2); opacity:.8; transform:scale(1.2); }
+.ui-lock-clock { position:relative; display:flex; flex-direction:column; align-items:center; margin-top:calc(var(--safe-top) + 6px); }
+.ui-lock-clock span { font:600 19px/24px var(--ui-face); color:rgba(255,255,255,.88); }
+.ui-lock-clock b { font:700 88px/92px var(--ui-face); letter-spacing:-.03em; font-variant-numeric:tabular-nums; color:rgba(255,255,255,.94); }
+.ui-lock-stack { position:absolute; left:8px; right:8px; bottom:calc(var(--safe-bottom) + 92px); display:flex; flex-direction:column; gap:8px; }
+.ui-ln { display:flex; align-items:center; gap:10px; width:100%; padding:12px 14px; border-radius:22px; background:rgba(245,245,247,.82); backdrop-filter:blur(30px) saturate(1.8); -webkit-backdrop-filter:blur(30px) saturate(1.8); color:#000; text-align:left; }
+.ui-ln-app { width:38px; height:38px; flex:none; display:grid; place-items:center; border-radius:9px; background:linear-gradient(160deg, #3d8bff, #0057d8); color:#fff; }
+.ui-ln-app svg { width:20px; height:20px; }
+.ui-ln-face { position:relative; width:38px; height:38px; flex:none; display:grid; place-items:center; border-radius:50%; font:600 14px/1 var(--ui-face); color:#fff; }
+.ui-ln-face > i { position:absolute; right:-3px; bottom:-3px; width:17px; height:17px; display:grid; place-items:center; border-radius:5px; background:linear-gradient(160deg, #3d8bff, #0057d8); box-shadow:0 0 0 1.5px rgba(245,245,247,.9); }
+.ui-ln-face > i svg { width:10px; height:10px; color:#fff; }
+.ui-ln-body { flex:1; min-width:0; display:flex; flex-direction:column; }
+.ui-ln-top { display:flex; align-items:baseline; gap:8px; }
+.ui-ln-top b { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font:600 15px/20px var(--ui-face); }
+.ui-ln-top time { flex:none; font:400 13px/16px var(--ui-face); color:rgba(60,60,67,.6); }
+.ui-ln-body small { font:400 13px/16px var(--ui-face); color:rgba(60,60,67,.6); }
+.ui-ln-text { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; font:400 15px/20px var(--ui-face); }
+.ui-ln-thumb { width:38px; height:38px; flex:none; border-radius:8px; background-size:cover; background-position:center; }
+.ui-now { padding:14px 16px 12px; border-radius:24px; background:rgba(40,40,44,.6); color:#fff; backdrop-filter:blur(30px) saturate(1.6); -webkit-backdrop-filter:blur(30px) saturate(1.6); }
+.ui-now-top { display:flex; align-items:center; gap:12px; width:100%; margin-bottom:14px; color:inherit; text-align:left; }
+.ui-now-top .ui-thumb { width:48px; height:48px; border-radius:8px; background-size:auto 200%; }
+.ui-now-top .ui-thumb.is-icon { display:grid; place-items:center; background:rgba(255,255,255,.12); color:#fff; }
+.ui-now-top .ui-row-text > strong { color:#fff; }
+.ui-now-top .ui-row-text > span, .ui-now .ui-times, .ui-now-status { color:rgba(255,255,255,.66); }
+.ui-now-controls { display:flex; justify-content:space-around; margin-top:4px; }
+.ui-now-controls .ui-icon-btn { color:#fff; }
+.ui-now-controls .ui-icon-btn svg { width:28px; height:28px; }
+.ui-now-status { margin-top:6px; text-align:center; font:500 13px/16px var(--ui-face); }
+.ui-lock-corners { position:absolute; left:46px; right:46px; bottom:calc(var(--safe-bottom) + 26px); display:flex; justify-content:space-between; pointer-events:none; }
+.ui-lock-corners > span { width:50px; height:50px; display:grid; place-items:center; border-radius:50%; background:rgba(30,30,34,.45); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); color:#fff; }
+.ui-lock-corners svg { width:22px; height:22px; }
+
+/* Выбор фото: лист PHPicker. Цвета системные, а не темы приложения */
+.ui-pk { position:absolute; inset:calc(var(--safe-top) + 10px) 0 0; display:flex; flex-direction:column; border-radius:12px 12px 0 0; overflow:hidden; background:#fff; color:#000; --pk-fill:rgba(118,118,128,.12); --pk-sub:rgba(60,60,67,.6); }
+.ui.vk-dark .ui-pk, .ui-pk.is-dark { background:#1c1c1e; color:#fff; --pk-fill:rgba(118,118,128,.24); --pk-sub:rgba(235,235,245,.6); }
+:root[data-app-theme="light"] .ui.vk-dark .ui-pk { background:#fff; color:#000; --pk-fill:rgba(118,118,128,.12); --pk-sub:rgba(60,60,67,.6); }
+.screen:has(> .ui-pk) { background:#000!important; }
+.ui-pk-bar { display:flex; align-items:center; justify-content:space-between; gap:8px; min-height:52px; padding:0 16px; }
+.ui-pk-text { min-height:44px; font:400 17px/22px var(--ui-face); color:#007aff; }
+.ui-pk-text.is-strong { font-weight:600; }
+.ui-pk-text.is-off { color:var(--pk-sub); }
+.ui-pk-seg { display:flex; padding:2px; border-radius:9px; background:var(--pk-fill); }
+.ui-pk-seg > span { padding:4px 18px; border-radius:7px; font:500 13px/18px var(--ui-face); }
+.ui-pk-seg > .is-on { background:#fff; color:#000; box-shadow:0 3px 8px rgba(0,0,0,.12); }
+.ui.vk-dark .ui-pk-seg > .is-on { background:#636366; color:#fff; }
+.ui-pk-search { display:flex; align-items:center; gap:6px; margin:0 16px 10px; min-height:36px; padding:0 8px; border-radius:10px; background:var(--pk-fill); font:400 17px/22px var(--ui-face); color:var(--pk-sub); }
+.ui-pk-search svg { width:17px; height:17px; }
+.ui-pk-section { padding:4px 16px 8px; font:600 20px/25px var(--ui-face); }
+.ui-pk-grid { flex:1; display:grid; grid-template-columns:repeat(3, 1fr); grid-auto-rows:min-content; gap:2px; overflow:hidden; }
+.ui-pk-tile { position:relative; aspect-ratio:1; background-size:cover; background-position:center; border-radius:0!important; }
+.ui-pk-tile.ph::after { width:24%; opacity:.6; }
+.ui-pk-tile small { position:absolute; left:6px; bottom:5px; font:600 12px/14px var(--ui-face); color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.6); }
+.ui-pk-tile > i { position:absolute; right:5px; bottom:5px; width:22px; height:22px; display:grid; place-items:center; border-radius:50%; background:#007aff; box-shadow:0 0 0 1.5px #fff; font:600 13px/1 var(--ui-face); font-style:normal; color:#fff; }
+.ui-pk-tile.is-picked::before { content:""; position:absolute; inset:0; background:rgba(255,255,255,.18); }
+.ui.vk-dark .ui-pk-tile.ph:nth-child(5n+2) { background:#2f3237; } .ui.vk-dark .ui-pk-tile.ph:nth-child(5n+3) { background:#34302c; }
+.ui.vk-dark .ui-pk-tile.ph:nth-child(5n+4) { background:#2a3331; } .ui.vk-dark .ui-pk-tile.ph:nth-child(5n) { background:#312e38; }
+
+/* ── Полноэкранный аудиоплеер (musicControls): размеры как у Spotify на 375 pt ── */
+.ui-np { display:flex; flex-direction:column; }
+.ui-np-meta { display:flex; align-items:center; gap:12px; margin-top:24px; }
+.ui-np-title { flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+.ui-np-title strong { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font:700 22px/28px var(--ui-face); letter-spacing:-.01em; color:var(--ui-text); }
+.ui-np-title span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font:400 16px/20px var(--ui-face); color:var(--ui-text-2); }
+.ui-np-like { margin-right:-10px; }
+.ui-np-like svg { width:28px; height:28px; }
+.ui-np-bar { position:relative; height:4px; margin-top:22px; border-radius:2px; background:var(--ui-fill-2); }
+.ui-np-bar > i { position:absolute; left:0; top:0; bottom:0; border-radius:2px; background:var(--ui-text); }
+.ui-np-bar > b { position:absolute; top:50%; width:12px; height:12px; margin:-6px 0 0 -6px; border-radius:50%; background:var(--ui-text); }
+.ui-np-times { display:flex; justify-content:space-between; margin-top:8px; font:400 12px/16px var(--ui-face); color:var(--ui-text-2); font-variant-numeric:tabular-nums; }
+.ui-np-mark { display:flex; align-items:center; gap:6px; margin-top:6px; font:500 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.ui-np-mark > i { width:6px; height:6px; border-radius:50%; background:var(--ui-accent); }
+.ui-np-row { display:flex; align-items:center; justify-content:space-between; margin:14px -10px 0; }
+.ui-np-side svg { width:24px; height:24px; color:var(--ui-text); }
+.ui-np-skip svg { width:32px; height:32px; color:var(--ui-text); }
+.ui-np-play { width:64px; height:64px; flex:none; display:grid; place-items:center; border-radius:50%; background:var(--ui-text); color:var(--ui-bg); }
+.ui-np-play svg { width:26px; height:26px; }
+.ui-np-bottom { display:flex; justify-content:space-between; margin:18px -10px 0; }
+.ui-np-small svg { width:22px; height:22px; color:var(--ui-text-2); }
+:root:not([data-app-theme="light"]) .ui.vk-dark .ui-np-play { background:#fff; color:#000; }
+
+/* Переключатели на месте (data-toggle): включённое — акцент; «повтор» и «перемешать» с точкой, как в Spotify */
+.ui [data-toggle="on"].is-on { color:var(--ui-accent); }
+.ui [data-toggle="on"].is-on svg { color:var(--ui-accent); }
+.ui .ui-np-side.is-on { position:relative; }
+.ui .ui-np-side.is-on::after { content:""; position:absolute; left:50%; bottom:4px; width:4px; height:4px; margin-left:-2px; border-radius:50%; background:var(--ui-accent); }
+.ui .ui-np-like.is-on svg { fill:currentColor; }
+/* Фокус после клика мышью не обводим — только с клавиатуры */
+.device :is(button, [role="button"], a):focus:not(:focus-visible) { outline:none; box-shadow:none; }

@@ -1,4 +1,4 @@
-import { THEME, frame, channel } from './_shared.mjs';
+import { THEME, channel } from './_shared.mjs';
 import { embankment, people } from '../model.mjs';
 
 /* Ваш квест «Набережная»: старт в субботу, точки, напоминание о старте */
@@ -8,7 +8,7 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Квест' }),
     ui.scroll([
-      `<div class="vz-banner ${frame}"></div>`,
+      `<div class="vz-banner ${e.art}"></div>`,
       ui.section({ children: [
         channel({ initial: people.me.initial, title: e.title, sub: `${e.meta} · придумали вы` }),
         ui.miniInfo([

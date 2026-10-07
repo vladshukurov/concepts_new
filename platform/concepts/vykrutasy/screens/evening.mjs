@@ -1,4 +1,4 @@
-import { THEME, frame } from './_shared.mjs';
+import { THEME } from './_shared.mjs';
 import { lenaEvening, highlights, hlMeta, tasks, highlightsTotal, people } from '../model.mjs';
 
 /* Страница вечера как канал: обложка, хозяйка, игроки, хайлайты и раунды */
@@ -9,7 +9,7 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Вечер' }),
     ui.scroll([
-      `<div class="vy-banner ${frame}"></div>`,
+      `<div class="vy-banner ${ev.art}"></div>`,
       ui.section({ children: [
         `<div class="vy-channel">${ui.avatar(people.lena.initial, { large: true })}<span class="ui-row-text"><strong>${ev.title}</strong><span>${ev.meta} · ${ev.day}</span></span></div>`,
         ui.usersStack({ faces: ['ЛО', 'ДЧ', 'ОМ'], text: 'Лена, Дима, Оля, Илья, Гоша и вы' }),
@@ -22,7 +22,7 @@ export default (ui) => ui.screen({
         { label: 'Хайлайты', on: true, filter: 'hl' },
         { label: 'Раунды', filter: 'rounds' },
       ]) }),
-      ...HL.map((h) => ui.section({ tags: ['hl'], children: ui.videoCard({ art: frame, duration: h.dur, go: h.id, avatar: ui.avatar(h.who.initial), title: h.title, sub: hlMeta(h) }) })),
+      ...HL.map((h) => ui.section({ tags: ['hl'], children: ui.videoCard({ art: h.art, duration: h.dur, go: h.id, avatar: ui.avatar(h.who.initial), title: h.title, sub: hlMeta(h) }) })),
       ui.section({ tags: ['rounds'], className: 'is-filtered-out', title: 'Раунды', meta: `${ev.answers} ответов`, children: ui.list(ev.rounds.map((r) =>
         ui.row({ lead: ui.leadIcon('', { text: String(r.n) }), title: tasks[r.task], sub: `${r.answers} ответов${r.task === 'prom' ? ' · из галереи' : ''}` }))) }),
     ]),

@@ -633,6 +633,22 @@
 
     var SEL = '[data-ask], [data-go], [data-back], [data-activate], [data-jump], [data-toast], [data-menu]';
     screens.addEventListener('click', function (e) {
+      /* Переключатель на месте: play ↔ пауза меняет иконку, «повтор», «перемешать», «нравится» —
+         подсветку. Состояние видно сразу, без снекбара */
+      var tg = e.target.closest('[data-toggle]');
+      if (tg) {
+        var on = !tg.classList.contains('is-on');
+        tg.classList.toggle('is-on', on);
+        tg.setAttribute('aria-pressed', String(on));
+        if (tg.dataset.toggle === 'play') {
+          var use = tg.querySelector('use');
+          var paused = use && /pause/.test(use.getAttribute('href'));
+          if (use) use.setAttribute('href', paused ? '#i-play' : '#i-pause');
+          tg.setAttribute('aria-label', paused ? 'Слушать' : 'Пауза');
+          tg.classList.toggle('is-pause', !paused);
+        }
+        return;
+      }
       var t = e.target.closest(SEL);
       /* Фильтр на месте: выбранный чипс подсвечивается, на этом же экране остаётся только подходящее */
       var f = e.target.closest('[data-filter]');

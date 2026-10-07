@@ -11,19 +11,19 @@ export const TABS = [
   { id: 'profile', label: 'Профиль', icon: 'user' },
 ];
 
-/** Кадр 16:9 */
+/** Пустой кадр — только там, где снимка ещё нет */
 export const frame = 'ph on-dark';
 
 /* Свёрнутый плеер: ролик с точки 3 досматривается над таб-баром */
 const v = videos.fountain;
 export const MINI = ui.miniPlayer({
-  face: frame, title: v.title, sub: `${v.who.short} · 0:07 из ${v.dur}`,
+  face: v.art, title: v.title, sub: `${v.who.short} · 0:07 из ${v.dur}`,
   open: { go: 'watch', label: v.title }, playAction: { toast: 'Продолжаем с 0:07', label: 'Продолжить' }, progressClass: 'vz-p33',
 });
 
 /** Видеокарточка ролика с точки: инициалы игрока, заголовок, «Квест «…» · точка · длительность · когда» */
 export const videoCard = (v) => ui.videoCard({
-  art: frame, duration: v.dur, go: v.id, avatar: ui.avatar(v.who.initial), title: v.title, sub: vQuest(v),
+  art: v.art, duration: v.dur, go: v.id, avatar: ui.avatar(v.who.initial), title: v.title, sub: vQuest(v),
 });
 
 /** Карточка задания точки: номер, задание крупно, место */

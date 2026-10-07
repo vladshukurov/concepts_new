@@ -2,6 +2,22 @@
    здесь только своё: карточка задания, вертикальный клип, камера ответа,
    выбор из галереи, страница вечера, картинка в картинке. */
 
+/* Кадры вечеров — фото из атласа 3×2 (assets/media/party-atlas.jpg):
+   m1 гости приходят · m2 готовят на кухне · m3 компания за столом
+   m4 у озера на закате · m5 торт и свечи · m6 прогулка в лесу */
+.m1,.m2,.m3,.m4,.m5,.m6 { background-image:url(assets/media/party-atlas.jpg); background-size:300% auto; background-repeat:no-repeat; background-color:#2a2b2c; }
+.m1 { background-position:0 0; }
+.m2 { background-position:50% 0; }
+.m3 { background-position:100% 0; }
+.m4 { background-position:0 100%; }
+.m5 { background-position:50% 100%; }
+.m6 { background-position:100% 100%; }
+/* Широкие кадры 16:9 — середина фото, а не верхний край */
+:is(.ui-video-art,.ui-player,.ui-thumb.is-wide,.vy-banner,.vy-pip-frame):is(.m1,.m2,.m3) { background-size:300% auto; background-position-y:18%; }
+:is(.ui-video-art,.ui-player,.ui-thumb.is-wide,.vy-banner,.vy-pip-frame):is(.m4,.m5,.m6) { background-size:300% auto; background-position-y:82%; }
+/* Вертикальный кадр на весь экран: фото по высоте экрана */
+.vy-clip-frame:is(.m1,.m2,.m3,.m4,.m5,.m6) { background-size:auto 200%; }
+
 /* Доли прогресса */
 .vy-p0 { width:0; }
 .vy-p33 { width:33%; }
@@ -18,8 +34,8 @@
 .vy-form .ui-cell-text > span { order:-1; font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
 .vy-form .ui-cell-text { display:flex; flex-direction:column; }
 .vy-add { display:flex; align-items:center; gap:12px; min-height:48px; margin:8px 16px 0; padding:0 12px; border-radius:12px; background-color:var(--ui-card); color:var(--ui-text-2); }
+.vy-add .vy-input { flex:1; }
 .vy-add svg { width:20px; height:20px; flex:none; color:var(--ui-link); }
-.vy-add-actions { margin-top:8px; }
 
 /* Профиль */
 .vy-me { display:flex; align-items:center; gap:12px; min-width:0; }
@@ -39,6 +55,7 @@
 
 /* Лист «Создать» */
 .vy-create { overflow:hidden; }
+.vy-behind { display:flex; flex-direction:column; gap:20px; padding:calc(var(--safe-top) + 16px) 16px 0; }
 .vy-dim { position:absolute; inset:0; background-color:rgba(0,0,0,.6); }
 .vy-create-sheet { padding-bottom:16px; }
 .vy-sheet-head { display:flex; flex-direction:column; gap:4px; padding:0 16px 12px; }

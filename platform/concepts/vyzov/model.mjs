@@ -2,13 +2,15 @@
  * Модель «Вызова»: видеоквесты по городу с друзьями.
  * «Сейчас» — среда, 7 октября, 16:40. Квест Лены «Старый город» идёт:
  * ваша команда «Сова» на точке 4 из 9. В субботу стартует ваш квест «Набережная».
- * В прошлую субботу прошли ваши «Сокольники» — итог, счёт и фильм квеста.
+ * Финал «Старого города» — сегодня в 20:00 у Лены: счёт и лучшие моменты на её телевизоре,
+ * фильм квеста — в «Фото». В прошлую субботу прошли ваши «Сокольники».
  */
 import { moment, dayLabel, dateLabel, addDays, distance } from '../../kernel/world.mjs';
 
 export const now = moment('2026-10-07', '16:40');
 
-/* Фото нет: игроки — инициалы */
+/* Фото людей нет: игроки — инициалы. Кадры роликов — классы из styles.css:
+   m1…m6 — атлас команды, vz-yard — двор вечером, vz-bakery/vz-street — переулок, vz-sea — набережная */
 export const people = {
   me: { name: 'Саша Котова', short: 'Саша', initial: 'СК' },
   lena: { name: 'Лена Орлова', short: 'Лена', initial: 'ЛО' },
@@ -33,6 +35,11 @@ export const oldTown = {
   pointsCount: 9,
   start: '14:00',
   finale: 'сегодня в 20:00 у Лены',
+  finalTitle: 'Финал «Старого города»',
+  tv: 'телевизор Лены',
+  film: '2:36',
+  art: 'm1',
+  finalArt: 'm3',
   points: [
     { n: 1, task: 'Пройдите по Покровке 20 шагов задом наперёд', place: 'Покровка, 1', done: true },
     { n: 2, task: 'Повторите позу памятника', place: 'Чистые пруды', done: true },
@@ -52,31 +59,28 @@ export const hereLine = `Вы на точке ${current.n}`;
 
 /* Ролики квестов: мета под кадром — «команда/игрок · квест · точка · длительность · когда» */
 export const videos = {
-  fountain: { id: 'watch', who: people.dima, team: teams.owl, title: 'Спели припев у фонтана', quest: oldTown.title, point: 3, dur: '0:21', when: 'сегодня' },
-  door: { id: 'watchdoor', who: people.gosha, team: teams.hedgehog, title: 'Стук в дверь 1907', quest: oldTown.title, point: 4, dur: '0:14', when: 'сегодня' },
-  boat: { id: 'watchboat', who: people.nastya, team: teams.hedgehog, title: 'Лодка без вёсел', quest: 'Сокольники', point: 6, dur: '0:33', when: dateLabel('2026-10-03') },
-  statue: { id: 'clips', who: people.olya, team: teams.owl, title: 'Поза памятника', quest: oldTown.title, point: 2, dur: '0:09', when: 'сегодня' },
+  fountain: { id: 'watch', art: 'vz-yard', who: people.dima, team: teams.owl, title: 'Спели припев у фонтана', quest: oldTown.title, point: 3, dur: '0:21', when: 'сегодня' },
+  door: { id: 'watchdoor', art: 'vz-street', who: people.gosha, team: teams.hedgehog, title: 'Стук в дверь 1907', quest: oldTown.title, point: 4, dur: '0:14', when: 'сегодня' },
+  boat: { id: 'watchboat', art: 'm4', who: people.nastya, team: teams.hedgehog, title: 'Лодка без вёсел', quest: 'Сокольники', point: 6, dur: '0:33', when: dateLabel('2026-10-03') },
+  statue: { id: 'clips', art: 'm6', who: people.olya, team: teams.owl, title: 'Поза памятника', quest: oldTown.title, point: 2, dur: '0:09', when: 'сегодня' },
 };
 export const vMeta = (v) => `${v.who.short} · ${v.team.name} · точка ${v.point} · ${v.dur} · ${v.when}`;
 export const vQuest = (v) => `Квест «${v.quest}» · точка ${v.point} · ${v.dur} · ${v.when}`;
 
 /* Свой ролик, снятый на точке 4, и ролик из «Фото» */
-export const myShot = { dur: '0:12', sub: `Саша · Сова · точка 4 · 0:12 · только что` };
-export const fromPhotos = { dur: '0:18', sub: 'Из «Фото» · снято сегодня в 16:31' };
+export const myShot = { art: 'vz-bakery', dur: '0:12', sub: `Саша · Сова · точка 4 · 0:12 · только что` };
+export const fromPhotos = { art: 'vz-window', dur: '0:18', sub: 'Из «Фото» · снято сегодня в 16:31' };
 
-/* «Сокольники» — прошли в прошлую субботу, организатор — вы */
+/* «Сокольники» — прошли в прошлую субботу, организатор — вы; остался лучший момент */
 export const sokolniki = {
   title: 'Сокольники',
   iso: '2026-10-03',
   points: 8,
   score: { owl: 34, hedgehog: 29 },
-  film: '3:48',
-  clips: 16,
-  tv: 'Гостиная',
 };
 sokolniki.day = dateLabel(sokolniki.iso);
-sokolniki.finalTitle = 'Итог «Сокольников»';
 sokolniki.meta = `2 команды · ${sokolniki.points} точек · ${sokolniki.day}`;
+sokolniki.result = `Сова ${sokolniki.score.owl} : ${sokolniki.score.hedgehog} Ёж · ${sokolniki.day}`;
 
 /* «Набережная» — ваш квест, старт в субботу в 12:00 */
 export const embankment = {
@@ -90,6 +94,7 @@ export const embankment = {
     { n: 3, task: 'Станцуйте вальс у фонтанов', place: 'Парк Горького' },
   ],
   pointsCount: 7,
+  art: 'vz-sea',
 };
 embankment.day = dayLabel(embankment.iso);
 embankment.meta = `2 команды · ${embankment.pointsCount} точек`;

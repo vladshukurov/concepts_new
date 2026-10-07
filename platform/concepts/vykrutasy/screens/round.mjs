@@ -13,7 +13,7 @@ export default (ui) => ui.screen({
       ] }),
       ui.denied('camera,mic'),
       ui.section({ title: 'Ответы раунда', meta: `${roundAnswers.length} из ${tonight.players.length}`, children: ui.list(roundAnswers.map((a) =>
-        ui.row({ thumb: frame, wide: true, duration: a.dur, title: a.who.name, sub: a.sub })).concat([
+        ui.row({ thumb: a.art, wide: true, duration: a.dur, title: a.who.name, sub: a.sub })).concat([
         ui.row({ thumb: frame, wide: true, title: 'Илья Ветров', sub: 'Снимает ответ' }),
       ])) }),
     ]),
