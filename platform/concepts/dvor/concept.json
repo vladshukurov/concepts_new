@@ -1,6 +1,7 @@
 {
   "slug": "dvor",
   "name": "В квартире",
+  "formerNames": ["Двор"],
   "eyebrow": "В квартире · Дела своей квартиры и чат дома · iOS",
   "targetSet": "vkontakte",
   "domain": "dvor.app",

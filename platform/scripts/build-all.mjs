@@ -66,7 +66,7 @@ const gallery = (items) => {
       <div class="shot"><img src="./${item.slug}/assets/screenshots/${item.preview}.png" alt="Экран «${esc(item.name)}»" loading="lazy"></div>
       <div class="meta">
         <div class="card-kicker"><span class="category">${esc(item.category)}</span><span class="card-badges">${item.isNew ? '<span class="new-badge">NEW</span>' : ''}<span class="mode-badge ${item.mode}">${esc(item.modeLabel)}</span></span></div>
-        <div class="name-row"><div class="name-row-main">${item.iconPlaceholder ? '<span class="app-icon app-icon-placeholder"></span>' : item.hasAppIcon ? `<img class="app-icon" src="./${item.slug}/assets/app-icon.png" alt="" loading="lazy">` : ''}<div class="name">${esc(item.name)}</div></div><span class="arrow" aria-hidden="true">→</span></div>
+        <div class="name-row"><div class="name-row-main">${item.iconPlaceholder ? '<span class="app-icon app-icon-placeholder"></span>' : item.hasAppIcon ? `<img class="app-icon" src="./${item.slug}/assets/app-icon.png" alt="" loading="lazy">` : ''}<div class="name-stack"><div class="name">${esc(item.name)}</div>${item.formerNames.length ? `<div class="name-was">раньше ${item.formerNames.map((n) => `«${esc(n)}»`).join(', ')}</div>` : ''}</div></div><span class="arrow" aria-hidden="true">→</span></div>
         <div class="tag">${esc(item.tagline)}</div>
         <div class="chips"><span class="chip">${item.perms} ${pluralRu(item.perms, 'доступ', 'доступа', 'доступов')}</span><span class="chip">${item.screens} ${pluralRu(item.screens, 'экран', 'экрана', 'экранов')}</span><span class="chip secondary">${esc(item.targetSetLabel)}</span></div>
       </div>
@@ -162,6 +162,9 @@ const gallery = (items) => {
   .app-icon { width:44px; height:44px; flex:none; display:block; border-radius:12px; box-shadow:0 1px 2px rgba(0,0,0,.06),0 5px 16px rgba(0,0,0,.08); }
   .app-icon-placeholder { background:#d7d9de; box-shadow:none; }
   .name { font:600 20px/1.2 var(--face); letter-spacing:-.03em; }
+  .name-stack { min-width:0; display:flex; flex-direction:column; gap:2px; }
+  /* Старое название — чтобы переименованный концепт находили по привычному имени */
+  .name-was { color:var(--page-ink-dim); font:400 12px/1.3 var(--face); }
   .arrow { color:var(--page-ink-mute); font:400 20px/1 var(--face); transition:color 120ms,transform 120ms; }
   .card:hover .arrow { color:var(--page-ink); transform:translateX(2px); }
   .tag { flex:1; color:var(--page-ink-dim); margin-top:7px; font:400 13px/1.45 var(--face); }
@@ -289,6 +292,7 @@ for (const slug of slugs) {
     slug,
     name: spec.name,
     tagline: spec.tagline,
+    formerNames: spec.formerNames || [],
     start: spec.start,
     /* Превью — первая вкладка продукта, а не общий экран входа: иначе все карточки на одно лицо */
     preview: [spec.tabs?.[0]?.id, spec.auth?.entryTarget, spec.start]
@@ -304,7 +308,7 @@ for (const slug of slugs) {
     hasAppIcon: existsSync(join(conceptDir(slug), 'assets', 'app-icon.png')),
     iconPlaceholder: Boolean(spec.iconPlaceholder),
     /* Поисковый индекс карточки: что это, для кого и какими доступами */
-    search: [spec.name, spec.slug, spec.tagline, spec.deck, spec.insight, spec.eyebrow,
+    search: [spec.name, ...(spec.formerNames || []), spec.slug, spec.tagline, spec.deck, spec.insight, spec.eyebrow,
       categoryLabel(spec.appStore?.category?.primary), targetSetMeta(spec.targetSet).label,
       POSITIONING_MODES[spec.positioning.mode].label,
       ...spec.permissions.flatMap((p) => [p.key, p.feature, p.plist, p.gesture]),

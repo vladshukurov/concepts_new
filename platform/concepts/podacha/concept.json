@@ -1,6 +1,7 @@
 {
   "slug": "podacha",
   "name": "Вкусно",
+  "formerNames": ["Подача"],
   "eyebrow": "Вкусно · Дневник своей готовки · iOS",
   "targetSet": "vkontakte",
   "domain": "vkusno.app",
