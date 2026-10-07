@@ -68,7 +68,7 @@
 3. Ключи: убрать лишние (`python3 platform/tools/drop-keys.py <slug> key1 key2`), добавить недостающие. Для `appgroups`/`autofill` — экраны `widget`/`fill` на `ui.homeScreen` и `ui.safariFill`, ячейки в настройках; `keychain` — тап по виджету.
 4. Спека `concept.json`: `qualityContractVersion: 4`, `product.content`, `rationale` у всех ключей, `readiness` (research, critique), `appStore`, `positioning` с паттерном `own-journal`. **Перепиши все `screens[].ui`** (meta, purpose, hierarchy, contentCases) — в старых спеках там тексты, скопированные из чужих концептов («ветвь», «родство», «ужин»).
 5. Доки `docs/*.md` **и `sections.html`** (страница Overview!) — под новый продукт, плюс блок `<!-- @generated:access-rationale -->` в 02.
-6. Цикл из `platform/`: `npm run sync|build|shots|build|test|lint|audit|audit:grid|access -- <slug>`; затем `npm run build:all` (собирает лаунчер — без него ревью получает hard failure «битая ссылка ../index.html»).
+6. Цикл из `platform/`: `npm run cycle -- <slug>` (весь цикл и обходчик, строка на шаг); затем `npm run build:all` (собирает лаунчер — без него ревью получает hard failure «битая ссылка ../index.html»).
 7. `npm run review -- <slug>` → агент-критик с чистым контекстом по `platform/kernel/critic-rubric.md` заполняет `review.json` → правки → новый bundle → критик снова, пока не accepted.
 8. `readiness.status = "reviewed"` → новый bundle → подтверждающий проход → `npm run -s proof -- <slug>` зелёный → коммит.
 

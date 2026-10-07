@@ -1711,3 +1711,27 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .ui:is(.vk-light, .ok-light, .vk-dark) :is(.ui-avatar, .is-initial).h6 { background:linear-gradient(180deg, #e0a2f3, #d669ed); }
 /* Инициалы в круге звонка — 40 % диаметра, иначе круг читается пустым */
 .ui-call-face.is-initial { font-size:44px; }
+
+/* ── Повторяющиеся фичи доступов (lockNowPlaying, adCard) ── */
+.ui-lock { position:relative; overflow:hidden; background:#0b0d12!important; color:#fff; }
+.ui-lock-wall { position:absolute; inset:0; background-size:auto 200%; filter:blur(24px); opacity:.75; background-image:linear-gradient(180deg, #1c2433, #0b0d12); }
+.ui-lock-shade { position:absolute; inset:0; background:rgba(0,0,0,.34); }
+.ui-lock-time { position:relative; margin-top:88px; text-align:center; font:300 80px/84px var(--ui-face); letter-spacing:-.02em; color:#fff; }
+.ui-lock-time small { display:block; margin-top:4px; font:500 18px/22px var(--ui-face); letter-spacing:0; }
+.ui-now { position:absolute; left:12px; right:12px; bottom:calc(var(--safe-bottom) + 84px); padding:14px 16px 12px; border-radius:24px; background:rgba(40,40,44,.62); color:#fff; backdrop-filter:blur(30px) saturate(1.6); -webkit-backdrop-filter:blur(30px) saturate(1.6); }
+.ui-now-top { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.ui-now-top .ui-thumb { width:48px; height:48px; background-size:auto 200%; }
+.ui-now-top .ui-thumb.is-icon { display:grid; place-items:center; background:rgba(255,255,255,.12); color:#fff; }
+.ui-now-top .ui-row-text > span, .ui-now .ui-times, .ui-now-status { color:rgba(255,255,255,.66); }
+.ui-now-controls { display:flex; justify-content:space-around; margin-top:4px; }
+.ui-now-controls .ui-icon-btn { color:#fff; }
+.ui-now-controls .ui-icon-btn svg { width:28px; height:28px; }
+.ui-now-status { margin-top:6px; text-align:center; font:500 13px/16px var(--ui-face); }
+.ui-lock-foot { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 24px); }
+/* Тёмный локскрин и в светлой теме: кнопка — полупрозрачная белая, а не мягкий акцент */
+.ui-lock .ui-lock-foot .ui-btn { background:rgba(255,255,255,.16)!important; color:#fff!important; }
+.ui-ad { display:flex; align-items:center; gap:12px; width:calc(100% - 32px); margin:0 16px; padding:8px; border-radius:20px; background:var(--ui-card-2); text-align:left; }
+.ui-ad-art { width:48px; height:48px; flex:none; display:grid; place-items:center; border-radius:12px; background:var(--ui-accent-soft); color:var(--ui-link); }
+.ui-ad-art svg { width:24px; height:24px; }
+/* Светлая тема: не серая плашка на белом, а вложение с тонкой обводкой */
+.ui:is(.vk-light,.ok-light) .ui-ad { background:none; box-shadow:inset 0 0 0 1px var(--ui-line); }

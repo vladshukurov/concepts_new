@@ -455,3 +455,30 @@ export const composer = ({ placeholder = 'Сообщение', attach, mic, send
 export const callView = ({ name, status, controls, ...who }) =>
   `<div class="ui-call">${face(who, 'ui-call-face')}<strong>${name}</strong><span>${status}</span><div class="ui-call-controls">${controls.map(({ icon: ic, label, end = false, ...a }) =>
     `<span class="ui-call-ctl"><button class="${cls('ui-call-btn', end && 'is-end')}"${act({ label, ...a })}>${icon(ic)}</button><span>${label}</span></span>`).join('')}</div></div>`;
+
+/* ── Повторяющиеся фичи доступов: одна строка в экране вместо своей разметки в каждом концепте ── */
+
+/**
+ * Тело локскрина с Now Playing — плод фонового аудио. Экран: ui.screen({ className: 'ui-lock', body: ui.lockNowPlaying({...}) }).
+ * art — класс своей обложки или пусто (тогда значок волны); open — куда ведёт «Открыть «…»».
+ */
+export const lockNowPlaying = ({ time, date, art, title, sub, at, left, fillClass, status, open }) =>
+  `<div class="${cls('ui-lock-wall', art)}"></div><div class="ui-lock-shade"></div><div class="ui-lock-time">${time}<small>${date}</small></div>`
+  + `<section class="ui-now"><div class="ui-now-top"><span class="${cls('ui-thumb', art || 'is-icon')}">${art ? '' : icon('audio-lines')}</span><span class="ui-row-text"><strong>${title}</strong><span>${sub}</span></span></div>`
+  + `${progress({ fillClass, white: true })}<div class="ui-times"><span>${at}</span><span>${left}</span></div>`
+  + `<div class="ui-now-controls">${iconButton({ icon: 'rotate-ccw', label: 'Назад на 15 секунд', toast: 'Назад на 15 секунд' })}${iconButton({ icon: 'pause', fill: true, label: 'Пауза', toast: `Пауза на ${at}` })}${iconButton({ icon: 'rotate-cw', label: 'Вперёд на 15 секунд', toast: 'Вперёд на 15 секунд' })}</div>`
+  + `${status ? `<p class="ui-now-status">${status}</p>` : ''}</section><div class="ui-lock-foot">${button({ variant: 'secondary', block: true, ...open })}</div>`;
+
+/**
+ * Карточка рекламы, которая меняется после ATT: подпись «по интересам» видна только после разрешения.
+ * Кладётся в ui.section. go — экран выбора рекламы, где ATT спрашивают до «Без подбора».
+ */
+export const adCard = ({ icon: ic, title, sub, subGranted, ...a }) =>
+  `<button class="ui-ad"${act({ label: title, ...a })}><span class="ui-ad-art">${icon(ic)}</span><span class="ui-row-text"><strong>${title}</strong><span data-hide-granted="tracking">${sub}</span><span class="perm-hidden" data-show-granted="tracking">${subGranted}</span></span></button>`;
+
+/**
+ * Push у своего события: строка «Напомнить…» на экране события, после разрешения — «Напомним…».
+ * here — id экрана, где стоит строка (запрос и отказ остаются на нём).
+ */
+export const reminder = ({ title, titleGranted, sub, here, icon: ic = 'bell' }) =>
+  row({ lead: leadIcon(ic, { round: true, accent: true }), title: `<span data-hide-granted="push">${title}</span><span class="perm-hidden" data-show-granted="push">${titleGranted}</span>`, sub, ask: `push|${here}|${here}`, label: title });
