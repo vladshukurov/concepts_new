@@ -37,6 +37,11 @@ export function assess(slug) {
   /* Мессенджер — любая переписка в продукте: вкладка, чат обсуждения, диалог */
   const hasMessenger = spec.tabs?.some((t) => /messag/.test(t.role || '')) || /ui-chat\b|ui-dialog\b|ui-bubble\b/.test(all);
   const rows = [];
+  /* Где ключ спрашивают: экраны с data-ask и пункты меню «Подпись?ключ» */
+  const askScreens = (key) => Object.entries(markup).filter(([, h]) =>
+    [...h.matchAll(/data-ask="([^"|]+)/g)].some((m) => m[1].split('+').includes(key)) ||
+    [...h.matchAll(/data-menu="([^"]+)"/g)].some((m) => m[1].split('|').some((it) => it.split('?')[1] === key))).map(([id]) => id);
+  const traces = {};
   for (const p of spec.permissions) {
     const key = ALIAS[p.key] || p.key;
     const model = MODEL[key];
@@ -47,6 +52,12 @@ export function assess(slug) {
     if (p.silent) {
       if (model.prompt) issues.push('доступ с системным запросом не может быть тихим — нужен жест в сценарии');
       if (!p.evidence) issues.push('тихий доступ без evidence: где человек видит результат');
+      /* Плод фонового режима — строка на экране, а не фраза в спеке: trace ищется в разметке как есть */
+      const plain = (markup[p.screen] || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+      if (!p.trace) issues.push('нет trace: строка на экране, по которой видно, что режим отработал');
+      else if (!plain.includes(p.trace)) issues.push(`след «${p.trace}» не виден на экране ${p.screen}`);
+      else if (traces[p.trace]) issues.push(`тот же след, что у ${traces[p.trace]}: два ключа на одну фичу`);
+      if (p.trace) traces[p.trace] ||= p.key;
       rows.push({ key: p.key, anchor: !!p.anchor, screen: p.screen, issues });
       continue;
     }
@@ -57,6 +68,11 @@ export function assess(slug) {
     const isTab = spec.tabs?.some((t) => t.id === screenId);
     const inSettings = SETTINGS_SCREEN.test(screenId) || (!isTab && screenSpec?.ui?.pattern === 'settings');
     if (inSettings && !model.settingsOk) issues.push('жест в настройках — фича не в сценарии');
+    /* Push и уведомления о сообщениях из настроек формально допустимы, но сильными их делает своё событие */
+    if (inSettings && /^(push|commnotif|remotenotif)$/.test(key)) issues.push('свитч в настройках — привязать к своему событию на его экране');
+    const points = askScreens(p.key);
+    if (points.length > 1) issues.push(`запрос с ${points.length} экранов (${points.join(', ')}) — нужна одна точка`);
+    if (key === 'tracking' && !/data-show-granted="([^"]*,)?tracking(,[^"]*)?"/.test(all)) issues.push('после ATT реклама на экране не меняется');
     const toggleOnly = found.length && found.every((t) => /ui-cell/.test(t.tag)) && new RegExp(`data-switch="${p.key}"`).test(html);
     const stays = (p.target || screenId) === screenId;
     const switches = new RegExp(`data-switch="${p.key}"`).test(html);

@@ -471,7 +471,10 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .snackbar-text {
   flex:1; min-width:0;
   font:400 15px/20px var(--face); letter-spacing:-.01em; color:inherit;
-  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  /* Отказ объясняет, что осталось без доступа, — фраза длиннее одной строки.
+     Многоточие съедало именно эту часть («Камера недоступна — запиш…»). */
+  display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2;
+  overflow:hidden; text-wrap:pretty;
 }
 .snackbar-action {
   flex:none; color:var(--accent);
@@ -1287,6 +1290,8 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 .ui:is(.vk-light,.ok-light) .ui-large,
 .ui:is(.vk-light,.ok-light) .ui-top { background:var(--ui-card); }
 .ui:is(.vk-light,.ok-light) .ui-scroll.is-root { background:linear-gradient(var(--ui-card) 0 var(--safe-top), transparent var(--safe-top)); }
+/* Полоса под статус-баром держится при прокрутке: иначе посты и фото уезжают под часы и батарею */
+.ui:is(.vk-light,.ok-light) .ui-scroll.is-root::before { content:''; position:sticky; top:calc(-1 * var(--safe-top)); z-index:6; display:block; height:var(--safe-top); margin-top:calc(-1 * var(--safe-top)); background:var(--ui-card); }
 /* Мессенджер — одна белая поверхность, как в ВК: шапка, поиск и диалоги без серых полос между ними */
 .ui:is(.vk-light,.ok-light) .ui-scroll.is-root:has(> .ui-sec > .ui-dialog) { background:var(--ui-card); }
 .ui:is(.vk-light,.ok-light) .ui-scroll:has(> .ui-sec > .ui-dialog) > .ui-sec { margin-top:0; padding:0; border-top:0; }
