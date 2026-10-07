@@ -282,9 +282,10 @@ for (const slug of slugs) {
   const { spec, bytes } = build(slug);
   writeUxSpec(slug);
   const n = countKit(slug);
-  /* В лаунчере пока только концепты на новом UI (тема оболочки .ui). Старые собираются
-     и открываются по своему адресу, но в галерею вернутся после миграции */
-  if (UI_THEMES.has(spec.brand?.theme)) items.push({
+  /* В лаунчере только концепты на новом UI и на модели своего контента (контракт 4,
+     product.content). Остальные собираются и открываются по своему адресу, но в галерею
+     вернутся, когда их переведут на свой контент */
+  if (UI_THEMES.has(spec.brand?.theme) && spec.product?.content && spec.qualityContractVersion >= 4) items.push({
     slug,
     name: spec.name,
     tagline: spec.tagline,
