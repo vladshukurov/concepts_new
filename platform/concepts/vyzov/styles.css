@@ -1,0 +1,114 @@
+/* «Вызов» — мимикрия ВК Видео. Оболочка, кегли и цвета — из слоя `.ui` ядра;
+   здесь только своё: карточка задания точки, вертикальный клип, камера задания,
+   выбор из «Фото», страница квеста как канал, счёт, ТВ и карта точки. */
+
+/* Доли прогресса */
+.vz-p33 { width:33%; }
+.vz-p40 { width:40%; }
+
+/* Плеер хайлайта */
+.vz-watch-title { margin:4px 16px 0; }
+.vz-watch-meta { padding:4px 16px 0; }
+
+/* Формы */
+.vz-bottom { margin-top:16px; }
+.vz-input { width:100%; min-width:0; padding:0; border:0; outline:0; background:none; color:var(--ui-text); font:500 17px/22px var(--ui-face); }
+.vz-input::placeholder { color:var(--ui-text-2); }
+.vz-form .ui-cell-text > span { order:-1; font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.vz-form .ui-cell-text { display:flex; flex-direction:column; }
+
+/* Профиль */
+.vz-me { display:flex; align-items:center; gap:12px; min-width:0; }
+
+/* Карточка задания раунда */
+.vz-task { display:flex; flex-direction:column; gap:8px; margin:0 16px; padding:20px 16px; border-radius:16px; background-color:var(--ui-card); }
+.vz-task small { font:500 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.vz-task strong { font:700 24px/30px var(--ui-face); color:var(--ui-text); }
+.vz-task span { display:flex; align-items:center; gap:6px; font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
+.vz-task span svg { width:16px; height:16px; flex:none; color:var(--ui-link); }
+.vz-task-actions { margin-top:12px; }
+
+/* Страница вечера как канал */
+.vz-banner { height:132px; margin:0 16px; border-radius:12px; }
+.vz-channel { display:flex; align-items:center; gap:12px; padding:4px 16px 8px; }
+.vz-channel .ui-row-text strong { font:600 20px/26px var(--ui-face); }
+
+/* Лист «Создать» */
+.vz-create { overflow:hidden; }
+.vz-dim { position:absolute; inset:0; background-color:rgba(0,0,0,.6); }
+.vz-create-sheet { padding-bottom:16px; }
+.vz-sheet-head { display:flex; flex-direction:column; gap:4px; padding:0 16px 12px; }
+.vz-sheet-actions { margin-top:12px; }
+
+/* Заполнитель над таб-баром для экранов без прокрутки */
+.vz-fill { position:relative; flex:1; min-height:0; overflow:hidden; }
+
+/* Длинные задания и подписи переносятся */
+.vz-wrap .ui-row-text > strong { white-space:normal; }
+
+/* Клипы: вертикальный ответ игрока на весь экран */
+.vz-clips { overflow:hidden; }
+.vz-clip-frame { position:absolute; inset:0; border-radius:0; }
+.vz-clip-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.55), transparent 20%, transparent 58%, rgba(0,0,0,.78)); }
+.vz-clip-head { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding:calc(var(--safe-top) + 8px) 16px 0; color:#fff; }
+.vz-clip-head strong { font:600 17px/22px var(--ui-face); }
+.vz-clip-head span { font:400 13px/16px var(--ui-face); color:rgba(255,255,255,.72); }
+.vz-clip-side { position:absolute; right:8px; bottom:120px; z-index:1; display:flex; flex-direction:column; gap:12px; }
+.vz-clip-act { display:flex; flex-direction:column; align-items:center; gap:2px; }
+.vz-clip-act small { font:500 12px/14px var(--ui-face); color:#fff; }
+.vz-clip-info { position:absolute; left:16px; right:72px; bottom:28px; z-index:1; display:flex; align-items:flex-start; gap:12px; color:#fff; }
+.vz-clip-info .ui-row-text > span { color:rgba(255,255,255,.78); white-space:normal; }
+.vz-clip-bar { position:absolute; left:0; right:0; bottom:0; z-index:1; height:2px; background-color:rgba(255,255,255,.3); }
+.vz-clip-bar i { display:block; height:100%; background-color:#fff; }
+
+/* Камера ответа */
+.vz-camera { overflow:hidden; }
+.vz-camera-view { position:absolute; inset:0; border-radius:0; }
+.vz-camera-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.5), transparent 30%, transparent 62%, rgba(0,0,0,.72)); }
+.vz-camera-head { position:relative; z-index:1; display:flex; align-items:center; justify-content:space-between; padding:var(--safe-top) 8px 0; }
+.vz-rec { padding:4px 10px; border-radius:8px; background-color:#c4001a; font:600 15px/20px var(--ui-face); font-variant-numeric:tabular-nums; color:#fff; }
+.vz-camera-task { position:relative; z-index:1; display:flex; flex-direction:column; gap:4px; margin:12px 16px 0; padding:12px 14px; border-radius:14px; background-color:rgba(0,0,0,.55); color:#fff; }
+.vz-camera-task small { font:500 12px/14px var(--ui-face); color:rgba(255,255,255,.72); }
+.vz-camera-task strong { font:600 17px/22px var(--ui-face); }
+.vz-camera-meta { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 112px); z-index:1; display:flex; justify-content:center; gap:16px; font:500 13px/16px var(--ui-face); color:rgba(255,255,255,.86); }
+.vz-camera-meta > span { display:flex; align-items:center; gap:4px; }
+.vz-camera-meta svg { width:14px; height:14px; }
+.vz-camera-bar { position:absolute; left:24px; right:24px; bottom:calc(var(--safe-bottom) + 16px); z-index:1; display:flex; align-items:center; justify-content:space-between; }
+.vz-shutter { position:relative; width:76px; height:76px; border-radius:50%; box-shadow:inset 0 0 0 4px #fff; }
+.vz-shutter > span { position:absolute; inset:9px; border-radius:50%; background-color:#ff3b30; }
+.vz-spacer { width:48px; }
+
+/* Выбор из «Фото» */
+.vz-picker-meta { padding:0 16px 12px; }
+.vz-picker-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+.vz-picker-grid > button { position:relative; aspect-ratio:1; min-height:44px; border-radius:0; }
+.vz-picker-grid .ui-duration { z-index:1; right:4px; bottom:4px; }
+.vz-picker-grid i { position:absolute; right:6px; top:6px; z-index:1; width:24px; height:24px; display:grid; place-items:center; border-radius:50%; background-color:var(--ui-accent); box-shadow:0 0 0 2px #fff; font:600 13px/1 var(--ui-face); font-style:normal; color:#fff; }
+.vz-picker-grid .is-picked { box-shadow:inset 0 0 0 3px var(--ui-accent); }
+
+
+/* Выбор из «Фото» — чёрный фон системного листа */
+.ui.vz-picker { background-color:#000; }
+
+/* Счёт квеста */
+.vz-score { display:flex; align-items:center; justify-content:center; gap:24px; margin:4px 16px 0; padding:16px; border-radius:16px; background-color:var(--ui-card); }
+.vz-score span { display:flex; flex-direction:column; align-items:center; gap:2px; font:500 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.vz-score strong { font:700 34px/40px var(--ui-face); color:var(--ui-text); font-variant-numeric:tabular-nums; }
+.vz-score i { font:700 28px/40px var(--ui-face); font-style:normal; color:var(--ui-text-2); }
+.vz-banner { position:relative; }
+
+/* Финал на телевизоре */
+.vz-tv { position:relative; aspect-ratio:16/9; margin:0 16px; border-radius:12px; overflow:hidden; display:flex; align-items:flex-end; }
+.vz-tv-score { position:relative; z-index:1; display:flex; flex-direction:column; gap:2px; width:100%; padding:12px 14px; background:linear-gradient(180deg, transparent, rgba(0,0,0,.75)); color:#fff; }
+.vz-tv-score small { font:500 12px/14px var(--ui-face); color:rgba(255,255,255,.75); }
+.vz-tv-score strong { font:700 22px/28px var(--ui-face); }
+.vz-tv-score span { font:400 13px/16px var(--ui-face); color:rgba(255,255,255,.8); }
+.vz-wrap .ui-progress { margin:12px 16px 0; }
+.vz-wrap .ui-times { padding:4px 16px 0; }
+.vz-remote { display:flex; align-items:center; justify-content:center; gap:24px; padding:8px 16px 0; }
+
+/* Карта новой точки */
+.vz-map { position:relative; height:180px; margin:0 16px; border-radius:12px; display:grid; place-items:center; }
+.vz-pin { position:relative; z-index:1; width:44px; height:44px; display:grid; place-items:center; border-radius:50%; background-color:var(--ui-accent); color:#fff; box-shadow:0 0 0 6px rgba(0,119,255,.3); }
+.vz-pin svg { width:22px; height:22px; }
+textarea.vz-input { resize:none; }

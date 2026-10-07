@@ -1,0 +1,20 @@
+<!-- @overview:vision -->
+<p class="deck">Видеоквест по городу с друзьями: {{INSIGHT}}.</p>
+<div class="utp-box"><strong>УТП.</strong> {{TAGLINE}}</div>
+{{FEAT_GRID}}
+<!-- @end -->
+
+<!-- @overview:arch -->
+<p class="deck">Квест, точки и ролики — в общей базе только для участников. Точка отмечается по геопозиции на телефоне, финал идёт на телевизор через Google Cast.</p>
+<div class="flow"><span class="chip">Новый квест</span><span class="arr">→</span><span class="chip">Точка по геопозиции</span><span class="arr">→</span><span class="chip">Ролик задания</span><span class="arr">→</span><span class="chip">Финал на ТВ</span></div>
+<div class="arch">
+  <div class="arch-layer"><h3>UI</h3><p>Главная · Клипы · Создать · Квесты · Профиль · Точка · Камера · Плеер · Итог.</p></div>
+  <div class="arch-layer"><h3>Domain</h3><p>Quest · Point · Task · Team · Clip · Score · Finale.</p></div>
+  <div class="arch-layer"><h3>Services</h3><p>Core Location · AVFoundation · PhotoKit · Google Cast · Now Playing · UserNotifications.</p></div>
+  <div class="arch-layer"><h3>Data</h3><p>CloudKit shared database: квест виден только участникам.</p></div>
+</div>
+<!-- @end -->
+
+<section class="section" id="perm-matrix"><h2>Матрица доступов</h2><p class="deck">Каждый доступ — одна кнопка в своей фиче, результат виден сразу.</p>{{PERM_MATRIX}}</section>
+<section class="section" id="no-backend"><h2>Без своего сервера</h2><p class="deck">Что обычно требует сервера и чем это заменено.</p>{{BACKENDLESS}}</section>
+<section class="section" id="screen-table"><h2>Экраны</h2><p class="deck">Корни — пять вкладок в грамматике ВК Видео; квест, точка, камера и итог — свои экраны игры.</p>{{SCREEN_TABLE}}</section>

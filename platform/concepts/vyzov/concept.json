@@ -1,0 +1,1489 @@
+{
+  "slug": "vyzov",
+  "name": "Вызов",
+  "eyebrow": "Вызов · iOS",
+  "targetSet": "vk-video",
+  "domain": "vyzov.app",
+  "heroTitle": "Видеоквест по городу с друзьями",
+  "heroDeck": "Один придумывает маршрут из точек и заданий, команды проходят его и снимают выполнение на видео, а вечером — финал на телевизоре: счёт и лучшие моменты.",
+  "tagline": "Маршрут из точек с заданиями, команды снимают их на видео, вечером финал на ТВ",
+  "insight": "прогулка по городу с друзьями становится игрой, когда на каждой точке есть вызов, а смешнее всего потом смотреть, как его выполнили свои",
+  "deck": "Организатор ставит точки на карте и пишет задания, телефон по геопозиции знает, на какой точке команда, ролики сразу встают в ленту квеста, финал идёт на телевизоре дома.",
+  "qualityContractVersion": 4,
+  "uiContractVersion": 3,
+  "start": "phone",
+  "product": {
+    "audience": "Компания друзей, которая в выходные гуляет по городу: один организатор и две-три команды по два-четыре человека",
+    "situation": "Суббота, центр города, у каждого телефон с камерой; вечером все собираются дома у организатора",
+    "problem": "Обычная прогулка быстро превращается в «куда дальше», а готовые квесты чужие, платные и без своих шуток",
+    "promise": "Организатор за полчаса ставит точки и пишет задания, команды идут по маршруту и снимают выполнение, вечером финал на ТВ",
+    "differentiator": "Весь контент — ролики самих игроков внутри своего квеста; задания пишут игроки, нет ленты чужих и публикации для всех",
+    "returnReasons": [
+      "Пройти следующую точку и посмотреть, что сняла соперничающая команда",
+      "Собрать свой квест на следующие выходные",
+      "Пересмотреть финал и сохранить фильм квеста в «Фото»"
+    ],
+    "verticalSlice": {
+      "entry": "phone",
+      "action": "point",
+      "result": "quest"
+    },
+    "coreLoop": [
+      "Придумать квест: точки на карте и задания для команд",
+      "Пройти маршрут: на точке снять задание, ролик сразу в ленте квеста",
+      "Вечером показать финал на телевизоре и сохранить фильм квеста"
+    ],
+    "nonGoals": [
+      "Лента чужих роликов, подписки, просмотры и публикация для всех",
+      "Каталог готовых квестов и платные маршруты"
+    ],
+    "content": {
+      "kind": "own-media",
+      "what": "Ролики игроков, снятые на точках своего квеста; задания пишут сами игроки — это механика игры",
+      "library": false,
+      "feed": false,
+      "sharing": false
+    }
+  },
+  "positioning": {
+    "mode": "mimicry",
+    "categoryFit": "Съёмка, просмотр, плеер и показ на телевизоре — грамматика ВК Видео, но ролики свои и живут внутри квеста",
+    "familiarPatterns": [
+      "Тёмная главная с чипсами и крупными кадрами 16:9 с длительностью",
+      "Таб-бар с «Клипами» и «Создать»",
+      "Плеер со сворачиванием в мини-плеер",
+      "Страница квеста как страница канала"
+    ],
+    "distinctions": [
+      "Вместо ленты чужих — ролики с точек своих квестов",
+      "Вместо подписок — вкладка «Квесты»",
+      "Главное действие — дойти до точки и снять задание, а не смотреть чужое"
+    ],
+    "evidenceScreens": [
+      "home",
+      "watch",
+      "clips",
+      "quest",
+      "point",
+      "final"
+    ],
+    "referencePatterns": [
+      "own-library",
+      "capture",
+      "immersive-player",
+      "cast"
+    ],
+    "referenceEvidence": [
+      {
+        "pattern": "own-library",
+        "screen": "home",
+        "behavior": "Главная: чипсы «Все · Идёт сейчас · Мои квесты · Лучшее», крупные кадры роликов с точек своих квестов с длительностью"
+      },
+      {
+        "pattern": "capture",
+        "screen": "point",
+        "behavior": "«Снять задание» открывает камеру со звуком, ролик сразу встаёт в ленту квеста"
+      },
+      {
+        "pattern": "immersive-player",
+        "screen": "watch",
+        "behavior": "Плеер ролика сворачивается в мини-плеер над таб-баром"
+      },
+      {
+        "pattern": "cast",
+        "screen": "final",
+        "behavior": "«Показать финал на телевизоре» находит телевизор дома, счёт и лучшие моменты идут на нём"
+      }
+    ]
+  },
+  "readiness": {
+    "status": "draft",
+    "referenceResearch": [
+      {
+        "source": "ВК Видео, iOS",
+        "observation": "Тёмная главная, чипсы разделов, кадр 16:9 во всю ширину с длительностью, под ним аватар, заголовок и мета, таб-бар с «Клипами» и «Создать»",
+        "decision": "Главная и плеер повторяют эту грамматику, мета под кадром — своя: «Квест «Старый город» · точка 3 · 0:21 · сегодня»"
+      },
+      {
+        "source": "Городские фото-квесты и «Encounter»",
+        "observation": "Маршрут из точек, задание открывается на месте, командный счёт",
+        "decision": "Точка открывается по геопозиции, задание снимается на видео, счёт команд — на странице квеста и в финале"
+      }
+    ],
+    "productCritique": [
+      {
+        "objection": "Видео-квест может превратиться в ленту чужих роликов",
+        "resolution": "Главная и клипы — только ролики команд своих квестов, публикации для всех нет",
+        "evidenceScreens": [
+          "home",
+          "clips",
+          "quest"
+        ]
+      },
+      {
+        "objection": "Геопозиция может выглядеть слежкой",
+        "resolution": "Она спрашивается одной кнопкой «Где я на маршруте» и нужна только чтобы отметить точку и показать путь к следующей",
+        "evidenceScreens": [
+          "quest"
+        ]
+      }
+    ],
+    "visualPasses": []
+  },
+  "brand": {
+    "accent": "#0077FF",
+    "accentDark": "#0077FF",
+    "theme": "vk-dark",
+    "fonts": "Inter:wght@400;500;600;700"
+  },
+  "tabs": [
+    {
+      "id": "home",
+      "label": "Главная",
+      "role": "home"
+    },
+    {
+      "id": "clips",
+      "label": "Клипы",
+      "role": "library"
+    },
+    {
+      "id": "create",
+      "label": "Создать",
+      "role": "create"
+    },
+    {
+      "id": "quests",
+      "label": "Квесты",
+      "role": "library"
+    },
+    {
+      "id": "profile",
+      "label": "Профиль",
+      "role": "profile"
+    }
+  ],
+  "permissions": [
+    {
+      "key": "location",
+      "plist": "NSLocationWhenInUseUsageDescription",
+      "alert": {
+        "title": "«Вызов» запрашивает доступ к геопозиции",
+        "text": "Отметить, на какой точке маршрута вы стоите, и показать путь к следующей"
+      },
+      "feature": "Точка маршрута по геопозиции",
+      "gesture": "«Где я на маршруте» на странице квеста",
+      "screen": "quest",
+      "target": "quest",
+      "fallback": "Точку отмечают вручную в списке точек, адрес следующей виден в списке",
+      "snack": "Отметьте точку вручную",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "Core Location when in use, пока открыт квест; расстояние до точки считает MapKit",
+      "rationale": {
+        "who": "Игрок команды на маршруте",
+        "moment": "На странице квеста нажимает «Где я на маршруте»",
+        "need": "Задание точки открывается, когда команда на месте, а расстояние до следующей считается от того, где вы стоите",
+        "without": "Команда отмечает точку вручную и ищет следующую по адресу"
+      },
+      "reviewNote": "Доступ вызывается действием «Где я на маршруте» на странице квеста на экране «quest». При отказе: Точку отмечают вручную в списке точек, адрес следующей виден в списке",
+      "result": "Вы на точке 4 · до точки 5 — 350 м"
+    },
+    {
+      "key": "camera",
+      "plist": "NSCameraUsageDescription",
+      "alert": {
+        "title": "«Вызов» запрашивает доступ к камере",
+        "text": "Снять выполнение задания на точке"
+      },
+      "feature": "Ролик задания точки",
+      "gesture": "«Снять задание» на экране точки",
+      "screen": "point",
+      "target": "camera",
+      "fallback": "Можно добавить ролик, снятый раньше, из «Фото»",
+      "snack": "Камера выключена",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "AVCaptureSession, основная камера, до 30 секунд",
+      "rationale": {
+        "who": "Игрок на точке",
+        "moment": "На экране точки нажимает «Снять задание»",
+        "need": "Задание выполняют на видео прямо здесь; без камеры его нечем снять",
+        "without": "Команда добавляет снятое раньше из «Фото»"
+      },
+      "reviewNote": "Доступ вызывается действием «Снять задание» на экране точки на экране «point». При отказе: Можно добавить ролик, снятый раньше, из «Фото»"
+    },
+    {
+      "key": "mic",
+      "plist": "NSMicrophoneUsageDescription",
+      "alert": {
+        "title": "«Вызов» запрашивает доступ к микрофону",
+        "text": "Записать звук в ролике задания"
+      },
+      "feature": "Звук в ролике задания",
+      "gesture": "«Снять задание» на экране точки",
+      "screen": "point",
+      "target": "camera",
+      "fallback": "Ролик не записывается без звука",
+      "snack": "Микрофон выключен",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "AVAudioSession только во время записи ролика",
+      "rationale": {
+        "who": "Игрок, который снимает задание",
+        "moment": "Сразу за камерой, по той же кнопке «Снять задание»",
+        "need": "Половина заданий — звук: припев у фонтана и стук в дверь без звука не засчитать",
+        "without": "Команда добавляет снятое раньше из «Фото»"
+      },
+      "reviewNote": "Доступ вызывается действием «Снять задание» на экране точки на экране «point». При отказе: Ролик не записывается без звука"
+    },
+    {
+      "key": "photos",
+      "plist": "NSPhotoLibraryUsageDescription",
+      "alert": {
+        "title": "«Вызов» запрашивает доступ к «Фото»",
+        "text": "Добавить на точку ролик, снятый раньше"
+      },
+      "feature": "Снятое раньше на точку",
+      "gesture": "«Добавить снятое раньше» на экране точки",
+      "screen": "point",
+      "target": "picker",
+      "fallback": "Ролик снимают заново камерой",
+      "snack": "Галерея недоступна",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "PhotoKit: выборка видео за день квеста",
+      "rationale": {
+        "who": "Игрок, который снял задание обычной камерой",
+        "moment": "На экране точки нажимает «Добавить снятое раньше»",
+        "need": "Ролик уже лежит в медиатеке, его нужно найти за сегодня; без доступа выбрать нечего",
+        "without": "Задание снимают заново"
+      },
+      "reviewNote": "Доступ вызывается действием «Добавить снятое раньше» на экране точки на экране «point». При отказе: Ролик снимают заново камерой"
+    },
+    {
+      "key": "photosadd",
+      "plist": "NSPhotoLibraryAddUsageDescription",
+      "alert": {
+        "title": "«Вызов» запрашивает доступ к сохранению в «Фото»",
+        "text": "Сохранить фильм квеста одним роликом"
+      },
+      "feature": "Фильм квеста в «Фото»",
+      "gesture": "«Сохранить фильм квеста в «Фото»» на итоге квеста",
+      "screen": "final",
+      "target": "final",
+      "fallback": "Фильм остаётся в приложении, его можно досмотреть в плеере",
+      "snack": "Фильм остался в приложении",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "PHPhotoLibrary performChanges: только запись готового фильма",
+      "rationale": {
+        "who": "Игрок после финала",
+        "moment": "На итоге квеста нажимает «Сохранить фильм квеста в «Фото»»",
+        "need": "Фильм попадает в медиатеку только с этим доступом",
+        "without": "Фильм смотрят в приложении"
+      },
+      "reviewNote": "Доступ вызывается действием «Сохранить фильм квеста в «Фото»» на итоге квеста на экране «final». При отказе: Фильм остаётся в приложении, его можно досмотреть в плеере"
+    },
+    {
+      "key": "localnetwork",
+      "plist": "NSLocalNetworkUsageDescription (+ NSBonjourServices: _googlecast._tcp)",
+      "alert": {
+        "title": "«Вызов» запрашивает доступ к локальной сети",
+        "text": "Найти телевизор дома и показать на нём финал квеста"
+      },
+      "feature": "Финал на телевизоре",
+      "gesture": "«Показать финал на телевизоре» на итоге квеста",
+      "screen": "final",
+      "target": "cast",
+      "fallback": "Финал смотрят на телефоне",
+      "snack": "Телевизор не найден",
+      "risk": "medium",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "Bonjour (_googlecast._tcp) в домашней сети, Google Cast показывает счёт и ролики",
+      "rationale": {
+        "who": "Организатор, у которого дома собрались команды",
+        "moment": "На итоге квеста нажимает «Показать финал на телевизоре»",
+        "need": "Телевизор в комнате находится только поиском в домашней сети; после этого финал идёт на нём, а телефон становится пультом",
+        "without": "Финал смотрят на телефоне"
+      },
+      "reviewNote": "Доступ вызывается действием «Показать финал на телевизоре» на итоге квеста на экране «final». При отказе: Финал смотрят на телефоне",
+      "result": "Идёт на «Гостиная»"
+    },
+    {
+      "key": "push",
+      "plist": "aps-environment (Push Notifications capability)",
+      "alert": {
+        "title": "«Вызов» запрашивает разрешение на уведомления",
+        "text": "Напомним о старте квеста"
+      },
+      "feature": "Напоминание о старте",
+      "gesture": "«Напомнить о старте в субботу в 12:00» на странице квеста",
+      "screen": "embankment",
+      "target": "embankment",
+      "fallback": "Время старта видно на странице квеста и во вкладке «Квесты»",
+      "snack": "Уведомления выключены",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "UNUserNotificationCenter: локальное уведомление за час до старта",
+      "rationale": {
+        "who": "Организатор квеста",
+        "moment": "На странице своего квеста нажимает «Напомнить о старте в субботу в 12:00»",
+        "need": "Старт через три дня; напоминание приходит за час, когда приложение закрыто",
+        "without": "Время старта видно на странице квеста"
+      },
+      "reviewNote": "Доступ вызывается действием «Напомнить о старте в субботу в 12:00» на странице квеста на экране «embankment». При отказе: Время старта видно на странице квеста и во вкладке «Квесты»"
+    },
+    {
+      "key": "audio",
+      "plist": "UIBackgroundModes: audio",
+      "alert": {
+        "title": "Фоновое воспроизведение",
+        "text": "Подсказка к точке продолжит играть при погашенном экране"
+      },
+      "feature": "Аудиоподсказка к следующей точке",
+      "gesture": "«Подсказка к точке 5» на экране точки",
+      "screen": "point",
+      "target": "lock",
+      "fallback": "Подсказка встаёт на паузу, когда экран гаснет",
+      "snack": "Подсказка на паузе",
+      "risk": "high",
+      "anchor": false,
+      "conditional": true,
+      "grounding": "AVAudioSession playback и MPNowPlayingInfoCenter; ролики досматриваются в мини-плеере",
+      "rationale": {
+        "who": "Игрок, который идёт к следующей точке",
+        "moment": "На экране точки нажимает «Подсказка к точке 5» и убирает телефон в карман",
+        "need": "Подсказку слушают на ходу с погашенным экраном; без фонового режима iOS останавливает звук",
+        "without": "Подсказку слушают с открытым приложением"
+      },
+      "reviewNote": "Доступ вызывается действием «Подсказка к точке 5» на экране точки на экране «point». При отказе: Подсказка встаёт на паузу, когда экран гаснет",
+      "activate": true,
+      "requires": "Воспроизведение при блокировке с Now Playing"
+    },
+    {
+      "key": "tracking",
+      "plist": "NSUserTrackingUsageDescription",
+      "alert": {
+        "title": "Разрешить «Вызов» отслеживать ваши действия в приложениях и на сайтах других компаний?",
+        "text": "Данные будут использоваться для показа релевантной рекламы",
+        "deny": "Запретить отслеживание",
+        "grant": "Разрешить"
+      },
+      "feature": "Реклама на маршруте по интересам",
+      "gesture": "«Подбирать по интересам» на экране «Реклама»",
+      "screen": "ads",
+      "target": "ads",
+      "fallback": "Реклама остаётся без подбора, квест работает полностью",
+      "snack": "Реклама останется без подбора",
+      "risk": "medium",
+      "anchor": false,
+      "conditional": true,
+      "grounding": "Рекламный SDK, контекстная реклама без IDFA при отказе",
+      "rationale": {
+        "who": "Игрок бесплатной версии",
+        "moment": "Из карточки рекламы на главной открывает «Реклама» и нажимает «Подбирать по интересам»",
+        "need": "Без разрешения сеть не знает интересов из других приложений, карточка остаётся общей",
+        "without": "Реклама без подбора"
+      },
+      "reviewNote": "Доступ вызывается действием «Подбирать по интересам» на экране «Реклама» на экране «ads». При отказе: Реклама остаётся без подбора, квест работает полностью",
+      "requires": "ATT показывается до выбора «Без подбора»",
+      "snackOnce": true
+    }
+  ],
+  "screens": [
+    {
+      "id": "phone",
+      "title": "Вход по номеру",
+      "type": "старт, без таб-бара",
+      "light": false,
+      "meta": "Номер и пароль · без OTP",
+      "ui": {
+        "pattern": "auth",
+        "navigation": "push",
+        "purpose": "Войти по номеру телефона или продолжить без аккаунта",
+        "primaryAction": "Далее",
+        "hierarchy": {
+          "primary": "Номер телефона и вход",
+          "secondary": "Регистрация, гостевой проход, правовая строка и поддержка"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error"
+        ],
+        "density": "low",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Номер введён полностью, дальше пароль"
+          },
+          {
+            "kind": "stress",
+            "example": "Номер с кодом другой страны"
+          },
+          {
+            "kind": "failure",
+            "example": "Номер введён неверно или сеть недоступна"
+          }
+        ]
+      }
+    },
+    {
+      "id": "home",
+      "title": "Главная",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Ролики с точек, квесты",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "root",
+        "purpose": "Смотреть ролики с точек своих квестов и перейти к квесту",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Крупные кадры роликов 16:9 с длительностью",
+          "secondary": "Чипсы разделов, квест, который идёт, мои квесты и мини-плеер"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Два ролика сегодняшнего «Старого города» и итог «Сокольников»"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное название ролика в две строки"
+          },
+          {
+            "kind": "failure",
+            "example": "Квестов ещё не было — главная зовёт создать первый"
+          }
+        ]
+      }
+    },
+    {
+      "id": "clips",
+      "title": "Клипы",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Смотреть вертикальные ролики команд подряд",
+      "ui": {
+        "pattern": "player",
+        "navigation": "root",
+        "purpose": "Смотреть вертикальные ролики команд подряд",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Ролик команды на весь экран",
+          "secondary": "Очки, квест, следующий ролик"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Ролик Оли с точки 2"
+          },
+          {
+            "kind": "stress",
+            "example": "Ролик длиннее задания"
+          },
+          {
+            "kind": "failure",
+            "example": "В квесте ещё никто не снял ни одной точки"
+          }
+        ]
+      }
+    },
+    {
+      "id": "create",
+      "title": "Создать",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Создать квест или снять задание текущей точки",
+      "ui": {
+        "pattern": "task",
+        "navigation": "root",
+        "purpose": "Создать квест или снять задание текущей точки",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Строка «Новый квест» с точками и заданиями",
+          "secondary": "Снять задание точки 4, на которой стоите"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Новый квест и задание точки"
+          },
+          {
+            "kind": "stress",
+            "example": "Квест не идёт — доступен только новый"
+          },
+          {
+            "kind": "failure",
+            "example": "Ни одного квеста — доступен только новый"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quests",
+      "title": "Квесты",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Квесты: идёт сейчас, скоро и прошли",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "root",
+        "purpose": "Квесты: идёт сейчас, скоро и прошли",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Квест, который идёт, крупным кадром",
+          "secondary": "Свой квест в субботу и итог прошлого"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Старый город, Набережная и Сокольники"
+          },
+          {
+            "kind": "stress",
+            "example": "Пять квестов за месяц"
+          },
+          {
+            "kind": "failure",
+            "example": "Ни одного квеста — вкладка зовёт создать первый"
+          }
+        ]
+      }
+    },
+    {
+      "id": "profile",
+      "title": "Профиль",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Номер, счётчики, ролики команды и настройки",
+      "ui": {
+        "pattern": "settings",
+        "navigation": "root",
+        "purpose": "Номер, счётчики, ролики команды и настройки",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Номер и счётчики квестов и роликов",
+          "secondary": "Ролик команды, реклама, аккаунт"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "3 квеста, 11 роликов"
+          },
+          {
+            "kind": "stress",
+            "example": "Десятки квестов за год"
+          },
+          {
+            "kind": "failure",
+            "example": "Ни одного своего ролика в квестах"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quest",
+      "title": "Старый город",
+      "type": "push",
+      "light": false,
+      "meta": "Страница квеста как канал: где вы на маршруте, счёт, точки и ролики",
+      "parent": "quests",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Страница квеста как канал: где вы на маршруте, счёт, точки и ролики",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Где вы на маршруте и путь к следующей точке",
+          "secondary": "Счёт команд, точки, ролики квеста"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Вы на точке 4 · до точки 5 — 350 м"
+          },
+          {
+            "kind": "stress",
+            "example": "Девять точек и три команды"
+          },
+          {
+            "kind": "failure",
+            "example": "Геопозиция запрещена — точку отмечают вручную"
+          }
+        ]
+      }
+    },
+    {
+      "id": "point",
+      "title": "Точка 4",
+      "type": "push",
+      "light": false,
+      "meta": "Показать задание точки и снять его",
+      "parent": "quest",
+      "ui": {
+        "pattern": "task",
+        "navigation": "push",
+        "purpose": "Показать задание точки и снять его",
+        "primaryAction": "Снять задание",
+        "hierarchy": {
+          "primary": "Задание точки крупно",
+          "secondary": "Снятое раньше, ролики точки, подсказка к следующей"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Задание точки 4 и ролик Ежа"
+          },
+          {
+            "kind": "stress",
+            "example": "Задание в три строки"
+          },
+          {
+            "kind": "failure",
+            "example": "Камера запрещена — пустое состояние iOS"
+          }
+        ]
+      }
+    },
+    {
+      "id": "camera",
+      "title": "Съёмка задания",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Снять выполнение задания точки",
+      "parent": "point",
+      "ui": {
+        "pattern": "capture",
+        "navigation": "fullscreen",
+        "purpose": "Снять выполнение задания точки",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Видоискатель и задание поверх",
+          "secondary": "Таймер, звук и смена камеры"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Основная камера, 12 секунд"
+          },
+          {
+            "kind": "stress",
+            "example": "Съёмка у фонтана в сумерках с шумом воды"
+          },
+          {
+            "kind": "failure",
+            "example": "Камера занята другим приложением"
+          }
+        ]
+      }
+    },
+    {
+      "id": "picker",
+      "title": "Выбор из «Фото»",
+      "type": "system",
+      "light": false,
+      "meta": "Выбрать ролик, снятый раньше, для точки",
+      "parent": "point",
+      "ui": {
+        "pattern": "system",
+        "navigation": "system",
+        "purpose": "Выбрать ролик, снятый раньше, для точки",
+        "primaryAction": "Добавить",
+        "hierarchy": {
+          "primary": "Сетка роликов за сегодня",
+          "secondary": "Выбранный ролик и кнопка «Добавить»"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Выбран ролик 0:18, снятый в 16:31"
+          },
+          {
+            "kind": "stress",
+            "example": "Сотни роликов за день"
+          },
+          {
+            "kind": "failure",
+            "example": "За сегодня в медиатеке нет ни одного видео"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lock",
+      "title": "Подсказка при погашенном экране",
+      "type": "system",
+      "light": false,
+      "meta": "Слушать подсказку к следующей точке на ходу",
+      "parent": "point",
+      "ui": {
+        "pattern": "system",
+        "navigation": "system",
+        "purpose": "Слушать подсказку к следующей точке на ходу",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Подсказка на локскрине",
+          "secondary": "Кнопка возврата к экрану точки 4"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Подсказка к точке 5 на локскрине"
+          },
+          {
+            "kind": "stress",
+            "example": "Пауза и перемотка с локскрина"
+          },
+          {
+            "kind": "failure",
+            "example": "Наушники отключились, пауза"
+          }
+        ]
+      }
+    },
+    {
+      "id": "watch",
+      "title": "Спели припев у фонтана",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Смотреть ролик с точки и свернуть его в мини-плеер",
+      "parent": "home",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Смотреть ролик с точки и свернуть его в мини-плеер",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Плеер ролика с точки на всю ширину",
+          "secondary": "Игрок, задание, квест и ещё ролики"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Ролик Димы, точка 3, 0:21"
+          },
+          {
+            "kind": "stress",
+            "example": "Ролик длиной 1:05 с двумя куплетами"
+          },
+          {
+            "kind": "failure",
+            "example": "Ролик не загрузился"
+          }
+        ]
+      }
+    },
+    {
+      "id": "watchdoor",
+      "title": "Стук в дверь 1907",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Смотреть ролик команды Ёж с точки 4",
+      "parent": "home",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Смотреть ролик команды Ёж с точки 4",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Плеер ролика с точки на всю ширину",
+          "secondary": "Игрок, задание, квест и ещё ролики"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Ролик Гоши с точки 4, длина 0:14"
+          },
+          {
+            "kind": "stress",
+            "example": "Ролик снят без звука, стук не слышно"
+          },
+          {
+            "kind": "failure",
+            "example": "Гоша удалил ролик, плеер показывает заглушку"
+          }
+        ]
+      }
+    },
+    {
+      "id": "watchboat",
+      "title": "Лодка без вёсел",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Смотреть лучший момент «Сокольников»",
+      "parent": "final",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Смотреть лучший момент «Сокольников»",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Плеер ролика с точки на всю ширину",
+          "secondary": "Игрок, задание, итог и ещё ролики"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Ролик Насти с точки 6, длина 0:33"
+          },
+          {
+            "kind": "stress",
+            "example": "Ролик на 2:40 вместо положенных 30 секунд"
+          },
+          {
+            "kind": "failure",
+            "example": "Настя удалила ролик, в итоге остался счёт"
+          }
+        ]
+      }
+    },
+    {
+      "id": "final",
+      "title": "Итог «Сокольников»",
+      "type": "push",
+      "light": false,
+      "meta": "Итог квеста: счёт, финал на ТВ, лучшие моменты и фильм в «Фото»",
+      "parent": "quests",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Итог квеста: счёт, финал на ТВ, лучшие моменты и фильм в «Фото»",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Счёт команд крупно: Сова 34 : 29 Ёж",
+          "secondary": "Финал на ТВ, фильм в «Фото», лучшие моменты и точки"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Сова 34 : 29 Ёж, фильм 3:48"
+          },
+          {
+            "kind": "stress",
+            "example": "Ничья 31 : 31 после восьми точек"
+          },
+          {
+            "kind": "failure",
+            "example": "Фильм ещё собирается"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cast",
+      "title": "Идёт на «Гостиная»",
+      "type": "push",
+      "light": false,
+      "meta": "Финал на телевизоре, телефон — пульт",
+      "parent": "final",
+      "ui": {
+        "pattern": "player",
+        "navigation": "push",
+        "purpose": "Финал на телевизоре, телефон — пульт",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Счёт и ролик на экране телевизора",
+          "secondary": "Пульт: точки назад и вперёд, громкость"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Финал идёт на «Гостиная»"
+          },
+          {
+            "kind": "stress",
+            "example": "Два телевизора в сети"
+          },
+          {
+            "kind": "failure",
+            "example": "Телевизор выключился"
+          }
+        ]
+      }
+    },
+    {
+      "id": "embankment",
+      "title": "Набережная",
+      "type": "push",
+      "light": false,
+      "meta": "Свой квест в субботу: старт, точки, напоминание",
+      "parent": "quests",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Свой квест в субботу: старт, точки, напоминание",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Когда и где старт квеста, кто идёт",
+          "secondary": "Напоминание, точки, добавить точку"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Суббота, 12:00, 3 точки из 7"
+          },
+          {
+            "kind": "stress",
+            "example": "Точек больше десяти"
+          },
+          {
+            "kind": "failure",
+            "example": "Старт перенесён на воскресенье из-за дождя"
+          }
+        ]
+      }
+    },
+    {
+      "id": "newquest",
+      "title": "Новый квест",
+      "type": "modal",
+      "light": false,
+      "meta": "Создать квест: название, старт, команды и точки",
+      "parent": "create",
+      "ui": {
+        "pattern": "editor",
+        "navigation": "modal",
+        "purpose": "Создать квест: название, старт, команды и точки",
+        "primaryAction": "Создать квест",
+        "hierarchy": {
+          "primary": "Название квеста, старт и команды",
+          "secondary": "Точки и «Поставить точку здесь»"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied",
+          "success"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Набережная, суббота, 3 точки"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное название квеста"
+          },
+          {
+            "kind": "failure",
+            "example": "Ни одной точки — кнопка «Создать квест» неактивна"
+          }
+        ]
+      }
+    },
+    {
+      "id": "newpoint",
+      "title": "Новая точка",
+      "type": "modal",
+      "light": false,
+      "meta": "Поставить точку там, где вы стоите, и написать задание",
+      "parent": "newquest",
+      "ui": {
+        "pattern": "editor",
+        "navigation": "modal",
+        "purpose": "Поставить точку там, где вы стоите, и написать задание",
+        "primaryAction": "Добавить точку в квест",
+        "hierarchy": {
+          "primary": "Место на карте там, где вы стоите",
+          "secondary": "Задание и длина ролика"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied",
+          "success"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Крымская набережная, 10"
+          },
+          {
+            "kind": "stress",
+            "example": "Задание в три строки"
+          },
+          {
+            "kind": "failure",
+            "example": "Геопозиция недоступна — место ищут по адресу"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ads",
+      "title": "Реклама",
+      "type": "push",
+      "light": false,
+      "meta": "Выбрать рекламу бесплатной версии",
+      "parent": "home",
+      "ui": {
+        "pattern": "settings",
+        "navigation": "push",
+        "purpose": "Выбрать рекламу бесплатной версии",
+        "primaryAction": "Подбирать по интересам",
+        "hierarchy": {
+          "primary": "Карточка рекламы и два варианта",
+          "secondary": "Запрос ATT по кнопке"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "После разрешения — кофейня у точки 5"
+          },
+          {
+            "kind": "stress",
+            "example": "Меняет решение после отказа"
+          },
+          {
+            "kind": "failure",
+            "example": "ATT запрещён, реклама без подбора"
+          }
+        ]
+      }
+    },
+    {
+      "id": "activity",
+      "title": "Уведомления",
+      "type": "push",
+      "light": false,
+      "meta": "События своих квестов: новые ролики и старты",
+      "parent": "home",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "push",
+        "purpose": "События своих квестов: новые ролики и старты",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Новые ролики команд",
+          "secondary": "Старт квеста в субботу"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Ёж снял точку 4, Дима — точку 3"
+          },
+          {
+            "kind": "stress",
+            "example": "Десятки роликов за день"
+          },
+          {
+            "kind": "failure",
+            "example": "За сегодня новых роликов и стартов нет"
+          }
+        ]
+      }
+    },
+    {
+      "id": "search",
+      "title": "Поиск",
+      "type": "push",
+      "light": false,
+      "meta": "Найти ролик или квест по слову",
+      "parent": "home",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "push",
+        "purpose": "Найти ролик или квест по слову",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Найденные ролики со всех квестов",
+          "secondary": "Квесты, где слово есть в задании"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "По слову «дверь» ролик и квест"
+          },
+          {
+            "kind": "stress",
+            "example": "Слово в десятке роликов"
+          },
+          {
+            "kind": "failure",
+            "example": "По слову «маяк» ничего не найдено"
+          }
+        ]
+      }
+    }
+  ],
+  "prototypes": [
+    {
+      "id": "all",
+      "hero": true,
+      "label": "Весь продукт",
+      "note": "22 экрана и 9 доступов",
+      "start": "phone",
+      "screens": [
+        "phone",
+        "home",
+        "clips",
+        "create",
+        "quests",
+        "profile",
+        "quest",
+        "point",
+        "camera",
+        "picker",
+        "lock",
+        "watch",
+        "watchdoor",
+        "watchboat",
+        "final",
+        "cast",
+        "embankment",
+        "newquest",
+        "newpoint",
+        "ads",
+        "activity",
+        "search"
+      ],
+      "stops": [],
+      "authTarget": "home"
+    },
+    {
+      "id": "route",
+      "label": "Пройти точку",
+      "note": "Квест, геопозиция, задание, камера и подсказка",
+      "start": "quest",
+      "screens": [
+        "quest",
+        "point",
+        "camera",
+        "picker",
+        "lock",
+        "watchdoor",
+        "watch",
+        "home",
+        "watchboat"
+      ],
+      "stops": [
+        "watch",
+        "home",
+        "watchboat"
+      ]
+    },
+    {
+      "id": "make",
+      "label": "Придумать квест",
+      "note": "Новый квест, точка здесь и напоминание",
+      "start": "newquest",
+      "screens": [
+        "newquest",
+        "newpoint",
+        "embankment"
+      ],
+      "stops": []
+    },
+    {
+      "id": "finale",
+      "label": "Финал",
+      "note": "Итог, телевизор и фильм в «Фото»",
+      "start": "final",
+      "screens": [
+        "final",
+        "cast",
+        "watchboat",
+        "home",
+        "watch",
+        "watchdoor"
+      ],
+      "stops": [
+        "home",
+        "watch",
+        "watchdoor"
+      ]
+    }
+  ],
+  "backendless": [
+    {
+      "needs": "Общий квест у команд",
+      "solution": "CloudKit shared database: квест, точки и ролики видны только участникам"
+    },
+    {
+      "needs": "Отметка точки на маршруте",
+      "solution": "Core Location на телефоне игрока, геозона точки проверяется на устройстве"
+    },
+    {
+      "needs": "Финал на телевизоре",
+      "solution": "Google Cast SDK в домашней сети организатора"
+    }
+  ],
+  "docs": [
+    {
+      "file": "01-product-vision.md",
+      "label": "Вижен"
+    },
+    {
+      "file": "02-architecture.md",
+      "label": "Архитектура"
+    },
+    {
+      "file": "03-design-system.md",
+      "label": "Дизайн-токены"
+    },
+    {
+      "file": "04-references.md",
+      "label": "Референсы"
+    },
+    {
+      "file": "05-visual-audit.md",
+      "label": "Визуальный аудит"
+    },
+    {
+      "file": "06-app-store.md",
+      "label": "Карточка App Store"
+    }
+  ],
+  "appStore": {
+    "name": "Вызов: видеоквест с друзьями",
+    "subtitle": "Маршрут, задания и финал на ТВ",
+    "promo": "Поставьте точки на карте, придумайте задания и пройдите город командами. Снимайте выполнение, а вечером смотрите финал на ТВ.",
+    "keywords": "квест,город,команда,прогулка,видео,игра,друзья,телевизор,точки,карта,ролики,компания",
+    "category": {
+      "primary": "Entertainment",
+      "secondary": "Photo & Video"
+    },
+    "ageRating": "13+",
+    "price": "Бесплатно, с рекламой",
+    "encryption": "ITSAppUsesNonExemptEncryption = NO — только HTTPS для входа и рекламы",
+    "urls": {
+      "support": "https://vyzov.app/support",
+      "marketing": "https://vyzov.app",
+      "privacy": "https://vyzov.app/privacy"
+    },
+    "description": [
+      "Вызов — видеоквест по городу для своей компании.",
+      "ПРИДУМАЙТЕ МАРШРУТ\\nПоставьте точки на карте прямо там, где стоите, и напишите задания: «спойте припев у фонтана».",
+      "ПРОЙДИТЕ КОМАНДАМИ\\nТелефон знает, на какой вы точке. Снимите задание — ролик сразу в ленте квеста.",
+      "ФИНАЛ НА ТВ\\nВечером покажите счёт и лучшие моменты на телевизоре и сохраните фильм квеста.",
+      "Ролики видят только участники квеста. Бесплатная версия показывает рекламу."
+    ],
+    "whatsNew": "Первая версия: квесты с точками на карте, съёмка заданий, счёт команд и финал на телевизоре.",
+    "privacy": [
+      {
+        "type": "Фото и видео",
+        "apple": "User Content → Photos or Videos",
+        "purpose": "Работа приложения",
+        "linked": false,
+        "tracking": false,
+        "why": "Ролики игроков внутри квеста"
+      },
+      {
+        "type": "Геопозиция",
+        "apple": "Location → Precise Location",
+        "purpose": "Функциональность",
+        "linked": false,
+        "tracking": false,
+        "why": "Отметка точки маршрута; только по кнопке"
+      },
+      {
+        "type": "Идентификатор устройства",
+        "apple": "Identifiers → Device ID",
+        "purpose": "Реклама",
+        "linked": false,
+        "tracking": true,
+        "why": "Рекламному SDK только после согласия в ATT"
+      }
+    ],
+    "reviewAccount": {
+      "email": "review@vyzov.app",
+      "password": "review2026",
+      "note": "Вход по номеру и паролю, OTP не используется. Можно продолжить без аккаунта. Для финала на ТВ нужен Chromecast в той же сети; без него финал идёт на телефоне."
+    }
+  },
+  "auth": {
+    "mode": "phone",
+    "confirmation": false,
+    "entryTarget": "home"
+  }
+}
