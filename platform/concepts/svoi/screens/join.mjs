@@ -20,6 +20,11 @@ export default (ui) => ui.screen({
         { icon: 'images', text: `${family.photos} фото и видео внуков в альбоме` },
         { icon: 'calendar-days', text: 'Расписание кружков Дани и Милы на неделю' },
       ]) }),
+      ui.section({ title: 'Недавно в чате', children: ui.list([
+        ui.row({ lead: ui.avatar(people.timur.initial), title: people.timur.short, sub: `Задержусь до ${home.timurBack}, ужинайте без меня · 15:58` }),
+        ui.row({ lead: ui.avatar(people.danya.initial), title: people.danya.short, sub: `Я дома, суп поел · 15:42` }),
+        ui.row({ lead: ui.avatar(people.oksana.initial), title: people.oksana.short, sub: `Фото · Довела Милу, забирать в ${pickup.to} · 15:34` }),
+      ]) }),
     ]),
   ],
 });

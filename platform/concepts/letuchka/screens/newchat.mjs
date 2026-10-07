@@ -2,7 +2,7 @@ import { THEME } from './_shared.mjs';
 import { people } from '../model.mjs';
 
 /* Новый чат: название и участники из студии — группа проекта собирается за минуту */
-const pick = [people.pasha, people.lera, people.olya, people.gosha, people.masha, people.stas];
+const pick = [people.pasha, people.lera, people.olya, people.gosha, people.masha, people.stas, people.katya, people.dima, people.nastya, people.lyosha, people.sonya];
 export default (ui) => ui.screen({
   id: 'newchat', theme: THEME,
   body: [

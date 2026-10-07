@@ -1,5 +1,7 @@
 import { THEME } from './_shared.mjs';
-import { choir } from '../model.mjs';
+import { choir, schedule } from '../model.mjs';
+
+const near = schedule.filter((e) => e.iso >= '2026-10-13' && e.iso <= '2026-10-22');
 
 /* Новая спевка: дата, время, зал и кого звать — событие сразу уходит в расписание и чат хора */
 const field = (label, value, extra = '') => `<label class="sp-field"><span>${label}</span><input value="${value}" aria-label="${label}"${extra}/></label>`;
@@ -23,6 +25,9 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'message-circle', title: 'Написать в чат хора', sub: 'Сообщение с датой и кнопкой «Приду»', toggle: true }),
         ui.cell({ icon: 'list-checks', title: 'Спросить, кто придёт', sub: 'Опрос до четверга, 21:00', toggle: true }),
       ] }) }),
+      ui.section({ title: 'Рядом в расписании', meta: `${near.length} спевки`, children: ui.list(near.map((e) => ui.row({
+        lead: ui.leadIcon('', { text: e.time }), title: e.label, sub: `${e.title} · ${e.sub}`,
+      }))) }),
     ]),
   ],
 });

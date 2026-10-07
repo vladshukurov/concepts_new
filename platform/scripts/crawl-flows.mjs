@@ -53,7 +53,7 @@ const SEL = '[data-ask], [data-go], [data-back], [data-activate], [data-jump], [
       });
       // Похоже на кнопку, но ничего не делает
       const dead = [...s.querySelectorAll('button, [role=button], a[href], .ui-cell, .ui-row')].filter(e => {
-        if (e.closest(SEL) || e.querySelector(SEL) || e.closest('[data-filter]') || e.closest('.ui-switch, [data-switch], .switch, input, textarea, label, .ui-composer')) return false;
+        if (e.closest(SEL) || e.querySelector(SEL) || e.closest('[data-filter]') || e.closest('[data-toggle]') || e.closest('.ui-switch, [data-switch], .switch, input, textarea, label, .ui-composer')) return false;
         if (e.matches('.ui-cell, .ui-row') && !e.matches('button') && !e.querySelector('use[href*="chevron"]')) return false;
         if (e.disabled || e.getAttribute('aria-disabled') === 'true') return false;
         return true;

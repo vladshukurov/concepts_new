@@ -5,7 +5,7 @@ import { project, standup, people, now } from '../model.mjs';
    уведомления показывают отправителя, его инициалы, расшифрованный текст и превью вложения */
 const note = (ui, { ini, who, where, text, time, thumb, a, label }) => `<button class="lt-notif"${a} aria-label="${label}"><span class="lt-notif-face is-initial ${ui.hue(ini)}">${ini}<i>${ui.icon('message-circle')}</i></span><span class="lt-notif-body"><span class="lt-notif-top"><strong>${who}</strong><span>${time}</span></span>${where ? `<span class="lt-notif-where">${where}</span>` : ''}<span class="lt-notif-text">${text}</span></span>${thumb ? '<span class="lt-notif-thumb ph on-dark"></span>' : ''}</button>`;
 export default (ui) => ui.screen({
-  id: 'lockscreen', theme: THEME, className: 'ui-lock lt-lock',
+  id: 'lockscreen', theme: THEME, className: 'ui-lock',
   body: [
     ui.lockNowPlaying({
       time: '9:41', date: now.date[0].toUpperCase() + now.date.slice(1),

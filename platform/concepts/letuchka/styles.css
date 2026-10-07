@@ -206,7 +206,6 @@
 .lt-notif-where { font:500 13px/16px var(--ui-face); color:#454f5b; }
 .lt-notif-text { font:400 15px/20px var(--ui-face); }
 .lt-notif-thumb { width:44px; height:44px; flex:none; border-radius:8px; }
-.lt-lock .ui-lock-time { margin-top:64px; }
 .lt-fill-34 { width:34%; }
 
 /* Мини-плеер записи летучки над таб-баром */

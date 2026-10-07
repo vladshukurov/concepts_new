@@ -29,7 +29,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×76, `section` ×74, `avatar` ×44, `leadIcon` ×37, `list` ×36, `cell` ×34, `bubble` ×20, `nav` ×16, `button` ×12, `group` ×12, `iconButton` ×11, `day` ×10, `actions` ×8, `chatNav` ×5, `chat` ×5, `voice` ×5, `denied` ×5, `tabBar` ×5, `composer` ×4, `textButton` ×4, `largeTitle` ×4, `search` ×4, `dialog` ×4, `segments` ×2, `hue` ×2, `callView` ×1, `chips` ×1, `adCard` ×1, `usersStack` ×1, `miniInfo` ×1, `lockNowPlaying` ×1, `miniPlayer` ×1, `reminder` ×1, `top` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×78, `section` ×75, `avatar` ×45, `leadIcon` ×38, `list` ×37, `cell` ×34, `bubble` ×20, `nav` ×16, `group` ×12, `button` ×11, `iconButton` ×11, `day` ×10, `actions` ×8, `chatNav` ×5, `chat` ×5, `voice` ×5, `denied` ×5, `tabBar` ×5, `composer` ×4, `textButton` ×4, `largeTitle` ×4, `search` ×4, `dialog` ×4, `segments` ×2, `hue` ×2, `callView` ×1, `chips` ×1, `adCard` ×1, `usersStack` ×1, `miniInfo` ×1, `lockNowPlaying` ×1, `miniPlayer` ×1, `reminder` ×1, `top` ×1.
 <!-- @end -->
 
 ## Доменные компоненты
