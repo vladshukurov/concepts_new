@@ -5,6 +5,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { join } from 'node:path';
 import { chromium } from 'playwright';
 import { DIST, conceptDir, listConcepts, readSpec } from './lib.mjs';
+import { UI_THEMES } from './build.mjs';
 
 const launcherPath = join(DIST, 'index.html');
 const currentBatch = new Set(['stol', 'podacha', 'shtrikh']);
@@ -28,26 +29,34 @@ try {
   assert.ok(modeCounts.mimicry > 0, 'в портфеле должна быть хотя бы одна мимикрия');
   assert.ok(modeCounts.differentiation > 0, 'в портфеле должна быть хотя бы одна отстройка');
   assert.equal(Object.values(modeCounts).reduce((sum, count) => sum + count, 0), concepts.length, 'каждый концепт должен принадлежать одной стратегии');
+  /* В галерее — концепты на новом UI и на модели своего контента (тот же фильтр, что в build-all) */
+  const shown = concepts.filter((slug) => {
+    const spec = readSpec(slug);
+    return UI_THEMES.has(spec.brand?.theme) && spec.product?.content && spec.qualityContractVersion >= 4;
+  });
   const cards = page.locator('.card');
-  assert.equal(await cards.count(), concepts.length, 'в лаунчере должен быть каждый концепт');
+  assert.equal(await cards.count(), shown.length, 'в лаунчере должен быть каждый концепт на своём контенте');
+  /* Переименованный концепт подписан прежним именем */
+  const renamed = shown.filter((slug) => (readSpec(slug).formerNames || []).length);
+  assert.equal(await page.locator('.card .name-was').count(), renamed.length, 'у переименованных концептов нет прежнего имени');
   assert.equal(await page.locator('.card .new-badge').count(), currentBatch.size, 'текущая партия должна быть помечена NEW');
   for (const slug of currentBatch) {
     assert.equal(await page.locator(`.card[href="./${slug}/index.html"] .new-badge`).count(), 1, `${slug}: нет метки NEW`);
   }
-  const conceptsWithIcons = concepts.filter((slug) => existsSync(join(conceptDir(slug), 'assets', 'app-icon.png')));
+  const conceptsWithIcons = shown.filter((slug) => existsSync(join(conceptDir(slug), 'assets', 'app-icon.png')));
   assert.equal(await page.locator('.card .app-icon').count(), conceptsWithIcons.length, 'лаунчер должен показывать все доступные логотипы');
   /* Поиск: по названию, по доступу, по слову из фичи; пустой результат и сброс */
   const visible = () => page.locator('.card:not([hidden])').count();
   await page.fill('[data-search-input]', 'образы');
-  assert.ok(await page.locator('.card:not([hidden])[href="./looks/index.html"]').count(), 'поиск по названию не нашёл «Образы»');
+  assert.ok(await page.locator('.card:not([hidden])[href="./looks/index.html"]').count(), 'поиск по прежнему имени не нашёл «Образы» — «Вешалку»');
   await page.fill('[data-search-input]', 'voip');
   const withVoip = await visible();
-  assert.ok(withVoip > 0 && withVoip < concepts.length, 'поиск по ключу доступа должен сузить список');
+  assert.ok(withVoip > 0 && withVoip < shown.length, 'поиск по ключу доступа должен сузить список');
   await page.fill('[data-search-input]', 'ъъъ несуществующее');
   assert.equal(await visible(), 0, 'бессмысленный запрос должен дать пустой список');
   assert.ok(await page.locator('[data-no-results]:not([hidden])').count(), 'при пустом результате нужна подсказка');
   await page.press('[data-search-input]', 'Escape');
-  assert.equal(await visible(), concepts.length, 'Escape должен сбросить поиск');
+  assert.equal(await visible(), shown.length, 'Escape должен сбросить поиск');
   const conceptUrls = [];
 
   for (const card of await cards.all()) {
@@ -77,7 +86,7 @@ try {
   assert.ok(await page.locator('[data-doc-view="02-architecture"].is-on table').count(), 'Markdown-таблица не отрендерилась');
 
   await back.click();
-  assert.equal(await page.locator('.card').count(), concepts.length, 'кнопка назад не вернула в лаунчер');
+  assert.equal(await page.locator('.card').count(), shown.length, 'кнопка назад не вернула в лаунчер');
 
   for (const url of conceptUrls) {
     await page.goto(url);
@@ -125,7 +134,7 @@ try {
   }
 
   assert.deepEqual(errors, [], `ошибки в консоли: ${errors.join('; ')}`);
-  console.log(`лаунчер: ${concepts.length} карточек · ссылки и скриншоты на месте · фильтры зелёные`);
+  console.log(`лаунчер: ${shown.length} карточек · ссылки и скриншоты на месте · фильтры зелёные`);
 } finally {
   await browser.close();
 }
