@@ -1,0 +1,243 @@
+/* «В курсе» — мессенджер студии, светлая тема `.ui.vk-light`.
+   Список чатов, чат, пузыри, голосовые, звонок, строки и ячейки — из ядра.
+   Своё у «Летучки»: закреп летучки в чате, карточка гостевой сети, карточка ближайшей летучки
+   на вкладке «Офис», карта, нарисованная кодом, QR приглашения, сетка макетов
+   и системные поверхности iOS — экран блокировки, «Домой», «Поделиться», «Сообщения».
+
+   Отличие от «Сбора» — строже и компактнее: кнопки радиус 8, пузыри 10, поле ввода и поиск 8,
+   аватары и значки строк — скруглённый квадрат 30 %, карточки 10. Акцент — синий ВК */
+
+/* ── Форма: переопределения радиусов ядра в пределах экранов концепта ── */
+.ui.vk-light .ui-btn { border-radius:8px; }
+.ui.vk-light .ui-bubble { border-radius:10px; }
+.ui.vk-light .ui-bubble.is-in { border-bottom-left-radius:3px; }
+.ui.vk-light .ui-bubble.is-out { border-bottom-right-radius:3px; }
+.ui.vk-light .ui-bubble-media { border-radius:7px; }
+.ui.vk-light .ui-search, .ui.vk-light .ui-composer-field { border-radius:8px; }
+.ui.vk-light .ui-seg { border-radius:8px; }
+.ui.vk-light .ui-seg > button::before { border-radius:6px; }
+.ui.vk-light .ui-chip > span { border-radius:8px; }
+.ui.vk-light :is(.ui-avatar, .ui-dialog-face, .ui-chat-face, .ui-call-face, .ui-lead.is-round, .ui-users-faces > i) { border-radius:30%; }
+.ui.vk-light .ui-ad { border-radius:10px; }
+.ui.vk-light .ui-ad-art { border-radius:30%; }
+.ui.vk-light .ui-mini { border-radius:10px; }
+
+/* Закреп под шапкой чата: летучка в проекте, гостевой Wi‑Fi в «Гостях дня» */
+.lt-pin { flex:none; display:flex; align-items:center; gap:12px; width:100%; min-height:52px; padding:6px 8px 6px 16px; background:var(--ui-card); box-shadow:inset 0 -.5px 0 var(--ui-line); text-align:left; color:var(--ui-link); }
+.lt-pin > svg { width:20px; height:20px; }
+.lt-pin > svg:last-child { color:var(--ui-text-3); }
+.lt-pin > span { flex:1; min-width:0; display:flex; flex-direction:column; }
+.lt-pin strong { font:600 15px/20px var(--ui-face); color:var(--ui-text); }
+.lt-pin > span > span { font:400 13px/16px var(--ui-face); color:var(--ui-link); }
+
+/* Системная строка в ленте сообщений: перенос летучки, запись в Календарь */
+.lt-sys { align-self:center; max-width:86%; margin:4px 0; padding:4px 10px; border-radius:8px; background:var(--ui-accent-soft); font:500 13px/18px var(--ui-face); color:var(--ui-link); text-align:center; }
+
+/* Карточка Wi‑Fi в пузыре и на экране сети */
+.lt-net { display:flex; align-items:center; gap:12px; width:100%; min-height:64px; padding:10px 12px; text-align:left; box-shadow:inset 0 0 0 1px var(--ui-line); border-radius:7px; }
+.lt-net-ico { width:44px; height:44px; flex:none; display:grid; place-items:center; border-radius:30%; background:var(--ui-accent); color:#fff; }
+.lt-net-ico svg { width:22px; height:22px; }
+.lt-net > span:last-child, .lt-netcard > div { display:flex; flex-direction:column; min-width:0; }
+.lt-net strong { font:600 16px/20px var(--ui-face); }
+.lt-net span span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.lt-netcard { display:flex; align-items:center; gap:16px; padding:0 16px; }
+.lt-netcard .lt-net-ico { width:56px; height:56px; }
+.lt-netcard strong { font:600 20px/24px var(--ui-face); }
+.lt-netcard > div span { font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
+
+/* Фото и файл в пузыре */
+.lt-photo { display:block; height:120px; }
+.ui-bubble-media > .lt-photo { display:flex!important; }
+.lt-tile-dur { position:absolute; left:50%; bottom:8px; transform:translateX(-50%); padding:2px 6px; border-radius:4px; background:rgba(0,0,0,.56); color:#fff; font:500 12px/16px var(--ui-face); font-variant-numeric:tabular-nums; }
+/* Переписка прижата к полю ввода: короткая история стоит внизу, как в мессенджерах */
+.ui-scroll > .ui-chat { justify-content:flex-end; }
+.lt-shared { display:contents; }
+.lt-file { display:flex; align-items:center; gap:12px; width:100%; padding:10px 12px; text-align:left; }
+.lt-file-ico { width:44px; height:44px; flex:none; display:grid; place-items:center; border-radius:30%; background:var(--ui-accent); color:#fff; }
+.lt-file > span:last-child { display:flex; flex-direction:column; min-width:0; }
+.lt-file strong { font:600 15px/20px var(--ui-face); }
+.lt-file span span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.ui-bubble.is-out .lt-file span span { color:#3f4a56; }
+.ui-bubble.is-out .ui-bubble-from { color:#00489a; }
+
+/* Дата в сообщении — ссылка, которая кладёт встречу в Календарь */
+.lt-date { display:inline; min-height:0; color:var(--ui-link); text-decoration:underline; text-underline-offset:2px; }
+
+/* Шапка сведений о проекте и приглашения */
+.lt-head { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 16px 16px; background:var(--ui-card); text-align:center; }
+.lt-head .ui-avatar { margin-bottom:8px; }
+
+/* Сетка кадров: макеты проекта и выбор вложения */
+.lt-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; }
+.lt-grid.is-attach { padding-top:2px; }
+.ui .ui-sec.lt-attach-sec { padding:0 0 4px; }
+.lt-tile { position:relative; aspect-ratio:1; min-height:44px; }
+.lt-tile.is-picked { box-shadow:inset 0 0 0 3px var(--ui-accent); }
+.lt-tick { position:absolute; top:6px; right:6px; width:24px; height:24px; display:grid; place-items:center; border-radius:6px; background:var(--ui-accent); color:#fff; box-shadow:0 0 0 2px #fff; }
+.lt-tick svg { width:14px; height:14px; stroke-width:3; }
+.lt-cam-tile { aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; background:var(--ui-accent); color:#fff; font:500 13px/16px var(--ui-face); }
+.lt-cam-tile svg { width:28px; height:28px; }
+.lt-attach-bar { flex:none; display:grid; grid-template-columns:repeat(4, 1fr); padding:6px 8px calc(var(--safe-bottom) + 2px); background:var(--ui-card); box-shadow:inset 0 .5px 0 var(--ui-line); }
+.lt-attach-bar > button { display:flex; flex-direction:column; align-items:center; gap:2px; min-height:48px; padding-top:4px; color:var(--ui-text-2); font:500 11px/14px var(--ui-face); }
+.lt-attach-bar > button.is-on { color:var(--ui-link); }
+
+/* QR и ссылка-приглашение: QR нарисован кодом из ссылки */
+.lt-qr { display:grid; grid-template-columns:repeat(21, 1fr); width:168px; aspect-ratio:1; margin:4px auto 0; }
+.lt-qr > i { background:var(--ui-card); }
+.lt-qr > i.is-on { background:var(--ui-text); }
+.lt-link { display:flex; flex-direction:column; align-items:center; gap:2px; padding:16px 16px 0; text-align:center; }
+.lt-link strong { font:600 17px/22px var(--ui-face); color:var(--ui-link); }
+.lt-link span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+
+/* Карта, нарисованная кодом: Лиговский, Обводный канал и точки людей */
+.lt-map { position:relative; height:220px; margin:0 16px; border-radius:10px; background:#eef1f4; overflow:hidden; }
+.lt-map.is-mini { height:128px; margin:0; border-radius:0; }
+.lt-river { position:absolute; left:0; right:0; top:68%; height:14%; background:#cfe2f3; clip-path:polygon(0 30%, 100% 0, 100% 70%, 0 100%); }
+.lt-street { position:absolute; background:#fff; }
+.lt-street.s1 { left:0; right:0; top:30%; height:8px; transform:rotate(-3deg); }
+.lt-street.s2 { top:0; bottom:0; left:44%; width:10px; }
+.lt-street.s3 { top:0; bottom:0; left:76%; width:6px; transform:rotate(4deg); }
+.lt-street.s4 { left:0; right:0; top:52%; height:6px; }
+.lt-block { position:absolute; border-radius:4px; background:#dde2e8; }
+.lt-block.b1 { left:8%; top:36%; width:28%; height:12%; }
+.lt-block.b2 { left:50%; top:6%; width:22%; height:20%; }
+.lt-block.b3 { left:80%; top:36%; width:16%; height:12%; }
+.lt-pt { position:absolute; display:grid; place-items:center; width:28px; height:28px; margin:-14px 0 0 -14px; border-radius:30%; background:#fff; box-shadow:0 1px 4px rgba(0,16,61,.24); font:600 11px/1 var(--ui-face); color:var(--ui-link); }
+.lt-pt svg { width:16px; height:16px; }
+.lt-pt.is-me { left:46%; top:44%; width:18px; height:18px; margin:-9px 0 0 -9px; border-radius:50%; background:var(--ui-accent); box-shadow:0 0 0 5px rgba(0,119,255,.22); }
+.lt-pt.is-office { left:40%; top:58%; background:var(--ui-accent); color:#fff; }
+.lt-pt.is-artem { left:72%; top:20%; }
+.lt-map.is-mini .lt-pt.is-artem { left:50%; top:46%; }
+
+/* Запись голосового на месте поля ввода */
+.lt-rec { flex:none; display:flex; align-items:center; gap:10px; padding:8px 8px calc(var(--safe-bottom) + 4px) 16px; background:var(--ui-card); box-shadow:inset 0 .5px 0 var(--ui-line); }
+.lt-rec-dot { width:10px; height:10px; flex:none; border-radius:50%; background:#e64646; }
+.lt-rec-time { flex:none; font:600 16px/20px var(--ui-face); font-variant-numeric:tabular-nums; }
+.lt-rec-wave { flex:1; min-width:0; display:flex; align-items:center; gap:2px; height:28px; color:var(--ui-accent); }
+.lt-rec-wave > i { flex:1; max-width:3px; border-radius:2px; background:currentColor; }
+.lt-rec-wave > .h4 { height:4px; } .lt-rec-wave > .h5 { height:5px; } .lt-rec-wave > .h6 { height:6px; } .lt-rec-wave > .h8 { height:8px; }
+.lt-rec-wave > .h9 { height:9px; } .lt-rec-wave > .h10 { height:10px; } .lt-rec-wave > .h12 { height:12px; } .lt-rec-wave > .h14 { height:14px; }
+.lt-rec-wave > .h16 { height:16px; } .lt-rec-wave > .h18 { height:18px; } .lt-rec-wave > .h20 { height:20px; } .lt-rec-wave > .h22 { height:22px; } .lt-rec-wave > .h24 { height:24px; }
+.lt-rec-cancel { flex:none; display:flex; align-items:center; min-height:44px; color:var(--ui-text-2); font:400 15px/20px var(--ui-face); }
+.lt-rec-cancel svg { width:18px; height:18px; }
+.lt-rec-send { width:48px; height:48px; flex:none; display:grid; place-items:center; border-radius:8px; background:var(--ui-accent); color:#fff; }
+.lt-rec-send svg { width:22px; height:22px; }
+
+/* Тёмные поверхности: камера, звонок */
+.lt-cam { overflow:hidden; background:#000!important; color:#fff; }
+.lt-cam .ui-nav { background:none!important; color:#fff; }
+.lt-cam .ui-icon-btn { color:#fff; }
+.lt-viewfinder { position:absolute; left:0; right:0; top:calc(var(--safe-top) + 44px); bottom:196px; }
+.lt-qr-found { position:absolute; left:16px; right:16px; top:calc(var(--safe-top) + 64px); display:flex; align-items:center; gap:12px; min-height:56px; padding:8px 14px; border-radius:10px; background-color:#fff; color:#000; text-align:left; }
+.lt-qr-found > svg { width:24px; height:24px; color:var(--ui-accent); }
+.lt-qr-found > span { display:flex; flex-direction:column; }
+.lt-qr-found strong { font:600 15px/20px var(--ui-face); }
+.lt-qr-found span span { font:400 13px/16px var(--ui-face); color:#0052b0; }
+.lt-modes { position:absolute; left:0; right:0; bottom:calc(var(--safe-bottom) + 112px); display:flex; justify-content:center; gap:8px; }
+.lt-modes > button { min-height:44px; padding:0 12px; font:600 14px/18px var(--ui-face); color:rgba(255,255,255,.72); }
+.lt-modes > .is-on { color:#ffd60a; }
+.lt-cam-row { position:absolute; left:0; right:0; bottom:calc(var(--safe-bottom) + 20px); display:flex; align-items:center; justify-content:space-between; padding:0 32px; }
+.lt-cam-thumb { width:48px; height:48px; border-radius:8px; }
+.lt-shutter { position:relative; width:76px; height:76px; border-radius:50%; box-shadow:inset 0 0 0 4px #fff; }
+.lt-shutter > span { position:absolute; inset:8px; border-radius:50%; background:#fff; }
+.lt-cam-flip { width:48px; height:48px; display:grid; place-items:center; border-radius:50%; background:rgba(255,255,255,.18); color:#fff; }
+.lt-call { background:linear-gradient(180deg, #24364c, #0e141b)!important; color:#fff; }
+.lt-call .ui-call > span, .lt-call .ui-call-ctl { color:rgba(255,255,255,.76); }
+.lt-call .ui-call-btn:not(.is-end) { background:rgba(255,255,255,.16); color:#fff; }
+.lt-call .ui-call-face.is-initial { background:rgba(255,255,255,.16); color:#fff; }
+
+/* «Сообщения» iOS — системная поверхность приглашённого */
+.lt-ios .ui-nav strong { display:flex; justify-content:center; }
+.lt-ios-who { display:flex; flex-direction:column; align-items:center; gap:2px; font:400 12px/14px var(--ui-face); }
+.lt-ios-who .ui-avatar { width:32px; height:32px; font-size:13px; border-radius:50%; }
+.lt-ios .ui-sec.lt-ios-thread { display:flex; flex-direction:column; gap:6px; padding:8px 16px 16px; }
+.lt-ios-day { margin:4px 0 8px; text-align:center; font:400 12px/16px var(--ui-face); color:var(--ui-text-2); }
+.lt-ios-bubble { max-width:76%; padding:8px 14px; border-radius:18px; font:400 16px/21px var(--ui-face); }
+.lt-ios-bubble.is-in { align-self:flex-start; background:#e9e9eb; color:#000; }
+.lt-ios-bubble.is-out { align-self:flex-end; background:#0067db; color:#fff; }
+.lt-ios-link { align-self:flex-start; display:flex; align-items:center; gap:12px; width:76%; min-height:64px; padding:10px 12px; border-radius:18px; background:#e9e9eb; text-align:left; }
+.lt-ios-link-ico { width:44px; height:44px; flex:none; display:grid; place-items:center; border-radius:10px; background:var(--ui-accent); color:#fff; }
+.lt-ios-link > span:last-child { display:flex; flex-direction:column; min-width:0; }
+.lt-ios-link strong { font:600 15px/20px var(--ui-face); }
+.lt-ios-link span span { font:400 13px/16px var(--ui-face); color:#4c5663; }
+.lt-ios-meta { align-self:flex-end; font:400 11px/14px var(--ui-face); color:var(--ui-text-2); }
+.lt-ios-bar { flex:none; display:flex; align-items:center; gap:10px; padding:8px 12px calc(var(--safe-bottom) + 4px); color:var(--ui-text-2); }
+.lt-ios-bar > span:first-child { width:36px; height:36px; display:grid; place-items:center; border-radius:50%; background:#e9e9eb; }
+.lt-ios-field { flex:1; min-height:36px; display:flex; align-items:center; padding:0 14px; border-radius:18px; box-shadow:inset 0 0 0 1px var(--ui-line); font:400 16px/20px var(--ui-face); }
+
+/* «Поделиться» в Файлах */
+.lt-sys-surface { overflow:hidden; background:#f2f2f7!important; }
+.lt-files-bg { display:flex; flex-direction:column; padding:calc(var(--safe-top) + 12px) 16px 0; }
+.lt-files-bg > strong { margin-bottom:8px; font:700 30px/36px var(--ui-face); }
+.lt-files-row { display:flex; align-items:center; gap:12px; min-height:60px; box-shadow:inset 0 -.5px 0 var(--ui-line); }
+.lt-files-row > i { width:40px; height:48px; display:grid; place-items:center; border-radius:6px; background:#fff; color:var(--ui-link); }
+.lt-files-row > i svg { width:22px; height:22px; }
+.lt-files-row > span { display:flex; flex-direction:column; }
+.lt-files-row b { font:500 15px/20px var(--ui-face); }
+.lt-files-row small { font:400 13px/16px var(--ui-face); color:#5f6b78; }
+.lt-sheet { position:absolute; left:0; right:0; bottom:0; padding:16px 0 calc(var(--safe-bottom) + 8px); border-radius:14px 14px 0 0; background:#f2f2f7; box-shadow:0 -4px 24px rgba(0,16,61,.16); }
+.lt-sheet-head { display:flex; align-items:center; gap:12px; padding:0 8px 12px 16px; box-shadow:inset 0 -.5px 0 var(--ui-line); }
+.lt-sheet-head > span:nth-child(2) { flex:1; display:flex; flex-direction:column; }
+.lt-sheet-head strong { font:600 16px/20px var(--ui-face); }
+.lt-sheet-head span span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.lt-place-ico { width:44px; height:44px; flex:none; display:grid; place-items:center; border-radius:10px; background:var(--ui-accent-soft); color:var(--ui-link); }
+.lt-sheet-x { width:44px; height:44px; display:grid; place-items:center; color:var(--ui-text-2); }
+.lt-share-people, .lt-share-apps { display:flex; gap:16px; padding:16px 16px 4px; overflow-x:auto; scrollbar-width:none; }
+.lt-share-to, .lt-share-app { flex:none; width:68px; display:flex; flex-direction:column; align-items:center; gap:6px; font:400 11px/14px var(--ui-face); text-align:center; }
+.lt-share-face { position:relative; width:60px; height:60px; display:grid; place-items:center; border-radius:30%; background-color:#dceafb; color:#00489a; font:600 20px/1 var(--ui-face); }
+.lt-share-face > i, .lt-notif-face > i { position:absolute; right:-2px; bottom:-2px; width:22px; height:22px; display:grid; place-items:center; border-radius:6px; background:var(--ui-accent); color:#fff; box-shadow:0 0 0 2px #f2f2f7; }
+.lt-share-face > i svg, .lt-notif-face > i svg { width:14px; height:14px; }
+.lt-share-app > i { width:60px; height:60px; display:grid; place-items:center; border-radius:14px; background:#fff; color:var(--ui-link); }
+.lt-share-list { margin:12px 16px 0; border-radius:12px; background:#fff; }
+.lt-share-list > button { display:flex; align-items:center; justify-content:space-between; width:100%; min-height:48px; padding:0 16px; font:400 16px/20px var(--ui-face); }
+.lt-share-list > button + button { box-shadow:inset 0 .5px 0 var(--ui-line); }
+.lt-share-list svg { width:20px; height:20px; color:var(--ui-text-2); }
+
+/* Экран блокировки: Now Playing из ядра, уведомления — под часами */
+.lt-notifs { position:relative; display:flex; flex-direction:column; gap:8px; margin:20px 12px 0; }
+.ui .lt-notif { display:flex; align-items:flex-start; gap:10px; width:100%; padding:12px; border-radius:20px; background-color:#eef0f3; color:#000; text-align:left; }
+.lt-notif-face { position:relative; width:40px; height:40px; flex:none; display:grid; place-items:center; border-radius:30%; background:var(--ui-accent-soft); color:var(--ui-link); font:600 14px/1 var(--ui-face); }
+.lt-notif-face > i { right:-6px; bottom:-6px; width:18px; height:18px; border-radius:5px; box-shadow:0 0 0 2px #fff; }
+.lt-notif-face > i svg { width:12px; height:12px; }
+.lt-notif-body { flex:1; min-width:0; display:flex; flex-direction:column; }
+.lt-notif-top { display:flex; justify-content:space-between; gap:8px; }
+.lt-notif-top strong { font:600 15px/20px var(--ui-face); }
+.lt-notif-top span { font:400 13px/20px var(--ui-face); color:#454f5b; }
+.lt-notif-where { font:500 13px/16px var(--ui-face); color:#454f5b; }
+.lt-notif-text { font:400 15px/20px var(--ui-face); }
+.lt-notif-thumb { width:44px; height:44px; flex:none; border-radius:8px; }
+.lt-lock .ui-lock-time { margin-top:64px; }
+.lt-fill-34 { width:34%; }
+
+/* Мини-плеер записи летучки над таб-баром */
+.lt-mini-face { background:var(--ui-accent)!important; border-radius:30%!important; }
+.lt-mini-fill { width:34%; }
+
+/* Экран «Домой» с виджетом */
+.lt-home { overflow:hidden; background:linear-gradient(180deg, #3b5068, #151c24)!important; color:#fff; }
+.lt-widget { display:block; width:calc(100% - 40px); margin:calc(var(--safe-top) + 16px) 20px 0; padding:14px; border-radius:22px; background:rgba(255,255,255,.94); color:#000; text-align:left; }
+.lt-widget small { display:flex; align-items:center; gap:6px; font:600 12px/14px var(--ui-face); color:#0067db; }
+.lt-widget small svg { width:14px; height:14px; }
+.lt-widget strong { display:block; margin-top:8px; font:600 20px/24px var(--ui-face); }
+.lt-widget > span { display:block; font:400 13px/16px var(--ui-face); color:#5f6b78; }
+.lt-apps { display:grid; grid-template-columns:repeat(4, 1fr); gap:20px 12px; padding:20px; }
+.lt-app { display:flex; flex-direction:column; align-items:center; gap:4px; font:400 12px/14px var(--ui-face); color:#fff; }
+.lt-app > i { width:60px; height:60px; border-radius:14px; background:rgba(255,255,255,.22); }
+.lt-app.is-ours > i { display:grid; place-items:center; background:var(--ui-accent); }
+.lt-app.is-ours svg { width:30px; height:30px; color:#fff; }
+
+/* Профиль в настройках: крупное фото, имя и номер по центру, как в Telegram */
+.lt-me { display:flex; flex-direction:column; align-items:center; gap:4px; padding:4px 16px 16px; text-align:center; }
+.lt-me h1 { margin-top:8px; font:600 24px/30px var(--ui-face); }
+.lt-me .ui-avatar.is-large { width:96px; height:96px; font-size:36px; }
+
+/* Ближайшая летучка на вкладке «Офис»: время и повестка крупно */
+.lt-now { display:flex; flex-direction:column; gap:4px; width:calc(100% - 32px); margin:0 16px; padding:14px 16px; border-radius:10px; background:var(--ui-accent); color:#fff; text-align:left; }
+.lt-now small { font:600 13px/16px var(--ui-face); opacity:.85; }
+.lt-now strong { font:600 24px/30px var(--ui-face); }
+.lt-now > span { font:400 15px/20px var(--ui-face); opacity:.92; }
+
+/* Поле формы: новая бронь и новый чат */
+.lt-field { display:flex; flex-direction:column; gap:4px; margin:0 16px; padding:8px 12px; border-radius:8px; box-shadow:inset 0 0 0 1px var(--ui-line); }
+.lt-field > span { font:500 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.lt-field > input { min-height:28px; padding:0; border:0; outline:0; background:none; color:var(--ui-text); font:400 17px/22px var(--ui-face); }
