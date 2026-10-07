@@ -1,0 +1,20 @@
+<!-- @overview:vision -->
+<p class="deck">Игра для вечеринки на телевизоре, где в главных ролях свои ролики: на вечеринке {{INSIGHT}}.</p>
+<div class="utp-box"><strong>УТП.</strong> {{TAGLINE}}</div>
+{{FEAT_GRID}}
+<!-- @end -->
+
+<!-- @overview:arch -->
+<p class="deck">Телефон ведущего — хозяин вечера. Bonjour находит телевизор и гостей в комнате, Google Cast показывает раунд, ответы идут с телефонов напрямую.</p>
+<div class="flow"><span class="chip">Новый вечер</span><span class="arr">→</span><span class="chip">ТВ и игроки</span><span class="arr">→</span><span class="chip">Раунд и ответ</span><span class="arr">→</span><span class="chip">Хайлайты</span></div>
+<div class="arch">
+  <div class="arch-layer"><h3>UI</h3><p>Главная · Клипы · Создать · Вечера · Профиль · Раунд · Камера · Плеер.</p></div>
+  <div class="arch-layer"><h3>Domain</h3><p>Evening · Round · Task · Answer · Vote · Highlight · Invite.</p></div>
+  <div class="arch-layer"><h3>Services</h3><p>Bonjour/Network.framework · Google Cast · AVFoundation · PhotoKit · Core Location · AVPictureInPicture.</p></div>
+  <div class="arch-layer"><h3>Data</h3><p>Вечер и ответы на телефоне ведущего, копии у игроков в той же сети; приглашения — Firebase.</p></div>
+</div>
+<!-- @end -->
+
+<section class="section" id="perm-matrix"><h2>Матрица доступов</h2><p class="deck">Каждый доступ — одна кнопка в своей фиче, результат виден сразу.</p>{{PERM_MATRIX}}</section>
+<section class="section" id="no-backend"><h2>Без своего сервера</h2><p class="deck">Что обычно требует сервера и чем это заменено.</p>{{BACKENDLESS}}</section>
+<section class="section" id="screen-table"><h2>Экраны</h2><p class="deck">Корни — пять вкладок в грамматике ВК Видео; раунд, камера и вечер — свои экраны игры.</p>{{SCREEN_TABLE}}</section>

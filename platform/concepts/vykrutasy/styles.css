@@ -1,0 +1,101 @@
+/* «Выкрутасы» — мимикрия ВК Видео. Оболочка, кегли и цвета — из слоя `.ui` ядра;
+   здесь только своё: карточка задания, вертикальный клип, камера ответа,
+   выбор из галереи, страница вечера, картинка в картинке. */
+
+/* Доли прогресса */
+.vy-p0 { width:0; }
+.vy-p33 { width:33%; }
+.vy-p40 { width:40%; }
+
+/* Плеер хайлайта */
+.vy-watch-title { margin:4px 16px 0; }
+.vy-watch-meta { padding:4px 16px 0; }
+
+/* Формы */
+.vy-bottom { margin-top:16px; }
+.vy-input { width:100%; min-width:0; padding:0; border:0; outline:0; background:none; color:var(--ui-text); font:500 17px/22px var(--ui-face); }
+.vy-input::placeholder { color:var(--ui-text-2); }
+.vy-form .ui-cell-text > span { order:-1; font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.vy-form .ui-cell-text { display:flex; flex-direction:column; }
+.vy-add { display:flex; align-items:center; gap:12px; min-height:48px; margin:8px 16px 0; padding:0 12px; border-radius:12px; background-color:var(--ui-card); color:var(--ui-text-2); }
+.vy-add svg { width:20px; height:20px; flex:none; color:var(--ui-link); }
+.vy-add-actions { margin-top:8px; }
+
+/* Профиль */
+.vy-me { display:flex; align-items:center; gap:12px; min-width:0; }
+
+/* Карточка задания раунда */
+.vy-task { display:flex; flex-direction:column; gap:8px; margin:0 16px; padding:20px 16px; border-radius:16px; background-color:var(--ui-card); }
+.vy-task small { font:500 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.vy-task strong { font:700 24px/30px var(--ui-face); color:var(--ui-text); }
+.vy-task span { display:flex; align-items:center; gap:6px; font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
+.vy-task span svg { width:16px; height:16px; flex:none; color:var(--ui-link); }
+.vy-task-actions { margin-top:12px; }
+
+/* Страница вечера как канал */
+.vy-banner { height:132px; margin:0 16px; border-radius:12px; }
+.vy-channel { display:flex; align-items:center; gap:12px; padding:4px 16px 8px; }
+.vy-channel .ui-row-text strong { font:600 20px/26px var(--ui-face); }
+
+/* Лист «Создать» */
+.vy-create { overflow:hidden; }
+.vy-dim { position:absolute; inset:0; background-color:rgba(0,0,0,.6); }
+.vy-create-sheet { padding-bottom:16px; }
+.vy-sheet-head { display:flex; flex-direction:column; gap:4px; padding:0 16px 12px; }
+.vy-sheet-actions { margin-top:12px; }
+
+/* Заполнитель над таб-баром для экранов без прокрутки */
+.vy-fill { position:relative; flex:1; min-height:0; overflow:hidden; }
+
+/* Длинные задания и подписи переносятся */
+.vy-wrap .ui-row-text > strong { white-space:normal; }
+
+/* Клипы: вертикальный ответ игрока на весь экран */
+.vy-clips { overflow:hidden; }
+.vy-clip-frame { position:absolute; inset:0; border-radius:0; }
+.vy-clip-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.55), transparent 20%, transparent 58%, rgba(0,0,0,.78)); }
+.vy-clip-head { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding:calc(var(--safe-top) + 8px) 16px 0; color:#fff; }
+.vy-clip-head strong { font:600 17px/22px var(--ui-face); }
+.vy-clip-head span { font:400 13px/16px var(--ui-face); color:rgba(255,255,255,.72); }
+.vy-clip-side { position:absolute; right:8px; bottom:120px; z-index:1; display:flex; flex-direction:column; gap:12px; }
+.vy-clip-act { display:flex; flex-direction:column; align-items:center; gap:2px; }
+.vy-clip-act small { font:500 12px/14px var(--ui-face); color:#fff; }
+.vy-clip-info { position:absolute; left:16px; right:72px; bottom:28px; z-index:1; display:flex; align-items:flex-start; gap:12px; color:#fff; }
+.vy-clip-info .ui-row-text > span { color:rgba(255,255,255,.78); white-space:normal; }
+.vy-clip-bar { position:absolute; left:0; right:0; bottom:0; z-index:1; height:2px; background-color:rgba(255,255,255,.3); }
+.vy-clip-bar i { display:block; height:100%; background-color:#fff; }
+
+/* Камера ответа */
+.vy-camera { overflow:hidden; }
+.vy-camera-view { position:absolute; inset:0; border-radius:0; }
+.vy-camera-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.5), transparent 30%, transparent 62%, rgba(0,0,0,.72)); }
+.vy-camera-head { position:relative; z-index:1; display:flex; align-items:center; justify-content:space-between; padding:var(--safe-top) 8px 0; }
+.vy-rec { padding:4px 10px; border-radius:8px; background-color:#c4001a; font:600 15px/20px var(--ui-face); font-variant-numeric:tabular-nums; color:#fff; }
+.vy-camera-task { position:relative; z-index:1; display:flex; flex-direction:column; gap:4px; margin:12px 16px 0; padding:12px 14px; border-radius:14px; background-color:rgba(0,0,0,.55); color:#fff; }
+.vy-camera-task small { font:500 12px/14px var(--ui-face); color:rgba(255,255,255,.72); }
+.vy-camera-task strong { font:600 17px/22px var(--ui-face); }
+.vy-camera-meta { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 112px); z-index:1; display:flex; justify-content:center; gap:16px; font:500 13px/16px var(--ui-face); color:rgba(255,255,255,.86); }
+.vy-camera-meta > span { display:flex; align-items:center; gap:4px; }
+.vy-camera-meta svg { width:14px; height:14px; }
+.vy-camera-bar { position:absolute; left:24px; right:24px; bottom:calc(var(--safe-bottom) + 16px); z-index:1; display:flex; align-items:center; justify-content:space-between; }
+.vy-shutter { position:relative; width:76px; height:76px; border-radius:50%; box-shadow:inset 0 0 0 4px #fff; }
+.vy-shutter > span { position:absolute; inset:9px; border-radius:50%; background-color:#ff3b30; }
+.vy-spacer { width:48px; }
+
+/* Выбор из «Фото» */
+.vy-picker-meta { padding:0 16px 12px; }
+.vy-picker-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+.vy-picker-grid > button { position:relative; aspect-ratio:1; min-height:44px; border-radius:0; }
+.vy-picker-grid .ui-duration { z-index:1; right:4px; bottom:4px; }
+.vy-picker-grid i { position:absolute; right:6px; top:6px; z-index:1; width:24px; height:24px; display:grid; place-items:center; border-radius:50%; background-color:var(--ui-accent); box-shadow:0 0 0 2px #fff; font:600 13px/1 var(--ui-face); font-style:normal; color:#fff; }
+.vy-picker-grid .is-picked { box-shadow:inset 0 0 0 3px var(--ui-accent); }
+
+/* Картинка в картинке поверх экрана «Домой» */
+.vy-pip { margin:calc(var(--safe-top) + 12px) 16px 0 auto; width:236px; }
+.vy-pip-frame { position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden; box-shadow:0 12px 32px rgba(0,0,0,.5); }
+.vy-pip-frame > .ui-icon-btn { position:absolute; left:4px; top:4px; z-index:2; }
+.vy-pip-controls { position:absolute; inset:0; z-index:1; display:flex; align-items:center; justify-content:center; gap:4px; color:#fff; }
+.vy-pip-frame > .ui-progress { position:absolute; left:10px; right:10px; bottom:8px; z-index:1; }
+
+/* Выбор из «Фото» — чёрный фон системного листа */
+.ui.vy-picker { background-color:#000; }

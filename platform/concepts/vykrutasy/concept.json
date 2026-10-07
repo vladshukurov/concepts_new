@@ -1,0 +1,1532 @@
+{
+  "slug": "vykrutasy",
+  "name": "Выкрутасы",
+  "eyebrow": "Выкрутасы · iOS",
+  "targetSet": "vk-video",
+  "domain": "vykrutasy.app",
+  "heroTitle": "Вечер игры, где в кадре вы",
+  "heroDeck": "Игра для вечеринки на телевизоре: ведущий запускает раунды-задания, гости снимают ответы на телефоны, ролики крутятся на ТВ, все голосуют, лучшие уходят в хайлайты вечера.",
+  "tagline": "Раунды-задания на телевизоре, ответы — свои ролики с телефонов гостей",
+  "insight": "на вечеринке смешнее всего не чужие ролики, а свои: друг, который за десять секунд изображает соседа по парте",
+  "deck": "Телефон ведущего находит телевизор и телефоны гостей в комнате, раунды идут на ТВ, ответы снимают тут же, хайлайты вечера остаются у компании.",
+  "qualityContractVersion": 4,
+  "uiContractVersion": 3,
+  "start": "phone",
+  "product": {
+    "audience": "Компания друзей, которая собирается дома у телевизора: ведущий вечера и пять-шесть гостей с телефонами",
+    "situation": "Вечер дома, все в одной комнате, телевизор свободен, у каждого телефон с камерой",
+    "problem": "Готовые игры крутят чужие картинки и вопросы, а смешнее всего свои: как друг изображает соседа по парте или танец с выпускного",
+    "promise": "Ведущий за минуту создаёт вечер, телефон находит телевизор и гостей, раунды идут на ТВ, ответы снимаются на месте, лучшие остаются в хайлайтах",
+    "differentiator": "Весь контент — ролики самих игроков внутри своего вечера: нет ленты чужих, подписок и публикации для всех",
+    "returnReasons": [
+      "Пересмотреть хайлайты вчерашнего вечера и сохранить их в «Фото»",
+      "Собрать следующий вечер со своими заданиями",
+      "Не пропустить игру, на которую позвал друг"
+    ],
+    "verticalSlice": {
+      "entry": "phone",
+      "action": "round",
+      "result": "vote"
+    },
+    "coreLoop": [
+      "Создать вечер и найти телевизор и игроков в комнате",
+      "Сыграть раунд: снять ответ на телефон или показать старый ролик из галереи",
+      "Проголосовать, досмотреть и сохранить хайлайты вечера"
+    ],
+    "nonGoals": [
+      "Лента чужих роликов, подписки, просмотры и публикация для всех",
+      "Каталог заданий и платные паки контента"
+    ],
+    "content": {
+      "kind": "own-media",
+      "what": "Ответы игроков своего вечера: ролики, снятые на задание, и старые ролики из своей галереи; задания — механика игры",
+      "library": false,
+      "feed": false,
+      "sharing": false
+    }
+  },
+  "positioning": {
+    "mode": "mimicry",
+    "categoryFit": "Съёмка, просмотр, плеер и показ на телевизоре — грамматика ВК Видео, но ролики свои и живут внутри игры вечера",
+    "familiarPatterns": [
+      "Тёмная главная с чипсами и крупными кадрами 16:9 с длительностью",
+      "Таб-бар с «Клипами» и «Создать»",
+      "Плеер со сворачиванием в мини-плеер и картинкой в картинке",
+      "Страница вечера как страница канала"
+    ],
+    "distinctions": [
+      "Вместо ленты чужих — хайлайты своих вечеров",
+      "Вместо подписок — вкладка «Вечера» с приглашениями",
+      "Главное действие — сыграть раунд и снять ответ, а не смотреть чужое"
+    ],
+    "evidenceScreens": [
+      "home",
+      "watch",
+      "clips",
+      "room",
+      "round",
+      "evening"
+    ],
+    "referencePatterns": [
+      "own-library",
+      "capture",
+      "immersive-player",
+      "cast"
+    ],
+    "referenceEvidence": [
+      {
+        "pattern": "own-library",
+        "screen": "home",
+        "behavior": "Главная: чипсы «Все · Хайлайты · Мои ответы · Вечера», крупные кадры хайлайтов своих вечеров с длительностью"
+      },
+      {
+        "pattern": "capture",
+        "screen": "round",
+        "behavior": "«Снять ответ» открывает камеру со звуком, ответ сразу встаёт в раунд"
+      },
+      {
+        "pattern": "immersive-player",
+        "screen": "watch",
+        "behavior": "Плеер хайлайта сворачивается в мини-плеер над таб-баром и уходит в картинку в картинке"
+      },
+      {
+        "pattern": "cast",
+        "screen": "room",
+        "behavior": "Телефон ведущего находит телевизор в комнате, раунды идут на нём"
+      }
+    ]
+  },
+  "readiness": {
+    "status": "draft",
+    "referenceResearch": [
+      {
+        "source": "ВК Видео, iOS",
+        "observation": "Тёмная главная, чипсы разделов, кадр 16:9 во всю ширину с длительностью, под ним аватар, заголовок и мета, таб-бар с «Клипами» и «Создать»",
+        "decision": "Главная и плеер повторяют эту грамматику, мета под кадром — своя: «Лена · раунд 3 · 0:12 · вчера»"
+      },
+      {
+        "source": "Jackbox Party Pack",
+        "observation": "Игра идёт на общем экране, телефоны гостей — пульты для ответов и голосования",
+        "decision": "Раунд крутится на телевизоре, ответ снимается на телефон и тут же уходит в раунд"
+      }
+    ],
+    "productCritique": [
+      {
+        "objection": "Видеоигра может превратиться в ленту чужих роликов",
+        "resolution": "Хайлайты и клипы — только ответы игроков своих вечеров, публикации для всех нет",
+        "evidenceScreens": [
+          "home",
+          "clips",
+          "evening"
+        ]
+      },
+      {
+        "objection": "Локальная сеть может выглядеть натяжкой",
+        "resolution": "Без поиска в сети телефон не найдёт телевизор и телефоны гостей в комнате, а раунд должен идти на общем экране",
+        "evidenceScreens": [
+          "room"
+        ]
+      }
+    ],
+    "visualPasses": []
+  },
+  "brand": {
+    "accent": "#0077FF",
+    "accentDark": "#0077FF",
+    "theme": "vk-dark",
+    "fonts": "Inter:wght@400;500;600;700"
+  },
+  "tabs": [
+    {
+      "id": "home",
+      "label": "Главная",
+      "role": "home"
+    },
+    {
+      "id": "clips",
+      "label": "Клипы",
+      "role": "library"
+    },
+    {
+      "id": "create",
+      "label": "Создать",
+      "role": "create"
+    },
+    {
+      "id": "evenings",
+      "label": "Вечера",
+      "role": "library"
+    },
+    {
+      "id": "profile",
+      "label": "Профиль",
+      "role": "profile"
+    }
+  ],
+  "permissions": [
+    {
+      "key": "localnetwork",
+      "plist": "NSLocalNetworkUsageDescription (+ NSBonjourServices: _googlecast._tcp, _vykrutasy._tcp)",
+      "alert": {
+        "title": "«Выкрутасы» запрашивает доступ к локальной сети",
+        "text": "Найти телевизор и телефоны игроков в этой комнате"
+      },
+      "feature": "Телевизор и игроки в комнате",
+      "gesture": "«Найти телевизор и игроков рядом» на странице вечера",
+      "screen": "room",
+      "target": "room",
+      "fallback": "Раунды идут на телефоне ведущего, его передают по кругу",
+      "snack": "Телевизор не найден",
+      "risk": "medium",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "Bonjour: поиск телевизора (_googlecast._tcp) и телефонов гостей с открытой игрой (_vykrutasy._tcp) в одной сети",
+      "rationale": {
+        "who": "Ведущий вечера",
+        "moment": "На странице вечера перед первым раундом нажимает «Найти телевизор и игроков рядом»",
+        "need": "Телевизор и телефоны гостей находятся только поиском в домашней сети; после этого раунд идёт на ТВ, а ответы с телефонов попадают в него",
+        "without": "Раунд идёт на телефоне ведущего, его передают по кругу"
+      },
+      "reviewNote": "Доступ вызывается действием «Найти телевизор и игроков рядом» на странице вечера на экране «room». При отказе: Раунды идут на телефоне ведущего, его передают по кругу",
+      "result": "Гостиная · 5 игроков в комнате"
+    },
+    {
+      "key": "camera",
+      "plist": "NSCameraUsageDescription",
+      "alert": {
+        "title": "«Выкрутасы» запрашивает доступ к камере",
+        "text": "Снять ответ на задание раунда"
+      },
+      "feature": "Ответ на задание",
+      "gesture": "«Снять ответ» на экране раунда",
+      "screen": "round",
+      "target": "camera",
+      "fallback": "Можно ответить роликом из галереи в раунде «Покажи из галереи»",
+      "snack": "Камера выключена",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "AVCaptureSession, фронтальная камера, 10 секунд на ответ",
+      "rationale": {
+        "who": "Игрок в комнате",
+        "moment": "На экране раунда нажимает «Снять ответ»",
+        "need": "Ответ — это ролик, который снимают прямо сейчас на задание; без камеры его нечем снять",
+        "without": "Игрок пропускает раунд на камеру и отвечает в раунде из галереи"
+      },
+      "reviewNote": "Доступ вызывается действием «Снять ответ» на экране раунда на экране «round». При отказе: Можно ответить роликом из галереи в раунде «Покажи из галереи»"
+    },
+    {
+      "key": "mic",
+      "plist": "NSMicrophoneUsageDescription",
+      "alert": {
+        "title": "«Выкрутасы» запрашивает доступ к микрофону",
+        "text": "Записать звук в ответе на задание"
+      },
+      "feature": "Звук в ответе",
+      "gesture": "«Снять ответ» на экране раунда",
+      "screen": "round",
+      "target": "camera",
+      "fallback": "Ответ не записывается без звука",
+      "snack": "Микрофон выключен",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "AVAudioSession только во время записи ответа",
+      "rationale": {
+        "who": "Игрок, который снимает ответ",
+        "moment": "Сразу за камерой, по той же кнопке «Снять ответ»",
+        "need": "Половина ответов — голос: «позвони маме» без звука не сыграть",
+        "without": "Ответ на камеру не снимается, остаётся раунд из галереи"
+      },
+      "reviewNote": "Доступ вызывается действием «Снять ответ» на экране раунда на экране «round». При отказе: Ответ не записывается без звука"
+    },
+    {
+      "key": "photos",
+      "plist": "NSPhotoLibraryUsageDescription",
+      "alert": {
+        "title": "«Выкрутасы» запрашивает доступ к «Фото»",
+        "text": "Показать в раунде свой старый ролик или фото на тему"
+      },
+      "feature": "Раунд «Покажи из галереи»",
+      "gesture": "«Выбрать из галереи» в раунде",
+      "screen": "galleryround",
+      "target": "picker",
+      "fallback": "Раунд из галереи пропускается, остальные раунды идут на камеру",
+      "snack": "Галерея недоступна",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "PhotoKit: выборка по году и альбому, отметка уже показанных в вечере",
+      "rationale": {
+        "who": "Игрок в раунде «Покажи из галереи»",
+        "moment": "Нажимает «Выбрать из галереи», когда на ТВ задание «Покажи, как ты танцевал на выпускном»",
+        "need": "Ответ — свой старый ролик, его нужно найти в медиатеке по году; без доступа выбрать нечего",
+        "without": "Игрок пропускает этот раунд"
+      },
+      "reviewNote": "Доступ вызывается действием «Выбрать из галереи» в раунде на экране «galleryround». При отказе: Раунд из галереи пропускается, остальные раунды идут на камеру"
+    },
+    {
+      "key": "photosadd",
+      "plist": "NSPhotoLibraryAddUsageDescription",
+      "alert": {
+        "title": "«Выкрутасы» запрашивает доступ к сохранению в «Фото»",
+        "text": "Сохранить хайлайты вечера одним роликом"
+      },
+      "feature": "Хайлайты вечера в «Фото»",
+      "gesture": "«Сохранить хайлайты вечера в «Фото»» на странице вечера",
+      "screen": "evening",
+      "target": "evening",
+      "fallback": "Хайлайты остаются в приложении, их можно досмотреть в плеере",
+      "snack": "Хайлайты остались в приложении",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "PHPhotoLibrary performChanges: только запись готового ролика хайлайтов",
+      "rationale": {
+        "who": "Игрок после вечера",
+        "moment": "На странице вчерашнего вечера нажимает «Сохранить хайлайты вечера в «Фото»»",
+        "need": "Ролик хайлайтов попадает в медиатеку только с этим доступом",
+        "without": "Хайлайты смотрят в приложении"
+      },
+      "reviewNote": "Доступ вызывается действием «Сохранить хайлайты вечера в «Фото»» на странице вечера на экране «evening». При отказе: Хайлайты остаются в приложении, их можно досмотреть в плеере"
+    },
+    {
+      "key": "push",
+      "plist": "aps-environment (Push Notifications capability)",
+      "alert": {
+        "title": "«Выкрутасы» запрашивает разрешение на уведомления",
+        "text": "Напомним об игре, на которую вас позвали"
+      },
+      "feature": "Напоминание об игре",
+      "gesture": "«Напомнить об игре у Лены в пятницу в 20:00» в приглашении",
+      "screen": "invite",
+      "target": "invite",
+      "fallback": "Время игры видно в приглашении и во вкладке «Вечера»",
+      "snack": "Уведомления выключены",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "UNUserNotificationCenter: локальное уведомление за час до игры",
+      "rationale": {
+        "who": "Гость, которого позвали на вечер",
+        "moment": "В приглашении нажимает «Напомнить об игре у Лены в пятницу в 20:00»",
+        "need": "Игра через неделю; напоминание приходит за час, когда приложение закрыто",
+        "without": "Время игры видно в приглашении"
+      },
+      "reviewNote": "Доступ вызывается действием «Напомнить об игре у Лены в пятницу в 20:00» в приглашении на экране «invite». При отказе: Время игры видно в приглашении и во вкладке «Вечера»"
+    },
+    {
+      "key": "location",
+      "plist": "NSLocationWhenInUseUsageDescription",
+      "alert": {
+        "title": "«Выкрутасы» запрашивает доступ к геопозиции",
+        "text": "Показать, как дойти до вечера"
+      },
+      "feature": "Путь до вечера",
+      "gesture": "«Как добраться до Лены» в приглашении",
+      "screen": "invite",
+      "target": "invite",
+      "fallback": "Адрес остаётся в приглашении, его можно открыть в «Картах»",
+      "snack": "Адрес есть в приглашении",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "Core Location when in use, один запрос; время пешком считает MapKit",
+      "rationale": {
+        "who": "Гость перед вечером",
+        "moment": "В приглашении нажимает «Как добраться до Лены»",
+        "need": "Время пути считается от точки, где гость сейчас; без неё есть только адрес",
+        "without": "Гость открывает адрес вручную"
+      },
+      "reviewNote": "Доступ вызывается действием «Как добраться до Лены» в приглашении на экране «invite». При отказе: Адрес остаётся в приглашении, его можно открыть в «Картах»"
+    },
+    {
+      "key": "audio",
+      "plist": "UIBackgroundModes: audio",
+      "alert": {
+        "title": "Фоновое воспроизведение",
+        "text": "Хайлайты продолжат играть в окне поверх других приложений и при погашенном экране"
+      },
+      "feature": "Хайлайты в картинке в картинке и при погашенном экране",
+      "gesture": "«Картинка в картинке» в плеере хайлайта",
+      "screen": "watch",
+      "target": "background",
+      "fallback": "Хайлайт встаёт на паузу при выходе из приложения",
+      "snack": "Хайлайт на паузе",
+      "risk": "high",
+      "anchor": false,
+      "conditional": true,
+      "grounding": "AVPictureInPictureController, категория playback, MPNowPlayingInfoCenter",
+      "rationale": {
+        "who": "Игрок, который досматривает хайлайты вечера",
+        "moment": "В плеере нажимает «Картинка в картинке» и уходит в «Сообщения» или гасит экран",
+        "need": "Без фонового режима iOS останавливает видео и звук",
+        "without": "Хайлайт встаёт на паузу"
+      },
+      "reviewNote": "Доступ вызывается действием «Картинка в картинке» в плеере хайлайта на экране «watch». При отказе: Хайлайт встаёт на паузу при выходе из приложения",
+      "activate": true,
+      "requires": "AVPictureInPictureController и воспроизведение при блокировке с Now Playing"
+    },
+    {
+      "key": "tracking",
+      "plist": "NSUserTrackingUsageDescription",
+      "alert": {
+        "title": "Разрешить «Выкрутасы» отслеживать ваши действия в приложениях и на сайтах других компаний?",
+        "text": "Данные будут использоваться для показа релевантной рекламы",
+        "deny": "Запретить отслеживание",
+        "grant": "Разрешить"
+      },
+      "feature": "Реклама в ленте хайлайтов по интересам",
+      "gesture": "«Подбирать по интересам» на экране «Реклама»",
+      "screen": "ads",
+      "target": "ads",
+      "fallback": "Реклама остаётся без подбора, игра работает полностью",
+      "snack": "Реклама останется без подбора",
+      "risk": "medium",
+      "anchor": false,
+      "conditional": true,
+      "grounding": "Рекламный SDK, контекстная реклама без IDFA при отказе",
+      "rationale": {
+        "who": "Игрок бесплатной версии",
+        "moment": "Из карточки рекламы на главной открывает «Реклама» и нажимает «Подбирать по интересам»",
+        "need": "Без разрешения сеть не знает интересов из других приложений, карточка остаётся общей",
+        "without": "Реклама без подбора"
+      },
+      "reviewNote": "Доступ вызывается действием «Подбирать по интересам» на экране «Реклама» на экране «ads». При отказе: Реклама остаётся без подбора, игра работает полностью",
+      "requires": "ATT показывается до выбора «Без подбора»",
+      "snackOnce": true
+    }
+  ],
+  "screens": [
+    {
+      "id": "phone",
+      "title": "Вход по номеру",
+      "type": "старт, без таб-бара",
+      "light": false,
+      "meta": "Номер и пароль · без OTP",
+      "ui": {
+        "pattern": "auth",
+        "navigation": "push",
+        "purpose": "Войти по номеру телефона или продолжить без аккаунта",
+        "primaryAction": "Далее",
+        "hierarchy": {
+          "primary": "Номер телефона и вход",
+          "secondary": "Регистрация, гостевой проход, правовая строка и поддержка"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error"
+        ],
+        "density": "low",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Номер введён полностью, дальше пароль"
+          },
+          {
+            "kind": "stress",
+            "example": "Номер с кодом другой страны"
+          },
+          {
+            "kind": "failure",
+            "example": "Номер введён неверно или сеть недоступна"
+          }
+        ]
+      }
+    },
+    {
+      "id": "home",
+      "title": "Главная",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Хайлайты, мои ответы, вечера",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "root",
+        "purpose": "Пересмотреть хайлайты своих вечеров и перейти к вечерам",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Крупные кадры хайлайтов 16:9 с длительностью",
+          "secondary": "Чипсы разделов, мои ответы, вечера и мини-плеер"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Два хайлайта вчерашнего вечера у Лены и сегодняшний вечер"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное название хайлайта в две строки"
+          },
+          {
+            "kind": "failure",
+            "example": "Вечеров ещё не было — главная зовёт создать первый"
+          }
+        ]
+      }
+    },
+    {
+      "id": "clips",
+      "title": "Клипы",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Смотреть вертикальные ответы игроков подряд",
+      "ui": {
+        "pattern": "player",
+        "navigation": "root",
+        "purpose": "Смотреть вертикальные ответы игроков подряд",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Вертикальный ответ игрока на весь экран",
+          "secondary": "Голоса, вечер, следующий ответ"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Ответ Оли на первый раунд у Лены"
+          },
+          {
+            "kind": "stress",
+            "example": "Ответ длиннее задания, 0:42"
+          },
+          {
+            "kind": "failure",
+            "example": "Вечеров не было, клипов пока нет"
+          }
+        ]
+      }
+    },
+    {
+      "id": "create",
+      "title": "Создать",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Создать вечер, задание или снять ответ",
+      "ui": {
+        "pattern": "task",
+        "navigation": "root",
+        "purpose": "Создать вечер, задание или снять ответ",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Новый вечер первой ячейкой листа",
+          "secondary": "Задания и ответ на текущий раунд"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Новый вечер на сегодня"
+          },
+          {
+            "kind": "stress",
+            "example": "Вечер уже идёт, ответ на раунд 1"
+          },
+          {
+            "kind": "failure",
+            "example": "Вечеров нет — доступен только новый"
+          }
+        ]
+      }
+    },
+    {
+      "id": "evenings",
+      "title": "Вечера",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Вечера: приглашения, сегодняшний и прошедшие",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "root",
+        "purpose": "Вечера: приглашения, сегодняшний и прошедшие",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Сегодняшний вечер крупным кадром",
+          "secondary": "Приглашение Лены и прошедшие вечера"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Приглашение, сегодняшний и два прошедших вечера"
+          },
+          {
+            "kind": "stress",
+            "example": "Три приглашения на одну неделю"
+          },
+          {
+            "kind": "failure",
+            "example": "Ни одного вечера и приглашения"
+          }
+        ]
+      }
+    },
+    {
+      "id": "profile",
+      "title": "Профиль",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Номер, счётчики, свои ответы и настройки",
+      "ui": {
+        "pattern": "settings",
+        "navigation": "root",
+        "purpose": "Номер, счётчики, свои ответы и настройки",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Номер и счётчики вечеров и ответов",
+          "secondary": "Мой ответ в хайлайтах, задания, реклама"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "3 вечера, 9 ответов, 1 в хайлайтах"
+          },
+          {
+            "kind": "stress",
+            "example": "Десятки вечеров за год"
+          },
+          {
+            "kind": "failure",
+            "example": "Без ответов в хайлайтах"
+          }
+        ]
+      }
+    },
+    {
+      "id": "watch",
+      "title": "Кот увидел огурец",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Смотреть хайлайт, свернуть или увести в картинку в картинке",
+      "parent": "home",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Смотреть хайлайт, свернуть или увести в картинку в картинке",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Плеер хайлайта во всю ширину",
+          "secondary": "Игрок, задание, вечер и ещё хайлайты"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Хайлайт Лены, раунд 3, 0:12"
+          },
+          {
+            "kind": "stress",
+            "example": "Хайлайт 0:42 из галереи"
+          },
+          {
+            "kind": "failure",
+            "example": "Ролик не загрузился с телефона игрока"
+          }
+        ]
+      }
+    },
+    {
+      "id": "watchdance",
+      "title": "Выпускной 2009: танец со шваброй",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Смотреть хайлайт Димы из раунда «из галереи»",
+      "parent": "home",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Смотреть хайлайт Димы из раунда «из галереи»",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Плеер хайлайта во всю ширину",
+          "secondary": "Игрок, задание, вечер и ещё хайлайты"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Ролик Димы с выпускного, 0:42"
+          },
+          {
+            "kind": "stress",
+            "example": "Старый ролик в низком качестве"
+          },
+          {
+            "kind": "failure",
+            "example": "Ролик удалён владельцем"
+          }
+        ]
+      }
+    },
+    {
+      "id": "watchmine",
+      "title": "Утро понедельника: будильник",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Смотреть свой ответ, попавший в хайлайты",
+      "parent": "profile",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Смотреть свой ответ, попавший в хайлайты",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Плеер хайлайта во всю ширину",
+          "secondary": "Задание, вечер и ещё хайлайты"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Мой ответ на будильник, 0:21"
+          },
+          {
+            "kind": "stress",
+            "example": "Ответ снят без звука, микрофон выключен"
+          },
+          {
+            "kind": "failure",
+            "example": "Ролик ещё не догрузился"
+          }
+        ]
+      }
+    },
+    {
+      "id": "background",
+      "title": "Картинка в картинке",
+      "type": "system",
+      "light": false,
+      "meta": "Досматривать хайлайт в окне поверх других приложений",
+      "parent": "watch",
+      "ui": {
+        "pattern": "system",
+        "navigation": "system",
+        "purpose": "Досматривать хайлайт в окне поверх других приложений",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Окно хайлайта с паузой и перемоткой",
+          "secondary": "Экран «Домой» и возврат в «Выкрутасы»"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Хайлайт играет поверх «Сообщений»"
+          },
+          {
+            "kind": "stress",
+            "example": "Окно сдвинуто к краю"
+          },
+          {
+            "kind": "failure",
+            "example": "Ролик недоступен, окно закрывается"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lock",
+      "title": "Звук при погашенном экране",
+      "type": "system",
+      "light": false,
+      "meta": "Слушать хайлайт с погашенным экраном",
+      "parent": "watch",
+      "ui": {
+        "pattern": "system",
+        "navigation": "system",
+        "purpose": "Слушать хайлайт с погашенным экраном",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Карточка хайлайта на локскрине",
+          "secondary": "Кнопка возврата в плеер хайлайта"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Хайлайт Лены на локскрине"
+          },
+          {
+            "kind": "stress",
+            "example": "Пауза и перемотка с локскрина"
+          },
+          {
+            "kind": "failure",
+            "example": "Наушники отключились, пауза"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ads",
+      "title": "Реклама",
+      "type": "push",
+      "light": false,
+      "meta": "Выбрать рекламу бесплатной версии",
+      "parent": "home",
+      "ui": {
+        "pattern": "settings",
+        "navigation": "push",
+        "purpose": "Выбрать рекламу бесплатной версии",
+        "primaryAction": "Подбирать по интересам",
+        "hierarchy": {
+          "primary": "Карточка рекламы и два варианта",
+          "secondary": "Запрос ATT по кнопке"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "После разрешения — пиццерия рядом"
+          },
+          {
+            "kind": "stress",
+            "example": "Меняет решение после отказа"
+          },
+          {
+            "kind": "failure",
+            "example": "ATT запрещён, реклама без подбора"
+          }
+        ]
+      }
+    },
+    {
+      "id": "search",
+      "title": "Поиск",
+      "type": "push",
+      "light": false,
+      "meta": "Найти ответ или вечер по слову",
+      "parent": "home",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "push",
+        "purpose": "Найти ответ или вечер по слову",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Найденные ответы с кадрами 16:9",
+          "secondary": "Найденные вечера с хайлайтами"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "По слову «выпускной» два ответа и вечер"
+          },
+          {
+            "kind": "stress",
+            "example": "Слово встречается в десятке ответов"
+          },
+          {
+            "kind": "failure",
+            "example": "По запросу ничего не найдено"
+          }
+        ]
+      }
+    },
+    {
+      "id": "newevening",
+      "title": "Новый вечер",
+      "type": "modal",
+      "light": false,
+      "meta": "Создать вечер: название, время и раунды",
+      "parent": "create",
+      "ui": {
+        "pattern": "editor",
+        "navigation": "modal",
+        "purpose": "Создать вечер: название, время и раунды",
+        "primaryAction": "Создать вечер",
+        "hierarchy": {
+          "primary": "Название и время вечера",
+          "secondary": "Пять раундов и вход в задания"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied",
+          "success"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Вечер у Саши сегодня в 20:00 на 5 раундов"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное название вечера"
+          },
+          {
+            "kind": "failure",
+            "example": "Нет ни одного задания в раундах"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tasks",
+      "title": "Задания",
+      "type": "push",
+      "light": false,
+      "meta": "Собрать задания вечера из набора игры и своих",
+      "parent": "create",
+      "ui": {
+        "pattern": "editor",
+        "navigation": "push",
+        "purpose": "Собрать задания вечера из набора игры и своих",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Свои задания ведущего",
+          "secondary": "Шесть заданий из набора игры"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied",
+          "success"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Два своих и шесть от игры"
+          },
+          {
+            "kind": "stress",
+            "example": "Своё задание в две строки"
+          },
+          {
+            "kind": "failure",
+            "example": "Своих заданий пока нет"
+          }
+        ]
+      }
+    },
+    {
+      "id": "room",
+      "title": "Вечер у Саши",
+      "type": "push",
+      "light": false,
+      "meta": "Найти телевизор и игроков в комнате и начать раунд",
+      "parent": "evenings",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Найти телевизор и игроков в комнате и начать раунд",
+        "primaryAction": "Начать раунд 1",
+        "hierarchy": {
+          "primary": "Телевизор и игроки в комнате",
+          "secondary": "Пять раундов вечера"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Гостиная · 5 игроков в комнате"
+          },
+          {
+            "kind": "stress",
+            "example": "Два телевизора в одной сети"
+          },
+          {
+            "kind": "failure",
+            "example": "Локальная сеть запрещена — раунды на телефоне ведущего"
+          }
+        ]
+      }
+    },
+    {
+      "id": "round",
+      "title": "Раунд 1",
+      "type": "push",
+      "light": false,
+      "meta": "Показать задание и снять ответ",
+      "parent": "room",
+      "ui": {
+        "pattern": "task",
+        "navigation": "push",
+        "purpose": "Показать задание и снять ответ",
+        "primaryAction": "Снять ответ",
+        "hierarchy": {
+          "primary": "Задание раунда крупно",
+          "secondary": "Ответы игроков, которые уже сняли"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Три ответа из пяти уже в раунде"
+          },
+          {
+            "kind": "stress",
+            "example": "Задание в три строки"
+          },
+          {
+            "kind": "failure",
+            "example": "Камера запрещена, пустое состояние iOS"
+          }
+        ]
+      }
+    },
+    {
+      "id": "camera",
+      "title": "Съёмка ответа",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Снять ответ на задание за 10 секунд",
+      "parent": "round",
+      "ui": {
+        "pattern": "capture",
+        "navigation": "fullscreen",
+        "purpose": "Снять ответ на задание за 10 секунд",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Видоискатель и задание поверх",
+          "secondary": "Таймер, звук и смена камеры"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Фронтальная камера, 10 секунд"
+          },
+          {
+            "kind": "stress",
+            "example": "Съёмка в тёмной комнате при свете ТВ"
+          },
+          {
+            "kind": "failure",
+            "example": "Камера занята другим приложением"
+          }
+        ]
+      }
+    },
+    {
+      "id": "vote",
+      "title": "Голосование",
+      "type": "push",
+      "light": false,
+      "meta": "Увидеть свой ответ в раунде и проголосовать",
+      "parent": "round",
+      "ui": {
+        "pattern": "task",
+        "navigation": "push",
+        "purpose": "Увидеть свой ответ в раунде и проголосовать",
+        "primaryAction": "Следующий раунд",
+        "hierarchy": {
+          "primary": "Свой ответ в раунде",
+          "secondary": "Ответы игроков с кнопкой голоса"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Ваш ответ и три ответа гостей"
+          },
+          {
+            "kind": "stress",
+            "example": "Голоса разделились поровну между двумя"
+          },
+          {
+            "kind": "failure",
+            "example": "Ответ не отправился, повтор"
+          }
+        ]
+      }
+    },
+    {
+      "id": "galleryround",
+      "title": "Раунд 2",
+      "type": "push",
+      "light": false,
+      "meta": "Показать в раунде свой старый ролик или фото",
+      "parent": "vote",
+      "ui": {
+        "pattern": "task",
+        "navigation": "push",
+        "purpose": "Показать в раунде свой старый ролик или фото",
+        "primaryAction": "Выбрать из галереи",
+        "hierarchy": {
+          "primary": "Задание раунда и свой ответ",
+          "secondary": "Ответы гостей, которые уже показали"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Ответ «Выпускной 2014» в раунде"
+          },
+          {
+            "kind": "stress",
+            "example": "Ролик длиннее минуты"
+          },
+          {
+            "kind": "failure",
+            "example": "Доступ к «Фото» запрещён"
+          }
+        ]
+      }
+    },
+    {
+      "id": "picker",
+      "title": "Выбор из «Фото»",
+      "type": "system",
+      "light": false,
+      "meta": "Выбрать старый ролик или фото для раунда",
+      "parent": "galleryround",
+      "ui": {
+        "pattern": "system",
+        "navigation": "system",
+        "purpose": "Выбрать старый ролик или фото для раунда",
+        "primaryAction": "Отправить",
+        "hierarchy": {
+          "primary": "Сетка роликов и фото за июнь 2014",
+          "secondary": "Подпись с выбранным роликом и длительностью"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Выбран ролик с выпускного, 0:18"
+          },
+          {
+            "kind": "stress",
+            "example": "Сотни роликов за год"
+          },
+          {
+            "kind": "failure",
+            "example": "Медиатека пуста за июнь 2014"
+          }
+        ]
+      }
+    },
+    {
+      "id": "evening",
+      "title": "Вечер у Лены",
+      "type": "push",
+      "light": false,
+      "meta": "Страница вечера как канал: хайлайты, раунды, сохранение в «Фото»",
+      "parent": "evenings",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Страница вечера как канал: хайлайты, раунды, сохранение в «Фото»",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Хайлайты вечера крупными кадрами",
+          "secondary": "Игроки, раунды и сохранение в «Фото»"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Вечер у Лены · 6 игроков · 14 ответов"
+          },
+          {
+            "kind": "stress",
+            "example": "Пятнадцать хайлайтов"
+          },
+          {
+            "kind": "failure",
+            "example": "У вечера нет хайлайтов"
+          }
+        ]
+      }
+    },
+    {
+      "id": "invite",
+      "title": "Игра у Лены",
+      "type": "push",
+      "light": false,
+      "meta": "Приглашение: когда, куда, кто придёт, напоминание и путь",
+      "parent": "evenings",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Приглашение: когда, куда, кто придёт, напоминание и путь",
+        "primaryAction": "Приду",
+        "hierarchy": {
+          "primary": "Время и адрес вечера у Лены",
+          "secondary": "Напоминание, путь, состав"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Пятница, 20:00, Тихая улица, 8"
+          },
+          {
+            "kind": "stress",
+            "example": "Вечер в другом городе"
+          },
+          {
+            "kind": "failure",
+            "example": "Приглашение отменено"
+          }
+        ]
+      }
+    }
+  ],
+  "prototypes": [
+    {
+      "id": "all",
+      "hero": true,
+      "label": "Весь продукт",
+      "note": "23 экранов и 9 доступов",
+      "start": "phone",
+      "screens": [
+        "phone",
+        "home",
+        "clips",
+        "create",
+        "evenings",
+        "profile",
+        "watch",
+        "watchdance",
+        "watchmine",
+        "background",
+        "lock",
+        "ads",
+        "search",
+        "newevening",
+        "tasks",
+        "room",
+        "round",
+        "camera",
+        "vote",
+        "galleryround",
+        "picker",
+        "evening",
+        "invite"
+      ],
+      "stops": [],
+      "authTarget": "home"
+    },
+    {
+      "id": "play",
+      "label": "Сыграть вечер",
+      "note": "Вечер, телевизор, раунд, ответ и голосование",
+      "start": "newevening",
+      "screens": [
+        "newevening",
+        "tasks",
+        "room",
+        "round",
+        "camera",
+        "vote",
+        "galleryround",
+        "picker"
+      ],
+      "stops": []
+    },
+    {
+      "id": "watch",
+      "label": "Досмотреть хайлайты",
+      "note": "Плеер, мини-плеер, картинка в картинке и «Фото»",
+      "start": "evening",
+      "screens": [
+        "evening",
+        "watch",
+        "watchdance",
+        "watchmine",
+        "clips",
+        "background",
+        "lock",
+        "home"
+      ],
+      "stops": [
+        "home",
+        "clips"
+      ]
+    },
+    {
+      "id": "invite",
+      "label": "Пойти в гости",
+      "note": "Приглашение, напоминание и путь",
+      "start": "evenings",
+      "screens": [
+        "evenings",
+        "invite",
+        "room",
+        "evening",
+        "newevening"
+      ],
+      "stops": [
+        "room",
+        "evening",
+        "newevening"
+      ]
+    }
+  ],
+  "backendless": [
+    {
+      "needs": "Связь телефонов гостей с телефоном ведущего",
+      "solution": "Bonjour и Network.framework в одной Wi‑Fi сети: ответы передаются напрямую, без сервера"
+    },
+    {
+      "needs": "Показ раунда на телевизоре",
+      "solution": "Google Cast SDK отправляет ролики раунда на телевизор в комнате"
+    },
+    {
+      "needs": "Хайлайты и вечера у компании",
+      "solution": "Хайлайты сохраняются на телефоне ведущего и рассылаются игрокам в той же сети; Firebase Storage — для приглашений"
+    }
+  ],
+  "docs": [
+    {
+      "file": "01-product-vision.md",
+      "label": "Вижен"
+    },
+    {
+      "file": "02-architecture.md",
+      "label": "Архитектура"
+    },
+    {
+      "file": "03-design-system.md",
+      "label": "Дизайн-токены"
+    },
+    {
+      "file": "04-references.md",
+      "label": "Референсы"
+    },
+    {
+      "file": "05-visual-audit.md",
+      "label": "Визуальный аудит"
+    },
+    {
+      "file": "06-app-store.md",
+      "label": "Карточка App Store"
+    }
+  ],
+  "appStore": {
+    "name": "Выкрутасы: игра на ТВ",
+    "subtitle": "Вечеринка, где в кадре вы",
+    "promo": "Задания на телевизоре, ответы — ваши ролики с телефонов. Снимите, проголосуйте и сохраните хайлайты вечера.",
+    "keywords": "друзья,задания,ролики,голосование,хайлайты,пати,компания,шарады,телевизор",
+    "category": {
+      "primary": "Entertainment",
+      "secondary": "Photo & Video"
+    },
+    "ageRating": "13+",
+    "price": "Бесплатно, с рекламой",
+    "encryption": "ITSAppUsesNonExemptEncryption = NO — только HTTPS для входа и рекламы",
+    "urls": {
+      "support": "https://vykrutasy.app/support",
+      "marketing": "https://vykrutasy.app",
+      "privacy": "https://vykrutasy.app/privacy"
+    },
+    "description": [
+      "Выкрутасы — игра для вечеринки на телевизоре, где в главных ролях ваши ролики.",
+      "ЗАПУСТИТЕ ВЕЧЕР\\nТелефон найдёт телевизор и телефоны гостей в комнате. Раунды идут на ТВ.",
+      "СНИМИТЕ ОТВЕТ\\nИзобразите соседа по парте за 10 секунд или покажите старый ролик с выпускного из галереи.",
+      "ГОЛОСУЙТЕ\\nОтветы крутятся на телевизоре, все голосуют с телефонов, лучшие уходят в хайлайты вечера.",
+      "Задания — набор игры и свои, придуманные ведущим. Бесплатная версия показывает рекламу."
+    ],
+    "whatsNew": "Первая версия: вечера, раунды на телевизоре, ответы на камеру и из галереи, голосование и хайлайты.",
+    "privacy": [
+      {
+        "type": "Фото и видео",
+        "apple": "User Content → Photos or Videos",
+        "purpose": "Работа приложения",
+        "linked": false,
+        "tracking": false,
+        "why": "Ответы игроков внутри вечера"
+      },
+      {
+        "type": "Геопозиция",
+        "apple": "Location → Coarse Location",
+        "purpose": "Функциональность",
+        "linked": false,
+        "tracking": false,
+        "why": "Путь до вечера; только по кнопке"
+      },
+      {
+        "type": "Идентификатор устройства",
+        "apple": "Identifiers → Device ID",
+        "purpose": "Реклама",
+        "linked": false,
+        "tracking": true,
+        "why": "Рекламному SDK только после согласия в ATT"
+      }
+    ],
+    "reviewAccount": {
+      "email": "review@vykrutasy.app",
+      "password": "review2026",
+      "note": "Вход по номеру и паролю, OTP не используется. Можно продолжить без аккаунта. Для раунда на ТВ нужен Chromecast в той же сети; без него раунд идёт на телефоне."
+    }
+  },
+  "auth": {
+    "mode": "phone",
+    "confirmation": false,
+    "entryTarget": "home"
+  }
+}
