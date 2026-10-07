@@ -1,7 +1,9 @@
 {
   "slug": "rehearsal",
   "name": "Второй дубль",
-  "formerNames": ["Репетиция"],
+  "formerNames": [
+    "Репетиция"
+  ],
   "eyebrow": "Второй дубль · Тренер выступлений на видео · iOS",
   "targetSet": "vk-video",
   "domain": "vtoroy-dubl.app",
@@ -773,10 +775,12 @@
         "moment",
         "retake",
         "take",
-        "setup"
+        "setup",
+        "today"
       ],
       "stops": [
-        "setup"
+        "setup",
+        "today"
       ]
     },
     {

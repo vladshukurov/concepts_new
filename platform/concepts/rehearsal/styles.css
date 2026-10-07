@@ -176,3 +176,7 @@
 
 /* Главное действие настройки прижато к низу */
 .re-dock { flex:none; padding:8px 16px calc(var(--safe-bottom) + 8px); border-top:1px solid var(--ui-line); background:var(--ui-bg); }
+
+/* Свёрнутый плеер разбора над таб-баром: прогон без кадра — значок видео */
+.re-mini-face { display:grid; place-items:center; color:var(--ui-text-2); }
+.re-mini-face svg { width:22px; height:22px; }
