@@ -1,0 +1,278 @@
+/* «В унисон» — мессенджер хора, светлая тема `.ui.vk-light`.
+   Список чатов, чат, пузыри, голосовые, звонок, строки и ячейки — из ядра.
+   Своё у «В унисон»: закреплённая спевка и «кто пришёл», карточка сети зала, шкала на 32 голоса,
+   карта у ДК, нарисованная кодом, QR приглашения, ролики концерта
+   и системные поверхности iOS — экран блокировки, «Домой», «Поделиться» в «Диктофоне», «Сообщения».
+
+   Форма «В унисон» мягче «Сбора»: кнопки со скруглением 14, чипсы, сегменты, поиск и поле ввода —
+   пилюли, пузыри 18 с меньшим хвостом. Акцент — синий ВК. */
+.ui .ui-btn { border-radius:14px; }
+.ui .ui-btn.is-m { border-radius:12px; }
+.ui .ui-chip > span { border-radius:999px; padding:9px 16px; }
+.ui .ui-seg { border-radius:999px; }
+.ui .ui-seg > button::before { border-radius:999px; }
+.ui .ui-search { border-radius:999px; padding:0 16px; }
+.ui .ui-composer-field { border-radius:999px; }
+.ui .ui-bubble.is-in { border-bottom-left-radius:12px; }
+.ui .ui-bubble.is-out { border-bottom-right-radius:12px; }
+.ui .ui-group { border-radius:16px; }
+.ui .ui-ad { border-radius:16px; }
+
+
+/* Закреплённая спевка под шапкой чата хора */
+.sp-pin { flex:none; display:flex; align-items:center; gap:12px; width:100%; min-height:52px; padding:6px 8px 6px 16px; background:var(--ui-card); box-shadow:inset 0 -.5px 0 var(--ui-line); text-align:left; color:var(--ui-link); }
+.sp-pin > svg { width:20px; height:20px; }
+.sp-pin > svg:last-child { color:var(--ui-text-3); }
+.sp-pin > span { flex:1; min-width:0; display:flex; flex-direction:column; }
+.sp-pin strong { font:600 15px/20px var(--ui-face); color:var(--ui-text); }
+.sp-pin > span > span { font:400 13px/16px var(--ui-face); color:var(--ui-link); }
+
+/* Системная строка в ленте сообщений: обновление программы, сводная в Календаре */
+.sp-sys { align-self:center; max-width:86%; margin:4px 0; padding:4px 12px; border-radius:12px; background:var(--ui-accent-soft); font:500 13px/18px var(--ui-face); color:var(--ui-link); text-align:center; }
+
+/* Карточка Wi‑Fi в пузыре и на экране сети */
+.sp-net { display:flex; align-items:center; gap:12px; width:100%; min-height:64px; padding:10px 12px; text-align:left; box-shadow:inset 0 0 0 1px var(--ui-line); border-radius:14px; }
+.sp-net-ico { width:44px; height:44px; flex:none; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent); color:#fff; }
+.sp-net-ico svg { width:22px; height:22px; }
+.sp-net > span:last-child, .sp-netcard > div { display:flex; flex-direction:column; min-width:0; }
+.sp-net strong { font:600 16px/20px var(--ui-face); }
+.sp-net span span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.sp-netcard { display:flex; align-items:center; gap:16px; padding:0 16px; }
+.sp-netcard .sp-net-ico { width:56px; height:56px; }
+.sp-netcard strong { font:600 20px/24px var(--ui-face); }
+.sp-netcard > div span { font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
+
+.sp-tile-dur { position:absolute; left:50%; bottom:10px; transform:translateX(-50%); padding:2px 8px; border-radius:10px; background:rgba(0,0,0,.56); color:#fff; font:500 12px/16px var(--ui-face); font-variant-numeric:tabular-nums; }
+.sp-photo { display:block; height:120px; }
+.ui-bubble-media > .sp-photo { display:flex!important; }
+/* Переписка прижата к полю ввода: короткая история стоит внизу, как в мессенджерах */
+.ui-scroll > .ui-chat { justify-content:flex-end; }
+
+/* Значок источника в листе «Поделиться» */
+.sp-shared { display:contents; }
+.sp-place-ico { width:44px; height:44px; flex:none; display:grid; place-items:center; border-radius:12px; background:var(--ui-accent-soft); color:var(--ui-link); }
+
+/* Файл в пузыре */
+.sp-file { display:flex; align-items:center; gap:12px; padding:10px 12px; }
+.sp-file-ico { width:44px; height:44px; flex:none; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent); color:#fff; }
+.sp-file > span:last-child { display:flex; flex-direction:column; min-width:0; }
+.sp-file strong { font:600 15px/20px var(--ui-face); }
+.sp-file span span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.ui-bubble.is-out .sp-file span span { color:#3f4a56; }
+.ui-bubble.is-out .ui-bubble-from { color:#00489a; }
+
+/* Дата в сообщении — ссылка, которая кладёт встречу в Календарь */
+.sp-date { display:inline; min-height:0; color:var(--ui-link); text-decoration:underline; text-underline-offset:2px; }
+
+/* Шапка сведений о хоре и приглашения */
+.sp-head { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 16px 16px; background:var(--ui-card); text-align:center; }
+.sp-head .ui-avatar { margin-bottom:8px; }
+
+/* Кто пришёл: число и шкала на 32 голоса */
+.sp-roll { display:flex; flex-direction:column; gap:2px; padding:0 16px; }
+.sp-roll strong { font:700 26px/32px var(--ui-face); font-variant-numeric:tabular-nums; }
+.sp-roll > span { font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
+.sp-roll-bar, .sp-widget-bar { display:grid; grid-template-columns:repeat(32, 1fr); gap:2px; margin-top:10px; }
+.sp-roll-bar > i, .sp-widget-bar > i { height:8px; border-radius:4px; background:var(--ui-accent-soft); }
+.sp-roll-bar > i.is-on, .sp-roll-bar > i > b { background:var(--ui-accent); }
+.sp-roll-bar > i > b, .sp-widget-bar > i > b { display:block; height:100%; border-radius:inherit; }
+.sp-roll-bar > i, .sp-widget-bar > i { overflow:hidden; }
+
+/* Сетка кадров: ролики концерта и выбор вложения */
+.sp-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; }
+.sp-grid.is-attach { padding-top:2px; }
+.ui .ui-sec.sp-attach-sec { padding:0 0 4px; }
+.sp-tile { position:relative; aspect-ratio:1; min-height:44px; }
+.sp-tile.is-picked { box-shadow:inset 0 0 0 3px var(--ui-accent); }
+.sp-tick { position:absolute; top:6px; right:6px; width:24px; height:24px; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent); color:#fff; box-shadow:0 0 0 2px #fff; }
+.sp-tick svg { width:14px; height:14px; stroke-width:3; }
+.sp-cam-tile { aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; background:var(--ui-accent); color:#fff; font:500 13px/16px var(--ui-face); }
+.sp-cam-tile svg { width:28px; height:28px; }
+.sp-attach-bar { flex:none; display:grid; grid-template-columns:repeat(4, 1fr); padding:6px 8px calc(var(--safe-bottom) + 2px); background:var(--ui-card); box-shadow:inset 0 .5px 0 var(--ui-line); }
+.sp-attach-bar > button { display:flex; flex-direction:column; align-items:center; gap:2px; min-height:48px; padding-top:4px; color:var(--ui-text-2); font:500 11px/14px var(--ui-face); }
+.sp-attach-bar > button.is-on { color:var(--ui-link); }
+
+/* QR и ссылка-приглашение: QR нарисован кодом из ссылки */
+.sp-qr { display:grid; grid-template-columns:repeat(21, 1fr); width:168px; aspect-ratio:1; margin:4px auto 0; }
+.sp-qr > i { background:var(--ui-card); }
+.sp-qr > i.is-on { background:var(--ui-text); }
+.sp-link { display:flex; flex-direction:column; align-items:center; gap:2px; padding:16px 16px 0; text-align:center; }
+.sp-link strong { font:600 17px/22px var(--ui-face); color:var(--ui-link); }
+.sp-link span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+
+/* Карта у ДК, нарисованная кодом */
+.sp-map { position:relative; height:220px; margin:0 16px; border-radius:12px; background:#eef1f4; overflow:hidden; }
+.sp-map.is-mini { height:128px; margin:0; border-radius:0; }
+.sp-map.is-full { position:absolute; inset:0; height:auto; margin:0; border-radius:0; }
+.sp-river { position:absolute; left:0; right:0; top:4%; height:26%; background:#cfe2f3; clip-path:polygon(0 38%, 100% 0, 100% 62%, 0 100%); }
+.sp-street { position:absolute; background:#fff; }
+.sp-street.s1 { left:0; right:0; top:46%; height:8px; transform:rotate(4deg); }
+.sp-street.s2 { top:0; bottom:0; left:34%; width:8px; transform:rotate(-6deg); }
+.sp-street.s3 { top:0; bottom:0; left:70%; width:6px; }
+.sp-street.s4 { left:0; right:0; top:76%; height:6px; }
+.sp-block { position:absolute; border-radius:6px; background:#dde2e8; }
+.sp-block.b1 { left:6%; top:56%; width:22%; height:16%; }
+.sp-block.b2 { left:42%; top:58%; width:24%; height:14%; }
+.sp-block.b3 { left:76%; top:30%; width:18%; height:14%; }
+.sp-pt { position:absolute; display:grid; place-items:center; width:28px; height:28px; margin:-14px 0 0 -14px; border-radius:50%; background:#fff; box-shadow:0 1px 4px rgba(0,16,61,.24); font:600 11px/1 var(--ui-face); color:var(--ui-link); }
+.sp-pt svg { width:16px; height:16px; }
+.sp-pt.is-me { width:18px; height:18px; margin:-9px 0 0 -9px; background:var(--ui-accent); box-shadow:0 0 0 5px rgba(0,119,255,.22); }
+.sp-pt.is-meet { left:40%; top:50%; background:var(--ui-accent); color:#fff; }
+.sp-pt.is-me { left:46%; top:62%; }
+.sp-pt.is-a { left:78%; top:22%; }
+.sp-pt.is-b { left:20%; top:80%; }
+.sp-pt.is-place { left:50%; top:30%; width:40px; height:40px; margin:-20px 0 0 -20px; background:var(--ui-accent); color:#fff; }
+.sp-pt.is-place svg { width:20px; height:20px; }
+
+/* Запись партии на месте поля ввода */
+.sp-rec { flex:none; display:flex; align-items:center; gap:10px; padding:8px 8px calc(var(--safe-bottom) + 4px) 16px; background:var(--ui-card); box-shadow:inset 0 .5px 0 var(--ui-line); }
+.sp-rec-dot { width:10px; height:10px; flex:none; border-radius:50%; background:#e64646; }
+.sp-rec-time { flex:none; font:600 16px/20px var(--ui-face); font-variant-numeric:tabular-nums; }
+.sp-rec-wave { flex:1; min-width:0; display:flex; align-items:center; gap:2px; height:28px; color:var(--ui-accent); }
+.sp-rec-wave > i { flex:1; max-width:3px; border-radius:2px; background:currentColor; }
+.sp-rec-wave > .h4 { height:4px; } .sp-rec-wave > .h5 { height:5px; } .sp-rec-wave > .h6 { height:6px; } .sp-rec-wave > .h8 { height:8px; }
+.sp-rec-wave > .h9 { height:9px; } .sp-rec-wave > .h10 { height:10px; } .sp-rec-wave > .h12 { height:12px; } .sp-rec-wave > .h14 { height:14px; }
+.sp-rec-wave > .h16 { height:16px; } .sp-rec-wave > .h18 { height:18px; } .sp-rec-wave > .h20 { height:20px; } .sp-rec-wave > .h22 { height:22px; } .sp-rec-wave > .h24 { height:24px; }
+.sp-rec-cancel { flex:none; display:flex; align-items:center; min-height:44px; color:var(--ui-text-2); font:400 15px/20px var(--ui-face); }
+.sp-rec-cancel svg { width:18px; height:18px; }
+.sp-rec-send { width:48px; height:48px; flex:none; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent); color:#fff; }
+.sp-rec-send svg { width:22px; height:22px; }
+
+/* Тёмные поверхности: камера, звонок */
+.sp-cam { overflow:hidden; background:#000!important; color:#fff; }
+.sp-cam .ui-nav { background:none!important; color:#fff; }
+.sp-cam .ui-icon-btn { color:#fff; }
+.sp-viewfinder { position:absolute; left:0; right:0; top:calc(var(--safe-top) + 44px); bottom:196px; }
+.sp-qr-found { position:absolute; left:16px; right:16px; top:calc(var(--safe-top) + 64px); display:flex; align-items:center; gap:12px; min-height:56px; padding:8px 14px; border-radius:14px; background-color:#fff; color:#000; text-align:left; }
+.sp-qr-found > svg { width:24px; height:24px; color:var(--ui-accent); }
+.sp-qr-found > span { display:flex; flex-direction:column; }
+.sp-qr-found strong { font:600 15px/20px var(--ui-face); }
+.sp-qr-found span span { font:400 13px/16px var(--ui-face); color:#0052b0; }
+.sp-modes { position:absolute; left:0; right:0; bottom:calc(var(--safe-bottom) + 112px); display:flex; justify-content:center; gap:8px; }
+.sp-modes > button { min-height:44px; padding:0 12px; font:600 14px/18px var(--ui-face); color:rgba(255,255,255,.72); }
+.sp-modes > .is-on { color:#ffd60a; }
+.sp-cam-row { position:absolute; left:0; right:0; bottom:calc(var(--safe-bottom) + 20px); display:flex; align-items:center; justify-content:space-between; padding:0 32px; }
+.sp-cam-thumb { width:48px; height:48px; border-radius:10px; }
+.sp-shutter { position:relative; width:76px; height:76px; border-radius:50%; box-shadow:inset 0 0 0 4px #fff; }
+.sp-shutter > span { position:absolute; inset:8px; border-radius:50%; background:#fff; }
+.sp-cam-flip { width:48px; height:48px; display:grid; place-items:center; border-radius:50%; background:rgba(255,255,255,.18); color:#fff; }
+.sp-call { background:linear-gradient(180deg, #24364c, #0e141b)!important; color:#fff; }
+.sp-call .ui-call > span, .sp-call .ui-call-ctl { color:rgba(255,255,255,.76); }
+.sp-call .ui-call-btn:not(.is-end) { background:rgba(255,255,255,.16); color:#fff; }
+.sp-call .ui-call-face.is-initial { background:rgba(255,255,255,.16); color:#fff; }
+
+/* «Сообщения» iOS — системная поверхность приглашённого */
+.sp-ios .ui-nav strong { display:flex; justify-content:center; }
+.sp-ios-who { display:flex; flex-direction:column; align-items:center; gap:2px; font:400 12px/14px var(--ui-face); }
+.sp-ios-who .ui-avatar { width:32px; height:32px; font-size:13px; }
+.sp-ios .ui-sec.sp-ios-thread { display:flex; flex-direction:column; gap:6px; padding:8px 16px 16px; }
+.sp-ios-day { margin:4px 0 8px; text-align:center; font:400 12px/16px var(--ui-face); color:var(--ui-text-2); }
+.sp-ios-bubble { max-width:76%; padding:8px 14px; border-radius:18px; font:400 16px/21px var(--ui-face); }
+.sp-ios-bubble.is-in { align-self:flex-start; background:#e9e9eb; color:#000; }
+.sp-ios-bubble.is-out { align-self:flex-end; background:#0067db; color:#fff; }
+.sp-ios-link { align-self:flex-start; display:flex; align-items:center; gap:12px; width:76%; min-height:64px; padding:10px 12px; border-radius:18px; background:#e9e9eb; text-align:left; }
+.sp-ios-link-ico { width:44px; height:44px; flex:none; display:grid; place-items:center; border-radius:10px; background:var(--ui-accent); color:#fff; }
+.sp-ios-link > span:last-child { display:flex; flex-direction:column; min-width:0; }
+.sp-ios-link strong { font:600 15px/20px var(--ui-face); }
+.sp-ios-link span span { font:400 13px/16px var(--ui-face); color:#4c5663; }
+.sp-ios-meta { align-self:flex-end; font:400 11px/14px var(--ui-face); color:var(--ui-text-2); }
+.sp-ios-bar { flex:none; display:flex; align-items:center; gap:10px; padding:8px 12px calc(var(--safe-bottom) + 4px); color:var(--ui-text-2); }
+.sp-ios-bar > span:first-child { width:36px; height:36px; display:grid; place-items:center; border-radius:50%; background:#e9e9eb; }
+.sp-ios-field { flex:1; min-height:36px; display:flex; align-items:center; padding:0 14px; border-radius:18px; box-shadow:inset 0 0 0 1px var(--ui-line); font:400 16px/20px var(--ui-face); }
+
+/* «Поделиться» в «Диктофоне» */
+.sp-sys-surface { overflow:hidden; background:#eef1f4!important; }
+.sp-sheet { position:absolute; left:0; right:0; bottom:0; padding:16px 0 calc(var(--safe-bottom) + 8px); border-radius:14px 14px 0 0; background:#f2f2f7; box-shadow:0 -4px 24px rgba(0,16,61,.16); }
+.sp-sheet-head { display:flex; align-items:center; gap:12px; padding:0 8px 12px 16px; box-shadow:inset 0 -.5px 0 var(--ui-line); }
+.sp-sheet-head > span:nth-child(2) { flex:1; display:flex; flex-direction:column; }
+.sp-sheet-head strong { font:600 16px/20px var(--ui-face); }
+.sp-sheet-head span span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.sp-sheet-x { width:44px; height:44px; display:grid; place-items:center; color:var(--ui-text-2); }
+.sp-share-people, .sp-share-apps { display:flex; gap:16px; padding:16px 16px 4px; overflow-x:auto; scrollbar-width:none; }
+.sp-share-to, .sp-share-app { flex:none; width:68px; display:flex; flex-direction:column; align-items:center; gap:6px; font:400 11px/14px var(--ui-face); text-align:center; }
+.sp-share-face { position:relative; width:60px; height:60px; display:grid; place-items:center; border-radius:50%; background-color:#dceafb; color:#00489a; font:600 20px/1 var(--ui-face); }
+.sp-share-face > i, .sp-notif-face > i { position:absolute; right:-2px; bottom:-2px; width:22px; height:22px; display:grid; place-items:center; border-radius:6px; background:var(--ui-accent); color:#fff; box-shadow:0 0 0 2px #f2f2f7; }
+.sp-share-face > i svg, .sp-notif-face > i svg { width:14px; height:14px; }
+.sp-share-app > i { width:60px; height:60px; display:grid; place-items:center; border-radius:14px; background:#fff; color:var(--ui-link); }
+.sp-share-list { margin:12px 16px 0; border-radius:12px; background:#fff; }
+.sp-share-list > button { display:flex; align-items:center; justify-content:space-between; width:100%; min-height:48px; padding:0 16px; font:400 16px/20px var(--ui-face); }
+.sp-share-list > button + button { box-shadow:inset 0 .5px 0 var(--ui-line); }
+.sp-share-list svg { width:20px; height:20px; color:var(--ui-text-2); }
+
+/* Экран блокировки: уведомления хора */
+.sp-lock { overflow:hidden; background:linear-gradient(180deg, #34506b, #141c26)!important; color:#fff; }
+.sp-lock-clock { display:flex; flex-direction:column; align-items:center; padding-top:calc(var(--safe-top) + 8px); }
+.sp-lock-clock span { font:600 17px/22px var(--ui-face); color:rgba(255,255,255,.86); }
+.sp-lock-clock strong { font:700 84px/92px var(--ui-face); letter-spacing:-.02em; }
+.sp-notifs { display:flex; flex-direction:column; gap:8px; margin:12px 12px 0; }
+.sp-notif { display:flex; align-items:flex-start; gap:10px; width:100%; padding:12px; border-radius:20px; background:rgba(255,255,255,.88); color:#000; text-align:left; }
+.sp-notif-face { position:relative; width:40px; height:40px; flex:none; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent-soft); color:var(--ui-link); font:600 14px/1 var(--ui-face); }
+.sp-notif-face > i { right:-6px; bottom:-6px; width:18px; height:18px; border-radius:5px; box-shadow:0 0 0 2px #fff; }
+.sp-notif-face > i svg { width:12px; height:12px; }
+.sp-notif-body { flex:1; min-width:0; display:flex; flex-direction:column; }
+.sp-notif-top { display:flex; justify-content:space-between; gap:8px; }
+.sp-notif-top strong { font:600 15px/20px var(--ui-face); }
+.sp-notif-top span { font:400 13px/20px var(--ui-face); color:#5f6b78; }
+.sp-notif-where { font:500 13px/16px var(--ui-face); color:#5f6b78; }
+.sp-notif-text { font:400 15px/20px var(--ui-face); }
+
+/* Экран «Домой» с виджетом */
+.sp-home { overflow:hidden; background:linear-gradient(180deg, #3b5068, #151c24)!important; color:#fff; }
+.sp-widget { display:block; width:calc(100% - 40px); margin:calc(var(--safe-top) + 16px) 20px 0; padding:14px; border-radius:22px; background:rgba(255,255,255,.94); color:#000; text-align:left; }
+.sp-widget small { display:flex; align-items:center; gap:6px; font:600 12px/14px var(--ui-face); color:#0067db; }
+.sp-widget small svg { width:14px; height:14px; }
+.sp-widget strong { display:block; margin-top:8px; font:600 17px/22px var(--ui-face); }
+.sp-widget > span:not(.sp-widget-bar) { display:block; font:400 13px/16px var(--ui-face); color:#5f6b78; }
+.sp-widget-bar > i.is-on { background:#0077ff; }
+.sp-apps { display:grid; grid-template-columns:repeat(4, 1fr); gap:20px 12px; padding:20px; }
+.sp-app { display:flex; flex-direction:column; align-items:center; gap:4px; font:400 12px/14px var(--ui-face); color:#fff; }
+.sp-app > i { width:60px; height:60px; border-radius:14px; background:rgba(255,255,255,.22); }
+.sp-app.is-ours > i { display:grid; place-items:center; background:var(--ui-accent); }
+.sp-app.is-ours svg { width:30px; height:30px; color:#fff; }
+
+
+/* Профиль в настройках: крупное фото, имя и номер по центру, как в Telegram */
+.sp-me { display:flex; flex-direction:column; align-items:center; gap:4px; padding:4px 16px 16px; text-align:center; }
+.sp-me h1 { margin-top:8px; font:600 24px/30px var(--ui-face); }
+.sp-me .ui-avatar.is-large { width:96px; height:96px; font-size:36px; }
+
+/* Идущая спевка: кто пришёл — крупно, как карточка звонка в чате */
+.sp-now { display:flex; flex-direction:column; gap:4px; width:calc(100% - 32px); margin:0 16px; padding:16px; border-radius:16px; background:var(--ui-accent); color:#fff; text-align:left; }
+.sp-now small { font:600 13px/16px var(--ui-face); opacity:.85; }
+.sp-now strong { font:600 24px/30px var(--ui-face); }
+.sp-now > span:not(.sp-roll-bar) { font:400 15px/20px var(--ui-face); opacity:.92; }
+.sp-now .sp-roll-bar { margin-top:8px; }
+.sp-now .sp-roll-bar i { background:rgba(255,255,255,.32); }
+.sp-now .sp-roll-bar i.is-on, .sp-now .sp-roll-bar i > b { background:#fff; }
+/* Сводка партий: голос, число записей и минуты */
+.sp-sum { display:flex; flex-direction:column; gap:2px; padding:0 16px; }
+.sp-sum small { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.sp-sum strong { font:600 30px/36px var(--ui-face); font-variant-numeric:tabular-nums; }
+.sp-sum span { font:400 15px/20px var(--ui-face); color:var(--ui-text-2); }
+
+/* Мини-плеер партии и Now Playing: обложки нет — нотный значок на акценте, прогресс партии */
+.sp-mini-face { background:linear-gradient(135deg, #3d8bff, #0057d9)!important; border-radius:50%!important; }
+.sp-mini-fill { width:38%; }
+.sp-np-fill { width:43%; }
+
+/* Голосовое в уведомлении: превью с прослушиванием от расширения уведомлений */
+.sp-notif-audio { display:flex; align-items:center; gap:8px; margin-top:6px; padding:6px 10px; border-radius:999px; background:rgba(0,119,255,.12); color:#0057c2; font:500 13px/16px var(--ui-face); }
+.sp-notif-audio svg { width:14px; height:14px; }
+.sp-notif-audio > i { flex:1; height:3px; border-radius:2px; background:linear-gradient(90deg, #0077ff 30%, rgba(0,119,255,.25) 30%); }
+
+/* Ролик концерта: кто снимал */
+.sp-tile-who { position:absolute; top:6px; left:6px; padding:2px 6px; border-radius:999px; background:rgba(0,0,0,.56); color:#fff; font:600 11px/14px var(--ui-face); }
+
+/* «Диктофон» под листом «Поделиться» */
+.sp-memos { position:absolute; inset:0; padding:calc(var(--safe-top) + 12px) 16px 0; background:#fff; }
+.sp-memos h2 { margin:0 0 8px; font:700 30px/36px var(--ui-face); }
+.sp-memo { display:flex; flex-direction:column; gap:2px; padding:12px 0; box-shadow:inset 0 -.5px 0 var(--ui-line); }
+.sp-memo strong { font:600 16px/20px var(--ui-face); }
+.sp-memo span { display:flex; justify-content:space-between; font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
+.sp-memo b { font-weight:400; font-variant-numeric:tabular-nums; }
+
+/* Поле формы: новая спевка и новый чат */
+.sp-field { display:flex; flex-direction:column; gap:2px; margin:0 16px; padding:8px 0; box-shadow:inset 0 -.5px 0 var(--ui-line); }
+.sp-field > span { font:500 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.sp-field > input { min-height:28px; padding:0; border:0; outline:0; background:none; color:var(--ui-text); font:400 17px/22px var(--ui-face); }
+

@@ -1713,7 +1713,7 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .ui-call-face.is-initial { font-size:44px; }
 
 /* ── Повторяющиеся фичи доступов (lockNowPlaying, adCard) ── */
-.ui-lock { position:relative; overflow:hidden; background:#0b0d12!important; color:#fff; }
+.ui-lock { overflow:hidden; background:#0b0d12!important; color:#fff; }
 .ui-lock-wall { position:absolute; inset:0; background-size:auto 200%; filter:blur(24px); opacity:.75; background-image:linear-gradient(180deg, #1c2433, #0b0d12); }
 .ui-lock-shade { position:absolute; inset:0; background:rgba(0,0,0,.34); }
 .ui-lock-time { position:relative; margin-top:88px; text-align:center; font:300 80px/84px var(--ui-face); letter-spacing:-.02em; color:#fff; }

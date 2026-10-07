@@ -1,0 +1,2460 @@
+{
+  "slug": "spevka",
+  "name": "В унисон",
+  "eyebrow": "В унисон · Мессенджер хора · iOS",
+  "targetSet": "messenger",
+  "domain": "spevka.app",
+  "heroTitle": "В унисон — мессенджер хора, в котором у каждого своя партия под рукой",
+  "heroDeck": "Чаты, голосовые и звонки как в привычном мессенджере, а поверх — то, ради чего его ставит хор: программа концерта, свои партии подряд в наушниках, расписание спевок в Календаре и отметка «я на спевке» по Wi‑Fi зала.",
+  "tagline": "Хор в одном чате: программа, партии и кто пришёл на спевку",
+  "insight": "в любительском хоре партии регент присылает голосовыми, программу меняет накануне, а кто пришёл на спевку, считают по головам — всё это тонет в общем чате на 32 человека",
+  "deck": "Мессенджер уровня Telegram и WhatsApp для любительского хора: 24 доступа набора «Мессенджер», каждый — за фичей переписки или хора, ни одного своего сервера — вход, база, пуши и звонки на SDK провайдеров.",
+  "qualityContractVersion": 4,
+  "product": {
+    "audience": "Любительские хоры и вокальные ансамбли на 15–40 голосов: хор ДК, церковный, корпоративный, студенческий — с регентом и старостой",
+    "situation": "Хор поёт дважды в неделю в ДК, а партии, перенос спевок, программу концерта и сеть зала обсуждают в одном общем чате",
+    "problem": "Запись своей партии тонет среди фото и стикеров, программу концерта меняют утром, а кто пришёл на спевку, регент считает по головам",
+    "promise": "Свои партии — подряд в наушниках с погашенным экраном, программа и спевки — в Календаре, а на спевке видно «пришли 24 из 32»",
+    "differentiator": "Репертуар — часть мессенджера: партии собираются из переписки чата альтов, расписание правит события Календаря, отметка на спевке ставится по Wi‑Fi зала, а ролики концерта к утру сводятся в одно видео",
+    "returnReasons": [
+      "Дважды в неделю — спевка: отметка по сети зала и кто ещё в пути",
+      "Каждый день — своя партия подряд в наушниках по дороге",
+      "Перед концертом — программа и новые записи регента",
+      "Между спевками — обычные личные чаты и звонки"
+    ],
+    "verticalSlice": {
+      "entry": "choir",
+      "action": "rollcall",
+      "result": "nowplaying"
+    },
+    "coreLoop": [
+      "Регент присылает партии в чат голоса, хористы отвечают своими записями",
+      "Каждый слушает свою партию подряд и отмечается на спевке по Wi‑Fi зала",
+      "Перед концертом программа и спевки обновляются в Календаре, ролики концерта сводятся ночью"
+    ],
+    "nonGoals": [
+      "Каталог нот, фонотека и курсы — только записи, которые прислали участники хора",
+      "Публичные каналы и лента — только чаты с конкретными людьми",
+      "Продажа билетов на концерт — продукт ведёт хор, а не зал"
+    ],
+    "content": {
+      "kind": "messages",
+      "what": "Переписка хора и личные чаты: сообщения, фото нот, голосовые, записи партий, карточка сети зала; видео концерта из своих же роликов",
+      "library": false,
+      "feed": false,
+      "sharing": true
+    },
+    "world": {
+      "note": "Модель мира: из чего состоит продукт и что с этим можно делать. Действия связаны с доступами — доступ без действия не заявляется.",
+      "entities": [
+        {
+          "id": "person",
+          "name": "Человек",
+          "identity": "номер телефона",
+          "fields": [
+            "name",
+            "phone",
+            "initials",
+            "voice"
+          ],
+          "relations": [
+            {
+              "kind": "has-many",
+              "to": "chat"
+            }
+          ]
+        },
+        {
+          "id": "choir",
+          "name": "Хор",
+          "identity": "групповой чат с расписанием",
+          "fields": [
+            "name",
+            "hall",
+            "ssid",
+            "inviteLink"
+          ],
+          "relations": [
+            {
+              "kind": "has-one",
+              "to": "chat"
+            },
+            {
+              "kind": "has-many",
+              "to": "rehearsal"
+            },
+            {
+              "kind": "has-one",
+              "to": "program"
+            },
+            {
+              "kind": "has-one",
+              "to": "network"
+            },
+            {
+              "kind": "has-many",
+              "to": "concertvideo"
+            }
+          ]
+        },
+        {
+          "id": "chat",
+          "name": "Чат",
+          "identity": "личный, хора или партии",
+          "fields": [
+            "members",
+            "pinned",
+            "folder",
+            "unread"
+          ],
+          "relations": [
+            {
+              "kind": "has-many",
+              "to": "message"
+            }
+          ]
+        },
+        {
+          "id": "message",
+          "name": "Сообщение",
+          "identity": "отправитель плюс время",
+          "fields": [
+            "kind",
+            "text",
+            "media",
+            "readBy"
+          ],
+          "relations": [
+            {
+              "kind": "belongs-to",
+              "to": "chat"
+            },
+            {
+              "kind": "authored-by",
+              "to": "person"
+            }
+          ]
+        },
+        {
+          "id": "part",
+          "name": "Партия",
+          "identity": "голосовое с партией голоса из чата",
+          "fields": [
+            "piece",
+            "voice",
+            "author",
+            "duration",
+            "offline"
+          ],
+          "relations": [
+            {
+              "kind": "belongs-to",
+              "to": "message"
+            }
+          ],
+          "note": "не каталог: запись — это сообщение участника"
+        },
+        {
+          "id": "rehearsal",
+          "name": "Спевка",
+          "identity": "дата, время и зал",
+          "fields": [
+            "time",
+            "hall",
+            "movedFrom",
+            "calendarEventId",
+            "checkins"
+          ],
+          "relations": [
+            {
+              "kind": "belongs-to",
+              "to": "choir"
+            },
+            {
+              "kind": "has-many",
+              "to": "checkin"
+            }
+          ]
+        },
+        {
+          "id": "checkin",
+          "name": "Отметка",
+          "identity": "человек на спевке",
+          "fields": [
+            "person",
+            "how",
+            "at"
+          ],
+          "relations": [
+            {
+              "kind": "belongs-to",
+              "to": "rehearsal"
+            }
+          ],
+          "note": "how — сеть зала или вручную"
+        },
+        {
+          "id": "program",
+          "name": "Программа концерта",
+          "identity": "концерт плюс порядок",
+          "fields": [
+            "pieces",
+            "order",
+            "updatedAt"
+          ],
+          "relations": [
+            {
+              "kind": "belongs-to",
+              "to": "choir"
+            }
+          ]
+        },
+        {
+          "id": "network",
+          "name": "Сеть зала",
+          "identity": "SSID",
+          "fields": [
+            "ssid",
+            "password",
+            "postedBy"
+          ],
+          "relations": [
+            {
+              "kind": "belongs-to",
+              "to": "choir"
+            }
+          ]
+        },
+        {
+          "id": "concertvideo",
+          "name": "Видео концерта",
+          "identity": "концерт",
+          "fields": [
+            "clips",
+            "duration",
+            "state"
+          ],
+          "relations": [
+            {
+              "kind": "belongs-to",
+              "to": "choir"
+            }
+          ]
+        },
+        {
+          "id": "call",
+          "name": "Звонок",
+          "identity": "участники плюс время",
+          "fields": [
+            "kind",
+            "direction",
+            "duration"
+          ],
+          "relations": [
+            {
+              "kind": "belongs-to",
+              "to": "chat"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "id": "check-in",
+          "name": "Отметиться на спевке",
+          "actor": "person",
+          "entity": "checkin",
+          "effect": "checkin.how = 'сеть зала'",
+          "screen": "rollcall",
+          "result": "«Пришли 24 из 32» и строка «Оля Сомова · на спевке»",
+          "capabilities": [
+            "wifiinfo"
+          ]
+        },
+        {
+          "id": "join-network",
+          "name": "Подключиться к сети зала",
+          "actor": "person",
+          "entity": "network",
+          "effect": "телефон в сети зала",
+          "screen": "wifi",
+          "result": "«Подключено к DK_Zal_2»",
+          "capabilities": [
+            "hotspot"
+          ]
+        },
+        {
+          "id": "call-regent",
+          "name": "Позвонить регенту",
+          "actor": "person",
+          "entity": "call",
+          "effect": "звонок через CallKit",
+          "screen": "regent",
+          "result": "Экран звонка с Ириной Павловой",
+          "capabilities": [
+            "voip",
+            "mic"
+          ]
+        },
+        {
+          "id": "schedule-to-calendar",
+          "name": "Спевки в Календарь",
+          "actor": "person",
+          "entity": "rehearsal",
+          "effect": "rehearsal.calendarEventId заполнен, перенос правит событие",
+          "screen": "schedule",
+          "result": "«В Календаре · 8 событий», спевка 13 октября поправлена",
+          "capabilities": [
+            "calendar"
+          ]
+        },
+        {
+          "id": "svodnaya-to-calendar",
+          "name": "Сводная из сообщения в Календарь",
+          "actor": "person",
+          "entity": "message",
+          "effect": "одно событие в Календаре",
+          "screen": "choir",
+          "result": "Строка «В Календаре» под сообщением регента",
+          "capabilities": [
+            "calendarwrite"
+          ]
+        },
+        {
+          "id": "video-tonight",
+          "name": "Собрать видео концерта ночью",
+          "actor": "person",
+          "entity": "concertvideo",
+          "effect": "concertvideo.state = 'соберётся ночью'",
+          "screen": "video",
+          "result": "«Видео концерта — к утру»",
+          "capabilities": [
+            "processing"
+          ]
+        },
+        {
+          "id": "listen-parts",
+          "name": "Слушать свою партию подряд",
+          "actor": "person",
+          "entity": "part",
+          "effect": "записи альтов играют в фоне",
+          "screen": "parts",
+          "result": "Now Playing на экране блокировки",
+          "capabilities": [
+            "audio",
+            "bgtask"
+          ]
+        },
+        {
+          "id": "record-part",
+          "name": "Записать свою партию",
+          "actor": "person",
+          "entity": "part",
+          "effect": "голосовое в чате альтов",
+          "screen": "altos",
+          "result": "Идёт запись партии в чате альтов",
+          "capabilities": [
+            "mic"
+          ]
+        },
+        {
+          "id": "send-media",
+          "name": "Отправить фото нот и ролики",
+          "actor": "person",
+          "entity": "message",
+          "effect": "сообщение с вложением в чате",
+          "screen": "choir",
+          "result": "Кадры в чате хора",
+          "capabilities": [
+            "photos",
+            "camera"
+          ]
+        },
+        {
+          "id": "send-location",
+          "name": "Отправить геопозицию",
+          "actor": "person",
+          "entity": "message",
+          "effect": "сообщение с точкой",
+          "screen": "geo",
+          "result": "Геопозиция в чате хора",
+          "capabilities": [
+            "location"
+          ]
+        },
+        {
+          "id": "open-invite",
+          "name": "Открыть ссылку-приглашение",
+          "actor": "person",
+          "entity": "choir",
+          "effect": "превью хора до вступления",
+          "screen": "join",
+          "result": "Экран «Приглашение» с кнопкой «Вступить в хор»",
+          "capabilities": [
+            "associateddomains"
+          ]
+        },
+        {
+          "id": "share-memo",
+          "name": "Запись из «Диктофона» в чат партии",
+          "actor": "person",
+          "entity": "message",
+          "effect": "запись в чате альтов",
+          "screen": "share",
+          "result": "Запись «Распевка, альты» в чате альтов",
+          "capabilities": [
+            "shareext"
+          ]
+        },
+        {
+          "id": "find-singers",
+          "name": "Найти хористов",
+          "actor": "person",
+          "entity": "person",
+          "effect": "совпадения по номерам",
+          "screen": "contacts",
+          "result": "«Уже в «В унисон» · 14»",
+          "capabilities": [
+            "contacts"
+          ]
+        },
+        {
+          "id": "open-docs",
+          "name": "Открыть документы для гастролей",
+          "actor": "person",
+          "entity": "choir",
+          "effect": "документы открыты",
+          "screen": "docs",
+          "result": "Паспорта и договоры",
+          "capabilities": [
+            "faceid"
+          ]
+        },
+        {
+          "id": "personal-ads",
+          "name": "Подбор рекламы",
+          "actor": "person",
+          "entity": "person",
+          "effect": "IDFA в рекламный SDK",
+          "screen": "ads",
+          "result": "Реклама по интересам в списке чатов",
+          "capabilities": [
+            "tracking"
+          ]
+        },
+        {
+          "id": "remind",
+          "name": "Напоминание о спевке",
+          "actor": "person",
+          "entity": "rehearsal",
+          "effect": "локальное уведомление за час",
+          "screen": "schedule",
+          "result": "«Напомним о спевке за час»",
+          "capabilities": [
+            "push"
+          ]
+        },
+        {
+          "id": "widget",
+          "name": "Виджет «Спевка сегодня»",
+          "actor": "person",
+          "entity": "rehearsal",
+          "effect": "виджет читает общий контейнер",
+          "screen": "widget",
+          "result": "Виджет «Спевка сегодня в 19:00» на экране «Домой»",
+          "capabilities": [
+            "appgroups"
+          ]
+        },
+        {
+          "id": "notify",
+          "name": "Получить уведомление",
+          "actor": "person",
+          "entity": "message",
+          "effect": "пуш с отправителем, расшифрованным текстом и превью голосового",
+          "screen": "lockscreen",
+          "result": "Отправитель, чат и голосовое на экране блокировки",
+          "capabilities": [
+            "commnotif",
+            "notifext",
+            "keychain",
+            "remotenotif",
+            "fetch"
+          ]
+        }
+      ]
+    }
+  },
+  "positioning": {
+    "mode": "mimicry",
+    "categoryFit": "Список чатов, переписка с голосовыми, звонки и контакты из адресной книги — это мессенджер категории Social Networking; репертуар хора — своя ценность поверх переписки",
+    "familiarPatterns": [
+      "Список чатов с папками-фильтрами, непрочитанными и поиском",
+      "Чат с пузырями, голосовыми, вложениями и звонком из шапки",
+      "Звонки, контакты из адресной книги, избранное и ссылки-приглашения"
+    ],
+    "distinctions": [
+      "Мои партии из переписки чата альтов — подряд с погашенным экраном",
+      "Расписание спевок правит события Календаря при переносе, сводная — из сообщения регента",
+      "Отметка «я на спевке» по Wi‑Fi зала и видео концерта из роликов участников к утру"
+    ],
+    "evidenceScreens": [
+      "chats",
+      "choir",
+      "repertoire",
+      "parts",
+      "rollcall",
+      "schedule"
+    ],
+    "referencePatterns": [
+      "chat-list",
+      "chat",
+      "voice-message",
+      "calls",
+      "attachments",
+      "saved-messages",
+      "folders",
+      "contacts-sync"
+    ],
+    "referenceEvidence": [
+      {
+        "pattern": "chat-list",
+        "screen": "chats",
+        "behavior": "Чаты по времени последнего сообщения: хор с 12 непрочитанными сверху, регент, чат альтов, избранное, поиск"
+      },
+      {
+        "pattern": "folders",
+        "screen": "chats",
+        "behavior": "Чипсы «Хор», «Личные», «Непрочитанные» оставляют в списке только чаты своей папки"
+      },
+      {
+        "pattern": "chat",
+        "screen": "choir",
+        "behavior": "Пузыри хора с именами отправителей, свои — справа с галочками прочтения, поле ввода со скрепкой"
+      },
+      {
+        "pattern": "voice-message",
+        "screen": "altos",
+        "behavior": "Голосовые регента с партией альтов 3:40 и своя запись 2:51; микрофон в поле ввода начинает запись"
+      },
+      {
+        "pattern": "calls",
+        "screen": "calls",
+        "behavior": "История звонков: исходящие, входящие, групповые и пропущенные, фильтр «Пропущенные»"
+      },
+      {
+        "pattern": "attachments",
+        "screen": "attach",
+        "behavior": "Недавние кадры с выбором, камера первой плиткой, внизу файл, геопозиция и контакт"
+      },
+      {
+        "pattern": "saved-messages",
+        "screen": "saved",
+        "behavior": "Избранное — чат с собой: ноты PDF, пересланное от регента, голосовая заметка"
+      },
+      {
+        "pattern": "contacts-sync",
+        "screen": "contacts",
+        "behavior": "Кто из адресной книги уже здесь и кого пригласить ссылкой"
+      }
+    ]
+  },
+  "readiness": {
+    "status": "draft",
+    "referenceResearch": [
+      {
+        "source": "Telegram для iOS, раздел «Чаты» и групповой чат",
+        "observation": "Список чатов с папками вверху, закреплённое сообщение полосой под шапкой группы, касание имени группы открывает её сведения",
+        "decision": "Спевка дня — закреп под шапкой чата хора, ведущий в «Кто пришёл»; сведения хора открываются по имени чата"
+      },
+      {
+        "source": "WhatsApp для iOS, голосовые и звонки",
+        "observation": "Голосовые играют подряд, звонок — из шапки чата через системный экран CallKit, история звонков — отдельная вкладка",
+        "decision": "Партии альтов — голосовые чата партии, «Слушать мою партию подряд» продолжает их с погашенным экраном; звонок регенту — из шапки"
+      },
+      {
+        "source": "Apple Human Interface Guidelines, Managing notifications и Communication notifications",
+        "observation": "Уведомления о сообщениях показывают отправителя и его аватар через INSendMessageIntent, превью добавляет Notification Service Extension",
+        "decision": "Экран блокировки показывает отправителя, чат, расшифрованный текст и превью голосового"
+      }
+    ],
+    "productCritique": [
+      {
+        "objection": "Партии и программа — это просто закреп и голосовые в Telegram, отдельный мессенджер не нужен",
+        "resolution": "Записи альтов собираются в «Мои партии» из переписки и играют подряд с погашенным экраном, а расписание правит события Календаря при переносе — закреп этого не умеет",
+        "evidenceScreens": [
+          "parts",
+          "schedule",
+          "choir"
+        ]
+      },
+      {
+        "objection": "Между спевками приложение никто не откроет",
+        "resolution": "Это полноценный мессенджер: личные чаты, звонки, избранное и контакты, а партию слушают каждый день по дороге",
+        "evidenceScreens": [
+          "chats",
+          "calls",
+          "repertoire"
+        ]
+      },
+      {
+        "objection": "Отметка по Wi‑Fi зала и видео концерта выглядят придуманными под доступы",
+        "resolution": "Регент тратит первые пять минут спевки на подсчёт по головам; отметка по сети зала делает это за хористов. Видео сводится ночью, потому что 38 роликов на ходу съедают батарею",
+        "evidenceScreens": [
+          "rollcall",
+          "wifi",
+          "video"
+        ]
+      },
+      {
+        "objection": "Реклама в мессенджере хора раздражает",
+        "resolution": "Реклама — одна карточка в списке чатов про ноты, камертоны и курсы вокала рядом; подбор включается только с экрана «Реклама»",
+        "evidenceScreens": [
+          "chats",
+          "ads"
+        ]
+      }
+    ]
+  },
+  "brand": {
+    "accent": "#0077FF",
+    "accentDark": "#0077FF",
+    "theme": "vk-light",
+    "authIcon": "audio-lines",
+    "fonts": "Inter:wght@400;500;600;700"
+  },
+  "start": "phone",
+  "tabs": [
+    {
+      "id": "contacts",
+      "label": "Контакты",
+      "role": "contacts"
+    },
+    {
+      "id": "calls",
+      "label": "Звонки",
+      "role": "calls"
+    },
+    {
+      "id": "chats",
+      "label": "Чаты",
+      "role": "chats"
+    },
+    {
+      "id": "repertoire",
+      "label": "Репертуар",
+      "role": "repertoire"
+    },
+    {
+      "id": "settings",
+      "label": "Настройки",
+      "role": "settings"
+    }
+  ],
+  "permissions": [
+    {
+      "key": "push",
+      "plist": "aps-environment",
+      "alert": {
+        "title": "„В унисон“ запрашивает разрешение на уведомления",
+        "text": "Напомним о спевке за час — со временем и залом, и сообщим о новых сообщениях хора"
+      },
+      "feature": "Напоминание о спевке за час и уведомления о сообщениях",
+      "gesture": "«Напомнить о спевке за час»",
+      "screen": "schedule",
+      "target": "schedule",
+      "fallback": "Расписание и спевка дня видны в чате хора при открытии",
+      "risk": "low",
+      "anchor": false,
+      "conditional": true,
+      "grounding": "APNs через Firebase Cloud Messaging; напоминание — локальное уведомление UNCalendarNotificationTrigger за час до спевки",
+      "rationale": {
+        "who": "Хорист в расписании спевок",
+        "moment": "Нажимает «Напомнить о спевке за час», когда смотрит, что спевку 13 октября перенесли",
+        "need": "Спевки дважды в неделю, а время сдвигают — без уведомления человек вспоминает о спевке, когда она уже идёт",
+        "without": "Расписание и закреп спевки видны в приложении"
+      },
+      "snack": "Уведомления отключены — включить можно в Настройках",
+      "snackOnce": true,
+      "requires": "регистрация в APNs через FCM SDK; отправка сообщений — из Cloud Messaging без своего сервера",
+      "reviewNote": "Чат хора → имя хора → «Расписание спевок» → «Напомнить о спевке за час». После разрешения строка становится «Напомним о спевке за час»"
+    },
+    {
+      "key": "associateddomains",
+      "plist": "com.apple.developer.associated-domains",
+      "alert": {
+        "title": "Ссылки spevka.app",
+        "text": "Entitlement без системного запроса: ссылка-приглашение spevka.app/j/… открывает хор в приложении"
+      },
+      "feature": "Ссылка-приглашение новичку открывает хор прямо в приложении",
+      "gesture": "spevka.app/j/kamerton",
+      "screen": "sms",
+      "target": "join",
+      "fallback": "Без связки ссылка открывается в Safari со страницей установки",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "apple-app-site-association на spevka.app — статический файл; код хора разбирается на устройстве",
+      "rationale": {
+        "who": "Новичок, которого позвали в хор",
+        "moment": "Получает ссылку в «Сообщениях» и касается её",
+        "need": "Ссылка должна открыть хор с расписанием и кнопкой «Вступить», а не сайт",
+        "without": "Вступление по QR на спевке или по номеру через старосту"
+      },
+      "activate": true,
+      "requires": "статический apple-app-site-association на spevka.app с путём /j/*",
+      "reviewNote": "Экран «Сообщения» у Даши → карточка ссылки spevka.app/j/kamerton → «Приглашение» с кнопкой «Вступить в хор»"
+    },
+    {
+      "key": "appgroups",
+      "plist": "com.apple.security.application-groups",
+      "alert": {
+        "title": "Общий контейнер",
+        "text": "Entitlement без системного запроса: виджет, расширение уведомлений и «Поделиться» читают данные хора из общей группы"
+      },
+      "feature": "Виджет «Спевка сегодня в 19:00» на экране «Домой»",
+      "gesture": "«Виджет «Спевка сегодня»»",
+      "screen": "settings",
+      "target": "widget",
+      "fallback": "Без общей группы виджет пустой до открытия приложения",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "App Group group.app.spevka: снапшот расписания и отметок для WidgetKit",
+      "rationale": {
+        "who": "Хорист, который ставит виджет",
+        "moment": "Добавляет виджет из настроек",
+        "need": "Виджет — отдельный процесс; время спевки и «пришли 23 из 32» он берёт из общего контейнера",
+        "without": "Спевка видна только в приложении"
+      },
+      "activate": true
+    },
+    {
+      "key": "keychain",
+      "plist": "keychain-access-groups",
+      "alert": {
+        "title": "Общая связка ключей",
+        "text": "Entitlement без системного запроса: ключ расшифровки сообщений общий у приложения и расширения уведомлений"
+      },
+      "feature": "Текст сообщения хора виден в уведомлении: расширение расшифровывает его ключом из общей связки",
+      "gesture": "Уведомление Дениса в чате хора",
+      "screen": "lockscreen",
+      "target": "choir",
+      "fallback": "Без общей связки в уведомлении только «Новое сообщение» без текста",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "Ключ шифрования сообщений в Keychain с группой доступа, общей для приложения и Notification Service Extension",
+      "rationale": {
+        "who": "Хорист с телефоном в кармане по дороге в ДК",
+        "moment": "Получает сообщение старосты, что ключ от зала у вахтёра",
+        "need": "Сообщения приходят зашифрованными; расширение уведомлений может прочитать текст, только если ключ лежит в общей связке",
+        "without": "Уведомление без текста — нужно открыть приложение"
+      },
+      "activate": true
+    },
+    {
+      "key": "commnotif",
+      "plist": "com.apple.developer.usernotifications.communication",
+      "alert": {
+        "title": "Уведомления о сообщениях",
+        "text": "Entitlement без системного запроса: сообщение приходит с именем и инициалами отправителя"
+      },
+      "feature": "Уведомление от регента с её именем и инициалами",
+      "gesture": "Уведомление Ирины Павловой",
+      "screen": "lockscreen",
+      "target": "regent",
+      "fallback": "Без него уведомление приходит от имени приложения",
+      "risk": "low",
+      "anchor": false,
+      "conditional": true,
+      "grounding": "INSendMessageIntent с отправителем, донорство интента из Notification Service Extension",
+      "rationale": {
+        "who": "Хорист на спевке",
+        "moment": "Регент пишет лично: задержаться после спевки",
+        "need": "Личное сообщение регента должно отличаться от общего шума чата хора — по имени и лицу отправителя",
+        "without": "Обычное уведомление от «В унисон»"
+      },
+      "activate": true,
+      "requires": "INSendMessageIntent донорится расширением уведомлений только для личных сообщений и сообщений хора"
+    },
+    {
+      "key": "hotspot",
+      "plist": "com.apple.developer.networking.HotspotConfiguration",
+      "alert": {
+        "title": "„В унисон“ подключит вас к сети DK_Zal_2",
+        "text": "Сеть репетиционного зала, которую прислал староста Денис"
+      },
+      "feature": "Wi‑Fi зала из карточки в чате хора",
+      "gesture": "«Подключиться»",
+      "screen": "wifi",
+      "target": "wifi",
+      "fallback": "Пароль виден на экране сети, можно ввести в Настройках",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "NEHotspotConfigurationManager с SSID и паролем из карточки сообщения",
+      "rationale": {
+        "who": "Хорист, который пришёл в зал №2",
+        "moment": "Касается карточки сети в чате и нажимает «Подключиться»",
+        "need": "Связь в ДК плохая, а пароль от сети знают вахта и староста — без подключения не скачать партии и не отметиться",
+        "without": "Скопировать пароль и ввести вручную"
+      },
+      "snack": "Не удалось настроить подключение"
+    },
+    {
+      "key": "faceid",
+      "plist": "NSFaceIDUsageDescription",
+      "alert": {
+        "title": "„В унисон“ запрашивает Face ID",
+        "text": "Чтобы открывать документы для гастролей: паспорта хористов и договоры"
+      },
+      "feature": "Документы для гастролей под Face ID",
+      "gesture": "«Документы для гастролей»",
+      "screen": "choirinfo",
+      "target": "docs",
+      "fallback": "Документы открываются по коду телефона",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "LAContext.evaluatePolicy перед показом списка документов",
+      "rationale": {
+        "who": "Хорист перед гастролями в Ярославль",
+        "moment": "Открывает документы в сведениях хора",
+        "need": "Там паспортные данные всех 32 хористов — телефон, оставленный на пюпитре, не должен их показывать",
+        "without": "Код телефона вместо Face ID"
+      }
+    },
+    {
+      "key": "camera",
+      "plist": "NSCameraUsageDescription",
+      "alert": {
+        "title": "„В унисон“ запрашивает доступ к камере",
+        "text": "Чтобы снимать ноты и видео концерта в чат и распознавать QR сети зала"
+      },
+      "feature": "Снять ноты или ролик с концерта прямо в чат",
+      "gesture": "Плитка «Камера» во вложениях",
+      "screen": "attach",
+      "target": "camera",
+      "fallback": "Отправить кадр из галереи",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "AVCaptureSession; QR сети распознаётся VisionKit на устройстве",
+      "rationale": {
+        "who": "Хорист, у которого соседка забыла ноты",
+        "moment": "Открывает вложение и нажимает «Камера»",
+        "need": "Ноты нужно снять со своего пюпитра и сразу отправить в чат",
+        "without": "Отправить снимок из галереи"
+      },
+      "snack": "Нет доступа к камере"
+    },
+    {
+      "key": "photos",
+      "plist": "NSPhotoLibraryUsageDescription",
+      "alert": {
+        "title": "„В унисон“ запрашивает доступ к фото",
+        "text": "Чтобы показать недавние снимки нот и ролики и отправить их в чат хора"
+      },
+      "feature": "Фото нот и ролики с концерта в чат хора",
+      "gesture": "Скрепка в чате хора",
+      "screen": "choir",
+      "target": "attach",
+      "fallback": "Выбор отдельных фото системным окном",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "PHPickerViewController и PHAsset для недавних кадров",
+      "rationale": {
+        "who": "Хорист в чате хора",
+        "moment": "Нажимает скрепку, чтобы отправить ноты или ролик с концерта",
+        "need": "Недавние кадры показываются сеткой только с доступом к медиатеке",
+        "without": "Системный выбор по одному фото"
+      },
+      "snack": "Нет доступа к фото"
+    },
+    {
+      "key": "mic",
+      "plist": "NSMicrophoneUsageDescription",
+      "alert": {
+        "title": "„В унисон“ запрашивает доступ к микрофону",
+        "text": "Чтобы записывать голосовые и свою партию в чат и говорить в звонках"
+      },
+      "feature": "Голосовые и запись своей партии в чат альтов",
+      "gesture": "Микрофон в поле ввода чата альтов",
+      "screen": "altos",
+      "target": "record",
+      "fallback": "Текстовые сообщения и прослушивание чужих записей",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "AVAudioRecorder в AAC; запись уходит голосовым в чат партии",
+      "rationale": {
+        "who": "Альт, которая выучила партию",
+        "moment": "Нажимает микрофон в чате альтов, чтобы записать «Ой, то не вечер»",
+        "need": "Регент проверяет партию по записи — без микрофона её не прислать",
+        "without": "Записать в «Диктофоне» и поделиться в чат"
+      },
+      "snack": "Нет доступа к микрофону"
+    },
+    {
+      "key": "location",
+      "plist": "NSLocationWhenInUseUsageDescription",
+      "alert": {
+        "title": "„В унисон“ запрашивает доступ к геопозиции",
+        "text": "Чтобы отправить в чат хора, где вы, и показать точку сбора автобуса у ДК"
+      },
+      "feature": "Где я относительно ДК и точка сбора автобуса на гастроли",
+      "gesture": "«Геопозиция» во вложениях",
+      "screen": "attach",
+      "target": "geo",
+      "fallback": "Адрес ДК и точка сбора видны текстом",
+      "risk": "medium",
+      "anchor": true,
+      "conditional": true,
+      "grounding": "CLLocationManager when-in-use, карта MapKit",
+      "rationale": {
+        "who": "Хорист, который опаздывает на спевку или ищет автобус",
+        "moment": "Открывает вложение и нажимает «Геопозиция»",
+        "need": "Хору нужно видеть, кто где, а автобусу — точку сбора у служебного входа",
+        "without": "Написать адрес текстом"
+      },
+      "snack": "Нет доступа к геопозиции",
+      "requires": "запрос when-in-use только по жесту «Геопозиция»; трансляция — на час и выключается сама"
+    },
+    {
+      "key": "audio",
+      "plist": "UIBackgroundModes: audio",
+      "alert": {
+        "title": "Фоновое аудио",
+        "text": "Entitlement без системного запроса: партии играют подряд с погашенным экраном, у звонка — своя аудиосессия"
+      },
+      "feature": "Своя партия подряд с погашенным экраном и на экране блокировки",
+      "gesture": "«Слушать мою партию подряд»",
+      "screen": "parts",
+      "target": "nowplaying",
+      "fallback": "Без режима запись останавливается, когда гаснет экран",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "AVAudioSession .playback, MPNowPlayingInfoCenter и MPRemoteCommandCenter: пауза, ±15 секунд",
+      "rationale": {
+        "who": "Альт по дороге домой после спевки",
+        "moment": "Нажимает «Слушать мою партию подряд» и убирает телефон в карман",
+        "need": "Партию учат на слух, повторяя 7 записей подряд; без фонового аудио звук обрывается с погасшим экраном",
+        "without": "Записи слушаются по одной при открытом чате"
+      },
+      "activate": true
+    },
+    {
+      "key": "fetch",
+      "plist": "UIBackgroundModes: fetch",
+      "alert": {
+        "title": "Обновление в фоне",
+        "text": "Entitlement без системного запроса: программа концерта и список чатов подтягиваются к утру"
+      },
+      "feature": "Программа концерта свежая к первому открытию утром",
+      "gesture": "Без жеста — фоновый режим",
+      "screen": "repertoire",
+      "target": "repertoire",
+      "fallback": "Без режима новый порядок программы виден после загрузки при открытии",
+      "risk": "medium",
+      "anchor": false,
+      "conditional": true,
+      "grounding": "BGAppRefreshTask читает программу из Firestore через SDK и обновляет снапшот виджета",
+      "rationale": {
+        "who": "Хорист утром перед работой",
+        "moment": "Без жеста: рано утром, пока телефон лежит",
+        "need": "Регент меняет порядок программы утром; к открытию «Репертуара» он должен быть новым",
+        "without": "Обновление в момент открытия, с задержкой"
+      },
+      "activate": true,
+      "silent": true,
+      "evidence": "Строка «Программа концерта обновлена в 7:00» над программой во вкладке «Репертуар»",
+      "reviewNote": "Без системного запроса и без кнопки: во вкладке «Репертуар» строка «Программа концерта обновлена в 7:00» — порядок поменялся до открытия",
+      "requires": "BGAppRefreshTask, который реально читает программу концерта из Firestore",
+      "trace": "Программа концерта обновлена в 7:00"
+    },
+    {
+      "key": "bgtask",
+      "plist": "BGTaskSchedulerPermittedIdentifiers",
+      "alert": {
+        "title": "Идентификаторы фоновых задач",
+        "text": "Entitlement без системного запроса: app.spevka.parts и app.spevka.video объявлены в Info.plist и зарегистрированы в коде"
+      },
+      "feature": "Партии скачиваются для офлайна ночью",
+      "gesture": "Без жеста — фоновый режим",
+      "screen": "parts",
+      "target": "parts",
+      "fallback": "Партии качаются при открытии, в зале без сети не играют",
+      "risk": "low",
+      "anchor": false,
+      "conditional": true,
+      "grounding": "BGTaskScheduler: app.spevka.parts скачивает новые записи партии в общий контейнер на зарядке и в Wi‑Fi",
+      "rationale": {
+        "who": "Альт перед спевкой в ДК, где плохая связь",
+        "moment": "Без жеста: ночью на зарядке",
+        "need": "Записи партии весят десятки мегабайт; скачать их на ходу в ДК не выйдет, а iOS запускает долгую загрузку только по объявленному идентификатору",
+        "without": "Записи качаются при открытии, если есть сеть"
+      },
+      "activate": true,
+      "silent": true,
+      "evidence": "Строка «Партии скачаны для офлайна ночью · 7 записей, 46 МБ» в «Моих партиях»",
+      "reviewNote": "Без системного запроса и без кнопки: в «Моих партиях» строка «Партии скачаны для офлайна ночью»",
+      "requires": "BGProcessingTask app.spevka.parts с requiresNetworkConnectivity",
+      "trace": "Партии скачаны для офлайна ночью"
+    },
+    {
+      "key": "remotenotif",
+      "plist": "UIBackgroundModes: remote-notification",
+      "alert": {
+        "title": "Тихие уведомления",
+        "text": "Entitlement без системного запроса: тихий пуш подгружает отметки на спевке и новые сообщения"
+      },
+      "feature": "Отметки «на спевке» обновляются, пока приложение закрыто",
+      "gesture": "Без жеста — фоновый режим",
+      "screen": "rollcall",
+      "target": "rollcall",
+      "fallback": "Отметки подгружаются при открытии",
+      "risk": "low",
+      "anchor": false,
+      "conditional": true,
+      "grounding": "content-available пуш из Cloud Messaging, application(_:didReceiveRemoteNotification:) обновляет локальную базу",
+      "rationale": {
+        "who": "Регент или хорист в начале спевки",
+        "moment": "Без жеста: хористы отмечаются, приложение закрыто",
+        "need": "На экране «Кто пришёл» число должно быть верным сразу, а не после загрузки",
+        "without": "Отметки обновляются после открытия"
+      },
+      "activate": true,
+      "silent": true,
+      "evidence": "Строка «Отметки «на спевке» обновились в 19:05» на экране «Кто пришёл»",
+      "reviewNote": "Без системного запроса и без кнопки: на экране «Кто пришёл» — «Отметки «на спевке» обновились в 19:05», Тимур и Сергей уже в списке",
+      "requires": "тихий пуш из Cloud Messaging при новой отметке",
+      "trace": "Отметки «на спевке» обновились в 19:05"
+    },
+    {
+      "key": "processing",
+      "plist": "UIBackgroundModes: processing",
+      "alert": {
+        "title": "Долгие задачи на зарядке",
+        "text": "Entitlement без системного запроса: видео концерта собирается ночью, когда телефон на зарядке"
+      },
+      "feature": "Видео концерта из роликов участников собирается ночью",
+      "gesture": "«Собрать видео концерта ночью»",
+      "screen": "video",
+      "target": "video",
+      "fallback": "Ролики смотрятся по одному",
+      "risk": "medium",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "BGProcessingTask app.spevka.video: AVFoundation сводит ролики по звуку на устройстве",
+      "rationale": {
+        "who": "Хорист после концерта",
+        "moment": "Нажимает «Собрать видео концерта ночью», когда участники прислали ролики",
+        "need": "38 роликов с разных рядов сводятся по звуку минутами — на ходу это съедает батарею",
+        "without": "Ролики смотрятся по одному"
+      },
+      "activate": true
+    },
+    {
+      "key": "calendar",
+      "plist": "NSCalendarsFullAccessUsageDescription",
+      "alert": {
+        "title": "„В унисон“ запрашивает доступ к календарю",
+        "text": "Чтобы добавить спевки и концерт и поправить событие, когда спевку переносят"
+      },
+      "feature": "Спевки и концерт в Календаре, перенос правит событие",
+      "gesture": "«Спевки и концерт в Календарь»",
+      "screen": "schedule",
+      "target": "schedule",
+      "fallback": "Расписание видно в приложении",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "EKEventStore full access: события в календаре «В унисон», изменение по eventIdentifier",
+      "rationale": {
+        "who": "Хорист с рабочим календарём",
+        "moment": "Нажимает «Спевки и концерт в Календарь»",
+        "need": "Спевку переносят — правка уже добавленного события требует полного доступа к календарю",
+        "without": "Расписание в приложении"
+      },
+      "snack": "Нет доступа к календарю"
+    },
+    {
+      "key": "calendarwrite",
+      "plist": "NSCalendarsUsageDescription",
+      "alert": {
+        "title": "„В унисон“ запрашивает доступ к календарю",
+        "text": "Чтобы добавить сводную репетицию из сообщения регента в Календарь"
+      },
+      "feature": "Сводная из сообщения регента — событием в Календаре",
+      "gesture": "Касание «в субботу в 12:00» в сообщении",
+      "screen": "choir",
+      "target": "choir",
+      "fallback": "Дата остаётся в сообщении",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "EKEventStore write-only: одно событие из даты в сообщении",
+      "rationale": {
+        "who": "Хорист в чате хора",
+        "moment": "Касается подчёркнутой даты в сообщении регента",
+        "need": "Внеплановую сводную легко пропустить — её нужно положить в Календарь одним касанием",
+        "without": "Дата остаётся в сообщении"
+      }
+    },
+    {
+      "key": "wifiinfo",
+      "plist": "com.apple.developer.networking.wifi-info",
+      "alert": {
+        "title": "Имя сети",
+        "text": "Entitlement без системного запроса: при отметке имя текущей сети сверяется с сетью зала"
+      },
+      "feature": "Отметка «Я на спевке» по сети зала",
+      "gesture": "«Я на спевке»",
+      "screen": "rollcall",
+      "target": "rollcall",
+      "fallback": "Отметка вручную из меню",
+      "risk": "low",
+      "anchor": true,
+      "conditional": true,
+      "grounding": "NEHotspotNetwork.fetchCurrent: SSID сверяется с DK_Zal_2 из карточки хора",
+      "rationale": {
+        "who": "Хорист, который пришёл в зал",
+        "moment": "Нажимает «Я на спевке»",
+        "need": "Отметку ставит только тот, кто в сети зала, — так регенту не нужно считать по головам",
+        "without": "Отметка вручную"
+      },
+      "activate": true,
+      "requires": "Access WiFi Information и разрешение на геопозицию для чтения SSID; отметка ставится только при совпадении с сетью зала"
+    },
+    {
+      "key": "tracking",
+      "plist": "NSUserTrackingUsageDescription",
+      "alert": {
+        "title": "Разрешить „В унисон“ отслеживать ваши действия?",
+        "text": "Тогда реклама в списке чатов будет про ноты, камертоны и курсы вокала, которые вам интересны"
+      },
+      "feature": "Реклама по интересам в списке чатов",
+      "gesture": "«Подбирать по интересам»",
+      "screen": "ads",
+      "target": "chats",
+      "fallback": "Реклама без подбора",
+      "risk": "medium",
+      "anchor": true,
+      "conditional": true,
+      "grounding": "ATTrackingManager.requestTrackingAuthorization, IDFA в рекламный SDK",
+      "rationale": {
+        "who": "Хорист, который открыл карточку рекламы",
+        "moment": "Нажимает «Подбирать по интересам» на экране «Реклама»",
+        "need": "Без IDFA сеть не подберёт рекламу; мессенджер бесплатный и живёт на одной карточке",
+        "without": "Реклама одна и та же для всех"
+      },
+      "snack": "Отслеживание запрещено — реклама будет без подбора",
+      "snackOnce": true,
+      "requires": "экран «Реклама» до системного запроса; без разрешения реклама остаётся без подбора"
+    },
+    {
+      "key": "voip",
+      "plist": "UIBackgroundModes: voip",
+      "alert": {
+        "title": "Звонки",
+        "text": "Entitlement без системного запроса: входящий звонок приходит VoIP-пушем и показывается системным экраном"
+      },
+      "feature": "Звонок регенту из личного чата",
+      "gesture": "Значок звонка в чате с регентом",
+      "screen": "regent",
+      "target": "call",
+      "fallback": "Голосовое вместо звонка",
+      "risk": "high",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "PushKit и CallKit, SDK провайдера WebRTC",
+      "rationale": {
+        "who": "Хорист, которому нужно быстро спросить регента",
+        "moment": "Нажимает трубку в шапке чата",
+        "need": "Звонок должен прийти и при закрытом приложении — это PushKit и CallKit",
+        "without": "Голосовое сообщение"
+      },
+      "activate": true
+    },
+    {
+      "key": "contacts",
+      "plist": "NSContactsUsageDescription",
+      "alert": {
+        "title": "„В унисон“ запрашивает доступ к контактам",
+        "text": "Чтобы показать, кто из ваших контактов уже в хоре, и позвать остальных ссылкой"
+      },
+      "feature": "Найти хористов из контактов",
+      "gesture": "«Найти хористов из контактов»",
+      "screen": "contacts",
+      "target": "contacts",
+      "fallback": "Добавить по номеру или ссылкой",
+      "risk": "medium",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "CNContactStore, номера хешируются на устройстве",
+      "rationale": {
+        "who": "Хорист во вкладке «Контакты»",
+        "moment": "Нажимает «Найти хористов из контактов»",
+        "need": "Сверить адресную книгу с хором можно только с доступом к контактам",
+        "without": "Добавить человека по номеру или ссылкой"
+      },
+      "snack": "Нет доступа к контактам"
+    },
+    {
+      "key": "notifext",
+      "plist": "NSExtension: notification service",
+      "alert": {
+        "title": "Превью в уведомлении",
+        "text": "Entitlement без системного запроса: расширение подставляет отправителя, чат и превью голосового"
+      },
+      "feature": "Голосовое регента с превью и прослушиванием в уведомлении",
+      "gesture": "Уведомление с голосовым в чате альтов",
+      "screen": "lockscreen",
+      "target": "altos",
+      "fallback": "Без расширения — «Голосовое сообщение» без превью",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "Notification Service Extension скачивает голосовое и прикладывает его как UNNotificationAttachment",
+      "rationale": {
+        "who": "Альт с телефоном в кармане",
+        "moment": "Приходит голосовое с партией от регента",
+        "need": "Партию хочется прослушать с экрана блокировки, не открывая чат",
+        "without": "Голосовое слушается в чате"
+      },
+      "activate": true
+    },
+    {
+      "key": "shareext",
+      "plist": "NSExtension: share",
+      "alert": {
+        "title": "Расширение «Поделиться»",
+        "text": "Entitlement без системного запроса: «В унисон» и чаты хора появляются в системном листе «Поделиться»"
+      },
+      "feature": "Запись из «Диктофона» — в чат партии",
+      "gesture": "«Альты · партии»",
+      "screen": "share",
+      "target": "altos",
+      "fallback": "Сохранить в Файлы и приложить в чате",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "Share Extension с NSExtensionActivationSupportsAttachmentsWithMaxCount, сессия из общей связки",
+      "rationale": {
+        "who": "Альт, записавшая распевку в «Диктофоне»",
+        "moment": "Нажимает «Поделиться» и выбирает чат альтов",
+        "need": "Запись должна уйти в чат партии без копирования через файлы",
+        "without": "Сохранить в Файлы и приложить вручную"
+      },
+      "activate": true
+    }
+  ],
+  "screens": [
+    {
+      "id": "phone",
+      "title": "Вход по номеру",
+      "type": "старт, без таб-бара",
+      "light": true,
+      "meta": "Номер · пароль · без OTP",
+      "ui": {
+        "pattern": "auth",
+        "navigation": "push",
+        "purpose": "Войти по номеру и паролю",
+        "primaryAction": "Далее",
+        "hierarchy": {
+          "primary": "Номер телефона и вход",
+          "secondary": "Регистрация, гостевой проход, помощь"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error"
+        ],
+        "density": "low"
+      }
+    },
+    {
+      "id": "chats",
+      "title": "Чаты",
+      "type": "tab (root)",
+      "light": true,
+      "meta": "Список чатов, папки, реклама",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "root",
+        "primaryAction": "Хор «Камертон»"
+      }
+    },
+    {
+      "id": "repertoire",
+      "title": "Репертуар",
+      "type": "tab (root)",
+      "light": true,
+      "meta": "Спевка, программа концерта, партии",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "root",
+        "primaryAction": "Пришли 2324 из 32"
+      }
+    },
+    {
+      "id": "calls",
+      "title": "Звонки",
+      "type": "tab (root)",
+      "light": true,
+      "meta": "История звонков",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "root",
+        "primaryAction": null
+      }
+    },
+    {
+      "id": "settings",
+      "title": "Настройки",
+      "type": "tab (root)",
+      "light": true,
+      "meta": "Профиль и настройки, как в Telegram",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "root",
+        "primaryAction": null
+      }
+    },
+    {
+      "id": "contacts",
+      "title": "Контакты",
+      "type": "tab (root)",
+      "light": true,
+      "meta": "Хор по партиям и адресная книга",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "root",
+        "primaryAction": "Найти хористов из контактов"
+      }
+    },
+    {
+      "id": "choir",
+      "title": "Чат хора",
+      "type": "push",
+      "light": true,
+      "meta": "Спевка в закрепе, Wi‑Fi зала, сводная в Календарь · Photos",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "choirinfo",
+      "title": "Сведения о хоре",
+      "type": "push",
+      "light": true,
+      "meta": "Face ID · расписание, партии, документы",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "choir"
+    },
+    {
+      "id": "rollcall",
+      "title": "Кто пришёл",
+      "type": "push",
+      "light": true,
+      "meta": "Отметка по сети зала · Wi‑Fi info",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": "Я на спевке"
+      },
+      "parent": "choirinfo"
+    },
+    {
+      "id": "wifi",
+      "title": "Wi‑Fi зала",
+      "type": "push",
+      "light": true,
+      "meta": "Сеть зала из чата · Hotspot",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": "Подключиться"
+      },
+      "parent": "choir"
+    },
+    {
+      "id": "schedule",
+      "title": "Расписание спевок",
+      "type": "push",
+      "light": true,
+      "meta": "Спевки в Календарь с правкой при переносе · Push",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": "Спевки и концерт в Календарь"
+      },
+      "parent": "choirinfo"
+    },
+    {
+      "id": "parts",
+      "title": "Мои партии",
+      "type": "push",
+      "light": true,
+      "meta": "Партии подряд в фоне · Audio",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": "Слушать мою партию подряд",
+        "purpose": "Слушать и записывать свою партию",
+        "hierarchy": {
+          "primary": "Число записей и «Слушать подряд»",
+          "secondary": "Записи регента, свои и альтов"
+        }
+      },
+      "parent": "repertoire"
+    },
+    {
+      "id": "altos",
+      "title": "Чат альтов",
+      "type": "push",
+      "light": true,
+      "meta": "Партии голосовыми · Microphone",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "record",
+      "title": "Запись партии",
+      "type": "push",
+      "light": true,
+      "meta": "Запись своей партии в чат",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "altos"
+    },
+    {
+      "id": "video",
+      "title": "Видео концерта",
+      "type": "push",
+      "light": true,
+      "meta": "Видео ночью на зарядке · Processing",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": "Собрать видео концерта ночью"
+      },
+      "parent": "choirinfo"
+    },
+    {
+      "id": "docs",
+      "title": "Документы для гастролей",
+      "type": "push",
+      "light": true,
+      "meta": "Под Face ID",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "choirinfo"
+    },
+    {
+      "id": "invite",
+      "title": "Ссылка-приглашение",
+      "type": "push",
+      "light": true,
+      "meta": "QR и ссылка spevka.app",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": "Отправить в Сообщения"
+      },
+      "parent": "choirinfo"
+    },
+    {
+      "id": "sms",
+      "title": "Сообщения iOS",
+      "type": "системная поверхность",
+      "light": true,
+      "meta": "Ссылка у новенькой · Associated Domains",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "system",
+        "primaryAction": null
+      },
+      "parent": "invite"
+    },
+    {
+      "id": "join",
+      "title": "Приглашение",
+      "type": "modal",
+      "light": true,
+      "meta": "Хор до вступления",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "modal",
+        "primaryAction": "Вступить в хор"
+      },
+      "parent": "sms"
+    },
+    {
+      "id": "attach",
+      "title": "Вложение",
+      "type": "modal",
+      "light": true,
+      "meta": "Недавние кадры · Camera · Location",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "modal",
+        "primaryAction": null
+      },
+      "parent": "choir"
+    },
+    {
+      "id": "camera",
+      "title": "Камера",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Съёмка нот и QR сети",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "fullscreen",
+        "primaryAction": null
+      },
+      "parent": "attach"
+    },
+    {
+      "id": "geo",
+      "title": "Геопозиция",
+      "type": "modal",
+      "light": true,
+      "meta": "Где я, ДК и точка сбора автобуса",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "modal",
+        "primaryAction": "Отправить мою геопозицию"
+      },
+      "parent": "attach"
+    },
+    {
+      "id": "regent",
+      "title": "Чат с регентом",
+      "type": "push",
+      "light": true,
+      "meta": "Личный чат, звонок из шапки · VoIP",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "call",
+      "title": "Звонок",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Системный экран звонка",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "fullscreen",
+        "primaryAction": null
+      },
+      "parent": "regent"
+    },
+    {
+      "id": "saved",
+      "title": "Избранное",
+      "type": "push",
+      "light": true,
+      "meta": "Чат с самим собой",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "ads",
+      "title": "Реклама",
+      "type": "modal",
+      "light": true,
+      "meta": "ATT после экрана рекламы",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "modal",
+        "primaryAction": "Подбирать по интересам"
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "share",
+      "title": "«Поделиться» в «Диктофоне»",
+      "type": "системная поверхность",
+      "light": true,
+      "meta": "Share Extension",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "system",
+        "primaryAction": null
+      },
+      "parent": "parts"
+    },
+    {
+      "id": "lockscreen",
+      "title": "Экран блокировки",
+      "type": "системная поверхность",
+      "light": false,
+      "meta": "Уведомления: отправитель, текст, голосовое",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "system",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "nowplaying",
+      "title": "Партия на экране блокировки",
+      "type": "системная поверхность",
+      "light": false,
+      "meta": "Now Playing · фоновое аудио",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "system",
+        "primaryAction": null
+      },
+      "parent": "parts"
+    },
+    {
+      "id": "newrehearsal",
+      "title": "Новая спевка",
+      "type": "modal",
+      "light": true,
+      "meta": "Создание спевки: дата, время, зал, кого звать",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "modal",
+        "primaryAction": null
+      },
+      "parent": "schedule"
+    },
+    {
+      "id": "newchat",
+      "title": "Новый чат",
+      "type": "modal",
+      "light": true,
+      "meta": "Название и участники из хора",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "modal",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "widget",
+      "title": "Экран «Домой»",
+      "type": "системная поверхность",
+      "light": false,
+      "meta": "Виджет «Спевка сегодня» · App Groups",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "system",
+        "primaryAction": null
+      },
+      "parent": "settings"
+    }
+  ],
+  "prototypes": [
+    {
+      "id": "all",
+      "label": "Весь продукт",
+      "note": "31 экранов и 24 доступа",
+      "start": "phone",
+      "screens": [
+        "phone",
+        "chats",
+        "repertoire",
+        "calls",
+        "settings",
+        "contacts",
+        "choir",
+        "choirinfo",
+        "rollcall",
+        "wifi",
+        "schedule",
+        "parts",
+        "altos",
+        "record",
+        "video",
+        "docs",
+        "invite",
+        "sms",
+        "join",
+        "attach",
+        "camera",
+        "geo",
+        "regent",
+        "call",
+        "saved",
+        "ads",
+        "share",
+        "lockscreen",
+        "nowplaying",
+        "newrehearsal",
+        "newchat",
+        "widget"
+      ],
+      "stops": [],
+      "authTarget": "chats",
+      "hero": true
+    },
+    {
+      "id": "signin",
+      "label": "Вход по номеру",
+      "note": "Номер, пароль и сразу список чатов",
+      "start": "phone",
+      "screens": [
+        "phone",
+        "chats"
+      ],
+      "stops": [
+        "chats"
+      ],
+      "authTarget": "chats"
+    },
+    {
+      "id": "rehearsal",
+      "label": "Спевка",
+      "note": "Закреп спевки, Wi‑Fi зала, «Я на спевке» и звонок регенту",
+      "start": "choir",
+      "screens": [
+        "choir",
+        "rollcall",
+        "wifi",
+        "choirinfo",
+        "regent",
+        "call",
+        "attach",
+        "altos",
+        "schedule",
+        "parts",
+        "video",
+        "invite",
+        "geo"
+      ],
+      "stops": [
+        "choirinfo",
+        "attach",
+        "altos",
+        "schedule",
+        "parts",
+        "video",
+        "invite",
+        "geo"
+      ]
+    },
+    {
+      "id": "parts",
+      "label": "Мои партии",
+      "note": "Партии подряд с погашенным экраном, запись своей партии и запись из «Диктофона»",
+      "start": "repertoire",
+      "screens": [
+        "repertoire",
+        "parts",
+        "nowplaying",
+        "record",
+        "altos",
+        "share",
+        "rollcall",
+        "schedule"
+      ],
+      "stops": [
+        "rollcall",
+        "schedule"
+      ]
+    },
+    {
+      "id": "plan",
+      "label": "Расписание и Календарь",
+      "note": "Спевки в Календарь, напоминание за час и сводная из сообщения",
+      "start": "choirinfo",
+      "screens": [
+        "choirinfo",
+        "schedule",
+        "newrehearsal",
+        "choir",
+        "rollcall",
+        "parts",
+        "wifi",
+        "video",
+        "invite",
+        "geo",
+        "regent",
+        "attach",
+        "contacts",
+        "docs",
+        "lockscreen"
+      ],
+      "stops": [
+        "rollcall",
+        "parts",
+        "wifi",
+        "video",
+        "invite",
+        "geo",
+        "regent",
+        "attach",
+        "contacts",
+        "docs",
+        "lockscreen"
+      ]
+    },
+    {
+      "id": "invite",
+      "label": "Новичок по ссылке",
+      "note": "QR и ссылка, «Сообщения» у новенькой и вступление в хор",
+      "start": "choirinfo",
+      "screens": [
+        "choirinfo",
+        "invite",
+        "sms",
+        "join",
+        "choir",
+        "contacts",
+        "rollcall",
+        "schedule",
+        "parts",
+        "wifi",
+        "video",
+        "geo",
+        "regent",
+        "docs",
+        "attach"
+      ],
+      "stops": [
+        "contacts",
+        "rollcall",
+        "schedule",
+        "parts",
+        "wifi",
+        "video",
+        "geo",
+        "regent",
+        "docs",
+        "attach"
+      ]
+    },
+    {
+      "id": "outside",
+      "label": "Вне приложения",
+      "note": "Уведомления регента и хора, виджет спевки, документы для гастролей под Face ID",
+      "start": "lockscreen",
+      "screens": [
+        "lockscreen",
+        "regent",
+        "altos",
+        "choir",
+        "schedule",
+        "call",
+        "choirinfo",
+        "docs",
+        "settings",
+        "widget",
+        "account",
+        "saved",
+        "ads",
+        "calls",
+        "parts",
+        "record",
+        "rollcall",
+        "wifi",
+        "video",
+        "invite",
+        "geo",
+        "attach",
+        "contacts",
+        "chats"
+      ],
+      "stops": [
+        "call",
+        "record",
+        "account",
+        "saved",
+        "ads",
+        "calls",
+        "parts",
+        "rollcall",
+        "wifi",
+        "video",
+        "invite",
+        "geo",
+        "attach",
+        "schedule",
+        "contacts",
+        "chats"
+      ]
+    }
+  ],
+  "backendless": [
+    {
+      "needs": "Вход по номеру и паролю, сессия",
+      "solution": "SDK провайдера аутентификации; токен в Keychain общей группы для приложения и расширений"
+    },
+    {
+      "needs": "Доставка сообщений, чаты, отметки на спевке",
+      "solution": "Firestore со security rules: писать в чат хора и отмечаться может только участник. Правила — конфигурация, не серверный код"
+    },
+    {
+      "needs": "Фото нот, ролики и записи партий",
+      "solution": "Cloud Storage того же SDK с правилами доступа по участникам чата"
+    },
+    {
+      "needs": "Пуши о сообщениях и тихие пуши",
+      "solution": "Firebase Cloud Messaging через триггеры SDK-расширения; текст расшифровывает и превью собирает Notification Service Extension на устройстве"
+    },
+    {
+      "needs": "Звонки",
+      "solution": "SDK провайдера WebRTC-звонков с его сигнализацией и TURN; на устройстве PushKit и CallKit"
+    },
+    {
+      "needs": "Ссылки-приглашения",
+      "solution": "Статический apple-app-site-association на spevka.app; код хора в ссылке разбирается на устройстве"
+    },
+    {
+      "needs": "Видео концерта",
+      "solution": "AVFoundation на устройстве в BGProcessingTask; видео ложится в Storage как обычное вложение"
+    },
+    {
+      "needs": "Кто из контактов уже в хоре",
+      "solution": "Номера хешируются на устройстве и сверяются запросом к Firestore по индексу хешей"
+    },
+    {
+      "needs": "Реклама",
+      "solution": "Рекламный SDK сети со своим сервером ставок; своего рекламного бэкенда нет"
+    },
+    {
+      "needs": "Карта и точка сбора",
+      "solution": "MapKit, точки людей — из сообщений чата"
+    }
+  ],
+  "docs": [
+    {
+      "file": "01-product-vision.md",
+      "label": "Вижен"
+    },
+    {
+      "file": "02-architecture.md",
+      "label": "Архитектура"
+    },
+    {
+      "file": "03-design-system.md",
+      "label": "Дизайн-токены"
+    },
+    {
+      "file": "04-references.md",
+      "label": "Референсы"
+    },
+    {
+      "file": "05-visual-audit.md",
+      "label": "Визуальный аудит"
+    },
+    {
+      "file": "06-app-store.md",
+      "label": "Карточка App Store"
+    }
+  ],
+  "appStore": {
+    "name": "В унисон — мессенджер хора",
+    "subtitle": "Партии, спевки и звонки",
+    "promo": "Поёте в хоре? Своя партия подряд в наушниках, программа концерта, спевки в Календаре и «пришли 24 из 32» по Wi‑Fi зала. Плюс обычные чаты и звонки.",
+    "keywords": "хор,ансамбль,репетиция,партия,регент,ноты,концерт,вокал,альт,сопрано,голосовые,чат",
+    "category": {
+      "primary": "Social Networking",
+      "secondary": "Music"
+    },
+    "ageRating": "13+",
+    "price": "Бесплатно, реклама в списке чатов, без встроенных покупок",
+    "encryption": "ITSAppUsesNonExemptEncryption = NO — только HTTPS и стандартное шифрование SDK",
+    "urls": {
+      "support": "https://spevka.app/support",
+      "marketing": "https://spevka.app",
+      "privacy": "https://spevka.app/privacy"
+    },
+    "description": [
+      "«В унисон» — мессенджер для хора и вокального ансамбля. Чаты, голосовые, фото и звонки — как в привычном мессенджере, а поверх — репертуар: программа концерта, свои партии, расписание спевок и кто пришёл.",
+      "МОИ ПАРТИИ\nЗаписи своего голоса из переписки — от регента, свои и присланные — собраны в одном месте и играют подряд с погашенным экраном. Ночью они скачиваются для зала без связи.",
+      "КТО ПРИШЁЛ\nСпевка дня закреплена в чате хора. В зале каждый отмечается одним касанием по Wi‑Fi зала — регент видит «пришли 24 из 32» без подсчёта по головам.",
+      "РАСПИСАНИЕ В КАЛЕНДАРЕ\nСпевки и концерт уходят в Календарь, а когда спевку переносят, приложение правит уже добавленное событие. Сводную из сообщения регента можно добавить касанием по дате.",
+      "ВИДЕО КОНЦЕРТА\nРолики участников с разных рядов сводятся в одно видео ночью, пока телефон на зарядке.",
+      "ЗВОНКИ И УВЕДОМЛЕНИЯ\nАудио- и видеозвонки через системный экран звонка. В уведомлениях — отправитель, текст и голосовое с прослушиванием.",
+      "СВОЕГО СЕРВЕРА НЕТ\nВход, сообщения, пуши и звонки работают на SDK провайдеров. Все доступы запрашиваются в момент действия, у каждого есть рабочий отказ. Приложение бесплатное, его оплачивает одна рекламная карточка в списке чатов."
+    ],
+    "whatsNew": "Первая версия: чат хора со спевкой и отметками по Wi‑Fi зала, мои партии подряд, расписание в Календаре, видео концерта, звонки и голосовые.",
+    "privacy": [
+      {
+        "type": "Номер телефона",
+        "apple": "Contact Info → Phone Number",
+        "purpose": "Работа приложения",
+        "linked": true,
+        "tracking": false,
+        "why": "Вход и поиск знакомых по номеру через SDK провайдера аутентификации"
+      },
+      {
+        "type": "Сообщения и вложения",
+        "apple": "User Content → Emails or Text Messages; Photos or Videos; Audio Data",
+        "purpose": "Работа приложения",
+        "linked": true,
+        "tracking": false,
+        "why": "Переписка, фото нот, ролики и голосовые доставляются участникам чата"
+      },
+      {
+        "type": "Точное местоположение",
+        "apple": "Location → Precise Location",
+        "purpose": "Работа приложения",
+        "linked": true,
+        "tracking": false,
+        "why": "Только когда человек сам отправляет геопозицию в чат или транслирует её на час"
+      },
+      {
+        "type": "Контакты",
+        "apple": "Contacts → Contacts",
+        "purpose": "Работа приложения",
+        "linked": false,
+        "tracking": false,
+        "why": "Номера хешируются на устройстве для поиска знакомых, адресная книга не выгружается"
+      },
+      {
+        "type": "Токен уведомлений",
+        "apple": "Identifiers → Device ID",
+        "purpose": "Работа приложения",
+        "linked": true,
+        "tracking": false,
+        "why": "Push- и VoIP-токены для сообщений и звонков"
+      },
+      {
+        "type": "Рекламный идентификатор",
+        "apple": "Identifiers → Advertising Data",
+        "purpose": "Сторонняя реклама",
+        "linked": true,
+        "tracking": true,
+        "why": "IDFA уходит в рекламный SDK только после разрешения в ATT; без него реклама остаётся без подбора"
+      }
+    ],
+    "assets": {
+      "locale": "ru-RU",
+      "template": "studio",
+      "screens": [
+        {
+          "screen": "repertoire",
+          "headline": "Репертуар хора в мессенджере",
+          "body": "Программа концерта, партии и кто пришёл"
+        },
+        {
+          "screen": "parts",
+          "headline": "Своя партия подряд",
+          "body": "Записи регента и свои — с погашенным экраном"
+        },
+        {
+          "screen": "rollcall",
+          "headline": "Пришли 24 из 32",
+          "body": "Отметка на спевке по Wi‑Fi зала"
+        },
+        {
+          "screen": "chats",
+          "headline": "Обычные чаты тоже здесь",
+          "body": "Голосовые, звонки и избранное"
+        }
+      ]
+    },
+    "reviewAccount": {
+      "phone": "+7 900 123-45-67",
+      "password": "kamerton2026",
+      "note": "Вход по номеру и паролю, без SMS-кода. Аккаунт уже состоит в хоре «Камертон» со спевкой, партиями и расписанием."
+    }
+  },
+  "acceptance": [
+    {
+      "id": "checkin-by-network",
+      "name": "Отметка на спевке по сети зала",
+      "action": "check-in",
+      "given": "Хорист в зале №2, телефон в сети DK_Zal_2",
+      "when": "Открывает закреп спевки и нажимает «Я на спевке»",
+      "then": "«Пришли 24 из 32» и строка «Оля Сомова · на спевке»",
+      "screens": [
+        "choir",
+        "rollcall"
+      ],
+      "capabilities": [
+        "wifiinfo"
+      ]
+    },
+    {
+      "id": "hall-wifi",
+      "name": "Wi‑Fi зала из чата",
+      "action": "join-network",
+      "given": "Староста прислал карточку сети",
+      "when": "Касается карточки в чате и нажимает «Подключиться»",
+      "then": "«Подключено к DK_Zal_2» и переход к «Кто пришёл»",
+      "screens": [
+        "choir",
+        "wifi"
+      ],
+      "capabilities": [
+        "hotspot"
+      ]
+    },
+    {
+      "id": "listen-parts",
+      "name": "Своя партия подряд",
+      "action": "listen-parts",
+      "given": "7 записей альтов в «Моих партиях»",
+      "when": "Нажимает «Слушать мою партию подряд»",
+      "then": "Экран блокировки с «Вечерний звон · альты» и управлением",
+      "screens": [
+        "parts",
+        "nowplaying"
+      ],
+      "capabilities": [
+        "audio"
+      ]
+    },
+    {
+      "id": "schedule-calendar",
+      "name": "Спевки в Календаре",
+      "action": "schedule-to-calendar",
+      "given": "Спевку 13 октября перенесли на 19:30",
+      "when": "Нажимает «Спевки и концерт в Календарь»",
+      "then": "«В Календаре · 8 событий» и «Спевка 13 октября — поправлена в Календаре»",
+      "screens": [
+        "schedule"
+      ],
+      "capabilities": [
+        "calendar"
+      ]
+    },
+    {
+      "id": "svodnaya-calendar",
+      "name": "Сводная из сообщения",
+      "action": "svodnaya-to-calendar",
+      "given": "Регент пишет о сводной в субботу",
+      "when": "Касается подчёркнутой даты в сообщении",
+      "then": "Под сообщением «В Календаре · суббота, 10 октября, 12:00»",
+      "screens": [
+        "choir"
+      ],
+      "capabilities": [
+        "calendarwrite"
+      ]
+    },
+    {
+      "id": "video-tonight",
+      "name": "Видео концерта ночью",
+      "action": "video-tonight",
+      "given": "38 роликов от 14 участников",
+      "when": "Нажимает «Собрать видео концерта ночью»",
+      "then": "«Видео концерта — к утру»",
+      "screens": [
+        "video"
+      ],
+      "capabilities": [
+        "processing"
+      ]
+    },
+    {
+      "id": "invite-link",
+      "name": "Новичок по ссылке",
+      "action": "open-invite",
+      "given": "Даша получила ссылку spevka.app/j/kamerton в «Сообщениях»",
+      "when": "Касается карточки ссылки",
+      "then": "Открывается «Приглашение» с кнопкой «Вступить в хор»",
+      "screens": [
+        "invite",
+        "sms",
+        "join"
+      ],
+      "capabilities": [
+        "associateddomains"
+      ]
+    },
+    {
+      "id": "share-memo",
+      "name": "Запись из «Диктофона» в чат партии",
+      "action": "share-memo",
+      "given": "В «Диктофоне» запись «Распевка, альты»",
+      "when": "«Поделиться» → «Альты · партии»",
+      "then": "Запись в чате альтов",
+      "screens": [
+        "share",
+        "altos"
+      ],
+      "capabilities": [
+        "shareext"
+      ]
+    }
+  ],
+  "fixtures": {
+    "note": "Демо-данные концепта. Один источник для HTML-прототипа и нативной сборки — model.mjs.",
+    "choir": {
+      "name": "Хор «Камертон»",
+      "people": 32,
+      "hall": "ДК «Октябрь», зал №2",
+      "ssid": "DK_Zal_2",
+      "link": "spevka.app/j/kamerton"
+    },
+    "today": {
+      "time": "19:00",
+      "came": 23,
+      "cameMe": 24,
+      "synced": "19:05"
+    },
+    "parts": {
+      "count": 7,
+      "minutes": 20
+    },
+    "concert": {
+      "date": "24 октября",
+      "pieces": 8,
+      "updated": "7:00"
+    }
+  },
+  "auth": {
+    "mode": "phone",
+    "confirmation": false,
+    "entryTarget": "chats",
+    "guest": false
+  }
+}
