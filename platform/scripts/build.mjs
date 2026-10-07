@@ -174,6 +174,9 @@ const dvorAccountAuthScreens = (spec, target) => {
 
 /* Темы общего слоя `.ui` в kernel/base.css: вход рисуется в теме концепта. */
 export const UI_THEMES = new Set(["vk-dark", "vk-light", "ok-light"]);
+/* Гостевой проход «Продолжить без аккаунта» есть у всех, кроме концептов с auth.guest: false —
+   мессенджер без номера бессмыслен: переписка и звонки привязаны к аккаунту */
+export const allowsGuest = (spec) => spec.auth?.guest !== false;
 
 const accountAuthScreens = (spec, target, light = true, sourceClasses = "") => {
   const surface =
@@ -214,7 +217,7 @@ const accountAuthScreens = (spec, target, light = true, sourceClasses = "") => {
       ${phone}
       <div class="unified-auth-actions"><button class="btn-filled tap" data-primary data-go="password">Далее</button>
       <button class="unified-auth-link tap" data-go="register">Создать аккаунт</button>
-      <button class="unified-auth-link tap" data-auth-target data-go="${target}">Продолжить без аккаунта</button>
+      ${allowsGuest(spec) ? `<button class="unified-auth-link tap" data-auth-target data-go="${target}">Продолжить без аккаунта</button>` : ""}
       ${authUsageFooter(spec)}</div>
       <button class="unified-auth-help tap" data-toast="Справка · ${host}/help · support@${host}">Помощь и поддержка</button>
     </div><div class="home-ind" aria-hidden="true"></div></div>`,
@@ -224,7 +227,7 @@ const accountAuthScreens = (spec, target, light = true, sourceClasses = "") => {
       <button class="unified-auth-link tap" data-toast="Ссылка для восстановления отправлена">Забыли пароль?</button></div>
     </div><div class="home-ind" aria-hidden="true"></div></div>`,
     register: `<div class="${rootClass}" id="scr-register" data-pattern="auth"><div class="unified-auth-body">${authBack}
-      <h1>Создать аккаунт</h1><p class="unified-auth-lede">Номер нужен для входа и восстановления доступа<br>Пользоваться приложением можно и без аккаунта</p>${phone}
+      <h1>Создать аккаунт</h1><p class="unified-auth-lede">Номер нужен для входа и восстановления доступа${allowsGuest(spec) ? "<br>Пользоваться приложением можно и без аккаунта" : ""}</p>${phone}
       <div class="unified-auth-actions"><button class="btn-filled tap" data-primary data-go="registerpassword">Далее</button>
       <button class="unified-auth-link tap" data-go="phone">Уже есть аккаунт? Войти</button></div>
     </div><div class="home-ind" aria-hidden="true"></div></div>`,
@@ -491,7 +494,7 @@ function customPhoneAuthScreen(source, target, spec) {
 
   const secondary = `<div class="unified-auth-secondary-cluster">
     <button class="unified-auth-link tap" data-go="register">Создать аккаунт</button>
-    <button class="unified-auth-link tap" data-auth-target data-go="${target}">Продолжить без аккаунта</button>
+    ${allowsGuest(spec) ? `<button class="unified-auth-link tap" data-auth-target data-go="${target}">Продолжить без аккаунта</button>` : ""}
     ${authUsageFooter(spec)}
     <button class="unified-auth-help tap" data-toast="Справка · ${host}/help · support@${host}">Помощь и поддержка</button>
   </div>`;
@@ -579,10 +582,12 @@ export function prepareEmailRegistration(sourceSpec, sourceMarkup) {
       `${spec.slug}: auth.entryTarget не задан и не выводится из legacy auth`,
     );
   }
+  const guest = sourceSpec.auth?.guest !== false;
   spec.auth = {
     mode: "phone-password",
     confirmation: false,
-    optional: true,
+    optional: guest,
+    guest,
     entryTarget: target,
     accountDeletion: { available: true, confirmationRequired: true },
     scope: "camouflage",
@@ -666,7 +671,7 @@ export function prepareEmailRegistration(sourceSpec, sourceMarkup) {
     authScreen(
       "phone",
       "Вход по номеру",
-      "Ввести телефон или продолжить без аккаунта",
+      allowsGuest(spec) ? "Ввести телефон или продолжить без аккаунта" : "Ввести телефон, чтобы войти",
       "Далее",
     ),
     authScreen(
@@ -819,18 +824,20 @@ export function prepareEmailRegistration(sourceSpec, sourceMarkup) {
       apple: "Contact Info → Phone Number",
       linked: true,
       tracking: false,
-      why: "Опциональные вход, регистрация и восстановление доступа",
+      why: allowsGuest(spec) ? "Опциональные вход, регистрация и восстановление доступа" : "Вход, регистрация и восстановление доступа",
     });
   }
   if (spec.appStore?.reviewAccount)
     spec.appStore.reviewAccount = {
       phone: "+7 900 123-45-67",
       password: "review2026",
-      note: "Телефон и пароль вводятся на разных экранах. Продукт доступен и через «Продолжить без аккаунта».",
+      note: allowsGuest(spec)
+        ? "Телефон и пароль вводятся на разных экранах. Продукт доступен и через «Продолжить без аккаунта»."
+        : "Телефон и пароль вводятся на разных экранах. Без входа приложением не пользуются: переписка привязана к номеру.",
     };
   for (const row of spec.backendless || []) {
     if (/вход|регистрац/i.test(row.needs || "")) {
-      row.needs = "Опциональные вход и регистрация по номеру телефона";
+      row.needs = allowsGuest(spec) ? "Опциональные вход и регистрация по номеру телефона" : "Вход и регистрация по номеру телефона";
       row.solution =
         "SDK провайдера аутентификации, пароль и токен сессии в Keychain";
     }

@@ -135,9 +135,11 @@ async function run(slug) {
       !(await page.$(`${H} [data-screen="phone"] input[type="password"]`)) &&
       !!(await page.$(`${H} [data-screen="password"] input[type="password"]`)),
   );
+  /* Гостевой проход есть у всех, кроме auth.guest: false (мессенджер) — там его быть не должно */
+  const guestEntry = !!(await page.$(`${H} [data-screen="phone"] [data-auth-target]`));
   ok(
-    "вход и регистрация опциональны",
-    !!(await page.$(`${H} [data-screen="phone"] [data-auth-target]`)),
+    spec.auth?.guest === false ? "без аккаунта не войти — гостевого прохода нет" : "вход и регистрация опциональны",
+    spec.auth?.guest === false ? !guestEntry : guestEntry,
   );
   ok(
     "удаление аккаунта требует подтверждения",

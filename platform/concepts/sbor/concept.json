@@ -2355,6 +2355,7 @@
   "auth": {
     "mode": "phone",
     "confirmation": false,
-    "entryTarget": "chats"
+    "entryTarget": "chats",
+    "guest": false
   }
 }
