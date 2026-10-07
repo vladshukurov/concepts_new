@@ -3,7 +3,7 @@ import { THEME, PET, faces } from './_shared.mjs';
 export default (ui) => ui.screen({
   id: 'walk', theme: THEME,
   body: [
-    ui.nav({ title: 'Прогулка', trailing: ui.iconButton({ icon: 'message-circle', label: 'Чат прогулки', go: 'chat' }) }),
+    ui.nav({ title: 'Прогулка', trailing: ui.iconButton({ icon: 'message-circle', label: 'Чат прогулки', go: 'chat-pond' }) }),
     ui.scroll([
       `<div class="tl-walk-page"><h1 class="ui-title">Спокойный круг у пруда</h1><p class="ui-sub">Сегодня, 18:40 · спокойный темп</p>${faces(PET.truffle, PET.mint, PET.barni, PET.loki)}<p class="ui-sub">Трюфель, Мята, Барни и ещё 3</p></div>`,
       ui.section({ children: [

@@ -20,3 +20,32 @@ export const dmScreen = (ui, { id, head, status, msgs }) => ui.screen({
     ui.composer({ attach: { label: 'Прикрепить', menu: ['Фото>media'] }, mic: { toast: 'Запись голосового · отпустите, чтобы отправить' } }),
   ],
 });
+
+/* Прогулка из списка «Рядом»: когда, где, кто идёт */
+export const walkCard = (ui, { id, title, when, pets, place, time, route }) => ui.screen({
+  id, theme: THEME,
+  body: [
+    ui.nav({ title: 'Прогулка' }),
+    ui.scroll([
+      `<div class="tl-walk-page"><h1 class="ui-title">${title}</h1><p class="ui-sub">${when}</p>${faces(...pets)}</div>`,
+      ui.section({ children: ui.group({ cells: [
+        ui.cell({ icon: 'map-pin', title: place[0], sub: place[1] }),
+        ui.cell({ icon: 'clock', title: time[0], sub: time[1] }),
+        ui.cell({ icon: 'route', title: route[0], sub: route[1] }),
+      ] }) }),
+      ui.section({ children: ui.actions([ui.button({ label: 'Я иду', icon: 'check', block: true, toggle: 'on' })]) }),
+    ]),
+  ],
+});
+
+/* Карточка площадки: где, что там и ближайшая прогулка */
+export const placeCard = (ui, { id, title, sub, rows, walkGo = 'walk' }) => ui.screen({
+  id, theme: THEME,
+  body: [
+    ui.nav({ title: 'Площадка' }),
+    ui.scroll([
+      `<div class="tl-walk-page"><h1 class="ui-title">${title}</h1><p class="ui-sub">${sub}</p></div>`,
+      ui.section({ children: ui.list(rows.map(([ic, t, s, go]) => ui.row({ lead: ui.leadIcon(ic), title: t, sub: s, ...(go ? { go } : {}) }))) }),
+    ]),
+  ],
+});

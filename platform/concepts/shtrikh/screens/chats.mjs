@@ -9,7 +9,7 @@ export default (ui) => ui.screen({
     ui.section({ children: [
       ui.dialog({ initial: 'ЗБ', name: pleinair.title, text: 'Лера: голосовое · 0:09', time: '18:02', unread: 3, go: 'chat', primary: true }),
       ui.dialog({ initial: people.lera.initial, name: people.lera.name, text: 'Скинула фото рынка сверху, с моста', time: '16:40', online: true, go: 'direct-lera' }),
-      ui.dialog({ initial: 'ЛГ', name: walk.title, text: 'Миша: маршрут поменяли, начнём у фонтана', time: '14:15', unread: 12, muted: true, go: 'chat' }),
+      ui.dialog({ initial: 'ЛГ', name: walk.title, text: 'Миша: маршрут поменяли, начнём у фонтана', time: '14:15', unread: 12, muted: true, go: 'chatwalk' }),
       ui.dialog({ initial: people.petr.initial, name: people.petr.name, text: 'Скинь адрес двора, тоже хочу порисовать', time: 'вчера', go: 'direct' }),
       ui.dialog({ initial: people.alina.initial, name: people.alina.name, text: 'Линер Sakura 0.3, бумага Fabriano', time: 'пн', you: true, go: 'direct-alina' }),
       ui.dialog({ initial: people.misha.initial, name: people.misha.name, text: 'Спасибо за разбор перспективы на встрече', time: 'вс', go: 'direct-misha' }),

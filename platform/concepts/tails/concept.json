@@ -1473,6 +1473,198 @@
           "secondary": "Звонок из шапки диалога"
         }
       }
+    },
+    {
+      "id": "walk-quay",
+      "title": "Быстро по набережной",
+      "type": "push",
+      "light": true,
+      "parent": "nearby",
+      "meta": "Быстро по набережной",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Показать карточку своего питомца: здоровье и прогулки",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Карточка с прогулками и здоровьем",
+          "Длинное описание характера",
+          "Нет фото — плейсхолдер"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото, кличка и характер",
+          "secondary": "Здоровье и прогулки"
+        }
+      }
+    },
+    {
+      "id": "walk-puppies",
+      "title": "Знакомство щенков",
+      "type": "push",
+      "light": true,
+      "parent": "nearby",
+      "meta": "Знакомство щенков",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Показать карточку своего питомца: здоровье и прогулки",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Карточка с прогулками и здоровьем",
+          "Длинное описание характера",
+          "Нет фото — плейсхолдер"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото, кличка и характер",
+          "secondary": "Здоровье и прогулки"
+        }
+      }
+    },
+    {
+      "id": "place-lopukhin",
+      "title": "Лопухинский сад",
+      "type": "push",
+      "light": true,
+      "parent": "places",
+      "meta": "Лопухинский сад",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Показать карточку своего питомца: здоровье и прогулки",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Карточка с прогулками и здоровьем",
+          "Длинное описание характера",
+          "Нет фото — плейсхолдер"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото, кличка и характер",
+          "secondary": "Здоровье и прогулки"
+        }
+      }
+    },
+    {
+      "id": "place-quay",
+      "title": "Набережная у ЦПКиО",
+      "type": "push",
+      "light": true,
+      "parent": "places",
+      "meta": "Набережная у ЦПКиО",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Показать карточку своего питомца: здоровье и прогулки",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Карточка с прогулками и здоровьем",
+          "Длинное описание характера",
+          "Нет фото — плейсхолдер"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото, кличка и характер",
+          "secondary": "Здоровье и прогулки"
+        }
+      }
+    },
+    {
+      "id": "place-yard",
+      "title": "Двор на Съезжинской",
+      "type": "push",
+      "light": true,
+      "parent": "places",
+      "meta": "Двор на Съезжинской",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Показать карточку своего питомца: здоровье и прогулки",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Карточка с прогулками и здоровьем",
+          "Длинное описание характера",
+          "Нет фото — плейсхолдер"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото, кличка и характер",
+          "secondary": "Здоровье и прогулки"
+        }
+      }
+    },
+    {
+      "id": "chat-pond",
+      "title": "Чат прогулки у пруда",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Чат прогулки у пруда",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Показать карточку своего питомца: здоровье и прогулки",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Карточка с прогулками и здоровьем",
+          "Длинное описание характера",
+          "Нет фото — плейсхолдер"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото, кличка и характер",
+          "secondary": "Здоровье и прогулки"
+        }
+      }
     }
   ],
   "prototypes": [
@@ -1508,7 +1700,13 @@
         "netqr",
         "chat-clinic",
         "chat-marat",
-        "chat-alena"
+        "chat-alena",
+        "walk-quay",
+        "walk-puppies",
+        "place-lopukhin",
+        "place-quay",
+        "place-yard",
+        "chat-pond"
       ],
       "stops": [],
       "authTarget": "home"
@@ -1523,12 +1721,14 @@
         "netqr",
         "nearby",
         "home",
-        "chat"
+        "chat",
+        "chat-pond"
       ],
       "stops": [
         "nearby",
         "home",
-        "chat"
+        "chat",
+        "chat-pond"
       ]
     },
     {
@@ -1587,7 +1787,8 @@
         "mates",
         "chat-clinic",
         "chat-marat",
-        "chat-alena"
+        "chat-alena",
+        "chat-pond"
       ],
       "stops": [
         "walk",
@@ -1595,7 +1796,8 @@
         "mates",
         "chat-clinic",
         "chat-marat",
-        "chat-alena"
+        "chat-alena",
+        "chat-pond"
       ]
     }
   ],

@@ -29,7 +29,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×79, `section` ×69, `avatar` ×50, `list` ×35, `leadIcon` ×33, `cell` ×32, `bubble` ×29, `nav` ×15, `button` ×12, `day` ×11, `iconButton` ×11, `group` ×10, `actions` ×9, `dialog` ×9, `chatNav` ×7, `chat` ×7, `composer` ×6, `denied` ×5, `tabBar` ×5, `largeTitle` ×4, `segments` ×3, `search` ×3, `textButton` ×2, `voice` ×2, `usersStack` ×2, `callView` ×1, `chips` ×1, `miniInfo` ×1, `lockScreen` ×1, `top` ×1, `hue` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×81, `section` ×74, `avatar` ×50, `list` ×37, `leadIcon` ×34, `cell` ×32, `bubble` ×29, `nav` ×17, `button` ×13, `iconButton` ×12, `day` ×11, `actions` ×10, `group` ×10, `dialog` ×9, `chatNav` ×7, `chat` ×7, `composer` ×6, `denied` ×5, `tabBar` ×5, `largeTitle` ×4, `segments` ×3, `search` ×3, `textButton` ×2, `voice` ×2, `usersStack` ×2, `callView` ×1, `chips` ×1, `miniInfo` ×1, `lockScreen` ×1, `top` ×1, `hue` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Доменные компоненты
@@ -57,6 +57,7 @@
 | Профиль в настройках: крупное фото, имя и номер по центру, как в Telegram | `.sb-me` |
 | Пульт идущей поездки: что дальше и кто на месте — крупно, как карточка звонка в чате | `.sb-now` |
 | Сводка кошелька поездки | `.sb-money` `.ui-progress` |
+| Просмотр кадра, кружка и документа | `.sb-view` |
 <!-- @end -->
 
 Главные из них:

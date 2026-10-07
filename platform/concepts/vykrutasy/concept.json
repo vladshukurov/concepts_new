@@ -1334,6 +1334,47 @@
           }
         ]
       }
+    },
+    {
+      "id": "watchmonday",
+      "title": "Хайлайт Оли",
+      "type": "push",
+      "light": false,
+      "meta": "Хайлайт Оли",
+      "parent": "evening",
+      "ui": {
+        "pattern": "settings",
+        "navigation": "push",
+        "purpose": "Выбрать рекламу бесплатной версии",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Карточка рекламы и два варианта",
+          "secondary": "Запрос ATT по кнопке"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "После разрешения — пиццерия рядом"
+          },
+          {
+            "kind": "stress",
+            "example": "Меняет решение после отказа"
+          },
+          {
+            "kind": "failure",
+            "example": "ATT запрещён, реклама без подбора"
+          }
+        ]
+      }
     }
   ],
   "prototypes": [
@@ -1366,7 +1407,8 @@
         "galleryround",
         "picker",
         "evening",
-        "invite"
+        "invite",
+        "watchmonday"
       ],
       "stops": [],
       "authTarget": "home"
@@ -1401,11 +1443,13 @@
         "clips",
         "background",
         "lock",
-        "home"
+        "home",
+        "watchmonday"
       ],
       "stops": [
         "home",
-        "clips"
+        "clips",
+        "watchmonday"
       ]
     },
     {

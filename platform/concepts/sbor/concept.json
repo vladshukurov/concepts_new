@@ -2034,6 +2034,166 @@
         "primaryAction": null
       },
       "parent": "newtrip"
+    },
+    {
+      "id": "snap",
+      "title": "Снимок",
+      "type": "push",
+      "light": true,
+      "meta": "Снимок",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "album"
+    },
+    {
+      "id": "circle",
+      "title": "Кружок",
+      "type": "push",
+      "light": true,
+      "meta": "Кружок",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "album"
+    },
+    {
+      "id": "film",
+      "title": "Фильм пятницы",
+      "type": "push",
+      "light": true,
+      "meta": "Фильм пятницы",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "album"
+    },
+    {
+      "id": "doc",
+      "title": "Документ",
+      "type": "push",
+      "light": true,
+      "meta": "Документ",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "docs"
+    },
+    {
+      "id": "tripedit",
+      "title": "Правка поездки",
+      "type": "push",
+      "light": true,
+      "meta": "Правка поездки",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": "Сохранить"
+      },
+      "parent": "tripinfo"
+    },
+    {
+      "id": "contactnew",
+      "title": "Новый контакт",
+      "type": "push",
+      "light": true,
+      "meta": "Новый контакт",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": "Добавить"
+      },
+      "parent": "contacts"
+    },
+    {
+      "id": "expensenew",
+      "title": "Новая трата",
+      "type": "push",
+      "light": true,
+      "meta": "Новая трата",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": "Добавить"
+      },
+      "parent": "expenses"
+    },
+    {
+      "id": "programnew",
+      "title": "Новый пункт",
+      "type": "push",
+      "light": true,
+      "meta": "Новый пункт",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": "Добавить"
+      },
+      "parent": "program"
     }
   ],
   "prototypes": [
@@ -2084,7 +2244,15 @@
         "pskov",
         "altai",
         "newtrip",
-        "tripnew"
+        "tripnew",
+        "snap",
+        "circle",
+        "film",
+        "doc",
+        "tripedit",
+        "contactnew",
+        "expensenew",
+        "programnew"
       ],
       "stops": [],
       "authTarget": "chats"
@@ -2176,7 +2344,8 @@
         "docs",
         "lockscreen",
         "trip",
-        "expenses"
+        "expenses",
+        "tripedit"
       ],
       "stops": [
         "rollcall",
@@ -2188,7 +2357,8 @@
         "docs",
         "lockscreen",
         "trip",
-        "expenses"
+        "expenses",
+        "tripedit"
       ]
     },
     {
@@ -2211,7 +2381,8 @@
         "docs",
         "lockscreen",
         "trip",
-        "expenses"
+        "expenses",
+        "tripedit"
       ],
       "stops": [
         "rollcall",
@@ -2223,7 +2394,8 @@
         "docs",
         "lockscreen",
         "trip",
-        "expenses"
+        "expenses",
+        "tripedit"
       ]
     },
     {
@@ -2250,7 +2422,9 @@
         "saved",
         "ads",
         "calls",
-        "expenses"
+        "expenses",
+        "tripedit",
+        "doc"
       ],
       "stops": [
         "rollcall",
@@ -2266,7 +2440,9 @@
         "saved",
         "ads",
         "calls",
-        "expenses"
+        "expenses",
+        "tripedit",
+        "doc"
       ]
     },
     {
@@ -2286,7 +2462,10 @@
         "pskov",
         "rustam",
         "mama",
-        "altai"
+        "altai",
+        "film",
+        "snap",
+        "circle"
       ],
       "stops": [
         "contacts",
@@ -2297,7 +2476,10 @@
         "pskov",
         "rustam",
         "mama",
-        "altai"
+        "altai",
+        "film",
+        "snap",
+        "circle"
       ]
     }
   ],

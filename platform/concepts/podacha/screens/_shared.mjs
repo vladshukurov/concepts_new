@@ -22,3 +22,25 @@ export const direct = (ui, { id, initial, name, status, items }) => ui.screen({
     ui.composer({ attach: { ask: `photos|${id}|${id}` }, mic: { ask: `mic|${id}|${id}` } }),
   ],
 });
+
+/** Небольшая форма: поля и «Сохранить» с возвратом назад. */
+export const form = (ui, { id, title, fields, cta }) => ui.screen({
+  id, theme: THEME,
+  body: [
+    ui.nav({ title, back: 'close' }),
+    ui.scroll([
+      ...fields.map(([label, placeholder, value]) => ui.section({ title: label, children: `<label class="ui-search"><input placeholder="${placeholder}" aria-label="${label}"${value ? ` value="${value}"` : ''}/></label>` })),
+      ui.section({ children: ui.actions([ui.button({ label: cta, block: true, back: true, primary: true })]) }),
+    ]),
+  ],
+});
+
+/** Короткий диалог без вложений и голосовых: доступы спрашивает общий диалог. */
+export const plainDirect = (ui, { id, initial, name, status, items }) => ui.screen({
+  id, theme: THEME,
+  body: [
+    ui.chatNav({ initial, name, status }),
+    ui.scroll(ui.chat(items)),
+    ui.composer({ send: { toast: 'Сообщение отправлено' } }),
+  ],
+});

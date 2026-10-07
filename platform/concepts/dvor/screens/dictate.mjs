@@ -4,7 +4,7 @@ import { THEME } from './_shared.mjs';
 export default (ui) => ui.screen({
   id: 'dictate', theme: THEME,
   body: [
-    ui.nav({ title: 'Заявка голосом', back: 'close' }),
+    ui.nav({ title: 'Черновик заявки', back: 'close' }),
     ui.scroll([
       ui.entry({ icon: 'mic', title: 'Записано 0:12', meta: 'сегодня, 8:10 · голосовая заявка', voice: { dur: '0:12' } }),
       ui.section({ title: 'Расшифровка', children: [

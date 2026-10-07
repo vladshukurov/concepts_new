@@ -26,7 +26,7 @@ export default (ui) => ui.screen({
     ] }),
     ui.section({ title: 'Выставка', children: ui.list([ui.row({ lead: ui.leadIcon('image', { accent: true }), title: exhibit.title, sub: `Свои работы на общем экране · до ${exhibit.until}`, go: 'exhibit' })]) }),
     ui.section({ title: 'Потом', children: ui.list([
-      ui.row({ lead: ui.leadIcon('', { text: walk.start }), title: walk.title, sub: `${walk.day} · ${walk.where} · ${walk.people} идут`, go: 'chat' }),
+      ui.row({ lead: ui.leadIcon('', { text: walk.start }), title: walk.title, sub: `${walk.day} · ${walk.where} · ${walk.people} идут`, go: 'chatwalk' }),
       ui.row({ lead: ui.leadIcon('', { text: '10:00' }), title: 'Мост на Терренкуре', sub: '3 октября · вход в парк' }),
     ]) }),
   ], { root: true }),

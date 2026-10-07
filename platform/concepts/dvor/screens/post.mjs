@@ -5,7 +5,7 @@ import { journal } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'post', theme: THEME,
   body: [
-    ui.nav({ title: 'Запись', trailing: ui.iconButton({ icon: 'ellipsis', label: 'Действия с записью', menu: ['Изменить', 'Отправить в чат подъезда>chat', 'Удалить'] }) }),
+    ui.nav({ title: 'Запись', trailing: ui.iconButton({ icon: 'ellipsis', label: 'Действия с записью', menu: ['Изменить', 'Отправить в чат подъезда>chatentr', 'Удалить'] }) }),
     ui.scroll([
       ui.entry({
         icon: 'wrench', title: journal.door.title, meta: `${journal.door.when} · заявка 4417-Б`,

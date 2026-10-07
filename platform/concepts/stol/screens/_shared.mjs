@@ -18,7 +18,17 @@ export const gameCard = (ui, { id, title, sub, rows }) => ui.screen({
     ui.scroll([
       ui.section({ children: `<div class="st-table"><small>Хочу сыграть</small><strong>${title}</strong><span>${sub}</span></div>` }),
       ui.section({ children: ui.actions([ui.button({ label: 'Найти стол', icon: 'calendar', block: true, go: 'tables', primary: true })]) }),
-      ui.section({ title: 'О партии', children: ui.list(rows.map(([icon, t, s]) => ui.row({ lead: ui.leadIcon(icon), title: t, sub: s }))) }),
+      ui.section({ title: 'О партии', children: ui.list(rows.map(([icon, t, s, go]) => ui.row({ lead: ui.leadIcon(icon), title: t, sub: s, ...(go ? { go } : {}) }))) }),
     ]),
+  ],
+});
+
+/* Простой чат: шапка и короткая переписка из данных; свои сообщения — me */
+export const simpleChat = (ui, { id, initial, name, status, msgs }) => ui.screen({
+  id, theme: THEME,
+  body: [
+    ui.chatNav({ initial, name, status }),
+    ui.scroll(ui.chat(msgs.map(([who, text, time]) => who === 'day' ? ui.day(text) : ui.bubble({ out: who === 'me', ...(who !== 'me' && who !== 'in' ? { from: who } : {}), text, time, read: who === 'me' })))),
+    ui.composer({ send: { toast: 'Сообщение отправлено' } }),
   ],
 });

@@ -73,7 +73,7 @@ lenaEvening.meta = `${lenaEvening.players} игроков · ${lenaEvening.answe
 export const highlights = {
   cat: { id: 'watch', who: people.lena, title: 'Кот увидел огурец', art: 'm2', round: 3, dur: '0:12', votes: 5 },
   prom: { id: 'watchdance', who: people.dima, title: 'Выпускной 2009: танец со шваброй', art: 'm5', round: 2, dur: '0:42', votes: 4 },
-  monday: { id: 'clips', who: people.olya, title: 'Утро понедельника без слов', art: 'm4', round: 1, dur: '0:09', votes: 3 },
+  monday: { id: 'watchmonday', who: people.olya, title: 'Утро понедельника без слов', art: 'm4', round: 1, dur: '0:09', votes: 3 },
   mine: { id: 'watchmine', who: people.me, title: 'Утро понедельника: будильник', art: 'm6', round: 1, dur: '0:21', votes: 3 },
 };
 export const hlMeta = (h, when = 'вчера') => `${h.who.short} · раунд ${h.round} · ${h.dur} · ${when}`;

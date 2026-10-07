@@ -5,7 +5,7 @@ import { own, places } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'post', theme: THEME,
   body: [
-    ui.nav({ title: 'Зарисовка', trailing: ui.iconButton({ icon: 'ellipsis', label: 'Действия с зарисовкой', menu: ['Изменить', 'Отправить Лере>direct', 'Удалить'] }) }),
+    ui.nav({ title: 'Зарисовка', trailing: ui.iconButton({ icon: 'ellipsis', label: 'Действия с зарисовкой', menu: ['Изменить', 'Отправить Лере>direct-lera', 'Удалить'] }) }),
     ui.scroll([
       ui.entry({ icon: 'pen-line', title: own.today.title, meta: own.today.when, text: own.today.text, photos: 1, attach: tools(...own.today.tools) }),
       ui.section({ title: 'Место', children: ui.list([

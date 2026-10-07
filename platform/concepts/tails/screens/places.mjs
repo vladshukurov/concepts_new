@@ -8,9 +8,9 @@ export default (ui) => ui.screen({
       ui.section({ children: [
         ui.search({ placeholder: 'Название или адрес' }),
         ui.list([
-          ui.row({ lead: ui.leadIcon('map-pin'), title: 'Лопухинский сад', sub: '1,8 км · с забором · 6 собак сейчас', end: { value: '18:40' }, go: 'walk', primary: true }),
-          ui.row({ lead: ui.leadIcon('map-pin'), title: 'Набережная у ЦПКиО', sub: '3,4 км · без забора · песок', end: { value: '19:30' }, go: 'walk' }),
-          ui.row({ lead: ui.leadIcon('map-pin'), title: 'Двор на Съезжинской', sub: '0,6 км · для щенков · 2 собаки', end: { value: 'завтра' }, go: 'walk' }),
+          ui.row({ lead: ui.leadIcon('map-pin'), title: 'Лопухинский сад', sub: '1,8 км · с забором · 6 собак сейчас', end: { value: '18:40' }, go: 'place-lopukhin', primary: true }),
+          ui.row({ lead: ui.leadIcon('map-pin'), title: 'Набережная у ЦПКиО', sub: '3,4 км · без забора · песок', end: { value: '19:30' }, go: 'place-quay' }),
+          ui.row({ lead: ui.leadIcon('map-pin'), title: 'Двор на Съезжинской', sub: '0,6 км · для щенков · 2 собаки', end: { value: 'завтра' }, go: 'place-yard' }),
           ui.row({ lead: ui.leadIcon('map-pin'), title: 'Парк Ленина', sub: '2,1 км · закрыт на покос до 22 мая', end: { value: 'закрыт' } }),
         ]),
       ] }),

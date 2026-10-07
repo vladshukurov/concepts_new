@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×60, `section` ×53, `leadIcon` ×50, `list` ×25, `cell` ×25, `denied` ×19, `nav` ×17, `button` ×17, `actions` ×13, `avatar` ×12, `group` ×11, `iconButton` ×11, `bubble` ×10, `entry` ×8, `tabBar` ×5, `search` ×4, `day` ×4, `largeTitle` ×3, `dialog` ×3, `voice` ×3, `chips` ×3, `chatNav` ×2, `chat` ×2, `composer` ×2, `top` ×2, `checklist` ×2, `callView` ×1, `textButton` ×1, `wordmark` ×1, `safariFill` ×1, `sheet` ×1, `photoPicker` ×1, `stats` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×60, `section` ×55, `leadIcon` ×50, `list` ×25, `cell` ×25, `denied` ×19, `nav` ×18, `button` ×18, `bubble` ×16, `actions` ×14, `avatar` ×12, `group` ×11, `iconButton` ×11, `entry` ×8, `day` ×7, `tabBar` ×5, `search` ×4, `chatNav` ×3, `chat` ×3, `composer` ×3, `largeTitle` ×3, `dialog` ×3, `voice` ×3, `chips` ×3, `top` ×2, `checklist` ×2, `callView` ×1, `textButton` ×1, `wordmark` ×1, `safariFill` ×1, `sheet` ×1, `photoPicker` ×1, `stats` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты

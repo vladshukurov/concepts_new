@@ -2187,6 +2187,44 @@
           }
         ]
       }
+    },
+    {
+      "id": "chatwalk",
+      "title": "Чат прогулки",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Чат прогулки",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "primaryAction": null,
+        "purpose": "Подтвердить город, чтобы показать встречи рядом",
+        "hierarchy": {
+          "primary": "Предложенный город и подтверждение",
+          "secondary": "Выбор другого города"
+        },
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Алматы подтверждён одним нажатием"
+          },
+          {
+            "kind": "stress",
+            "example": "Город с длинным названием"
+          },
+          {
+            "kind": "failure",
+            "example": "Город не тот — выбор вручную"
+          }
+        ]
+      }
     }
   ],
   "prototypes": [
@@ -2227,7 +2265,8 @@
         "direct-lera",
         "direct-alina",
         "direct-misha",
-        "direct-marina"
+        "direct-marina",
+        "chatwalk"
       ],
       "stops": [],
       "authTarget": "home"
@@ -2295,12 +2334,14 @@
         "chat",
         "picker",
         "call",
-        "exhibit"
+        "exhibit",
+        "chatwalk"
       ],
       "stops": [
         "picker",
         "call",
-        "exhibit"
+        "exhibit",
+        "chatwalk"
       ]
     },
     {
@@ -2331,7 +2372,8 @@
         "direct-lera",
         "direct-alina",
         "direct-misha",
-        "direct-marina"
+        "direct-marina",
+        "chatwalk"
       ],
       "stops": [
         "events",
@@ -2342,7 +2384,8 @@
         "direct-lera",
         "direct-alina",
         "direct-misha",
-        "direct-marina"
+        "direct-marina",
+        "chatwalk"
       ]
     },
     {

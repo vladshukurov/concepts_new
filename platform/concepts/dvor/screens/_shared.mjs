@@ -14,7 +14,7 @@ export const dmScreen = (ui, { id, initial, name, status, msgs }) => ui.screen({
   body: [
     ui.chatNav({ initial, name, status }),
     ui.scroll(ui.chat(msgs.map(([who, text, time]) => who === 'day' ? ui.day(text) : ui.bubble({ out: who === 'me', ...(who !== 'me' && who !== 'in' ? { from: who } : {}), text, time, read: who === 'me' })))),
-    ui.composer({ attach: { label: 'Прикрепить', menu: ['Камера>shoot', 'Фото>chronicle'] }, mic: { toast: 'Запись голосового · отпустите, чтобы отправить' } }),
+    ui.composer({ attach: { label: 'Прикрепить', menu: ['Камера>shoot', 'Фото>photopick'] }, mic: { toast: 'Запись голосового · отпустите, чтобы отправить' } }),
   ],
 });
 

@@ -33,3 +33,28 @@ export const tripScreen = (ui, { id, initial, name, status, msgs, open }) => ui.
     ui.composer({ attach: { label: 'Вложение', menu: ['Фото и видео>attach', 'Файл=Откроются Файлы'] } }),
   ],
 });
+
+/* Небольшая форма: поля и «Сохранить» с возвратом туда, откуда пришли */
+export const formScreen = (ui, { id, title, fields, cta }) => ui.screen({
+  id, theme: THEME,
+  body: [
+    ui.nav({ title, back: 'close' }),
+    ui.scroll([
+      ...fields.map(([label, placeholder, value]) => ui.section({ title: label, children: `<label class="ui-search"><input placeholder="${placeholder}" aria-label="${label}"${value ? ` value="${value}"` : ''}/></label>` })),
+      ui.section({ children: ui.actions([ui.button({ label: cta, block: true, back: true, primary: true })]) }),
+    ]),
+  ],
+});
+
+/* Просмотр кадра, кружка или документа */
+export const viewScreen = (ui, { id, title, sub, icon, meta, circle: isCircle = false }) => ui.screen({
+  id, theme: THEME,
+  body: [
+    ui.nav({ title, back: 'close', trailing: ui.iconButton({ icon: 'ellipsis', label: 'Действия', menu: ['Сохранить в Фото=Сохранено', 'Отправить в чат поездки>trip'] }) }),
+    ui.scroll([
+      ui.section({ children: `<div class="sb-view ph${isCircle ? ' is-circle' : ''}"></div>` }),
+      ui.section({ children: ui.list([ui.row({ lead: ui.leadIcon(icon, { round: true, accent: true }), title, sub: sub })]) }),
+      ...(meta ? [ui.section({ children: ui.list(meta.map(([t, s]) => ui.row({ title: t, sub: s }))) })] : []),
+    ]),
+  ],
+});

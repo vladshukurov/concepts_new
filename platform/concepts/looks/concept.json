@@ -1384,6 +1384,146 @@
         ],
         "navigation": "modal"
       }
+    },
+    {
+      "id": "look2",
+      "title": "Образ 2",
+      "type": "push",
+      "light": true,
+      "parent": "profile",
+      "meta": "Образ 2",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Вспомнить, с чем и когда носила",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "образ с четырьмя вещами",
+          "образ без фото",
+          "вещь надета впервые"
+        ],
+        "navigation": "push"
+      }
+    },
+    {
+      "id": "look3",
+      "title": "Образ 3",
+      "type": "push",
+      "light": true,
+      "parent": "profile",
+      "meta": "Образ 3",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Вспомнить, с чем и когда носила",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "образ с четырьмя вещами",
+          "образ без фото",
+          "вещь надета впервые"
+        ],
+        "navigation": "push"
+      }
+    },
+    {
+      "id": "look4",
+      "title": "Образ 4",
+      "type": "push",
+      "light": true,
+      "parent": "profile",
+      "meta": "Образ 4",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Вспомнить, с чем и когда носила",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "образ с четырьмя вещами",
+          "образ без фото",
+          "вещь надета впервые"
+        ],
+        "navigation": "push"
+      }
+    },
+    {
+      "id": "look5",
+      "title": "Образ 5",
+      "type": "push",
+      "light": true,
+      "parent": "profile",
+      "meta": "Образ 5",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Вспомнить, с чем и когда носила",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "образ с четырьмя вещами",
+          "образ без фото",
+          "вещь надета впервые"
+        ],
+        "navigation": "push"
+      }
+    },
+    {
+      "id": "look6",
+      "title": "Образ 6",
+      "type": "push",
+      "light": true,
+      "parent": "profile",
+      "meta": "Образ 6",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Вспомнить, с чем и когда носила",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "образ с четырьмя вещами",
+          "образ без фото",
+          "вещь надета впервые"
+        ],
+        "navigation": "push"
+      }
     }
   ],
   "prototypes": [
@@ -1419,7 +1559,12 @@
         "background",
         "swap",
         "checkin",
-        "netqr"
+        "netqr",
+        "look2",
+        "look3",
+        "look4",
+        "look5",
+        "look6"
       ],
       "stops": [],
       "authTarget": "home"

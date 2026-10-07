@@ -8,7 +8,7 @@ const recent = [
 export default (ui) => ui.screen({
   id: 'attach', theme: THEME,
   body: [
-    ui.nav({ title: 'Недавние', back: 'close', trailing: ui.textButton({ label: 'Отправить 2', strong: true, toast: '2 файла отправлены в «Казань · осень»|trip' }) }),
+    ui.nav({ title: 'Недавние', back: 'close', trailing: ui.textButton({ label: 'Отправить 2', strong: true, back: true }) }),
     ui.scroll([
       ui.section({ className: 'sb-attach-sec', children: `<div class="sb-grid is-attach"><button class="sb-cam-tile" data-ask="camera|camera|attach" aria-label="Камера">${ui.icon('camera')}<span>Камера</span></button>${recent.map(([i, picked, dur]) => `<button class="sb-tile ph${picked ? ' is-picked' : ''}" data-toast="${picked ? `Кадр ${i} убран из выбора` : `Кадр ${i} выбран`}" aria-label="Кадр ${i}${dur ? `, видео ${dur}` : ''}">${dur ? `<span class="sb-tile-dur">${dur}</span>` : ''}${picked ? `<span class="sb-tick">${ui.icon('check')}</span>` : ''}</button>`).join('')}</div>` }),
       ui.denied('camera'),

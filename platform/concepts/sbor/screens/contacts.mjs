@@ -5,7 +5,7 @@ import { people } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'contacts', theme: THEME,
   body: ui.scroll([
-      ui.largeTitle('Контакты', ui.iconButton({ icon: 'user-plus', label: 'Добавить контакт', menu: ['По номеру телефона=Новый контакт: имя и номер', 'Пригласить ссылкой>invite'] })),
+      ui.largeTitle('Контакты', ui.iconButton({ icon: 'user-plus', label: 'Добавить контакт', menu: ['По номеру телефона>contactnew', 'Пригласить ссылкой>invite'] })),
       ui.section({ children: ui.search({ placeholder: 'Имя или номер' }) }),
       ui.section({ children: [
         ui.list([

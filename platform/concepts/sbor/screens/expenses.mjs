@@ -6,7 +6,7 @@ const she = ['Лена', 'Ника'];
 export default (ui) => ui.screen({
   id: 'expenses', theme: THEME,
   body: [
-    ui.nav({ title: 'Расходы', trailing: ui.iconButton({ icon: 'plus', label: 'Добавить трату', menu: ['Снять чек>camera', 'Вручную=Новая трата: сумма и кто платил'] }) }),
+    ui.nav({ title: 'Расходы', trailing: ui.iconButton({ icon: 'plus', label: 'Добавить трату', menu: ['Снять чек>camera', 'Вручную>expensenew'] }) }),
     ui.scroll([
       ui.section({ children: `<div class="sb-money"><small>${trip.name} · ${money.spent.length} трат</small><strong>${money.total} ₽</strong><span>по ${money.each} ₽ с человека · делим на ${trip.people}</span></div>` }),
       ui.section({ title: 'Ваш баланс', children: ui.list([

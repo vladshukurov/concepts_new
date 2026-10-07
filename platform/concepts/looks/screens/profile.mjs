@@ -15,7 +15,7 @@ export default (ui) => ui.screen({
     ui.section({ children: ui.list([
       ui.row({ lead: ui.leadIcon('scan-face', { accent: true }), title: 'Сохранённое', sub: `Мерки, ${own.saved.looks} образов и ${own.saved.drafts} черновика`, ask: 'faceid|lock|profile' }),
     ]) }),
-    ui.section({ title: 'Мои образы', meta: '86', children: `<div class="lk-grid">${shots.map((s, i) => `<button class="${s}" data-go="post" aria-label="Образ ${i + 1}"></button>`).join('')}</div>` }),
+    ui.section({ title: 'Мои образы', meta: '86', children: `<div class="lk-grid">${shots.map((s, i) => `<button class="${s}" data-go="${i ? `look${i + 1}` : 'post'}" aria-label="Образ ${i + 1}"></button>`).join('')}</div>` }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'profile' }),
 });

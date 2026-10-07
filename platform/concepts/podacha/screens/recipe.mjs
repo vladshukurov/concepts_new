@@ -5,7 +5,7 @@ import { own } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'recipe', theme: THEME,
   body: [
-    ui.nav({ title: 'Рецепт', trailing: ui.iconButton({ icon: 'square-pen', label: 'Изменить рецепт', toast: 'Рецепт открыт для правки' }) }),
+    ui.nav({ title: 'Рецепт', trailing: ui.iconButton({ icon: 'square-pen', label: 'Изменить рецепт', go: 'recipeedit' }) }),
     ui.scroll([
       `<div class="pd-head"><small>Мой рецепт · пекла ${own.dish.times} раз</small><h1>${own.dish.title}</h1><p class="ui-sub">55 минут · форма 22 см · последний раз ${own.dish.when}</p></div>`,
       ui.section({ title: 'Ингредиенты', children: ui.group({ cells: [

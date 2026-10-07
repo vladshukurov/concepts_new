@@ -13,7 +13,7 @@ const crew = [
 export default (ui) => ui.screen({
   id: 'tripinfo', theme: THEME,
   body: [
-    ui.nav({ title: '', trailing: ui.textButton({ label: 'Изменить', toast: 'Открыт режим правки' }) }),
+    ui.nav({ title: '', trailing: ui.textButton({ label: 'Изменить', go: 'tripedit' }) }),
     ui.scroll([
       `<div class="sb-head">${ui.avatar(trip.initial, { large: true })}<h1 class="ui-title">${trip.name}</h1><p class="ui-sub">${trip.dates} · ${trip.day} · ${trip.people} участников</p></div>`,
       ui.section({ children: ui.group({ cells: [

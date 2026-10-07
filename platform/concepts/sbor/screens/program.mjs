@@ -12,7 +12,7 @@ const day = (ui, key, d, hidden) => ui.section({
 export default (ui) => ui.screen({
   id: 'program', theme: THEME,
   body: [
-    ui.nav({ title: 'Программа', trailing: ui.iconButton({ icon: 'plus', label: 'Добавить пункт', menu: ['Место из Карт>share', 'Время и место вручную=Новый пункт программы'] }) }),
+    ui.nav({ title: 'Программа', trailing: ui.iconButton({ icon: 'plus', label: 'Добавить пункт', menu: ['Место из Карт>share', 'Время и место вручную>programnew'] }) }),
     ui.scroll([
       ui.section({ children: ui.segments([
         { label: 'Пт 9', filter: 'fri' },

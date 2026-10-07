@@ -215,3 +215,7 @@
 .sb-money strong { font:600 34px/40px var(--ui-face); font-variant-numeric:tabular-nums; }
 .sb-money span { font:400 15px/20px var(--ui-face); color:var(--ui-text-2); }
 .ui-progress > i.sb-fill-48 { width:48%; }
+
+/* Просмотр кадра, кружка и документа */
+.sb-view { width:100%; aspect-ratio:1; border-radius:12px; }
+.sb-view.is-circle { width:76%; margin:0 auto; border-radius:50%; }

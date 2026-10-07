@@ -923,6 +923,102 @@
         },
         "pattern": "detail"
       }
+    },
+    {
+      "id": "pv2",
+      "title": "Версия v2",
+      "type": "push",
+      "light": false,
+      "meta": "Версия v2",
+      "parent": "detail",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать версии своей песни и дополнить текст",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Три версии: напел, под гитару, диктофон",
+          "Фото страницы блокнота в тексте после снимка",
+          "Песня без текста и меток"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Версии и «Слушать»",
+          "secondary": "Метки частей и текст"
+        }
+      }
+    },
+    {
+      "id": "pv1",
+      "title": "Версия v1",
+      "type": "push",
+      "light": false,
+      "meta": "Версия v1",
+      "parent": "detail",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать версии своей песни и дополнить текст",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Три версии: напел, под гитару, диктофон",
+          "Фото страницы блокнота в тексте после снимка",
+          "Песня без текста и меток"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Версии и «Слушать»",
+          "secondary": "Метки частей и текст"
+        }
+      }
+    },
+    {
+      "id": "prifd",
+      "title": "Рифф в ре миноре · плеер",
+      "type": "push",
+      "light": false,
+      "meta": "Рифф в ре миноре · плеер",
+      "parent": "discover",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать версии своей песни и дополнить текст",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Три версии: напел, под гитару, диктофон",
+          "Фото страницы блокнота в тексте после снимка",
+          "Песня без текста и меток"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Версии и «Слушать»",
+          "secondary": "Метки частей и текст"
+        }
+      }
     }
   ],
   "prototypes": [
@@ -954,7 +1050,10 @@
         "n13",
         "bridge",
         "electro",
-        "riff78"
+        "riff78",
+        "pv2",
+        "pv1",
+        "prifd"
       ],
       "stops": [],
       "authTarget": "home"
@@ -983,7 +1082,10 @@
         "n14",
         "n13",
         "bridge",
-        "electro"
+        "electro",
+        "pv2",
+        "pv1",
+        "prifd"
       ],
       "stops": [
         "home",
@@ -998,7 +1100,10 @@
         "n14",
         "n13",
         "bridge",
-        "electro"
+        "electro",
+        "pv2",
+        "pv1",
+        "prifd"
       ]
     },
     {
@@ -1032,12 +1137,18 @@
         "pick",
         "library",
         "home",
-        "discover"
+        "discover",
+        "pv2",
+        "pv1",
+        "prifd"
       ],
       "stops": [
         "library",
         "home",
-        "discover"
+        "discover",
+        "pv2",
+        "pv1",
+        "prifd"
       ]
     }
   ],

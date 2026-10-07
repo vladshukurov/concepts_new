@@ -96,7 +96,8 @@
     ├─ Новая запись (compose) — modal · открывается: «Записать блюдо», «Записать, как получилось», «Добавить 2 фото» (photos), «Лавка «Грядка»», «Кофейня «Дом»» … · camera, photos, location
     │   ├─ Снять блюдо (camera) — fullscreen · открывается: «Снять блюдо», «Снять блюдо» (camera) · mic
     │   ├─ Медиатека (picker) — system · открывается: «Из медиатеки» (photos)
-    │   └─ Место (place) — push · открывается: «Место» (location)
+    │   ├─ Место (place) — push · открывается: «Место» (location)
+    │   └─ Новый рецепт (recipenew) — push · открывается: «Свой рецепт»
     └─ Уведомления (notif) — push · открывается: «Уведомления» · remotenotif
 
 Готовим вместе (cookings) — tab (root) · открывается: вкладка таб-бара
@@ -108,18 +109,22 @@
 
 Рецепты (recipes) — tab (root) · открывается: «Мои рецепты»
     └─ Мой рецепт (recipe) — push · открывается: «Рецепт: Грушевый пирог», «Открыть рецепт» …
+        └─ Правка рецепта (recipeedit) — push · открывается: «Изменить рецепт»
 
 Профиль (profile) — tab (root) · открывается: «Скопировать ссылку»
     ├─ Знакомые (following) — push · открывается: «Позвать на ужин», «Знакомые» … · contacts
     │   └─ Знакомые во «Вкусно» (matches) — push · открывается: «Найти знакомых» (contacts)
-    │       └─ Приглашение (invite) — system · открывается: «Позвать маму», «Позвать Дину», «Пригласить по ссылке»
+    │       ├─ Приглашение (invite) — system · открывается: «Позвать маму», «Позвать Дину», «Пригласить по ссылке»
+    │       ├─ Диалог с Леной (direct-lena) — push · открывается: «Написать Лене»
+    │       ├─ Диалог с Маратом (direct-marat) — push · открывается: «Написать Марату»
+    │       └─ Диалог с Ирой (direct-ira) — push · открывается: «Написать Ире»
     └─ Настройки (settings) — push · открывается: «Настройки» · push, commnotif, appgroups, autofill
         ├─ Рецепт вслух (audio) — fullscreen · открывается: «Рецепт вслух» · audio
         ├─ Конфиденциальность (privacy) — push · открывается: «Почему эта реклама», «Конфиденциальность» · tracking
         ├─ Виджет на экране «Домой» (widget) — push · открывается: «Виджет на экран «Домой»» (appgroups) · keychain
         └─ Автозаполнение на сайте (fill) — push · открывается: «Вход на сайте доставки» (autofill)
 
-Чаты (chats) — tab (root) · открывается: «Написать Лене», «Написать Марату» …
+Чаты (chats) — tab (root) · открывается: вкладка таб-бара
     ├─ Разговор ужина (conversation) — push · открывается: «Чат ужина · 4 новых», «Амина в чате ужина» … · voip
     │   └─ Звонок ужина (call) — fullscreen · открывается: «Позвонить» (voip)
     ├─ Жанна Ким (direct-zhanna) — push · открывается: «Отправить Жанне», «Спросить Жанну» …
@@ -165,7 +170,7 @@
 | `compose` | «Из медиатеки» | `picker` | `NSPhotoLibraryUsageDescription` | доступ разрешён |
 | `compose` | «Из медиатеки» | `compose` | `NSPhotoLibraryUsageDescription` | отказ → fallback |
 | `compose` | «Место» | `place` | `NSLocationWhenInUseUsageDescription` | доступ разрешён |
-| `compose` | «Свой рецепт» | `recipe` | — | переход |
+| `compose` | «Свой рецепт» | `recipenew` | — | переход |
 | `camera` | «Закрыть» | `compose` | — | возврат по IA |
 | `camera` | «Снять с пояснением» | `post` | `NSCameraUsageDescription + NSMicrophoneUsageDescription` | доступ разрешён |
 | `camera` | «Снять с пояснением» | `camera` | `NSCameraUsageDescription + NSMicrophoneUsageDescription` | отказ → fallback |
@@ -188,6 +193,7 @@
 | `recipes` | «Поиск» | `discover` | — | переход |
 | `recipes` | «Грушевый пирог» | `recipe` | — | переход |
 | `recipe` | «Назад» | `recipes` | — | возврат по IA |
+| `recipe` | «Изменить рецепт» | `recipeedit` | — | переход |
 | `recipe` | «Записать, как получилось» | `compose` | — | переход |
 | `audio` | «Свернуть» | `settings` | — | возврат по IA |
 | `audio` | «Слушать с погашенным экраном» | `audio` | `UIBackgroundModes: audio` | entitlement, без alert |
@@ -208,7 +214,9 @@
 | `following` | «Найти знакомых» | `matches` | `NSContactsUsageDescription` | доступ разрешён |
 | `following` | «Найти знакомых» | `following` | `NSContactsUsageDescription` | отказ → fallback |
 | `matches` | «Назад» | `following` | — | возврат по IA |
-| `matches` | «Написать Лене», «Написать Марату» … | `chats` | — | подтверждение |
+| `matches` | «Написать Лене» | `direct-lena` | — | переход |
+| `matches` | «Написать Марату» | `direct-marat` | — | переход |
+| `matches` | «Написать Ире» | `direct-ira` | — | переход |
 | `matches` | «Позвать маму», «Позвать Дину» | `invite` | — | подтверждение |
 | `matches` | «Пригласить по ссылке» | `invite` | — | переход |
 | `notif` | «Назад» | `feed` | — | возврат по IA |
@@ -254,4 +262,9 @@
 | `direct-amina` | «Позвонить» | `call` | `UIBackgroundModes: voip` | entitlement, без alert |
 | `direct-amina` | «Вложение» | `direct-amina` | `NSPhotoLibraryUsageDescription` | доступ разрешён |
 | `direct-amina` | «Голосовое сообщение» | `direct-amina` | `NSMicrophoneUsageDescription` | доступ разрешён |
+| `recipenew` | «Закрыть» | `compose` | — | возврат по IA |
+| `recipeedit` | «Закрыть» | `recipe` | — | возврат по IA |
+| `direct-lena` | «Назад» | `matches` | — | возврат по IA |
+| `direct-marat` | «Назад» | `matches` | — | возврат по IA |
+| `direct-ira` | «Назад» | `matches` | — | возврат по IA |
 <!-- @end -->

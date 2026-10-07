@@ -1289,7 +1289,7 @@
     },
     {
       "id": "dictate",
-      "title": "Заявка голосом",
+      "title": "Черновик заявки",
       "type": "sheet",
       "light": true,
       "parent": "events",
@@ -1863,6 +1863,26 @@
         "navigation": "push",
         "primaryAction": null
       }
+    },
+    {
+      "id": "photopick",
+      "title": "Выбор фото",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Выбор фото",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      }
     }
   ],
   "prototypes": [
@@ -1908,7 +1928,8 @@
         "chatirina",
         "chatdenis",
         "chatentr",
-        "chatsovet"
+        "chatsovet",
+        "photopick"
       ],
       "stops": [],
       "authTarget": "join"

@@ -1705,6 +1705,286 @@
           }
         ]
       }
+    },
+    {
+      "id": "game-forest",
+      "title": "Лесные союзы",
+      "type": "push",
+      "light": true,
+      "parent": "games",
+      "meta": "Лесные союзы",
+      "ui": {
+        "pattern": "editor",
+        "navigation": "push",
+        "purpose": "Записать партию в свой дневник",
+        "primaryAction": "Найти стол",
+        "hierarchy": {
+          "primary": "Текст партии и строка медиа",
+          "secondary": "Счёт с табло партии"
+        },
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "success",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Партия с кадром поля и счётом"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинный текст и три кадра поля"
+          },
+          {
+            "kind": "failure",
+            "example": "Отказ в камере и медиатеке"
+          }
+        ]
+      }
+    },
+    {
+      "id": "game-lines",
+      "title": "Городские линии",
+      "type": "push",
+      "light": true,
+      "parent": "games",
+      "meta": "Городские линии",
+      "ui": {
+        "pattern": "editor",
+        "navigation": "push",
+        "purpose": "Записать партию в свой дневник",
+        "primaryAction": "Найти стол",
+        "hierarchy": {
+          "primary": "Текст партии и строка медиа",
+          "secondary": "Счёт с табло партии"
+        },
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "success",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Партия с кадром поля и счётом"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинный текст и три кадра поля"
+          },
+          {
+            "kind": "failure",
+            "example": "Отказ в камере и медиатеке"
+          }
+        ]
+      }
+    },
+    {
+      "id": "game-archive",
+      "title": "Архив острова",
+      "type": "push",
+      "light": true,
+      "parent": "games",
+      "meta": "Архив острова",
+      "ui": {
+        "pattern": "editor",
+        "navigation": "push",
+        "purpose": "Записать партию в свой дневник",
+        "primaryAction": "Найти стол",
+        "hierarchy": {
+          "primary": "Текст партии и строка медиа",
+          "secondary": "Счёт с табло партии"
+        },
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "success",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Партия с кадром поля и счётом"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинный текст и три кадра поля"
+          },
+          {
+            "kind": "failure",
+            "example": "Отказ в камере и медиатеке"
+          }
+        ]
+      }
+    },
+    {
+      "id": "chat-saturday",
+      "title": "Чат: Маршруты Севера",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Чат: Маршруты Севера",
+      "ui": {
+        "pattern": "editor",
+        "navigation": "push",
+        "purpose": "Записать партию в свой дневник",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Текст партии и строка медиа",
+          "secondary": "Счёт с табло партии"
+        },
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "success",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Партия с кадром поля и счётом"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинный текст и три кадра поля"
+          },
+          {
+            "kind": "failure",
+            "example": "Отказ в камере и медиатеке"
+          }
+        ]
+      }
+    },
+    {
+      "id": "chat-klub",
+      "title": "Чат клуба",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Чат клуба",
+      "ui": {
+        "pattern": "editor",
+        "navigation": "push",
+        "purpose": "Записать партию в свой дневник",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Текст партии и строка медиа",
+          "secondary": "Счёт с табло партии"
+        },
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "success",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Партия с кадром поля и счётом"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинный текст и три кадра поля"
+          },
+          {
+            "kind": "failure",
+            "example": "Отказ в камере и медиатеке"
+          }
+        ]
+      }
+    },
+    {
+      "id": "chat-zhenya",
+      "title": "Чат: Дома у Жени",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Чат: Дома у Жени",
+      "ui": {
+        "pattern": "editor",
+        "navigation": "push",
+        "purpose": "Записать партию в свой дневник",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Текст партии и строка медиа",
+          "secondary": "Счёт с табло партии"
+        },
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "success",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Партия с кадром поля и счётом"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинный текст и три кадра поля"
+          },
+          {
+            "kind": "failure",
+            "example": "Отказ в камере и медиатеке"
+          }
+        ]
+      }
+    },
+    {
+      "id": "chat-anya",
+      "title": "Аня Соколова",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Аня Соколова",
+      "ui": {
+        "pattern": "editor",
+        "navigation": "push",
+        "purpose": "Записать партию в свой дневник",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Текст партии и строка медиа",
+          "secondary": "Счёт с табло партии"
+        },
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "success",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Партия с кадром поля и счётом"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинный текст и три кадра поля"
+          },
+          {
+            "kind": "failure",
+            "example": "Отказ в камере и медиатеке"
+          }
+        ]
+      }
     }
   ],
   "prototypes": [
@@ -1735,7 +2015,14 @@
         "fill",
         "game-island",
         "game-harbor",
-        "newtable"
+        "newtable",
+        "game-forest",
+        "game-lines",
+        "game-archive",
+        "chat-saturday",
+        "chat-klub",
+        "chat-zhenya",
+        "chat-anya"
       ]
     },
     {
@@ -1843,13 +2130,21 @@
         "profile",
         "call",
         "compose",
-        "score"
+        "score",
+        "chat-saturday",
+        "chat-klub",
+        "chat-zhenya",
+        "chat-anya"
       ],
       "stops": [
         "table",
         "profile",
         "compose",
-        "score"
+        "score",
+        "chat-saturday",
+        "chat-klub",
+        "chat-zhenya",
+        "chat-anya"
       ]
     },
     {

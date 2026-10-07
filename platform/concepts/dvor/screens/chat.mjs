@@ -13,6 +13,6 @@ export default (ui) => ui.screen({
       ui.bubble({ text: 'Мастер будет с 16:00, я открою подъезд', time: '9:21' }),
     ])),
     ui.denied('voip'),
-    ui.composer({ attach: { label: 'Прикрепить', menu: ['Камера>shoot', 'Фото>chronicle'] }, mic: { toast: 'Запись голосового · отпустите, чтобы отправить' } }),
+    ui.composer({ attach: { label: 'Прикрепить', menu: ['Камера>shoot', 'Фото>photopick'] }, mic: { toast: 'Запись голосового · отпустите, чтобы отправить' } }),
   ],
 });

@@ -16,7 +16,7 @@ export default (ui) => ui.screen({
     ui.nav({ title: 'Документы', trailing: ui.iconButton({ icon: 'plus', label: 'Добавить документ', menu: ['Из Файлов=Откроются Файлы', 'Сканировать камерой>camera'] }) }),
     ui.scroll([
       ui.section({ children: ui.search({ placeholder: 'Поиск по документам' }) }),
-      ui.section({ title: 'Казань · осень', meta: '7 файлов', children: ui.list(files.map(([ic, title, sub, who]) => ui.row({ lead: ui.leadIcon(ic, { round: true, accent: true }), title, sub: `${sub} · ${who}`, toast: `${title} открыт` }))) }),
+      ui.section({ title: 'Казань · осень', meta: '7 файлов', children: ui.list(files.map(([ic, title, sub, who]) => ui.row({ lead: ui.leadIcon(ic, { round: true, accent: true }), title, sub: `${sub} · ${who}`, go: 'doc' }))) }),
       ui.section({ children: ui.group({ cells: [
         ui.cell({ icon: 'scan-face', title: 'Закрывать через минуту', sub: 'После выхода из документов', toggle: true }),
       ] }) }),

@@ -6,9 +6,9 @@ export default (ui) => ui.screen({
     ui.nav({ title: 'Знакомые во «Вкусно»' }),
     ui.scroll([
       ui.section({ title: 'Нашли', meta: '3', children: ui.list([
-        ui.row({ lead: ui.avatar('ЛО'), title: 'Лена Орлова', sub: 'В контактах «Лена соседка»', end: { value: 'Написать', toast: 'Чат с Леной создан|chats', label: 'Написать Лене' } }),
-        ui.row({ lead: ui.avatar('МС'), title: 'Марат Сафиуллин', sub: 'В контактах «Марат работа» · готовит быстро', end: { value: 'Написать', toast: 'Чат с Маратом создан|chats', label: 'Написать Марату' } }),
-        ui.row({ lead: ui.avatar('ИЧ'), title: 'Ира Чен', sub: 'В контактах «Ира Чен»', end: { value: 'Написать', toast: 'Чат с Ирой создан|chats', label: 'Написать Ире' } }),
+        ui.row({ lead: ui.avatar('ЛО'), title: 'Лена Орлова', sub: 'В контактах «Лена соседка»', end: { value: 'Написать', go: 'direct-lena', label: 'Написать Лене' } }),
+        ui.row({ lead: ui.avatar('МС'), title: 'Марат Сафиуллин', sub: 'В контактах «Марат работа» · готовит быстро', end: { value: 'Написать', go: 'direct-marat', label: 'Написать Марату' } }),
+        ui.row({ lead: ui.avatar('ИЧ'), title: 'Ира Чен', sub: 'В контактах «Ира Чен»', end: { value: 'Написать', go: 'direct-ira', label: 'Написать Ире' } }),
       ]) }),
       ui.section({ title: 'Ещё не во «Вкусно»', meta: '41', children: ui.list([
         ui.row({ lead: ui.avatar('МЛ'), title: 'Мама', sub: 'Плов в казане · звали на ужин 2 раза', end: { value: 'Позвать', toast: 'Приглашение для мамы готово|invite', label: 'Позвать маму' } }),

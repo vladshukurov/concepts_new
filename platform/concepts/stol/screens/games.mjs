@@ -10,9 +10,9 @@ export default (ui) => ui.screen({
       ui.row({ lead: ui.leadIcon('dices'), title: 'Тихая гавань', sub: 'Уже в коллекции, в плёнке · 2 игрока · кооператив', go: 'game-harbor', tags: ['coop', 'short'] }),
     ]) }),
     ui.section({ title: 'Моя коллекция', meta: '17', tags: ['euro', 'coop', 'short'], children: ui.list([
-      ui.row({ lead: ui.leadIcon('dices'), title: 'Лесные союзы', sub: 'Сыграно 9 партий · 75 минут · памятка вслух', go: 'audio', tags: ['euro'] }),
-      ui.row({ lead: ui.leadIcon('dices'), title: 'Городские линии', sub: 'Сыграно 12 партий · 40 минут · знаете правила', go: 'audio', tags: ['euro', 'short'] }),
-      ui.row({ lead: ui.leadIcon('dices'), title: 'Архив острова', sub: 'Сыграно 4 партии · 90 минут · кооператив', go: 'audio', tags: ['coop'] }),
+      ui.row({ lead: ui.leadIcon('dices'), title: 'Лесные союзы', sub: 'Сыграно 9 партий · 75 минут · памятка вслух', go: 'game-forest', tags: ['euro'] }),
+      ui.row({ lead: ui.leadIcon('dices'), title: 'Городские линии', sub: 'Сыграно 12 партий · 40 минут · знаете правила', go: 'game-lines', tags: ['euro', 'short'] }),
+      ui.row({ lead: ui.leadIcon('dices'), title: 'Архив острова', sub: 'Сыграно 4 партии · 90 минут · кооператив', go: 'game-archive', tags: ['coop'] }),
       ui.row({ lead: ui.leadIcon('dices'), title: 'Маршруты Севера', sub: 'Сыграно 3 партии · 50 минут · в субботу снова', tags: ['euro', 'short'] }),
       ui.row({ lead: ui.leadIcon('dices'), title: 'Тихая гавань', sub: 'Ещё в плёнке · 35 минут · кооператив', tags: ['coop', 'short'] }),
       ui.row({ lead: ui.leadIcon('dices'), title: 'Сад камней', sub: 'Сыграна 1 партия · 30 минут · правила забыл', tags: ['short'] }),

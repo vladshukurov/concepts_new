@@ -2234,6 +2234,211 @@
           }
         ]
       }
+    },
+    {
+      "id": "recipenew",
+      "title": "Новый рецепт",
+      "type": "push",
+      "light": true,
+      "parent": "compose",
+      "meta": "Новый рецепт",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Показать своё блюдо, что поменяла и связь со своим рецептом",
+        "primaryAction": "Сохранить",
+        "hierarchy": {
+          "primary": "Основная область «Блюдо» и действие «Открыть рецепт»",
+          "secondary": "Статус, время и запасной путь"
+        },
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Обычный домашний сценарий с готовыми данными"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное имя блюда, 40 записей и увеличенный шрифт"
+          },
+          {
+            "kind": "failure",
+            "example": "Нет сети или разрешения; доступен ручной путь"
+          }
+        ]
+      }
+    },
+    {
+      "id": "recipeedit",
+      "title": "Правка рецепта",
+      "type": "push",
+      "light": true,
+      "parent": "recipe",
+      "meta": "Правка рецепта",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Показать своё блюдо, что поменяла и связь со своим рецептом",
+        "primaryAction": "Сохранить",
+        "hierarchy": {
+          "primary": "Основная область «Блюдо» и действие «Открыть рецепт»",
+          "secondary": "Статус, время и запасной путь"
+        },
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Обычный домашний сценарий с готовыми данными"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное имя блюда, 40 записей и увеличенный шрифт"
+          },
+          {
+            "kind": "failure",
+            "example": "Нет сети или разрешения; доступен ручной путь"
+          }
+        ]
+      }
+    },
+    {
+      "id": "direct-lena",
+      "title": "Диалог с Леной",
+      "type": "push",
+      "light": true,
+      "parent": "matches",
+      "meta": "Диалог с Леной",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Показать своё блюдо, что поменяла и связь со своим рецептом",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Основная область «Блюдо» и действие «Открыть рецепт»",
+          "secondary": "Статус, время и запасной путь"
+        },
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Обычный домашний сценарий с готовыми данными"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное имя блюда, 40 записей и увеличенный шрифт"
+          },
+          {
+            "kind": "failure",
+            "example": "Нет сети или разрешения; доступен ручной путь"
+          }
+        ]
+      }
+    },
+    {
+      "id": "direct-marat",
+      "title": "Диалог с Маратом",
+      "type": "push",
+      "light": true,
+      "parent": "matches",
+      "meta": "Диалог с Маратом",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Показать своё блюдо, что поменяла и связь со своим рецептом",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Основная область «Блюдо» и действие «Открыть рецепт»",
+          "secondary": "Статус, время и запасной путь"
+        },
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Обычный домашний сценарий с готовыми данными"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное имя блюда, 40 записей и увеличенный шрифт"
+          },
+          {
+            "kind": "failure",
+            "example": "Нет сети или разрешения; доступен ручной путь"
+          }
+        ]
+      }
+    },
+    {
+      "id": "direct-ira",
+      "title": "Диалог с Ирой",
+      "type": "push",
+      "light": true,
+      "parent": "matches",
+      "meta": "Диалог с Ирой",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Показать своё блюдо, что поменяла и связь со своим рецептом",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Основная область «Блюдо» и действие «Открыть рецепт»",
+          "secondary": "Статус, время и запасной путь"
+        },
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Обычный домашний сценарий с готовыми данными"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное имя блюда, 40 записей и увеличенный шрифт"
+          },
+          {
+            "kind": "failure",
+            "example": "Нет сети или разрешения; доступен ручной путь"
+          }
+        ]
+      }
     }
   ],
   "prototypes": [
@@ -2275,7 +2480,12 @@
         "invite",
         "widget",
         "fill",
-        "direct-amina"
+        "direct-amina",
+        "recipenew",
+        "recipeedit",
+        "direct-lena",
+        "direct-marat",
+        "direct-ira"
       ]
     },
     {
@@ -2305,12 +2515,16 @@
         "post",
         "cookalong",
         "direct-zhanna",
-        "feed"
+        "feed",
+        "recipenew",
+        "recipeedit"
       ],
       "stops": [
         "cookalong",
         "direct-zhanna",
-        "feed"
+        "feed",
+        "recipenew",
+        "recipeedit"
       ]
     },
     {
@@ -2383,12 +2597,14 @@
         "discover",
         "recipe",
         "cookalong",
-        "compose"
+        "compose",
+        "recipeedit"
       ],
       "stops": [
         "discover",
         "cookalong",
-        "compose"
+        "compose",
+        "recipeedit"
       ]
     },
     {
@@ -2445,7 +2661,10 @@
         "direct-timur",
         "cookalong",
         "chats",
-        "direct-amina"
+        "direct-amina",
+        "direct-lena",
+        "direct-marat",
+        "direct-ira"
       ],
       "stops": [
         "profile",
@@ -2453,7 +2672,10 @@
         "direct-timur",
         "cookalong",
         "chats",
-        "direct-amina"
+        "direct-amina",
+        "direct-lena",
+        "direct-marat",
+        "direct-ira"
       ]
     },
     {
