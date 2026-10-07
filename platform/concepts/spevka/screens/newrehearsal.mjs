@@ -8,12 +8,12 @@ const field = (label, value, extra = '') => `<label class="sp-field"><span>${lab
 export default (ui) => ui.screen({
   id: 'newrehearsal', theme: THEME,
   body: [
-    ui.nav({ title: 'Новая спевка', back: 'close', trailing: ui.textButton({ label: 'Создать', strong: true, toast: 'Спевка в пятницу, 16 октября, в 19:00 добавлена в расписание|schedule' }) }),
+    ui.nav({ title: 'Новая спевка', back: 'close', trailing: ui.textButton({ label: 'Создать', strong: true, toast: 'Спевка в пятницу, 16 октября, в 19:30 добавлена в расписание|schedule' }) }),
     ui.scroll([
       ui.section({ children: [
         field('Что', 'Спевка альтов и сопрано'),
         field('Дата', 'пятница, 16 октября'),
-        field('Время', '19:00', ' inputmode="numeric"'),
+        field('Время', '19:30', ' inputmode="numeric"'),
         field('Где', `${choir.dk}, ${choir.hall}`),
       ] }),
       ui.section({ title: 'Кого звать', children: ui.segments([

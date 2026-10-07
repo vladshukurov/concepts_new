@@ -16,7 +16,7 @@ export default (ui) => ui.screen({
       ui.day('Сегодня'),
       ui.voice({ dur: v3[0], time: v3[1] }),
       ui.voice({ dur: v4[0], time: v4[1] }),
-      ui.bubble({ text: 'Позвони, как Милу заберёшь. Пирожки на субботу ставлю', time: '15:21' }),
+      ui.bubble({ text: 'Даню с бассейна забираю я, отметилась. Позвони, как Милу заберёшь', time: '15:21' }),
     ])),
     ui.composer({ attach: { label: 'Вложение', menu: ['Фото и видео>attach', 'Файл=Откроются Файлы'] } }),
   ],

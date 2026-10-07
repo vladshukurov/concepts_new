@@ -12,7 +12,7 @@ export default (ui) => ui.screen({
       ui.bubble({ out: true, text: 'Отлично, тогда я с Милой на английский', time: '19:12', read: true }),
       ui.day('Сегодня'),
       ui.bubble({ text: `Добавил молоко в список, осталось ${shopping.todo.length} позиций`, time: '12:40' }),
-      ui.bubble({ out: true, text: 'Заберу Милу сама, ты не спеши', time: '15:59', read: true }),
+      ui.bubble({ out: true, text: 'Милу тогда заберу я, отмечусь на доске', time: '15:59', read: true }),
       ui.bubble({ text: `Буду к ${home.timurBack}`, time: '16:01' }),
     ])),
     ui.composer({ attach: { label: 'Вложение', menu: ['Фото и видео>attach', 'Файл=Откроются Файлы'] } }),

@@ -1,7 +1,7 @@
 /* «В курсе» — мессенджер студии, светлая тема `.ui.vk-light`.
    Список чатов, чат, пузыри, голосовые, звонок, строки и ячейки — из ядра.
-   Своё у «Летучки»: закреп летучки в чате, карточка гостевой сети, карточка ближайшей летучки
-   на вкладке «Офис», карта, нарисованная кодом, QR приглашения, сетка макетов
+   Своё у «Летучки»: закреп летучки в чате, карточка гостевой сети, летучка без созвона —
+   апдейты «Вчера · Сегодня · Мешает», очередь говорящих с таймером, карта, нарисованная кодом, QR приглашения, сетка макетов
    и системные поверхности iOS — экран блокировки, «Домой», «Поделиться», «Сообщения».
 
    Отличие от «Сбора» — строже и компактнее: кнопки радиус 8, пузыри 10, поле ввода и поиск 8,
@@ -185,8 +185,8 @@
 .lt-share-people, .lt-share-apps { display:flex; gap:16px; padding:16px 16px 4px; overflow-x:auto; scrollbar-width:none; }
 .lt-share-to, .lt-share-app { flex:none; width:68px; display:flex; flex-direction:column; align-items:center; gap:6px; font:400 11px/14px var(--ui-face); text-align:center; }
 .lt-share-face { position:relative; width:60px; height:60px; display:grid; place-items:center; border-radius:30%; background-color:#dceafb; color:#00489a; font:600 20px/1 var(--ui-face); }
-.lt-share-face > i, .lt-notif-face > i { position:absolute; right:-2px; bottom:-2px; width:22px; height:22px; display:grid; place-items:center; border-radius:6px; background:var(--ui-accent); color:#fff; box-shadow:0 0 0 2px #f2f2f7; }
-.lt-share-face > i svg, .lt-notif-face > i svg { width:14px; height:14px; }
+.lt-share-face > i { position:absolute; right:-2px; bottom:-2px; width:22px; height:22px; display:grid; place-items:center; border-radius:6px; background:var(--ui-accent); color:#fff; box-shadow:0 0 0 2px #f2f2f7; }
+.lt-share-face > i svg { width:14px; height:14px; }
 .lt-share-app > i { width:60px; height:60px; display:grid; place-items:center; border-radius:14px; background:#fff; color:var(--ui-link); }
 .lt-share-list { margin:12px 16px 0; border-radius:12px; background:#fff; }
 .lt-share-list > button { display:flex; align-items:center; justify-content:space-between; width:100%; min-height:48px; padding:0 16px; font:400 16px/20px var(--ui-face); }
@@ -194,18 +194,6 @@
 .lt-share-list svg { width:20px; height:20px; color:var(--ui-text-2); }
 
 /* Экран блокировки: Now Playing из ядра, уведомления — под часами */
-.lt-notifs { position:relative; display:flex; flex-direction:column; gap:8px; margin:20px 12px 0; }
-.ui .lt-notif { display:flex; align-items:flex-start; gap:10px; width:100%; padding:12px; border-radius:20px; background-color:#eef0f3; color:#000; text-align:left; }
-.lt-notif-face { position:relative; width:40px; height:40px; flex:none; display:grid; place-items:center; border-radius:30%; background:var(--ui-accent-soft); color:var(--ui-link); font:600 14px/1 var(--ui-face); }
-.lt-notif-face > i { right:-6px; bottom:-6px; width:18px; height:18px; border-radius:5px; box-shadow:0 0 0 2px #fff; }
-.lt-notif-face > i svg { width:12px; height:12px; }
-.lt-notif-body { flex:1; min-width:0; display:flex; flex-direction:column; }
-.lt-notif-top { display:flex; justify-content:space-between; gap:8px; }
-.lt-notif-top strong { font:600 15px/20px var(--ui-face); }
-.lt-notif-top span { font:400 13px/20px var(--ui-face); color:#454f5b; }
-.lt-notif-where { font:500 13px/16px var(--ui-face); color:#454f5b; }
-.lt-notif-text { font:400 15px/20px var(--ui-face); }
-.lt-notif-thumb { width:44px; height:44px; flex:none; border-radius:8px; }
 .lt-fill-34 { width:34%; }
 
 /* Мини-плеер записи летучки над таб-баром */
@@ -213,30 +201,105 @@
 .lt-mini-fill { width:34%; }
 
 /* Экран «Домой» с виджетом */
-.lt-home { overflow:hidden; background:linear-gradient(180deg, #3b5068, #151c24)!important; color:#fff; }
-.lt-widget { display:block; width:calc(100% - 40px); margin:calc(var(--safe-top) + 16px) 20px 0; padding:14px; border-radius:22px; background:rgba(255,255,255,.94); color:#000; text-align:left; }
-.lt-widget small { display:flex; align-items:center; gap:6px; font:600 12px/14px var(--ui-face); color:#0067db; }
-.lt-widget small svg { width:14px; height:14px; }
-.lt-widget strong { display:block; margin-top:8px; font:600 20px/24px var(--ui-face); }
-.lt-widget > span { display:block; font:400 13px/16px var(--ui-face); color:#5f6b78; }
-.lt-apps { display:grid; grid-template-columns:repeat(4, 1fr); gap:20px 12px; padding:20px; }
-.lt-app { display:flex; flex-direction:column; align-items:center; gap:4px; font:400 12px/14px var(--ui-face); color:#fff; }
-.lt-app > i { width:60px; height:60px; border-radius:14px; background:rgba(255,255,255,.22); }
-.lt-app.is-ours > i { display:grid; place-items:center; background:var(--ui-accent); }
-.lt-app.is-ours svg { width:30px; height:30px; color:#fff; }
 
 /* Профиль в настройках: крупное фото, имя и номер по центру, как в Telegram */
 .lt-me { display:flex; flex-direction:column; align-items:center; gap:4px; padding:4px 16px 16px; text-align:center; }
 .lt-me h1 { margin-top:8px; font:600 24px/30px var(--ui-face); }
 .lt-me .ui-avatar.is-large { width:96px; height:96px; font-size:36px; }
 
-/* Ближайшая летучка на вкладке «Офис»: время и повестка крупно */
-.lt-now { display:flex; flex-direction:column; gap:4px; width:calc(100% - 32px); margin:0 16px; padding:14px 16px; border-radius:10px; background:var(--ui-accent); color:#fff; text-align:left; }
-.lt-now small { font:600 13px/16px var(--ui-face); opacity:.85; }
-.lt-now strong { font:600 24px/30px var(--ui-face); }
-.lt-now > span { font:400 15px/20px var(--ui-face); opacity:.92; }
-
 /* Поле формы: новая бронь и новый чат */
 .lt-field { display:flex; flex-direction:column; gap:4px; margin:0 16px; padding:8px 12px; border-radius:8px; box-shadow:inset 0 0 0 1px var(--ui-line); }
 .lt-field > span { font:500 13px/16px var(--ui-face); color:var(--ui-text-2); }
 .lt-field > input { min-height:28px; padding:0; border:0; outline:0; background:none; color:var(--ui-text); font:400 17px/22px var(--ui-face); }
+
+/* ── Летучка без созвона ── */
+/* Сколько написали к 10:30: счётчик и полоса, после «Отправить» 11 → 12 */
+.lt-due { display:flex; flex-direction:column; gap:2px; padding:0 16px 4px; }
+.lt-due > span { font:600 22px/28px var(--ui-face); }
+.lt-due small { font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
+.lt-due-bar { display:block; height:6px; margin-top:8px; border-radius:3px; background:var(--ui-accent-soft); overflow:hidden; }
+.lt-due-bar > i { display:block; width:61%; height:100%; border-radius:3px; background:var(--ui-accent); transition:width .3s; }
+.lt-a { display:inline; }
+.lt-n1, .lt-b { display:none; }
+.screen:has(.lt-send.is-on) :is(.lt-n0, .lt-a) { display:none; }
+.screen:has(.lt-send.is-on) .lt-n1 { display:inline; }
+.screen:has(.lt-send.is-on) .lt-b { display:inline; }
+.screen:has(.lt-send.is-on) .lt-due-bar > i { width:67%; }
+
+/* Блокеры — сверху и тёплым значком */
+.lt-blockers .ui-lead.is-round { background:#fff0e0; color:#b45309; }
+
+/* Три строки своего апдейта */
+.lt-lines { margin:0 16px; border-radius:8px; box-shadow:inset 0 0 0 1px var(--ui-line); }
+.lt-line { display:flex; align-items:center; gap:12px; min-height:48px; padding:0 12px; }
+.lt-line + .lt-line { box-shadow:inset 0 .5px 0 var(--ui-line); }
+.lt-line > b { flex:none; width:68px; font:500 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.lt-line > input { flex:1; min-width:0; min-height:44px; padding:0; border:0; outline:0; background:none; color:var(--ui-text); font:400 16px/20px var(--ui-face); }
+.lt-form .ui-list { margin-top:8px; }
+.screen:has(.lt-send.is-on) .lt-form :is(.lt-lines, .ui-list) { display:none; }
+.lt-send.is-on { background:var(--ui-accent-soft); color:var(--ui-link); }
+
+/* Карточка апдейта: три строки, блокер подсвечен; своя появляется после «Отправить» */
+.lt-upds { display:flex; flex-direction:column; }
+.lt-upd { display:flex; gap:12px; padding:10px 16px; }
+.lt-upd + .lt-upd { box-shadow:inset 72px .5px 0 -72px var(--ui-line); }
+.lt-upd > div { flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+.lt-upd header { display:flex; justify-content:space-between; gap:8px; margin-bottom:2px; }
+.lt-upd header strong { font:600 15px/20px var(--ui-face); }
+.lt-upd header > span { font:400 13px/20px var(--ui-face); color:var(--ui-text-2); text-align:right; }
+.lt-upd p { display:flex; gap:8px; font:400 14px/18px var(--ui-face); }
+.lt-upd p > b { flex:none; width:60px; font:500 13px/18px var(--ui-face); color:var(--ui-text-2); }
+.lt-upd .lt-upd-b { color:var(--ui-text-2); }
+.lt-upd.is-blocked .lt-upd-b { color:#b45309; font-weight:500; }
+.lt-upd.is-blocked .lt-upd-b > b { color:#b45309; }
+.lt-mine { display:none; background:var(--ui-accent-soft); }
+.screen:has(.lt-send.is-on) .lt-mine { display:flex; }
+
+/* Очередь говорящих: текущий — с таймером на 2 минуты, «Пауза» и «Дальше» на месте */
+@property --lt-t { syntax:'<integer>'; inherits:true; initial-value:120; }
+@property --lt-m { syntax:'<integer>'; inherits:true; initial-value:2; }
+@keyframes lt-tick { from { --lt-t:120; } to { --lt-t:0; } }
+@keyframes lt-drain { from { width:100%; } to { width:0; } }
+@keyframes lt-over { to { color:#d92d20; } }
+.lt-queue { display:flex; flex-direction:column; }
+.lt-spk { padding:8px 16px; }
+.lt-spk-head { display:flex; align-items:center; gap:12px; min-height:44px; }
+.lt-spk-head > span:nth-child(2) { flex:1; min-width:0; display:flex; flex-direction:column; }
+.lt-spk-head strong { font:600 15px/20px var(--ui-face); }
+.lt-spk-head span span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.lt-spk-n, .lt-spk-done { width:28px; height:28px; flex:none; display:grid; place-items:center; border-radius:30%; font:600 13px/1 var(--ui-face); color:var(--ui-text-2); box-shadow:inset 0 0 0 1px var(--ui-line); }
+.lt-spk-done { display:none; background:var(--ui-accent); color:#fff; box-shadow:none; }
+.lt-spk-done svg { width:16px; height:16px; stroke-width:3; }
+.lt-spk-live { display:none; padding:4px 0 4px 56px; }
+.lt-spk-live > p { font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
+.lt-clock { display:flex; align-items:center; gap:12px; margin-top:8px; }
+.lt-timer { --lt-m:calc((var(--lt-t) - 30) / 60); counter-reset:lt-m var(--lt-m) lt-s calc(var(--lt-t) - var(--lt-m) * 60); flex:none; font:600 34px/40px var(--ui-face); font-variant-numeric:tabular-nums; }
+.lt-timer::after { content:counter(lt-m) ":" counter(lt-s, decimal-leading-zero); }
+.lt-clock-bar { flex:1; height:6px; border-radius:3px; background:var(--ui-accent-soft); overflow:hidden; }
+.lt-clock-bar > i { display:block; width:100%; height:100%; border-radius:3px; background:var(--ui-accent); }
+.lt-spk-ctl { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }
+.lt-pause-b { display:none; }
+.lt-pause.is-on .lt-pause-a { display:none; }
+.lt-pause.is-on .lt-pause-b { display:inline; }
+/* Кто говорит сейчас: первый, кому ещё не сказали «Дальше» */
+.lt-spk:first-child:not(:has(.lt-next.is-on)),
+.lt-spk:has(.lt-next.is-on) + .lt-spk:not(:has(.lt-next.is-on)) { background:var(--ui-accent-soft); }
+:is(.lt-spk:first-child:not(:has(.lt-next.is-on)), .lt-spk:has(.lt-next.is-on) + .lt-spk:not(:has(.lt-next.is-on))) .lt-spk-live { display:block; }
+:is(.lt-spk:first-child:not(:has(.lt-next.is-on)), .lt-spk:has(.lt-next.is-on) + .lt-spk:not(:has(.lt-next.is-on))) .lt-timer { animation:lt-tick 120s linear forwards, lt-over .01s linear 120s forwards; }
+:is(.lt-spk:first-child:not(:has(.lt-next.is-on)), .lt-spk:has(.lt-next.is-on) + .lt-spk:not(:has(.lt-next.is-on))) .lt-clock-bar > i { animation:lt-drain 120s linear forwards; }
+.lt-spk:has(.lt-pause.is-on) :is(.lt-timer, .lt-clock-bar > i) { animation-play-state:paused; }
+.lt-spk:has(.lt-next.is-on) .lt-spk-n { display:none; }
+.lt-spk:has(.lt-next.is-on) .lt-spk-done { display:grid; }
+.lt-spk:has(.lt-next.is-on) .lt-spk-head strong { color:var(--ui-text-2); }
+.lt-end { display:none; align-items:center; gap:8px; padding:12px 16px; font:500 15px/20px var(--ui-face); color:var(--ui-link); }
+.lt-end svg { width:20px; height:20px; }
+.lt-queue:has(.lt-spk:last-of-type .lt-next.is-on) .lt-end { display:flex; }
+
+/* «Договорились»: новое решение с ответственным появляется в чек-листе на месте */
+.lt-added { display:none; }
+.lt-add { display:flex; align-items:center; gap:8px; padding:4px 16px 0; }
+.lt-add .lt-line { flex:1; min-width:0; border-radius:8px; box-shadow:inset 0 0 0 1px var(--ui-line); }
+.lt-add .lt-line > b { width:auto; }
+.lt-add-btn { flex:none; }
+.screen:has(.lt-add-btn.is-on) .lt-added { display:block; }
+.screen:has(.lt-add-btn.is-on) .lt-add { display:none; }

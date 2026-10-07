@@ -1,41 +1,50 @@
 import { THEME, TABS } from './_shared.mjs';
-import { me, people, family, home, today, clubs, pickup, docsCount, shopping, now } from '../model.mjs';
+import { me, people, family, home, board, pickup, clubs, now } from '../model.mjs';
 
-/* Дом: кто дома по домашней сети, расписание детей на сегодня, документы и покупки семьи */
+/* Шаги забирания: «Забрала» и «Едем» ставятся на месте, «Дома» — по домашней сети */
+const steps = (ui) => `<div class="sv-steps">`
+  + `<button class="sv-step" data-toggle="on" aria-pressed="false">${ui.icon('check')}<span>Забрала</span></button>`
+  + `<button class="sv-step" data-toggle="on" aria-pressed="false">${ui.icon('car')}<span>Едем</span></button>`
+  + `<button class="sv-step sv-step-home" data-activate="wifiinfo|home" aria-label="Дома">${ui.icon('house')}<span data-hide-granted="wifiinfo">Дома</span><span class="perm-hidden" data-show-granted="wifiinfo">Дома ${pickup.homeAt}</span></button>`
+  + `</div>`
+  + `<button class="sv-where" data-ask="location|geo|home" aria-label="Где сейчас">${ui.icon('navigation')}<span>Где сейчас</span><small>точка в чат семьи</small></button>`
+  + `<p class="sv-arrived perm-hidden" data-show-granted="wifiinfo">${ui.icon('wifi')}${people.mila.short} дома в ${pickup.homeAt} · ${family.ssid}</p>`;
+
+/* Карточка забирания: кто, где, до скольки и кто забирает. Своя — с «Заберу я» и шагами */
+const card = (ui, { kid, what, place, from, to, by, mine, step, day }) => {
+  const child = people[kid];
+  const who = by ? people[by] : null;
+  const head = `<div class="sv-pick-head">${ui.avatar(child.initial)}<span><strong>${what} · ${child.short}</strong><span>${place}</span></span><span class="sv-pick-to"><small>${day || 'до'}</small><b>${day ? `${from}–${to}` : to}</b></span></div>`;
+  if (!mine) {
+    return `<article class="sv-pick">${head}<p class="sv-pick-who">${ui.avatar(who.initial)}<span><strong>Забирает ${who.name.split(' ')[0]}</strong><span>${step}</span></span></p></article>`;
+  }
+  return `<article class="sv-pick is-open">${head}`
+    + `<p class="sv-pick-who sv-nobody">${ui.icon('triangle-alert')}<span><strong>Никто не забирает</strong><span>до конца занятия ${pickup.left}</span></span></p>`
+    + `<p class="sv-pick-who sv-mine">${ui.avatar(me.initial)}<span><strong>Забираю я</strong><span>Семья видит: «Забирает ${me.short}» · в чате «${child.short} — ${me.short}»</span></span></p>`
+    + `<button class="sv-take" data-toggle="on" aria-pressed="false"><span class="sv-take-on">Заберу я</span><span class="sv-take-off">Не смогу</span></button>`
+    + steps(ui)
+    + `<div class="sv-pick-remind">${ui.list([ui.reminder({ title: 'Напомнить за 30 минут до конца занятия', titleGranted: `Напомним в ${pickup.remind} — забрать Милу в ${to}`, sub: `С адресом: ${pickup.addr}`, here: 'home' })])}</div>`
+    + `</article>`;
+};
+
+/* Дом: доска «Кто заберёт» — каждое занятие детей карточкой, кто забирает и на каком шаге */
 export default (ui) => ui.screen({
   id: 'home', theme: THEME,
   body: ui.scroll([
     ui.largeTitle('Дом', ui.iconButton({ icon: 'plus', label: 'Новое занятие', go: 'newclass' })),
-    ui.section({ children: [
-      `<div class="sv-now"><small>${family.name} · ${now.date}</small><strong>${people.danya.short} дома с ${home.danyaSince}</strong><span>${family.ssid} · ${people.mila.short} на рисовании до ${pickup.to}</span></div>`,
-      ui.actions([ui.button({ label: 'Я дома', icon: 'house', block: true, activate: 'wifiinfo|home', primary: true })]),
+    ui.section({ className: 'sv-homesec', children: [
+      `<p class="sv-homeline">${ui.icon('house')}<span><strong>Дома ${me.short} с ${home.meSince}</strong><span>${people.danya.short} на бассейне до 18:00 · ${people.timur.short} к ${home.timurBack}</span></span></p>`,
+      ui.foot(`Статус «дома» обновился в ${home.synced}`),
     ] }),
-    ui.section({ title: 'Кто дома', children: [
-      ui.list([
-        ui.row({ lead: ui.avatar(me.initial), title: `${me.short} дома`, sub: `${family.ssid} · с ${home.meSince}`, shownAfter: 'wifiinfo' }),
-        ui.row({ lead: ui.avatar(people.danya.initial), title: `${people.danya.short} дома`, sub: `${family.ssid} · с ${home.danyaSince}` }),
-        ui.row({ lead: ui.avatar(people.mila.initial), title: `${people.mila.short} на рисовании`, sub: `${pickup.place} · забрать в ${pickup.to}`, go: 'mila' }),
-        ui.row({ lead: ui.avatar(people.oksana.initial), title: `${people.oksana.short} ушла`, sub: `в ${home.oksanaLeft} · была дома с 12:30` }),
-        ui.row({ lead: ui.avatar(people.timur.initial), title: `${people.timur.short} на работе`, sub: `обещал быть к ${home.timurBack}` }),
-      ]),
-      ui.foot(`Статус «дома» обновился в ${home.danyaSince}, когда телефон Дани вошёл в сеть`),
+    ui.section({ title: 'Кто заберёт', meta: now.date.split(', ')[1], children: [...board.today.map((c) => card(ui, c)), ui.denied('location')] }),
+    ui.section({ title: 'В субботу', children: card(ui, board.saturday) }),
+    ui.section({ title: 'Завтра', children: [
+      ui.list(board.tomorrow.map(([title, sub, by]) => ui.row({ lead: ui.avatar(people[Object.keys(people).find((k) => people[k].short === by)].initial), title, sub: `${sub} · забирает ${by}` }))),
+      ui.foot('Расписание обновлено в 06:30'),
     ] }),
-    ui.section({ title: 'Сегодня', meta: today.label.split(', ')[1], children: [
-      ui.list(today.items.map(([time, title, sub]) => ui.row({
-        lead: ui.leadIcon('', { text: time }), title, sub,
-        ...(/Милу|Мила/.test(title) ? { go: 'mila' } : {}),
-      }))),
-      ui.foot('Расписание обновлено в 06:30 — перенос шахмат уже здесь'),
-      ui.actions([ui.button({ label: 'Кружки в Календарь', icon: 'calendar-plus', variant: 'secondary', block: true, ask: 'calendar|home|home' })]),
-    ] }),
-    ui.section({ shownAfter: 'calendar', children: ui.list([
-      ui.row({ lead: ui.leadIcon('calendar-check', { round: true, accent: true }), title: `В Календаре · ${clubs.perWeek} занятий в неделю`, sub: 'Календарь «Кружки Гариповых», напоминания за 30 минут' }),
-      ui.row({ lead: ui.leadIcon('calendar-check', { round: true, accent: true }), title: `${clubs.moved.what} — ${clubs.moved.to} в Календаре`, sub: `${clubs.moved.day[0].toUpperCase() + clubs.moved.day.slice(1)}, было ${clubs.moved.was} · событие поправлено` }),
+    ui.section({ children: ui.list([
+      ui.row({ lead: ui.leadIcon('calendar-days', { round: true, accent: true }), title: 'Расписание', sub: `${clubs.perWeek} занятий в неделю · школа и кружки`, go: 'schedule' }),
     ]) }),
-    ui.section({ children: ui.group({ cells: [
-      ui.cell({ icon: 'lock', title: 'Документы семьи', sub: 'Паспорта, полисы, свидетельства', value: `${docsCount} файлов`, ask: 'faceid|docs|home' }),
-      ui.cell({ icon: 'shopping-basket', title: 'Список покупок', sub: 'Молоко, гречка, плавки Дане', value: `${shopping.bought} из ${shopping.total}`, go: 'shopping' }),
-    ] }) }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'home' }),
 });

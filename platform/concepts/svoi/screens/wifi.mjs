@@ -13,7 +13,7 @@ export default (ui) => ui.screen({
       ] }),
       ui.section({ shownAfter: 'hotspot', children: ui.list([
         ui.row({ lead: ui.leadIcon('wifi', { round: true, accent: true }), title: `Подключено к ${family.ssid}`, sub: 'Сигнал отличный · 5 ГГц' }),
-        ui.row({ lead: ui.leadIcon('house', { round: true, accent: true }), title: 'Кто дома', sub: 'Статус ставится по этой сети', go: 'home' }),
+        ui.row({ lead: ui.leadIcon('house', { round: true, accent: true }), title: 'Кто заберёт', sub: 'Шаг «Дома» у забирания ставится по этой сети', go: 'home' }),
       ]) }),
       ui.section({ children: ui.group({ cells: [
         ui.cell({ icon: 'key', title: 'Пароль', value: 'скрыт', toast: 'Пароль виден только Тимуру' }),

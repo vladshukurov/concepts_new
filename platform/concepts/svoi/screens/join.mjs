@@ -16,7 +16,7 @@ export default (ui) => ui.screen({
         ]),
       ] }),
       ui.section({ children: ui.miniInfo([
-        { icon: 'house', text: `${people.danya.short} дома с ${home.danyaSince}, ${people.mila.short} на рисовании до ${pickup.to}` },
+        { icon: 'house', text: `Кто заберёт: ${people.mila.short} до ${pickup.to}, Даня до 18:00 — Роза` },
         { icon: 'images', text: `${family.photos} фото и видео внуков в альбоме` },
         { icon: 'calendar-days', text: 'Расписание кружков Дани и Милы на неделю' },
       ]) }),

@@ -29,7 +29,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `section` ×74, `row` ×64, `leadIcon` ×37, `cell` ×37, `list` ×35, `avatar` ×32, `bubble` ×27, `nav` ×15, `group` ×14, `day` ×12, `button` ×9, `iconButton` ×9, `actions` ×6, `chatNav` ×6, `chat` ×6, `denied` ×5, `tabBar` ×5, `composer` ×5, `dialog` ×5, `textButton` ×4, `segments` ×4, `largeTitle` ×4, `voice` ×4, `search` ×4, `usersStack` ×2, `hue` ×2, `callView` ×1, `chips` ×1, `adCard` ×1, `miniPlayer` ×1, `miniInfo` ×1, `lockNowPlaying` ×1, `top` ×1, `reminder` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `section` ×75, `row` ×63, `list` ×38, `leadIcon` ×38, `cell` ×37, `avatar` ×32, `bubble` ×27, `nav` ×16, `group` ×14, `day` ×12, `button` ×8, `iconButton` ×8, `chatNav` ×6, `chat` ×6, `actions` ×5, `denied` ×5, `tabBar` ×5, `composer` ×5, `dialog` ×5, `textButton` ×4, `segments` ×4, `largeTitle` ×4, `voice` ×4, `search` ×4, `checklist` ×3, `callView` ×1, `chips` ×1, `adCard` ×1, `miniPlayer` ×1, `usersStack` ×1, `miniInfo` ×1, `lockScreen` ×1, `reminder` ×1, `top` ×1, `hue` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Доменные компоненты
@@ -52,12 +52,17 @@
 | Тёмные поверхности: камера, звонок | `.lt-cam` `.lt-viewfinder` `.lt-qr-found` `.lt-modes` `.lt-cam-row` `.lt-cam-thumb` |
 | «Сообщения» iOS — системная поверхность приглашённого | `.lt-ios` `.lt-ios-who` `.lt-ios-day` `.lt-ios-bubble` `.lt-ios-link` `.lt-ios-link-ico` |
 | «Поделиться» в Файлах | `.lt-sys-surface` `.lt-files-bg` `.lt-files-row` `.lt-sheet` `.lt-sheet-head` `.lt-place-ico` |
-| Экран блокировки: Now Playing из ядра, уведомления — под часами | `.lt-notifs` `.ui` `.lt-notif-face` `.lt-notif-body` `.lt-notif-top` `.lt-notif-where` |
+| Экран блокировки: Now Playing из ядра, уведомления — под часами | `.lt-fill-34` |
 | Мини-плеер записи летучки над таб-баром | `.lt-mini-face` `.lt-mini-fill` |
-| Экран «Домой» с виджетом | `.lt-home` `.lt-widget` `.lt-apps` `.lt-app` |
 | Профиль в настройках: крупное фото, имя и номер по центру, как в Telegram | `.lt-me` |
-| Ближайшая летучка на вкладке «Офис»: время и повестка крупно | `.lt-now` |
 | Поле формы: новая бронь и новый чат | `.lt-field` |
+| Сколько написали к 10:30: счётчик и полоса, после «Отправить» 11 → 12 | `.lt-due` `.lt-due-bar` `.lt-a` `.lt-n1` `.screen` |
+| Блокеры — сверху и тёплым значком | `.lt-blockers` |
+| Три строки своего апдейта | `.lt-lines` `.lt-line` `.lt-form` `.screen` `.lt-send` |
+| Карточка апдейта: три строки, блокер подсвечен; своя появляется после «Отправить» | `.lt-upds` `.lt-upd` `.lt-mine` `.screen` |
+| Очередь говорящих: текущий — с таймером на 2 минуты, «Пауза» и «Дальше» на месте | `.lt-queue` `.lt-spk` `.lt-spk-head` `.lt-spk-n` `.lt-spk-done` `.lt-spk-live` |
+| Кто говорит сейчас: первый, кому ещё не сказали «Дальше» | `.lt-spk` `.lt-end` `.lt-queue` |
+| «Договорились»: новое решение с ответственным появляется в чек-листе на месте | `.lt-added` `.lt-add` `.lt-add-btn` `.screen` |
 <!-- @end -->
 
 Главные из них:
@@ -76,5 +81,5 @@
 ## Навигация
 
 <!-- @generated:navigation -->
-Контакты · Звонки · Чаты · Офис · Настройки
+Контакты · Звонки · Чаты · Летучка · Настройки
 <!-- @end -->

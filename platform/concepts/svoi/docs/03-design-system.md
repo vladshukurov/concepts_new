@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×75, `section` ×72, `avatar` ×52, `list` ×34, `cell` ×33, `bubble` ×30, `leadIcon` ×28, `nav` ×16, `button` ×13, `day` ×13, `group` ×11, `actions` ×10, `iconButton` ×9, `chatNav` ×7, `chat` ×7, `dialog` ×6, `composer` ×6, `voice` ×6, `textButton` ×5, `denied` ×5, `tabBar` ×5, `largeTitle` ×4, `segments` ×3, `search` ×3, `hue` ×3, `foot` ×2, `callView` ×1, `chips` ×1, `adCard` ×1, `usersStack` ×1, `miniInfo` ×1, `lockNowPlaying` ×1, `reminder` ×1, `top` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `section` ×72, `row` ×72, `avatar` ×50, `list` ×35, `bubble` ×32, `leadIcon` ×29, `cell` ×28, `nav` ×16, `day` ×13, `button` ×12, `iconButton` ×10, `actions` ×9, `group` ×9, `chatNav` ×7, `chat` ×7, `dialog` ×6, `composer` ×6, `voice` ×6, `textButton` ×5, `denied` ×5, `tabBar` ×5, `largeTitle` ×4, `segments` ×3, `search` ×3, `foot` ×3, `callView` ×1, `chips` ×1, `adCard` ×1, `reminder` ×1, `usersStack` ×1, `miniInfo` ×1, `lockScreen` ×1, `top` ×1, `hue` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Доменные компоненты
@@ -54,11 +54,12 @@
 | Тёмные поверхности: камера, звонок | `.sv-cam` `.sv-viewfinder` `.sv-qr-found` `.sv-modes` `.sv-cam-row` `.sv-cam-thumb` |
 | «Сообщения» iOS — системная поверхность приглашённого | `.sv-ios` `.sv-ios-who` `.sv-ios-day` `.sv-ios-bubble` `.sv-ios-link` `.sv-ios-link-ico` |
 | «Поделиться» в «Фото» | `.sv-sys-surface` `.sv-share-photo` `.sv-sheet` `.sv-sheet-head` `.sv-sheet-x` `.sv-share-people` |
-| Экран блокировки: Now Playing из ядра, поверх — уведомления от своих | `.sv-notifs` `.ui-progress` `.sv-notif` `.sv-notif-face` `.sv-notif-body` `.sv-notif-top` |
-| Экран «Домой» с виджетом | `.sv-home` `.sv-widget` `.sv-apps` `.sv-app` |
+| Экран блокировки: Now Playing из ядра, поверх — уведомления от своих | `.ui-progress` |
 | Профиль в настройках: крупное фото, имя и номер по центру, как в Telegram | `.sv-me` |
-| Кто дома: крупно, первой карточкой вкладки «Дом» | `.sv-now` `.sv-money` `.sv-sheet-head` `.sv-pt` |
-| Виджет «Кто дома»: лица по инициалам, кого нет дома — бледнее | `.sv-widget-faces` `.sv-widget-face` |
+| Строка «дома» в шапке вкладки «Дом»: статус по домашней сети | `.sv-homeline` `.sv-homesec` |
+| Доска «Кто заберёт»: карточка забирания — где, до скольки, кто забирает и на каком шаге | `.sv-pick` `.sv-pick-head` `.sv-pick-to` `.sv-pick-who` `.sv-nobody` `.sv-take` |
+| До «Заберу я» шаги видны приглушёнными — что будет дальше | `.sv-pick` `.sv-take` |
+| Взял — у карточки свой аватар, шаги и «Где сейчас» на шаге «Едем»; «Дома» по сети тоже значит «взял» | `.sv-pick` `.sv-steps` `.sv-step` `.sv-where` `.sv-arrived` `.sv-pick-remind` |
 | Сводка списка покупок | `.sv-money` |
 | QR сети с роутера в камере | `.sv-qr-found` |
 | Форма «Все дома»: мягче и круглее «Сбора». Цвет и строки — ядра, меняются только скругления | `.ui` |

@@ -5,16 +5,18 @@
   <!-- @overview:vision -->
   <p class="deck">Инсайт: {{INSIGHT}}.</p>
   <div class="utp-box">{{TAGLINE}}</div>
-  <p>Проверка на подмену: уберите партии подряд из переписки, отметку «я на спевке» по сети зала и расписание, которое правит Календарь при переносе, — останется обычный мессенджер. Значит именно они и есть продукт.</p>
+  <p>Проверка на подмену: уберите баланс партий перед спевкой и разбор своей партии по тактам — останется обычный мессенджер. Значит именно они и есть продукт.</p>
   {{FEAT_GRID}}
   <!-- @end -->
 
   <!-- @overview:arch -->
   <p class="deck">Каждый доступ спрашивается в момент действия, до фичи два-три тапа. Ниже — цепочки от жеста до результата.</p>
-  <div class="flow"><span class="chip">Чат хора</span><span class="arr">→</span><span class="chip">«Спевка сегодня в 19:00»</span><span class="arr">→</span><span class="chip">«Я на спевке»</span><span class="arr">→</span><span class="chip">Wi‑Fi Info</span><span class="arr">→</span><span class="chip">пришли 24 из 32</span></div>
+  <div class="flow"><span class="chip">Репертуар</span><span class="arr">→</span><span class="chip">«Баланс партий»</span><span class="arr">→</span><span class="chip">«Я в зале»</span><span class="arr">→</span><span class="chip">Wi‑Fi Info</span><span class="arr">→</span><span class="chip">«Иду» → «На месте»</span></div>
   <div class="flow"><span class="chip">Карточка сети в чате</span><span class="arr">→</span><span class="chip">«Подключиться»</span><span class="arr">→</span><span class="chip">Hotspot Configuration</span><span class="arr">→</span><span class="chip">подключено к DK_Zal_2</span></div>
-  <div class="flow"><span class="chip">Мои партии</span><span class="arr">→</span><span class="chip">«Слушать мою партию подряд»</span><span class="arr">→</span><span class="chip">фоновое аудио</span><span class="arr">→</span><span class="chip">Now Playing на экране блокировки</span></div>
+  <div class="flow"><span class="chip">Разбор партии</span><span class="arr">→</span><span class="chip">«Слушать кусок по кругу»</span><span class="arr">→</span><span class="chip">фоновое аудио</span><span class="arr">→</span><span class="chip">«Альты · такты 17–24» на экране блокировки</span></div>
+  <div class="flow"><span class="chip">Разбор партии</span><span class="arr">→</span><span class="chip">«Записать свою партию»</span><span class="arr">→</span><span class="chip">Microphone</span><span class="arr">→</span><span class="chip">запись в чате альтов</span></div>
   <div class="flow"><span class="chip">Чат с регентом</span><span class="arr">→</span><span class="chip">«Позвонить»</span><span class="arr">→</span><span class="chip">VoIP + CallKit</span><span class="arr">→</span><span class="chip">экран звонка</span></div>
+  <div class="flow"><span class="chip">Баланс партий</span><span class="arr">→</span><span class="chip">«Напомнить о спевке за час»</span><span class="arr">→</span><span class="chip">Push</span><span class="arr">→</span><span class="chip">«Напомним о спевке за час»</span></div>
   <div class="flow"><span class="chip">Расписание спевок</span><span class="arr">→</span><span class="chip">«Спевки и концерт в Календарь»</span><span class="arr">→</span><span class="chip">Calendars Full Access</span><span class="arr">→</span><span class="chip">перенос спевки правит событие</span></div>
   <div class="flow"><span class="chip">Чат хора</span><span class="arr">→</span><span class="chip">«в субботу в 12:00»</span><span class="arr">→</span><span class="chip">Calendars Write</span><span class="arr">→</span><span class="chip">сводная в Календаре</span></div>
   <div class="flow"><span class="chip">Видео концерта</span><span class="arr">→</span><span class="chip">«Собрать видео концерта ночью»</span><span class="arr">→</span><span class="chip">Processing + BGTaskScheduler</span><span class="arr">→</span><span class="chip">видео к утру</span></div>
@@ -25,7 +27,7 @@
 
   <div class="arch" style="margin-top:var(--s-lg)">
     <div class="arch-layer"><h3>UI</h3><p>31 экран: пять вкладок — Контакты, Звонки, Чаты, Репертуар, Настройки — и пять системных поверхностей: «Сообщения», «Поделиться» в «Диктофоне», экран блокировки с уведомлениями, Now Playing и экран «Домой» с виджетом.</p></div>
-    <div class="arch-layer"><h3>Domain</h3><p>Человек, чат, сообщение, хор, партия, спевка с отметками, программа концерта, сеть зала, видео концерта, звонок.</p></div>
+    <div class="arch-layer"><h3>Domain</h3><p>Человек, чат, сообщение, хор, партия, спевка с ответами и балансом партий, разбор партии по тактам, программа концерта, сеть зала, видео концерта, звонок.</p></div>
     <div class="arch-layer"><h3>Services</h3><p>PushKit и CallKit, NEHotspotConfigurationManager и NEHotspotNetwork, EventKit, BGTaskScheduler (app.spevka.parts, app.spevka.video), AVFoundation, CoreLocation, LocalAuthentication, AppTrackingTransparency.</p></div>
     <div class="arch-layer"><h3>Data</h3><p>Локальная база сообщений и партий, общий контейнер group.app.spevka для виджета и расширений, ключ расшифровки и сессия в Keychain общей группы.</p></div>
     <div class="arch-layer"><h3>External</h3><p>Своего сервера нет: вход, Firestore, Storage и Cloud Messaging — SDK провайдера; звонки — SDK провайдера WebRTC; реклама — рекламный SDK; AASA — статичный файл на spevka.app.</p></div>

@@ -18,7 +18,7 @@ export default (ui) => ui.screen({
     ui.scroll([
       `<div class="lt-head">${ui.avatar(project.initial, { large: true })}<h1 class="ui-title">${project.name}</h1><p class="ui-sub">${project.full[0].toUpperCase() + project.full.slice(1)} · ${project.people} участников</p></div>`,
       ui.section({ children: ui.group({ cells: [
-        ui.cell({ icon: 'clock', title: `Летучка в ${standup.time}`, sub: `${standup.room} переговорка · перенесена с ${standup.was}`, value: 'пункт 1', go: 'standup' }),
+        ui.cell({ icon: 'clock', title: `Летучка в ${standup.time}`, sub: `${standup.room} переговорка · перенесена с ${standup.was}`, value: 'апдейты', go: 'office' }),
         ui.cell({ icon: 'presentation', title: 'Переговорки', sub: 'Созвон с клиентом в 12:00, Большая', value: 'сегодня 6', go: 'rooms' }),
         ui.cell({ icon: 'folder', title: 'Файлы проекта', sub: 'Макеты, гайд, ролик к демо', value: `${project.files} файлов`, go: 'files' }),
         ui.cell({ icon: 'lock', title: 'Договоры и акты', sub: 'Договор, допсоглашение, 2 акта, реквизиты', value: '5 файлов', ask: 'faceid|docs|projectinfo' }),

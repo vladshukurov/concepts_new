@@ -14,7 +14,7 @@ export default (ui) => ui.screen({
       { label: 'Непрочитанные', filter: 'unread' },
     ]) }),
     ui.section({ children: [
-      ui.dialog({ initial: choir.initial, name: choir.name, text: `<b>Олег:</b> опаздываю на 10 минут · пришли ${today.came} из ${choir.people}`, time: '19:02', unread: 12, go: 'choir', primary: true, tags: ['choir', 'unread'] }),
+      ui.dialog({ initial: choir.initial, name: choir.name, text: `<b>Олег:</b> иду, но опоздаю минут на 10 · подтвердили ${today.confirmed} из ${choir.people}`, time: '19:02', unread: 12, go: 'choir', primary: true, tags: ['choir', 'unread'] }),
       ui.dialog({ initial: regent.initial, name: regent.name, text: 'Оля, задержитесь после спевки на 10 минут', time: '18:58', unread: 1, online: true, go: 'regent', tags: ['personal', 'unread'] }),
       ui.dialog({ initial: 'АП', name: 'Альты · партии', text: '<b>Ирина:</b> Голосовое · 3:40 · «Ой, то не вечер»', time: '18:44', unread: 3, go: 'altos', tags: ['choir', 'unread'] }),
       ui.dialog({ initial: 'ИЗ', name: 'Избранное', text: 'Ноты «Вечерний звон», альт.pdf · 1,2 МБ', time: '17:20', go: 'saved', tags: ['personal'] }),

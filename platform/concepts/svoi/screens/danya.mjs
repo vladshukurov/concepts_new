@@ -5,7 +5,7 @@ import { people, home, family } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'danya', theme: THEME,
   body: [
-    ui.chatNav({ initial: people.danya.initial, name: people.danya.short, status: `дома с ${home.danyaSince}` }),
+    ui.chatNav({ initial: people.danya.initial, name: people.danya.short, status: `был в ${home.danyaLeft}` }),
     ui.scroll(ui.chat([
       ui.day('Вчера'),
       ui.bubble({ text: 'Мам, тренировку отменили, забери меня', time: '18:12' }),
@@ -14,7 +14,8 @@ export default (ui) => ui.screen({
       ui.day('Сегодня'),
       `<p class="sv-sys">${people.danya.short} дома с ${home.danyaSince} · ${family.ssid}</p>`,
       ui.bubble({ text: 'Я дома, суп поел', time: '15:42' }),
-      ui.bubble({ text: 'Можно к Артёму после плавания? До восьми', time: '15:43' }),
+      ui.bubble({ text: 'Бабушка заберёт с бассейна? Я выйду в 18:00', time: '15:43' }),
+      ui.bubble({ out: true, text: 'Да, Роза отметилась на доске. Жди внутри', time: '15:52', read: true }),
     ])),
     ui.composer({ attach: { label: 'Вложение', menu: ['Фото и видео>attach', 'Файл=Откроются Файлы'] } }),
   ],

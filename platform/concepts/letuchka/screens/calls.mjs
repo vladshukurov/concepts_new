@@ -15,7 +15,7 @@ export default (ui) => ui.screen({
       ui.row({ lead: ui.avatar(people.vika.initial), title: people.vika.name, sub: 'Входящий · 8:51 · 1:12, про пропуск для Тёмы', tags: ['in'] }),
     ]) }),
     ui.section({ title: 'Вчера', children: ui.list([
-      ui.row({ lead: ui.avatar('ЛТ'), title: 'Летучка', sub: 'Групповой · 10:30 · 18 минут, 4 по звонку', go: 'standup', tags: ['group'] }),
+      ui.row({ lead: ui.avatar('ЛТ'), title: 'Летучка', sub: 'Групповой · 10:00 · 18 минут, есть запись', go: 'recap', tags: ['group'] }),
       ui.row({ lead: ui.avatar(project.initial), title: project.name, sub: 'Групповой · 16:00 · 42 минуты, 5 участников', go: 'project', tags: ['group'] }),
       ui.row({ lead: ui.avatar(people.pasha.initial), title: people.pasha.name, sub: 'Исходящий · 19:44 · 3:05', go: 'pasha', tags: ['out'] }),
       ui.row({ lead: ui.avatar(people.zhenya.initial), title: people.zhenya.name, sub: 'Входящий · 12:31 · 2:31, про акт № 14', tags: ['in'] }),

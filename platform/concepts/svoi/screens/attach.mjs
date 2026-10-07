@@ -13,7 +13,6 @@ export default (ui) => ui.screen({
     ui.scroll([
       ui.section({ className: 'sv-attach-sec', children: `<div class="sv-grid is-attach"><button class="sv-cam-tile" data-ask="camera|camera|attach" aria-label="Камера">${ui.icon('camera')}<span>Камера</span></button>${recent.map(([i, picked, dur]) => `<button class="sv-tile ph${picked ? ' is-picked' : ''}" data-toast="${picked ? `Кадр ${i} убран из выбора` : `Кадр ${i} выбран`}" aria-label="Кадр ${i}${dur ? `, видео ${dur}` : ''}">${dur ? `<span class="sv-tile-dur">${dur}</span>` : ''}${picked ? `<span class="sv-tick">${ui.icon('check')}</span>` : ''}</button>`).join('')}</div>` }),
       ui.denied('camera'),
-      ui.denied('location'),
       ui.section({ title: 'Сегодня', meta: '23 кадра', children: ui.list([
         ui.row({ lead: ui.leadIcon('images', { round: true, accent: true }), title: 'Все кадры за сегодня', sub: 'С 7:50, школа и студия', toast: 'Выбраны 23 кадра' }),
       ]) }),
@@ -21,7 +20,7 @@ export default (ui) => ui.screen({
     `<nav class="sv-attach-bar" aria-label="Тип вложения">${[
       ['images', 'Галерея', ' class="is-on" data-toast="Галерея уже открыта"'],
       ['file-text', 'Файл', ' data-toast="Откроются Файлы"'],
-      ['map-pin', 'Геопозиция', ' data-ask="location|geo|attach"'],
+      ['map-pin', 'Где сейчас', ' data-go="geo"'],
       ['user', 'Контакт', ' data-toast="Откроются контакты для отправки"'],
     ].map(([ic, label, a]) => `<button${a} aria-label="${label}">${ui.icon(ic)}<span>${label}</span></button>`).join('')}</nav>`,
   ],

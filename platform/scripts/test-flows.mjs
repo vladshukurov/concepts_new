@@ -698,8 +698,9 @@ async function run(slug) {
         for (const s of screens) {
           const from = s.dataset.screen;
           edges[from] ||= [];
+          /* Скрытое до разрешения (мини-плеер после «Слушать в фоне») — не путь: кликнуть его нельзя */
           const add = (to, e) => {
-            if (known.has(to)) edges[from].push({ to, sel: sel(e) });
+            if (known.has(to) && !e.closest('.perm-hidden, [data-show-granted]')) edges[from].push({ to, sel: sel(e) });
           };
           s.querySelectorAll("[data-go],[data-jump]").forEach((e) =>
             add(e.dataset.go || e.dataset.jump, e),

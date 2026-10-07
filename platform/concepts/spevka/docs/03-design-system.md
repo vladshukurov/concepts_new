@@ -29,7 +29,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×78, `section` ×75, `avatar` ×45, `leadIcon` ×38, `list` ×37, `cell` ×34, `bubble` ×20, `nav` ×16, `group` ×12, `button` ×11, `iconButton` ×11, `day` ×10, `actions` ×8, `chatNav` ×5, `chat` ×5, `voice` ×5, `denied` ×5, `tabBar` ×5, `composer` ×4, `textButton` ×4, `largeTitle` ×4, `search` ×4, `dialog` ×4, `segments` ×2, `hue` ×2, `callView` ×1, `chips` ×1, `adCard` ×1, `usersStack` ×1, `miniInfo` ×1, `lockNowPlaying` ×1, `miniPlayer` ×1, `reminder` ×1, `top` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×73, `section` ×69, `avatar` ×43, `leadIcon` ×35, `cell` ×35, `list` ×34, `bubble` ×22, `nav` ×16, `group` ×13, `button` ×10, `day` ×10, `iconButton` ×10, `actions` ×7, `chatNav` ×5, `chat` ×5, `denied` ×5, `tabBar` ×5, `voice` ×4, `composer` ×4, `textButton` ×4, `largeTitle` ×4, `search` ×4, `dialog` ×4, `segments` ×2, `lockScreen` ×2, `foot` ×1, `reminder` ×1, `callView` ×1, `chips` ×1, `adCard` ×1, `usersStack` ×1, `miniInfo` ×1, `miniPlayer` ×1, `top` ×1, `hue` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Доменные компоненты
@@ -45,7 +45,6 @@
 | Файл в пузыре | `.sp-file` `.sp-file-ico` `.ui-bubble` |
 | Дата в сообщении — ссылка, которая кладёт встречу в Календарь | `.sp-date` |
 | Шапка сведений о хоре и приглашения | `.sp-head` |
-| Кто пришёл: число и шкала на 32 голоса | `.sp-roll` `.sp-roll-bar` |
 | Сетка кадров: ролики концерта и выбор вложения | `.sp-grid` `.ui` `.sp-tile` `.sp-tick` `.sp-cam-tile` `.sp-attach-bar` |
 | QR и ссылка-приглашение: QR нарисован кодом из ссылки | `.sp-qr` `.sp-link` |
 | Карта у ДК, нарисованная кодом | `.sp-map` `.sp-river` `.sp-street` `.sp-block` `.sp-pt` |
@@ -53,16 +52,17 @@
 | Тёмные поверхности: камера, звонок | `.sp-cam` `.sp-viewfinder` `.sp-qr-found` `.sp-modes` `.sp-cam-row` `.sp-cam-thumb` |
 | «Сообщения» iOS — системная поверхность приглашённого | `.sp-ios` `.sp-ios-who` `.sp-ios-day` `.sp-ios-bubble` `.sp-ios-link` `.sp-ios-link-ico` |
 | «Поделиться» в «Диктофоне» | `.sp-sys-surface` `.sp-sheet` `.sp-sheet-head` `.sp-sheet-x` `.sp-share-people` `.sp-share-to` |
-| Экран блокировки: уведомления хора | `.sp-lock` `.sp-lock-clock` `.sp-notifs` `.sp-notif` `.sp-notif-face` `.sp-notif-body` |
-| Экран «Домой» с виджетом | `.sp-home` `.sp-widget` `.sp-widget-bar` `.sp-apps` `.sp-app` |
 | Профиль в настройках: крупное фото, имя и номер по центру, как в Telegram | `.sp-me` |
-| Идущая спевка: кто пришёл — крупно, как карточка звонка в чате | `.sp-now` |
-| Сводка партий: голос, число записей и минуты | `.sp-sum` |
+| Сводка над балансом и разбором: подпись, крупное число или название, место | `.sp-sum` |
+| Баланс партий: строка «партия · N из M» и клетки по числу голосов, слабая партия — оранжевым | `.sp-bal` `.sp-bal-row` `.sp-bal-name` `.sp-bal-n` `.sp-bal-cells` `.sp-bal-card` |
+| Свой ответ меняет числа на этом же экране: «Не смогу» гасит клетку Оли и снимает её из подсчёта | `.sp-if-no` `.screen` |
+| «Попросить подменить» → «Запрос отправлен альтам» на месте | `.sp-swap` |
+| «Иду / Не смогу»: одна кнопка-переключатель в виде сегментов | `.sp-rsvp-wrap` `.sp-rsvp` |
+| Разбор партии: такты полосой, кусок «тут сбиваемся» отмечен | `.sp-strip` `.sp-strip-mark` `.sp-strip-bars` `.sp-strip-nums` `.ui` |
 | Мини-плеер партии и Now Playing: обложки нет — нотный значок на акценте, прогресс партии | `.sp-mini-face` `.sp-mini-fill` `.sp-np-fill` |
-| Голосовое в уведомлении: превью с прослушиванием от расширения уведомлений | `.sp-notif-audio` |
 | Ролик концерта: кто снимал | `.sp-tile-who` |
 | «Диктофон» под листом «Поделиться» | `.sp-memos` `.sp-memo` |
-| Поле формы: новая спевка и новый чат | `.sp-field` |
+| Поле формы: новая спевка и новый чат | `.sp-field` `.sp-bal-card` |
 <!-- @end -->
 
 Главные из них:

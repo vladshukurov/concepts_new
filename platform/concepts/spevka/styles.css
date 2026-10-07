@@ -1,6 +1,6 @@
 /* «В унисон» — мессенджер хора, светлая тема `.ui.vk-light`.
    Список чатов, чат, пузыри, голосовые, звонок, строки и ячейки — из ядра.
-   Своё у «В унисон»: закреплённая спевка и «кто пришёл», карточка сети зала, шкала на 32 голоса,
+   Своё у «В унисон»: закреплённая спевка, баланс партий клетками по голосам, такты разбора полосой, карточка сети зала,
    карта у ДК, нарисованная кодом, QR приглашения, ролики концерта
    и системные поверхности iOS — экран блокировки, «Домой», «Поделиться» в «Диктофоне», «Сообщения».
 
@@ -67,16 +67,6 @@
 /* Шапка сведений о хоре и приглашения */
 .sp-head { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 16px 16px; background:var(--ui-card); text-align:center; }
 .sp-head .ui-avatar { margin-bottom:8px; }
-
-/* Кто пришёл: число и шкала на 32 голоса */
-.sp-roll { display:flex; flex-direction:column; gap:2px; padding:0 16px; }
-.sp-roll strong { font:700 26px/32px var(--ui-face); font-variant-numeric:tabular-nums; }
-.sp-roll > span { font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
-.sp-roll-bar, .sp-widget-bar { display:grid; grid-template-columns:repeat(32, 1fr); gap:2px; margin-top:10px; }
-.sp-roll-bar > i, .sp-widget-bar > i { height:8px; border-radius:4px; background:var(--ui-accent-soft); }
-.sp-roll-bar > i.is-on, .sp-roll-bar > i > b { background:var(--ui-accent); }
-.sp-roll-bar > i > b, .sp-widget-bar > i > b { display:block; height:100%; border-radius:inherit; }
-.sp-roll-bar > i, .sp-widget-bar > i { overflow:hidden; }
 
 /* Сетка кадров: ролики концерта и выбор вложения */
 .sp-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; }
@@ -191,8 +181,8 @@
 .sp-share-people, .sp-share-apps { display:flex; gap:16px; padding:16px 16px 4px; overflow-x:auto; scrollbar-width:none; }
 .sp-share-to, .sp-share-app { flex:none; width:68px; display:flex; flex-direction:column; align-items:center; gap:6px; font:400 11px/14px var(--ui-face); text-align:center; }
 .sp-share-face { position:relative; width:60px; height:60px; display:grid; place-items:center; border-radius:50%; background-color:#dceafb; color:#00489a; font:600 20px/1 var(--ui-face); }
-.sp-share-face > i, .sp-notif-face > i { position:absolute; right:-2px; bottom:-2px; width:22px; height:22px; display:grid; place-items:center; border-radius:6px; background:var(--ui-accent); color:#fff; box-shadow:0 0 0 2px #f2f2f7; }
-.sp-share-face > i svg, .sp-notif-face > i svg { width:14px; height:14px; }
+.sp-share-face > i { position:absolute; right:-2px; bottom:-2px; width:22px; height:22px; display:grid; place-items:center; border-radius:6px; background:var(--ui-accent); color:#fff; box-shadow:0 0 0 2px #f2f2f7; }
+.sp-share-face > i svg { width:14px; height:14px; }
 .sp-share-app > i { width:60px; height:60px; display:grid; place-items:center; border-radius:14px; background:#fff; color:var(--ui-link); }
 .sp-share-list { margin:12px 16px 0; border-radius:12px; background:#fff; }
 .sp-share-list > button { display:flex; align-items:center; justify-content:space-between; width:100%; min-height:48px; padding:0 16px; font:400 16px/20px var(--ui-face); }
@@ -200,35 +190,8 @@
 .sp-share-list svg { width:20px; height:20px; color:var(--ui-text-2); }
 
 /* Экран блокировки: уведомления хора */
-.sp-lock { overflow:hidden; background:linear-gradient(180deg, #34506b, #141c26)!important; color:#fff; }
-.sp-lock-clock { display:flex; flex-direction:column; align-items:center; padding-top:calc(var(--safe-top) + 8px); }
-.sp-lock-clock span { font:600 17px/22px var(--ui-face); color:rgba(255,255,255,.86); }
-.sp-lock-clock strong { font:700 84px/92px var(--ui-face); letter-spacing:-.02em; }
-.sp-notifs { display:flex; flex-direction:column; gap:8px; margin:12px 12px 0; }
-.sp-notif { display:flex; align-items:flex-start; gap:10px; width:100%; padding:12px; border-radius:20px; background:rgba(255,255,255,.88); color:#000; text-align:left; }
-.sp-notif-face { position:relative; width:40px; height:40px; flex:none; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent-soft); color:var(--ui-link); font:600 14px/1 var(--ui-face); }
-.sp-notif-face > i { right:-6px; bottom:-6px; width:18px; height:18px; border-radius:5px; box-shadow:0 0 0 2px #fff; }
-.sp-notif-face > i svg { width:12px; height:12px; }
-.sp-notif-body { flex:1; min-width:0; display:flex; flex-direction:column; }
-.sp-notif-top { display:flex; justify-content:space-between; gap:8px; }
-.sp-notif-top strong { font:600 15px/20px var(--ui-face); }
-.sp-notif-top span { font:400 13px/20px var(--ui-face); color:#5f6b78; }
-.sp-notif-where { font:500 13px/16px var(--ui-face); color:#5f6b78; }
-.sp-notif-text { font:400 15px/20px var(--ui-face); }
 
 /* Экран «Домой» с виджетом */
-.sp-home { overflow:hidden; background:linear-gradient(180deg, #3b5068, #151c24)!important; color:#fff; }
-.sp-widget { display:block; width:calc(100% - 40px); margin:calc(var(--safe-top) + 16px) 20px 0; padding:14px; border-radius:22px; background:rgba(255,255,255,.94); color:#000; text-align:left; }
-.sp-widget small { display:flex; align-items:center; gap:6px; font:600 12px/14px var(--ui-face); color:#0067db; }
-.sp-widget small svg { width:14px; height:14px; }
-.sp-widget strong { display:block; margin-top:8px; font:600 17px/22px var(--ui-face); }
-.sp-widget > span:not(.sp-widget-bar) { display:block; font:400 13px/16px var(--ui-face); color:#5f6b78; }
-.sp-widget-bar > i.is-on { background:#0077ff; }
-.sp-apps { display:grid; grid-template-columns:repeat(4, 1fr); gap:20px 12px; padding:20px; }
-.sp-app { display:flex; flex-direction:column; align-items:center; gap:4px; font:400 12px/14px var(--ui-face); color:#fff; }
-.sp-app > i { width:60px; height:60px; border-radius:14px; background:rgba(255,255,255,.22); }
-.sp-app.is-ours > i { display:grid; place-items:center; background:var(--ui-accent); }
-.sp-app.is-ours svg { width:30px; height:30px; color:#fff; }
 
 
 /* Профиль в настройках: крупное фото, имя и номер по центру, как в Telegram */
@@ -236,29 +199,67 @@
 .sp-me h1 { margin-top:8px; font:600 24px/30px var(--ui-face); }
 .sp-me .ui-avatar.is-large { width:96px; height:96px; font-size:36px; }
 
-/* Идущая спевка: кто пришёл — крупно, как карточка звонка в чате */
-.sp-now { display:flex; flex-direction:column; gap:4px; width:calc(100% - 32px); margin:0 16px; padding:16px; border-radius:16px; background:var(--ui-accent); color:#fff; text-align:left; }
-.sp-now small { font:600 13px/16px var(--ui-face); opacity:.85; }
-.sp-now strong { font:600 24px/30px var(--ui-face); }
-.sp-now > span:not(.sp-roll-bar) { font:400 15px/20px var(--ui-face); opacity:.92; }
-.sp-now .sp-roll-bar { margin-top:8px; }
-.sp-now .sp-roll-bar i { background:rgba(255,255,255,.32); }
-.sp-now .sp-roll-bar i.is-on, .sp-now .sp-roll-bar i > b { background:#fff; }
-/* Сводка партий: голос, число записей и минуты */
+/* Сводка над балансом и разбором: подпись, крупное число или название, место */
 .sp-sum { display:flex; flex-direction:column; gap:2px; padding:0 16px; }
 .sp-sum small { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
 .sp-sum strong { font:600 30px/36px var(--ui-face); font-variant-numeric:tabular-nums; }
-.sp-sum span { font:400 15px/20px var(--ui-face); color:var(--ui-text-2); }
+.sp-sum > span { font:400 15px/20px var(--ui-face); color:var(--ui-text-2); }
+
+/* Баланс партий: строка «партия · N из M» и клетки по числу голосов, слабая партия — оранжевым */
+.sp-bal { display:flex; flex-direction:column; gap:12px; padding:16px 16px 0; }
+.sp-bal-row { display:grid; grid-template-columns:1fr auto; gap:6px 12px; align-items:baseline; }
+.sp-bal-name { display:flex; align-items:center; gap:8px; font:500 15px/20px var(--ui-face); }
+.sp-bal-name b { padding:1px 8px; border-radius:999px; background:#fff1e0; color:#a65300; font:600 12px/16px var(--ui-face); }
+.sp-bal-n { font:600 15px/20px var(--ui-face); font-variant-numeric:tabular-nums; }
+.sp-bal-cells { grid-column:1 / -1; display:flex; gap:3px; }
+.sp-bal-cells > i { flex:1; height:10px; border-radius:5px; background:var(--ui-accent-soft); }
+.sp-bal-cells > i.is-on { background:var(--ui-accent); }
+.sp-bal-row.is-weak .sp-bal-n { color:#a65300; }
+.sp-bal-row.is-weak .sp-bal-cells > i { background:#ffe7cc; }
+.sp-bal-row.is-weak .sp-bal-cells > i.is-on { background:#ff8a00; }
+.sp-bal-card { display:block; width:calc(100% - 32px); margin:0 16px; padding:16px 0; border-radius:16px; background:var(--ui-card); box-shadow:inset 0 0 0 1px var(--ui-line); text-align:left; color:var(--ui-text); }
+.sp-bal-foot { padding:0 16px; }
+/* Свой ответ меняет числа на этом же экране: «Не смогу» гасит клетку Оли и снимает её из подсчёта */
+.sp-if-no { display:none; }
+.screen:has(.sp-rsvp:not(.is-on)) .sp-if-go { display:none; }
+.screen:has(.sp-rsvp:not(.is-on)) .sp-if-no { display:inline; }
+.screen:has(.sp-rsvp:not(.is-on)) .sp-bal-cells > i.is-me { background:#ffe7cc; }
+
+/* «Попросить подменить» → «Запрос отправлен альтам» на месте */
+.sp-swap { display:flex; align-items:center; justify-content:center; width:calc(100% - 32px); min-height:44px; margin:14px 16px 8px; border-radius:14px; background:#fff1e0; color:#a65300; font:600 15px/20px var(--ui-face); }
+.sp-swap > span { display:flex; align-items:center; gap:8px; }
+.sp-swap svg { width:18px; height:18px; }
+.sp-swap .sp-swap-on, .sp-swap.is-on .sp-swap-off { display:none; }
+.sp-swap.is-on .sp-swap-on { display:flex; }
+.sp-swap.is-on { background:var(--ui-accent-soft); color:var(--ui-link); }
+
+/* «Иду / Не смогу»: одна кнопка-переключатель в виде сегментов */
+.sp-rsvp-wrap { padding:0 16px 8px; }
+.sp-rsvp { display:grid; grid-template-columns:1fr 1fr; width:100%; padding:3px; border-radius:999px; background:var(--ui-accent-soft); }
+.sp-rsvp > span { min-height:38px; display:grid; place-items:center; border-radius:999px; font:600 15px/20px var(--ui-face); color:var(--ui-text-2); }
+.sp-rsvp.is-on > span:first-child, .sp-rsvp:not(.is-on) > span:last-child { background:var(--ui-card); color:var(--ui-text); box-shadow:0 1px 3px rgba(0,16,61,.12); }
+
+/* Разбор партии: такты полосой, кусок «тут сбиваемся» отмечен */
+.sp-strip { display:flex; flex-direction:column; gap:6px; padding:16px 16px 4px; }
+.sp-strip-mark { display:flex; align-items:center; gap:6px; margin-left:33.3%; font:600 13px/16px var(--ui-face); color:#a65300; }
+.sp-strip-mark svg { width:14px; height:14px; }
+.sp-strip-bars { display:grid; grid-template-columns:repeat(48, 1fr); gap:2px; height:36px; }
+.sp-strip-bars > i { border-radius:2px; background:var(--ui-accent-soft); }
+.sp-strip-bars > i.is-spot { background:#ff8a00; }
+.sp-strip-nums { position:relative; height:16px; font:400 12px/16px var(--ui-face); color:var(--ui-text-2); font-variant-numeric:tabular-nums; }
+.sp-strip-nums > span { position:absolute; top:0; }
+.sp-strip-nums > span:nth-child(1) { left:0; }
+.sp-strip-nums > span:nth-child(2) { left:33.3%; }
+.sp-strip-nums > span:nth-child(3) { left:50%; transform:translateX(-100%); }
+.sp-strip-nums > span:nth-child(4) { right:0; }
+.ui .sp-spot-row .ui-lead { background:#fff1e0; color:#a65300; }
 
 /* Мини-плеер партии и Now Playing: обложки нет — нотный значок на акценте, прогресс партии */
 .sp-mini-face { background:linear-gradient(135deg, #3d8bff, #0057d9)!important; border-radius:50%!important; }
-.sp-mini-fill { width:38%; }
-.sp-np-fill { width:43%; }
+.sp-mini-fill { width:42%; }
+.sp-np-fill { width:42%; }
 
 /* Голосовое в уведомлении: превью с прослушиванием от расширения уведомлений */
-.sp-notif-audio { display:flex; align-items:center; gap:8px; margin-top:6px; padding:6px 10px; border-radius:999px; background:rgba(0,119,255,.12); color:#0057c2; font:500 13px/16px var(--ui-face); }
-.sp-notif-audio svg { width:14px; height:14px; }
-.sp-notif-audio > i { flex:1; height:3px; border-radius:2px; background:linear-gradient(90deg, #0077ff 30%, rgba(0,119,255,.25) 30%); }
 
 /* Ролик концерта: кто снимал */
 .sp-tile-who { position:absolute; top:6px; left:6px; padding:2px 6px; border-radius:999px; background:rgba(0,0,0,.56); color:#fff; font:600 11px/14px var(--ui-face); }
@@ -276,3 +277,4 @@
 .sp-field > span { font:500 13px/16px var(--ui-face); color:var(--ui-text-2); }
 .sp-field > input { min-height:28px; padding:0; border:0; outline:0; background:none; color:var(--ui-text); font:400 17px/22px var(--ui-face); }
 
+.sp-bal-card .sp-sum strong { font-size:24px; line-height:30px; }

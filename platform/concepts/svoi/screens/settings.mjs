@@ -28,7 +28,7 @@ export default (ui) => ui.screen({
       ui.cell({ icon: 'globe', title: 'Язык', value: 'Русский' }),
     ] }) }),
     ui.section({ children: ui.group({ cells: [
-      ui.cell({ icon: 'layout-grid', title: 'Виджет «Кто дома»', value: 'Не добавлен', activate: 'appgroups|widget' }),
+      ui.cell({ icon: 'layout-grid', title: 'Виджет «Кто заберёт»', value: 'Не добавлен', activate: 'appgroups|widget' }),
     ] }) }),
     ui.section({ children: ui.group({ cells: [
       ui.cell({ icon: 'message-circle', title: 'Задать вопрос', toast: 'Чат поддержки открыт' }),

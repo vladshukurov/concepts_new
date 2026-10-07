@@ -1,5 +1,5 @@
 import { THEME } from './_shared.mjs';
-import { regent, people } from '../model.mjs';
+import { regent, people, drill } from '../model.mjs';
 
 /* Чат партии альтов: регент присылает партии голосом, альты — свои записи. Запись из «Диктофона» приходит сюда же */
 const memo = (ui, title, sub) => `<span class="sp-file"><span class="sp-file-ico">${ui.icon('audio-lines')}</span><span><strong>${title}</strong><span>${sub}</span></span></span>`;
@@ -15,11 +15,12 @@ export default (ui) => ui.screen({
       ui.day('Сегодня'),
       ui.voice({ from: regent.name, dur: '3:40', time: '7:02' }),
       ui.bubble({ from: regent.name, text: '«Ой, то не вечер», альты. Порядок в программе новый, он теперь шестой', time: '7:03' }),
+      ui.bubble({ from: regent.name, text: `Альты, в «${drill.piece}» отметила такты ${drill.spot.join('–')} — тут сбиваемся. Пройдите кусок дома`, time: '7:05' }),
       ui.bubble({ from: people.yulia.name, text: 'Я сегодня болею, послушаю запись', time: '17:31' }),
-      ui.bubble({ from: regent.name, text: 'Выздоравливайте. Альты, распеваемся в 18:50', time: '18:44' }),
+      ui.bubble({ from: regent.name, text: 'Выздоравливайте. Альты, распеваемся в 19:15', time: '18:44' }),
       `<div class="sp-shared perm-hidden" data-show-granted="shareext">${ui.bubble({ out: true, attach: memo(ui, 'Распевка, альты', 'из Диктофона · 1:24 · сегодня в 19:03'), text: 'Записала распевку, если кто опоздал', time: '19:07' })}</div>`,
+      `<div class="sp-shared perm-hidden" data-show-granted="mic">${ui.bubble({ out: true, attach: memo(ui, `${drill.piece} · такты ${drill.spot.join('–')}`, 'моя партия · 0:31 · под запись Ирины'), text: 'Записала кусок, где сбивались', time: '19:08' })}</div>`,
     ])),
-    ui.denied('mic'),
-    ui.composer({ attach: { label: 'Вложение', menu: ['Фото и видео>attach', 'Файл=Откроются Файлы'] }, mic: { ask: 'mic|record|altos', label: 'Записать голосовое' } }),
+        ui.composer({ attach: { label: 'Вложение', menu: ['Фото и видео>attach', 'Запись из Диктофона>share', 'Файл=Откроются Файлы'] }, mic: { go: 'record', label: 'Записать свою партию' } }),
   ],
 });

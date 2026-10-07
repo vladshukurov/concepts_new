@@ -13,12 +13,12 @@ export default (ui) => ui.screen({
       ] }),
       ui.section({ shownAfter: 'hotspot', children: ui.list([
         ui.row({ lead: ui.leadIcon('wifi', { round: true, accent: true }), title: `Подключено к ${choir.ssid}`, sub: 'Сигнал отличный · в зале №2 и в фойе' }),
-        ui.row({ lead: ui.leadIcon('list-checks', { round: true, accent: true }), title: 'Кто пришёл', sub: `Отметиться на спевке в ${today.time}`, go: 'rollcall' }),
+        ui.row({ lead: ui.leadIcon('list-checks', { round: true, accent: true }), title: 'Баланс партий', sub: `«Иду» станет «На месте» · спевка в ${today.time}`, go: 'balance' }),
       ]) }),
       ui.section({ children: ui.group({ cells: [
         ui.cell({ icon: 'key', title: 'Пароль', value: choir.password, toast: 'Пароль скопирован' }),
         ui.cell({ icon: 'send', title: 'Откуда', sub: `${people.denis.name} прислал с карточки на вахте, вчера в 20:14` }),
-        ui.cell({ icon: 'users', title: 'Подключились', value: '21 из 32' }),
+        ui.cell({ icon: 'users', title: 'Подключились', value: '14 из 28' }),
       ] }) }),
       ui.section({ title: 'Сети хора', children: ui.list([
         ui.row({ lead: ui.leadIcon('', { text: 'Сб' }), title: 'DK_Bolshoy_Zal', sub: 'Большой зал · сводная и концерт · пароль у звукорежиссёра' }),

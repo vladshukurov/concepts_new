@@ -9,7 +9,7 @@ export default (ui) => ui.screen({
     ui.scroll(ui.section({ className: 'sp-ios-thread', children: [
       '<p class="sp-ios-day">iMessage<br>Вт, 6 октября, 21:08</p>',
       '<p class="sp-ios-bubble is-out">Оля, я по поводу хора. Когда можно прийти?</p>',
-      '<p class="sp-ios-bubble is-in">Приходи! Спевки по вторникам и четвергам в 19:00, вступай по ссылке — там расписание и ноты</p>',
+      '<p class="sp-ios-bubble is-in">Приходи! Спевки по вторникам и четвергам в 19:30, вступай по ссылке — там расписание и ноты</p>',
       `<button class="sp-ios-link" data-activate="associateddomains|join" aria-label="Открыть ссылку ${choir.link}"><span class="sp-ios-link-ico">${ui.icon('audio-lines')}</span><span><strong>${choir.name} — В унисон</strong><span>${choir.link}</span></span></button>`,
       '<p class="sp-ios-bubble is-out">Открываю, спасибо</p>',
       '<p class="sp-ios-meta">Доставлено</p>',

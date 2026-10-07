@@ -4,7 +4,7 @@ export const TABS = [
   { id: 'contacts', label: 'Контакты', icon: 'circle-user' },
   { id: 'calls', label: 'Звонки', icon: 'phone' },
   { id: 'chats', label: 'Чаты', icon: 'message-circle' },
-  { id: 'office', label: 'Офис', icon: 'building-2' },
+  { id: 'office', label: 'Летучка', icon: 'list-checks' },
   { id: 'settings', label: 'Настройки', icon: 'settings' },
 ];
 

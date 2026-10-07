@@ -13,7 +13,7 @@ export default (ui) => ui.screen({
       ] }),
       ui.section({ shownAfter: 'hotspot', children: ui.list([
         ui.row({ lead: ui.leadIcon('wifi', { round: true, accent: true }), title: `Подключено к ${studio.guestSsid}`, sub: 'Сигнал отличный · сеть действует до 23:59' }),
-        ui.row({ lead: ui.leadIcon('building-2', { round: true, accent: true }), title: 'Офис', sub: 'Отметиться и посмотреть, кто сегодня здесь', go: 'office' }),
+        ui.row({ lead: ui.leadIcon('building-2', { round: true, accent: true }), title: 'Летучка', sub: 'Отметить в апдейте, что вы в офисе', go: 'office' }),
       ]) }),
       ui.section({ children: ui.group({ cells: [
         ui.cell({ icon: 'key', title: 'Пароль', value: studio.guestPass, toast: 'Пароль скопирован' }),
