@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×47, `section` ×38, `leadIcon` ×28, `list` ×19, `button` ×18, `cell` ×17, `iconButton` ×15, `denied` ×14, `nav` ×13, `actions` ×10, `group` ×8, `avatar` ×8, `entry` ×8, `tabBar` ×5, `dialog` ×4, `bubble` ×3, `largeTitle` ×3, `textButton` ×3, `progress` ×2, `times` ×2, `search` ×2, `top` ×2, `callView` ×1, `chatNav` ×1, `chat` ×1, `day` ×1, `voice` ×1, `composer` ×1, `composerPrompt` ×1, `wordmark` ×1, `chips` ×1, `stats` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×48, `section` ×37, `leadIcon` ×25, `list` ×22, `bubble` ×16, `cell` ×15, `nav` ×13, `button` ×13, `iconButton` ×12, `avatar` ×10, `actions` ×8, `group` ×7, `denied` ×7, `entry` ×7, `chatNav` ×4, `chat` ×4, `day` ×4, `composer` ×4, `dialog` ×4, `tabBar` ×4, `textButton` ×3, `progress` ×2, `times` ×2, `voice` ×2, `largeTitle` ×2, `search` ×2, `foot` ×2, `top` ×2, `callView` ×1, `safariFill` ×1, `wordmark` ×1, `chips` ×1, `stats` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -43,15 +43,19 @@
 | Отмеченные вещи под образом | `.lk-tags` |
 | Своп: карточка события | `.lk-swap` |
 | Профиль автора | `.lk-me` `.lk-me-ava` `.lk-grid` |
-| Время строки субтитров и плеер разбора | `.lk-ts` `.lk-player` `.lk-player-cover` `.lk-player-copy` `.lk-controls` `.lk-w-44` |
+| Время строки субтитров и плеер разбора | `.lk-ts` `.lk-player` `.lk-player-copy` `.lk-controls` `.lk-w-44` |
 | Клип-примерка: вертикальное видео | `.lk-clip` `.lk-clip-frame` `.lk-clip-shade` `.lk-clip-body` `.lk-clip-side` `.lk-author` |
 | Камера и выбор фото | `.lk-cam` `.lk-viewfinder` `.lk-shutter` `.lk-grid` |
 | Мессенджер | `.lk-chat-photo` `.lk-call` |
 | Системные поверхности: локскрин, «Домой», Safari | `.lk-lock` `.lk-lock-time` `.lk-stack` `.lk-glass` `.lk-glass-top` `.lk-glass-controls` |
+| План на завтра: три действия переносятся, напоминание — плод разрешения на уведомления | `.lk-plan` `.lk-remind` |
+| Заметка к образу — настоящее поле | `.lk-note` |
+| Субтитры вручную после отказа в распознавании | `.lk-sub-line` |
+| Камера: примерка слева от затвора | `.lk-cam-bar` `.lk-cam` `.lk-idle-foot` `.ui-bubble-media` |
 <!-- @end -->
 
 ## Актуальная навигация
 
 <!-- @generated:navigation -->
-Лукбук · Рядом · Мессенджер · Свопы · Профиль
+Лукбук · Мессенджер · Свопы · Профиль
 <!-- @end -->

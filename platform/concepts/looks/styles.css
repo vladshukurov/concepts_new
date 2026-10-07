@@ -34,7 +34,6 @@
 .lk-ts { width:48px; flex:none; font:500 14px/18px var(--ui-face); color:var(--ui-link); font-variant-numeric:tabular-nums; }
 .lk-ts.is-gap { color:#c42b2b; }
 .lk-player { padding:0 16px; }
-.lk-player-cover { height:200px; border-radius:14px; }
 .lk-player-copy { display:flex; flex-direction:column; gap:4px; padding:16px 0 8px; }
 .lk-player-copy h1 { font:600 20px/26px var(--ui-face); }
 .lk-controls { display:flex; align-items:center; justify-content:space-between; margin-top:12px; }
@@ -87,33 +86,40 @@
 .lk-glass-controls .ui-icon-btn { color:#fff; }
 .lk-glass-controls .ui-icon-btn svg { width:28px; height:28px; }
 .lk-notif { display:flex; gap:10px; }
-.lk-notif > span:first-child { width:36px; height:36px; flex:none; display:grid; place-items:center; border-radius:9px; background:var(--ui-accent); color:#fff; }
-.lk-notif > span:first-child svg { width:20px; height:20px; }
+.lk-notif { width:calc(100% - 24px); text-align:left; color:#fff; }
+.lk-notif-face { position:relative; width:38px; height:38px; flex:none; border-radius:50%; }
+.lk-notif-face > i { position:absolute; right:-3px; bottom:-3px; width:18px; height:18px; display:grid; place-items:center; border-radius:5px; background:var(--ui-accent); color:#fff; }
+.lk-notif-face svg { width:12px; height:12px; }
+.lk-np-ico { width:44px; height:44px; flex:none; display:grid; place-items:center; border-radius:10px; background:rgba(255,255,255,.2); }
+.lk-np-ico svg { width:24px; height:24px; }
+.lk-glass-top { width:100%; text-align:left; color:#fff; }
 .lk-notif-body { flex:1; min-width:0; font:400 14px/18px var(--ui-face); }
 .lk-notif-body strong { display:flex; justify-content:space-between; font:600 13px/16px var(--ui-face); color:rgba(255,255,255,.72); }
-.lk-home { overflow:hidden; background:linear-gradient(180deg, #4a3f5c, #17141c)!important; color:#fff; }
-.lk-widget { display:block; width:calc(100% - 40px); margin:calc(var(--safe-top) + 16px) 20px 0; padding:14px; border-radius:22px; background:rgba(255,255,255,.92); color:#000; text-align:left; }
-.lk-widget small { display:flex; align-items:center; gap:6px; font:600 12px/14px var(--ui-face); color:var(--ui-accent); }
-.lk-widget small svg { width:14px; height:14px; }
-.lk-widget strong { display:block; margin-top:8px; font:600 17px/22px var(--ui-face); }
-.lk-widget span { display:block; font:400 13px/16px var(--ui-face); color:#5f6b78; }
-.lk-apps { display:grid; grid-template-columns:repeat(4,1fr); gap:20px 12px; padding:20px; }
-.lk-app { display:flex; flex-direction:column; align-items:center; gap:4px; font:400 12px/14px var(--ui-face); color:#fff; }
-.lk-app > i { width:60px; height:60px; border-radius:14px; background:rgba(255,255,255,.22); }
-.lk-app.is-ours > i { display:grid; place-items:center; background:var(--ui-accent); }
-.lk-app.is-ours svg { width:30px; height:30px; color:#fff; }
-.lk-web { background:#f2f2f7!important; color:#000; }
-.lk-web-bar { display:flex; align-items:center; justify-content:center; gap:6px; margin:calc(var(--safe-top) + 4px) 16px 0; min-height:36px; border-radius:10px; background:rgba(118,118,128,.12); font:400 15px/20px var(--ui-face); color:#3c3c43; }
-.lk-web-bar svg { width:14px; height:14px; }
-.lk-web-page { margin:16px; padding:20px 16px; border-radius:14px; background:#fff; }
-.lk-web-page h1 { font:700 22px/26px var(--ui-face); }
-.lk-web-page p { margin:4px 0 16px; font:400 14px/18px var(--ui-face); color:#5f6b78; }
-.lk-web-field { display:flex; flex-direction:column; gap:2px; margin-bottom:8px; padding:8px 12px; border-radius:10px; background:#f2f3f5; font:400 16px/20px var(--ui-face); }
-.lk-web-field > span { font:400 12px/14px var(--ui-face); color:#5f6b78; }
-.lk-web-field.is-focus { box-shadow:inset 0 0 0 2px var(--ui-accent); }
-.lk-quicktype { position:absolute; left:0; right:0; bottom:0; padding:8px 8px calc(var(--safe-bottom) + 8px); background:#d1d4d9; }
-.lk-quicktype > button { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; min-height:44px; border-radius:8px; background:#fff; font:500 15px/20px var(--ui-face); color:#000; }
-.lk-quicktype > button svg { width:18px; height:18px; color:var(--ui-accent); }
 .lk-author strong { white-space:nowrap; }
 .lk-clip .ui-btn.is-secondary { background:rgba(255,255,255,.2); color:#fff; }
 
+
+/* План на завтра: три действия переносятся, напоминание — плод разрешения на уведомления */
+.lk-plan .ui-entry-actions { flex-wrap:wrap; }
+.lk-remind { display:flex; align-items:center; gap:6px; margin-top:8px; font:500 14px/18px var(--ui-face); color:var(--ui-link); }
+.lk-remind svg { width:16px; height:16px; }
+
+/* Заметка к образу — настоящее поле */
+.lk-note { display:flex; align-items:center; gap:12px; padding:0 16px; min-height:48px; }
+.lk-note .ui-post-ava { width:36px; height:36px; flex:none; border-radius:50%; }
+.lk-note input { flex:1; min-width:0; min-height:44px; border:0; background:none; font:400 16px/20px var(--ui-face); color:var(--ui-text); outline:none; }
+.lk-note input::placeholder { color:var(--ui-text-2); }
+
+/* Субтитры вручную после отказа в распознавании */
+.lk-sub-line { display:flex; align-items:center; gap:12px; padding:0 16px; min-height:48px; box-shadow:inset 0 -1px 0 var(--ui-line); }
+.lk-sub-line input { flex:1; min-width:0; min-height:44px; border:0; background:none; font:400 16px/20px var(--ui-face); color:var(--ui-text); outline:none; }
+.lk-sub-line input::placeholder { color:var(--ui-text-2); }
+
+/* Камера: примерка слева от затвора */
+.lk-cam-bar { position:absolute; left:0; right:0; bottom:calc(var(--safe-bottom) + 24px); display:grid; grid-template-columns:1fr 76px 1fr; align-items:center; gap:12px; padding:0 12px; }
+.lk-cam-bar .ui-btn, .ui .lk-cam-bar .ui-btn.is-secondary { justify-self:start; background:rgba(0,0,0,.6); color:#fff; }
+.lk-cam-bar .ui-btn * { color:#fff; }
+.lk-cam-bar .lk-shutter { position:relative; left:auto; bottom:auto; margin:0; }
+.lk-cam .ui-denied { position:absolute; left:16px; right:16px; top:calc(var(--safe-top) + 120px); z-index:2; border-radius:14px; background:var(--ui-card); color:var(--ui-text); }
+.lk-idle-foot { padding:8px 16px 0; }
+.ui-bubble-media > .lk-chat-photo.ph { display:flex!important; }

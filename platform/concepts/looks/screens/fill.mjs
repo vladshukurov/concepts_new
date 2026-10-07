@@ -1,10 +1,13 @@
 import { THEME } from './_shared.mjs';
+import { site } from '../model.mjs';
 
+/* Анкета участника на сайте организаторов свопа: аккаунт завела «Вешалка» при записи на своп,
+   в Safari вход подставляется из неё */
 export default (ui) => ui.screen({
-  id: 'fill', theme: THEME, className: 'lk-web',
-  body: [
-    `<div class="lk-web-bar">${ui.icon('lock')}looks.social</div>`,
-    `<div class="lk-web-page"><h1>Вход в кабинет</h1><p>Заказы, размеры и лист ожидания</p><div class="lk-web-field is-focus"><span>Электронная почта</span>marina@inbox.ru</div><div class="lk-web-field"><span>Пароль</span>••••••••</div>${ui.button({ label: 'Войти', block: true, toast: 'Вход выполнен' })}${ui.button({ label: 'Вернуться в приложение', variant: 'tertiary', block: true, back: true, primary: true })}</div>`,
-    `<div class="lk-quicktype"><button data-toast="Подставлено из «Вешалки»">${ui.icon('key')}Вешалка · marina@inbox.ru</button></div>`,
-  ],
+  id: 'fill', theme: THEME, className: 'ui-sf',
+  body: ui.safariFill({
+    site: site.domain, title: 'Анкета вещей', sub: 'Своп в Новой Голландии · 23 мая',
+    fields: [['Электронная почта', site.login, true], ['Пароль', '••••••••••']],
+    suggestion: { app: 'Вешалка', login: site.login },
+  }),
 });

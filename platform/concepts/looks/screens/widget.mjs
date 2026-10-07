@@ -1,10 +1,11 @@
 import { THEME } from './_shared.mjs';
+import { own } from '../model.mjs';
 
-const apps = ['Телефон', 'Почта', 'Карты', 'Камера', 'Заметки', 'Погода', 'Настройки'];
+/* Виджет читает план из общей группы (appgroups); тап открывает план в лукбуке без входа (keychain) */
 export default (ui) => ui.screen({
-  id: 'widget', theme: THEME, className: 'lk-home',
-  body: [
-    `<button class="lk-widget" data-activate="keychain|profile" aria-label="Открыть «Вешалку»"><small>${ui.icon('bookmark')}Вешалка · план на завтра</small><strong>Тренч и серый свитер</strong><span>Завтра +9°, дождь после обеда · ботинки на тракторе</span></button>`,
-    `<div class="lk-apps"><button class="lk-app is-ours" data-activate="keychain|profile" data-primary><i>${ui.icon('shirt')}</i>Вешалка</button>${apps.map((a) => `<span class="lk-app"><i></i>${a}</span>`).join('')}</div>`,
-  ],
+  id: 'widget', theme: THEME, className: 'ui-hs',
+  body: ui.homeScreen({
+    widget: { icon: 'shirt', kicker: 'Вешалка · план на завтра', title: 'Тренч и кремовая водолазка', sub: `Завтра ${own.plan.weather} · ботинки на тракторе`, activate: 'keychain|home', primary: true },
+    app: { name: 'Вешалка', icon: 'shirt', go: 'home' },
+  }),
 });
