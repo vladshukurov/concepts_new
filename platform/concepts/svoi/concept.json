@@ -1,0 +1,2429 @@
+{
+  "slug": "svoi",
+  "name": "Все дома",
+  "eyebrow": "Все дома · Мессенджер семьи · iOS",
+  "targetSet": "messenger",
+  "domain": "svoi.app",
+  "heroTitle": "Все дома — мессенджер семьи, в котором видно, кто где",
+  "heroDeck": "Чаты, голосовые и звонки как в привычном мессенджере, а поверх — вкладка «Дом»: кто дома по домашней сети, расписание кружков в Календаре, документы семьи под Face ID и общий список покупок.",
+  "tagline": "Чат семьи и вкладка «Дом»: кто дома, у кого кружок и кого забирать",
+  "insight": "семья живёт в общем чате, но «кто дома», «во сколько забирать Милу» и «где полис» в нём тонут — их переспрашивают каждый день",
+  "deck": "Мессенджер уровня Telegram и WhatsApp для семьи с детьми: 24 доступа набора «Мессенджер», каждый — за фичей переписки или вкладки «Дом», своего сервера нет — вход, база, пуши и звонки на SDK провайдеров.",
+  "qualityContractVersion": 4,
+  "product": {
+    "audience": "Семьи с детьми школьного возраста: родители, бабушки и дедушки, няня",
+    "situation": "Дети ходят в школу и на кружки, родители на работе, няня и бабушки помогают — всё согласуют в одном семейном чате",
+    "problem": "Кто уже дома, во сколько забирать с кружка, где полис ребёнка и что купить — переспрашивают звонками, а пароль от Wi‑Fi няне диктуют вслух",
+    "promise": "Во вкладке «Дом» видно, кто дома по домашней сети, у кого какое занятие и когда забирать; документы и покупки семьи — рядом с перепиской",
+    "differentiator": "Статус «дома» ставится по домашней сети, расписание кружков правит события Календаря при переносе, Wi‑Fi дома — карточкой в чате для няни и гостей",
+    "returnReasons": [
+      "Каждый день после школы — кто уже дома и кого забирать с кружка",
+      "Переписка семьи, голосовые бабушек и звонки — обычный мессенджер",
+      "Раз в неделю — видео недели из фото детей, собранное ночью",
+      "Поликлиника и школа — документы семьи под Face ID"
+    ],
+    "verticalSlice": {
+      "entry": "home",
+      "action": "mila",
+      "result": "family"
+    },
+    "coreLoop": [
+      "Семья пишет в общий чат и делится фото детей",
+      "Пришедший домой отмечается «Я дома» по домашней сети",
+      "Родитель видит во вкладке «Дом», кого и во сколько забирать, и ставит напоминание"
+    ],
+    "nonGoals": [
+      "Каналы, сообщества и лента — только чаты с конкретными людьми",
+      "Слежка за детьми в фоне — статус ставится по домашней сети и кнопкой, геопозиция только по отправке",
+      "Роли администратора — чат семьи создаёт человек, он же его участник"
+    ],
+    "content": {
+      "kind": "messages",
+      "what": "Переписка семьи и личные чаты: сообщения, фото, голосовые, геопозиции, карточка домашней сети; расписание детей, документы, список покупок и видео недели из своих же фото",
+      "library": false,
+      "feed": false,
+      "sharing": true
+    },
+    "world": {
+      "note": "Модель мира: из чего состоит продукт и что с этим можно делать. Действия связаны с доступами — доступ без действия не заявляется.",
+      "entities": [
+        {
+          "id": "person",
+          "name": "Человек",
+          "identity": "номер телефона",
+          "fields": [
+            "name",
+            "phone",
+            "initials",
+            "role"
+          ],
+          "relations": [
+            {
+              "kind": "has-many",
+              "to": "chat"
+            }
+          ]
+        },
+        {
+          "id": "family",
+          "name": "Семья",
+          "identity": "групповой чат семьи",
+          "fields": [
+            "name",
+            "members",
+            "ssid",
+            "inviteLink"
+          ],
+          "relations": [
+            {
+              "kind": "has-one",
+              "to": "chat"
+            },
+            {
+              "kind": "has-many",
+              "to": "class"
+            },
+            {
+              "kind": "has-many",
+              "to": "document"
+            },
+            {
+              "kind": "has-many",
+              "to": "item"
+            }
+          ]
+        },
+        {
+          "id": "chat",
+          "name": "Чат",
+          "identity": "личный или групповой",
+          "fields": [
+            "members",
+            "pinned",
+            "folder",
+            "unread"
+          ],
+          "relations": [
+            {
+              "kind": "has-many",
+              "to": "message"
+            }
+          ]
+        },
+        {
+          "id": "message",
+          "name": "Сообщение",
+          "identity": "отправитель плюс время",
+          "fields": [
+            "kind",
+            "text",
+            "media",
+            "readBy"
+          ],
+          "relations": [
+            {
+              "kind": "belongs-to",
+              "to": "chat"
+            },
+            {
+              "kind": "authored-by",
+              "to": "person"
+            }
+          ]
+        },
+        {
+          "id": "presence",
+          "name": "Статус «дома»",
+          "identity": "человек плюс время",
+          "fields": [
+            "person",
+            "home",
+            "since",
+            "network"
+          ],
+          "relations": [
+            {
+              "kind": "belongs-to",
+              "to": "family"
+            }
+          ],
+          "note": "ставится по домашней сети или вручную"
+        },
+        {
+          "id": "class",
+          "name": "Занятие",
+          "identity": "ребёнок, кружок и время",
+          "fields": [
+            "child",
+            "title",
+            "days",
+            "time",
+            "place",
+            "pickup",
+            "calendarEventId"
+          ],
+          "relations": [
+            {
+              "kind": "belongs-to",
+              "to": "family"
+            }
+          ]
+        },
+        {
+          "id": "document",
+          "name": "Документ",
+          "identity": "файл семьи",
+          "fields": [
+            "title",
+            "owner",
+            "size"
+          ],
+          "relations": [
+            {
+              "kind": "belongs-to",
+              "to": "family"
+            }
+          ]
+        },
+        {
+          "id": "item",
+          "name": "Покупка",
+          "identity": "строка списка",
+          "fields": [
+            "title",
+            "addedBy",
+            "bought"
+          ],
+          "relations": [
+            {
+              "kind": "belongs-to",
+              "to": "family"
+            }
+          ]
+        },
+        {
+          "id": "call",
+          "name": "Звонок",
+          "identity": "участники плюс время",
+          "fields": [
+            "kind",
+            "direction",
+            "duration"
+          ],
+          "relations": [
+            {
+              "kind": "belongs-to",
+              "to": "chat"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "id": "im-home",
+          "name": "Отметиться «Я дома»",
+          "actor": "person",
+          "entity": "presence",
+          "effect": "presence.network = 'Garipovy_Home'",
+          "screen": "home",
+          "result": "Строка «Алина дома · Garipovy_Home · с 16:05»",
+          "capabilities": [
+            "wifiinfo"
+          ]
+        },
+        {
+          "id": "join-home-wifi",
+          "name": "Подключиться к Wi‑Fi дома",
+          "actor": "person",
+          "entity": "family",
+          "effect": "телефон в домашней сети",
+          "screen": "wifi",
+          "result": "«Подключено к Garipovy_Home»",
+          "capabilities": [
+            "hotspot"
+          ]
+        },
+        {
+          "id": "call-mom",
+          "name": "Позвонить маме",
+          "actor": "person",
+          "entity": "call",
+          "effect": "звонок через CallKit",
+          "screen": "mama",
+          "result": "Экран звонка «Мама»",
+          "capabilities": [
+            "voip",
+            "mic"
+          ]
+        },
+        {
+          "id": "clubs-to-calendar",
+          "name": "Кружки в Календарь",
+          "actor": "person",
+          "entity": "class",
+          "effect": "class.calendarEventId заполнен, перенос правит событие",
+          "screen": "home",
+          "result": "«В Календаре · 9 занятий в неделю», шахматы поправлены",
+          "capabilities": [
+            "calendar"
+          ]
+        },
+        {
+          "id": "meeting-to-calendar",
+          "name": "Собрание из сообщения в Календарь",
+          "actor": "person",
+          "entity": "message",
+          "effect": "одно событие в Календаре",
+          "screen": "school",
+          "result": "Строка «В Календаре» под сообщением",
+          "capabilities": [
+            "calendarwrite"
+          ]
+        },
+        {
+          "id": "pickup-reminder",
+          "name": "Напомнить забрать ребёнка",
+          "actor": "person",
+          "entity": "class",
+          "effect": "локальное уведомление за 30 минут",
+          "screen": "mila",
+          "result": "«Напомним в 17:00 — забрать Милу в 17:30»",
+          "capabilities": [
+            "push"
+          ]
+        },
+        {
+          "id": "add-class",
+          "name": "Добавить занятие",
+          "actor": "person",
+          "entity": "class",
+          "effect": "новое занятие в расписании",
+          "screen": "newclass",
+          "result": "Занятие во вкладке «Дом»",
+          "capabilities": []
+        },
+        {
+          "id": "week-video",
+          "name": "Собрать видео недели ночью",
+          "actor": "person",
+          "entity": "message",
+          "effect": "видео соберётся ночью",
+          "screen": "album",
+          "result": "«Видео недели — к утру»",
+          "capabilities": [
+            "processing",
+            "bgtask"
+          ]
+        },
+        {
+          "id": "send-media",
+          "name": "Отправить фото и голосовое",
+          "actor": "person",
+          "entity": "message",
+          "effect": "сообщение с вложением в чате",
+          "screen": "family",
+          "result": "Фото и голосовое в чате семьи",
+          "capabilities": [
+            "photos",
+            "camera",
+            "mic"
+          ]
+        },
+        {
+          "id": "send-location",
+          "name": "Отправить «Где я»",
+          "actor": "person",
+          "entity": "message",
+          "effect": "сообщение с точкой",
+          "screen": "geo",
+          "result": "Геопозиция в чате семьи",
+          "capabilities": [
+            "location"
+          ]
+        },
+        {
+          "id": "open-invite",
+          "name": "Открыть ссылку-приглашение",
+          "actor": "person",
+          "entity": "family",
+          "effect": "превью чата семьи до вступления",
+          "screen": "join",
+          "result": "«Приглашение» с кнопкой «Вступить в чат семьи»",
+          "capabilities": [
+            "associateddomains"
+          ]
+        },
+        {
+          "id": "share-photo",
+          "name": "Фото из «Фото» в чат семьи",
+          "actor": "person",
+          "entity": "message",
+          "effect": "фото в чате семьи",
+          "screen": "share",
+          "result": "Фото в чате «Гариповы»",
+          "capabilities": [
+            "shareext",
+            "appgroups"
+          ]
+        },
+        {
+          "id": "find-family",
+          "name": "Найти родных",
+          "actor": "person",
+          "entity": "person",
+          "effect": "совпадения по номерам",
+          "screen": "contacts",
+          "result": "«Уже здесь · 14»",
+          "capabilities": [
+            "contacts"
+          ]
+        },
+        {
+          "id": "open-docs",
+          "name": "Открыть документы семьи",
+          "actor": "person",
+          "entity": "document",
+          "effect": "документы открыты",
+          "screen": "docs",
+          "result": "Паспорта, полисы и свидетельства",
+          "capabilities": [
+            "faceid"
+          ]
+        },
+        {
+          "id": "personal-ads",
+          "name": "Подбор рекламы",
+          "actor": "person",
+          "entity": "person",
+          "effect": "IDFA в рекламный SDK",
+          "screen": "ads",
+          "result": "Реклама по интересам в списке чатов",
+          "capabilities": [
+            "tracking"
+          ]
+        },
+        {
+          "id": "listen",
+          "name": "Слушать голосовые подряд",
+          "actor": "person",
+          "entity": "message",
+          "effect": "голосовые играют в фоне",
+          "screen": "lockscreen",
+          "result": "Now Playing на экране блокировки",
+          "capabilities": [
+            "audio"
+          ]
+        },
+        {
+          "id": "notify",
+          "name": "Получить уведомление",
+          "actor": "person",
+          "entity": "message",
+          "effect": "пуш с отправителем, текстом и превью",
+          "screen": "lockscreen",
+          "result": "Отправитель, расшифрованный текст и превью фото на экране блокировки",
+          "capabilities": [
+            "commnotif",
+            "notifext",
+            "keychain",
+            "remotenotif",
+            "fetch"
+          ]
+        }
+      ]
+    }
+  },
+  "positioning": {
+    "mode": "mimicry",
+    "categoryFit": "Список чатов, переписка с голосовыми, звонки и контакты из адресной книги — это мессенджер категории Social Networking; вкладка «Дом» — своя ценность поверх переписки",
+    "familiarPatterns": [
+      "Список чатов с папками-фильтрами, непрочитанными и поиском",
+      "Чат с пузырями, голосовыми, вложениями и звонком из шапки",
+      "Звонки, контакты из адресной книги, избранное и ссылки-приглашения"
+    ],
+    "distinctions": [
+      "Вкладка «Дом»: кто дома по домашней сети и расписание детей на сегодня",
+      "Кружки в Календаре, перенос занятия правит уже добавленное событие",
+      "Wi‑Fi дома карточкой в чате и документы семьи под Face ID"
+    ],
+    "evidenceScreens": [
+      "chats",
+      "family",
+      "home",
+      "mila",
+      "docs"
+    ],
+    "referencePatterns": [
+      "chat-list",
+      "chat",
+      "voice-message",
+      "calls",
+      "attachments",
+      "saved-messages",
+      "folders",
+      "contacts-sync"
+    ],
+    "referenceEvidence": [
+      {
+        "pattern": "chat-list",
+        "screen": "chats",
+        "behavior": "Чаты по времени последнего сообщения: Тимур и семья сверху, непрочитанные счётчиком, поиск"
+      },
+      {
+        "pattern": "folders",
+        "screen": "chats",
+        "behavior": "Чипсы «Семья», «Школа и кружки», «Непрочитанные» оставляют в списке только чаты своей папки"
+      },
+      {
+        "pattern": "chat",
+        "screen": "family",
+        "behavior": "Пузыри семьи с именами отправителей, свои — справа с галочками, поле ввода со скрепкой и микрофоном"
+      },
+      {
+        "pattern": "voice-message",
+        "screen": "mama",
+        "behavior": "Четыре голосовых мамы с волной и длительностью, «Слушать подряд» в закрепе"
+      },
+      {
+        "pattern": "calls",
+        "screen": "calls",
+        "behavior": "История звонков: исходящие, входящие, групповые и пропущенные, фильтр «Пропущенные»"
+      },
+      {
+        "pattern": "attachments",
+        "screen": "attach",
+        "behavior": "Недавние кадры с выбором, камера первой плиткой, внизу файл, геопозиция и контакт"
+      },
+      {
+        "pattern": "saved-messages",
+        "screen": "saved",
+        "behavior": "Избранное — чат с собой: справка в бассейн, размеры детей, полис"
+      },
+      {
+        "pattern": "contacts-sync",
+        "screen": "contacts",
+        "behavior": "Кто из адресной книги уже здесь и кого позвать ссылкой"
+      }
+    ]
+  },
+  "readiness": {
+    "status": "draft",
+    "referenceResearch": [
+      {
+        "source": "Telegram для iOS, раздел «Чаты» и групповой чат",
+        "observation": "Папки чатов чипсами, закреплённое сообщение полосой под шапкой группы, касание имени открывает сведения",
+        "decision": "Ближайшее дело семьи — «Забрать Милу в 17:30» — закреп под шапкой чата, ведущий к занятию"
+      },
+      {
+        "source": "WhatsApp для iOS, вложения и звонки",
+        "observation": "Скрепка открывает камеру, галерею, геопозицию и контакт; звонок — из шапки чата через CallKit",
+        "decision": "Вложения повторяют набор WhatsApp, звонок маме — из шапки личного чата"
+      },
+      {
+        "source": "Apple Human Interface Guidelines, Communication notifications",
+        "observation": "Уведомления о сообщениях показывают отправителя и аватар через INSendMessageIntent, превью добавляет Notification Service Extension",
+        "decision": "Экран блокировки показывает уведомления с инициалами, расшифрованным текстом и превью фото"
+      }
+    ],
+    "productCritique": [
+      {
+        "objection": "Кто дома и расписание — это закреп и заметка в Telegram",
+        "resolution": "Статус «дома» ставится по домашней сети и виден с временем, а кружки правят события Календаря при переносе — закреп этого не умеет",
+        "evidenceScreens": [
+          "home",
+          "mila",
+          "family"
+        ]
+      },
+      {
+        "objection": "Семейный мессенджер — это слежка за детьми",
+        "resolution": "Фонового отслеживания нет: статус — по домашней сети и кнопке «Я дома», геопозиция уходит только по отправке «Где я»",
+        "evidenceScreens": [
+          "home",
+          "geo"
+        ]
+      },
+      {
+        "objection": "Wi‑Fi в чате выглядит придуманным под доступ",
+        "resolution": "Няне и гостям пароль диктуют вслух каждый раз; карточка сети от Тимура подключает их касанием",
+        "evidenceScreens": [
+          "wifi",
+          "family"
+        ]
+      },
+      {
+        "objection": "Реклама в семейном чате раздражает",
+        "resolution": "Реклама — одна карточка в конце списка чатов, подбор включается только с экрана «Реклама»",
+        "evidenceScreens": [
+          "chats",
+          "ads"
+        ]
+      }
+    ]
+  },
+  "brand": {
+    "accent": "#0077FF",
+    "accentDark": "#0077FF",
+    "theme": "vk-light",
+    "authIcon": "house",
+    "fonts": "Inter:wght@400;500;600;700"
+  },
+  "start": "phone",
+  "tabs": [
+    {
+      "id": "contacts",
+      "label": "Контакты",
+      "role": "contacts"
+    },
+    {
+      "id": "calls",
+      "label": "Звонки",
+      "role": "calls"
+    },
+    {
+      "id": "chats",
+      "label": "Чаты",
+      "role": "chats"
+    },
+    {
+      "id": "home",
+      "label": "Дом",
+      "role": "home"
+    },
+    {
+      "id": "settings",
+      "label": "Настройки",
+      "role": "settings"
+    }
+  ],
+  "permissions": [
+    {
+      "key": "push",
+      "plist": "aps-environment",
+      "risk": "low",
+      "anchor": false,
+      "conditional": true,
+      "alert": {
+        "title": "«Все дома» запрашивает разрешение на уведомления",
+        "text": "Напомним забрать ребёнка с кружка за 30 минут — с адресом, и сообщим о новых сообщениях семьи"
+      },
+      "feature": "Напоминание забрать Милу с рисования за 30 минут и уведомления о сообщениях семьи",
+      "gesture": "«Напомнить забрать Милу в 17:30»",
+      "screen": "mila",
+      "target": "mila",
+      "fallback": "Время и адрес занятия видны во вкладке «Дом» и в закрепе чата семьи",
+      "grounding": "Локальное уведомление UNCalendarNotificationTrigger у события расписания; сообщения — APNs через Firebase Cloud Messaging",
+      "rationale": {
+        "who": "Мама или папа на экране занятия ребёнка",
+        "moment": "Нажимает «Напомнить забрать Милу в 17:30», пока помнит про кружок",
+        "need": "Кружок заканчивается, когда родитель занят работой, а приложение закрыто — без уведомления о времени забрать никто не напомнит",
+        "without": "Время и адрес видны во вкладке «Дом» и в закрепе чата"
+      },
+      "snack": "Уведомления отключены — включить можно в Настройках",
+      "snackOnce": true,
+      "requires": "регистрация в APNs через FCM SDK; напоминание — локальное, без сервера",
+      "reviewNote": "Вкладка «Дом» → «Рисование · Мила» → «Напомнить забрать Милу в 17:30». После разрешения строка меняется на «Напомним в 17:00 — забрать Милу в 17:30»"
+    },
+    {
+      "key": "associateddomains",
+      "plist": "com.apple.developer.associated-domains",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "activate": true,
+      "alert": {
+        "title": "Ссылки svoi.app",
+        "text": "Entitlement без системного запроса: ссылка-приглашение svoi.app/f/… открывает чат семьи прямо в приложении"
+      },
+      "feature": "Ссылка-приглашение бабушке в чат семьи по SMS открывается прямо в приложении",
+      "gesture": "«Гариповы — Все дома»",
+      "screen": "sms",
+      "target": "join",
+      "fallback": "Без домена ссылка откроется в Safari со страницей установки",
+      "grounding": "Статический apple-app-site-association на svoi.app; код семьи в ссылке разбирается на устройстве",
+      "rationale": {
+        "who": "Бабушка, которой прислали ссылку в «Сообщениях»",
+        "moment": "Касается карточки ссылки svoi.app/f/garipovy",
+        "need": "Universal Link открывает приглашение в чат семьи в приложении; без домена ссылка ведёт в браузер и теряет код семьи",
+        "without": "Ссылка открывается в Safari, код вводится вручную"
+      },
+      "reviewNote": "Экран «Сообщения» у бабушки Галины → карточка ссылки «Гариповы — Все дома» → открывается «Приглашение» с кнопкой «Вступить в чат семьи»"
+    },
+    {
+      "key": "appgroups",
+      "plist": "com.apple.security.application-groups",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "activate": true,
+      "alert": {
+        "title": "Общий контейнер",
+        "text": "Entitlement без системного запроса: виджет «Кто дома», расширение уведомлений и «Поделиться» читают данные приложения"
+      },
+      "feature": "Виджет «Кто дома» на экране «Домой»",
+      "gesture": "«Виджет «Кто дома»»",
+      "screen": "settings",
+      "target": "widget",
+      "fallback": "Без общего контейнера виджет пуст — кто дома видно только во вкладке «Дом»",
+      "grounding": "App Group group.app.svoi: снапшот статусов «дома» пишет приложение, читает WidgetKit",
+      "rationale": {
+        "who": "Родитель, который весь день на работе",
+        "moment": "Добавляет виджет «Кто дома» из настроек",
+        "need": "Виджет — отдельный процесс; статусы «дома» он читает из общего контейнера, иначе показывать нечего",
+        "without": "Статусы видны во вкладке «Дом»"
+      },
+      "reviewNote": "Настройки → «Виджет «Кто дома»» → экран «Домой» с виджетом: «Даня дома с 15:40»"
+    },
+    {
+      "key": "keychain",
+      "plist": "keychain-access-groups",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "activate": true,
+      "alert": {
+        "title": "Общая связка ключей",
+        "text": "Entitlement без системного запроса: ключ расшифровки сообщений общий у приложения и расширения уведомлений"
+      },
+      "feature": "Текст зашифрованного сообщения виден в превью уведомления на экране блокировки",
+      "gesture": "Уведомление от Тимура Гарипова",
+      "screen": "lockscreen",
+      "target": "family",
+      "fallback": "Без общей связки уведомление показывает «Новое сообщение» без текста",
+      "grounding": "Ключ расшифровки в Keychain с группой доступа, общей для приложения и Notification Service Extension",
+      "rationale": {
+        "who": "Мама с телефоном на экране блокировки",
+        "moment": "Приходит сообщение от мужа в чат семьи",
+        "need": "Сообщения шифруются; расширение уведомлений — отдельный процесс и достаёт ключ только из общей связки, иначе вместо текста «Новое сообщение»",
+        "without": "Превью без текста, сообщение читается в приложении"
+      },
+      "reviewNote": "Экран блокировки: уведомление Тимура «Задержусь до 19:30, ужинайте без меня» с текстом, расшифрованным расширением; касание открывает чат «Гариповы»"
+    },
+    {
+      "key": "commnotif",
+      "plist": "com.apple.developer.usernotifications.communication",
+      "risk": "low",
+      "anchor": false,
+      "conditional": true,
+      "activate": true,
+      "alert": {
+        "title": "Уведомления о сообщениях",
+        "text": "Entitlement без системного запроса: сообщение приходит с именем и инициалами отправителя и уважает режимы фокусирования"
+      },
+      "feature": "Уведомление от мамы с её аватаром и именем, как от человека, а не от приложения",
+      "gesture": "Уведомление от мамы",
+      "screen": "lockscreen",
+      "target": "mama",
+      "fallback": "Без entitlement уведомление приходит со значком приложения, без лица отправителя",
+      "grounding": "INSendMessageIntent с отправителем и инициалами, донорство в UNNotificationContent",
+      "rationale": {
+        "who": "Дочь, у которой мама пишет каждый день",
+        "moment": "Мама прислала сообщение, телефон на экране блокировки",
+        "need": "Communication Notifications показывают лицо отправителя и пропускают своих через фокус «Работа»; без entitlement это безликое уведомление приложения",
+        "without": "Обычное уведомление со значком приложения"
+      },
+      "requires": "донорство INSendMessageIntent в расширении уведомлений",
+      "reviewNote": "Экран блокировки → уведомление «Мама» с инициалами РХ → чат с мамой"
+    },
+    {
+      "key": "hotspot",
+      "plist": "com.apple.developer.networking.HotspotConfiguration",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "alert": {
+        "title": "«Все дома» подключит вас к сети Garipovy_Home",
+        "text": "Wi‑Fi дома, которым Тимур поделился в чате семьи"
+      },
+      "feature": "Wi‑Fi дома карточкой в чате семьи: няня или гость подключаются касанием, пароль вслух не диктуют",
+      "gesture": "«Подключиться»",
+      "screen": "wifi",
+      "target": "wifi",
+      "fallback": "Пароль скрыт — его скажет владелец сети, подключиться можно в Настройках iOS",
+      "grounding": "NEHotspotConfigurationManager; имя и пароль сети приходят в карточке зашифрованными",
+      "rationale": {
+        "who": "Няня или гость в чате семьи",
+        "moment": "Приходит в дом, открывает карточку «Wi‑Fi дома» и нажимает «Подключиться»",
+        "need": "Подключить телефон к сети из приложения можно только через HotspotConfiguration; без него пароль диктуют вслух и переписывают",
+        "without": "Сеть выбирается в Настройках, пароль — со слов хозяев"
+      },
+      "snack": "Не удалось настроить подключение",
+      "reviewNote": "Чат «Гариповы» → карточка Garipovy_Home от Тимура → «Подключиться» → строка «Подключено к Garipovy_Home»"
+    },
+    {
+      "key": "faceid",
+      "plist": "NSFaceIDUsageDescription",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "alert": {
+        "title": "«Все дома» запрашивает Face ID",
+        "text": "Чтобы открывать документы семьи: паспорта, полисы и свидетельства о рождении"
+      },
+      "feature": "Документы семьи — паспорта, полисы, свидетельства — открываются по Face ID",
+      "gesture": "«Документы семьи»",
+      "screen": "home",
+      "target": "docs",
+      "fallback": "Документы открываются по коду-паролю телефона",
+      "grounding": "LocalAuthentication, политика deviceOwnerAuthentication",
+      "rationale": {
+        "who": "Родитель в поликлинике или в школе",
+        "moment": "Нужен полис ребёнка, открывает «Документы семьи» во вкладке «Дом»",
+        "need": "Сканы паспортов и свидетельств детей нельзя показывать любому, кто взял телефон; Face ID открывает их одним взглядом",
+        "without": "Вход по коду-паролю телефона"
+      },
+      "reviewNote": "Вкладка «Дом» → «Документы семьи» → Face ID → список из 9 документов"
+    },
+    {
+      "key": "camera",
+      "plist": "NSCameraUsageDescription",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "alert": {
+        "title": "«Все дома» запрашивает доступ к камере",
+        "text": "Чтобы снимать фото в чат семьи и распознавать QR сети с роутера"
+      },
+      "feature": "Снять фото в чат семьи, отсканировать документ или QR сети с роутера",
+      "gesture": "«Камера»",
+      "screen": "attach",
+      "target": "camera",
+      "fallback": "Фото выбираются из медиатеки",
+      "grounding": "AVCaptureSession; QR распознаётся на устройстве через Vision",
+      "rationale": {
+        "who": "Родитель в чате семьи",
+        "moment": "Открывает вложения и выбирает плитку «Камера»",
+        "need": "Без камеры не снять фото в чат и не распознать QR сети",
+        "without": "Отправка фото из медиатеки"
+      },
+      "snack": "Нет доступа к камере",
+      "reviewNote": "Чат «Гариповы» → скрепка → плитка «Камера»"
+    },
+    {
+      "key": "photos",
+      "plist": "NSPhotoLibraryUsageDescription",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "alert": {
+        "title": "«Все дома» запрашивает доступ к фото",
+        "text": "Чтобы показать недавние снимки и отправить их в чат семьи"
+      },
+      "feature": "Фото и видео детей из медиатеки в чат семьи",
+      "gesture": "Скрепка в поле сообщения",
+      "screen": "family",
+      "target": "attach",
+      "fallback": "Фото можно снять камерой прямо в чат",
+      "grounding": "PHPickerViewController и PHPhotoLibrary для недавних кадров",
+      "rationale": {
+        "who": "Родитель в чате семьи",
+        "moment": "Нажимает скрепку, чтобы отправить фото",
+        "need": "Недавние кадры показываются только с доступом к медиатеке",
+        "without": "Снимок камерой или файл"
+      },
+      "snack": "Нет доступа к фото",
+      "reviewNote": "Чат «Гариповы» → скрепка → недавние кадры"
+    },
+    {
+      "key": "mic",
+      "plist": "NSMicrophoneUsageDescription",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "alert": {
+        "title": "«Все дома» запрашивает доступ к микрофону",
+        "text": "Чтобы записывать голосовые в чат и говорить в звонках"
+      },
+      "feature": "Голосовые в чате семьи и звонки",
+      "gesture": "Микрофон в поле сообщения",
+      "screen": "family",
+      "target": "record",
+      "fallback": "Текстовые сообщения",
+      "grounding": "AVAudioRecorder, AAC",
+      "rationale": {
+        "who": "Родитель или бабушка в чате семьи",
+        "moment": "Удерживает микрофон, чтобы записать голосовое",
+        "need": "Голосовое без микрофона не записать",
+        "without": "Текст вместо голоса"
+      },
+      "snack": "Нет доступа к микрофону",
+      "reviewNote": "Чат «Гариповы» → микрофон → запись голосового"
+    },
+    {
+      "key": "location",
+      "plist": "NSLocationWhenInUseUsageDescription",
+      "risk": "medium",
+      "anchor": true,
+      "conditional": true,
+      "alert": {
+        "title": "«Все дома» запрашивает доступ к геопозиции",
+        "text": "Чтобы отправить в чат семьи, где вы, и точку кружка, откуда забирать"
+      },
+      "feature": "«Где я» в чат семьи и точка кружка «Забери меня» на карте",
+      "gesture": "«Геопозиция»",
+      "screen": "attach",
+      "target": "geo",
+      "fallback": "Адрес кружка отправляется текстом из расписания",
+      "grounding": "CoreLocation, точность при использовании; карта — MapKit",
+      "rationale": {
+        "who": "Родитель или ребёнок в чате",
+        "moment": "Открывает вложения и выбирает «Геопозиция»",
+        "need": "Точка «Где я» строится только по текущей геопозиции",
+        "without": "Адрес вписывается текстом"
+      },
+      "snack": "Нет доступа к геопозиции",
+      "requires": "только «при использовании», без фонового отслеживания",
+      "reviewNote": "Чат «Гариповы» → скрепка → «Геопозиция» → карта с точкой «Где я» и студией «Акварель»"
+    },
+    {
+      "key": "audio",
+      "plist": "UIBackgroundModes: audio",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "activate": true,
+      "alert": {
+        "title": "Фоновое аудио",
+        "text": "Entitlement без системного запроса: длинные голосовые играют подряд с погашенным экраном, у звонка — своя аудиосессия"
+      },
+      "feature": "Голосовые мамы подряд с погашенным экраном и на экране блокировки",
+      "gesture": "«Слушать подряд»",
+      "screen": "mama",
+      "target": "lockscreen",
+      "fallback": "Без режима голосовое останавливается, когда гаснет экран",
+      "grounding": "AVAudioSession .playback, MPNowPlayingInfoCenter и MPRemoteCommandCenter: пауза, ±15 секунд",
+      "rationale": {
+        "who": "Дочь, которой мама присылает голосовые по 4 минуты",
+        "moment": "Едет за ребёнком и включает «Слушать подряд»",
+        "need": "Четыре голосовых на 14 минут слушают в дороге; без фонового аудио звук обрывается с погасшим экраном",
+        "without": "Голосовые слушаются при открытом чате"
+      },
+      "reviewNote": "Чат с мамой → «Слушать подряд» → экран блокировки с Now Playing «Голосовое мамы, 3 из 4»"
+    },
+    {
+      "key": "fetch",
+      "plist": "UIBackgroundModes: fetch",
+      "risk": "medium",
+      "anchor": false,
+      "conditional": true,
+      "activate": true,
+      "silent": true,
+      "alert": {
+        "title": "Обновление в фоне",
+        "text": "Entitlement без системного запроса: расписание кружков и школы подтягивается к утру"
+      },
+      "feature": "Расписание детей свежее к утру: перенос кружка уже во вкладке «Дом»",
+      "gesture": "Без жеста — фоновый режим",
+      "screen": "home",
+      "target": "home",
+      "fallback": "Расписание обновляется при открытии",
+      "grounding": "BGAppRefreshTask app.svoi.refresh читает расписание семьи из Firestore",
+      "rationale": {
+        "who": "Родитель, который утром смотрит, у кого что сегодня",
+        "moment": "Без жеста: ночью, пока телефон лежит",
+        "need": "Кружки переносят вечером; утром во вкладке «Дом» уже новое время без спиннера",
+        "without": "Обновление в момент открытия"
+      },
+      "requires": "BGAppRefreshTask, который читает расписание семьи",
+      "evidence": "Во вкладке «Дом» стоит «Расписание обновлено в 06:30»",
+      "trace": "Расписание обновлено в 06:30",
+      "reviewNote": "Без системного запроса и без кнопки: во вкладке «Дом» под расписанием стоит «Расписание обновлено в 06:30»"
+    },
+    {
+      "key": "bgtask",
+      "plist": "BGTaskSchedulerPermittedIdentifiers",
+      "risk": "low",
+      "anchor": false,
+      "conditional": true,
+      "activate": true,
+      "silent": true,
+      "alert": {
+        "title": "Идентификаторы фоновых задач",
+        "text": "Entitlement без системного запроса: app.svoi.refresh и app.svoi.weekly объявлены в Info.plist и зарегистрированы в коде"
+      },
+      "feature": "Фото недели из чата семьи ночью сохраняются в альбом «Гариповы» в «Фото»",
+      "gesture": "Без жеста — фоновый режим",
+      "screen": "album",
+      "target": "album",
+      "fallback": "Без идентификаторов iOS не запустит ни утреннее обновление, ни ночное сохранение",
+      "grounding": "app.svoi.refresh под BGAppRefreshTask и app.svoi.weekly под BGProcessingTask",
+      "rationale": {
+        "who": "Родитель с телефоном на зарядке",
+        "moment": "Без жеста: ночью, когда iOS запускает задачи",
+        "need": "BGTaskScheduler запускает только идентификаторы из Info.plist — без них фото недели не попадут в альбом",
+        "without": "Фото сохраняются вручную"
+      },
+      "requires": "строки app.svoi.refresh и app.svoi.weekly в Info.plist совпадают с BGTaskScheduler.register",
+      "evidence": "В альбоме семьи стоит «Фото недели сохранены в альбом ночью»",
+      "trace": "Фото недели сохранены в альбом ночью",
+      "reviewNote": "Без системного запроса и без кнопки: в альбоме семьи строка «Фото недели сохранены в альбом ночью»"
+    },
+    {
+      "key": "remotenotif",
+      "plist": "UIBackgroundModes: remote-notification",
+      "risk": "low",
+      "anchor": false,
+      "conditional": true,
+      "activate": true,
+      "silent": true,
+      "alert": {
+        "title": "Тихие уведомления",
+        "text": "Entitlement без системного запроса: тихий пуш обновляет статус «дома» до открытия"
+      },
+      "feature": "Статус «дома» ребёнка обновлён до открытия приложения",
+      "gesture": "Без жеста — фоновый режим",
+      "screen": "home",
+      "target": "home",
+      "fallback": "Статус обновится при открытии",
+      "grounding": "content-available пуш из Cloud Messaging, когда телефон ребёнка входит в домашнюю сеть",
+      "rationale": {
+        "who": "Родитель на работе",
+        "moment": "Без жеста: сын пришёл домой в 15:40, приложение у мамы закрыто",
+        "need": "Тихий пуш кладёт новый статус в базу и снапшот виджета — вкладка «Дом» и виджет верны без ожидания",
+        "without": "Статус обновится при открытии"
+      },
+      "requires": "обработчик didReceiveRemoteNotification, который пишет статус в локальную базу",
+      "evidence": "Во вкладке «Дом» стоит «Статус «дома» обновился в 15:40»",
+      "trace": "Статус «дома» обновился в 15:40",
+      "reviewNote": "Без системного запроса и без кнопки: во вкладке «Дом» под «Кто дома» стоит «Статус «дома» обновился в 15:40»"
+    },
+    {
+      "key": "processing",
+      "plist": "UIBackgroundModes: processing",
+      "risk": "medium",
+      "anchor": true,
+      "conditional": false,
+      "activate": true,
+      "alert": {
+        "title": "Долгие задачи на зарядке",
+        "text": "Entitlement без системного запроса: видео недели собирается ночью, когда телефон на зарядке"
+      },
+      "feature": "Видео недели из фото и видео семьи собирается ночью на зарядке",
+      "gesture": "«Собрать видео недели ночью»",
+      "screen": "album",
+      "target": "album",
+      "fallback": "Без режима видео собирается при открытом альбоме",
+      "grounding": "BGProcessingTask с requiresExternalPower; склейка AVFoundation на устройстве",
+      "rationale": {
+        "who": "Родитель в альбоме семьи",
+        "moment": "Нажимает «Собрать видео недели ночью»",
+        "need": "Склейка 70 файлов занимает минуты и съедает батарею — её откладывают на ночь, на зарядку",
+        "without": "Видео собирается при открытом альбоме"
+      },
+      "reviewNote": "Альбом семьи → «Собрать видео недели ночью» → строка «Видео недели — к утру»"
+    },
+    {
+      "key": "calendar",
+      "plist": "NSCalendarsFullAccessUsageDescription",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "alert": {
+        "title": "«Все дома» запрашивает полный доступ к календарю",
+        "text": "Чтобы добавить кружки детей и поправить событие, когда занятие переносят"
+      },
+      "feature": "Кружки детей в Календаре: перенос занятия правит уже добавленное событие",
+      "gesture": "«Кружки в Календарь»",
+      "screen": "home",
+      "target": "home",
+      "fallback": "Расписание видно во вкладке «Дом»",
+      "grounding": "EventKit, полный доступ: события создаются и правятся по сохранённому идентификатору",
+      "rationale": {
+        "who": "Родитель во вкладке «Дом»",
+        "moment": "Нажимает «Кружки в Календарь»",
+        "need": "Перенос шахмат с 11:00 на 12:00 правит уже добавленное событие — для этого нужен полный доступ, запись без чтения не найдёт событие",
+        "without": "Расписание видно во вкладке «Дом»"
+      },
+      "snack": "Нет доступа к календарю",
+      "reviewNote": "Вкладка «Дом» → «Кружки в Календарь» → строки «В Календаре · 9 занятий в неделю» и «Шахматы Дани — 12:00 в Календаре»"
+    },
+    {
+      "key": "calendarwrite",
+      "plist": "NSCalendarsUsageDescription",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "alert": {
+        "title": "«Все дома» запрашивает доступ к календарю",
+        "text": "Чтобы добавить событие из сообщения в Календарь"
+      },
+      "feature": "Родительское собрание из сообщения учителя — одно событие в Календаре",
+      "gesture": "«14 октября в 19:00»",
+      "screen": "school",
+      "target": "school",
+      "fallback": "Дату можно скопировать и внести вручную",
+      "grounding": "EventKit, только запись: одно событие без чтения календаря",
+      "rationale": {
+        "who": "Родитель в чате класса",
+        "moment": "Касается подчёркнутой даты в сообщении учителя",
+        "need": "Событие кладётся в Календарь без копирования; читать календарь не нужно",
+        "without": "Дата копируется вручную"
+      },
+      "reviewNote": "Чат «5 «Б» · родители» → дата «14 октября в 19:00» → строка «В Календаре» под сообщением"
+    },
+    {
+      "key": "wifiinfo",
+      "plist": "com.apple.developer.networking.wifi-info",
+      "risk": "low",
+      "anchor": true,
+      "conditional": true,
+      "activate": true,
+      "alert": {
+        "title": "Имя сети",
+        "text": "Entitlement без системного запроса: статус «дома» ставится, когда телефон в домашней сети"
+      },
+      "feature": "«Я дома»: статус ставится по домашней сети, видно «Даня дома с 15:40»",
+      "gesture": "«Я дома»",
+      "screen": "home",
+      "target": "home",
+      "fallback": "Статус ставится вручную, без проверки сети",
+      "grounding": "NEHotspotNetwork.fetchCurrent: SSID отдаётся приложению для сети, которую оно само настроило через HotspotConfiguration",
+      "rationale": {
+        "who": "Член семьи, который пришёл домой",
+        "moment": "Нажимает «Я дома» во вкладке «Дом»",
+        "need": "Статус верен, когда телефон в сети Garipovy_Home; без имени сети «дома» — просто слово",
+        "without": "Статус ставится вручную"
+      },
+      "requires": "сеть настроена приложением через HotspotConfiguration — иначе iOS не отдаёт SSID без геопозиции",
+      "reviewNote": "Вкладка «Дом» → «Я дома» → строка «Алина дома · Garipovy_Home · с 16:05»"
+    },
+    {
+      "key": "tracking",
+      "plist": "NSUserTrackingUsageDescription",
+      "risk": "medium",
+      "anchor": true,
+      "conditional": true,
+      "alert": {
+        "title": "Разрешить «Все дома» отслеживать ваши действия?",
+        "text": "Тогда реклама в списке чатов будет про детские товары и кружки рядом"
+      },
+      "feature": "Реклама в списке чатов — бесплатный мессенджер без подписки",
+      "gesture": "«Подбирать по интересам»",
+      "screen": "ads",
+      "target": "chats",
+      "fallback": "Реклама остаётся без подбора",
+      "grounding": "AppTrackingTransparency и рекламный SDK; IDFA уходит в SDK только после согласия",
+      "rationale": {
+        "who": "Человек, которому показали рекламную карточку в чатах",
+        "moment": "Открывает рекламу и выбирает «Подбирать по интересам»",
+        "need": "Подбор по интересам использует данные других приложений и сайтов — это и есть отслеживание, без согласия его нет",
+        "without": "Реклама без подбора, одна карточка в списке чатов"
+      },
+      "snack": "Отслеживание запрещено — реклама будет без подбора",
+      "snackOnce": true,
+      "requires": "рекламный SDK в сборке, IDFA реально уходит в SDK",
+      "reviewNote": "ATT показывается только после экрана «Реклама», куда ведёт рекламная карточка в списке чатов, никогда на старте"
+    },
+    {
+      "key": "voip",
+      "plist": "UIBackgroundModes: voip",
+      "risk": "high",
+      "anchor": true,
+      "conditional": false,
+      "activate": true,
+      "alert": {
+        "title": "Звонки",
+        "text": "Entitlement без системного запроса: входящий звонок приходит VoIP-пушем и показывается системным экраном CallKit"
+      },
+      "feature": "Звонок маме из диалога через системный экран звонка",
+      "gesture": "«Позвонить»",
+      "screen": "mama",
+      "target": "call",
+      "fallback": "Без VoIP входящий звонок не придёт при закрытом приложении",
+      "grounding": "PushKit и CallKit, SDK провайдера WebRTC-звонков",
+      "rationale": {
+        "who": "Дочь в чате с мамой",
+        "moment": "Нажимает трубку в шапке чата",
+        "need": "Звонок идёт через CallKit, а входящие приходят VoIP-пушем при закрытом приложении",
+        "without": "Переписка и голосовые"
+      },
+      "reviewNote": "Чаты → «Мама» → трубка в шапке → экран звонка"
+    },
+    {
+      "key": "contacts",
+      "plist": "NSContactsUsageDescription",
+      "risk": "medium",
+      "anchor": false,
+      "conditional": false,
+      "alert": {
+        "title": "«Все дома» запрашивает доступ к контактам",
+        "text": "Чтобы показать, кто из родных уже здесь, и позвать остальных ссылкой"
+      },
+      "feature": "Найти родных из адресной книги и позвать в чат семьи",
+      "gesture": "«Найти родных из контактов»",
+      "screen": "contacts",
+      "target": "contacts",
+      "fallback": "Родных зовут ссылкой-приглашением",
+      "grounding": "CNContactStore; номера хешируются на устройстве",
+      "rationale": {
+        "who": "Родитель во вкладке «Контакты»",
+        "moment": "Нажимает «Найти родных из контактов»",
+        "need": "Кто из родных уже здесь, видно только по номерам из адресной книги",
+        "without": "Ссылка-приглашение"
+      },
+      "snack": "Нет доступа к контактам",
+      "reviewNote": "Контакты → «Найти родных из контактов» → «Уже здесь · 14» и «Пригласить»"
+    },
+    {
+      "key": "notifext",
+      "plist": "NSExtension: notification service",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "activate": true,
+      "alert": {
+        "title": "Превью в уведомлении",
+        "text": "Entitlement без системного запроса: расширение подставляет отправителя, чат и превью фото до показа уведомления"
+      },
+      "feature": "Уведомление с фото от няни: отправитель, чат и превью кадра",
+      "gesture": "Уведомление от Оксаны Беловой",
+      "screen": "lockscreen",
+      "target": "family",
+      "fallback": "Без расширения уведомление без превью фото",
+      "grounding": "UNNotificationServiceExtension скачивает и расшифровывает превью",
+      "rationale": {
+        "who": "Мама на работе",
+        "moment": "Няня прислала фото из студии",
+        "need": "Превью фото собирает расширение до показа; без него в уведомлении только «Фото»",
+        "without": "Текст без превью"
+      },
+      "reviewNote": "Экран блокировки → уведомление Оксаны с превью фото → чат «Гариповы»"
+    },
+    {
+      "key": "shareext",
+      "plist": "NSExtension: share",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "activate": true,
+      "alert": {
+        "title": "Расширение «Поделиться»",
+        "text": "Entitlement без системного запроса: «Все дома» и чат семьи появляются в системном меню «Поделиться»"
+      },
+      "feature": "Фото из «Фото» прямо в чат семьи через «Поделиться»",
+      "gesture": "«Гариповы»",
+      "screen": "share",
+      "target": "family",
+      "fallback": "Фото выбирается скрепкой в чате",
+      "grounding": "Share Extension с общим контейнером и сессией",
+      "rationale": {
+        "who": "Родитель в приложении «Фото»",
+        "moment": "Выбирает снимок и в «Поделиться» касается «Гариповы»",
+        "need": "Без расширения чат семьи не появится в системном меню",
+        "without": "Скрепка в чате"
+      },
+      "reviewNote": "«Фото» → «Поделиться» → «Гариповы» → фото в чате семьи"
+    }
+  ],
+  "screens": [
+    {
+      "id": "phone",
+      "title": "Вход по номеру",
+      "type": "старт, без таб-бара",
+      "light": true,
+      "meta": "Номер · пароль · без OTP",
+      "ui": {
+        "pattern": "auth",
+        "navigation": "push",
+        "purpose": "Войти по номеру и паролю",
+        "primaryAction": "Далее",
+        "hierarchy": {
+          "primary": "Номер телефона и вход",
+          "secondary": "Регистрация, гостевой проход, помощь"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error"
+        ],
+        "density": "low"
+      }
+    },
+    {
+      "id": "chats",
+      "title": "Чаты",
+      "type": "tab (root)",
+      "light": true,
+      "meta": "Список чатов, папки, реклама",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "root",
+        "primaryAction": "Гариповы"
+      }
+    },
+    {
+      "id": "home",
+      "title": "Дом",
+      "type": "tab (root)",
+      "light": true,
+      "meta": "Кто дома, расписание, документы · Wi‑Fi info · Calendar · Face ID",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "root",
+        "primaryAction": "Я дома"
+      }
+    },
+    {
+      "id": "calls",
+      "title": "Звонки",
+      "type": "tab (root)",
+      "light": true,
+      "meta": "История звонков",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "root",
+        "primaryAction": null
+      }
+    },
+    {
+      "id": "contacts",
+      "title": "Контакты",
+      "type": "tab (root)",
+      "light": true,
+      "meta": "Семья, близкие и адресная книга · Contacts",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "root",
+        "primaryAction": "Найти родных из контактов"
+      }
+    },
+    {
+      "id": "settings",
+      "title": "Настройки",
+      "type": "tab (root)",
+      "light": true,
+      "meta": "Профиль и настройки, как в Telegram · App Groups",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "root",
+        "primaryAction": null
+      }
+    },
+    {
+      "id": "family",
+      "title": "Чат «Гариповы»",
+      "type": "push",
+      "light": true,
+      "meta": "Чат семьи, Wi‑Fi дома, фото · Photos · Microphone",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "familyinfo",
+      "title": "Сведения о семье",
+      "type": "push",
+      "light": true,
+      "meta": "Участники, Wi‑Fi, альбом, приглашение",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "family"
+    },
+    {
+      "id": "mila",
+      "title": "Рисование · Мила",
+      "type": "push",
+      "light": true,
+      "meta": "Занятие и напоминание забрать · Push",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "home"
+    },
+    {
+      "id": "newclass",
+      "title": "Новое занятие",
+      "type": "modal",
+      "light": true,
+      "meta": "Форма занятия в расписание",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "modal",
+        "primaryAction": "Добавить в расписание"
+      },
+      "parent": "home"
+    },
+    {
+      "id": "wifi",
+      "title": "Wi‑Fi дома",
+      "type": "push",
+      "light": true,
+      "meta": "Подключение к домашней сети · Hotspot",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": "Подключиться"
+      },
+      "parent": "family"
+    },
+    {
+      "id": "docs",
+      "title": "Документы семьи",
+      "type": "push",
+      "light": true,
+      "meta": "Паспорта, полисы, свидетельства под Face ID",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "home"
+    },
+    {
+      "id": "shopping",
+      "title": "Список покупок",
+      "type": "push",
+      "light": true,
+      "meta": "Общий список семьи",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "home"
+    },
+    {
+      "id": "newitem",
+      "title": "Новая покупка",
+      "type": "modal",
+      "light": true,
+      "meta": "Форма покупки",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "modal",
+        "primaryAction": "Добавить в список"
+      },
+      "parent": "shopping"
+    },
+    {
+      "id": "album",
+      "title": "Альбом семьи",
+      "type": "push",
+      "light": true,
+      "meta": "Видео недели ночью · Processing · BGTask",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": "Собрать видео недели ночью"
+      },
+      "parent": "familyinfo"
+    },
+    {
+      "id": "invite",
+      "title": "Ссылка-приглашение",
+      "type": "push",
+      "light": true,
+      "meta": "QR и ссылка бабушке",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": "Отправить в Сообщения"
+      },
+      "parent": "familyinfo"
+    },
+    {
+      "id": "sms",
+      "title": "Сообщения",
+      "type": "системная поверхность",
+      "light": true,
+      "meta": "iMessage у бабушки · Associated Domains",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "system",
+        "primaryAction": null
+      },
+      "parent": "invite"
+    },
+    {
+      "id": "join",
+      "title": "Приглашение",
+      "type": "modal",
+      "light": true,
+      "meta": "Чат семьи до вступления",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "modal",
+        "primaryAction": "Вступить в чат семьи"
+      },
+      "parent": "sms"
+    },
+    {
+      "id": "attach",
+      "title": "Вложение",
+      "type": "modal",
+      "light": true,
+      "meta": "Недавние кадры · Camera · Location",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "modal",
+        "primaryAction": null
+      },
+      "parent": "family"
+    },
+    {
+      "id": "camera",
+      "title": "Камера",
+      "type": "fullscreen",
+      "light": true,
+      "meta": "Съёмка и QR сети с роутера",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "fullscreen",
+        "primaryAction": null
+      },
+      "parent": "attach"
+    },
+    {
+      "id": "geo",
+      "title": "Геопозиция",
+      "type": "modal",
+      "light": true,
+      "meta": "«Где я» и точка кружка",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "modal",
+        "primaryAction": "Где я"
+      },
+      "parent": "attach"
+    },
+    {
+      "id": "record",
+      "title": "Голосовое",
+      "type": "push",
+      "light": true,
+      "meta": "Запись голосового",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "family"
+    },
+    {
+      "id": "mama",
+      "title": "Мама",
+      "type": "push",
+      "light": true,
+      "meta": "Голосовые подряд, звонок из шапки · VoIP · Audio",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "danya",
+      "title": "Даня",
+      "type": "push",
+      "light": true,
+      "meta": "Личный чат, «забери меня» с точкой",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "timur",
+      "title": "Тимур",
+      "type": "push",
+      "light": true,
+      "meta": "Личный чат",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "school",
+      "title": "5 «Б» · родители",
+      "type": "push",
+      "light": true,
+      "meta": "Собрание из сообщения в Календарь",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "newchat",
+      "title": "Новый чат",
+      "type": "modal",
+      "light": true,
+      "meta": "Создание чата: название и участники",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "modal",
+        "primaryAction": "Создать чат"
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "call",
+      "title": "Звонок",
+      "type": "fullscreen",
+      "light": true,
+      "meta": "Системный экран звонка",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "fullscreen",
+        "primaryAction": null
+      },
+      "parent": "mama"
+    },
+    {
+      "id": "saved",
+      "title": "Избранное",
+      "type": "push",
+      "light": true,
+      "meta": "Чат с самим собой",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "ads",
+      "title": "Реклама",
+      "type": "modal",
+      "light": true,
+      "meta": "ATT после экрана рекламы",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "modal",
+        "primaryAction": "Подбирать по интересам"
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "share",
+      "title": "Поделиться",
+      "type": "системная поверхность",
+      "light": true,
+      "meta": "«Фото» → чат семьи · Share Extension",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "system",
+        "primaryAction": null
+      },
+      "parent": "album"
+    },
+    {
+      "id": "lockscreen",
+      "title": "Экран блокировки",
+      "type": "системная поверхность",
+      "light": true,
+      "meta": "Now Playing, уведомления от своих · Keychain · Notification Service",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "system",
+        "primaryAction": null
+      },
+      "parent": "mama"
+    },
+    {
+      "id": "widget",
+      "title": "Экран «Домой»",
+      "type": "системная поверхность",
+      "light": true,
+      "meta": "Виджет «Кто дома» · App Groups",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "system",
+        "primaryAction": null
+      },
+      "parent": "settings"
+    }
+  ],
+  "prototypes": [
+    {
+      "id": "all",
+      "hero": true,
+      "label": "Весь продукт",
+      "note": "33 экранов и 24 доступа",
+      "start": "phone",
+      "screens": [
+        "phone",
+        "chats",
+        "home",
+        "calls",
+        "contacts",
+        "settings",
+        "family",
+        "familyinfo",
+        "mila",
+        "newclass",
+        "wifi",
+        "docs",
+        "shopping",
+        "newitem",
+        "album",
+        "invite",
+        "sms",
+        "join",
+        "attach",
+        "camera",
+        "geo",
+        "record",
+        "mama",
+        "danya",
+        "timur",
+        "school",
+        "newchat",
+        "call",
+        "saved",
+        "ads",
+        "share",
+        "lockscreen",
+        "widget"
+      ],
+      "stops": [],
+      "authTarget": "chats"
+    },
+    {
+      "id": "signin",
+      "label": "Вход по номеру",
+      "note": "Номер, пароль и сразу список чатов",
+      "start": "phone",
+      "screens": [
+        "phone",
+        "chats"
+      ],
+      "stops": [
+        "chats"
+      ],
+      "authTarget": "chats"
+    },
+    {
+      "id": "home",
+      "label": "Кто дома и кого забирать",
+      "note": "«Я дома» по домашней сети, кружки в Календаре и напоминание забрать Милу",
+      "start": "home",
+      "screens": [
+        "home",
+        "mila",
+        "newclass",
+        "docs",
+        "shopping",
+        "family",
+        "newitem"
+      ],
+      "stops": [
+        "family",
+        "newitem"
+      ]
+    },
+    {
+      "id": "familychat",
+      "label": "Чат семьи",
+      "note": "Wi‑Fi дома для няни, фото, голосовые и «Где я»",
+      "start": "family",
+      "screens": [
+        "family",
+        "wifi",
+        "attach",
+        "camera",
+        "geo",
+        "record",
+        "familyinfo",
+        "mila",
+        "home",
+        "danya",
+        "album",
+        "shopping",
+        "invite",
+        "timur",
+        "mama",
+        "contacts"
+      ],
+      "stops": [
+        "mila",
+        "home",
+        "danya",
+        "album",
+        "shopping",
+        "invite",
+        "timur",
+        "mama",
+        "contacts"
+      ]
+    },
+    {
+      "id": "mama",
+      "label": "Голосовые и звонок маме",
+      "note": "Голосовые подряд с погашенным экраном, уведомления от своих и звонок",
+      "start": "mama",
+      "screens": [
+        "mama",
+        "lockscreen",
+        "call",
+        "family"
+      ],
+      "stops": [
+        "family"
+      ]
+    },
+    {
+      "id": "invite",
+      "label": "Бабушка в чат по ссылке",
+      "note": "QR и ссылка, «Сообщения» у бабушки и вступление в приложении",
+      "start": "familyinfo",
+      "screens": [
+        "familyinfo",
+        "invite",
+        "sms",
+        "join",
+        "wifi",
+        "album",
+        "shopping",
+        "timur",
+        "danya",
+        "mama",
+        "contacts",
+        "family"
+      ],
+      "stops": [
+        "wifi",
+        "album",
+        "shopping",
+        "timur",
+        "danya",
+        "mama",
+        "contacts",
+        "family"
+      ]
+    },
+    {
+      "id": "outside",
+      "label": "Вне приложения",
+      "note": "Виджет «Кто дома», «Поделиться» из «Фото» и реклама",
+      "start": "settings",
+      "screens": [
+        "settings",
+        "widget",
+        "ads",
+        "album",
+        "share",
+        "account",
+        "saved",
+        "calls",
+        "home",
+        "chats",
+        "family"
+      ],
+      "stops": [
+        "account",
+        "saved",
+        "calls",
+        "home",
+        "chats",
+        "family"
+      ]
+    },
+    {
+      "id": "school",
+      "label": "Школа в Календаре",
+      "note": "Собрание из сообщения учителя одним касанием",
+      "start": "chats",
+      "screens": [
+        "chats",
+        "school",
+        "newchat",
+        "timur",
+        "family",
+        "danya",
+        "mama",
+        "saved",
+        "ads"
+      ],
+      "stops": [
+        "timur",
+        "family",
+        "danya",
+        "mama",
+        "saved",
+        "ads"
+      ]
+    }
+  ],
+  "backendless": [
+    {
+      "needs": "Вход по номеру и паролю, сессия",
+      "solution": "SDK провайдера аутентификации; токен в Keychain общей группы для приложения и расширений"
+    },
+    {
+      "needs": "Доставка сообщений, чаты, статус «дома», расписание, покупки",
+      "solution": "Firestore со security rules: писать в чат семьи и менять статус «дома» может только участник. Правила — конфигурация, не серверный код"
+    },
+    {
+      "needs": "Фото и голосовые",
+      "solution": "Cloud Storage того же SDK с правилами доступа по участникам чата"
+    },
+    {
+      "needs": "Пуши о сообщениях и тихие пуши",
+      "solution": "Firebase Cloud Messaging из клиента через триггеры SDK-расширения; превью собирает Notification Service Extension на устройстве"
+    },
+    {
+      "needs": "Звонки",
+      "solution": "SDK провайдера WebRTC-звонков с его сигнализацией и TURN; на устройстве PushKit и CallKit"
+    },
+    {
+      "needs": "Ссылки-приглашения",
+      "solution": "Статический apple-app-site-association на svoi.app; код поездки в ссылке разбирается на устройстве"
+    },
+    {
+      "needs": "Кто из контактов уже здесь",
+      "solution": "Номера хешируются на устройстве и сверяются запросом к Firestore по индексу хешей"
+    },
+    {
+      "needs": "Реклама",
+      "solution": "Рекламный SDK сети со своим сервером ставок; своего рекламного бэкенда нет"
+    },
+    {
+      "needs": "Карта и места",
+      "solution": "MapKit и MKLocalSearch, точки людей — из сообщений чата"
+    },
+    {
+      "needs": "Видео недели",
+      "solution": "AVFoundation на устройстве в BGProcessingTask; ролик ложится в Storage как обычное вложение"
+    },
+    {
+      "needs": "Документы семьи",
+      "solution": "Файлы в Storage с правилами по участникам семьи, на устройстве — под Face ID"
+    }
+  ],
+  "docs": [
+    {
+      "file": "01-product-vision.md",
+      "label": "Вижен"
+    },
+    {
+      "file": "02-architecture.md",
+      "label": "Архитектура"
+    },
+    {
+      "file": "03-design-system.md",
+      "label": "Дизайн-токены"
+    },
+    {
+      "file": "04-references.md",
+      "label": "Референсы"
+    },
+    {
+      "file": "05-visual-audit.md",
+      "label": "Визуальный аудит"
+    },
+    {
+      "file": "06-app-store.md",
+      "label": "Карточка App Store"
+    }
+  ],
+  "appStore": {
+    "name": "Все дома — мессенджер семьи",
+    "subtitle": "Кто дома, кружки и документы",
+    "promo": "Чат семьи и вкладка «Дом»: кто дома по Wi‑Fi, кружки детей в Календаре, документы под Face ID и общий список покупок. Плюс голосовые и звонки.",
+    "keywords": "семья,дети,расписание,няня,бабушка,голосовые,покупки,школа,календарь,wifi",
+    "category": {
+      "primary": "Social Networking",
+      "secondary": "Lifestyle"
+    },
+    "ageRating": "13+",
+    "price": "Бесплатно, реклама в списке чатов, без встроенных покупок",
+    "encryption": "ITSAppUsesNonExemptEncryption = NO — только HTTPS и стандартное шифрование SDK",
+    "urls": {
+      "support": "https://svoi.app/support",
+      "marketing": "https://svoi.app",
+      "privacy": "https://svoi.app/privacy"
+    },
+    "description": [
+      "«Все дома» — мессенджер семьи. Чаты, голосовые, фото и звонки — как в привычном мессенджере, а вкладка «Дом» отвечает на вопросы, которые семья задаёт каждый день.",
+      "КТО ДОМА\nСтатус «дома» ставится по домашней сети одной кнопкой: видно, что сын дома с 15:40, а дочь на рисовании до 17:30.",
+      "РАСПИСАНИЕ ДЕТЕЙ\nШкола и кружки на сегодня, напоминание забрать ребёнка за полчаса. Кружки уходят в Календарь, а перенос занятия правит уже добавленное событие.",
+      "WI‑FI ДОМА\nПоделитесь сетью в чате семьи — няня и гости подключатся касанием, пароль вслух не нужен.",
+      "ДОКУМЕНТЫ И ПОКУПКИ\nПаспорта, полисы и свидетельства семьи под Face ID. Общий список покупок, который правит вся семья.",
+      "ГОЛОСОВЫЕ И ЗВОНКИ\nДлинные голосовые бабушки играют подряд с погашенным экраном. Звонки — через системный экран.",
+      "СВОЕГО СЕРВЕРА НЕТ\nВход, сообщения, пуши и звонки работают на SDK провайдеров. Все доступы запрашиваются в момент действия, у каждого есть рабочий отказ."
+    ],
+    "whatsNew": "Первая версия: чат семьи, вкладка «Дом» с кто дома и расписанием детей, Wi‑Fi дома карточкой, документы под Face ID, звонки и голосовые.",
+    "privacy": [
+      {
+        "type": "Номер телефона",
+        "apple": "Contact Info → Phone Number",
+        "purpose": "Работа приложения",
+        "linked": true,
+        "tracking": false,
+        "why": "Вход и поиск родных по номеру через SDK провайдера аутентификации"
+      },
+      {
+        "type": "Сообщения и вложения",
+        "apple": "User Content → Emails or Text Messages; Photos or Videos; Audio Data",
+        "purpose": "Работа приложения",
+        "linked": true,
+        "tracking": false,
+        "why": "Переписка, фото, кружки и голосовые доставляются участникам чата"
+      },
+      {
+        "type": "Точное местоположение",
+        "apple": "Location → Precise Location",
+        "purpose": "Работа приложения",
+        "linked": true,
+        "tracking": false,
+        "why": "Только когда человек сам отправляет геопозицию в чат «Где я» или транслирует её на час"
+      },
+      {
+        "type": "Контакты",
+        "apple": "Contacts → Contacts",
+        "purpose": "Работа приложения",
+        "linked": false,
+        "tracking": false,
+        "why": "Номера хешируются на устройстве для поиска знакомых, адресная книга не выгружается"
+      },
+      {
+        "type": "Токен уведомлений",
+        "apple": "Identifiers → Device ID",
+        "purpose": "Работа приложения",
+        "linked": true,
+        "tracking": false,
+        "why": "Push- и VoIP-токены для сообщений и звонков"
+      },
+      {
+        "type": "Рекламный идентификатор",
+        "apple": "Identifiers → Advertising Data",
+        "purpose": "Сторонняя реклама",
+        "linked": true,
+        "tracking": true,
+        "why": "IDFA уходит в рекламный SDK только после разрешения в ATT; без него реклама остаётся без подбора"
+      }
+    ],
+    "assets": {
+      "locale": "ru-RU",
+      "template": "studio",
+      "screens": [
+        {
+          "screen": "home",
+          "headline": "Видно, кто дома",
+          "body": "Статус по домашней сети и кружки детей на сегодня"
+        },
+        {
+          "screen": "family",
+          "headline": "Чат семьи",
+          "body": "Фото, голосовые и Wi‑Fi дома для няни"
+        },
+        {
+          "screen": "mila",
+          "headline": "Не забыть забрать",
+          "body": "Напоминание за полчаса до конца кружка"
+        },
+        {
+          "screen": "chats",
+          "headline": "Обычные чаты тоже здесь",
+          "body": "Голосовые, звонки и избранное"
+        }
+      ]
+    },
+    "reviewAccount": {
+      "phone": "+7 900 123-45-67",
+      "password": "svoi2026",
+      "note": "Вход по номеру и паролю, без SMS-кода. Аккаунт Алины уже в чате семьи «Гариповы» с расписанием детей."
+    }
+  },
+  "acceptance": [
+    {
+      "id": "im-home",
+      "name": "Отметка «Я дома» по сети",
+      "action": "im-home",
+      "given": "Алина пришла домой, телефон в Garipovy_Home",
+      "when": "Во вкладке «Дом» нажимает «Я дома»",
+      "then": "В «Кто дома» строка «Алина дома · Garipovy_Home · с 16:05»",
+      "screens": [
+        "home"
+      ],
+      "capabilities": [
+        "wifiinfo"
+      ]
+    },
+    {
+      "id": "home-wifi",
+      "name": "Wi‑Fi дома из чата",
+      "action": "join-home-wifi",
+      "given": "Тимур прислал карточку сети в чат семьи",
+      "when": "Касается карточки и нажимает «Подключиться»",
+      "then": "«Подключено к Garipovy_Home»",
+      "screens": [
+        "family",
+        "wifi"
+      ],
+      "capabilities": [
+        "hotspot"
+      ]
+    },
+    {
+      "id": "call-mom",
+      "name": "Звонок маме",
+      "action": "call-mom",
+      "given": "Мама прислала голосовые",
+      "when": "В чате с мамой нажимает трубку",
+      "then": "Экран звонка «Мама · Аудиозвонок»",
+      "screens": [
+        "mama",
+        "call"
+      ],
+      "capabilities": [
+        "voip"
+      ]
+    },
+    {
+      "id": "clubs-calendar",
+      "name": "Кружки в Календаре",
+      "action": "clubs-to-calendar",
+      "given": "Шахматы субботы перенесли с 11:00 на 12:00",
+      "when": "Во вкладке «Дом» нажимает «Кружки в Календарь»",
+      "then": "«В Календаре · 9 занятий в неделю» и «Шахматы Дани — 12:00 в Календаре»",
+      "screens": [
+        "home"
+      ],
+      "capabilities": [
+        "calendar"
+      ]
+    },
+    {
+      "id": "meeting-calendar",
+      "name": "Собрание из сообщения",
+      "action": "meeting-to-calendar",
+      "given": "Учитель написала про собрание",
+      "when": "Касается подчёркнутой даты",
+      "then": "Под сообщением «В Календаре · среда, 14 октября, 19:00»",
+      "screens": [
+        "school"
+      ],
+      "capabilities": [
+        "calendarwrite"
+      ]
+    },
+    {
+      "id": "pickup",
+      "name": "Напомнить забрать Милу",
+      "action": "pickup-reminder",
+      "given": "Мила на рисовании до 17:30",
+      "when": "На экране занятия нажимает «Напомнить забрать Милу в 17:30»",
+      "then": "«Напомним в 17:00 — забрать Милу в 17:30»",
+      "screens": [
+        "home",
+        "mila"
+      ],
+      "capabilities": [
+        "push"
+      ]
+    },
+    {
+      "id": "week-video",
+      "name": "Видео недели ночью",
+      "action": "week-video",
+      "given": "За неделю 64 кадра и 7 видео",
+      "when": "Нажимает «Собрать видео недели ночью»",
+      "then": "«Видео недели — к утру»",
+      "screens": [
+        "album"
+      ],
+      "capabilities": [
+        "processing"
+      ]
+    },
+    {
+      "id": "invite-link",
+      "name": "Бабушка вступает по ссылке",
+      "action": "open-invite",
+      "given": "Галина получила ссылку svoi.app/f/garipovy в «Сообщениях»",
+      "when": "Касается карточки ссылки",
+      "then": "Открывается «Приглашение» с кнопкой «Вступить в чат семьи»",
+      "screens": [
+        "invite",
+        "sms",
+        "join"
+      ],
+      "capabilities": [
+        "associateddomains"
+      ]
+    },
+    {
+      "id": "share-photo",
+      "name": "Фото из «Фото» в чат",
+      "action": "share-photo",
+      "given": "Открыто фото в «Фото»",
+      "when": "«Поделиться» → «Гариповы»",
+      "then": "Фото «Даня с грамотой по математике» в чате семьи",
+      "screens": [
+        "share",
+        "family"
+      ],
+      "capabilities": [
+        "shareext"
+      ]
+    }
+  ],
+  "fixtures": {
+    "note": "Демо-данные концепта. Один источник для HTML-прототипа и нативной сборки — model.mjs.",
+    "family": {
+      "name": "Гариповы",
+      "members": 6,
+      "ssid": "Garipovy_Home",
+      "link": "svoi.app/f/garipovy"
+    },
+    "home": {
+      "danyaSince": "15:40",
+      "meSince": "16:05"
+    },
+    "pickup": {
+      "child": "Мила",
+      "to": "17:30",
+      "place": "Студия «Акварель», Гоголя, 14"
+    }
+  },
+  "auth": {
+    "mode": "phone",
+    "confirmation": false,
+    "entryTarget": "chats",
+    "guest": false
+  }
+}

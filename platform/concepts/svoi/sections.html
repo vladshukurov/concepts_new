@@ -1,0 +1,51 @@
+  <!-- Блоки @overview:* уходят в раздел Overview итогового файла, всё
+       остальное ниже — в раздел «Документы». Структуру страницы задаёт
+       ядро (kernel/page.html), здесь только содержимое. -->
+
+  <!-- @overview:vision -->
+  <p class="deck">Инсайт: {{INSIGHT}}.</p>
+  <div class="utp-box">{{TAGLINE}}</div>
+  <p>Проверка на подмену: уберите вкладку «Дом» — кто дома по домашней сети, расписание детей с напоминанием, кружки в Календаре — и Wi‑Fi дома карточкой, останется обычный мессенджер. Значит именно они и есть продукт.</p>
+  {{FEAT_GRID}}
+  <!-- @end -->
+
+  <!-- @overview:arch -->
+  <p class="deck">Каждый доступ спрашивается в момент действия, до фичи два-три тапа. Ниже — цепочки от жеста до результата.</p>
+  <div class="flow"><span class="chip">Вкладка «Дом»</span><span class="arr">→</span><span class="chip">«Я дома»</span><span class="arr">→</span><span class="chip">Wi‑Fi Info</span><span class="arr">→</span><span class="chip">«Алина дома · Garipovy_Home»</span></div>
+  <div class="flow"><span class="chip">Карточка сети в чате</span><span class="arr">→</span><span class="chip">«Подключиться»</span><span class="arr">→</span><span class="chip">Hotspot Configuration</span><span class="arr">→</span><span class="chip">в домашней сети без пароля вслух</span></div>
+  <div class="flow"><span class="chip">Чат с мамой</span><span class="arr">→</span><span class="chip">«Позвонить»</span><span class="arr">→</span><span class="chip">VoIP + CallKit</span><span class="arr">→</span><span class="chip">экран звонка</span></div>
+  <div class="flow"><span class="chip">Вкладка «Дом»</span><span class="arr">→</span><span class="chip">«Кружки в Календарь»</span><span class="arr">→</span><span class="chip">Calendars Full Access</span><span class="arr">→</span><span class="chip">перенос шахмат правит событие</span></div>
+  <div class="flow"><span class="chip">Чат 5 «Б»</span><span class="arr">→</span><span class="chip">дата собрания</span><span class="arr">→</span><span class="chip">Calendars Write</span><span class="arr">→</span><span class="chip">одно событие в Календаре</span></div>
+  <div class="flow"><span class="chip">Рисование · Мила</span><span class="arr">→</span><span class="chip">«Напомнить забрать Милу в 17:30»</span><span class="arr">→</span><span class="chip">aps-environment</span><span class="arr">→</span><span class="chip">«Напомним в 17:00»</span></div>
+  <div class="flow"><span class="chip">Альбом семьи</span><span class="arr">→</span><span class="chip">«Собрать видео недели ночью»</span><span class="arr">→</span><span class="chip">Processing + BGTaskScheduler</span><span class="arr">→</span><span class="chip">видео к утру</span></div>
+  <div class="flow"><span class="chip">Список чатов</span><span class="arr">→</span><span class="chip">рекламная карточка</span><span class="arr">→</span><span class="chip">«Подбирать по интересам»</span><span class="arr">→</span><span class="chip">ATT</span></div>
+  <div class="flow"><span class="chip">«Сообщения» у бабушки</span><span class="arr">→</span><span class="chip">ссылка svoi.app</span><span class="arr">→</span><span class="chip">Associated Domains</span><span class="arr">→</span><span class="chip">«Приглашение» в приложении</span></div>
+  <div class="flow"><span class="chip">«Поделиться» в «Фото»</span><span class="arr">→</span><span class="chip">«Гариповы»</span><span class="arr">→</span><span class="chip">Share Extension</span><span class="arr">→</span><span class="chip">фото в чате семьи</span></div>
+  <div class="flow"><span class="chip">Чат с мамой</span><span class="arr">→</span><span class="chip">«Слушать подряд»</span><span class="arr">→</span><span class="chip">фоновое аудио</span><span class="arr">→</span><span class="chip">экран блокировки: Now Playing, уведомления — Communication, Notification Service, Keychain</span></div>
+
+  <div class="arch" style="margin-top:var(--s-lg)">
+    <div class="arch-layer"><h3>UI</h3><p>33 экрана: пять вкладок — Контакты, Звонки, Чаты, Дом, Настройки — и четыре системные поверхности: «Сообщения», «Поделиться», экран блокировки и экран «Домой» с виджетом.</p></div>
+    <div class="arch-layer"><h3>Domain</h3><p>Человек, семья, чат, сообщение, статус «дома», занятие, документ, покупка, звонок.</p></div>
+    <div class="arch-layer"><h3>Services</h3><p>PushKit и CallKit, NEHotspotConfigurationManager и NEHotspotNetwork, EventKit, BGTaskScheduler (app.svoi.refresh, app.svoi.weekly), AVFoundation, CoreLocation, LocalAuthentication, AppTrackingTransparency.</p></div>
+    <div class="arch-layer"><h3>Data</h3><p>Локальная база сообщений, общий контейнер group.app.svoi для виджета и расширений, ключ расшифровки в общей связке Keychain.</p></div>
+    <div class="arch-layer"><h3>External</h3><p>Своего сервера нет: вход, Firestore, Storage и Cloud Messaging — SDK провайдера; звонки — SDK провайдера WebRTC; реклама — рекламный SDK; AASA — статичный файл на svoi.app.</p></div>
+  </div>
+  <!-- @end -->
+
+  <section class="section" id="perm-matrix">
+    <h2>Матрица доступов</h2>
+    <p class="deck">Все 24 ключа набора «Мессенджер»: чем заслужен, каким жестом вызывается, что остаётся при отказе.</p>
+    {{PERM_MATRIX}}
+  </section>
+
+  <section class="section" id="no-backend">
+    <h2>Почему здесь нет бэкенда</h2>
+    <p class="deck">Что потребовало бы сервера и чем это заменено.</p>
+    {{BACKENDLESS}}
+  </section>
+
+  <section class="section" id="screen-table">
+    <h2>Экраны и доступы</h2>
+    <p class="deck">Все экраны концепта с типом представления и доступами, которые запрашиваются на них.</p>
+    {{SCREEN_TABLE}}
+  </section>

@@ -32,7 +32,7 @@
     },
     "messenger": {
       "label": "Мессенджер", "reference": "мессенджер уровня Telegram и WhatsApp",
-      "namePrefixes": [],
+      "namePrefixes": ["В", "Вк", "В к"],
       "must": ["push", "associateddomains", "appgroups", "keychain", "commnotif", "hotspot", "faceid", "camera", "photos", "mic", "location", "audio", "fetch", "bgtask", "remotenotif", "processing", "calendar", "calendarwrite", "wifiinfo", "tracking", "voip", "contacts", "notifext", "shareext"],
       "nice": [],
       "excluded": {}

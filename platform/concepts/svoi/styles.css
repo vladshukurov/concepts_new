@@ -1,0 +1,256 @@
+/* «Все дома» — мессенджер семьи, светлая тема `.ui.vk-light`.
+   Список чатов, чат, пузыри, голосовые, звонок, строки и ячейки — из ядра.
+   Своё у «Все дома»: карточка «Кто дома», закреп про кружок, карточка домашней сети,
+   карта, нарисованная кодом, QR приглашения, альбом семьи и системные поверхности iOS.
+   Форма мягче, чем у «Сбора»: кнопки-пилюли, круглые пузыри, поле ввода и поиск пилюлями, карточки 16 */
+
+/* Закреп под шапкой чата: забрать Милу, голосовые мамы подряд */
+.sv-pin { flex:none; display:flex; align-items:center; gap:12px; width:100%; min-height:52px; padding:6px 8px 6px 16px; background:var(--ui-card); box-shadow:inset 0 -.5px 0 var(--ui-line); text-align:left; color:var(--ui-link); }
+.sv-pin > svg { width:20px; height:20px; }
+.sv-pin > svg:last-child { color:var(--ui-text-3); }
+.sv-pin > span { flex:1; min-width:0; display:flex; flex-direction:column; }
+.sv-pin strong { font:600 15px/20px var(--ui-face); color:var(--ui-text); }
+.sv-pin > span > span { font:400 13px/16px var(--ui-face); color:var(--ui-link); }
+
+/* Системная строка в ленте сообщений: кто пришёл домой, запись в Календарь */
+.sv-sys { align-self:center; max-width:86%; margin:4px 0; padding:4px 12px; border-radius:12px; background:var(--ui-accent-soft); font:500 13px/18px var(--ui-face); color:var(--ui-link); text-align:center; }
+
+/* Карточка Wi‑Fi в пузыре и на экране сети */
+.sv-net { display:flex; align-items:center; gap:12px; width:100%; min-height:64px; padding:10px 12px; text-align:left; box-shadow:inset 0 0 0 1px var(--ui-line); border-radius:14px; }
+.sv-net-ico { width:44px; height:44px; flex:none; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent); color:#fff; }
+.sv-net-ico svg { width:22px; height:22px; }
+.sv-net > span:last-child, .sv-netcard > div { display:flex; flex-direction:column; min-width:0; }
+.sv-net strong { font:600 16px/20px var(--ui-face); }
+.sv-net span span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.sv-netcard { display:flex; align-items:center; gap:16px; padding:0 16px; }
+.sv-netcard .sv-net-ico { width:56px; height:56px; }
+.sv-netcard strong { font:600 20px/24px var(--ui-face); }
+.sv-netcard > div span { font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
+
+.sv-tile-dur { position:absolute; left:50%; bottom:10px; transform:translateX(-50%); padding:2px 8px; border-radius:10px; background:rgba(0,0,0,.56); color:#fff; font:500 12px/16px var(--ui-face); font-variant-numeric:tabular-nums; }
+.sv-photo { display:block; height:120px; }
+.ui-bubble-media > .sv-photo { display:flex!important; }
+/* Переписка прижата к полю ввода: короткая история стоит внизу, как в мессенджерах */
+.ui-scroll > .ui-chat { justify-content:flex-end; }
+
+/* Место из Карт в пузыре */
+.sv-shared { display:contents; }
+.sv-place-ico { width:44px; height:44px; flex:none; display:grid; place-items:center; border-radius:12px; background:var(--ui-accent-soft); color:var(--ui-link); }
+
+/* Файл в пузыре */
+.sv-file { display:flex; align-items:center; gap:12px; padding:10px 12px; }
+.sv-file-ico { width:44px; height:44px; flex:none; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent); color:#fff; }
+.sv-file > span:last-child { display:flex; flex-direction:column; min-width:0; }
+.sv-file strong { font:600 15px/20px var(--ui-face); }
+.sv-file span span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.ui-bubble.is-out .sv-file span span { color:#3f4a56; }
+.ui-bubble.is-out .ui-bubble-from { color:#00489a; }
+
+/* Дата в сообщении — ссылка, которая кладёт встречу в Календарь */
+.sv-date { display:inline; min-height:0; color:var(--ui-link); text-decoration:underline; text-underline-offset:2px; }
+
+/* Шапка сведений о семье, занятия и приглашения */
+.sv-head { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 16px 16px; background:var(--ui-card); text-align:center; }
+.sv-head .ui-avatar { margin-bottom:8px; }
+
+
+/* Сетка кадров: альбом и выбор вложения */
+.sv-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; }
+.sv-grid.is-attach { padding-top:2px; }
+.ui .ui-sec.sv-attach-sec { padding:0 0 4px; }
+.sv-tile { position:relative; aspect-ratio:1; min-height:44px; }
+.sv-tile.is-picked { box-shadow:inset 0 0 0 3px var(--ui-accent); }
+.sv-tick { position:absolute; top:6px; right:6px; width:24px; height:24px; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent); color:#fff; box-shadow:0 0 0 2px #fff; }
+.sv-tick svg { width:14px; height:14px; stroke-width:3; }
+.sv-cam-tile { aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; background:var(--ui-accent); color:#fff; font:500 13px/16px var(--ui-face); }
+.sv-cam-tile svg { width:28px; height:28px; }
+.sv-attach-bar { flex:none; display:grid; grid-template-columns:repeat(4, 1fr); padding:6px 8px calc(var(--safe-bottom) + 2px); background:var(--ui-card); box-shadow:inset 0 .5px 0 var(--ui-line); }
+.sv-attach-bar > button { display:flex; flex-direction:column; align-items:center; gap:2px; min-height:48px; padding-top:4px; color:var(--ui-text-2); font:500 11px/14px var(--ui-face); }
+.sv-attach-bar > button.is-on { color:var(--ui-link); }
+
+/* QR и ссылка-приглашение: QR нарисован кодом из ссылки */
+.sv-qr { display:grid; grid-template-columns:repeat(21, 1fr); width:168px; aspect-ratio:1; margin:4px auto 0; }
+.sv-qr > i { background:var(--ui-card); }
+.sv-qr > i.is-on { background:var(--ui-text); }
+.sv-link { display:flex; flex-direction:column; align-items:center; gap:2px; padding:16px 16px 0; text-align:center; }
+.sv-link strong { font:600 17px/22px var(--ui-face); color:var(--ui-link); }
+.sv-link span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+
+/* Карта, нарисованная кодом: я, кружок, ребёнок */
+.sv-map { position:relative; height:220px; margin:0 16px; border-radius:12px; background:#eef1f4; overflow:hidden; }
+.sv-map.is-mini { height:128px; margin:0; border-radius:0; }
+.sv-map.is-full { position:absolute; inset:0; height:auto; margin:0; border-radius:0; }
+.sv-river { position:absolute; left:0; right:0; top:4%; height:26%; background:#cfe2f3; clip-path:polygon(0 38%, 100% 0, 100% 62%, 0 100%); }
+.sv-street { position:absolute; background:#fff; }
+.sv-street.s1 { left:0; right:0; top:46%; height:8px; transform:rotate(4deg); }
+.sv-street.s2 { top:0; bottom:0; left:34%; width:8px; transform:rotate(-6deg); }
+.sv-street.s3 { top:0; bottom:0; left:70%; width:6px; }
+.sv-street.s4 { left:0; right:0; top:76%; height:6px; }
+.sv-block { position:absolute; border-radius:6px; background:#dde2e8; }
+.sv-block.b1 { left:6%; top:56%; width:22%; height:16%; }
+.sv-block.b2 { left:42%; top:58%; width:24%; height:14%; }
+.sv-block.b3 { left:76%; top:30%; width:18%; height:14%; }
+.sv-pt { position:absolute; display:grid; place-items:center; width:28px; height:28px; margin:-14px 0 0 -14px; border-radius:50%; background:#fff; box-shadow:0 1px 4px rgba(0,16,61,.24); font:600 11px/1 var(--ui-face); color:var(--ui-link); }
+.sv-pt svg { width:16px; height:16px; }
+.sv-pt.is-me { width:18px; height:18px; margin:-9px 0 0 -9px; background:var(--ui-accent); box-shadow:0 0 0 5px rgba(0,119,255,.22); }
+.sv-pt.is-me { left:46%; top:62%; }
+
+/* Запись голосового на месте поля ввода */
+.sv-rec { flex:none; display:flex; align-items:center; gap:10px; padding:8px 8px calc(var(--safe-bottom) + 4px) 16px; background:var(--ui-card); box-shadow:inset 0 .5px 0 var(--ui-line); }
+.sv-rec-dot { width:10px; height:10px; flex:none; border-radius:50%; background:#e64646; }
+.sv-rec-time { flex:none; font:600 16px/20px var(--ui-face); font-variant-numeric:tabular-nums; }
+.sv-rec-wave { flex:1; min-width:0; display:flex; align-items:center; gap:2px; height:28px; color:var(--ui-accent); }
+.sv-rec-wave > i { flex:1; max-width:3px; border-radius:2px; background:currentColor; }
+.sv-rec-wave > .h4 { height:4px; } .sv-rec-wave > .h5 { height:5px; } .sv-rec-wave > .h6 { height:6px; } .sv-rec-wave > .h8 { height:8px; }
+.sv-rec-wave > .h9 { height:9px; } .sv-rec-wave > .h10 { height:10px; } .sv-rec-wave > .h12 { height:12px; } .sv-rec-wave > .h14 { height:14px; }
+.sv-rec-wave > .h16 { height:16px; } .sv-rec-wave > .h18 { height:18px; } .sv-rec-wave > .h20 { height:20px; } .sv-rec-wave > .h22 { height:22px; } .sv-rec-wave > .h24 { height:24px; }
+.sv-rec-cancel { flex:none; display:flex; align-items:center; min-height:44px; color:var(--ui-text-2); font:400 15px/20px var(--ui-face); }
+.sv-rec-cancel svg { width:18px; height:18px; }
+.sv-rec-send { width:48px; height:48px; flex:none; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent); color:#fff; }
+.sv-rec-send svg { width:22px; height:22px; }
+
+/* Тёмные поверхности: камера, звонок */
+.sv-cam { overflow:hidden; background:#000!important; color:#fff; }
+.sv-cam .ui-nav { background:none!important; color:#fff; }
+.sv-cam .ui-icon-btn { color:#fff; }
+.sv-viewfinder { position:absolute; left:0; right:0; top:calc(var(--safe-top) + 44px); bottom:196px; }
+.sv-qr-found { position:absolute; left:16px; right:16px; top:calc(var(--safe-top) + 64px); display:flex; align-items:center; gap:12px; min-height:56px; padding:8px 14px; border-radius:14px; background-color:#fff; color:#000; text-align:left; }
+.sv-qr-found > svg { width:24px; height:24px; color:var(--ui-accent); }
+.sv-qr-found > span { display:flex; flex-direction:column; }
+.sv-qr-found strong { font:600 15px/20px var(--ui-face); }
+.sv-qr-found span span { font:400 13px/16px var(--ui-face); color:#0052b0; }
+.sv-modes { position:absolute; left:0; right:0; bottom:calc(var(--safe-bottom) + 112px); display:flex; justify-content:center; gap:8px; }
+.sv-modes > button { min-height:44px; padding:0 12px; font:600 14px/18px var(--ui-face); color:rgba(255,255,255,.72); }
+.sv-modes > .is-on { color:#ffd60a; }
+.sv-cam-row { position:absolute; left:0; right:0; bottom:calc(var(--safe-bottom) + 20px); display:flex; align-items:center; justify-content:space-between; padding:0 32px; }
+.sv-cam-thumb { width:48px; height:48px; border-radius:10px; }
+.sv-shutter { position:relative; width:76px; height:76px; border-radius:50%; box-shadow:inset 0 0 0 4px #fff; }
+.sv-shutter > span { position:absolute; inset:8px; border-radius:50%; background:#fff; }
+.sv-cam-flip { width:48px; height:48px; display:grid; place-items:center; border-radius:50%; background:rgba(255,255,255,.18); color:#fff; }
+.sv-call { background:linear-gradient(180deg, #24364c, #0e141b)!important; color:#fff; }
+.sv-call .ui-call > span, .sv-call .ui-call-ctl { color:rgba(255,255,255,.76); }
+.sv-call .ui-call-btn:not(.is-end) { background:rgba(255,255,255,.16); color:#fff; }
+.sv-call .ui-call-face.is-initial { background:rgba(255,255,255,.16); color:#fff; }
+
+/* «Сообщения» iOS — системная поверхность приглашённого */
+.sv-ios .ui-nav strong { display:flex; justify-content:center; }
+.sv-ios-who { display:flex; flex-direction:column; align-items:center; gap:2px; font:400 12px/14px var(--ui-face); }
+.sv-ios-who .ui-avatar { width:32px; height:32px; font-size:13px; }
+.sv-ios .ui-sec.sv-ios-thread { display:flex; flex-direction:column; gap:6px; padding:8px 16px 16px; }
+.sv-ios-day { margin:4px 0 8px; text-align:center; font:400 12px/16px var(--ui-face); color:var(--ui-text-2); }
+.sv-ios-bubble { max-width:76%; padding:8px 14px; border-radius:18px; font:400 16px/21px var(--ui-face); }
+.sv-ios-bubble.is-in { align-self:flex-start; background:#e9e9eb; color:#000; }
+.sv-ios-bubble.is-out { align-self:flex-end; background:#0067db; color:#fff; }
+.sv-ios-link { align-self:flex-start; display:flex; align-items:center; gap:12px; width:76%; min-height:64px; padding:10px 12px; border-radius:18px; background:#e9e9eb; text-align:left; }
+.sv-ios-link-ico { width:44px; height:44px; flex:none; display:grid; place-items:center; border-radius:10px; background:var(--ui-accent); color:#fff; }
+.sv-ios-link > span:last-child { display:flex; flex-direction:column; min-width:0; }
+.sv-ios-link strong { font:600 15px/20px var(--ui-face); }
+.sv-ios-link span span { font:400 13px/16px var(--ui-face); color:#4c5663; }
+.sv-ios-meta { align-self:flex-end; font:400 11px/14px var(--ui-face); color:var(--ui-text-2); }
+.sv-ios-bar { flex:none; display:flex; align-items:center; gap:10px; padding:8px 12px calc(var(--safe-bottom) + 4px); color:var(--ui-text-2); }
+.sv-ios-bar > span:first-child { width:36px; height:36px; display:grid; place-items:center; border-radius:50%; background:#e9e9eb; }
+.sv-ios-field { flex:1; min-height:36px; display:flex; align-items:center; padding:0 14px; border-radius:18px; box-shadow:inset 0 0 0 1px var(--ui-line); font:400 16px/20px var(--ui-face); }
+
+/* «Поделиться» в «Фото» */
+.sv-sys-surface { overflow:hidden; background:#000!important; }
+.sv-share-photo { position:absolute; left:0; right:0; top:calc(var(--safe-top) + 24px); height:46%; }
+.sv-sheet { position:absolute; left:0; right:0; bottom:0; padding:16px 0 calc(var(--safe-bottom) + 8px); border-radius:14px 14px 0 0; background:#f2f2f7; box-shadow:0 -4px 24px rgba(0,16,61,.16); }
+.sv-sheet-head { display:flex; align-items:center; gap:12px; padding:0 8px 12px 16px; box-shadow:inset 0 -.5px 0 var(--ui-line); }
+.sv-sheet-head strong { font:600 16px/20px var(--ui-face); }
+.sv-sheet-head span span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.sv-sheet-x { width:44px; height:44px; display:grid; place-items:center; color:var(--ui-text-2); }
+.sv-share-people, .sv-share-apps { display:flex; gap:16px; padding:16px 16px 4px; overflow-x:auto; scrollbar-width:none; }
+.sv-share-to, .sv-share-app { flex:none; width:68px; display:flex; flex-direction:column; align-items:center; gap:6px; font:400 11px/14px var(--ui-face); text-align:center; }
+.sv-share-face { position:relative; width:60px; height:60px; display:grid; place-items:center; border-radius:50%; background-color:#dceafb; color:#00489a; font:600 20px/1 var(--ui-face); }
+.sv-share-face > i, .sv-notif-face > i { position:absolute; right:-2px; bottom:-2px; width:22px; height:22px; display:grid; place-items:center; border-radius:6px; background:var(--ui-accent); color:#fff; box-shadow:0 0 0 2px #f2f2f7; }
+.sv-share-face > i svg, .sv-notif-face > i svg { width:14px; height:14px; }
+.sv-share-app > i { width:60px; height:60px; display:grid; place-items:center; border-radius:14px; background:#fff; color:var(--ui-link); }
+.sv-share-list { margin:12px 16px 0; border-radius:12px; background:#fff; }
+.sv-share-list > button { display:flex; align-items:center; justify-content:space-between; width:100%; min-height:48px; padding:0 16px; font:400 16px/20px var(--ui-face); }
+.sv-share-list > button + button { box-shadow:inset 0 .5px 0 var(--ui-line); }
+.sv-share-list svg { width:20px; height:20px; color:var(--ui-text-2); }
+
+/* Экран блокировки: Now Playing из ядра, поверх — уведомления от своих */
+.sv-notifs { position:relative; display:flex; flex-direction:column; gap:8px; margin:20px 12px 0; }
+.ui-progress > i.sv-fill-48 { width:48%; }
+.sv-notif { display:flex; align-items:flex-start; gap:10px; width:100%; padding:12px; border-radius:20px; background-color:#f2f3f5; color:#000; text-align:left; }
+.sv-notif-face { position:relative; width:40px; height:40px; flex:none; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent-soft); color:var(--ui-link); font:600 14px/1 var(--ui-face); }
+.sv-notif-face > i { right:-6px; bottom:-6px; width:18px; height:18px; border-radius:5px; box-shadow:0 0 0 2px #fff; }
+.sv-notif-face > i svg { width:12px; height:12px; }
+.sv-notif-body { flex:1; min-width:0; display:flex; flex-direction:column; }
+.sv-notif-top { display:flex; justify-content:space-between; gap:8px; }
+.sv-notif-top strong { font:600 15px/20px var(--ui-face); }
+.sv-notif-top span { font:400 13px/20px var(--ui-face); color:#3d4651; }
+.sv-notif-where { font:500 13px/16px var(--ui-face); color:#3d4651; }
+.sv-notif-text { font:400 15px/20px var(--ui-face); }
+.sv-notif-thumb { width:44px; height:44px; flex:none; border-radius:8px; }
+
+/* Экран «Домой» с виджетом */
+.sv-home { overflow:hidden; background:linear-gradient(180deg, #3b5068, #151c24)!important; color:#fff; }
+.sv-widget { display:block; width:calc(100% - 40px); margin:calc(var(--safe-top) + 16px) 20px 0; padding:14px; border-radius:22px; background:rgba(255,255,255,.94); color:#000; text-align:left; }
+.sv-widget small { display:flex; align-items:center; gap:6px; font:600 12px/14px var(--ui-face); color:#0067db; }
+.sv-widget small svg { width:14px; height:14px; }
+.sv-widget strong { display:block; margin-top:8px; font:600 17px/22px var(--ui-face); }
+.sv-widget > span:not(.sv-widget-faces) { display:block; font:400 13px/16px var(--ui-face); color:#5f6b78; }
+.sv-apps { display:grid; grid-template-columns:repeat(4, 1fr); gap:20px 12px; padding:20px; }
+.sv-app { display:flex; flex-direction:column; align-items:center; gap:4px; font:400 12px/14px var(--ui-face); color:#fff; }
+.sv-app > i { width:60px; height:60px; border-radius:14px; background:rgba(255,255,255,.22); }
+.sv-app.is-ours > i { display:grid; place-items:center; background:var(--ui-accent); }
+.sv-app.is-ours svg { width:30px; height:30px; color:#fff; }
+
+
+/* Профиль в настройках: крупное фото, имя и номер по центру, как в Telegram */
+.sv-me { display:flex; flex-direction:column; align-items:center; gap:4px; padding:4px 16px 16px; text-align:center; }
+.sv-me h1 { margin-top:8px; font:600 24px/30px var(--ui-face); }
+.sv-me .ui-avatar.is-large { width:96px; height:96px; font-size:36px; }
+
+/* Кто дома: крупно, первой карточкой вкладки «Дом» */
+.sv-now { display:flex; flex-direction:column; gap:4px; margin:0 16px; padding:16px 18px; border-radius:16px; background:var(--ui-accent); color:#fff; text-align:left; }
+.sv-now small { font:600 13px/16px var(--ui-face); opacity:.85; }
+.sv-now strong { font:600 24px/30px var(--ui-face); }
+.sv-now > span { font:400 15px/20px var(--ui-face); opacity:.92; }
+.sv-money { display:flex; flex-direction:column; gap:2px; padding:0 16px; }
+.sv-money small { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.sv-money strong { font:600 34px/40px var(--ui-face); font-variant-numeric:tabular-nums; }
+.sv-money span { font:400 15px/20px var(--ui-face); color:var(--ui-text-2); }
+
+.sv-sheet-head > span:nth-child(2) { flex:1; display:flex; flex-direction:column; }
+.sv-pt.is-me { left:46%; top:62%; }
+.sv-pt.is-club { left:30%; top:40%; background:var(--ui-accent); color:#fff; }
+.sv-pt.is-kid { left:76%; top:24%; }
+
+/* Виджет «Кто дома»: лица по инициалам, кого нет дома — бледнее */
+.sv-widget-faces { display:flex; gap:6px; margin-top:10px; }
+.sv-widget-face { width:32px; height:32px; display:grid; place-items:center; border-radius:50%; font:600 12px/1 var(--ui-face); }
+.sv-widget-face.is-away { opacity:.45; }
+
+/* Сводка списка покупок */
+.sv-money { display:flex; flex-direction:column; gap:2px; padding:0 16px; }
+.sv-money small { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.sv-money strong { font:600 34px/40px var(--ui-face); font-variant-numeric:tabular-nums; }
+.sv-money span { font:400 15px/20px var(--ui-face); color:var(--ui-text-2); }
+
+/* QR сети с роутера в камере */
+.sv-qr-found { position:absolute; left:16px; right:16px; top:calc(var(--safe-top) + 64px); display:flex; align-items:center; gap:12px; min-height:56px; padding:8px 14px; border-radius:16px; background-color:#fff; color:#000; text-align:left; }
+.sv-qr-found > svg { width:24px; height:24px; color:var(--ui-accent); }
+.sv-qr-found > span { display:flex; flex-direction:column; }
+.sv-qr-found strong { font:600 15px/20px var(--ui-face); }
+.sv-qr-found span span { font:400 13px/16px var(--ui-face); color:#0052b0; }
+
+/* Форма «Все дома»: мягче и круглее «Сбора». Цвет и строки — ядра, меняются только скругления */
+.ui.vk-light .ui-btn { border-radius:22px; }
+.ui.vk-light .ui-btn.is-m { border-radius:18px; }
+.ui.vk-light .ui-bubble { border-radius:20px; }
+.ui.vk-light .ui-bubble.is-in { border-bottom-left-radius:8px; }
+.ui.vk-light .ui-bubble.is-out { border-bottom-right-radius:8px; }
+.ui.vk-light .ui-bubble-media { border-radius:16px; }
+.ui.vk-light .ui-composer-field { min-height:40px; border-radius:20px; }
+.ui.vk-light .ui-search { border-radius:22px; padding:0 16px; }
+.ui.vk-light .ui-ad { border-radius:16px; }
+.ui.vk-light .ui-ad-art { border-radius:50%; }
+.ui.vk-light .ui-lead:not(.is-round) { border-radius:14px; }
+
+/* Поле формы: новый чат, занятие, покупка */
+.sv-field { display:flex; flex-direction:column; gap:2px; margin:0 16px 12px; padding:8px 16px; border-radius:16px; background:var(--ui-card); box-shadow:inset 0 0 0 1px var(--ui-line); }
+.sv-field > span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.sv-field > input { padding:0; border:0; outline:0; background:none; color:var(--ui-text); font:400 16px/22px var(--ui-face); }
