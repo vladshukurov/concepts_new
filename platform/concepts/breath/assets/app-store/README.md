@@ -1,4 +1,4 @@
-# Мантра — App Store assets
+# Маятник — App Store assets
 
 Сгенерировано из живого прототипа командой `npm run app-store -- breath`.
 
