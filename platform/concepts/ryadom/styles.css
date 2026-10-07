@@ -25,8 +25,8 @@
 .ry-path { position:absolute; left:34px; top:44px; width:272px; height:96px; border:4px solid var(--ui-accent); border-radius:48px 18px 48px 18px; }
 .ry-pin { position:absolute; width:26px; height:26px; margin:-13px 0 0 -13px; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent); color:#fff; font:600 11px/1 var(--ui-face); box-shadow:0 0 0 3px #fff; }
 .ry-pin.is-person { background:#fff; color:var(--ui-link); box-shadow:0 0 0 2px var(--ui-accent); }
-.ry-x10 { left:10%; } .ry-x34 { left:34%; } .ry-x58 { left:58%; } .ry-x88 { left:88%; }
-.ry-y20 { top:20%; } .ry-y70 { top:70%; } .ry-y36 { top:36%; } .ry-y56 { top:56%; } .ry-y28 { top:28%; }
+.ry-x10 { left:10%; } .ry-x34 { left:34%; } .ry-x88 { left:88%; }
+.ry-y20 { top:20%; } .ry-y70 { top:70%; } .ry-y36 { top:36%; } .ry-y56 { top:56%; }
 
 /* Голосовой пейсинг: пройдено и осталось крупно */
 .ry-run { display:flex; flex-direction:column; gap:12px; padding:0 16px; }
@@ -55,7 +55,7 @@
 .ry-shutter { position:absolute; left:50%; bottom:calc(var(--safe-bottom) + 24px); width:76px; height:76px; margin-left:-38px; border-radius:50%; box-shadow:inset 0 0 0 4px #fff; }
 .ry-shutter > span:first-child { position:absolute; inset:8px; border-radius:50%; background:#fff; }
 .ry-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
-.ry-grid > button { aspect-ratio:1; min-height:44px; }
+.ry-grid > * { aspect-ratio:1; min-height:44px; }
 .ry-grid > .is-picked { box-shadow:inset 0 0 0 3px var(--ui-accent); }
 
 /* Тёмные поверхности: звонок, показ на ТВ, экран блокировки */
@@ -84,3 +84,16 @@
 .ry-chat-map { display:block; width:220px; height:120px; border-radius:12px; background:linear-gradient(160deg, #e9eef3, #d7e3ef); position:relative; }
 .ry-chat-map::after { content:""; position:absolute; left:24px; top:28px; width:150px; height:56px; border:3px solid var(--ui-accent); border-radius:28px 10px 28px 10px; }
 .ry-text { padding:0 16px; font:400 17px/24px var(--ui-face); }
+.ry-w-44 { width:44%; }
+/* Уведомление о сообщении на экране блокировки: инициалы отправителя и значок приложения */
+.ry-notifs { display:flex; flex-direction:column; gap:8px; margin:24px 12px 0; }
+.ry-notif { display:flex; align-items:flex-start; gap:10px; width:100%; padding:12px; border-radius:20px; background:rgba(255,255,255,.88); color:#000; text-align:left; }
+.ry-notif-face { position:relative; width:40px; height:40px; flex:none; display:grid; place-items:center; border-radius:50%; color:#fff; font:600 14px/1 var(--ui-face); }
+.ry-notif-face > i { position:absolute; right:-6px; bottom:-6px; width:18px; height:18px; display:grid; place-items:center; border-radius:5px; background:var(--ui-accent); color:#fff; box-shadow:0 0 0 2px #fff; }
+.ry-notif-face > i svg { width:12px; height:12px; }
+.ry-notif-body { flex:1; min-width:0; display:flex; flex-direction:column; }
+.ry-notif-top { display:flex; justify-content:space-between; gap:8px; }
+.ry-notif-top strong { font:600 15px/20px var(--ui-face); }
+.ry-notif-top span { font:400 13px/20px var(--ui-face); color:#5f6b78; }
+.ry-notif-text { font:400 15px/20px var(--ui-face); }
+.ry-moved { font-weight:500!important; }

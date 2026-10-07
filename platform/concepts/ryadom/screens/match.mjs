@@ -1,16 +1,21 @@
 import { THEME } from './_shared.mjs';
+import { longrun } from '../model.mjs';
 
-const add = (name) => ({ value: 'Добавить', toast: 'Добавлен в знакомые', label: `Добавить: ${name}` });
+/* Позвать на лонгран: книга сверяется на устройстве, видно, кто уже бегает с клубом */
+const found = [
+  ['ЛК', 'Людмила Ковалёва', 'В клубе · бегает по четвергам'],
+  ['МГ', 'Максим Громов', 'В книге «Максим вело» · не в клубе'],
+  ['ЕС', 'Елена Сон', 'В клубе · утренняя группа с весны'],
+];
+const call = (name) => ({ value: 'Позвать', toast: `${name.split(' ')[0]} получит приглашение`, label: `Позвать: ${name}` });
 export default (ui) => ui.screen({
   id: 'match', theme: THEME,
   body: [
-    ui.nav({ title: 'Нашлись в книге' }),
-    ui.scroll([ui.section({ title: 'Похоже, из клуба', meta: '9', children: ui.list([
-        ui.row({ lead: ui.avatar('ЛК'), title: 'Людмила Ковалёва', sub: 'Бегает по четвергам', end: add('Людмила Ковалёва') }),
-        ui.row({ lead: ui.avatar('МГ'), title: 'Максим Громов', sub: 'В книге «Максим вело» · бегает по средам', end: add('Максим Громов') }),
-        ui.row({ lead: ui.avatar('ЕС'), title: 'Елена Сон', sub: 'Утренняя группа · в клубе с весны', end: add('Елена Сон') }),
-      ]) }),
-      ui.section({ children: ui.actions([ui.button({ label: 'Добавить всех', block: true, toast: 'Добавлено 9 знакомых|friends', primary: true })]) }),
+    ui.nav({ title: 'Позвать на лонгран' }),
+    ui.scroll([
+      ui.section({ children: ui.list([ui.row({ lead: ui.leadIcon('calendar', { accent: true }), title: `${longrun.title} · ${longrun.start}`, sub: `Свободно ${longrun.spots - longrun.confirmed} мест · темп ${longrun.pace}` })]) }),
+      ui.section({ title: 'Из контактов', meta: String(found.length), children: ui.list(found.map(([ini, name, sub]) => ui.row({ lead: ui.avatar(ini), title: name, sub, end: call(name) }))) }),
+      ui.section({ children: ui.actions([ui.button({ label: `Позвать всех ${found.length}`, block: true, toast: `Приглашения отправлены · ${found.length}|meetup`, primary: true })]) }),
     ]),
   ],
 });

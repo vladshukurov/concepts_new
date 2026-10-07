@@ -5,7 +5,7 @@ import { own, longrun } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'widget', theme: THEME, className: 'ui-hs',
   body: ui.homeScreen({
-    widget: { icon: 'dumbbell', kicker: 'Выбег · неделя', title: `${own.week.done} из ${own.week.goal} км`, sub: `${longrun.title} в ${longrun.start}`, activate: 'keychain|meetup' },
+    widget: { icon: 'dumbbell', kicker: 'Выбег · неделя', title: `${own.week.done} из ${own.week.goal} км`, sub: `${longrun.title} в ${longrun.start}`, go: 'meetup' },
     app: { name: 'Выбег', icon: 'dumbbell', go: 'feed', primary: true },
   }),
 });

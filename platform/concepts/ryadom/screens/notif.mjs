@@ -7,7 +7,7 @@ export default (ui) => ui.screen({
     ui.nav({ title: 'Уведомления' }),
     ui.scroll([
       ui.section({ title: 'Сегодня', children: ui.list([
-        ui.row({ lead: ui.avatar(people.ilya.initial), title: `${people.ilya.first} сдвинул точку старта`, sub: `${longrun.title} · к главному входу · 06:40`, go: 'meetup' }),
+        ui.row({ lead: ui.avatar(people.ilya.initial), title: `${people.ilya.first} перенёс старт ко входу`, sub: `${longrun.title} · 06:40`, go: 'meetup' }),
         ui.row({ lead: ui.avatar(people.dasha.initial), title: `${people.dasha.first} идёт на лонгран`, sub: '07:02', go: 'route' }),
       ]) }),
       ui.section({ title: 'Вчера', children: ui.list([

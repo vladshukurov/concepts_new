@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×50, `section` ×44, `leadIcon` ×31, `list` ×24, `iconButton` ×17, `cell` ×17, `nav` ×15, `avatar` ×13, `button` ×9, `denied` ×8, `entry` ×8, `actions` ×7, `group` ×7, `tabBar` ×5, `dialog` ×4, `bubble` ×3, `largeTitle` ×3, `search` ×3, `progress` ×2, `textButton` ×2, `top` ×2, `callView` ×1, `chatNav` ×1, `chat` ×1, `day` ×1, `voice` ×1, `composer` ×1, `wordmark` ×1, `chips` ×1, `safariFill` ×1, `stats` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×53, `section` ×46, `leadIcon` ×33, `list` ×25, `iconButton` ×15, `nav` ×15, `cell` ×13, `avatar` ×12, `button` ×9, `actions` ×8, `bubble` ×8, `entry` ×8, `group` ×6, `tabBar` ×5, `denied` ×5, `day` ×3, `largeTitle` ×3, `search` ×3, `progress` ×2, `chatNav` ×2, `chat` ×2, `composer` ×2, `dialog` ×2, `textButton` ×2, `top` ×2, `hue` ×1, `callView` ×1, `voice` ×1, `wordmark` ×1, `chips` ×1, `safariFill` ×1, `stats` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -47,6 +47,7 @@
 | Профиль | `.ry-me` |
 | Съёмка и медиатека | `.ry-cam` `.ry-viewfinder` `.ry-modes` `.ry-shutter` `.ry-grid` |
 | Тёмные поверхности: звонок, показ на ТВ, экран блокировки | `.ry-dark` `.ry-tv` `.ry-tv-copy` `.ry-glass-controls` `.ry-lock` `.ry-lock-time` |
+| Уведомление о сообщении на экране блокировки: инициалы отправителя и значок приложения | `.ry-notifs` `.ry-notif` `.ry-notif-face` `.ry-notif-body` `.ry-notif-top` `.ry-notif-text` |
 <!-- @end -->
 
 ## Актуальная навигация

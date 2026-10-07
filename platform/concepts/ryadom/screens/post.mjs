@@ -5,11 +5,11 @@ import { people, own } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'post', theme: THEME,
   body: [
-    ui.nav({ title: 'Пробежка', trailing: ui.iconButton({ icon: 'ellipsis', label: 'Действия с пробежкой', menu: ['Изменить', 'Отправить Илье>chat', 'Удалить'] }) }),
+    ui.nav({ title: 'Пробежка', trailing: ui.iconButton({ icon: 'ellipsis', label: 'Действия с пробежкой', menu: ['Изменить', 'Удалить'] }) }),
     ui.scroll([
       ui.entry({ icon: 'activity', title: own.run.title, meta: `${own.run.when} · ${own.run.time}`, text: own.run.note }),
       ui.section({ title: 'Схема', children: [
-        `<div class="ry-map"><span class="ry-river"></span><span class="ry-path"></span><span class="ry-pin ry-x10 ry-y36">С</span><span class="ry-pin ry-x58 ry-y28">!</span></div>`,
+        `<div class="ry-map"><span class="ry-river"></span><span class="ry-path"></span><span class="ry-pin ry-x10 ry-y36">С</span></div>`,
       ] }),
       ui.section({ title: 'Отрезки', meta: '6', children: ui.list([
         ui.row({ lead: '<span class="ry-km">1</span>', title: '6:31', sub: 'Разминка от клуба' }),
@@ -20,10 +20,10 @@ export default (ui) => ui.screen({
         ui.row({ lead: '<span class="ry-km">6</span>', title: '6:09', sub: 'Заминка, 400 м шагом' }),
       ]) }),
       ui.section({ title: 'Бежали вместе', meta: '2', children: ui.list([
-        ui.row({ lead: ui.avatar(people.ilya.initial), title: people.ilya.name, sub: 'Держал темп 6:10 и показал объезд', go: 'chat' }),
+        ui.row({ lead: ui.avatar(people.ilya.initial), title: people.ilya.name, sub: 'Держал темп 6:10 и показал объезд' }),
         ui.row({ lead: ui.avatar(people.dasha.initial), title: people.dasha.name, sub: 'Сошла на 4-м км, догнала у клуба' }),
       ]) }),
-      ui.section({ children: ui.actions([ui.button({ label: 'Бежать этот маршрут снова', block: true, go: 'player', primary: true })]) }),
+      ui.section({ children: ui.actions([ui.button({ label: 'Бежать полную Набережную · 8,2 км', block: true, go: 'player', primary: true })]) }),
     ]),
   ],
 });
