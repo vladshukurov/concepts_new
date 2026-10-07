@@ -85,3 +85,13 @@
 /* Камера: рамка под страницу блокнота */
 .br-frame { position:relative; z-index:1; width:248px; aspect-ratio:3/4; margin:72px auto 0; border-radius:12px; box-shadow:0 0 0 2px rgba(255,255,255,.8), 0 0 0 999px rgba(0,0,0,.32); }
 .br-frame + .br-rec-label { margin-top:16px; }
+
+/* Герой главной: песня, к которой возвращаешься, на своём снимке дня записи */
+.cover { background-image:url(assets/media/session-covers-atlas.png); background-size:300% 200%; background-repeat:no-repeat; background-color:#1b2127; }
+.cover-3 { background-position:100% 0; }
+.br-hero { min-height:340px; padding:0 16px 28px; }
+.br-hero-top { position:absolute!important; left:0; right:0; top:var(--safe-top); padding-left:16px; text-align:left; }
+.br-hero .ui-play { margin-bottom:20px; box-shadow:0 8px 32px rgba(0,0,0,.28); }
+.br-hero-copy { display:flex; flex-direction:column; align-items:center; gap:4px; min-height:44px; text-align:center!important; }
+.br-hero-copy > strong { color:#fff; }
+.br-hero-copy > span { font:400 16px/20px var(--ui-face); color:rgba(255,255,255,.8); }

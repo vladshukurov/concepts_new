@@ -1,7 +1,9 @@
 {
   "slug": "breath",
   "name": "Мотив",
-  "formerNames": ["Дыхание"],
+  "formerNames": [
+    "Дыхание"
+  ],
   "targetSet": "vk-music",
   "qualityContractVersion": 4,
   "uiContractVersion": 2,

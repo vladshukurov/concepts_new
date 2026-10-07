@@ -1041,7 +1041,7 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
 :root[data-app-theme="light"] .device:has(.screens > .screen.ui.vk-dark.is-on > .ui-scroll > .ui-hero:first-child) .status { color:#fff!important; text-shadow:0 1px 2px rgba(0,0,0,.45)!important; }
 /* Кадр героя в светлой теме не растворяется в белом: подпись поверх него держит затемнение снизу */
 :root[data-app-theme="light"] .ui.vk-dark .ui-hero::after { background:linear-gradient(180deg, rgba(0,0,0,.3) 0%, rgba(0,0,0,.04) 30%, rgba(0,0,0,.32) 64%, rgba(0,0,0,.6) 100%); }
-:root[data-app-theme="light"] .ui.vk-dark .ui-hero { color:#fff; }
+:root[data-app-theme="light"] .ui.vk-dark .ui-hero, :root[data-app-theme="light"] .ui.vk-dark .ui-hero :is(.ui-icon-btn, .ui-me) { color:#fff; }
 .ui.vk-light, .ui.ok-light {
   --ui-row-h:64px; --ui-row-pad:10px;
 }
