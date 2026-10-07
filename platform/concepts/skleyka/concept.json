@@ -331,10 +331,10 @@
       "plist": "UIBackgroundModes: audio",
       "alert": {
         "title": "Фоновое воспроизведение",
-        "text": "Черновик продолжит играть в окне поверх других приложений"
+        "text": "Фильм продолжит играть в окне поверх других приложений и при погашенном экране"
       },
       "activate": true,
-      "feature": "Черновик в окне «Картинка в картинке»",
+      "feature": "Фильм в окне «Картинка в картинке» и со звуком при погашенном экране",
       "gesture": "«Картинка в картинке» в плеере",
       "screen": "viewer",
       "target": "background",
@@ -342,12 +342,12 @@
       "risk": "high",
       "anchor": false,
       "conditional": true,
-      "requires": "AVPictureInPictureController с AVAudioSession playback — без фонового режима окно не открывается",
-      "grounding": "AVPlayerLayer + AVPictureInPictureController, категория playback",
+      "requires": "AVPictureInPictureController и воспроизведение при блокировке с AVAudioSession playback и Now Playing — без фонового режима iOS останавливает звук",
+      "grounding": "AVPlayerLayer + AVPictureInPictureController, категория playback, MPNowPlayingInfoCenter",
       "rationale": {
         "who": "Организатор, который досматривает черновик и переписывается с друзьями",
-        "moment": "В плеере нажимает «Картинка в картинке» и уходит в «Сообщения»",
-        "need": "Видео со звуком продолжают идти в окне поверх других приложений; без фонового режима iOS останавливает их при сворачивании",
+        "moment": "В плеере нажимает «Картинка в картинке» и уходит в «Сообщения» или гасит экран и слушает фильм",
+        "need": "Видео со звуком продолжают идти в окне поверх других приложений и при погашенном экране; без фонового режима iOS останавливает их",
         "without": "Черновик встаёт на паузу при выходе из приложения"
       },
       "reviewNote": "Доступ вызывается действием «Картинка в картинке» в плеере на экране «viewer». При отказе: Черновик встаёт на паузу при выходе из приложения"
@@ -1333,6 +1333,47 @@
       }
     },
     {
+      "id": "lock",
+      "title": "Звук при погашенном экране",
+      "type": "system",
+      "light": false,
+      "parent": "viewer",
+      "meta": "Фильм играет со звуком при заблокированном телефоне",
+      "ui": {
+        "pattern": "system",
+        "navigation": "system",
+        "purpose": "Слушать фильм события с погашенным экраном и управлять им с локскрина",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Карточка фильма с паузой и перемоткой на локскрине",
+          "secondary": "Возврат в плеер «Встыка»"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Фильм «Выходные у озера» играет, пока телефон лежит экраном вниз на зарядке"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинный фильм на 12 минут, перемотка по 10 секунд с локскрина"
+          },
+          {
+            "kind": "failure",
+            "example": "Наушники отключились, фильм встал на паузу"
+          }
+        ]
+      }
+    },
+    {
       "id": "export",
       "title": "Экспорт",
       "type": "push",
@@ -1447,6 +1488,7 @@
         "cast",
         "tv",
         "background",
+        "lock",
         "export",
         "saved"
       ],

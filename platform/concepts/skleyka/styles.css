@@ -159,3 +159,21 @@
 .is-38 { width:38%; }
 .ui-row-text > strong.sk-wrap { white-space:normal; }
 .sk-build { margin-top:16px; }
+
+/* Звук фильма при погашенном экране: карточка Now Playing на локскрине */
+.is-20 { width:20%; }
+.sk-lock { overflow:hidden; }
+.sk-lock-wall { position:absolute; inset:0; background-size:auto 200%; filter:blur(24px); opacity:.75; }
+.sk-lock-shade { position:absolute; inset:0; background:rgba(0,0,0,.34); }
+.sk-lock-time { position:relative; margin-top:88px; text-align:center; font:300 80px/84px var(--ui-face); letter-spacing:-.02em; color:#fff; }
+.sk-lock-time small { display:block; margin-top:4px; font:500 18px/22px var(--ui-face); letter-spacing:0; }
+.sk-now-card { position:absolute; left:12px; right:12px; bottom:calc(var(--safe-bottom) + 84px); padding:14px 16px 12px; border-radius:24px; background:rgba(40,40,44,.62); color:#fff; backdrop-filter:blur(30px) saturate(1.6); -webkit-backdrop-filter:blur(30px) saturate(1.6); }
+.sk-now-top { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.sk-now-top .ui-thumb { width:48px; height:48px; background-size:auto 200%; }
+.sk-now-top .ui-row-text > span, .sk-now-app, .sk-now-card .ui-times { color:rgba(255,255,255,.66); }
+.sk-now-app svg { width:20px; height:20px; }
+.sk-lock-controls { display:flex; justify-content:space-around; margin-top:4px; }
+.sk-lock-controls .ui-icon-btn { color:#fff; }
+.sk-lock-controls .ui-icon-btn svg { width:28px; height:28px; }
+.sk-lock-pause svg { width:34px!important; height:34px!important; }
+.sk-lock-foot { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 24px); }

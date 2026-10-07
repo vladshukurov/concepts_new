@@ -1,4 +1,4 @@
-import { TABS } from './_tabs.mjs';
+import { TABS, MINI } from './_tabs.mjs';
 
 /* Проекты, кроме главного, открываются листом действий: своего экрана у каждого нет */
 const MENU = 'Изменить|Удалить';
@@ -21,5 +21,5 @@ export default (ui) => ui.screen({
     ]) }),
     ui.section({ children: `<button class="sk-ad" data-go="ads"><span class="sk-ad-art" data-hide-granted="tracking"><svg><use href="#i-smartphone"/></svg></span><span class="sk-ad-art perm-hidden" data-show-granted="tracking"><svg><use href="#i-mic"/></svg></span><span class="ui-row-text"><strong data-hide-granted="tracking">Штатив для телефона</strong><strong class="perm-hidden" data-show-granted="tracking">Петличный микрофон</strong><span data-hide-granted="tracking">Реклама · снимать без рук</span><span class="perm-hidden" data-show-granted="tracking">Реклама · по интересам</span></span></button>` }),
   ], { root: true }),
-  tabs: ui.tabBar({ items: TABS, active: 'projects' }),
+  tabs: ui.tabBar({ items: TABS, active: 'projects', mini: MINI }),
 });
