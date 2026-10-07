@@ -1485,6 +1485,13 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
    (#e1e3e6): серое на белом читается как незагрузившаяся картинка. */
 .ui:is(.vk-light,.ok-light) :is(.ui-avatar, .ui-post-ava.is-initial, .ui-dialog-face.is-initial, .ui-chat-face.is-initial) { background:var(--ui-accent-soft); color:var(--ui-link); }
 .ui:is(.vk-light,.ok-light) .ph:not(.on-dark) { background:linear-gradient(160deg, color-mix(in srgb, var(--ui-accent) 7%, #fff), color-mix(in srgb, var(--ui-accent) 17%, #fff)); color:color-mix(in srgb, var(--ui-link) 45%, transparent); }
+/* Сетка из одинаковых плиток читается как незагрузившийся экран. Соседние кадры — разные
+   мягкие оттенки: синий акцента, сланцевый, тёплый, бирюзовый, сиреневый; значок камеры тише */
+.ui:is(.vk-light,.ok-light) .ph:not(.on-dark) ~ .ph:not(.on-dark) { color:color-mix(in srgb, var(--ui-link) 28%, transparent); }
+.ui:is(.vk-light,.ok-light) .ph:not(.on-dark):nth-child(5n+2) { background:linear-gradient(160deg, #eef1f5, #dde3ea); }
+.ui:is(.vk-light,.ok-light) .ph:not(.on-dark):nth-child(5n+3) { background:linear-gradient(160deg, #f6f1ea, #e9dfd2); }
+.ui:is(.vk-light,.ok-light) .ph:not(.on-dark):nth-child(5n+4) { background:linear-gradient(160deg, #ebf5f3, #d5e8e4); }
+.ui:is(.vk-light,.ok-light) .ph:not(.on-dark):nth-child(5n) { background:linear-gradient(160deg, #f1eff8, #e1ddf0); }
 
 /* ── Плеер ВК Видео: кадр 16:9 на всю ширину, управление поверх ──
    Управление показано, как после касания: затемнение сверху и снизу,
@@ -1735,3 +1742,6 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .ui-ad-art svg { width:24px; height:24px; }
 /* Светлая тема: не серая плашка на белом, а вложение с тонкой обводкой */
 .ui:is(.vk-light,.ok-light) .ui-ad { background:none; box-shadow:inset 0 0 0 1px var(--ui-line); }
+
+/* Локскрин: время крупно по центру, в статус-баре его нет — как в iOS */
+.device:has(.screen.is-on:is(.ui-lock, [class*="lock"], [data-screen*="lock"])) .status > span:first-child { visibility:hidden; }
