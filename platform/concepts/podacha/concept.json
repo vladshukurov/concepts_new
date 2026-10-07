@@ -1,7 +1,9 @@
 {
   "slug": "podacha",
   "name": "Вкусно",
-  "formerNames": ["Подача"],
+  "formerNames": [
+    "Подача"
+  ],
   "eyebrow": "Вкусно · Дневник своей готовки · iOS",
   "targetSet": "vkontakte",
   "domain": "vkusno.app",
@@ -2192,6 +2194,46 @@
           }
         ]
       }
+    },
+    {
+      "id": "direct-amina",
+      "title": "Амина Рахимова",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Личный разговор со знакомой",
+      "ui": {
+        "pattern": "messaging",
+        "navigation": "push",
+        "purpose": "Обсудить присланный рецепт",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "История личной переписки",
+          "secondary": "Композер, фото блюда, голосовые сообщения и звонок"
+        },
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Тимур прислал карточку рецепта"
+          },
+          {
+            "kind": "stress",
+            "example": "Несколько вложений подряд"
+          },
+          {
+            "kind": "failure",
+            "example": "Сообщение ждёт подключения"
+          }
+        ]
+      }
     }
   ],
   "prototypes": [
@@ -2232,7 +2274,8 @@
         "privacy",
         "invite",
         "widget",
-        "fill"
+        "fill",
+        "direct-amina"
       ]
     },
     {
@@ -2401,14 +2444,16 @@
         "direct-zhanna",
         "direct-timur",
         "cookalong",
-        "chats"
+        "chats",
+        "direct-amina"
       ],
       "stops": [
         "profile",
         "direct-zhanna",
         "direct-timur",
         "cookalong",
-        "chats"
+        "chats",
+        "direct-amina"
       ]
     },
     {
@@ -2434,7 +2479,8 @@
         "direct-timur",
         "cookalong",
         "widget",
-        "fill"
+        "fill",
+        "direct-amina"
       ],
       "stops": [
         "cast",
@@ -2447,7 +2493,8 @@
         "direct-timur",
         "cookalong",
         "widget",
-        "fill"
+        "fill",
+        "direct-amina"
       ]
     }
   ],

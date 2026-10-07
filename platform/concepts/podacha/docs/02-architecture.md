@@ -25,8 +25,8 @@
 | Ключ | Жест | Экран | Оценка |
 |---|---|---|---|
 | `camera` ⚓ | «Снять блюдо» | `compose` | запрос с 2 экранов (compose, camera) — нужна одна точка |
-| `mic` | «Снять с пояснением» или голосовое в чате | `camera` | запрос с 4 экранов (camera, conversation, direct-zhanna, direct-timur) — нужна одна точка |
-| `photos` ⚓ | «Из медиатеки» | `compose` | запрос с 5 экранов (compose, picker, conversation, direct-zhanna, direct-timur) — нужна одна точка |
+| `mic` | «Снять с пояснением» или голосовое в чате | `camera` | запрос с 5 экранов (camera, conversation, direct-zhanna, direct-timur, direct-amina) — нужна одна точка |
+| `photos` ⚓ | «Из медиатеки» | `compose` | запрос с 6 экранов (compose, picker, conversation, direct-zhanna, direct-timur, direct-amina) — нужна одна точка |
 | `location` ⚓ | «Место» | `compose` | заслужен |
 | `contacts` ⚓ | «Найти знакомых» | `following` | заслужен |
 | `calendar` | «Добавить в календарь» | `pelmeni` | заслужен |
@@ -123,7 +123,8 @@
     ├─ Разговор ужина (conversation) — push · открывается: «Чат ужина · 4 новых», «Амина в чате ужина» … · voip
     │   └─ Звонок ужина (call) — fullscreen · открывается: «Позвонить» (voip)
     ├─ Жанна Ким (direct-zhanna) — push · открывается: «Отправить Жанне», «Спросить Жанну» …
-    └─ Тимур Садыков (direct-timur) — push · открывается: «Тимур Садыков», «Диалог: Тимур Садыков»
+    ├─ Тимур Садыков (direct-timur) — push · открывается: «Тимур Садыков», «Диалог: Тимур Садыков»
+    └─ Амина Рахимова (direct-amina) — push · открывается: «Амина Рахимова»
 ```
 <!-- @end -->
 
@@ -204,7 +205,7 @@
 | `following` | «Назад» | `profile` | — | возврат по IA |
 | `following` | «Жанна Ким» | `direct-zhanna` | — | переход |
 | `following` | «Тимур Садыков» | `direct-timur` | — | переход |
-| `following` | «Амина Рахимова» | `cookalong` | — | переход |
+| `following` | «Амина Рахимова» | `direct-amina` | — | переход |
 | `following` | «Найти знакомых» | `matches` | `NSContactsUsageDescription` | доступ разрешён |
 | `following` | «Найти знакомых» | `following` | `NSContactsUsageDescription` | отказ → fallback |
 | `matches` | «Назад» | `following` | — | возврат по IA |
@@ -250,4 +251,8 @@
 | `widget` | «Виджет «Вкусно»» | `cookalong` | `keychain-access-groups` | entitlement, без alert |
 | `widget` | «Вкусно» | `feed` | `keychain-access-groups` | entitlement, без alert |
 | `fill` | — | — | — | дальше переходов нет |
+| `direct-amina` | «Назад» | `chats` | — | возврат по IA |
+| `direct-amina` | «Позвонить» | `call` | `UIBackgroundModes: voip` | entitlement, без alert |
+| `direct-amina` | «Вложение» | `direct-amina` | `NSPhotoLibraryUsageDescription` | доступ разрешён |
+| `direct-amina` | «Голосовое сообщение» | `direct-amina` | `NSMicrophoneUsageDescription` | доступ разрешён |
 <!-- @end -->

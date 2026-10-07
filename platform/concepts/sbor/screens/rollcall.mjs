@@ -30,9 +30,9 @@ export default (ui) => ui.screen({
       ui.section({ title: 'Ещё нет', meta: '5', children: [
         ui.list([
           ui.row({ lead: ui.avatar(people.marat.initial), title: people.marat.name, sub: '1,2 км · пишет «буду к 10:10»', go: 'chat' }),
-          ui.row({ lead: ui.avatar(people.anya.initial), title: people.anya.name, sub: 'в отеле · «спускаюсь, 3 минуты» · 9:39', go: 'trip' }),
-          ui.row({ lead: ui.avatar(people.denis.initial), title: people.denis.name, sub: 'в пути · 400 м, у Лядского сада', go: 'trip' }),
-          ui.row({ lead: ui.avatar(people.sveta.initial), title: people.sveta.name, sub: 'не в сети с 7:58 · номер 406', go: 'trip' }),
+          ui.row({ lead: ui.avatar(people.anya.initial), title: people.anya.name, sub: 'в отеле · «спускаюсь, 3 минуты» · 9:39', go: 'anya' }),
+          ui.row({ lead: ui.avatar(people.denis.initial), title: people.denis.name, sub: 'в пути · 400 м, у Лядского сада', go: 'denis' }),
+          ui.row({ lead: ui.avatar(people.sveta.initial), title: people.sveta.name, sub: 'не в сети с 7:58 · номер 406', go: 'sveta' }),
           ui.row({ lead: ui.avatar('НР'), title: 'Ника Рябова', sub: 'вы · ещё не отметились' }),
         ]),
         ui.actions([ui.button({ label: 'Напомнить четверым', icon: 'bell', variant: 'secondary', block: true, toast: 'Напоминание о сборе ушло четверым' })]),

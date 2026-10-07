@@ -9,13 +9,13 @@ export default (ui) => ui.screen({
     `<div class="tl-vet-head"><span class="ui-thumb is-round ${PET.truffle}"></span><div><h2>Трюфель, 2 года</h2><p>Ветпаспорт RU 4471 · клиника «Свои люди»</p><p>27,4 кг · +1,3 кг с февраля</p></div></div>`,
     ui.section({ title: 'Ближайший приём', meta: visit.day, children: [
       `<div class="tl-appt"><span class="tl-appt-when">${visit.day} · ${visit.time}</span><strong>${visit.title}</strong><span>Походка и состояние кожи · 10 минут</span>${ui.actions([
-        ui.button({ label: 'Написать', icon: 'message-circle', go: 'chats' }),
+        ui.button({ label: 'Написать', icon: 'message-circle', go: 'chat-clinic' }),
         ui.button({ label: 'В Календарь', icon: 'calendar-plus', variant: 'secondary', primary: true, ask: 'calendar|vaccine|vaccine'}),
       ], { row: true })}</div>`,
       ui.denied('calendar'),
       ui.list([ui.row({ lead: ui.leadIcon('calendar-check', { round: true, accent: true }), title: 'Приём в календаре', sub: 'Вторник, 09:15 · напоминание за час', shownAfter: 'calendar' })]),
       ui.list([
-        ui.row({ lead: ui.leadIcon('bell'), title: 'Изменения приёма', sub: 'Перенос, отмена или подготовка от врача', go: 'chats' }),
+        ui.row({ lead: ui.leadIcon('bell'), title: 'Изменения приёма', sub: 'Перенос, отмена или подготовка от врача', go: 'chat-clinic' }),
         ui.row({ lead: ui.leadIcon('notebook-pen'), title: 'Наблюдения к приёму', sub: 'Вчера: 4 из 5 разобрано', go: 'vetnote' }),
       ]),
     ] }),

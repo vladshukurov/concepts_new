@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×51, `section` ×40, `leadIcon` ×39, `cell` ×29, `list` ×21, `button` ×14, `denied` ×14, `nav` ×12, `group` ×11, `actions` ×8, `iconButton` ×8, `entry` ×6, `bubble` ×5, `dialog` ×5, `tabBar` ×5, `largeTitle` ×4, `foot` ×4, `search` ×3, `day` ×2, `textButton` ×2, `stats` ×2, `callView` ×1, `chatNav` ×1, `chat` ×1, `voice` ×1, `composer` ×1, `safariFill` ×1, `top` ×1, `wordmark` ×1, `chips` ×1, `avatar` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×51, `section` ×40, `leadIcon` ×39, `cell` ×29, `list` ×21, `button` ×14, `denied` ×14, `nav` ×12, `group` ×11, `actions` ×8, `iconButton` ×8, `bubble` ×6, `entry` ×6, `dialog` ×5, `tabBar` ×5, `largeTitle` ×4, `foot` ×4, `day` ×3, `search` ×3, `chatNav` ×2, `chat` ×2, `composer` ×2, `textButton` ×2, `stats` ×2, `callView` ×1, `voice` ×1, `safariFill` ×1, `top` ×1, `wordmark` ×1, `chips` ×1, `avatar` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты

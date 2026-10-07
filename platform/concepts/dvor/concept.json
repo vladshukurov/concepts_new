@@ -1,7 +1,9 @@
 {
   "slug": "dvor",
   "name": "В квартире",
-  "formerNames": ["Двор"],
+  "formerNames": [
+    "Двор"
+  ],
   "eyebrow": "В квартире · Дела своей квартиры и чат дома · iOS",
   "targetSet": "vkontakte",
   "domain": "dvor.app",
@@ -1721,6 +1723,146 @@
         "navigation": "system",
         "primaryAction": null
       }
+    },
+    {
+      "id": "marina",
+      "title": "Профиль соседа Марины",
+      "type": "push",
+      "light": true,
+      "parent": "neighbors",
+      "meta": "Карточка жильца",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      }
+    },
+    {
+      "id": "irina",
+      "title": "Профиль соседа Ирины",
+      "type": "push",
+      "light": true,
+      "parent": "neighbors",
+      "meta": "Карточка жильца",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      }
+    },
+    {
+      "id": "chatpetr",
+      "title": "Диалог с Петром",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Сообщения, фото, голосовые и звонок",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      }
+    },
+    {
+      "id": "chatirina",
+      "title": "Диалог с Ириной",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Сообщения, фото, голосовые и звонок",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      }
+    },
+    {
+      "id": "chatdenis",
+      "title": "Диалог с Денисом",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Сообщения, фото, голосовые и звонок",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      }
+    },
+    {
+      "id": "chatentr",
+      "title": "Чат 3 подъезда",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Сообщения, фото, голосовые и звонок",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      }
+    },
+    {
+      "id": "chatsovet",
+      "title": "Чат совета дома",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Сообщения, фото, голосовые и звонок",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      }
     }
   ],
   "prototypes": [
@@ -1759,7 +1901,14 @@
         "settings",
         "ads",
         "lock",
-        "widget"
+        "widget",
+        "marina",
+        "irina",
+        "chatpetr",
+        "chatirina",
+        "chatdenis",
+        "chatentr",
+        "chatsovet"
       ],
       "stops": [],
       "authTarget": "join"
@@ -1848,7 +1997,8 @@
         "post",
         "chat",
         "dictate",
-        "ukchat"
+        "ukchat",
+        "chatsovet"
       ],
       "stops": [
         "guest",
@@ -1857,7 +2007,8 @@
         "post",
         "chat",
         "dictate",
-        "ukchat"
+        "ukchat",
+        "chatsovet"
       ]
     },
     {
@@ -1906,7 +2057,10 @@
         "yard",
         "home",
         "chat",
-        "chats"
+        "chats",
+        "marina",
+        "irina",
+        "chatpetr"
       ],
       "stops": [
         "settings",
@@ -1918,7 +2072,10 @@
         "yard",
         "home",
         "chat",
-        "chats"
+        "chats",
+        "marina",
+        "irina",
+        "chatpetr"
       ]
     },
     {
@@ -1933,13 +2090,23 @@
         "events",
         "problem",
         "neighbors",
-        "ukchat"
+        "ukchat",
+        "chatentr",
+        "chatpetr",
+        "chatsovet",
+        "chatdenis",
+        "chatirina"
       ],
       "stops": [
         "events",
         "problem",
         "neighbors",
-        "ukchat"
+        "ukchat",
+        "chatentr",
+        "chatpetr",
+        "chatsovet",
+        "chatdenis",
+        "chatirina"
       ]
     }
   ],

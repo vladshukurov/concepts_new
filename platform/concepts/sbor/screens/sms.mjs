@@ -10,7 +10,7 @@ export default (ui) => ui.screen({
       '<p class="sb-ios-day">iMessage<br>Сегодня, 9:36</p>',
       '<p class="sb-ios-bubble is-out">Ника, вы уже в Казани? Хочу к вам завтра на слободу</p>',
       '<p class="sb-ios-bubble is-in">Да! Вступай в поездку, там программа и кто где</p>',
-      `<button class="sb-ios-link" data-activate="associateddomains|join" aria-label="Открыть ссылку ${trip.link}"><span class="sb-ios-link-ico">${ui.icon('route')}</span><span><strong>${trip.name} — Сбор</strong><span>${trip.link}</span></span></button>`,
+      `<button class="sb-ios-link" data-activate="associateddomains|join" aria-label="Открыть ссылку ${trip.link}"><span class="sb-ios-link-ico">${ui.icon('route')}</span><span><strong>${trip.name} — В сборе</strong><span>${trip.link}</span></span></button>`,
       '<p class="sb-ios-bubble is-out">Открываю, спасибо</p>',
       '<p class="sb-ios-meta">Доставлено</p>',
     ] })),

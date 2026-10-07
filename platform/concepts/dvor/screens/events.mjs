@@ -13,8 +13,8 @@ export default (ui) => ui.screen({
       ui.list([
         ui.row({ lead: ui.leadIcon('', { text: '12' }), title: cleanup.title, sub: `${cleanup.time} · ${cleanup.where}`, end: { value: 'В Календарь', ask: 'calendar|events|events', primary: true, label: 'Добавить субботник в Календарь' } }),
         ui.row({ lead: ui.leadIcon('calendar-check', { round: true, accent: true }), title: 'Субботник в Календаре', sub: 'Завтра, 11:00 · напомним за час, перенос подхватится сам', shownAfter: 'calendar' }),
-        ui.row({ lead: ui.leadIcon('', { text: String(outage.from) }), title: 'Опрессовка стояка', sub: `${outage.label} · без горячей воды`, go: 'chat' }),
-        ui.row({ lead: ui.leadIcon('', { text: '18' }), title: meetingDay.title, sub: `${meetingDay.time} · ${meetingDay.where} · нужен кворум`, go: 'chat' }),
+        ui.row({ lead: ui.leadIcon('', { text: String(outage.from) }), title: 'Опрессовка стояка', sub: `${outage.label} · без горячей воды` }),
+        ui.row({ lead: ui.leadIcon('', { text: '18' }), title: meetingDay.title, sub: `${meetingDay.time} · ${meetingDay.where} · нужен кворум`, go: 'chatsovet' }),
       ]),
       ui.denied('calendar'),
     ] }),

@@ -4,7 +4,7 @@ import { THEME } from './_shared.mjs';
 export default (ui) => ui.screen({
   id: 'problem', theme: THEME,
   body: [
-    ui.nav({ title: 'Что случилось', back: 'close', trailing: ui.textButton({ label: 'Отправить', strong: true, toast: 'Заявка 4417-Б отправлена в чат УК' }) }),
+    ui.nav({ title: 'Что случилось', back: 'close', trailing: ui.textButton({ label: 'Отправить', strong: true, go: 'ukchat' }) }),
     ui.scroll([
       ui.section({ title: 'Фото с места', meta: '2 кадра', children: [
         `<div class="dv-shots"><span class="ph"></span><span class="ph"></span></div>`,

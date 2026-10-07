@@ -1,7 +1,9 @@
 {
   "slug": "looks",
   "name": "Вешалка",
-  "formerNames": ["Образы"],
+  "formerNames": [
+    "Образы"
+  ],
   "eyebrow": "Вешалка · Свой лукбук и гардероб · iOS",
   "targetSet": "vkontakte",
   "domain": "looks.social",

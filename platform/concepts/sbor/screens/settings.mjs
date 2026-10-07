@@ -32,7 +32,7 @@ export default (ui) => ui.screen({
     ] }) }),
     ui.section({ children: ui.group({ cells: [
       ui.cell({ icon: 'message-circle', title: 'Задать вопрос', toast: 'Чат поддержки открыт' }),
-      ui.cell({ icon: 'circle-alert', title: 'Вопросы о «Сборе»', toast: 'sbor.app/faq' }),
+      ui.cell({ icon: 'circle-alert', title: 'Вопросы о «В сборе»', toast: 'sbor.app/faq' }),
     ] }) }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'settings' }),

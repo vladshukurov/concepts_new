@@ -1,7 +1,9 @@
 {
   "slug": "shtrikh",
   "name": "В карандаше",
-  "formerNames": ["Штрих"],
+  "formerNames": [
+    "Штрих"
+  ],
   "eyebrow": "В карандаше · Свой скетчбук города · iOS",
   "targetSet": "vkontakte",
   "domain": "vkarandashe.app",
@@ -2029,6 +2031,162 @@
           }
         ]
       }
+    },
+    {
+      "id": "direct-lera",
+      "title": "Лера Ян",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Личный чат",
+      "ui": {
+        "pattern": "messaging",
+        "navigation": "push",
+        "purpose": "Переписка со знакомой",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "hierarchy": {
+          "primary": "Сообщения и поле ввода",
+          "secondary": "Вложение из камеры или медиатеки"
+        },
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Короткая переписка про место"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное сообщение"
+          },
+          {
+            "kind": "failure",
+            "example": "Нет сети — сообщение ждёт"
+          }
+        ]
+      }
+    },
+    {
+      "id": "direct-alina",
+      "title": "Алина Рахимова",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Личный чат",
+      "ui": {
+        "pattern": "messaging",
+        "navigation": "push",
+        "purpose": "Переписка со знакомой",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "hierarchy": {
+          "primary": "Сообщения и поле ввода",
+          "secondary": "Вложение из камеры или медиатеки"
+        },
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Короткая переписка про место"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное сообщение"
+          },
+          {
+            "kind": "failure",
+            "example": "Нет сети — сообщение ждёт"
+          }
+        ]
+      }
+    },
+    {
+      "id": "direct-misha",
+      "title": "Миша Ким",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Личный чат",
+      "ui": {
+        "pattern": "messaging",
+        "navigation": "push",
+        "purpose": "Переписка со знакомой",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "hierarchy": {
+          "primary": "Сообщения и поле ввода",
+          "secondary": "Вложение из камеры или медиатеки"
+        },
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Короткая переписка про место"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное сообщение"
+          },
+          {
+            "kind": "failure",
+            "example": "Нет сети — сообщение ждёт"
+          }
+        ]
+      }
+    },
+    {
+      "id": "direct-marina",
+      "title": "Марина Ли",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Личный чат",
+      "ui": {
+        "pattern": "messaging",
+        "navigation": "push",
+        "purpose": "Переписка со знакомой",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "hierarchy": {
+          "primary": "Сообщения и поле ввода",
+          "secondary": "Вложение из камеры или медиатеки"
+        },
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Короткая переписка про место"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное сообщение"
+          },
+          {
+            "kind": "failure",
+            "example": "Нет сети — сообщение ждёт"
+          }
+        ]
+      }
     }
   ],
   "prototypes": [
@@ -2065,7 +2223,11 @@
         "settings",
         "ads",
         "lock",
-        "widget"
+        "widget",
+        "direct-lera",
+        "direct-alina",
+        "direct-misha",
+        "direct-marina"
       ],
       "stops": [],
       "authTarget": "home"
@@ -2165,14 +2327,22 @@
         "profile",
         "authors",
         "picker",
-        "call"
+        "call",
+        "direct-lera",
+        "direct-alina",
+        "direct-misha",
+        "direct-marina"
       ],
       "stops": [
         "events",
         "profile",
         "authors",
         "picker",
-        "call"
+        "call",
+        "direct-lera",
+        "direct-alina",
+        "direct-misha",
+        "direct-marina"
       ]
     },
     {

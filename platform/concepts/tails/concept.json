@@ -1,7 +1,9 @@
 {
   "slug": "tails",
   "name": "Выгул",
-  "formerNames": ["Хвосты"],
+  "formerNames": [
+    "Хвосты"
+  ],
   "eyebrow": "Выгул · Дневник своего питомца · iOS",
   "targetSet": "vkontakte",
   "domain": "vygul.app",
@@ -1375,6 +1377,102 @@
           "secondary": "Ручной ввод пароля"
         }
       }
+    },
+    {
+      "id": "chat-clinic",
+      "title": "Чат с клиникой",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Личный чат · голосовые · звонок",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Договориться с владельцем о прогулке",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Короткая переписка о прогулке",
+          "Длинное голосовое",
+          "Нет сети — сообщение ждёт"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Сообщения и поле ввода",
+          "secondary": "Звонок из шапки диалога"
+        }
+      }
+    },
+    {
+      "id": "chat-marat",
+      "title": "Чат с Маратом",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Личный чат · голосовые · звонок",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Договориться с владельцем о прогулке",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Короткая переписка о прогулке",
+          "Длинное голосовое",
+          "Нет сети — сообщение ждёт"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Сообщения и поле ввода",
+          "secondary": "Звонок из шапки диалога"
+        }
+      }
+    },
+    {
+      "id": "chat-alena",
+      "title": "Чат с Алёной",
+      "type": "push",
+      "light": true,
+      "parent": "chats",
+      "meta": "Личный чат · голосовые · звонок",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Договориться с владельцем о прогулке",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Короткая переписка о прогулке",
+          "Длинное голосовое",
+          "Нет сети — сообщение ждёт"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Сообщения и поле ввода",
+          "secondary": "Звонок из шапки диалога"
+        }
+      }
     }
   ],
   "prototypes": [
@@ -1407,7 +1505,10 @@
         "lock",
         "vetnote",
         "vaccine",
-        "netqr"
+        "netqr",
+        "chat-clinic",
+        "chat-marat",
+        "chat-alena"
       ],
       "stops": [],
       "authTarget": "home"
@@ -1462,12 +1563,14 @@
         "vetnote",
         "home",
         "lock",
-        "chats"
+        "chats",
+        "chat-clinic"
       ],
       "stops": [
         "home",
         "lock",
-        "chats"
+        "chats",
+        "chat-clinic"
       ]
     },
     {
@@ -1481,12 +1584,18 @@
         "call",
         "walk",
         "media",
-        "mates"
+        "mates",
+        "chat-clinic",
+        "chat-marat",
+        "chat-alena"
       ],
       "stops": [
         "walk",
         "media",
-        "mates"
+        "mates",
+        "chat-clinic",
+        "chat-marat",
+        "chat-alena"
       ]
     }
   ],

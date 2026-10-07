@@ -6,7 +6,7 @@ export default (ui) => ui.screen({
     ui.nav({ title: '' }),
     ui.scroll([
       `<div class="dv-person">${ui.avatar('ПИ', { large: true })}<h1 class="ui-title">Пётр Ильин</h1><p class="ui-sub">Кв. 66 · 3 подъезд · дом подтверждён</p></div>`,
-      ui.section({ children: [ui.stats([['2', 'общих чата'], ['3', 'года в доме'], ['2', 'этаж']]), ui.actions([ui.button({ label: 'Написать', icon: 'message-circle', go: 'chat' }), ui.button({ label: 'События', variant: 'secondary', go: 'events' })], { row: true, className: 'dv-gap' })] }),
+      ui.section({ children: [ui.stats([['2', 'общих чата'], ['3', 'года в доме'], ['2', 'этаж']]), ui.actions([ui.button({ label: 'Написать', icon: 'message-circle', go: 'chatpetr' }), ui.button({ label: 'События', variant: 'secondary', go: 'events' })], { row: true, className: 'dv-gap' })] }),
       ui.section({ children: ui.group({ cells: [
         ui.cell({ icon: 'message-circle', title: 'Общие чаты', sub: '3 подъезд · совет дома', go: 'chats' }),
         ui.cell({ icon: 'shield', title: 'Пожаловаться', sub: 'В поддержку приложения', toast: 'Жалоба отправлена' }),

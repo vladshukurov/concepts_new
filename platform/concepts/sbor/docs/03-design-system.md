@@ -1,4 +1,4 @@
-# Сбор — дизайн-система
+# В сборе — дизайн-система
 
 Тема ядра `vk-light`: белая поверхность, синий акцент `#0077FF`, системный шрифт. Строки, ячейки, диалоги, пузыри, голосовые, поле ввода и экран звонка — компоненты ядра; своё у «Сбора» — доменные блоки с префиксом `sb-` в `styles.css`.
 
@@ -29,7 +29,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×77, `section` ×65, `avatar` ×50, `list` ×33, `cell` ×32, `leadIcon` ×31, `bubble` ×27, `nav` ×14, `button` ×11, `iconButton` ×11, `group` ×10, `day` ×9, `dialog` ×9, `actions` ×8, `denied` ×5, `tabBar` ×5, `chatNav` ×5, `chat` ×5, `largeTitle` ×4, `composer` ×4, `segments` ×3, `search` ×3, `hue` ×3, `textButton` ×2, `voice` ×2, `callView` ×1, `chips` ×1, `usersStack` ×1, `miniInfo` ×1, `top` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×79, `section` ×69, `avatar` ×50, `list` ×35, `leadIcon` ×33, `cell` ×32, `bubble` ×29, `nav` ×15, `button` ×12, `day` ×11, `iconButton` ×11, `group` ×10, `actions` ×9, `dialog` ×9, `chatNav` ×7, `chat` ×7, `composer` ×6, `denied` ×5, `tabBar` ×5, `largeTitle` ×4, `segments` ×3, `search` ×3, `hue` ×3, `textButton` ×2, `voice` ×2, `usersStack` ×2, `callView` ×1, `chips` ×1, `miniInfo` ×1, `top` ×1.
 <!-- @end -->
 
 ## Доменные компоненты

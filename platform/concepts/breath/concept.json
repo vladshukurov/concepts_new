@@ -635,6 +635,294 @@
           "secondary": "Видео, обложка и где записано"
         }
       }
+    },
+    {
+      "id": "rifd",
+      "title": "Рифф в ре миноре",
+      "type": "push",
+      "light": false,
+      "meta": "Запись из наброска",
+      "parent": "discover",
+      "ui": {
+        "purpose": "Открыть выбранную запись из набросков",
+        "primaryAction": "Слушать",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Три версии: напел, под гитару, диктофон",
+          "Фото страницы блокнота в тексте после снимка",
+          "Песня без текста и меток"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Версии и «Слушать»",
+          "secondary": "Метки частей и текст"
+        },
+        "pattern": "detail"
+      }
+    },
+    {
+      "id": "lull",
+      "title": "Колыбельная Саше",
+      "type": "push",
+      "light": false,
+      "meta": "Запись из наброска",
+      "parent": "discover",
+      "ui": {
+        "purpose": "Открыть выбранную запись из набросков",
+        "primaryAction": "Слушать",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Три версии: напел, под гитару, диктофон",
+          "Фото страницы блокнота в тексте после снимка",
+          "Песня без текста и меток"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Версии и «Слушать»",
+          "secondary": "Метки частей и текст"
+        },
+        "pattern": "detail"
+      }
+    },
+    {
+      "id": "n9",
+      "title": "Без названия 9",
+      "type": "push",
+      "light": false,
+      "meta": "Запись из наброска",
+      "parent": "discover",
+      "ui": {
+        "purpose": "Открыть выбранную запись из набросков",
+        "primaryAction": "Слушать",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Три версии: напел, под гитару, диктофон",
+          "Фото страницы блокнота в тексте после снимка",
+          "Песня без текста и меток"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Версии и «Слушать»",
+          "secondary": "Метки частей и текст"
+        },
+        "pattern": "detail"
+      }
+    },
+    {
+      "id": "dima",
+      "title": "Песня Диме на свадьбу",
+      "type": "push",
+      "light": false,
+      "meta": "Запись из наброска",
+      "parent": "discover",
+      "ui": {
+        "purpose": "Открыть выбранную запись из набросков",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Три версии: напел, под гитару, диктофон",
+          "Фото страницы блокнота в тексте после снимка",
+          "Песня без текста и меток"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Версии и «Слушать»",
+          "secondary": "Метки частей и текст"
+        },
+        "pattern": "detail"
+      }
+    },
+    {
+      "id": "n14",
+      "title": "Без названия 14",
+      "type": "push",
+      "light": false,
+      "meta": "Запись из наброска",
+      "parent": "discover",
+      "ui": {
+        "purpose": "Открыть выбранную запись из набросков",
+        "primaryAction": "Слушать",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Три версии: напел, под гитару, диктофон",
+          "Фото страницы блокнота в тексте после снимка",
+          "Песня без текста и меток"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Версии и «Слушать»",
+          "secondary": "Метки частей и текст"
+        },
+        "pattern": "detail"
+      }
+    },
+    {
+      "id": "n13",
+      "title": "Без названия 13",
+      "type": "push",
+      "light": false,
+      "meta": "Запись из наброска",
+      "parent": "discover",
+      "ui": {
+        "purpose": "Открыть выбранную запись из набросков",
+        "primaryAction": "Слушать",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Три версии: напел, под гитару, диктофон",
+          "Фото страницы блокнота в тексте после снимка",
+          "Песня без текста и меток"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Версии и «Слушать»",
+          "secondary": "Метки частей и текст"
+        },
+        "pattern": "detail"
+      }
+    },
+    {
+      "id": "bridge",
+      "title": "Бридж с паузой",
+      "type": "push",
+      "light": false,
+      "meta": "Запись из наброска",
+      "parent": "discover",
+      "ui": {
+        "purpose": "Открыть выбранную запись из набросков",
+        "primaryAction": "Слушать",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Три версии: напел, под гитару, диктофон",
+          "Фото страницы блокнота в тексте после снимка",
+          "Песня без текста и меток"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Версии и «Слушать»",
+          "secondary": "Метки частей и текст"
+        },
+        "pattern": "detail"
+      }
+    },
+    {
+      "id": "electro",
+      "title": "Куплет про электричку",
+      "type": "push",
+      "light": false,
+      "meta": "Запись из наброска",
+      "parent": "discover",
+      "ui": {
+        "purpose": "Открыть выбранную запись из набросков",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Три версии: напел, под гитару, диктофон",
+          "Фото страницы блокнота в тексте после снимка",
+          "Песня без текста и меток"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Версии и «Слушать»",
+          "secondary": "Метки частей и текст"
+        },
+        "pattern": "detail"
+      }
+    },
+    {
+      "id": "riff78",
+      "title": "Рифф на 7/8",
+      "type": "push",
+      "light": false,
+      "meta": "Запись из наброска",
+      "parent": "discover",
+      "ui": {
+        "purpose": "Открыть выбранную запись из набросков",
+        "primaryAction": "Слушать",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Три версии: напел, под гитару, диктофон",
+          "Фото страницы блокнота в тексте после снимка",
+          "Песня без текста и меток"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Версии и «Слушать»",
+          "secondary": "Метки частей и текст"
+        },
+        "pattern": "detail"
+      }
     }
   ],
   "prototypes": [
@@ -657,7 +945,16 @@
         "result",
         "profile",
         "search",
-        "new"
+        "new",
+        "rifd",
+        "lull",
+        "n9",
+        "dima",
+        "n14",
+        "n13",
+        "bridge",
+        "electro",
+        "riff78"
       ],
       "stops": [],
       "authTarget": "home"
@@ -677,13 +974,31 @@
         "search",
         "new",
         "result",
-        "capture"
+        "capture",
+        "rifd",
+        "lull",
+        "n9",
+        "riff78",
+        "dima",
+        "n14",
+        "n13",
+        "bridge",
+        "electro"
       ],
       "stops": [
         "home",
         "new",
         "result",
-        "capture"
+        "capture",
+        "rifd",
+        "lull",
+        "n9",
+        "riff78",
+        "dima",
+        "n14",
+        "n13",
+        "bridge",
+        "electro"
       ]
     },
     {
@@ -694,10 +1009,12 @@
       "screens": [
         "new",
         "pick",
-        "library"
+        "library",
+        "discover"
       ],
       "stops": [
-        "library"
+        "library",
+        "discover"
       ]
     },
     {
@@ -714,11 +1031,13 @@
         "new",
         "pick",
         "library",
-        "home"
+        "home",
+        "discover"
       ],
       "stops": [
         "library",
-        "home"
+        "home",
+        "discover"
       ]
     }
   ],

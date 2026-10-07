@@ -1,7 +1,9 @@
 {
   "slug": "stol",
   "name": "В кругу",
-  "formerNames": ["Стол"],
+  "formerNames": [
+    "Стол"
+  ],
   "eyebrow": "В кругу · Дневник настольных партий · iOS",
   "targetSet": "vkontakte",
   "domain": "vkrugu.app",
@@ -1589,6 +1591,120 @@
           }
         ]
       }
+    },
+    {
+      "id": "game-island",
+      "title": "Остров сокровищ",
+      "type": "push",
+      "light": true,
+      "parent": "games",
+      "meta": "Стол: состав, время, памятка",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Показать идущий стол, состав и памятку",
+        "primaryAction": "Найти стол",
+        "hierarchy": {
+          "primary": "Стол: игра, время, место, места",
+          "secondary": "Календарь, памятка и состав"
+        },
+        "states": [
+          "default",
+          "loading",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Стол 4 из 4, идёт раунд 4"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное название места"
+          },
+          {
+            "kind": "failure",
+            "example": "Отказ в календаре — время в приложении"
+          }
+        ]
+      }
+    },
+    {
+      "id": "game-harbor",
+      "title": "Тихая гавань",
+      "type": "push",
+      "light": true,
+      "parent": "games",
+      "meta": "Стол: состав, время, памятка",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Показать идущий стол, состав и памятку",
+        "primaryAction": "Найти стол",
+        "hierarchy": {
+          "primary": "Стол: игра, время, место, места",
+          "secondary": "Календарь, памятка и состав"
+        },
+        "states": [
+          "default",
+          "loading",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Стол 4 из 4, идёт раунд 4"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное название места"
+          },
+          {
+            "kind": "failure",
+            "example": "Отказ в календаре — время в приложении"
+          }
+        ]
+      }
+    },
+    {
+      "id": "newtable",
+      "title": "Новый стол",
+      "type": "push",
+      "light": true,
+      "parent": "tables",
+      "meta": "Стол: состав, время, памятка",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Показать идущий стол, состав и памятку",
+        "primaryAction": "Создать стол",
+        "hierarchy": {
+          "primary": "Стол: игра, время, место, места",
+          "secondary": "Календарь, памятка и состав"
+        },
+        "states": [
+          "default",
+          "loading",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Стол 4 из 4, идёт раунд 4"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное название места"
+          },
+          {
+            "kind": "failure",
+            "example": "Отказ в календаре — время в приложении"
+          }
+        ]
+      }
     }
   ],
   "prototypes": [
@@ -1616,7 +1732,10 @@
         "call",
         "settings",
         "widget",
-        "fill"
+        "fill",
+        "game-island",
+        "game-harbor",
+        "newtable"
       ]
     },
     {
@@ -1668,14 +1787,16 @@
         "score",
         "chat",
         "direct",
-        "audio"
+        "audio",
+        "newtable"
       ],
       "stops": [
         "compose",
         "score",
         "chat",
         "direct",
-        "audio"
+        "audio",
+        "newtable"
       ]
     },
     {

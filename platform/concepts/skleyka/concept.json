@@ -1,7 +1,9 @@
 {
   "slug": "skleyka",
   "name": "Встык",
-  "formerNames": ["Склейка"],
+  "formerNames": [
+    "Склейка"
+  ],
   "eyebrow": "Встык · iOS",
   "targetSet": "vk-video",
   "domain": "vstyk.app",
@@ -1457,6 +1459,293 @@
           }
         ]
       }
+    },
+    {
+      "id": "viewer-lera",
+      "title": "День рождения Леры",
+      "type": "fullscreen",
+      "light": false,
+      "parent": "projects",
+      "meta": "Плеер, показ на ТВ и картинка в картинке",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Просмотреть итоговый фильм и перейти к экспорту",
+        "primaryAction": "Экспортировать",
+        "hierarchy": {
+          "primary": "Видео во всю ширину с основными контролами",
+          "secondary": "Следующие фрагменты, показ на ТВ, картинка в картинке и экспорт"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Фильм проигрывается с названием текущей локальной сцены"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинный фильм продолжается с сохранённого таймкода"
+          },
+          {
+            "kind": "failure",
+            "example": "Видеофайл недоступен, но редактор сохранён"
+          }
+        ]
+      }
+    },
+    {
+      "id": "viewer-final",
+      "title": "Финал летнего концерта",
+      "type": "fullscreen",
+      "light": false,
+      "parent": "archive",
+      "meta": "Плеер, показ на ТВ и картинка в картинке",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Просмотреть итоговый фильм и перейти к экспорту",
+        "primaryAction": "Экспортировать",
+        "hierarchy": {
+          "primary": "Видео во всю ширину с основными контролами",
+          "secondary": "Следующие фрагменты, показ на ТВ, картинка в картинке и экспорт"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Фильм проигрывается с названием текущей локальной сцены"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинный фильм продолжается с сохранённого таймкода"
+          },
+          {
+            "kind": "failure",
+            "example": "Видеофайл недоступен, но редактор сохранён"
+          }
+        ]
+      }
+    },
+    {
+      "id": "viewer-almaty",
+      "title": "Алматы на выходных",
+      "type": "fullscreen",
+      "light": false,
+      "parent": "archive",
+      "meta": "Плеер, показ на ТВ и картинка в картинке",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Просмотреть итоговый фильм и перейти к экспорту",
+        "primaryAction": "Экспортировать",
+        "hierarchy": {
+          "primary": "Видео во всю ширину с основными контролами",
+          "secondary": "Следующие фрагменты, показ на ТВ, картинка в картинке и экспорт"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Фильм проигрывается с названием текущей локальной сцены"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинный фильм продолжается с сохранённого таймкода"
+          },
+          {
+            "kind": "failure",
+            "example": "Видеофайл недоступен, но редактор сохранён"
+          }
+        ]
+      }
+    },
+    {
+      "id": "viewer-medeu",
+      "title": "Весна в Медеу",
+      "type": "fullscreen",
+      "light": false,
+      "parent": "archive",
+      "meta": "Плеер, показ на ТВ и картинка в картинке",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Просмотреть итоговый фильм и перейти к экспорту",
+        "primaryAction": "Экспортировать",
+        "hierarchy": {
+          "primary": "Видео во всю ширину с основными контролами",
+          "secondary": "Следующие фрагменты, показ на ТВ, картинка в картинке и экспорт"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Фильм проигрывается с названием текущей локальной сцены"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинный фильм продолжается с сохранённого таймкода"
+          },
+          {
+            "kind": "failure",
+            "example": "Видеофайл недоступен, но редактор сохранён"
+          }
+        ]
+      }
+    },
+    {
+      "id": "viewer-ny",
+      "title": "Новый год у Сабины",
+      "type": "fullscreen",
+      "light": false,
+      "parent": "archive",
+      "meta": "Плеер, показ на ТВ и картинка в картинке",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Просмотреть итоговый фильм и перейти к экспорту",
+        "primaryAction": "Экспортировать",
+        "hierarchy": {
+          "primary": "Видео во всю ширину с основными контролами",
+          "secondary": "Следующие фрагменты, показ на ТВ, картинка в картинке и экспорт"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Фильм проигрывается с названием текущей локальной сцены"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинный фильм продолжается с сохранённого таймкода"
+          },
+          {
+            "kind": "failure",
+            "example": "Видеофайл недоступен, но редактор сохранён"
+          }
+        ]
+      }
+    },
+    {
+      "id": "project-almaty",
+      "title": "Алматы на выходных",
+      "type": "push",
+      "light": false,
+      "parent": "projects",
+      "meta": "Видео события, «Фото» и «Файлы»",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Показать локальные исходники и запустить on-device сборку",
+        "primaryAction": "Собрать черновик",
+        "hierarchy": {
+          "primary": "Видео события по дням и последние добавленные",
+          "secondary": "«Из Фото», «Из Файлов» и запрос видео у друзей"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Тридцать восемь видео, после выбора из «Фото» — сорок два"
+          },
+          {
+            "kind": "stress",
+            "example": "Сто двадцать четыре ролика от двенадцати человек"
+          },
+          {
+            "kind": "failure",
+            "example": "«Фото» запрещены, видео добавляются из «Файлов»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "project-burabay",
+      "title": "Поход на Бурабай",
+      "type": "push",
+      "light": false,
+      "parent": "projects",
+      "meta": "Видео события, «Фото» и «Файлы»",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Показать локальные исходники и запустить on-device сборку",
+        "primaryAction": "Собрать черновик",
+        "hierarchy": {
+          "primary": "Видео события по дням и последние добавленные",
+          "secondary": "«Из Фото», «Из Файлов» и запрос видео у друзей"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Тридцать восемь видео, после выбора из «Фото» — сорок два"
+          },
+          {
+            "kind": "stress",
+            "example": "Сто двадцать четыре ролика от двенадцати человек"
+          },
+          {
+            "kind": "failure",
+            "example": "«Фото» запрещены, видео добавляются из «Файлов»"
+          }
+        ]
+      }
     }
   ],
   "prototypes": [
@@ -1491,7 +1780,14 @@
         "background",
         "lock",
         "export",
-        "saved"
+        "saved",
+        "viewer-lera",
+        "viewer-final",
+        "viewer-almaty",
+        "viewer-medeu",
+        "viewer-ny",
+        "project-almaty",
+        "project-burabay"
       ],
       "stops": [],
       "authTarget": "projects"

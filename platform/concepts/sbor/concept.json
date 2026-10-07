@@ -1,10 +1,13 @@
 {
   "slug": "sbor",
-  "name": "Сбор",
-  "eyebrow": "Сбор · Мессенджер для поездок группой · iOS",
+  "name": "В сборе",
+  "formerNames": [
+    "Сбор"
+  ],
+  "eyebrow": "В сборе · Мессенджер для поездок группой · iOS",
   "targetSet": "messenger",
   "domain": "sbor.app",
-  "heroTitle": "Сбор — мессенджер, в котором группа не теряется в поездке",
+  "heroTitle": "«В сборе» — мессенджер, в котором группа не теряется в поездке",
   "heroDeck": "Чаты, голосовые, кружки и звонки как в привычном мессенджере, а поверх — то, ради чего его ставят перед поездкой: перекличка к сбору, программа в Календаре, Wi‑Fi отеля из QR и фильм дня к утру.",
   "tagline": "Каждая поездка — чат, в котором видно, кто на месте к сбору",
   "insight": "в групповой поездке сбор переносят вечером, а утром кто-то не дочитал, кто-то проспал и кто-то не в той сети — общий чат это не держит",
@@ -376,7 +379,7 @@
           "entity": "person",
           "effect": "совпадения по номерам",
           "screen": "contacts",
-          "result": "«Уже в «Сборе» · 23»",
+          "result": "«Уже в «В сборе» · 23»",
           "capabilities": [
             "contacts"
           ]
@@ -612,7 +615,7 @@
       "key": "push",
       "plist": "aps-environment",
       "alert": {
-        "title": "«Сбор» запрашивает разрешение на уведомления",
+        "title": "«В сборе» запрашивает разрешение на уведомления",
         "text": "Напомним о сборе группы за 30 минут — с местом и временем, и сообщим о новых сообщениях"
       },
       "feature": "Напоминание о сборе группы за 30 минут и уведомления о сообщениях",
@@ -643,7 +646,7 @@
         "text": "Entitlement без системного запроса: ссылка-приглашение sbor.app/j/… открывает поездку прямо в приложении"
       },
       "feature": "Ссылка-приглашение в чат поездки открывается в приложении",
-      "gesture": "«Казань · осень — Сбор»",
+      "gesture": "«Казань · осень — В сборе»",
       "screen": "sms",
       "target": "join",
       "fallback": "Без entitlement ссылка открывается в Safari на странице с кнопкой «Открыть в приложении»",
@@ -692,7 +695,7 @@
         "text": "Entitlement без системного запроса: одна сессия на приложение, виджет и расширения"
       },
       "feature": "Одна сессия: из виджета и «Поделиться» приложение открывается уже войденным",
-      "gesture": "«Сбор»",
+      "gesture": "«В сборе»",
       "screen": "widget",
       "target": "trip",
       "fallback": "Без общей группы вход пришлось бы повторять в расширении «Поделиться»",
@@ -737,7 +740,7 @@
       "key": "hotspot",
       "plist": "com.apple.developer.networking.HotspotConfiguration",
       "alert": {
-        "title": "«Сбор» подключит вас к сети Kama_Guest",
+        "title": "«В сборе» подключит вас к сети Kama_Guest",
         "text": "Сеть отеля из QR у стойки, которым поделился Игорь"
       },
       "feature": "Wi‑Fi отеля из QR, снятого одним участником, — подключиться без похода на ресепшен",
@@ -761,7 +764,7 @@
       "key": "faceid",
       "plist": "NSFaceIDUsageDescription",
       "alert": {
-        "title": "«Сбор» запрашивает Face ID",
+        "title": "«В сборе» запрашивает Face ID",
         "text": "Чтобы открывать документы поездки: брони, билеты и список группы с паспортными данными"
       },
       "feature": "Документы поездки под Face ID",
@@ -784,7 +787,7 @@
       "key": "camera",
       "plist": "NSCameraUsageDescription",
       "alert": {
-        "title": "«Сбор» запрашивает доступ к камере",
+        "title": "«В сборе» запрашивает доступ к камере",
         "text": "Чтобы снимать фото и кружки в чат и распознавать QR сети отеля"
       },
       "feature": "Съёмка в чат и распознавание QR Wi‑Fi",
@@ -808,7 +811,7 @@
       "key": "photos",
       "plist": "NSPhotoLibraryUsageDescription",
       "alert": {
-        "title": "«Сбор» запрашивает доступ к фото",
+        "title": "«В сборе» запрашивает доступ к фото",
         "text": "Чтобы показать недавние снимки и отправить их в чат поездки"
       },
       "feature": "Недавние кадры в выборе вложения",
@@ -832,7 +835,7 @@
       "key": "mic",
       "plist": "NSMicrophoneUsageDescription",
       "alert": {
-        "title": "«Сбор» запрашивает доступ к микрофону",
+        "title": "«В сборе» запрашивает доступ к микрофону",
         "text": "Чтобы записывать голосовые и кружки со звуком и говорить в звонках"
       },
       "feature": "Голосовые сообщения, звук кружков и звонки",
@@ -856,7 +859,7 @@
       "key": "location",
       "plist": "NSLocationWhenInUseUsageDescription",
       "alert": {
-        "title": "«Сбор» запрашивает доступ к геопозиции",
+        "title": "«В сборе» запрашивает доступ к геопозиции",
         "text": "Чтобы отправить в чат, где вы, и показать путь до точки сбора"
       },
       "feature": "Геопозиция в чат и трансляция на час до точки сбора",
@@ -1013,7 +1016,7 @@
       "key": "calendar",
       "plist": "NSCalendarsFullAccessUsageDescription",
       "alert": {
-        "title": "«Сбор» запрашивает доступ к календарю",
+        "title": "«В сборе» запрашивает доступ к календарю",
         "text": "Чтобы добавить программу поездки и поправить событие, когда сбор переносят"
       },
       "feature": "Программа поездки в Календаре, с правкой уже добавленного события при переносе",
@@ -1038,7 +1041,7 @@
       "key": "calendarwrite",
       "plist": "NSCalendarsUsageDescription",
       "alert": {
-        "title": "«Сбор» запрашивает доступ к календарю",
+        "title": "«В сборе» запрашивает доступ к календарю",
         "text": "Чтобы добавить встречу из переписки в Календарь"
       },
       "feature": "Встреча из сообщения — в Календарь одним касанием",
@@ -1086,7 +1089,7 @@
       "key": "tracking",
       "plist": "NSUserTrackingUsageDescription",
       "alert": {
-        "title": "Разрешить «Сбор» отслеживать ваши действия?",
+        "title": "Разрешить «В сборе» отслеживать ваши действия?",
         "text": "Тогда реклама в списке чатов будет про экскурсии и трансферы, которые вам интересны"
       },
       "feature": "Реклама в списке чатов — бесплатный мессенджер без подписки",
@@ -1138,10 +1141,10 @@
       "key": "contacts",
       "plist": "NSContactsUsageDescription",
       "alert": {
-        "title": "«Сбор» запрашивает доступ к контактам",
+        "title": "«В сборе» запрашивает доступ к контактам",
         "text": "Чтобы показать, кто из ваших контактов уже здесь, и позвать остальных ссылкой"
       },
-      "feature": "Кто из адресной книги уже в «Сборе» и кого пригласить",
+      "feature": "Кто из адресной книги уже в «В сборе» и кого пригласить",
       "gesture": "«Найти знакомых из контактов»",
       "screen": "contacts",
       "target": "contacts",
@@ -1187,7 +1190,7 @@
       "plist": "NSExtension: share",
       "alert": {
         "title": "Расширение «Поделиться»",
-        "text": "Entitlement без системного запроса: «Сбор» и чаты поездки появляются в системном меню «Поделиться»"
+        "text": "Entitlement без системного запроса: «В сборе» и чаты поездки появляются в системном меню «Поделиться»"
       },
       "feature": "Место из Карт или ссылка из Safari — прямо в чат поездки",
       "gesture": "«Казань · осень»",
@@ -1791,6 +1794,246 @@
         "primaryAction": null
       },
       "parent": "settings"
+    },
+    {
+      "id": "mama",
+      "title": "Чат с мамой",
+      "type": "push",
+      "light": true,
+      "meta": "Личный чат",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "rustam",
+      "title": "Чат с Рустамом",
+      "type": "push",
+      "light": true,
+      "meta": "Личный чат",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "sveta",
+      "title": "Чат со Светой",
+      "type": "push",
+      "light": true,
+      "meta": "Личный чат",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "oleg",
+      "title": "Чат с Олегом",
+      "type": "push",
+      "light": true,
+      "meta": "Личный чат",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "igor",
+      "title": "Чат с Игорем",
+      "type": "push",
+      "light": true,
+      "meta": "Личный чат",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "timur",
+      "title": "Чат с Тимуром",
+      "type": "push",
+      "light": true,
+      "meta": "Личный чат",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "anya",
+      "title": "Чат с Аней",
+      "type": "push",
+      "light": true,
+      "meta": "Личный чат",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "rollcall"
+    },
+    {
+      "id": "denis",
+      "title": "Чат с Денисом",
+      "type": "push",
+      "light": true,
+      "meta": "Личный чат",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "rollcall"
+    },
+    {
+      "id": "pskov",
+      "title": "Чат поездки Псков",
+      "type": "push",
+      "light": true,
+      "meta": "Чат будущей поездки",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "trips"
+    },
+    {
+      "id": "altai",
+      "title": "Чат поездки Алтай",
+      "type": "push",
+      "light": true,
+      "meta": "Чат прошедшей поездки",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "chats"
+    },
+    {
+      "id": "newtrip",
+      "title": "Новая поездка",
+      "type": "modal",
+      "light": true,
+      "meta": "Название, даты, участники",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "modal",
+        "primaryAction": "Создать"
+      },
+      "parent": "trips"
+    },
+    {
+      "id": "tripnew",
+      "title": "Чат новой поездки",
+      "type": "push",
+      "light": true,
+      "meta": "Только что созданная поездка",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "newtrip"
     }
   ],
   "prototypes": [
@@ -1829,7 +2072,19 @@
         "ads",
         "share",
         "lockscreen",
-        "widget"
+        "widget",
+        "mama",
+        "rustam",
+        "sveta",
+        "oleg",
+        "igor",
+        "timur",
+        "anya",
+        "denis",
+        "pskov",
+        "altai",
+        "newtrip",
+        "tripnew"
       ],
       "stops": [],
       "authTarget": "chats"
@@ -1862,13 +2117,19 @@
         "tripinfo",
         "attach",
         "record",
-        "expenses"
+        "expenses",
+        "anya",
+        "denis",
+        "sveta"
       ],
       "stops": [
         "tripinfo",
         "attach",
         "record",
-        "expenses"
+        "expenses",
+        "anya",
+        "denis",
+        "sveta"
       ]
     },
     {
@@ -2021,14 +2282,22 @@
         "trip",
         "chat",
         "lena",
-        "saved"
+        "saved",
+        "pskov",
+        "rustam",
+        "mama",
+        "altai"
       ],
       "stops": [
         "contacts",
         "trip",
         "chat",
         "lena",
-        "saved"
+        "saved",
+        "pskov",
+        "rustam",
+        "mama",
+        "altai"
       ]
     }
   ],
@@ -2101,7 +2370,7 @@
     }
   ],
   "appStore": {
-    "name": "Сбор — чаты для поездок",
+    "name": "В сборе — чаты для поездок",
     "subtitle": "Перекличка, программа и звонки",
     "promo": "Едете группой? Сбор в закрепе чата, перекличка по Wi‑Fi отеля, программа в Календаре и фильм дня к утру. Плюс обычные чаты, голосовые, кружки и звонки.",
     "keywords": "мессенджер,группа,путешествие,отель,экскурсия,голосовые,кружки,wifi,друзья",
@@ -2118,7 +2387,7 @@
       "privacy": "https://sbor.app/privacy"
     },
     "description": [
-      "«Сбор» — мессенджер для тех, кто ездит группой. Чаты, голосовые, кружки, фото и звонки — как в привычном мессенджере, а каждая поездка — отдельный чат, в котором видно, кто на месте к сбору.",
+      "«В сборе» — мессенджер для тех, кто ездит группой. Чаты, голосовые, кружки, фото и звонки — как в привычном мессенджере, а каждая поездка — отдельный чат, в котором видно, кто на месте к сбору.",
       "СБОР И ПЕРЕКЛИЧКА\nВремя и место сбора закреплены в чате поездки. Утром каждый отмечается одним касанием: если телефон в сети отеля, отметка ставится по ней.",
       "WI‑FI ОТЕЛЯ ИЗ QR\nОдин участник снимает QR у стойки — сеть приходит в чат карточкой, остальные подключаются касанием.",
       "ПРОГРАММА В КАЛЕНДАРЕ\nПрограмма поездки уходит в Календарь, а когда сбор переносят, приложение правит уже добавленное событие. Встречу из переписки можно добавить одним касанием по дате.",

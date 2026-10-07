@@ -9,12 +9,12 @@ export default (ui) => ui.screen({
       ui.section({ children: ui.search({ placeholder: 'Имя или номер' }) }),
       ui.section({ children: [
         ui.list([
-          ui.row({ lead: ui.leadIcon('users', { round: true, accent: true }), title: 'Найти знакомых из контактов', sub: 'Кто из адресной книги уже в «Сборе»', ask: 'contacts|contacts|contacts', primary: true }),
-          ui.row({ lead: ui.leadIcon('link', { round: true, accent: true }), title: 'Пригласить в «Сбор»', sub: 'Ссылка на вход в поездку', go: 'invite' }),
+          ui.row({ lead: ui.leadIcon('users', { round: true, accent: true }), title: 'Найти знакомых из контактов', sub: 'Кто из адресной книги уже в «В сборе»', ask: 'contacts|contacts|contacts', primary: true }),
+          ui.row({ lead: ui.leadIcon('link', { round: true, accent: true }), title: 'Пригласить в поездку', sub: 'Ссылка на вход в поездку', go: 'invite' }),
         ]),
         ui.denied('contacts'),
       ] }),
-      ui.section({ title: 'Уже в «Сборе»', meta: '23', shownAfter: 'contacts', children: ui.list([
+      ui.section({ title: 'Уже в «В сборе»', meta: '23', shownAfter: 'contacts', children: ui.list([
         ui.row({ lead: ui.avatar('АК'), title: 'Антон Карпов', sub: 'в контактах «Антон велик» · был вчера' }),
         ui.row({ lead: ui.avatar('ЕС'), title: 'Евгения Смолина', sub: 'в контактах «Женя работа» · в сети' }),
         ui.row({ lead: ui.avatar('ПВ'), title: 'Павел Воронцов', sub: 'в контактах «Паша Алтай» · общая поездка в августе' }),

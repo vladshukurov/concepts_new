@@ -1,4 +1,4 @@
-# Сбор — визуальный аудит
+# В сборе — визуальный аудит
 
 Автоматические проверки — `npm run test`, `lint`, `audit`, `audit:grid`, `access` — зелёные. Каноническое evidence визуальной вычитки живёт в `artifacts/quality/<run>/review.json`: отдельный критик с чистым контекстом проходит `kernel/critic-rubric.md` по каждому product PNG.
 
