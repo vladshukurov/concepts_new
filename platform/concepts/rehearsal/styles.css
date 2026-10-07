@@ -1,14 +1,13 @@
 /* «Второй дубль» — мимикрия ВК Видео. Оболочка, кегли и цвета — из слоя `.ui`
    в ядре; здесь только своё: план выступления по блокам, таймлайн прогона
    с метками, камера и запись, системные листы и локскрин. Кадров нет —
-   везде, где в жизни видео, стоит `.ph`. */
+   `.ph` стоит только в видоискателе, плеере и миниатюрах прогонов. */
 
 /* Доли прогресса */
-.re-w-20 { width:20%; }
-.re-w-21 { width:21%; }
 .re-w-30 { width:30%; }
-.re-w-62 { width:62%; }
-.re-w-64 { width:64%; }
+.re-w-28 { width:28%; }
+.re-w-10 { width:10%; }
+.re-w-88 { width:88%; }
 
 /* Главная */
 .re-next { margin:4px 16px 0; padding:16px; border-radius:12px; background:var(--ui-card); }
@@ -23,8 +22,11 @@
 .re-plan-legend { display:flex; justify-content:space-between; gap:8px; margin-top:8px; font:400 12px/14px var(--ui-face); color:var(--ui-text-2); font-variant-numeric:tabular-nums; }
 .re-next-actions { padding:0; margin-top:16px; gap:8px; }
 .re-next-actions > .ui-btn:first-child { flex:2; }
-.re-ad { display:flex; align-items:center; gap:12px; width:calc(100% - 32px); margin:0 16px; padding:8px; border-radius:16px; background:var(--ui-card); }
-.re-ad-art { width:72px; height:48px; flex:none; border-radius:8px; }
+.re-ad { display:flex; align-items:center; gap:12px; width:calc(100% - 32px); margin:0 16px; padding:8px; border-radius:20px; background:var(--ui-card); }
+.re-ad-art { width:48px; height:48px; flex:none; display:grid; place-items:center; border-radius:12px; background:var(--ui-accent-soft); color:var(--ui-link); }
+.re-ad-art svg { width:24px; height:24px; }
+.re-last-actions { padding-top:4px; }
+.re-last-actions > .ui-btn { flex:none; }
 .re-date { width:56px; height:56px; flex:none; display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:8px; background:var(--ui-card); font:400 12px/14px var(--ui-face); color:var(--ui-text-2); }
 .re-date b { font:600 20px/24px var(--ui-face); color:var(--ui-text); }
 
@@ -73,7 +75,7 @@
 .re-rec-timer { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; gap:2px; margin-top:24px; text-align:center; }
 .re-rec-timer strong { font:600 56px/60px var(--ui-face); letter-spacing:-.02em; color:#fff; }
 .re-rec-timer span { font:400 14px/18px var(--ui-face); color:rgba(255,255,255,.72); }
-.re-rec-panel { position:absolute; left:0; right:0; bottom:calc(var(--safe-bottom) + 12px); z-index:2; padding:0 16px; }
+.re-rec-panel { position:absolute; left:0; right:0; bottom:0; z-index:2; padding:0 16px calc(var(--safe-bottom) + 12px); }
 .re-blocks { display:flex; gap:3px; }
 .re-blocks i { position:relative; flex:1; height:4px; border-radius:2px; background:rgba(255,255,255,.24); overflow:hidden; }
 .re-blocks i:nth-child(3) { flex:2.2; }
@@ -102,20 +104,21 @@
 .re-f1 { left:18%; } .re-f2 { left:46%; } .re-f3 { left:71%; }
 .re-analysis-head { display:flex; flex-direction:column; gap:4px; padding:16px 16px 0; }
 .re-delta { font-size:17px; color:var(--ui-link); }
-.re-listen { margin-top:16px; }
 
 /* Системные листы */
-.re-cast-bg { position:absolute; inset:0; }
+.re-cast-bg { position:absolute; inset:0; display:flex; align-items:flex-start; justify-content:center; padding:calc(var(--safe-top) + 56px) 24px 0; background:#0b0b0c; }
+.re-tv { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; width:100%; aspect-ratio:16/9; border-radius:12px; border:6px solid #2c2d2e; background:#000; color:#fff; }
+.re-tv strong { font:600 48px/52px var(--ui-face); letter-spacing:-.02em; }
+.re-tv-block { font:600 14px/18px var(--ui-face); color:var(--ui-link); }
+.re-tv-next { font:400 12px/16px var(--ui-face); color:rgba(255,255,255,.72); }
+.re-tv-bar { width:60%; height:4px; margin-top:6px; border-radius:2px; background:rgba(255,255,255,.24); overflow:hidden; }
+.re-tv-bar i { display:block; width:46%; height:100%; background:var(--ui-accent); }
 .re-sheet-body { display:flex; flex-direction:column; gap:4px; padding:0 16px 16px; }
 .re-sheet-actions { margin-top:16px; }
 .re-picker { background:#000!important; }
-.re-picker-meta { padding:0 16px 12px; }
 .re-picker-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
-.re-picker-grid > button { aspect-ratio:1; min-height:44px; }
+.re-picker-grid > * { position:relative; aspect-ratio:1; min-height:44px; }
 .re-picker-grid .ui-duration { right:4px; bottom:4px; background:none; padding:0; text-shadow:0 1px 3px rgba(0,0,0,.8); }
-.re-picker-grid .is-picked { box-shadow:inset 0 0 0 3px var(--ui-accent); }
-.re-picker-grid i { position:absolute; right:6px; top:6px; width:24px; height:24px; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent); box-shadow:0 0 0 2px #fff; color:#fff; font-style:normal; z-index:1; }
-.re-picker-grid i svg { width:14px; height:14px; stroke-width:3; }
 
 /* Реклама */
 .re-ads-head { display:flex; flex-direction:column; align-items:center; gap:8px; padding:16px 24px 0; text-align:center; }
@@ -146,5 +149,30 @@
 .re-moment-actions { margin-top:16px; gap:8px; }
 .re-moment-actions > .ui-btn:first-child { flex:1; }
 
-/* Сетка импорта: чек и длительность — внутри плитки */
-.re-picker-grid > button { position:relative; }
+/* Запись: плашка телевизора, «только звук», нет микрофона */
+.re-rec-tv { position:relative; z-index:2; display:flex; align-items:center; justify-content:center; gap:8px; width:max-content; max-width:calc(100% - 32px); margin:12px auto 0; padding:6px 12px; border-radius:16px; background:rgba(25,25,26,.86); font:500 14px/18px var(--ui-face); color:#fff; }
+.re-rec-tv svg { width:18px; height:18px; color:var(--ui-link); }
+.re-voice { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; gap:14px; margin-top:56px; padding:0 16px; }
+.re-voice-tag { display:flex; align-items:center; gap:6px; padding:6px 12px; border-radius:16px; background:rgba(25,25,26,.86); font:500 14px/18px var(--ui-face); color:#fff; }
+.re-voice-tag svg { width:18px; height:18px; color:var(--ui-link); }
+.re-voice-wave { display:flex; align-items:center; gap:4px; height:64px; }
+.re-voice-wave i { width:5px; border-radius:3px; background:var(--ui-accent); }
+.re-voice-wave i:nth-child(3n+1) { height:22px; } .re-voice-wave i:nth-child(3n+2) { height:46px; } .re-voice-wave i:nth-child(3n) { height:30px; }
+.re-voice-wave i:nth-child(5n) { height:60px; } .re-voice-wave i:nth-child(7n) { height:12px; }
+.re-voice-wave i:nth-child(n+15) { background:rgba(255,255,255,.3); }
+.re-voice-db { font:400 14px/18px var(--ui-face); color:rgba(255,255,255,.72); }
+.re-rec-denied { position:relative; z-index:2; margin-top:40px; }
+.re-blocks.is-parts i:nth-child(2) { flex:2.8; }
+.re-blocks.is-parts i:nth-child(3) { flex:.8; }
+.re-blocks.is-parts i.is-now b { width:82%; }
+
+/* Дубль блока: было и стало против плана */
+.re-compare { position:relative; display:flex; flex-direction:column; gap:6px; margin:16px 16px 0; }
+.re-compare-bar { height:10px; border-radius:5px; background:var(--ui-fill-2); overflow:hidden; }
+.re-compare-bar i { display:block; height:100%; border-radius:inherit; }
+.re-compare-bar.is-was i { width:100%; background:var(--ui-text-3); }
+.re-compare-bar.is-now i { width:86%; background:var(--ui-accent); }
+.re-compare-plan { position:absolute; top:-4px; bottom:-4px; left:81%; width:2px; border-radius:1px; background:#fff; }
+
+/* Главное действие настройки прижато к низу */
+.re-dock { flex:none; padding:8px 16px calc(var(--safe-bottom) + 8px); border-top:1px solid var(--ui-line); background:var(--ui-bg); }
