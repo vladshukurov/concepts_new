@@ -1,11 +1,7 @@
 {
   "slug": "breath",
   "name": "Мотив",
-  "formerNames": [
-    "Маятник",
-    "Мантра",
-    "Дыхание"
-  ],
+  "formerNames": ["Дыхание"],
   "targetSet": "vk-music",
   "qualityContractVersion": 4,
   "uiContractVersion": 2,
