@@ -1,0 +1,1522 @@
+{
+  "slug": "vratar",
+  "name": "Вратарь",
+  "eyebrow": "Вратарь · iOS",
+  "targetSet": "vk-video",
+  "domain": "vratar.app",
+  "heroTitle": "Голы своей команды, как в ВК Видео",
+  "heroDeck": "Хайлайты любительской футбольной команды: игроки со скамейки снимают голы и сейвы воскресного матча, моменты сразу встают в ленту матча, лучший момент недели выбирают голосом, а вечером всё идёт на телевизоре в баре.",
+  "tagline": "Голы и сейвы воскресного матча, снятые своими, — в ленте команды и на ТВ в баре",
+  "insight": "после воскресного матча все пересказывают один и тот же сейв, а видео лежит в пяти разных телефонах и в общий чат приходит пережатым",
+  "deck": "Снимают со скамейки во время игры, моменты сразу в ленте матча, страница матча как канал, вечером — на телевизоре в баре.",
+  "qualityContractVersion": 4,
+  "uiContractVersion": 3,
+  "start": "phone",
+  "product": {
+    "audience": "Любительская футбольная команда на 8–12 человек, которая играет по воскресеньям, и её запасные со скамейки",
+    "situation": "Воскресный матч на школьном поле или во дворе, на скамейке двое с телефонами, после игры — бар с телевизором",
+    "problem": "Голы и сейвы снимают на разные телефоны, ролики теряются в общем чате, и через неделю лучший момент уже не найти",
+    "promise": "Со скамейки момент снимается в одно касание и сразу встаёт в ленту матча; после игры команда смотрит все моменты на телевизоре и выбирает лучший момент недели",
+    "differentiator": "Весь контент — моменты своей команды, снятые своими: нет ленты чужих, подписок и публикации для всех",
+    "returnReasons": [
+      "Пересмотреть лучший момент недели и проголосовать",
+      "Снять момент в следующее воскресенье",
+      "Сохранить лучшее за сезон в «Фото»"
+    ],
+    "verticalSlice": {
+      "entry": "phone",
+      "action": "live",
+      "result": "moment"
+    },
+    "coreLoop": [
+      "Завести матч: соперник, поле, время и состав",
+      "Во время игры снять момент со скамейки — он сразу в ленте матча",
+      "После игры показать моменты на телевизоре в баре и выбрать лучший момент недели"
+    ],
+    "nonGoals": [
+      "Лента чужих роликов, подписки, просмотры и публикация для всех",
+      "Турнирные таблицы, статистика лиги и трансляции чужих матчей"
+    ],
+    "content": {
+      "kind": "own-media",
+      "what": "Моменты своих матчей: ролики, снятые игроками команды со скамейки, и ролики товарищей из их «Фото»",
+      "library": false,
+      "feed": false,
+      "sharing": false
+    }
+  },
+  "positioning": {
+    "mode": "mimicry",
+    "categoryFit": "Съёмка, плеер, клипы и показ на телевизоре — грамматика ВК Видео, но ролики свои: моменты матчей одной команды",
+    "familiarPatterns": [
+      "Тёмная главная с чипсами и крупными кадрами 16:9 с длительностью",
+      "Таб-бар с «Клипами» и «Создать»",
+      "Плеер со сворачиванием в мини-плеер и картинкой в картинке",
+      "Страница матча как страница канала"
+    ],
+    "distinctions": [
+      "Вместо ленты чужих — моменты своих матчей",
+      "Вместо подписок — вкладка «Матчи» с идущим, следующим и прошедшими",
+      "Главное действие — снять момент со скамейки, а не смотреть чужое"
+    ],
+    "evidenceScreens": [
+      "home",
+      "watch",
+      "clips",
+      "live",
+      "match",
+      "matches"
+    ],
+    "referencePatterns": [
+      "own-library",
+      "capture",
+      "immersive-player",
+      "cast"
+    ],
+    "referenceEvidence": [
+      {
+        "pattern": "own-library",
+        "screen": "home",
+        "behavior": "Главная: чипсы «Все · Голы · Сейвы · Мои · Матчи», лучший момент недели и голы прошлого матча крупными кадрами с длительностью"
+      },
+      {
+        "pattern": "capture",
+        "screen": "live",
+        "behavior": "«Снять момент» на странице идущего матча открывает камеру со звуком, момент сразу встаёт в ленту матча"
+      },
+      {
+        "pattern": "immersive-player",
+        "screen": "watch",
+        "behavior": "Плеер момента сворачивается в мини-плеер над таб-баром и уходит в картинку в картинке"
+      },
+      {
+        "pattern": "cast",
+        "screen": "match",
+        "behavior": "«Показать на телевизоре» находит ТВ в баре в той же Wi‑Fi, моменты матча идут подряд"
+      }
+    ]
+  },
+  "readiness": {
+    "status": "draft",
+    "referenceResearch": [
+      {
+        "source": "ВК Видео, iOS",
+        "observation": "Тёмная главная, чипсы разделов, кадр 16:9 во всю ширину с длительностью, под ним аватар, заголовок и мета, таб-бар с «Клипами» и «Создать»",
+        "decision": "Главная и плеер повторяют эту грамматику, мета под кадром — своя: «Гоша · 87' · 0:14 · 4 октября»"
+      },
+      {
+        "source": "Любительские команды в общих чатах",
+        "observation": "Голы снимают запасные со скамейки, ролики приходят в чат пережатыми и теряются через неделю",
+        "decision": "Момент снимается в одно касание и сразу встаёт в ленту своего матча, ролик товарища добавляется из «Фото» в исходном качестве"
+      }
+    ],
+    "productCritique": [
+      {
+        "objection": "Видеосервис может превратиться в ленту чужих матчей",
+        "resolution": "В ленте только моменты своих матчей, снятые игроками команды; публикации для всех нет",
+        "evidenceScreens": [
+          "home",
+          "clips",
+          "match"
+        ]
+      },
+      {
+        "objection": "Локальная сеть может выглядеть натяжкой",
+        "resolution": "Команда смотрит моменты в баре на общем телевизоре; найти ТВ в той же Wi‑Fi можно только поиском в локальной сети",
+        "evidenceScreens": [
+          "match"
+        ]
+      }
+    ],
+    "visualPasses": []
+  },
+  "brand": {
+    "accent": "#0077FF",
+    "accentDark": "#0077FF",
+    "theme": "vk-dark",
+    "fonts": "Inter:wght@400;500;600;700"
+  },
+  "tabs": [
+    {
+      "id": "home",
+      "label": "Главная",
+      "role": "home"
+    },
+    {
+      "id": "clips",
+      "label": "Клипы",
+      "role": "library"
+    },
+    {
+      "id": "create",
+      "label": "Создать",
+      "role": "create"
+    },
+    {
+      "id": "matches",
+      "label": "Матчи",
+      "role": "library"
+    },
+    {
+      "id": "profile",
+      "label": "Профиль",
+      "role": "profile"
+    }
+  ],
+  "permissions": [
+    {
+      "key": "localnetwork",
+      "plist": "NSLocalNetworkUsageDescription (+ NSBonjourServices: _googlecast._tcp, _airplay._tcp)",
+      "alert": {
+        "title": "«Вратарь» запрашивает доступ к локальной сети",
+        "text": "Найти телевизор в баре или раздевалке и показать на нём моменты матча"
+      },
+      "feature": "Моменты матча на телевизоре",
+      "gesture": "«Показать на телевизоре» на странице матча",
+      "screen": "match",
+      "target": "match",
+      "fallback": "Моменты смотрят на телефоне, по кругу",
+      "snack": "Телевизор не найден",
+      "risk": "medium",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "Bonjour: поиск телевизоров (_googlecast._tcp, _airplay._tcp) в той же Wi‑Fi сети, Google Cast отправляет моменты подряд",
+      "rationale": {
+        "who": "Игрок после матча в баре или раздевалке",
+        "moment": "На странице прошедшего матча нажимает «Показать на телевизоре»",
+        "need": "Телевизор бара находится только поиском в той же Wi‑Fi; после этого все моменты матча идут на нём подряд",
+        "without": "Моменты смотрят на одном телефоне, передавая его по кругу"
+      },
+      "reviewNote": "Доступ вызывается действием «Показать на телевизоре» на странице матча на экране «match». При отказе: Моменты смотрят на телефоне, по кругу",
+      "result": "ТВ в баре «Штрафная» · идут 9 моментов подряд"
+    },
+    {
+      "key": "camera",
+      "plist": "NSCameraUsageDescription",
+      "alert": {
+        "title": "«Вратарь» запрашивает доступ к камере",
+        "text": "Снять момент матча со скамейки"
+      },
+      "feature": "Момент матча",
+      "gesture": "«Снять момент» на странице идущего матча",
+      "screen": "live",
+      "target": "camera",
+      "fallback": "Ролик, снятый обычной камерой, можно добавить из «Фото» на странице матча",
+      "snack": "Камера выключена",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "AVCaptureSession, основная камера, запись до остановки",
+      "rationale": {
+        "who": "Запасной на скамейке во время матча",
+        "moment": "Видит атаку и нажимает «Снять момент» на странице идущего матча",
+        "need": "Момент — это видео, которое снимают прямо сейчас; без камеры его нечем снять",
+        "without": "Снимает системной камерой и добавляет ролик из «Фото» после матча"
+      },
+      "reviewNote": "Доступ вызывается действием «Снять момент» на странице идущего матча на экране «live». При отказе: Ролик, снятый обычной камерой, можно добавить из «Фото» на странице матча"
+    },
+    {
+      "key": "mic",
+      "plist": "NSMicrophoneUsageDescription",
+      "alert": {
+        "title": "«Вратарь» запрашивает доступ к микрофону",
+        "text": "Записать звук момента: крик скамейки и свисток"
+      },
+      "feature": "Звук в моменте",
+      "gesture": "«Снять момент» на странице идущего матча",
+      "screen": "live",
+      "target": "camera",
+      "fallback": "Момент на камеру не снимается, ролик можно добавить из «Фото»",
+      "snack": "Микрофон выключен",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "AVAudioSession только во время записи момента",
+      "rationale": {
+        "who": "Запасной, который снимает момент",
+        "moment": "Сразу за камерой, по той же кнопке «Снять момент»",
+        "need": "Видео пишется со звуком: свисток и крик скамейки — половина момента, без микрофона запись со звуком не идёт",
+        "without": "Момент на камеру не снимается, остаётся ролик из «Фото»"
+      },
+      "reviewNote": "Доступ вызывается действием «Снять момент» на странице идущего матча на экране «live». При отказе: Момент на камеру не снимается, ролик можно добавить из «Фото»"
+    },
+    {
+      "key": "photos",
+      "plist": "NSPhotoLibraryUsageDescription",
+      "alert": {
+        "title": "«Вратарь» запрашивает доступ к «Фото»",
+        "text": "Добавить в моменты матча ролик, который снял товарищ"
+      },
+      "feature": "Ролик товарища в моментах матча",
+      "gesture": "«Добавить ролик товарища» на странице матча",
+      "screen": "match",
+      "target": "picker",
+      "fallback": "Моменты матча остаются те, что сняты в приложении",
+      "snack": "Галерея недоступна",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "PHPicker с отбором по дате матча, ролик загружается в исходном качестве",
+      "rationale": {
+        "who": "Игрок после матча",
+        "moment": "Товарищ прислал гол, снятый своей камерой; на странице матча нажимает «Добавить ролик товарища»",
+        "need": "Ролик лежит в медиатеке; без доступа его не выбрать и не поставить в моменты матча",
+        "without": "Моменты матча остаются те, что сняты в приложении"
+      },
+      "reviewNote": "Доступ вызывается действием «Добавить ролик товарища» на странице матча на экране «match». При отказе: Моменты матча остаются те, что сняты в приложении"
+    },
+    {
+      "key": "photosadd",
+      "plist": "NSPhotoLibraryAddUsageDescription",
+      "alert": {
+        "title": "«Вратарь» запрашивает доступ к сохранению в «Фото»",
+        "text": "Сохранить лучшее за сезон одним роликом"
+      },
+      "feature": "Лучшее за сезон в «Фото»",
+      "gesture": "«Сохранить лучшее за сезон в «Фото»» на экране сезона",
+      "screen": "season",
+      "target": "season",
+      "fallback": "Лучшее за сезон смотрят в приложении",
+      "snack": "Ролик остался в приложении",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "PHPhotoLibrary performChanges: только запись готового ролика",
+      "rationale": {
+        "who": "Игрок в конце сезона",
+        "moment": "На экране «Лучшее за сезон» нажимает «Сохранить лучшее за сезон в «Фото»»",
+        "need": "Ролик попадает в медиатеку, чтобы отправить его родным или поставить в сторис, только с этим доступом",
+        "without": "Лучшее за сезон смотрят в приложении"
+      },
+      "reviewNote": "Доступ вызывается действием «Сохранить лучшее за сезон в «Фото»» на экране сезона на экране «season». При отказе: Лучшее за сезон смотрят в приложении"
+    },
+    {
+      "key": "push",
+      "plist": "aps-environment (Push Notifications capability)",
+      "alert": {
+        "title": "«Вратарь» запрашивает разрешение на уведомления",
+        "text": "Напомним о матче за час до начала"
+      },
+      "feature": "Напоминание о матче",
+      "gesture": "«Напомнить о матче в воскресенье 11:00» на странице следующего матча",
+      "screen": "nextmatch",
+      "target": "nextmatch",
+      "fallback": "Время матча видно на странице матча и во вкладке «Матчи»",
+      "snack": "Уведомления выключены",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "UNUserNotificationCenter: локальное уведомление за час до матча",
+      "rationale": {
+        "who": "Игрок, который записан в состав",
+        "moment": "На странице следующего матча нажимает «Напомнить о матче в воскресенье 11:00»",
+        "need": "Матч через неделю; напоминание приходит за час, когда приложение закрыто",
+        "without": "Время матча видно на странице матча"
+      },
+      "reviewNote": "Доступ вызывается действием «Напомнить о матче в воскресенье 11:00» на странице следующего матча на экране «nextmatch». При отказе: Время матча видно на странице матча и во вкладке «Матчи»"
+    },
+    {
+      "key": "location",
+      "plist": "NSLocationWhenInUseUsageDescription",
+      "alert": {
+        "title": "«Вратарь» запрашивает доступ к геопозиции",
+        "text": "Показать, как дойти до поля"
+      },
+      "feature": "Путь до поля",
+      "gesture": "«Как добраться до поля» на странице следующего матча",
+      "screen": "nextmatch",
+      "target": "nextmatch",
+      "fallback": "Адрес поля остаётся на странице матча, его можно открыть в «Картах»",
+      "snack": "Адрес есть на странице матча",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "Core Location when in use, один запрос; время пешком считает MapKit",
+      "rationale": {
+        "who": "Игрок перед матчем на новом поле",
+        "moment": "На странице следующего матча нажимает «Как добраться до поля»",
+        "need": "Поле во дворе без вывески; время и путь считаются от точки, где игрок сейчас",
+        "without": "Игрок открывает адрес вручную"
+      },
+      "reviewNote": "Доступ вызывается действием «Как добраться до поля» на странице следующего матча на экране «nextmatch». При отказе: Адрес поля остаётся на странице матча, его можно открыть в «Картах»"
+    },
+    {
+      "key": "audio",
+      "plist": "UIBackgroundModes: audio",
+      "alert": {
+        "title": "Фоновое воспроизведение",
+        "text": "Момент продолжит играть в окне поверх других приложений и при погашенном экране"
+      },
+      "feature": "Моменты в картинке в картинке и при погашенном экране",
+      "gesture": "«Картинка в картинке» в плеере момента",
+      "screen": "watch",
+      "target": "background",
+      "fallback": "Момент встаёт на паузу при выходе из приложения",
+      "snack": "Момент на паузе",
+      "risk": "high",
+      "anchor": false,
+      "conditional": true,
+      "grounding": "AVPictureInPictureController, категория playback, MPNowPlayingInfoCenter",
+      "rationale": {
+        "who": "Игрок, который пересматривает лучший момент недели",
+        "moment": "В плеере нажимает «Картинка в картинке» и уходит в общий чат команды или гасит экран",
+        "need": "Без фонового режима iOS останавливает видео и звук",
+        "without": "Момент встаёт на паузу"
+      },
+      "reviewNote": "Доступ вызывается действием «Картинка в картинке» в плеере момента на экране «watch». При отказе: Момент встаёт на паузу при выходе из приложения",
+      "activate": true,
+      "requires": "AVPictureInPictureController и воспроизведение при блокировке с Now Playing"
+    },
+    {
+      "key": "tracking",
+      "plist": "NSUserTrackingUsageDescription",
+      "alert": {
+        "title": "Разрешить «Вратарь» отслеживать ваши действия в приложениях и на сайтах других компаний?",
+        "text": "Данные будут использоваться для показа релевантной рекламы",
+        "deny": "Запретить отслеживание",
+        "grant": "Разрешить"
+      },
+      "feature": "Реклама в ленте моментов по интересам",
+      "gesture": "«Подбирать по интересам» на экране «Реклама»",
+      "screen": "ads",
+      "target": "ads",
+      "fallback": "Реклама остаётся без подбора, приложение работает полностью",
+      "snack": "Реклама останется без подбора",
+      "risk": "medium",
+      "anchor": false,
+      "conditional": true,
+      "grounding": "Рекламный SDK, контекстная реклама без IDFA при отказе",
+      "rationale": {
+        "who": "Игрок бесплатной версии",
+        "moment": "Из карточки бутс на главной открывает «Реклама» и нажимает «Подбирать по интересам»",
+        "need": "Без разрешения сеть не знает интересов из других приложений: бутсы и форма показываются всем одинаково",
+        "without": "Реклама без подбора"
+      },
+      "reviewNote": "Доступ вызывается действием «Подбирать по интересам» на экране «Реклама» на экране «ads». При отказе: Реклама остаётся без подбора, приложение работает полностью",
+      "requires": "ATT показывается до выбора «Без подбора»",
+      "snackOnce": true
+    }
+  ],
+  "screens": [
+    {
+      "id": "phone",
+      "title": "Вход по номеру",
+      "type": "старт, без таб-бара",
+      "light": false,
+      "meta": "Номер и пароль · без OTP",
+      "ui": {
+        "pattern": "auth",
+        "navigation": "push",
+        "purpose": "Войти по номеру телефона или продолжить без аккаунта",
+        "primaryAction": "Далее",
+        "hierarchy": {
+          "primary": "Номер телефона и вход",
+          "secondary": "Регистрация, гостевой проход, правовая строка и поддержка"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error"
+        ],
+        "density": "low",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Номер введён полностью, дальше пароль"
+          },
+          {
+            "kind": "stress",
+            "example": "Номер с кодом другой страны"
+          },
+          {
+            "kind": "failure",
+            "example": "Номер введён неверно или сеть недоступна"
+          }
+        ]
+      }
+    },
+    {
+      "id": "home",
+      "title": "Главная",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Лучший момент недели, голы и матчи команды",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "root",
+        "purpose": "Лучший момент недели, голы и матчи команды",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Крупные кадры моментов 16:9 с длительностью",
+          "secondary": "Чипсы, реклама, матчи и мини-плеер"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Сейв Гоши и три гола прошлого матча"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное название момента в две строки"
+          },
+          {
+            "kind": "failure",
+            "example": "Матчей ещё не было — главная зовёт завести первый"
+          }
+        ]
+      }
+    },
+    {
+      "id": "clips",
+      "title": "Клипы",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Смотреть моменты матча вертикально подряд",
+      "ui": {
+        "pattern": "player",
+        "navigation": "root",
+        "purpose": "Смотреть моменты матча вертикально подряд",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Вертикальный момент на весь экран",
+          "secondary": "Голос за лучший, матч, следующий момент"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Победный гол Ильи, момент 7 из 9"
+          },
+          {
+            "kind": "stress",
+            "example": "Момент длиннее минуты, снятый целиком"
+          },
+          {
+            "kind": "failure",
+            "example": "Моментов пока нет — первый матч ещё впереди"
+          }
+        ]
+      }
+    },
+    {
+      "id": "create",
+      "title": "Создать",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Снять момент, завести матч или собрать состав",
+      "ui": {
+        "pattern": "task",
+        "navigation": "root",
+        "purpose": "Снять момент, завести матч или собрать состав",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Лист с тремя действиями",
+          "secondary": "Лента главной под затемнением"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Матч с «Северным» идёт, 2:1"
+          },
+          {
+            "kind": "stress",
+            "example": "Два матча в один день"
+          },
+          {
+            "kind": "failure",
+            "example": "Нет идущего матча — снять момент негде"
+          }
+        ]
+      }
+    },
+    {
+      "id": "matches",
+      "title": "Матчи",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Идущий, следующий и прошедшие матчи команды",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "root",
+        "purpose": "Идущий, следующий и прошедшие матчи команды",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Идущий матч крупным кадром",
+          "secondary": "Следующий, прошедшие и лучшее за сезон"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Идёт матч, следующий через неделю"
+          },
+          {
+            "kind": "stress",
+            "example": "Сезон из двадцати матчей"
+          },
+          {
+            "kind": "failure",
+            "example": "Матчей ещё не было"
+          }
+        ]
+      }
+    },
+    {
+      "id": "profile",
+      "title": "Профиль",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Свои голы, счётчики и настройки",
+      "ui": {
+        "pattern": "settings",
+        "navigation": "root",
+        "purpose": "Свои голы, счётчики и настройки",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Имя, команда и счётчики",
+          "secondary": "Свои голы, сезон, состав, реклама, аккаунт"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "6 матчей, 2 гола, 7 снятых моментов"
+          },
+          {
+            "kind": "stress",
+            "example": "Игрок без голов за сезон"
+          },
+          {
+            "kind": "failure",
+            "example": "Нет сети — счётчики не обновились"
+          }
+        ]
+      }
+    },
+    {
+      "id": "watch",
+      "title": "Сейв Гоши в падении",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Смотреть лучший момент недели, свернуть или увести в картинку в картинке",
+      "parent": "home",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Смотреть лучший момент недели, свернуть или увести в картинку в картинке",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Плеер момента во всю ширину",
+          "secondary": "Игрок, матч и ещё моменты"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Сейв Гоши, 87-я минута, 0:14"
+          },
+          {
+            "kind": "stress",
+            "example": "Момент 1:20 из «Фото» товарища"
+          },
+          {
+            "kind": "failure",
+            "example": "Ролик не загрузился"
+          }
+        ]
+      }
+    },
+    {
+      "id": "watchgoal",
+      "title": "Гол Димы со штрафного",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Смотреть гол Димы со штрафного",
+      "parent": "home",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Смотреть гол Димы со штрафного",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Плеер момента во всю ширину",
+          "secondary": "Игрок, матч и ещё моменты"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Гол Димы, 12-я минута, 0:21"
+          },
+          {
+            "kind": "stress",
+            "example": "Гол с долгим празднованием, 0:58"
+          },
+          {
+            "kind": "failure",
+            "example": "Ролик не загрузился"
+          }
+        ]
+      }
+    },
+    {
+      "id": "watchmine",
+      "title": "Гол пяткой",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Смотреть свой гол пяткой после углового",
+      "parent": "profile",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Смотреть свой гол пяткой после углового",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Плеер момента во всю ширину",
+          "secondary": "Игрок, матч и ещё моменты"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Гол Миши, 34-я минута, 0:11"
+          },
+          {
+            "kind": "stress",
+            "example": "Снято вертикально с края поля"
+          },
+          {
+            "kind": "failure",
+            "example": "Ролик не загрузился"
+          }
+        ]
+      }
+    },
+    {
+      "id": "watchwin",
+      "title": "Победный гол Ильи",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Смотреть победный гол Ильи",
+      "parent": "home",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Смотреть победный гол Ильи",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Плеер момента во всю ширину",
+          "secondary": "Игрок, матч и ещё моменты"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Гол Ильи, 81-я минута, 0:18"
+          },
+          {
+            "kind": "stress",
+            "example": "Момент с повтором с двух телефонов"
+          },
+          {
+            "kind": "failure",
+            "example": "Ролик не загрузился"
+          }
+        ]
+      }
+    },
+    {
+      "id": "background",
+      "title": "Картинка в картинке",
+      "type": "system",
+      "light": false,
+      "meta": "Досматривать момент в окне поверх других приложений",
+      "parent": "watch",
+      "ui": {
+        "pattern": "system",
+        "navigation": "system",
+        "purpose": "Досматривать момент в окне поверх других приложений",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Окно с моментом поверх экрана",
+          "secondary": "Иконки приложений экрана «Домой»"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Сейв Гоши поверх экрана «Домой»"
+          },
+          {
+            "kind": "stress",
+            "example": "Окно у края экрана"
+          },
+          {
+            "kind": "failure",
+            "example": "Видео остановлено системой"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lock",
+      "title": "Экран блокировки",
+      "type": "system",
+      "light": false,
+      "meta": "Слушать момент с погашенным экраном",
+      "parent": "watch",
+      "ui": {
+        "pattern": "system",
+        "navigation": "system",
+        "purpose": "Слушать момент с погашенным экраном",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Сейчас играет: момент и управление",
+          "secondary": "Время и дата на экране блокировки"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Сейв Гоши, 0:04 из 0:14"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное название момента"
+          },
+          {
+            "kind": "failure",
+            "example": "Воспроизведение прервано звонком"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ads",
+      "title": "Реклама",
+      "type": "push",
+      "light": false,
+      "meta": "Выбрать рекламу бесплатной версии",
+      "parent": "home",
+      "ui": {
+        "pattern": "settings",
+        "navigation": "push",
+        "purpose": "Выбрать рекламу бесплатной версии",
+        "primaryAction": "Подбирать по интересам",
+        "hierarchy": {
+          "primary": "Как подбирается реклама в ленте",
+          "secondary": "Карточки бутс и формы в ленте моментов"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Бутсы для всех до выбора"
+          },
+          {
+            "kind": "stress",
+            "example": "Две карточки по интересам после разрешения"
+          },
+          {
+            "kind": "failure",
+            "example": "Реклама не загрузилась"
+          }
+        ]
+      }
+    },
+    {
+      "id": "search",
+      "title": "Поиск",
+      "type": "push",
+      "light": false,
+      "meta": "Найти момент или матч по слову",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "push",
+        "purpose": "Найти момент или матч по слову",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Найденные моменты с кадрами",
+          "secondary": "Найденные матчи с числом сейвов"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "«Сейв» — два момента и матч"
+          },
+          {
+            "kind": "stress",
+            "example": "Запрос без результатов"
+          },
+          {
+            "kind": "failure",
+            "example": "Нет сети на поле — поиск по скачанным моментам"
+          }
+        ]
+      },
+      "parent": "home"
+    },
+    {
+      "id": "newmatch",
+      "title": "Новый матч",
+      "type": "modal",
+      "light": false,
+      "meta": "Завести матч: соперник, время, поле и состав",
+      "parent": "create",
+      "ui": {
+        "pattern": "editor",
+        "navigation": "modal",
+        "purpose": "Завести матч: соперник, время, поле и состав",
+        "primaryAction": "Создать матч",
+        "hierarchy": {
+          "primary": "Соперник, когда и на каком поле",
+          "secondary": "Формат матча и кто придёт"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied",
+          "success"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Товарищеский с «Динамо Двор» в воскресенье"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное название поля с адресом"
+          },
+          {
+            "kind": "failure",
+            "example": "Не указан соперник"
+          }
+        ]
+      }
+    },
+    {
+      "id": "squad",
+      "title": "Состав",
+      "type": "push",
+      "light": false,
+      "meta": "Отметить, кто придёт на следующий матч",
+      "parent": "create",
+      "ui": {
+        "pattern": "editor",
+        "navigation": "push",
+        "purpose": "Отметить, кто придёт на следующий матч",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Игроки с отметками",
+          "secondary": "Поле нового игрока"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied",
+          "success"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "6 из 9 игроков отметились к воскресенью"
+          },
+          {
+            "kind": "stress",
+            "example": "Двадцать игроков с запасными"
+          },
+          {
+            "kind": "failure",
+            "example": "Никто ещё не отметился"
+          }
+        ]
+      }
+    },
+    {
+      "id": "live",
+      "title": "Матч",
+      "type": "push",
+      "light": false,
+      "meta": "Идущий матч: табло, снять момент и лента моментов",
+      "parent": "matches",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Идущий матч: табло, снять момент и лента моментов",
+        "primaryAction": "Снять момент",
+        "hierarchy": {
+          "primary": "Табло и «Снять момент»",
+          "secondary": "Кто снимает и моменты матча"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "2:1, 41-я минута, 4 момента"
+          },
+          {
+            "kind": "stress",
+            "example": "Матч без моментов в первом тайме"
+          },
+          {
+            "kind": "failure",
+            "example": "Нет сети на поле — моменты встанут в ленту позже"
+          }
+        ]
+      }
+    },
+    {
+      "id": "camera",
+      "title": "Съёмка момента",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Снять момент матча со скамейки",
+      "parent": "live",
+      "ui": {
+        "pattern": "capture",
+        "navigation": "fullscreen",
+        "purpose": "Снять момент матча со скамейки",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Видоискатель и кнопка записи",
+          "secondary": "Табло матча и звук"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Удар в перекладину, 0:12"
+          },
+          {
+            "kind": "stress",
+            "example": "Запись на три минуты"
+          },
+          {
+            "kind": "failure",
+            "example": "Камера занята другим приложением"
+          }
+        ]
+      }
+    },
+    {
+      "id": "moment",
+      "title": "Момент",
+      "type": "push",
+      "light": false,
+      "meta": "Снятый момент в ленте матча: отметить, что в кадре",
+      "parent": "live",
+      "ui": {
+        "pattern": "task",
+        "navigation": "push",
+        "purpose": "Снятый момент в ленте матча: отметить, что в кадре",
+        "primaryAction": "Готово",
+        "hierarchy": {
+          "primary": "Снятый момент с кадром и длительностью",
+          "secondary": "Что в кадре и лента матча"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Удар Тимура в перекладину, только что"
+          },
+          {
+            "kind": "stress",
+            "example": "Момент без мяча в кадре"
+          },
+          {
+            "kind": "failure",
+            "example": "Момент не сохранился — нет места"
+          }
+        ]
+      }
+    },
+    {
+      "id": "match",
+      "title": "ФК Пятница · 4:3",
+      "type": "push",
+      "light": false,
+      "meta": "Страница матча как канал: моменты, показ на ТВ, ролик товарища",
+      "parent": "matches",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Страница матча как канал: моменты, показ на ТВ, ролик товарища",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Обложка, счёт и моменты",
+          "secondary": "Показ на телевизоре и ролик из «Фото»"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "4:3 с «Лесным», 9 моментов"
+          },
+          {
+            "kind": "stress",
+            "example": "Матч на 20 моментов"
+          },
+          {
+            "kind": "failure",
+            "example": "Моменты ещё грузятся с телефонов"
+          }
+        ]
+      }
+    },
+    {
+      "id": "picker",
+      "title": "Выбор из «Фото»",
+      "type": "system",
+      "light": false,
+      "meta": "Выбрать ролик товарища для моментов матча",
+      "parent": "match",
+      "ui": {
+        "pattern": "system",
+        "navigation": "system",
+        "purpose": "Выбрать ролик товарища для моментов матча",
+        "primaryAction": "Добавить",
+        "hierarchy": {
+          "primary": "Сетка роликов за день матча",
+          "secondary": "Поиск, альбомы и кнопка «Добавить»"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Гол Кости, 0:12, 4 октября"
+          },
+          {
+            "kind": "stress",
+            "example": "Сотни роликов за день"
+          },
+          {
+            "kind": "failure",
+            "example": "В «Фото» нет роликов за этот день"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nextmatch",
+      "title": "Следующий матч",
+      "type": "push",
+      "light": false,
+      "meta": "Следующий матч: когда, поле, путь и напоминание",
+      "parent": "matches",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Следующий матч: когда, поле, путь и напоминание",
+        "primaryAction": "Приду на матч",
+        "hierarchy": {
+          "primary": "Когда и где играем в воскресенье",
+          "secondary": "Кто придёт, напоминание и путь"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "«Динамо Двор» в воскресенье, 11:00"
+          },
+          {
+            "kind": "stress",
+            "example": "Поле без адреса, только двор"
+          },
+          {
+            "kind": "failure",
+            "example": "Матч отменили из-за дождя, поле закрыто"
+          }
+        ]
+      }
+    },
+    {
+      "id": "season",
+      "title": "Лучшее за сезон",
+      "type": "push",
+      "light": false,
+      "meta": "Лучшие моменты сезона одним роликом и сохранение в «Фото»",
+      "parent": "matches",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "push",
+        "purpose": "Лучшие моменты сезона одним роликом и сохранение в «Фото»",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Ролик лучшего за сезон",
+          "secondary": "Сохранение в «Фото» и топ моментов"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "12 моментов на 3:58"
+          },
+          {
+            "kind": "stress",
+            "example": "Сезон из сорока матчей"
+          },
+          {
+            "kind": "failure",
+            "example": "Сезон только начался — моментов мало"
+          }
+        ]
+      }
+    }
+  ],
+  "prototypes": [
+    {
+      "id": "all",
+      "hero": true,
+      "label": "Весь продукт",
+      "note": "23 экранов и 9 доступов",
+      "start": "phone",
+      "screens": [
+        "phone",
+        "home",
+        "clips",
+        "create",
+        "matches",
+        "profile",
+        "watch",
+        "watchgoal",
+        "watchmine",
+        "watchwin",
+        "background",
+        "lock",
+        "ads",
+        "search",
+        "newmatch",
+        "squad",
+        "live",
+        "camera",
+        "moment",
+        "match",
+        "picker",
+        "nextmatch",
+        "season"
+      ],
+      "stops": [],
+      "authTarget": "home"
+    },
+    {
+      "id": "film",
+      "label": "Снять момент",
+      "note": "Идущий матч, камера и момент в ленте",
+      "start": "live",
+      "screens": [
+        "live",
+        "camera",
+        "moment",
+        "squad"
+      ],
+      "stops": []
+    },
+    {
+      "id": "bar",
+      "label": "Вечер в баре",
+      "note": "Матч на ТВ, ролик товарища и плеер",
+      "start": "match",
+      "screens": [
+        "match",
+        "picker",
+        "watch",
+        "watchgoal",
+        "watchwin",
+        "watchmine",
+        "background",
+        "lock",
+        "home"
+      ],
+      "stops": [
+        "home"
+      ]
+    },
+    {
+      "id": "next",
+      "label": "Следующее воскресенье",
+      "note": "Новый матч, напоминание и путь до поля",
+      "start": "newmatch",
+      "screens": [
+        "newmatch",
+        "nextmatch",
+        "squad"
+      ],
+      "stops": []
+    }
+  ],
+  "backendless": [
+    {
+      "needs": "Общая лента моментов команды",
+      "solution": "Firebase Storage и Firestore: ролик загружается со скамейки, security rules пускают только игроков команды"
+    },
+    {
+      "needs": "Показ на телевизоре в баре",
+      "solution": "Google Cast SDK и AirPlay отправляют моменты подряд на ТВ в той же Wi‑Fi"
+    },
+    {
+      "needs": "Ролик лучшего за сезон",
+      "solution": "Склейка на телефоне через AVMutableComposition, без сервера"
+    }
+  ],
+  "docs": [
+    {
+      "file": "01-product-vision.md",
+      "label": "Вижен"
+    },
+    {
+      "file": "02-architecture.md",
+      "label": "Архитектура"
+    },
+    {
+      "file": "03-design-system.md",
+      "label": "Дизайн-токены"
+    },
+    {
+      "file": "04-references.md",
+      "label": "Референсы"
+    },
+    {
+      "file": "05-visual-audit.md",
+      "label": "Визуальный аудит"
+    },
+    {
+      "file": "06-app-store.md",
+      "label": "Карточка App Store"
+    }
+  ],
+  "appStore": {
+    "name": "Вратарь: голы своей команды",
+    "subtitle": "Моменты воскресного матча",
+    "promo": "Снимайте голы и сейвы со скамейки — моменты сразу в ленте матча. Вечером смотрите всё на телевизоре в баре и выбирайте лучший момент недели.",
+    "keywords": "футбол,любители,команда,сейвы,хайлайты,матч,видео,воскресенье,дворовый,скамейка",
+    "category": {
+      "primary": "Entertainment",
+      "secondary": "Photo & Video"
+    },
+    "ageRating": "13+",
+    "price": "Бесплатно, с рекламой",
+    "encryption": "ITSAppUsesNonExemptEncryption = NO — только HTTPS для входа, загрузки моментов и рекламы",
+    "urls": {
+      "support": "https://vratar.app/support",
+      "marketing": "https://vratar.app",
+      "privacy": "https://vratar.app/privacy"
+    },
+    "description": [
+      "Вратарь — хайлайты вашей любительской футбольной команды.",
+      "СНИМАЙТЕ СО СКАМЕЙКИ\\nОдно касание — и гол или сейв сразу в ленте матча.",
+      "СМОТРИТЕ НА ТЕЛЕВИЗОРЕ\\nПосле игры покажите все моменты на ТВ в баре или раздевалке.",
+      "ВЫБИРАЙТЕ ЛУЧШЕЕ\\nЛучший момент недели, ролики товарищей из «Фото» и лучшее за сезон одним роликом.",
+      "Бесплатная версия показывает рекламу."
+    ],
+    "whatsNew": "Первая версия: матчи, моменты со скамейки, клипы, показ на ТВ и лучшее за сезон.",
+    "privacy": [
+      {
+        "type": "Фото и видео",
+        "apple": "User Content → Photos or Videos",
+        "purpose": "Работа приложения",
+        "linked": true,
+        "tracking": false,
+        "why": "Моменты матчей видят только игроки команды"
+      },
+      {
+        "type": "Геопозиция",
+        "apple": "Location → Coarse Location",
+        "purpose": "Функциональность",
+        "linked": false,
+        "tracking": false,
+        "why": "Путь до поля; только по кнопке"
+      },
+      {
+        "type": "Идентификатор устройства",
+        "apple": "Identifiers → Device ID",
+        "purpose": "Реклама",
+        "linked": false,
+        "tracking": true,
+        "why": "Рекламному SDK только после согласия в ATT"
+      }
+    ],
+    "reviewAccount": {
+      "email": "review@vratar.app",
+      "password": "review2026",
+      "note": "Вход по номеру и паролю, OTP не используется. Можно продолжить без аккаунта. Для показа на ТВ нужен Chromecast или Apple TV в той же сети."
+    }
+  },
+  "auth": {
+    "mode": "phone",
+    "confirmation": false,
+    "entryTarget": "home"
+  }
+}
