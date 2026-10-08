@@ -88,3 +88,14 @@
 .ry-field + .ry-field { margin-top:8px; }
 .ry-field > span { font:500 13px/16px var(--ui-face); color:var(--ui-text-2); }
 .ry-field > input { min-height:28px; padding:0; border:0; outline:0; background:none; color:var(--ui-text); font:400 17px/22px var(--ui-face); }
+
+/* Неделя по дням в профиле: столбик — километры, сегодня — лонгран в планах пунктиром */
+.ry-week { display:grid; grid-template-columns:repeat(7,1fr); gap:8px; align-items:end; height:112px; padding:0 16px 8px; }
+.ry-day { display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:4px; height:100%; font:400 12px/16px var(--ui-face); color:var(--ui-text-2); }
+.ry-day > span { font:500 12px/16px var(--ui-face); }
+.ry-day i { width:100%; border-radius:6px; background:var(--ui-accent); }
+.ry-day b { font:500 13px/16px var(--ui-face); color:var(--ui-text); }
+.ry-day i.is-h0 { height:4px; background:var(--ui-line); }
+.ry-day i.is-h6 { height:46px; } .ry-day i.is-h8 { height:60px; } .ry-day i.is-h9 { height:66px; }
+.ry-day.is-today i { background:none; box-shadow:inset 0 0 0 1.5px var(--ui-accent); }
+.ry-day.is-today b, .ry-day.is-today > span { color:var(--ui-link); }

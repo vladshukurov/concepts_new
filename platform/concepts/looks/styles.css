@@ -103,3 +103,11 @@
 /* Выбор фото из ядра: iOS-синий на белом не проходит AA */
 .ui-pk-text:not(.is-off) { color:#0064d2; }
 .ui-pk-tile > i { background:#0064d2; }
+
+/* Неделя в профиле: семь дней, в записанные — кадр образа, сегодня обведено */
+.lk-week { display:grid; grid-template-columns:repeat(7,1fr); gap:6px; padding:0 16px 8px; }
+.lk-day { display:flex; flex-direction:column; align-items:center; gap:4px; font:400 12px/16px var(--ui-face); color:var(--ui-text-2); }
+.lk-day i { width:100%; aspect-ratio:3/4; border-radius:8px; box-shadow:inset 0 0 0 1px var(--ui-line); background-size:cover; background-position:center; }
+.lk-day b { font:500 13px/16px var(--ui-face); color:var(--ui-text); }
+.lk-day.is-today i { box-shadow:0 0 0 2px var(--ui-accent); }
+.lk-day.is-today b { color:var(--ui-link); }

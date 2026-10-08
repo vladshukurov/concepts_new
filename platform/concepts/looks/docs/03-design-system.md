@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×49, `section` ×37, `leadIcon` ×26, `list` ×23, `bubble` ×16, `cell` ×15, `nav` ×13, `button` ×13, `avatar` ×10, `iconButton` ×10, `entry` ×8, `actions` ×8, `group` ×7, `denied` ×7, `chatNav` ×4, `chat` ×4, `day` ×4, `composer` ×4, `dialog` ×4, `tabBar` ×4, `voice` ×2, `largeTitle` ×2, `search` ×2, `foot` ×2, `textButton` ×2, `top` ×2, `lockScreen` ×1, `callView` ×1, `safariFill` ×1, `wordmark` ×1, `chips` ×1, `photoPicker` ×1, `stats` ×1, `progress` ×1, `times` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×49, `section` ×40, `cell` ×32, `leadIcon` ×26, `list` ×23, `bubble` ×16, `nav` ×13, `button` ×13, `avatar` ×10, `iconButton` ×10, `group` ×10, `entry` ×8, `actions` ×8, `denied` ×7, `chatNav` ×4, `chat` ×4, `day` ×4, `composer` ×4, `dialog` ×4, `tabBar` ×4, `voice` ×2, `largeTitle` ×2, `search` ×2, `foot` ×2, `textButton` ×2, `top` ×2, `lockScreen` ×1, `callView` ×1, `safariFill` ×1, `wordmark` ×1, `chips` ×1, `photoPicker` ×1, `stats` ×1, `progress` ×1, `times` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -53,6 +53,7 @@
 | Субтитры вручную после отказа в распознавании | `.lk-sub-line` |
 | Камера: примерка слева от затвора | `.lk-cam-bar` `.lk-cam` `.lk-idle-foot` `.ui-bubble-media` |
 | Выбор фото из ядра: iOS-синий на белом не проходит AA | `.ui-pk-text` `.ui-pk-tile` |
+| Неделя в профиле: семь дней, в записанные — кадр образа, сегодня обведено | `.lk-week` `.lk-day` |
 <!-- @end -->
 
 ## Актуальная навигация

@@ -2797,7 +2797,9 @@
         "fill",
         "direct-amina",
         "feed",
-        "lockscreen"
+        "lockscreen",
+        "pelmeni",
+        "deleteaccount"
       ],
       "stops": [
         "cast",
@@ -2813,7 +2815,9 @@
         "fill",
         "direct-amina",
         "feed",
-        "lockscreen"
+        "lockscreen",
+        "pelmeni",
+        "deleteaccount"
       ]
     }
   ],

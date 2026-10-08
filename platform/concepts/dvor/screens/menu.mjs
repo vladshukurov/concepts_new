@@ -6,7 +6,7 @@ export default (ui) => ui.screen({
   body: ui.scroll([
     ui.largeTitle('Меню', ui.iconButton({ icon: 'settings', label: 'Настройки', go: 'settings' })),
     ui.section({ children: [
-      ui.list([ui.row({ lead: ui.avatar('АР'), title: 'Анна Разумова', sub: 'Кв. 74 · 3 подъезд · дом подтверждён', go: 'settings' })]),
+      ui.list([ui.row({ lead: ui.avatar('АР'), title: 'Анна Разумова', sub: 'Кв. 74 · 3 подъезд · дом подтверждён', go: 'me' })]),
       ui.stats([['18', 'соседей в чате'], ['1', 'открытая заявка'], [meters.left.split(' ')[0], `${meters.left.split(' ')[1]} до показаний`]]),
     ] }),
     ui.section({ children: ui.group({ cells: [

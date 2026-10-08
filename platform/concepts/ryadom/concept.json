@@ -2229,14 +2229,18 @@
         "notif",
         "account",
         "widget",
-        "fill"
+        "fill",
+        "meetup",
+        "deleteaccount"
       ],
       "stops": [
         "invite",
         "notif",
         "account",
         "widget",
-        "fill"
+        "fill",
+        "meetup",
+        "deleteaccount"
       ]
     },
     {

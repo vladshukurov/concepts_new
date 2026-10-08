@@ -40,3 +40,13 @@ export const entities = [
   { name: 'Диалог', what: 'переписка с соседом или чат подъезда', states: ['есть непрочитанные', 'прочитан'], screens: ['chats', 'chat', 'call'] },
   { name: 'Вызов домофона', what: 'звонок от калитки или двери подъезда', states: ['звонит', 'открыто', 'отклонён'], screens: ['intercom'] },
 ];
+
+/* Своё в профиле Анны: сходится с главной (5 записей), хроникой (42 снимка) и меню (1 открытая заявка) */
+export const mine = {
+  entries: 5, photos: 42, requests: 3, open: 1,
+  month: [
+    { icon: 'droplets', title: 'Показания воды переданы', sub: `${journal.water.when} · ${journal.water.delta}` },
+    { icon: 'wrench', title: journal.door.title, sub: `${journal.door.when} · ${journal.door.status}` },
+    { icon: 'circle-check', title: 'Лампа в лифте заменена', sub: '2 апреля · заявка закрыта за 2 дня' },
+  ],
+};

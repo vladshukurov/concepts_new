@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×46, `section` ×40, `leadIcon` ×34, `cell` ×17, `list` ×16, `nav` ×10, `group` ×9, `bubble` ×9, `entry` ×9, `button` ×7, `iconButton` ×6, `actions` ×5, `denied` ×5, `tabBar` ×4, `day` ×4, `avatar` ×4, `dialog` ×3, `checklist` ×3, `chat` ×2, `largeTitle` ×2, `voice` ×2, `top` ×2, `chatNav` ×1, `composer` ×1, `search` ×1, `textButton` ×1, `wordmark` ×1, `chips` ×1, `adCard` ×1, `safariFill` ×1, `lockScreen` ×1, `photoPicker` ×1, `reminder` ×1, `stats` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×45, `section` ×43, `leadIcon` ×33, `cell` ×31, `list` ×16, `group` ×12, `nav` ×10, `button` ×9, `bubble` ×9, `entry` ×9, `iconButton` ×6, `actions` ×6, `denied` ×5, `tabBar` ×4, `day` ×4, `avatar` ×4, `dialog` ×3, `checklist` ×3, `chat` ×2, `largeTitle` ×2, `voice` ×2, `top` ×2, `chatNav` ×1, `composer` ×1, `search` ×1, `textButton` ×1, `wordmark` ×1, `chips` ×1, `adCard` ×1, `safariFill` ×1, `lockScreen` ×1, `photoPicker` ×1, `reminder` ×1, `stats` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -46,7 +46,8 @@
 | Съёмка растения | `.vz-cam` `.vz-viewfinder` `.vz-cam-caption` `.vz-shutter` |
 | Мессенджер: карточка растения и фото в сообщении | `.vz-chat-card` `.vz-photos` |
 | Выбор фото из ядра: iOS-синий на белом не проходит AA | `.ui-pk-text` `.ui-pk-tile` |
-| Подоконник: свет и полоса недели — полить, подкормить, пропустить | `.vz-light` `.vz-week` |
+| Подоконник: свет и полоса недели — полить, подкормить, пропустить | `.vz-light` `.vz-week` `.vz-me` |
+| Полив за неделю в профиле: капля и число политых, сегодня — очередь обведена | `.vz-pweek` `.vz-pday` |
 <!-- @end -->
 
 ## Актуальная навигация

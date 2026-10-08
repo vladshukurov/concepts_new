@@ -82,3 +82,14 @@
 .ui-pk-text:not(.is-off) { color:#0064d2; }
 .ui-pk-tile > i { background:#0064d2; }
 .ui-progress > i.pd-fill-40 { width:40%; }
+
+/* Неделя у плиты в профиле: готовила — галочка, сейчас — колпак, в планах — календарь */
+.pd-week { display:grid; grid-template-columns:repeat(7,1fr); gap:4px; padding:0 16px 8px; }
+.pd-day { display:flex; flex-direction:column; align-items:center; gap:4px; font:400 12px/16px var(--ui-face); color:var(--ui-text-2); }
+.pd-day i { display:grid; place-items:center; width:36px; height:36px; border-radius:50%; box-shadow:inset 0 0 0 1px var(--ui-line); color:var(--ui-link); }
+.pd-day i svg { width:18px; height:18px; }
+.pd-day b { font:500 13px/16px var(--ui-face); color:var(--ui-text); }
+.pd-day.is-done i { background:var(--ui-accent-soft); box-shadow:none; }
+.pd-day.is-now i { background:var(--ui-accent); color:#fff; box-shadow:none; }
+.pd-day.is-now b { color:var(--ui-link); }
+.pd-day.is-plan i { box-shadow:inset 0 0 0 1.5px var(--ui-accent); }

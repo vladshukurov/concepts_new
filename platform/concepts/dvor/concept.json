@@ -1650,12 +1650,32 @@
       }
     },
     {
+      "id": "me",
+      "title": "Профиль",
+      "type": "push",
+      "light": true,
+      "parent": "menu",
+      "meta": "Свой профиль: записи, апрель, вход в настройки",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      }
+    },
+    {
       "id": "settings",
       "title": "Настройки",
       "type": "push",
       "light": true,
-      "parent": "menu",
-      "meta": "Push · Face ID · фон · виджет",
+      "parent": "me",
+      "meta": "Уведомления · квартира · Face ID · аккаунт",
       "ui": {
         "states": [
           "default",
@@ -1923,6 +1943,7 @@
         "fill",
         "neighbors",
         "profile",
+        "me",
         "settings",
         "ads",
         "lock",
@@ -2054,7 +2075,8 @@
         "account",
         "post",
         "events",
-        "chat"
+        "chat",
+        "deleteaccount"
       ],
       "stops": [
         "menu",
@@ -2062,7 +2084,8 @@
         "account",
         "post",
         "events",
-        "chat"
+        "chat",
+        "deleteaccount"
       ]
     },
     {
@@ -2088,7 +2111,8 @@
         "chats",
         "marina",
         "irina",
-        "chatpetr"
+        "chatpetr",
+        "me"
       ],
       "stops": [
         "settings",
@@ -2103,7 +2127,8 @@
         "chats",
         "marina",
         "irina",
-        "chatpetr"
+        "chatpetr",
+        "me"
       ]
     },
     {

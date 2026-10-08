@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `section` ×59, `row` ×53, `leadIcon` ×45, `cell` ×30, `button` ×25, `list` ×24, `nav` ×17, `actions` ×16, `group` ×12, `denied` ×12, `avatar` ×10, `bubble` ×8, `dialog` ×7, `entry` ×7, `tabBar` ×5, `day` ×4, `largeTitle` ×4, `iconButton` ×4, `chatNav` ×3, `chat` ×3, `composer` ×3, `voice` ×2, `search` ×2, `photoPicker` ×2, `stats` ×2, `callView` ×1, `top` ×1, `wordmark` ×1, `chips` ×1, `adCard` ×1, `reminder` ×1, `textButton` ×1, `hue` ×1, `homeScreen` ×1, `foot` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `section` ×63, `row` ×54, `leadIcon` ×46, `cell` ×43, `button` ×27, `list` ×25, `nav` ×18, `actions` ×17, `group` ×14, `denied` ×12, `avatar` ×11, `bubble` ×8, `dialog` ×7, `entry` ×7, `iconButton` ×5, `tabBar` ×5, `day` ×4, `largeTitle` ×4, `chatNav` ×3, `chat` ×3, `composer` ×3, `stats` ×3, `voice` ×2, `search` ×2, `photoPicker` ×2, `callView` ×1, `top` ×1, `wordmark` ×1, `chips` ×1, `adCard` ×1, `reminder` ×1, `textButton` ×1, `hue` ×1, `homeScreen` ×1, `foot` ×1.
 <!-- @end -->
 
 ## Свои компоненты

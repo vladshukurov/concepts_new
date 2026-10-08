@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×62, `section` ×59, `leadIcon` ×51, `list` ×26, `button` ×23, `cell` ×22, `nav` ×19, `actions` ×17, `bubble` ×17, `avatar` ×13, `denied` ×12, `iconButton` ×11, `group` ×9, `day` ×8, `entry` ×7, `tabBar` ×5, `chat` ×4, `search` ×4, `voice` ×4, `chatNav` ×3, `composer` ×3, `largeTitle` ×3, `dialog` ×3, `chips` ×3, `top` ×2, `checklist` ×2, `callView` ×1, `textButton` ×1, `wordmark` ×1, `adCard` ×1, `safariFill` ×1, `sheet` ×1, `lockScreen` ×1, `reminder` ×1, `photoPicker` ×1, `stats` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `section` ×62, `row` ×61, `leadIcon` ×50, `cell` ×36, `list` ×26, `button` ×25, `nav` ×19, `actions` ×18, `bubble` ×17, `avatar` ×13, `denied` ×12, `group` ×12, `iconButton` ×11, `day` ×8, `entry` ×7, `tabBar` ×5, `chat` ×4, `search` ×4, `voice` ×4, `chatNav` ×3, `composer` ×3, `largeTitle` ×3, `dialog` ×3, `chips` ×3, `top` ×2, `checklist` ×2, `callView` ×1, `textButton` ×1, `wordmark` ×1, `adCard` ×1, `safariFill` ×1, `sheet` ×1, `lockScreen` ×1, `reminder` ×1, `photoPicker` ×1, `stats` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -48,6 +48,7 @@
 | Мессенджер и звонок | `.pd-chat-card` `.pd-call` |
 | Приглашение: системный лист «Поделиться» | `.pd-share` `.pd-link` `.pd-gap` `.pd-text` `.pd-call` `.pd-chat-card` |
 | Выбор фото из ядра: iOS-синий на белом не проходит AA | `.ui-pk-text` `.ui-pk-tile` `.ui-progress` |
+| Неделя у плиты в профиле: готовила — галочка, сейчас — колпак, в планах — календарь | `.pd-week` `.pd-day` |
 <!-- @end -->
 
 ## Актуальная навигация
