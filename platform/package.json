@@ -31,6 +31,7 @@
     "cycle": "node scripts/cycle.mjs",
     "crawl": "node scripts/crawl-flows.mjs",
     "flows": "node scripts/flow-table.mjs",
+    "selfreview": "node scripts/selfreview.mjs",
     "app": "node scripts/build-app.mjs",
     "app:run": "node scripts/run-app.mjs",
     "conform": "node scripts/conform.mjs",
