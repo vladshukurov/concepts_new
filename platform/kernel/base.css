@@ -1865,3 +1865,15 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .ui .ui-check.is-on .ui-check-box svg { color:#fff; }
 .ui .ui-check.is-on .ui-check-text strong { color:var(--ui-text-2); text-decoration:line-through; }
 .ui-entry-attach .ui-check { padding-left:0; padding-right:0; }
+
+/* «Картинка в картинке» поверх экрана «Домой» (homeScreen без виджета, с pip) */
+.ui-hs-apps.is-top { padding-top:calc(var(--safe-top) + 196px); }
+.ui-hs-pip { position:absolute; z-index:3; top:calc(var(--safe-top) + 12px); right:12px; width:232px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; background-size:cover; background-position:center; box-shadow:0 12px 32px rgba(0,0,0,.45); }
+.ui-hs-pip::before { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.05) 40%, rgba(0,0,0,.45)); }
+.ui-hs-pip > * { position:relative; }
+.ui-hs-pip-back { position:absolute!important; left:2px; top:2px; color:#fff; }
+.ui-hs-pip-back svg { width:18px; height:18px; }
+.ui-hs-pip-ctl { position:absolute!important; inset:0; display:flex; align-items:center; justify-content:center; gap:14px; }
+.ui-hs-pip-ctl .ui-icon-btn { color:#fff; }
+.ui-hs-pip-bar { position:absolute!important; left:10px; right:10px; bottom:8px; height:3px; border-radius:2px; background:rgba(255,255,255,.35); }
+.ui-hs-pip-bar > b { display:block; width:30%; height:100%; border-radius:2px; background:#fff; }

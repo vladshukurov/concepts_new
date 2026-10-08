@@ -403,9 +403,14 @@ const iosIcon = (name) => { const [g, c] = IOS_APPS[name] || ['circle', 'is-gray
  * Экран «Домой» iOS: виджет приложения (с подписью под ним), сетка значков 4 в ряд, «Поиск», док.
  * widget: { icon, kicker, title, sub, lines?: [[подпись, значение]], ...action }; app: { name, icon, ...action }.
  */
-export const homeScreen = ({ widget: w, app, apps = ['Телефон', 'Почта', 'Карты', 'Камера', 'Заметки', 'Погода', 'Настройки'], dock = ['Телефон', 'Сообщения', 'Фото', 'Камера'] }) => {
-  const { icon: wi, kicker, title, sub, lines = [], ...wa } = w;
+export const homeScreen = ({ widget: w, app, apps = ['Телефон', 'Почта', 'Карты', 'Камера', 'Заметки', 'Погода', 'Настройки'], dock = ['Телефон', 'Сообщения', 'Фото', 'Камера'], pip }) => {
   const { name, icon: ai, ...aa } = app;
+  /* pip — окно «Картинка в картинке» поверх «Домой» вместо виджета: { art, title, open: {...action} } */
+  if (!w) {
+    const pipHtml = pip ? `<div class="${cls('ui-hs-pip', pip.art || 'ph')}"><button class="ui-icon-btn ui-hs-pip-back"${act({ label: `Вернуть в «${name}»`, ...(pip.open || { back: true }) })}>${icon('maximize')}</button><div class="ui-hs-pip-ctl">${iconButton({ icon: 'rotate-ccw', label: 'Назад на 10 секунд', toast: 'Назад на 10 секунд' })}${iconButton({ icon: 'pause', fill: true, label: 'Пауза', toggle: 'play' })}${iconButton({ icon: 'rotate-cw', label: 'Вперёд на 10 секунд', toast: 'Вперёд на 10 секунд' })}</div><i class="ui-hs-pip-bar"><b></b></i></div>` : '';
+    return `<div class="ui-hs-wall"></div>${pipHtml}<div class="ui-hs-apps is-top">${apps.map((x) => `<span class="ui-hs-app">${iosIcon(x)}${x}</span>`).join('')}<button class="ui-hs-app is-ours"${act({ label: name, ...aa })}><i class="ui-hs-ico">${icon(ai)}</i>${name}</button></div><div class="ui-hs-search">${icon('search')}Поиск</div><div class="ui-hs-dock">${dock.map((x) => `<span class="ui-hs-app">${iosIcon(x)}</span>`).join('')}</div>`;
+  }
+  const { icon: wi, kicker, title, sub, lines = [], ...wa } = w;
   const widget = `<div class="ui-hs-wrap"><button class="ui-hs-widget"${act({ label: `Виджет «${name}»`, ...wa })}><small><i class="ui-hs-wico">${icon(ai)}</i>${kicker}</small><strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}${lines.length ? `<span class="ui-hs-lines">${lines.map(([l, v]) => `<span><b>${l}</b>${v}</span>`).join('')}</span>` : ''}</button><em>${name}</em></div>`;
   const grid = `<div class="ui-hs-apps"><button class="ui-hs-app is-ours"${act({ label: name, ...aa })}><i class="ui-hs-ico">${icon(ai)}</i>${name}</button>${apps.map((x) => `<span class="ui-hs-app">${iosIcon(x)}${x}</span>`).join('')}</div>`;
   return `<div class="ui-hs-wall"></div>${widget}${grid}<div class="ui-hs-search">${icon('search')}Поиск</div><div class="ui-hs-dock">${dock.map((x) => `<span class="ui-hs-app">${iosIcon(x)}</span>`).join('')}</div>`;
