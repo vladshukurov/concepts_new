@@ -1,0 +1,20 @@
+<!-- @overview:vision -->
+<p class="deck">Влоги своих походов выходного дня в грамматике ВК Видео: {{INSIGHT}}.</p>
+<div class="utp-box"><strong>УТП.</strong> {{TAGLINE}}</div>
+{{FEAT_GRID}}
+<!-- @end -->
+
+<!-- @overview:arch -->
+<p class="deck">Привалы снимают в походе и сразу кладут в главу точки маршрута; общая папка вылазки — Firebase, показ на ТВ — Google Cast и AirPlay в той же Wi‑Fi.</p>
+<div class="flow"><span class="chip">Новая вылазка</span><span class="arr">→</span><span class="chip">Отметить нас на маршруте</span><span class="arr">→</span><span class="chip">Снять привал</span><span class="arr">→</span><span class="chip">Фильм по точкам</span><span class="arr">→</span><span class="chip">ТВ вечером</span></div>
+<div class="arch">
+  <div class="arch-layer"><h3>UI</h3><p>Главная · Клипы · Создать · Маршруты · Профиль · Поход · Камера · Вылазка · Плеер.</p></div>
+  <div class="arch-layer"><h3>Domain</h3><p>Route · Point · Walk · Clip · Film · Friend.</p></div>
+  <div class="arch-layer"><h3>Services</h3><p>AVFoundation · Core Location · PhotoKit · Google Cast/AirPlay · UserNotifications · AVPictureInPicture.</p></div>
+  <div class="arch-layer"><h3>Data</h3><p>Ролики вылазки — Firebase Storage и Firestore, доступ только участникам; фильм склеивается на телефоне по точкам маршрута.</p></div>
+</div>
+<!-- @end -->
+
+<section class="section" id="perm-matrix"><h2>Матрица доступов</h2><p class="deck">Каждый доступ — одна кнопка в своей фиче, результат виден сразу.</p>{{PERM_MATRIX}}</section>
+<section class="section" id="no-backend"><h2>Без своего сервера</h2><p class="deck">Что обычно требует сервера и чем это заменено.</p>{{BACKENDLESS}}</section>
+<section class="section" id="screen-table"><h2>Экраны</h2><p class="deck">Корни — пять вкладок в грамматике ВК Видео; идущий поход, камера привала и страница вылазки — свои экраны продукта.</p>{{SCREEN_TABLE}}</section>

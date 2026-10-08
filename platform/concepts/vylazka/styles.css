@@ -1,0 +1,158 @@
+/* «Вылазка» — мимикрия ВК Видео. Оболочка, кегли и цвета — из слоя `.ui` ядра;
+   здесь только своё: погода в шапке, карточки маршрутов с полоской точек-привалов,
+   маршрут похода с отметкой «вы здесь», главы плеера по точкам маршрута, камера привала. */
+
+/* Кадры — три атласа (assets/media):
+   v1 компания на лесной тропе · v2 мох с каплями у родника · v3 сосны снизу вверх
+   v4 закат над водой со смотровой · v5 северный мол и море · v6 вода на солнце
+   v7 компания у турбазы · v8 туман над водой и камень · v9 волна у берега */
+.v1,.v4,.v7 { background-image:url(assets/media/weekend-atlas.png); }
+.v2,.v3,.v6,.v8 { background-image:url(assets/media/session-covers-atlas.png); }
+.v5,.v9 { background-image:url(assets/media/northern-sea.png); }
+.v1,.v2,.v3,.v4,.v5,.v6,.v7,.v8,.v9 { background-repeat:no-repeat; background-color:#1b2420; }
+.v1,.v2,.v3,.v4,.v6,.v7,.v8 { background-size:300% auto; }
+.v1 { background-position:100% 90%; }
+.v2 { background-position:50% 15%; }
+.v3 { background-position:50% 85%; }
+.v4 { background-position:0 100%; }
+.v6 { background-position:100% 85%; }
+.v7 { background-position:0 24%; }
+.v8 { background-position:0 19%; }
+.v5 { background-size:cover; background-position:62% 60%; }
+.v9 { background-size:260% auto; background-position:12% 92%; }
+/* Не 16:9 (квадрат, вертикаль): масштаб по высоте, чтобы кадр закрывал рамку */
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vy-cam-view,.ui-hcell-art):is(.v1,.v2,.v3,.v4,.v6,.v7,.v8) { background-size:auto 200%; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vy-cam-view,.ui-hcell-art):is(.v1,.v6) { background-position:92% 100%; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vy-cam-view,.ui-hcell-art):is(.v2) { background-position:50% 0; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vy-cam-view,.ui-hcell-art):is(.v3) { background-position:50% 100%; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vy-cam-view,.ui-hcell-art):is(.v4) { background-position:8% 100%; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vy-cam-view,.ui-hcell-art):is(.v7,.v8) { background-position:8% 0; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vy-cam-view,.ui-hcell-art):is(.v5) { background-size:auto 100%; background-position:66% 50%; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vy-cam-view,.ui-hcell-art):is(.v9) { background-size:auto 150%; background-position:22% 100%; }
+/* Плеер: ядро ставит cover и центр — кадрирование атласа сильнее */
+.ui-player:is(.v1,.v2,.v3,.v4,.v6,.v7,.v8) { background-size:300% auto; }
+.ui-player.v1 { background-position:100% 90%; }
+.ui-player.v2 { background-position:50% 15%; }
+.ui-player.v3 { background-position:50% 85%; }
+.ui-player.v4 { background-position:0 100%; }
+.ui-player.v9 { background-size:260% auto; background-position:12% 92%; }
+
+/* Доли прогресса */
+.vy-p0 { width:0; }
+.vy-p20 { width:20%; }
+.vy-p45 { width:45%; }
+.vy-p60 { width:60%; }
+
+/* Шапка главной: «Вылазка» и погода на выходные, без аватара */
+.vy-weather { display:inline-flex; align-items:center; gap:6px; height:32px; padding:0 12px; border-radius:16px; background-color:var(--ui-card-2); font:500 14px/18px var(--ui-face); color:var(--ui-text); white-space:nowrap; }
+.vy-weather svg { width:18px; height:18px; color:#ffc94d; }
+
+/* Полоска маршрута: точки-привалы, отрезки по длине */
+.vy-strip { display:flex; align-items:center; height:10px; }
+.vy-strip > i { flex:none; width:8px; height:8px; border-radius:50%; background-color:var(--ui-text-2); }
+.vy-strip > i.is-end { width:10px; height:10px; background-color:var(--ui-accent); }
+.vy-strip > b { height:2px; background-color:var(--ui-line); }
+.vy-strip.is-done > b, .vy-strip > b.is-done { background-color:var(--ui-accent); }
+.vy-strip.is-done > i, .vy-strip > i.is-done { background-color:var(--ui-accent); }
+.vy-g2 { flex:2; } .vy-g3 { flex:3; }
+
+/* Горизонтальные карточки маршрутов-серий: кадр, полоска маршрута, название */
+.vy-routes { display:flex; gap:12px; overflow-x:auto; scrollbar-width:none; padding:0 16px; }
+.vy-routes::-webkit-scrollbar { display:none; }
+.vy-rcard { flex:none; display:flex; flex-direction:column; gap:2px; width:244px; padding:0; border:0; background:none; text-align:left; color:var(--ui-text); }
+.vy-rcard-art { position:relative; width:100%; aspect-ratio:16/10; border-radius:12px; overflow:hidden; }
+.vy-rcard-art .ui-duration { position:absolute; right:6px; bottom:6px; }
+.vy-rcard-live { position:absolute; left:8px; top:8px; padding:2px 8px; border-radius:6px; background-color:#2b7a3d; font:600 12px/16px var(--ui-face); color:#fff; }
+.vy-rcard .vy-strip { margin:8px 2px 6px; }
+.vy-rcard strong { font:500 15px/20px var(--ui-face); }
+.vy-rcard > span:last-child { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+
+/* «Следующая вылазка»: дата крупно слева, маршрут справа */
+.vy-next { display:flex; align-items:stretch; gap:12px; width:calc(100% - 32px); margin:0 16px; padding:8px 12px 8px 8px; border:0; border-radius:16px; background-color:var(--ui-card); text-align:left; color:var(--ui-text); }
+.vy-next-date { flex:none; display:flex; flex-direction:column; align-items:center; justify-content:center; width:64px; border-radius:8px; background-color:var(--ui-card-2); }
+.vy-next-date small { font:500 12px/14px var(--ui-face); color:var(--ui-text-2); }
+.vy-next-date strong { font:700 28px/32px var(--ui-face); }
+.vy-next-body { display:flex; flex-direction:column; gap:4px; min-width:0; flex:1; }
+.vy-next-body strong { font:600 16px/20px var(--ui-face); }
+.vy-next-body > span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.vy-next-body .vy-strip { margin:4px 0 2px; }
+
+/* Маршрут похода крупно: точки с подписями и отметка «вы здесь» */
+.vy-map { margin:0 16px; padding:16px 16px 12px; border-radius:16px; background-color:var(--ui-card); }
+.vy-map .vy-strip { height:16px; }
+.vy-map .vy-strip > i { width:12px; height:12px; }
+.vy-map .vy-strip > b { height:3px; }
+.vy-map-labels { display:flex; justify-content:space-between; margin-top:8px; }
+.vy-map-labels > span { display:flex; flex-direction:column; font:500 13px/16px var(--ui-face); color:var(--ui-text); }
+.vy-map-labels > span:last-child { text-align:right; }
+.vy-map-labels small { font:400 12px/14px var(--ui-face); color:var(--ui-text-2); }
+.vy-you { position:relative; flex:none; display:flex; align-items:center; justify-content:center; width:28px; height:28px; margin:0 -8px; border-radius:50%; background-color:var(--ui-accent); box-shadow:0 0 0 4px rgba(0,119,255,.3); color:#fff; }
+.vy-you svg { width:14px; height:14px; }
+
+/* Плеер: кадр выше 16:9 и подписанные главы по точкам маршрута под ним */
+.ui-player.vy-player { aspect-ratio:4/3; }
+.vy-chapters { display:flex; gap:3px; padding:10px 16px 0; }
+.vy-chapters > span { display:flex; flex-direction:column; gap:2px; min-width:0; padding-top:6px; border-top:3px solid var(--ui-line); font:500 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.vy-chapters > span.is-done { border-top-color:rgba(0,119,255,.55); }
+.vy-chapters > span.is-now { border-top-color:var(--ui-accent); color:var(--ui-text); }
+.vy-chapters small { font:400 12px/14px var(--ui-face); font-variant-numeric:tabular-nums; color:var(--ui-text-2); }
+.vy-watch-title { margin:14px 16px 0; }
+.vy-watch-meta { padding:4px 16px 0; }
+
+/* Формы */
+.vy-bottom { margin-top:16px; }
+.vy-actions { margin-top:12px; }
+.vy-input { width:100%; min-width:0; padding:0; border:0; outline:0; background:none; color:var(--ui-text); font:500 17px/22px var(--ui-face); }
+.vy-input::placeholder { color:var(--ui-text-2); }
+.vy-form .ui-cell-text > span { order:-1; font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.vy-form .ui-cell-text { display:flex; flex-direction:column; }
+.vy-add { display:flex; align-items:center; gap:12px; min-height:48px; margin:8px 16px 0; padding:0 12px; border-radius:12px; background-color:var(--ui-card); color:var(--ui-text-2); }
+.vy-add .vy-input { flex:1; }
+.vy-add svg { width:20px; height:20px; flex:none; color:var(--ui-link); }
+
+/* Профиль */
+.vy-me { display:flex; align-items:center; gap:12px; min-width:0; }
+.vy-gap { margin-top:12px; }
+
+/* Страница вылазки и серии как канал */
+.vy-banner { height:140px; margin:0 16px; border-radius:12px; }
+.vy-channel { display:flex; align-items:center; gap:12px; padding:4px 16px 8px; }
+.vy-channel .ui-row-text strong { font:600 20px/26px var(--ui-face); }
+
+/* Лист «Создать» */
+.vy-create { overflow:hidden; }
+.vy-behind { display:flex; flex-direction:column; gap:20px; padding:calc(var(--safe-top) + 16px) 16px 0; }
+.vy-dim { position:absolute; inset:0; background-color:rgba(0,0,0,.6); }
+.vy-create-sheet { padding-bottom:16px; }
+.vy-sheet-head { display:flex; flex-direction:column; gap:4px; padding:0 16px 12px; }
+.vy-fill { position:relative; flex:1; min-height:0; overflow:hidden; }
+
+/* Длинные подписи переносятся */
+.vy-wrap .ui-row-text > strong { white-space:normal; }
+
+/* Камера привала: точка маршрута поверх видоискателя */
+.vy-cam { overflow:hidden; }
+.vy-cam-view { position:absolute; inset:0; border-radius:0; }
+.vy-cam-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.5), transparent 30%, transparent 62%, rgba(0,0,0,.72)); }
+.vy-cam-head { position:relative; z-index:1; display:flex; align-items:center; justify-content:space-between; padding:var(--safe-top) 8px 0; }
+.vy-rec { padding:4px 10px; border-radius:8px; background-color:#c4001a; font:600 15px/20px var(--ui-face); font-variant-numeric:tabular-nums; color:#fff; }
+.vy-cam-point { position:relative; z-index:1; display:flex; flex-direction:column; gap:6px; margin:12px 16px 0; padding:12px 14px; border-radius:14px; background-color:rgba(0,0,0,.55); color:#fff; }
+.vy-cam-point small { font:500 12px/14px var(--ui-face); color:rgba(255,255,255,.78); }
+.vy-cam-point strong { font:600 17px/22px var(--ui-face); }
+.vy-cam-point .vy-strip > b { background-color:rgba(255,255,255,.35); }
+.vy-cam-point .vy-strip > i { background-color:rgba(255,255,255,.7); }
+.vy-cam-meta { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 112px); z-index:1; display:flex; justify-content:center; gap:16px; font:500 13px/16px var(--ui-face); color:rgba(255,255,255,.86); }
+.vy-cam-meta > span { display:flex; align-items:center; gap:4px; }
+.vy-cam-meta svg { width:14px; height:14px; }
+.vy-cam-bar { position:absolute; left:24px; right:24px; bottom:calc(var(--safe-bottom) + 16px); z-index:1; display:flex; align-items:center; justify-content:space-between; }
+.vy-shutter { position:relative; width:76px; height:76px; border-radius:50%; box-shadow:inset 0 0 0 4px #fff; }
+.vy-shutter > span { position:absolute; inset:9px; border-radius:50%; background-color:#ff3b30; }
+.vy-spacer { width:48px; }
+
+/* Выбор из «Фото» — чёрный фон системного листа */
+.ui.vy-picker { background-color:#000; }
+.ui-pk-text:not(.is-off) { color:#5aaaff; }
+.ui-pk-tile > i { background:#0064d2; }
+
+/* Отметки «что в кадре» и «кто идёт» — выбор, а не сделанное дело: без зачёркивания */
+.ui.vy-marks .ui-check.is-on .ui-check-text strong { color:var(--ui-text); text-decoration:none; }
