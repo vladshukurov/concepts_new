@@ -13,9 +13,8 @@ export default (ui) => ui.screen({
       ] }) }),
       ui.section({ title: 'Откроется', children: ui.list([
         ui.row({ lead: ui.leadIcon('message-circle', { accent: true }), title: 'Чат 3 подъезда', sub: '18 жильцов · закреплён код калитки' }),
-        ui.row({ lead: ui.leadIcon('key', { accent: true }), title: 'Пароли дома', sub: 'Кабинет УК, видеонаблюдение, гостевая сеть' }),
-        ui.row({ lead: ui.leadIcon('wifi', { accent: true }), title: 'Гостевая сеть Dvor-Guest', sub: 'До 30 апреля' }),
-      ]) }),
+        ui.row({ lead: ui.leadIcon('key', { accent: true }), title: 'Пароли дома', sub: 'Кабинет УК и видеонаблюдение' }),
+        ]) }),
       ui.section({ children: ui.actions([ui.button({ label: 'Продолжить', block: true, activate: 'wifiinfo|home' })]) }),
     ]),
   ],

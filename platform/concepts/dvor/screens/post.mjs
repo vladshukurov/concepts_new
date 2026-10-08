@@ -19,7 +19,7 @@ export default (ui) => ui.screen({
         ui.row({ lead: ui.leadIcon('clock'), title: 'Закрытие', sub: 'Ждём мастера сегодня с 16:00' }),
       ]) }),
       ui.section({ children: [
-        ui.group({ cells: [ui.cell({ icon: 'bell', title: 'Сообщить, когда закроют', sub: 'Уведомление при смене статуса заявки', toggle: false, ask: 'push|post|post' })] }),
+        ui.list([ui.reminder({ title: 'Сообщить, когда закроют', titleGranted: 'Сообщим, когда мастер закроет заявку', sub: 'Мастер сегодня с 16:00 до 18:00', here: 'post' })]),
       ] }),
       ui.section({ children: ui.actions([ui.button({ label: 'Открыть чат УК', icon: 'message-circle', block: true, go: 'ukchat', primary: true })]) }),
     ]),

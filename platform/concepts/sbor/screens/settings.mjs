@@ -22,7 +22,7 @@ export default (ui) => ui.screen({
     ui.section({ children: ui.group({ cells: [
       ui.cell({ icon: 'bell', title: 'Уведомления и звуки', value: 'Колокольчик', toast: 'Личные и поездки — с превью, остальное без звука' }),
       ui.cell({ icon: 'lock', title: 'Конфиденциальность', value: 'Номер — контактам', toast: 'Номер видят только ваши контакты' }),
-      ui.cell({ icon: 'megaphone', title: 'Реклама', value: 'Без подбора', go: 'ads' }),
+      ui.cell({ icon: 'megaphone', title: 'Реклама', value: '<span data-hide-granted="tracking">Без подбора</span><span class="perm-hidden" data-show-granted="tracking">По интересам</span>', go: 'ads' }),
       ui.cell({ icon: 'database', title: 'Данные и память', value: '2,4 ГБ', toast: 'Альбомы поездок — 1,9 ГБ, чаты — 0,5 ГБ' }),
       ui.cell({ icon: 'palette', title: 'Оформление', value: 'Как в системе' }),
       ui.cell({ icon: 'globe', title: 'Язык', value: 'Русский' }),

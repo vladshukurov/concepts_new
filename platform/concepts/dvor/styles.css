@@ -117,3 +117,7 @@
 /* Выбор фото из ядра: iOS-синий на белом не проходит AA */
 .ui-pk-text:not(.is-off) { color:#0064d2; }
 .ui-pk-tile > i { background:#0064d2; }
+/* Баннер уведомления поверх экрана «Домой» */
+.dv-banner { position:absolute; z-index:3; left:8px; right:8px; top:calc(var(--safe-top) + 6px); }
+.dv-web-note { margin:4px 0 12px!important; color:var(--ui-accent)!important; }
+.dv-banner ~ .ui-hs-wrap { margin-top:calc(var(--safe-top) + 110px); }

@@ -15,6 +15,7 @@ export default (ui) => ui.screen({
       { label: 'Счётчики', filter: 'meters' },
       { label: 'Фото', filter: 'photo' },
     ]) }),
+    ui.section({ children: ui.list([ui.row({ lead: ui.leadIcon('sunrise', { round: true, accent: true }), title: 'Сводка на утро собрана в 7:00', sub: `1 заявка в работе · показания через ${meters.left} · без горячей воды с ${outage.from}-го`, wrap: true })]) }),
     ui.entry({
       icon: 'wrench', title: journal.door.title, meta: `${journal.door.when} · заявка`,
       status: { label: journal.door.status, accent: true }, text: journal.door.text, photos: journal.door.photos,
@@ -25,10 +26,7 @@ export default (ui) => ui.screen({
       text: `Было ${journal.water.prev} · ${journal.water.delta}. До срока ещё ${meters.left}`,
       actions: [{ label: 'Все счётчики', icon: 'gauge', go: 'meters' }], tags: ['meters'],
     }),
-    ui.entry({
-      icon: 'megaphone', title: 'Сантехник на выезд', meta: 'по городу · реклама',
-      text: 'Замена доводчика и смесителя от 900 ₽, приедут сегодня до 18:00', actions: [{ label: 'Настроить рекламу', icon: 'sliders-horizontal', go: 'ads' }],
-    }),
+    ui.section({ children: ui.adCard({ icon: 'megaphone', title: 'Сантехник на выезд', sub: 'Реклама · по городу · замена доводчика от 900 ₽', subGranted: `Реклама · рядом с ${house.address} · приедут через час`, go: 'ads' }) }),
     ui.entry({ icon: 'mic', title: journal.voice.title, meta: `${journal.voice.when} · заметка`, voice: { dur: journal.voice.dur }, menu: ['Изменить', 'Удалить'], tags: ['repair'] }),
     ui.entry({
       icon: 'triangle-alert', title: outage.title, meta: journal.outage.when, text: `${outage.label} · опрессовка стояка. Набрать воды заранее`,

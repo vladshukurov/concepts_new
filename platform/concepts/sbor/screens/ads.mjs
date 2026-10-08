@@ -17,9 +17,9 @@ export default (ui) => ui.screen({
         ui.row({ lead: ui.avatar('АР'), title: 'Аренда самокатов на Баумана', sub: '8 октября · 1 показ' }),
       ]) }),
       ui.section({ children: [
-        ui.list([ui.row({ lead: ui.leadIcon('shuffle', { round: true, accent: true }), title: 'Сейчас: без подбора', sub: 'Реклама одна и та же для всех в городе поездки' })]),
+        ui.list([ui.row({ lead: ui.leadIcon('shuffle', { round: true, accent: true }), title: '<span data-hide-granted="tracking">Сейчас: без подбора</span><span class="perm-hidden" data-show-granted="tracking">Сейчас: по интересам</span>', sub: '<span data-hide-granted="tracking">Реклама одна и та же для всех в городе поездки</span><span class="perm-hidden" data-show-granted="tracking">Экскурсии и трансферы по Казани — с учётом ваших интересов</span>' })]),
         ui.actions([
-        ui.button({ label: 'Подбирать по интересам', block: true, ask: 'tracking|chats|ads', primary: true }),
+        ui.button({ label: 'Подбирать по интересам', block: true, ask: 'tracking|ads|ads', primary: true }),
         ui.button({ label: 'Оставить без подбора', variant: 'tertiary', block: true, back: true }),
       ]),
       ] }),

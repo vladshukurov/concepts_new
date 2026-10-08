@@ -22,8 +22,8 @@ export default (ui) => ui.screen({
       ui.dialog({ initial: people.rustam.initial, name: people.rustam.name, text: 'Голосовое · 1:12 · про Свияжск', time: 'вчера', unread: 1, go: 'rustam', tags: ['personal', 'unread'] }),
       ui.dialog({ initial: 'М', name: 'Мама', text: 'Пропущенный звонок · 21:40', time: 'вчера', go: 'mama', tags: ['personal'] }),
       ui.dialog({ initial: 'АЛ', name: 'Алтай · август', text: '<b>Игорь:</b> фильм поездки готов, 12:40', time: '28 августа', go: 'altai', tags: ['trips'] }),
-      ui.dialog({ initial: 'КС', name: ad.title, text: `Реклама · ${ad.text}`, time: 'реклама', toast: 'Реклама · откроется сайт катера' }),
     ] }),
+    ui.section({ children: ui.adCard({ icon: 'ship', title: ad.title, sub: `Реклама · ${ad.text}`, subGranted: `Реклама по интересам · ${ad.text}`, go: 'ads' }) }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'chats' }),
 });

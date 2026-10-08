@@ -22,10 +22,9 @@ export default (ui) => ui.screen({
         ui.cell({ icon: 'wifi', title: 'Wi‑Fi отеля', sub: `${trip.hotel} · добавил Игорь из QR`, value: trip.ssid, go: 'wifi' }),
         ui.cell({ icon: 'images', title: 'Альбом поездки', sub: 'Фильм пятницы готов, 3:42', value: `${trip.photos} фото`, go: 'album' }),
         ui.cell({ icon: 'wallet', title: 'Расходы', sub: 'Вам вернут 933 ₽', value: '61 870 ₽', go: 'expenses' }),
-        ui.cell({ icon: 'lock', title: 'Документы', sub: 'Брони, билеты, список группы', value: '7 файлов', ask: 'faceid|docs|tripinfo' }),
+        ui.cell({ icon: 'lock', title: 'Документы', sub: 'Брони и билеты скачаны без сети в 23:10', value: '7 файлов', ask: 'faceid|docs|tripinfo' }),
       ] }) }),
       ui.section({ children: ui.group({ cells: [
-        ui.cell({ icon: 'bell', title: 'Напоминать о сборах', sub: 'За 30 минут, с местом и временем', ask: 'push|lockscreen|tripinfo' }),
         ui.cell({ icon: 'headphones', title: 'Рассказы Рустама подряд', sub: '6 голосовых · 23 минуты · Кремль, Свияжск, слобода', activate: 'audio|lockscreen' }),
         ui.cell({ icon: 'link', title: 'Ссылка-приглашение', sub: trip.link, value: '3 вступили', go: 'invite' }),
       ] }) }),

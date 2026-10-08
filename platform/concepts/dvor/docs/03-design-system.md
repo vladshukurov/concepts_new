@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `section` ×57, `row` ×55, `leadIcon` ×47, `cell` ×31, `button` ×26, `list` ×22, `nav` ×17, `actions` ×16, `group` ×13, `denied` ×12, `avatar` ×10, `bubble` ×8, `entry` ×8, `dialog` ×7, `tabBar` ×5, `day` ×4, `largeTitle` ×4, `iconButton` ×4, `chatNav` ×3, `chat` ×3, `composer` ×3, `voice` ×2, `search` ×2, `photoPicker` ×2, `stats` ×2, `callView` ×1, `top` ×1, `wordmark` ×1, `chips` ×1, `textButton` ×1, `homeScreen` ×1, `foot` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `section` ×59, `row` ×53, `leadIcon` ×45, `cell` ×30, `button` ×25, `list` ×24, `nav` ×17, `actions` ×16, `group` ×12, `denied` ×12, `avatar` ×10, `bubble` ×8, `dialog` ×7, `entry` ×7, `tabBar` ×5, `day` ×4, `largeTitle` ×4, `iconButton` ×4, `chatNav` ×3, `chat` ×3, `composer` ×3, `voice` ×2, `search` ×2, `photoPicker` ×2, `stats` ×2, `callView` ×1, `top` ×1, `wordmark` ×1, `chips` ×1, `adCard` ×1, `reminder` ×1, `textButton` ×1, `hue` ×1, `homeScreen` ×1, `foot` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -54,6 +54,7 @@
 | Поля ввода концепта: подпись над значением, как ячейка ВК, но в ячейке настоящий input | `.dv-field` `.dv-shots` |
 | Инициалы на тёмном экране звонка: белые на полупрозрачном, мягкий акцент здесь не держит контраст | `.dv-call` |
 | Выбор фото из ядра: iOS-синий на белом не проходит AA | `.ui-pk-text` `.ui-pk-tile` |
+| Баннер уведомления поверх экрана «Домой» | `.dv-banner` `.dv-web-note` |
 <!-- @end -->
 
 ## Актуальная навигация

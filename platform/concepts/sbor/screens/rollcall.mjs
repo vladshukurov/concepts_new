@@ -22,6 +22,10 @@ export default (ui) => ui.screen({
     ui.scroll([
       ui.section({ children: [
         `<div class="sb-roll"><strong>${meet.here} из ${trip.people}</strong><span>на месте к сбору в ${meet.time} · ${meet.place}</span><div class="sb-roll-bar" aria-hidden="true">${Array.from({ length: trip.people }, (_, i) => `<i${i < meet.here ? ' class="is-on"' : ''}></i>`).join('')}</div></div>`,
+        ui.list([
+          ui.row({ lead: ui.leadIcon('user-check', { round: true }), title: `Перекличка обновилась в 9:38`, sub: `${people.alina.name} отметилась, пока приложение было закрыто` }),
+          ui.reminder({ title: 'Напомнить за 10 минут до сбора', titleGranted: 'Напомним в 9:50', sub: `Если ещё не отметитесь · ${meet.place}`, here: 'rollcall' }),
+        ]),
         ui.actions([ui.button({ label: 'Я в отеле', icon: 'wifi', block: true, activate: 'wifiinfo|rollcall', primary: true })]),
       ] }),
       ui.section({ shownAfter: 'wifiinfo', children: ui.list([

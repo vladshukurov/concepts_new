@@ -7,10 +7,11 @@ export default (ui) => ui.screen({
     ui.largeTitle('События'),
     ui.section({ title: 'Заявки', meta: '1 открыта · 1 черновик', children: ui.list([
       ui.row({ lead: ui.leadIcon('mic', { accent: true }), title: 'Черновик: в лифте не горит свет', sub: '3 подъезд · распознано из записи 0:12', go: 'dictate' }),
-      ui.row({ lead: ui.leadIcon('wrench'), title: 'Доводчик, 3 подъезд', sub: 'Елена назначена · мастер сегодня с 16:00', wrap: true, end: { badge: 'в работе' }, activate: 'commnotif|ukchat' }),
+      ui.row({ lead: ui.leadIcon('wrench'), title: 'Доводчик, 3 подъезд', sub: 'Елена назначена · мастер сегодня с 16:00', wrap: true, end: { badge: 'в работе' }, go: 'post' }),
     ]) }),
     ui.section({ title: 'Апрель', children: [
       ui.list([
+        ui.row({ lead: ui.leadIcon('rotate-cw', { round: true }), title: 'События дома обновлены в 7:05', sub: `${meetingDay.title} — ${meetingDay.time}, уже из чата УК` }),
         ui.row({ lead: ui.leadIcon('', { text: '12' }), title: cleanup.title, sub: `${cleanup.time} · ${cleanup.where}`, end: { value: 'В Календарь', ask: 'calendar|events|events', primary: true, label: 'Добавить субботник в Календарь' } }),
         ui.row({ lead: ui.leadIcon('calendar-check', { round: true, accent: true }), title: 'Субботник в Календаре', sub: 'Завтра, 11:00 · напомним за час, перенос подхватится сам', shownAfter: 'calendar' }),
         ui.row({ lead: ui.leadIcon('', { text: String(outage.from) }), title: 'Опрессовка стояка', sub: `${outage.label} · без горячей воды` }),

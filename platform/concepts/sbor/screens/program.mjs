@@ -20,6 +20,7 @@ export default (ui) => ui.screen({
         { label: 'Вс 11', filter: 'sun' },
       ]) }),
       ui.section({ children: [
+        ui.list([ui.row({ lead: ui.leadIcon('rotate-cw', { round: true }), title: 'Программа обновилась в 6:10', sub: `Сбор перенесён с ${meet.was} на ${meet.time} — вчера в ${meet.movedAt}` })]),
         ui.actions([ui.button({ label: 'Вся программа в Календарь', icon: 'calendar-plus', block: true, ask: 'calendar|program|program', primary: true })]),
       ] }),
       ui.section({ shownAfter: 'calendar', children: ui.list([

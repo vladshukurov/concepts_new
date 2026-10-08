@@ -11,7 +11,6 @@ export default (ui) => ui.screen({
     ] }),
     ui.denied('location'),
     ui.section({ title: 'Сервисы двора', children: ui.list([
-      ui.row({ lead: ui.leadIcon('wifi'), title: 'Гостевая сеть', sub: 'Dvor-Guest · QR на лавочке', go: 'guest' }),
       ui.row({ lead: ui.leadIcon('gauge'), title: 'Счётчики', sub: `Вода и электричество · до ${meters.deadlineLabel}`, go: 'meters' }),
       ui.row({ lead: ui.leadIcon('calendar'), title: 'События дома', sub: `Субботник ${cleanup.day}`, go: 'events' }),
       ui.row({ lead: ui.leadIcon('phone-incoming', { accent: true }), title: 'Домофон', sub: 'Курьер у второй двери · сейчас', go: 'intercom' }),
