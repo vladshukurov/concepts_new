@@ -14,7 +14,6 @@ export default (ui) => ui.screen({
       ui.bubble({ from: `${people.masha.name}`, text: 'Илья ходит, не подсказывайте', time: '21:02' }),
     ])),
     ui.denied('voip'),
-    ui.denied('mic'),
-    ui.composer({ attach: { label: 'Прикрепить', menu: ['Снять поле?camera', 'Фото из галереи?photos'] }, mic: { ask: 'mic|chat|chat' } }),
+    ui.composer({ attach: { label: 'Прикрепить', menu: ['Запись из дневника>post', 'Новая запись с кадром поля>compose'] } }),
   ],
 });

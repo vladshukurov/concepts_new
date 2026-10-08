@@ -10,7 +10,7 @@ export default (ui) => ui.screen({
       ui.section({ children: `<p class="st-text">«${tonight.game}» вчетвером, Женя впервые. Илья объяснил за 10 минут, к четвёртому раунду я отстаю на 13</p>` }),
       ui.section({ children: ui.group({ cells: [
         ui.cell({ icon: 'camera', title: 'Снять поле', sub: 'Расклад или итог партии', ask: 'camera|compose|compose' }),
-        ui.cell({ icon: 'image', title: 'Фото', sub: 'Готовый снимок поля', ask: 'photos|compose|compose' }),
+        ui.cell({ icon: 'image', title: 'Фото', sub: 'Снимки с сегодняшней партии', ask: 'photos|compose|compose' }),
         ui.cell({ icon: 'map-pin', title: 'Место', sub: 'Клуб, кафе или дома', ask: 'location|compose|compose' }),
         ui.cell({ icon: 'dices', title: 'Игра', value: tonight.game, go: 'games' }),
       ] }) }),
@@ -18,7 +18,7 @@ export default (ui) => ui.screen({
       ui.denied('photos'),
       ui.denied('location'),
       ui.section({ shownAfter: 'camera', children: ui.list([ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Кадр поля снят', sub: 'Итог четвёртого раунда · 1 фото' })]) }),
-      ui.section({ shownAfter: 'photos', children: ui.list([ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Добавлено 2 снимка', sub: 'Расклад до партии и после' })]) }),
+      ui.section({ shownAfter: 'photos', children: ui.list([ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Кадры с вечера · 19:30–21:00', sub: '3 снимка поля добавлены в запись' })]) }),
       ui.section({ shownAfter: 'location', children: ui.list([ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Клуб «Полка», Абая, 44', sub: 'Место партии в записи' })]) }),
       ui.section({ title: 'Счёт', children: ui.list([
         ui.row({ lead: ui.leadIcon('list-ordered'), title: 'Из табло партии', sub: 'Маша 71 · Илья 64 · Саша 58 · Женя 52 · раунд 4', go: 'score' }),

@@ -1,5 +1,5 @@
 import { THEME } from './_shared.mjs';
-import { people } from '../model.mjs';
+import { people, zhenyaNote } from '../model.mjs';
 
 export default (ui) => ui.screen({
   id: 'direct', theme: THEME,
@@ -10,7 +10,9 @@ export default (ui) => ui.screen({
       ui.bubble({ text: 'Сыграем ещё раз на неделе?', time: '18:42' }),
       ui.bubble({ out: true, text: 'Да, давай в четверг после работы', time: '18:45', read: true }),
       ui.bubble({ text: 'Отлично, я принесу «Архив острова»', time: '18:47' }),
+      ui.day('Сегодня'),
+      ui.bubble({ text: zhenyaNote.text, time: zhenyaNote.time }),
     ])),
-    ui.composer({ attach: { label: 'Прикрепить', menu: ['Снять поле?camera', 'Фото из галереи?photos'] }, send: { toast: 'Сообщение отправлено', primary: true } }),
+    ui.composer({ attach: { label: 'Прикрепить', menu: ['Запись из дневника>post', 'Новая запись с кадром поля>compose'] }, send: { toast: 'Сообщение отправлено', primary: true } }),
   ],
 });

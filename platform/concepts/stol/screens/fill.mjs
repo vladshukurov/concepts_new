@@ -4,7 +4,7 @@ import { THEME } from './_shared.mjs';
 export default (ui) => ui.screen({
   id: 'fill', theme: THEME, className: 'ui-sf',
   body: ui.safariFill({
-    site: 'bron-polka.kz', title: 'Бронь стола', sub: 'Клуб «Полка» · четверг, 19:00',
+    site: 'bron-polka.kz', title: 'Бронь стола', sub: 'Клуб «Полка» · четверг, 19:30',
     fields: [['Телефон', '+7 900 123-45-67', true], ['Пароль', '••••••••']],
     suggestion: { app: 'В кругу', login: '+7 900 123-45-67' },
   }),

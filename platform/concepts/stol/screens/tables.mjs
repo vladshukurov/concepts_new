@@ -6,7 +6,7 @@ export default (ui) => ui.screen({
   body: ui.scroll([
     ui.largeTitle('Столы', ui.iconButton({ icon: 'plus', label: 'Новый стол', go: 'newtable' })),
     ui.section({ children: ui.segments([{ label: 'Сегодня', on: true, filter: 'today' }, { label: 'Выходные', filter: 'weekend' }, { label: 'Рядом', filter: 'near' }]) }),
-    ui.section({ title: `Сегодня, ${now.short}`, tags: ['today', 'near'], children: ui.list([
+    ui.section({ title: `Сегодня, ${now.short}`, meta: 'обновлено в 9:00', tags: ['today', 'near'], children: ui.list([
       ui.row({ lead: ui.leadIcon('', { text: tonight.start }), title: tonight.game, sub: `${tonight.where} · ${tonight.pace}`, end: seats(tonight.taken, tonight.seats), go: 'table', primary: true, tags: ['today', 'near'] }),
       ui.row({ lead: ui.leadIcon('', { text: '20:15' }), title: 'Городские линии', sub: 'У Ани дома · знают правила', end: seats(2, 4), tags: ['today'] }),
     ]) }),
