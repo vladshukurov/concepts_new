@@ -1,0 +1,1271 @@
+{
+  "slug": "metronom",
+  "name": "Метроном",
+  "targetSet": "vk-music",
+  "qualityContractVersion": 4,
+  "uiContractVersion": 2,
+  "brand": {
+    "accent": "#0077FF",
+    "accentDark": "#0077FF",
+    "theme": "vk-dark",
+    "fonts": "Inter:wght@400;500;600;700"
+  },
+  "deck": "Дневник занятий на своём инструменте в грамматике ВК Музыки: записи занятий, темп и метроном, 4 доступа набора, без своего сервера.",
+  "eyebrow": "Метроном · Дневник занятий на инструменте · iOS",
+  "heroTitle": "Метроном — дневник занятий на инструменте",
+  "heroDeck": "Позанимались гитарой или фортепиано, записали занятие на «Диктофон» — оно встаёт в пьесу с темпом и заметкой. Видно, что было 72, а стало 96, и можно послушать вчера и сегодня подряд.",
+  "tagline": "Свои занятия на гитаре и фортепиано: записи, темп и ноты",
+  "insight": "прогресс в разучивании пьесы не слышно изнутри — его слышно, только когда сравниваешь вчерашнюю запись с сегодняшней и видишь, что темп вырос с 72 до 96",
+  "domain": "metronom.app",
+  "start": "phone",
+  "tabs": [
+    {
+      "id": "home",
+      "label": "Главная",
+      "role": "home"
+    },
+    {
+      "id": "pieces",
+      "label": "Пьесы",
+      "role": "playlists"
+    },
+    {
+      "id": "sessions",
+      "label": "Занятия",
+      "role": "library"
+    }
+  ],
+  "positioning": {
+    "mode": "mimicry",
+    "categoryFit": "Свои записи занятий с полным плеером, мини-плеером и метрономом в фоне — музыкальное приложение, как ВК Музыка, поэтому категория Music",
+    "familiarPatterns": [
+      "Главная с обложкой «к чему вернуться», «Последними» и мини-плеером",
+      "Мини-плеер над таб-баром и полноэкранный плеер",
+      "Карточка пьесы как альбом: обложка, «Слушать», треки — занятия"
+    ],
+    "distinctions": [
+      "Пьеса своя: каталога и исполнителей нет, треки — записи своих занятий",
+      "Темп «было → сейчас → цель» у каждой пьесы и занятия",
+      "«Вчера и сегодня» — две записи подряд, чтобы услышать прогресс; метроном с погашенным экраном"
+    ],
+    "evidenceScreens": [
+      "home",
+      "piece",
+      "player",
+      "sessions",
+      "lock"
+    ],
+    "referencePatterns": [
+      "own-recordings",
+      "audio-player",
+      "background-playback",
+      "playlists"
+    ],
+    "referenceEvidence": [
+      {
+        "pattern": "own-recordings",
+        "screen": "piece",
+        "behavior": "Пьеса из своих занятий: 72 ударов в первый день, 88 вчера, 96 сегодня"
+      },
+      {
+        "pattern": "audio-player",
+        "screen": "player",
+        "behavior": "Плеер записи занятия: темп под прогрессом, предыдущее и следующее занятие"
+      },
+      {
+        "pattern": "background-playback",
+        "screen": "lock",
+        "behavior": "Метроном играет с погашенным экраном, на локскрине «Метроном · 96 ударов»"
+      },
+      {
+        "pattern": "playlists",
+        "screen": "pieces",
+        "behavior": "Свои пьесы по инструментам: разучиваю и выучено"
+      }
+    ]
+  },
+  "product": {
+    "audience": "Взрослые, которые сами учатся играть на гитаре или фортепиано: занимаются вечером по 20–30 минут и записывают себя на телефон",
+    "situation": "Каждый вечер — запись в «Диктофоне» под именем «Новая запись 47», темп на метрономе каждый раз выставляется заново, ноты лежат в «Фото» скриншотами",
+    "problem": "Записи занятий не связаны с пьесой и темпом: не видно, вырос ли темп за две недели, и не с чем сравнить вчерашнюю игру",
+    "promise": "Каждое занятие встаёт в пьесу с записью, темпом и заметкой себе; прогресс видно цифрами и слышно, сравнив вчера и сегодня",
+    "differentiator": "Единица продукта — своё занятие с записью и темпом, а не трек из каталога",
+    "returnReasons": [
+      "Позаниматься по напоминанию в 19:00, которое поставила сама",
+      "Послушать вчерашнюю запись перед тем, как играть сегодня",
+      "Поднять темп на метрономе на шаг к цели"
+    ],
+    "verticalSlice": {
+      "entry": "phone",
+      "action": "newsession",
+      "result": "today"
+    },
+    "coreLoop": [
+      "Позаниматься под метроном и записать занятие на «Диктофон»",
+      "Добавить занятие к пьесе с темпом и заметкой себе",
+      "Послушать вчера и сегодня и поднять темп к цели"
+    ],
+    "nonGoals": [
+      "Каталог чужих записей, уроков и курсов",
+      "Публикация, лайки и подписки",
+      "Распознавание нот и оценка игры"
+    ],
+    "content": {
+      "kind": "av-notes",
+      "what": "Свои записи занятий из «Диктофона» и «Файлов», пьесы с темпом и целью, заметки себе, фото страниц нот и скриншоты табов",
+      "library": false,
+      "feed": false,
+      "sharing": false
+    }
+  },
+  "permissions": [
+    {
+      "key": "camera",
+      "plist": "NSCameraUsageDescription",
+      "alert": {
+        "title": "«Метроном» запрашивает доступ к камере",
+        "text": "Сфотографировать страницу нот и добавить её к пьесе"
+      },
+      "feature": "Страница нот в карточке пьесы",
+      "gesture": "«Сфотографировать ноты» в пьесе",
+      "screen": "piece",
+      "target": "capture",
+      "fallback": "Ноты можно добавить из «Файлов», пьеса и занятия работают без них",
+      "snack": "Нет доступа к камере",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "AVCaptureSession, фото; снимок страницы хранится в пьесе на устройстве и в CloudKit private database",
+      "rationale": {
+        "who": "Человек, который разучивает «Испанский романс» по бумажным нотам от преподавателя",
+        "moment": "В пьесе нажимает «Сфотографировать ноты»",
+        "need": "Вторая страница нот есть только на бумаге на пюпитре — к пьесе её можно добавить, только сфотографировав сейчас",
+        "without": "Ноты добавляются из «Файлов», пьеса и занятия работают как прежде"
+      },
+      "reviewNote": "Камера открывается только по «Сфотографировать ноты» в пьесе (Пьесы → Испанский романс). После снимка — экран «Ноты · страница 2», в разделе «Ноты» пьесы появляется строка этой страницы. При отказе: пустое состояние в пьесе, занятия и записи работают как прежде",
+      "result": "Ноты · страница 2 в пьесе"
+    },
+    {
+      "key": "photos",
+      "plist": "NSPhotoLibraryUsageDescription",
+      "alert": {
+        "title": "«Метроном» запрашивает доступ к «Фото»",
+        "text": "Показать сверху снимки нот и скриншоты табов, чтобы добавить их к пьесе"
+      },
+      "feature": "Ноты и табы из «Фото» в новой пьесе",
+      "gesture": "«Ноты и табы из «Фото»» в новой пьесе",
+      "screen": "newpiece",
+      "target": "photopick",
+      "fallback": "Пьеса добавляется без нот, ноты можно сфотографировать позже",
+      "snack": "Нет доступа к «Фото»",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "PhotoKit: снимки экрана (mediaSubtype screenshot) и фото документов за последний месяц наверху; выбранные копируются в пьесу",
+      "rationale": {
+        "who": "Человек, которому преподаватель прислал табы скриншотами, а ноты он фотографировал в нотном магазине",
+        "moment": "В новой пьесе нажимает «Ноты и табы из «Фото»»",
+        "need": "Скриншоты табов и снимки страниц теряются среди тысяч фото; подборка сверху строится по типу снимка в медиатеке, системный пикер без доступа её не отберёт",
+        "without": "Пьеса добавляется без нот, их можно сфотографировать позже"
+      },
+      "reviewNote": "Доступ вызывается строкой «Ноты и табы из «Фото»» в новой пьесе (Пьесы → +). Наверху пикера — снимки страниц и скриншоты табов за месяц. После «Добавить» в форме видны два снимка, а в созданной пьесе — раздел «Ноты». При отказе: пустое состояние в форме, пьеса добавляется без нот",
+      "result": "Два снимка нот в новой пьесе"
+    },
+    {
+      "key": "audio",
+      "plist": "UIBackgroundModes: audio",
+      "alert": {
+        "title": "Фоновое аудио",
+        "text": "Метроном и запись продолжат звучать с погашенным экраном"
+      },
+      "activate": true,
+      "feature": "Метроном с погашенным экраном",
+      "gesture": "«Играть с погашенным экраном» на метрономе",
+      "screen": "metronome",
+      "target": "lock",
+      "fallback": "Без фонового режима метроном звучит только с открытым экраном",
+      "risk": "high",
+      "anchor": true,
+      "conditional": true,
+      "requires": "AVAudioSession .playback + Now Playing + remote commands",
+      "grounding": "AVAudioEngine для щелчков метронома, AVPlayer для записей, MPNowPlayingInfoCenter + MPRemoteCommandCenter",
+      "rationale": {
+        "who": "Человек, который занимается с телефоном на пюпитре",
+        "moment": "На метрономе нажимает «Играть с погашенным экраном»",
+        "need": "Экран гаснет через минуту, а метроном должен щёлкать все 25 минут занятия и управляться с локскрина",
+        "without": "Метроном останавливается при блокировке, экран приходится держать включённым"
+      },
+      "reviewNote": "«Играть с погашенным экраном» на метрономе: метроном звучит с погашенным экраном, на локскрине «Метроном · 96 ударов» с паузой и кнопкой «Открыть «Метроном»», которая возвращает на метроном. Записи занятий в плеере звучат в фоне так же. При отказе: звук только с открытым экраном",
+      "result": "Метроном · 96 ударов на локскрине"
+    },
+    {
+      "key": "push",
+      "plist": "aps-environment",
+      "alert": {
+        "title": "«Метроном» запрашивает разрешение на уведомления",
+        "text": "Напомним позаниматься в то время, которое вы выберете"
+      },
+      "feature": "Напоминание позаниматься завтра в 19:00",
+      "gesture": "«Напомнить позаниматься в 19:00» в сегодняшнем занятии",
+      "screen": "today",
+      "target": "today",
+      "fallback": "Напоминания нет, пьеса остаётся на главной",
+      "snack": "Уведомления выключены",
+      "risk": "low",
+      "anchor": false,
+      "conditional": true,
+      "requires": "Локальное уведомление UNUserNotificationCenter",
+      "grounding": "UNUserNotificationCenter, локальное уведомление на выбранное время; своего сервера нет",
+      "rationale": {
+        "who": "Человек, который только что сохранил занятие «Испанским романсом» на 96 ударах",
+        "moment": "В сегодняшнем занятии нажимает «Напомнить позаниматься в 19:00»",
+        "need": "Напоминание приходит завтра в 19:00, когда приложение закрыто, — без уведомлений его не доставить",
+        "without": "Напоминания нет, пьеса остаётся на главной"
+      },
+      "reviewNote": "Уведомления запрашиваются только строкой «Напомнить позаниматься в 19:00» в сегодняшнем занятии (Занятия → «Испанский романс · сегодня»). После разрешения там стоит «Напомним завтра в 19:00», на главной — «Завтра в 19:00 · Испанский романс». При отказе: напоминания нет",
+      "result": "Напомним завтра в 19:00"
+    }
+  ],
+  "screens": [
+    {
+      "id": "phone",
+      "title": "Вход в «Метроном»",
+      "type": "старт, без таб-бара",
+      "light": true,
+      "meta": "Номер телефона · без OTP",
+      "ui": {
+        "pattern": "auth",
+        "navigation": "push",
+        "purpose": "Войти по номеру и паролю или создать аккаунт",
+        "primaryAction": "Создать аккаунт",
+        "hierarchy": {
+          "primary": "Номер телефона и главное действие",
+          "secondary": "Регистрация, правовая строка и помощь"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error"
+        ],
+        "density": "low",
+        "contentCases": [
+          "Корректный номер, переход к паролю",
+          "Номер с кодом другой страны",
+          "Неверный пароль или нет сети"
+        ]
+      }
+    },
+    {
+      "id": "home",
+      "title": "Главная",
+      "type": "tab (root, start)",
+      "light": false,
+      "meta": "Пьеса дня, последние занятия, полка пьес",
+      "ui": {
+        "pattern": "collection",
+        "purpose": "Послушать сегодняшнее занятие или вернуться к пьесе",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Сегодня 96 ударов, вчера 88, три последних занятия",
+          "Напоминание завтра в 19:00 · Испанский романс",
+          "Занятий ещё нет — главная зовёт добавить первое"
+        ],
+        "navigation": "root",
+        "hierarchy": {
+          "primary": "Обложка пьесы и «Слушать»",
+          "secondary": "Метроном, последние занятия, полка пьес и мини-плеер"
+        }
+      }
+    },
+    {
+      "id": "pieces",
+      "title": "Пьесы",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Разучиваю и выучено",
+      "parent": "home",
+      "ui": {
+        "pattern": "collection",
+        "purpose": "Найти свою пьесу по инструменту и открыть её",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Три пьесы в работе и одна выученная",
+          "Пьеса с длинным названием в две строки",
+          "Пьес ещё нет — «+» открывает форму"
+        ],
+        "navigation": "root",
+        "hierarchy": {
+          "primary": "Пьесы с темпом «было → сейчас»",
+          "secondary": "Чипсы инструментов и «+»"
+        }
+      }
+    },
+    {
+      "id": "sessions",
+      "title": "Занятия",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Занятия по дням",
+      "parent": "home",
+      "ui": {
+        "pattern": "collection",
+        "purpose": "Открыть своё занятие и его запись",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Сегодня, вчера и два занятия раньше",
+          "Занятие без записи, только темп",
+          "Занятий ещё нет — «+» открывает форму"
+        ],
+        "navigation": "root",
+        "hierarchy": {
+          "primary": "Занятия по дням с длительностью записи",
+          "secondary": "Счётчики недели и «+»"
+        }
+      }
+    },
+    {
+      "id": "piece",
+      "title": "Испанский романс",
+      "type": "push",
+      "light": false,
+      "meta": "Пьеса: темп, занятия, ноты",
+      "parent": "pieces",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать занятия пьесы, увидеть рост темпа и добавить ноты",
+        "primaryAction": "Слушать",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "72 → 96 ударов, девять занятий, одна страница нот",
+          "Страница нот с камеры после снимка",
+          "Пьеса без занятий и без нот"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "«Слушать», темп было · сейчас · цель",
+          "secondary": "Вчера и сегодня, занятия и ноты"
+        }
+      }
+    },
+    {
+      "id": "elise",
+      "title": "К Элизе",
+      "type": "push",
+      "light": false,
+      "meta": "Пьеса на фортепиано",
+      "parent": "pieces",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Посмотреть темп и занятия пьесы на фортепиано",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "60 → 84 ударов, шесть занятий",
+          "Ноты в две страницы",
+          "Цель далеко — 120 ударов"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Темп было · сейчас · цель",
+          "secondary": "Занятия и ноты"
+        }
+      }
+    },
+    {
+      "id": "green",
+      "title": "Greensleeves",
+      "type": "push",
+      "light": false,
+      "meta": "Пьеса без обложки",
+      "parent": "pieces",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Посмотреть темп пьесы, у которой нет записей",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "80 → 88 ударов, три занятия без записи",
+          "Пьеса без обложки — значок",
+          "Табы вместо нот"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Темп было · сейчас · цель",
+          "secondary": "Табы"
+        }
+      }
+    },
+    {
+      "id": "etude",
+      "title": "Этюд Каркасси № 7",
+      "type": "push",
+      "light": false,
+      "meta": "Выученная пьеса",
+      "parent": "pieces",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Вспомнить, как пьеса была выучена",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Цель 120 ударов взята на 14-м занятии",
+          "Выученная пьеса без новых занятий",
+          "Ноты одной страницей"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Темп и «Выучено»",
+          "secondary": "Ноты"
+        }
+      }
+    },
+    {
+      "id": "newpiece",
+      "title": "Новая пьеса",
+      "type": "modal",
+      "light": false,
+      "meta": "Форма пьесы",
+      "parent": "pieces",
+      "ui": {
+        "pattern": "editor",
+        "purpose": "Добавить пьесу с темпом, целью и нотами из «Фото»",
+        "primaryAction": "Добавить пьесу",
+        "states": [
+          "default",
+          "empty",
+          "error",
+          "success"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Лунная соната, 44 → цель 56, два снимка нот",
+          "Пьеса без нот — «Фото» не разрешены",
+          "Пустое название — кнопка неактивна"
+        ],
+        "navigation": "modal",
+        "hierarchy": {
+          "primary": "Название, инструмент и темп",
+          "secondary": "Ноты из «Фото»"
+        }
+      }
+    },
+    {
+      "id": "photopick",
+      "title": "Ноты и табы из «Фото»",
+      "type": "system picker",
+      "light": false,
+      "meta": "Photo Library",
+      "parent": "newpiece",
+      "ui": {
+        "pattern": "system",
+        "purpose": "Выбрать снимки страниц нот и скриншоты табов",
+        "primaryAction": "Добавить",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Сверху снимки нот и табов, выбраны два",
+          "Скриншотов табов в медиатеке нет",
+          "Отказ в доступе к «Фото»"
+        ],
+        "navigation": "system",
+        "hierarchy": {
+          "primary": "Снимки нот и табов за месяц",
+          "secondary": "Отмена и «Добавить»"
+        }
+      }
+    },
+    {
+      "id": "sonata",
+      "title": "Лунная соната, 1 часть",
+      "type": "push",
+      "light": false,
+      "meta": "Новая пьеса",
+      "parent": "newpiece",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Увидеть только что добавленную пьесу",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Темп 44, цель 56, два снимка нот",
+          "Пьеса без нот — раздела нет",
+          "Занятий ещё нет"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Темп и цель",
+          "secondary": "Ноты и пустые занятия"
+        }
+      }
+    },
+    {
+      "id": "newsession",
+      "title": "Новое занятие",
+      "type": "modal",
+      "light": false,
+      "meta": "Форма занятия",
+      "parent": "sessions",
+      "ui": {
+        "pattern": "editor",
+        "purpose": "Добавить занятие: пьеса, запись, темп, заметка",
+        "primaryAction": "Сохранить занятие",
+        "states": [
+          "default",
+          "empty",
+          "error",
+          "success"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Новая запись 47 из «Диктофона», 96 ударов, 25 минут",
+          "Запись из «Файлов» вместо «Диктофона»",
+          "В «Диктофоне» нет записей за сегодня"
+        ],
+        "navigation": "modal",
+        "hierarchy": {
+          "primary": "Пьеса, запись и темп",
+          "secondary": "Сколько занималась и заметка"
+        }
+      }
+    },
+    {
+      "id": "today",
+      "title": "Испанский романс · сегодня",
+      "type": "push",
+      "light": false,
+      "meta": "Сегодняшнее занятие",
+      "parent": "sessions",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать сегодняшнюю запись, сравнить со вчера и поставить напоминание",
+        "primaryAction": "Новая запись 47",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "96 ударов, было 88 вчера, 25 минут",
+          "Напомним завтра в 19:00 после разрешения",
+          "Запись удалена из «Диктофона»"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Запись и темп",
+          "secondary": "Заметка, вчера и сегодня, напоминание"
+        }
+      }
+    },
+    {
+      "id": "yesterday",
+      "title": "Испанский романс · вчера",
+      "type": "push",
+      "light": false,
+      "meta": "Вчерашнее занятие",
+      "parent": "sessions",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать вчерашнюю запись",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "88 ударов, 30 минут, заметка про вторую часть",
+          "Длинная заметка в несколько строк",
+          "Запись не найдена"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Запись и темп",
+          "secondary": "Заметка"
+        }
+      }
+    },
+    {
+      "id": "eliseday",
+      "title": "К Элизе · 6 октября",
+      "type": "push",
+      "light": false,
+      "meta": "Занятие «К Элизе»",
+      "parent": "sessions",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать запись занятия на фортепиано",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "84 удара, запись из «Файлов»",
+          "Запись в другом формате",
+          "Файл недоступен"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Запись и темп",
+          "secondary": "Заметка"
+        }
+      }
+    },
+    {
+      "id": "first",
+      "title": "Испанский романс · 24 сентября",
+      "type": "push",
+      "light": false,
+      "meta": "Первое занятие пьесы",
+      "parent": "sessions",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Вспомнить, с чего начиналась пьеса",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "72 удара, только первая часть",
+          "Первое занятие без заметки",
+          "Запись удалена"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Запись и темп",
+          "secondary": "Заметка"
+        }
+      }
+    },
+    {
+      "id": "compare",
+      "title": "Вчера и сегодня",
+      "type": "push",
+      "light": false,
+      "meta": "Две записи подряд",
+      "parent": "today",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Услышать прогресс: вчерашняя и сегодняшняя запись подряд",
+        "primaryAction": "Слушать подряд",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "88 вчера и 96 сегодня, заметки обоих дней",
+          "Только вторая часть каждой записи",
+          "Вчера занятия не было — сравнить не с чем"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Две записи с темпом",
+          "secondary": "Что изменилось и «Слушать подряд»"
+        }
+      }
+    },
+    {
+      "id": "player",
+      "title": "Сейчас играет",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Now Playing",
+      "parent": "home",
+      "ui": {
+        "pattern": "player",
+        "purpose": "Слушать запись занятия и видеть темп",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          "Сегодняшняя запись, 0:41 из 3:12",
+          "Короткая запись на 0:40",
+          "Звук прервался звонком"
+        ],
+        "navigation": "fullscreen",
+        "hierarchy": {
+          "primary": "Пьеса, темп и прогресс",
+          "secondary": "Метроном и занятие"
+        }
+      }
+    },
+    {
+      "id": "metronome",
+      "title": "Метроном",
+      "type": "push",
+      "light": false,
+      "meta": "Метроном занятия",
+      "parent": "home",
+      "ui": {
+        "pattern": "player",
+        "purpose": "Запустить метроном на темпе пьесы и играть с погашенным экраном",
+        "primaryAction": "Играть с погашенным экраном",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          "96 ударов, 4/4, занятие идёт 12:40",
+          "Темп цели 112",
+          "Фоновый режим не разрешён — только с открытым экраном"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Темп крупно и запуск",
+          "secondary": "Шаги темпа и фон"
+        }
+      }
+    },
+    {
+      "id": "lock",
+      "title": "Экран погас",
+      "type": "system",
+      "light": false,
+      "meta": "Background audio",
+      "parent": "metronome",
+      "ui": {
+        "pattern": "system",
+        "purpose": "Управлять метрономом с локскрина",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          "Метроном · 96 ударов, занятие идёт 12:40",
+          "Длинное название пьесы",
+          "Продолжено после звонка"
+        ],
+        "navigation": "system",
+        "hierarchy": {
+          "primary": "Сейчас играет: метроном",
+          "secondary": "Пауза и возврат в «Метроном»"
+        }
+      }
+    },
+    {
+      "id": "capture",
+      "title": "Ноты · Испанский романс",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Camera",
+      "parent": "piece",
+      "ui": {
+        "pattern": "capture",
+        "purpose": "Сфотографировать страницу нот на пюпитре",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          "Вторая страница в рамке 3:4",
+          "Темно — страница плохо читается",
+          "Отказ в доступе к камере"
+        ],
+        "navigation": "fullscreen",
+        "hierarchy": {
+          "primary": "Видоискатель с рамкой страницы",
+          "secondary": "Спуск"
+        }
+      }
+    },
+    {
+      "id": "notes",
+      "title": "Ноты · страница 2",
+      "type": "push",
+      "light": false,
+      "meta": "Страница нот в пьесе",
+      "parent": "capture",
+      "ui": {
+        "pattern": "state",
+        "purpose": "Увидеть снятую страницу и вернуться к пьесе",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          "Страница 2 добавлена к «Испанскому романсу»",
+          "Снимок смазан — сфотографировать ещё",
+          "Страница повёрнута"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Снимок страницы",
+          "secondary": "Пьеса и ещё страница"
+        }
+      }
+    },
+    {
+      "id": "search",
+      "title": "Поиск",
+      "type": "push",
+      "light": false,
+      "meta": "Поиск по пьесам и занятиям",
+      "parent": "home",
+      "ui": {
+        "pattern": "collection",
+        "purpose": "Найти пьесу, занятие или заметку",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Пьеса и три занятия по запросу «романс»",
+          "Длинный запрос",
+          "Ничего не найдено"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Найденные пьесы",
+          "secondary": "Найденные занятия"
+        }
+      }
+    },
+    {
+      "id": "profile",
+      "title": "Профиль",
+      "type": "push",
+      "light": false,
+      "meta": "Аккаунт и счётчики",
+      "parent": "home",
+      "ui": {
+        "pattern": "settings",
+        "purpose": "Посмотреть счётчики занятий и откуда берутся записи",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "32 занятия, 14 часов, 4 пьесы",
+          "Длинное имя",
+          "Занятий ещё нет"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Имя и счётчики",
+          "secondary": "Источники записей и выход"
+        }
+      }
+    }
+  ],
+  "prototypes": [
+    {
+      "id": "all",
+      "hero": true,
+      "label": "Весь продукт",
+      "note": "Пьесы, занятия, плеер, метроном и 4 доступа",
+      "start": "phone",
+      "screens": [
+        "phone",
+        "home",
+        "pieces",
+        "sessions",
+        "piece",
+        "elise",
+        "green",
+        "etude",
+        "newpiece",
+        "photopick",
+        "sonata",
+        "newsession",
+        "today",
+        "yesterday",
+        "eliseday",
+        "first",
+        "compare",
+        "player",
+        "metronome",
+        "lock",
+        "capture",
+        "notes",
+        "search",
+        "profile"
+      ],
+      "stops": [],
+      "authTarget": "home"
+    },
+    {
+      "id": "core",
+      "label": "Главный цикл",
+      "note": "Добавить занятие, послушать вчера и сегодня и поставить напоминание",
+      "start": "newsession",
+      "screens": [
+        "newsession",
+        "today",
+        "compare",
+        "player",
+        "yesterday",
+        "piece",
+        "home",
+        "eliseday",
+        "metronome",
+        "first",
+        "notes",
+        "capture"
+      ],
+      "stops": [
+        "home",
+        "eliseday",
+        "metronome",
+        "first",
+        "notes",
+        "capture"
+      ]
+    },
+    {
+      "id": "create",
+      "label": "Новая пьеса",
+      "note": "Добавить пьесу с темпом и целью и нотами из «Фото»",
+      "start": "newpiece",
+      "screens": [
+        "newpiece",
+        "photopick",
+        "sonata"
+      ],
+      "stops": []
+    },
+    {
+      "id": "permissions",
+      "label": "Все доступы",
+      "note": "Ноты камерой, табы из «Фото», метроном с погашенным экраном, напоминание позаниматься",
+      "start": "piece",
+      "screens": [
+        "piece",
+        "capture",
+        "notes",
+        "metronome",
+        "lock",
+        "newpiece",
+        "photopick",
+        "sonata",
+        "today",
+        "player",
+        "compare",
+        "yesterday",
+        "first"
+      ],
+      "stops": [
+        "player",
+        "compare",
+        "yesterday",
+        "first"
+      ]
+    }
+  ],
+  "backendless": [
+    {
+      "needs": "Записи занятий",
+      "solution": "Файлы из «Диктофона» и «Файлов» на устройстве, копия в CloudKit private database"
+    },
+    {
+      "needs": "Пьесы, темп и заметки",
+      "solution": "CoreData и CloudKit private database"
+    },
+    {
+      "needs": "Ноты",
+      "solution": "Снимок камеры и снимки из «Фото» хранятся в пьесе на устройстве и в CloudKit private database"
+    },
+    {
+      "needs": "Напоминания",
+      "solution": "Локальные уведомления UNUserNotificationCenter на выбранное время"
+    }
+  ],
+  "appStore": {
+    "name": "Метроном — дневник занятий",
+    "subtitle": "Темп, записи и ноты пьес",
+    "promo": "Записали занятие на «Диктофон» — оно встанет в пьесу с темпом и заметкой. Было 72, стало 96: послушайте вчера и сегодня подряд.",
+    "keywords": "гитара,фортепиано,пианино,занятия,табы,разучить,пьеса,диктофон,практика,bpm,аккорды,этюд,гаммы",
+    "category": {
+      "primary": "Music",
+      "secondary": "Education"
+    },
+    "ageRating": "13+",
+    "price": "Бесплатно",
+    "encryption": "ITSAppUsesNonExemptEncryption = NO",
+    "urls": {
+      "support": "https://metronom.app/support",
+      "marketing": "https://metronom.app",
+      "privacy": "https://metronom.app/privacy"
+    },
+    "description": [
+      "Дневник занятий на своём инструменте",
+      "Записи занятий из «Диктофона» и «Файлов» встают в пьесу с темпом «было → сейчас → цель» и заметкой себе",
+      "Сравните вчера и сегодня, сфотографируйте ноты и занимайтесь под метроном с погашенным экраном"
+    ],
+    "whatsNew": "Первая версия.",
+    "reviewAccount": {
+      "email": "review@metronom.app",
+      "password": "review2026",
+      "note": "Тестовый аккаунт готов сразу; вход по номеру и паролю, OTP не используется."
+    },
+    "privacy": [
+      {
+        "type": "Фото и видео",
+        "apple": "User Content → Photos or Videos",
+        "purpose": "Работа приложения",
+        "linked": false,
+        "tracking": false,
+        "why": "Фото страниц нот с камеры и снимки табов из «Фото» хранятся в пьесе на устройстве и в своей iCloud"
+      },
+      {
+        "type": "Аудио",
+        "apple": "User Content → Audio Data",
+        "purpose": "Работа приложения",
+        "linked": false,
+        "tracking": false,
+        "why": "Свои записи занятий из «Диктофона» и «Файлов» хранятся на устройстве и в своей iCloud"
+      }
+    ],
+    "assets": {
+      "locale": "ru-RU",
+      "template": "studio",
+      "screens": [
+        {
+          "screen": "home",
+          "headline": "Каждое занятие на месте",
+          "body": "Записи, темп и пьесы под рукой"
+        },
+        {
+          "screen": "piece",
+          "headline": "Было 72 — стало 96",
+          "body": "Темп пьесы растёт на глазах"
+        },
+        {
+          "screen": "compare",
+          "headline": "Вчера и сегодня",
+          "body": "Послушайте подряд и услышьте разницу"
+        },
+        {
+          "screen": "player",
+          "headline": "Слушайте себя",
+          "body": "Записи занятий как альбом"
+        },
+        {
+          "screen": "lock",
+          "headline": "Метроном не гаснет",
+          "body": "Щёлкает с погашенным экраном"
+        }
+      ]
+    }
+  },
+  "docs": [
+    {
+      "file": "01-product-vision.md",
+      "label": "Вижен"
+    },
+    {
+      "file": "02-architecture.md",
+      "label": "Архитектура"
+    },
+    {
+      "file": "03-design-system.md",
+      "label": "Дизайн-система"
+    },
+    {
+      "file": "04-references.md",
+      "label": "Референсы"
+    },
+    {
+      "file": "05-visual-audit.md",
+      "label": "Визуальный аудит"
+    },
+    {
+      "file": "06-app-store.md",
+      "label": "App Store"
+    }
+  ],
+  "auth": {
+    "mode": "phone",
+    "confirmation": false,
+    "entryTarget": "home"
+  },
+  "readiness": {
+    "status": "draft",
+    "referenceResearch": [
+      {
+        "source": "Официальное приложение ВК Музыка для iOS",
+        "observation": "Главная с крупной обложкой, мини-плеер над таб-баром, карточка альбома со «Слушать» и плеер с обложкой",
+        "decision": "Та же грамматика для своих занятий: альбом — пьеса, треки — записи занятий"
+      },
+      {
+        "source": "Официальное приложение ВК Музыка для iOS, фоновое воспроизведение",
+        "observation": "Звук продолжается с погашенным экраном, на локскрине «Сейчас играет»",
+        "decision": "Метроном и записи занятий звучат в фоне, на локскрине «Метроном · 96 ударов»"
+      },
+      {
+        "source": "Apple «Диктофон» и метрономы из App Store",
+        "observation": "Записи называются «Новая запись 47», метроном не знает, какую пьесу играешь",
+        "decision": "Записи остаются в «Диктофоне», «Метроном» связывает их с пьесой и темпом"
+      }
+    ],
+    "productCritique": [
+      {
+        "objection": "Без каталога нечего слушать",
+        "resolution": "Слушают себя: вчерашнюю и сегодняшнюю запись одной пьесы — так слышно прогресс",
+        "evidenceScreens": [
+          "home",
+          "compare",
+          "player"
+        ]
+      },
+      {
+        "objection": "Записи и так лежат в «Диктофоне»",
+        "resolution": "Там «Новая запись 47» без пьесы и темпа; здесь занятие встаёт в пьесу с темпом и заметкой",
+        "evidenceScreens": [
+          "newsession",
+          "today",
+          "piece"
+        ]
+      },
+      {
+        "objection": "Метроном есть бесплатный",
+        "resolution": "Здесь метроном знает темп пьесы и цель, а занятие сразу пишется в дневник",
+        "evidenceScreens": [
+          "metronome",
+          "lock",
+          "piece"
+        ]
+      }
+    ]
+  }
+}

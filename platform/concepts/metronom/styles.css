@@ -1,0 +1,99 @@
+/* «Метроном» — мимикрия ВК Музыки. Оболочка, кегли и цвета — из слоя `.ui`
+   в ядре; здесь только своё: обложки пьес, плитка без обложки, плеер записи,
+   метроном, камера для нот и страница нот. */
+
+/* Обложки пьес и снимки нот — фото из assets/media */
+.mt-art { background-size:cover; background-position:center; background-repeat:no-repeat; background-color:#1b2127; }
+.mt-c1 { background-image:url(assets/media/cover-1.png); }
+.mt-c4 { background-image:url(assets/media/cover-4.png); }
+.mt-c5 { background-image:url(assets/media/cover-5.png); }
+.mt-n1 { background-image:url(assets/media/notes-1.png); }
+.mt-n2 { background-image:url(assets/media/notes-2.png); }
+.mt-n3 { background-image:url(assets/media/notes-3.png); }
+/* Карточка пьесы без обложки: нота на мягкой заливке */
+.mt-noart { position:relative; background:var(--ui-card-2); }
+.mt-noart::after { content:"♪"; position:absolute; inset:0; display:grid; place-items:center; font:400 56px/1 var(--ui-face); color:var(--ui-text-2); }
+
+/* Плитка без обложки: значок на мягкой заливке */
+.mt-ico { display:grid; place-items:center; background-color:var(--ui-card-2); color:var(--ui-text-2); }
+.mt-ico > svg { width:24px; height:24px; }
+.mt-ico.is-accent { background-color:var(--ui-accent-soft); color:var(--ui-link); }
+.mt-ico.is-lg > svg { width:72px; height:72px; stroke-width:1.5; }
+
+/* Герой главной: пьеса, к которой возвращаешься, на своей обложке */
+.mt-hero { min-height:340px; padding:0 16px 28px; }
+.mt-hero > .ui-top { position:absolute!important; left:0; right:0; top:var(--safe-top); padding-left:16px; text-align:left; }
+.mt-hero .ui-play { margin-bottom:20px; box-shadow:0 8px 32px rgba(0,0,0,.28); }
+.mt-hero-copy { display:flex; flex-direction:column; align-items:center; gap:4px; min-height:44px; text-align:center!important; }
+.mt-hero-copy > strong { color:#fff; }
+.mt-hero-copy > span { font:400 16px/20px var(--ui-face); color:rgba(255,255,255,.8); }
+
+/* Пьеса как альбом */
+.mt-album { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 16px 20px; text-align:center; }
+.mt-album-art { width:200px; height:200px; margin-bottom:16px; border-radius:12px; }
+.mt-album.is-small .mt-album-art { width:120px; height:120px; }
+.mt-notes { display:flex; gap:8px; padding:0 16px; }
+.mt-notes > span { width:96px; aspect-ratio:3/4; border-radius:8px; }
+.mt-notes.is-pad { padding-top:8px; }
+.mt-note { padding:0 16px; font:400 16px/22px var(--ui-face); color:var(--ui-text); }
+
+/* Формы */
+.mt-input { width:100%; min-height:24px; padding:0; border:0; background:none; color:var(--ui-text); font:400 17px/22px var(--ui-face); }
+.mt-search { padding:0 16px 8px; }
+
+/* Плеер записи занятия */
+.mt-player { overflow:hidden; }
+.mt-player-main { position:relative; flex:1; min-height:0; display:flex; flex-direction:column; padding:8px 24px calc(var(--safe-bottom) + 12px); }
+.mt-player-art { width:100%; aspect-ratio:1; border-radius:12px; }
+.mt-p21 { width:21%; }
+.mt-p50 { width:51%; }
+
+/* Метроном */
+.mt-metro { display:flex; flex-direction:column; align-items:center; gap:4px; padding:24px 16px 20px; text-align:center; }
+.mt-metro-piece, .mt-metro-unit { font:400 15px/20px var(--ui-face); color:var(--ui-text-2); }
+.mt-bpm { font:700 96px/100px var(--ui-face); letter-spacing:-.03em; color:var(--ui-text); }
+.mt-beats { display:flex; gap:12px; margin-top:16px; }
+.mt-beats > i { width:14px; height:14px; border-radius:50%; background:var(--ui-card-2); }
+.mt-beats > i.is-on { background:var(--ui-accent); }
+.mt-metro-play { display:flex; justify-content:center; padding:24px 0 8px; }
+
+/* Камера: страница нот во весь экран и рамка под неё */
+.mt-capture { overflow:hidden; }
+.mt-camera { position:absolute; inset:0; }
+.mt-camera-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,.7)); }
+.mt-frame { position:relative; z-index:1; width:268px; aspect-ratio:3/4; margin:56px auto 0; border-radius:12px; box-shadow:0 0 0 2px rgba(255,255,255,.85), 0 0 0 999px rgba(0,0,0,.3); }
+.mt-cam-label { position:relative; z-index:1; margin-top:16px; text-align:center; font:400 14px/18px var(--ui-face); color:rgba(255,255,255,.86); }
+.mt-capture-foot { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 24px); z-index:1; display:flex; justify-content:center; }
+
+/* Страница нот */
+.mt-page { margin:8px 16px 16px; aspect-ratio:3/4; border-radius:12px; }
+
+/* Профиль */
+.mt-me { display:flex; flex-direction:column; align-items:center; gap:4px; padding:12px 16px 24px; text-align:center; }
+.mt-me .ui-avatar { margin-bottom:8px; }
+
+/* Выбор фото из ядра: iOS-синий на тёмном и белом знак не проходят AA */
+.ui-pk-text:not(.is-off) { color:#5aaaff; }
+.ui-pk-tile > i { background:#0064d2; }
+
+/* Шапка занятия: пьеса и когда играла */
+.mt-head { padding:4px 16px 12px; }
+.mt-head .ui-sub { margin-top:4px; color:var(--ui-text-2); }
+
+/* Подпись-сноска внутри секции — на поле 16 */
+.ui-sec > .ui-foot { padding:0 16px; }
+
+/* Темп по неделям на главной: столбики от 60 до цели, линия цели сверху, текущая неделя акцентом */
+.mt-weeks { position:relative; display:flex; align-items:flex-end; gap:8px; height:112px; margin:0 16px 8px; padding-top:12px; }
+.mt-goal { position:absolute; left:0; right:0; top:12px; border-top:1px dashed var(--ui-text-2); opacity:.6; }
+.mt-weeks > span { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:4px; height:100%; }
+.mt-weeks b { width:100%; border-radius:6px 6px 2px 2px; background-color:var(--ui-card-2); }
+.mt-weeks > .is-now b { background-color:var(--ui-accent); }
+.mt-weeks small { font:500 12px/16px var(--ui-face); color:var(--ui-text-2); }
+.mt-weeks > .is-now small { color:var(--ui-text); }
+.mt-h72 { height:18px; }
+.mt-h76 { height:25px; }
+.mt-h80 { height:31px; }
+.mt-h84 { height:37px; }
+.mt-h88 { height:43px; }
+.mt-h96 { height:55px; }
