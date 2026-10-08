@@ -1908,3 +1908,5 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .ui.ui-clips .ui-tab { color:rgba(255,255,255,.6)!important; }
 .ui.ui-clips .ui-tab.is-on { color:#fff!important; }
 .ui.ui-clips .ui-clip.ph { background:#1c1c1e!important; color:rgba(235,235,245,.28)!important; }
+/* Экран начинается с героя-обложки: обложка уходит под статус-бар, отступ не нужен */
+.ui-scroll.is-root:has(> .ui-hero:first-child) { padding-top:0; }
