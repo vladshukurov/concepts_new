@@ -1,0 +1,96 @@
+/* «Мураши» — мимикрия ВК Музыки. Оболочка, кегли и цвета — из слоя `.ui`
+   в ядре; здесь только своё: фото мест, волна записи, сетка мест, плеер
+   поверх размытого места и камера «Снять место». */
+
+/* Фото мест — атлас assets/media/session-covers-atlas.png (3×2) и три снимка */
+.ms-art { background-image:url(assets/media/session-covers-atlas.png); background-size:300% 200%; background-repeat:no-repeat; background-color:#1b2127; }
+.ms-c1 { background-position:0 0; }
+.ms-c2 { background-position:50% 0; }
+.ms-c3 { background-position:100% 0; }
+.ms-c4 { background-position:0 100%; }
+.ms-c5 { background-position:50% 100%; }
+.ms-sea, .ms-bakery, .ms-cinema { background-size:cover; background-repeat:no-repeat; background-color:#1b2127; }
+.ms-sea { background-image:url(assets/media/northern-sea.jpg); background-position:62% 50%; }
+.ms-bakery { background-image:url(assets/media/morning-bakery.jpg); background-position:40% 50%; }
+.ms-cinema { background-image:url(assets/media/courtyard-cinema.jpg); background-position:50% 50%; }
+
+/* Плитка без фото места: значок звука на мягкой заливке */
+.ms-ico { display:grid; place-items:center; background-color:var(--ui-card-2); color:var(--ui-text-2); }
+.ms-ico > svg { width:24px; height:24px; }
+.ms-ico.is-accent { background-color:var(--ui-accent-soft); color:var(--ui-link); }
+.ms-ico.is-lg > svg { width:64px; height:64px; stroke-width:1.5; }
+.ms-num { width:20px; flex:none; margin-right:-4px; font:500 15px/20px var(--ui-face); color:var(--ui-text-2); text-align:center; }
+
+/* Сетка мест на главной: фото места 4:5 и длительность */
+.ms-place .ui-card-art { aspect-ratio:4/5; border-radius:14px; }
+
+/* Волна записи: столбики из данных звука */
+.ms-wave { display:flex; align-items:center; gap:2px; height:48px; }
+.ms-wave > i { flex:1; min-width:2px; border-radius:2px; background:rgba(255,255,255,.42); }
+.ms-wave > i.is-played { background:#fff; }
+.ms-h2 { height:8%; } .ms-h3 { height:16%; } .ms-h4 { height:24%; } .ms-h5 { height:32%; } .ms-h6 { height:42%; }
+.ms-h7 { height:52%; } .ms-h8 { height:62%; } .ms-h9 { height:72%; } .ms-h10 { height:84%; } .ms-h11 { height:96%; }
+
+/* Экран звука: фото места 16:9 с волной снизу */
+.ms-spot { position:relative; margin:0 16px; border-radius:16px; overflow:hidden; }
+.ms-spot-art { width:100%; aspect-ratio:16/10; }
+.ms-spot > .ms-wave.is-spot { position:absolute; left:12px; right:12px; bottom:10px; height:40px; }
+.ms-spot:has(> .ms-wave)::after { content:""; position:absolute; inset:50% 0 0; background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.55)); pointer-events:none; }
+.ms-spot > .ms-wave { z-index:1; }
+.ms-head { position:relative; display:flex; flex-direction:column; gap:4px; padding:16px 88px 12px 16px; }
+.ms-head.is-left { padding-right:16px; }
+.ms-head > .ui-play { position:absolute; right:16px; top:18px; }
+
+/* Коллекция: фото первого места с волной */
+.ms-coll { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 16px 16px; text-align:center; }
+.ms-coll-art { position:relative; width:200px; height:200px; margin-bottom:12px; border-radius:16px; overflow:hidden; }
+.ms-coll-art > .ms-wave.is-coll { position:absolute; left:16px; right:16px; bottom:14px; height:36px; }
+
+/* Плеер: размытое фото места во весь экран, большая волна, play по центру */
+.ms-player { overflow:hidden; }
+.ms-player-bg { position:absolute; inset:0; filter:blur(28px) saturate(1.2); }
+.ms-player-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,10,.35), rgba(10,10,10,.55) 45%, rgba(10,10,10,.92) 75%); }
+.ms-player > .ui-nav, .ms-player-main { position:relative; z-index:1; }
+.ms-player-main { flex:1; min-height:0; display:flex; flex-direction:column; justify-content:flex-end; padding:4px 24px calc(var(--safe-bottom) + 8px); }
+.ms-player-wave { flex:1; display:flex; flex-direction:column; justify-content:center; gap:12px; }
+.ms-player-wave > .ms-wave.is-player { height:160px; gap:3px; }
+.ms-player-at { text-align:center; font:500 14px/18px var(--ui-face); color:rgba(255,255,255,.8); }
+.ms-player .ui-np-bar { display:none; }
+.ms-p25 { width:25%; }
+.ms-p75 { width:75%; }
+
+/* Форма */
+.ms-input { width:100%; min-height:24px; padding:0; border:0; background:none; color:var(--ui-text); font:400 17px/22px var(--ui-face); }
+.ms-search { padding:0 0 8px; }
+
+/* Камера: место во весь экран и рамка 4:5 под фото места */
+.ms-capture { overflow:hidden; }
+.ms-camera { position:absolute; inset:0; }
+.ms-camera-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,.7)); }
+.ms-frame { position:relative; z-index:1; width:280px; aspect-ratio:4/5; margin:96px auto 0; border-radius:16px; box-shadow:0 0 0 2px rgba(255,255,255,.85), 0 0 0 999px rgba(0,0,0,.3); }
+.ms-cam-label { position:relative; z-index:1; margin-top:16px; text-align:center; font:400 14px/18px var(--ui-face); color:rgba(255,255,255,.86); }
+.ms-capture-foot { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 24px); z-index:1; display:flex; justify-content:center; }
+
+/* Профиль: аватар и имя в строку под крупным заголовком */
+.ms-me { display:flex; align-items:center; gap:16px; padding:0 16px 16px; }
+.ms-me > span { display:flex; flex-direction:column; gap:2px; }
+.ms-me strong { font:600 20px/24px var(--ui-face); }
+.ms-me > span > span { font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
+.ms-days { display:grid; grid-template-columns:repeat(7, 1fr); gap:8px; align-items:end; padding:4px 16px 12px; }
+.ms-days span { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.ms-days small { min-height:14px; font:500 12px/14px var(--ui-face); color:var(--ui-text-2); }
+.ms-days i { display:block; width:100%; max-width:32px; border-radius:6px; background:var(--ui-fill-2); }
+.ms-days .is-now i { background:var(--ui-accent); }
+.ms-days .is-now small { color:var(--ui-text); }
+.ms-days .is-next i { background:none; border:1px dashed var(--ui-line); }
+.ms-days b { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.ms-d0 { height:8px; } .ms-d15 { height:18px; } .ms-d30 { height:34px; } .ms-d45 { height:50px; }
+.ms-danger .ui-cell-text > strong, .ms-danger > svg:first-child { color:var(--ui-danger); }
+
+/* Выбор фото из ядра: iOS-синий на тёмном и белом знак не проходят AA */
+.ui-pk-text:not(.is-off) { color:#5aaaff; }
+.ui-pk-tile > i { background:#0064d2; }
+
+/* Коллекции плитками: фото первого места 1:1 */
+.ms-collcard .ui-card-art { border-radius:14px; }
+.ms-me > .ui-avatar { flex:none; display:grid; place-items:center; }

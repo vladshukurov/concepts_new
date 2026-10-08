@@ -1,0 +1,1331 @@
+{
+  "slug": "murashi",
+  "name": "Мураши",
+  "targetSet": "vk-music",
+  "qualityContractVersion": 4,
+  "uiContractVersion": 2,
+  "brand": {
+    "accent": "#0077FF",
+    "accentDark": "#0077FF",
+    "theme": "vk-dark",
+    "fonts": "Inter:wght@400;500;600;700"
+  },
+  "deck": "Свой звуковой дневник мест в грамматике ВК Музыки: 4 доступа набора, ни одного своего сервера.",
+  "eyebrow": "Мураши · Звуковой дневник мест · iOS",
+  "heroTitle": "Мураши — звуки мест, записанные самим",
+  "heroDeck": "Дождь на даче, прибой на молу, метро в час пик, саксофон на Арбате — свои записи из «Диктофона» с местом и временем. Их слушают как музыку и засыпают под свой дождь с таймером сна.",
+  "tagline": "Свои записи дождя, прибоя и города с местом и временем, слушать как музыку и засыпать",
+  "insight": "живой звук места возвращает лето сильнее фото, но записи из «Диктофона» лежат без названий и мест, и под них нельзя уснуть с погашенным экраном",
+  "domain": "murashi.app",
+  "start": "phone",
+  "tabs": [
+    {
+      "id": "home",
+      "label": "Звуки",
+      "role": "home"
+    },
+    {
+      "id": "collections",
+      "label": "Коллекции",
+      "role": "playlists"
+    },
+    {
+      "id": "profile",
+      "label": "Профиль",
+      "role": "profile"
+    }
+  ],
+  "positioning": {
+    "mode": "mimicry",
+    "categoryFit": "Своя аудиотека с коллекциями, мини-плеером и звуком в фоне — музыкальное приложение, как ВК Музыка, поэтому категория Music",
+    "familiarPatterns": [
+      "Тёмная оболочка ВК Музыки, мини-плеер над таб-баром",
+      "Коллекция-плейлист со «Слушать» и звуками по порядку",
+      "Полноэкранный плеер и Now Playing на локскрине"
+    ],
+    "distinctions": [
+      "Все звуки свои: записаны «Диктофоном» на месте, без каталога",
+      "Главная — сетка мест с фото и длиной, без обложки-героя",
+      "Плеер — волна записи поверх размытого места, «Где записано» и таймер сна"
+    ],
+    "evidenceScreens": [
+      "home",
+      "player",
+      "son",
+      "lock",
+      "dacha"
+    ],
+    "referencePatterns": [
+      "own-recordings",
+      "audio-player",
+      "background-playback",
+      "playlists"
+    ],
+    "referenceEvidence": [
+      {
+        "pattern": "own-recordings",
+        "screen": "home",
+        "behavior": "Свои звуки сеткой мест: фото места, длина, где и когда записано"
+      },
+      {
+        "pattern": "audio-player",
+        "screen": "player",
+        "behavior": "Плеер: волна записи, перемотка, следующий звук, «Где записано» и таймер сна"
+      },
+      {
+        "pattern": "background-playback",
+        "screen": "lock",
+        "behavior": "Звук играет с погашенным экраном, на локскрине «Дождь на даче · ещё 18 мин»"
+      },
+      {
+        "pattern": "playlists",
+        "screen": "son",
+        "behavior": "Коллекция «Засыпать»: 3 звука · 45 мин по порядку"
+      }
+    ]
+  },
+  "product": {
+    "audience": "Люди, которые записывают на телефон звуки мест: дождь на даче, море в отпуске, город, уличных музыкантов",
+    "situation": "Летом записала дождь на веранде и прибой в Кронштадте, а осенью в городе хочется уснуть под свой дождь",
+    "problem": "Записи лежат в «Диктофоне» как «Новая запись 38» без места и фото, их не собрать в подборку и не слушать с погашенным экраном",
+    "promise": "Каждый звук — с местом, временем и фото места; коллекции слушаются как плейлист, а свой дождь играет до таймера сна",
+    "differentiator": "Единица продукта — свой звук места, а не трек: главная собрана из мест, плеер показывает, где записано",
+    "returnReasons": [
+      "Перед сном включить «Засыпать» с таймером",
+      "Добавить новую запись из «Диктофона» с местом",
+      "Напоминание записать первый снег"
+    ],
+    "verticalSlice": {
+      "entry": "phone",
+      "action": "son",
+      "result": "player"
+    },
+    "coreLoop": [
+      "Добавить запись из «Диктофона» и указать, где записано",
+      "Положить звук в коллекцию",
+      "Слушать коллекцию с таймером сна и погасить экран"
+    ],
+    "nonGoals": [
+      "Каталог чужих звуков и белого шума",
+      "Публикация, лайки и подписки",
+      "Запись и обработка звука внутри приложения"
+    ],
+    "content": {
+      "kind": "av-notes",
+      "what": "Свои записи звуков мест из «Диктофона» и «Файлов»: место, время, фото места, коллекции «Лето 2026», «Города», «Засыпать»",
+      "library": false,
+      "feed": false,
+      "sharing": false
+    }
+  },
+  "permissions": [
+    {
+      "key": "camera",
+      "plist": "NSCameraUsageDescription",
+      "alert": {
+        "title": "«Мураши» запрашивает доступ к камере",
+        "text": "Снять место, где записан звук"
+      },
+      "feature": "Фото места для звука, записанного сегодня",
+      "gesture": "«Снять место» в звуке без фото",
+      "screen": "pekarnya",
+      "target": "capture",
+      "fallback": "Звук остаётся со значком, фото можно выбрать из «Фото» при добавлении",
+      "snack": "Нет доступа к камере",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "AVCaptureSession, фото; снимок сохраняется фото места звука на устройстве и в CloudKit private database",
+      "rationale": {
+        "who": "Аня, которая утром записала звук пекарни на Покровке",
+        "moment": "В звуке «Утро в пекарне» нажимает «Снять место»",
+        "need": "Она всё ещё в пекарне: место снимается сейчас, без камеры кадра не будет",
+        "without": "Звук остаётся со значком и играет как прежде"
+      },
+      "reviewNote": "Камера открывается только по «Снять место» в звуке «Утро в пекарне» (Звуки → Сегодня → Утро в пекарне). После снимка звук сразу показывает фото места. При отказе: пустое состояние в звуке, запись играет со значком"
+    },
+    {
+      "key": "photos",
+      "plist": "NSPhotoLibraryUsageDescription",
+      "alert": {
+        "title": "«Мураши» запрашивает доступ к «Фото»",
+        "text": "Выбрать фото места, снятое в день записи"
+      },
+      "feature": "Фото места из «Фото» того же дня, что и запись",
+      "gesture": "«Фото того же дня» в новом звуке",
+      "screen": "new",
+      "target": "pick",
+      "fallback": "Звук сохраняется со значком",
+      "snack": "Нет доступа к «Фото»",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "PhotoKit: снимки медиатеки за дату записи; выбранный снимок копируется фото места звука",
+      "rationale": {
+        "who": "Аня, которая добавляет запись кино во дворе от 22 августа",
+        "moment": "В новом звуке нажимает «Фото того же дня»",
+        "need": "Наверху — снимки 22 августа, а не вся лента; отобрать их по дате без доступа нельзя",
+        "without": "Звук сохраняется со значком"
+      },
+      "reviewNote": "Доступ вызывается строкой «Фото того же дня» в форме «Новый звук» (Звуки → +). Наверху пикера — снимки 22 августа. После «Добавить» в форме стоит «Фото места выбрано», у сохранённого «Кино во дворе» — это фото. При отказе: пустое состояние в разделе «Фото места»"
+    },
+    {
+      "key": "audio",
+      "plist": "UIBackgroundModes: audio",
+      "alert": {
+        "title": "Фоновое аудио",
+        "text": "Звук продолжится при погашенном экране"
+      },
+      "activate": true,
+      "feature": "Свой звук играет с погашенным экраном до таймера сна",
+      "gesture": "Значок замка внизу плеера — слушать с погашенным экраном",
+      "screen": "player",
+      "target": "lock",
+      "fallback": "Без фонового режима звук останавливается при блокировке, слушать можно с включённым экраном",
+      "risk": "high",
+      "anchor": true,
+      "conditional": true,
+      "requires": "AVAudioSession .playback + Now Playing + remote commands",
+      "grounding": "AVPlayer + MPNowPlayingInfoCenter + MPRemoteCommandCenter, затухание громкости по таймеру",
+      "rationale": {
+        "who": "Аня, которая засыпает в городе под свой дождь с дачи",
+        "moment": "В плеере нажимает значок замка — слушать с погашенным экраном",
+        "need": "Звук должен играть, пока экран погашен, и затихнуть по таймеру сна",
+        "without": "Звук останавливается при блокировке"
+      },
+      "reviewNote": "Значок замка внизу плеера: звук играет при погашенном экране, на локскрине Now Playing и «Дождь на даче · ещё 18 мин»; тап по карточке возвращает в плеер. При отказе: звук только с включённым экраном"
+    },
+    {
+      "key": "push",
+      "plist": "aps-environment",
+      "alert": {
+        "title": "«Мураши» запрашивает разрешение на уведомления",
+        "text": "Напомним записать звук из своего списка"
+      },
+      "feature": "Напоминание 1 ноября записать первый снег",
+      "gesture": "«Напомнить записать первый снег» в «Зиме 2026»",
+      "screen": "zima",
+      "target": "zima",
+      "fallback": "Напоминания нет, список «Зима 2026» остаётся в коллекциях",
+      "snack": "Уведомления выключены",
+      "risk": "low",
+      "anchor": false,
+      "conditional": true,
+      "requires": "Регистрация APNs через SDK провайдера",
+      "grounding": "UNUserNotificationCenter, локальное напоминание на выбранную дату; своего сервера нет",
+      "rationale": {
+        "who": "Аня, которая каждый год пропускает первый снег",
+        "moment": "В списке «Зима 2026» нажимает «Напомнить записать первый снег»",
+        "need": "Напоминание приходит 1 ноября, когда приложение закрыто, — без уведомлений его не доставить",
+        "without": "Напоминания нет, список остаётся в коллекциях"
+      },
+      "reviewNote": "Уведомления запрашиваются только строкой «Напомнить записать первый снег» в «Зиме 2026» (Коллекции → Зима 2026). После разрешения там стоит «Напомним 1 ноября в 09:00», на главной — «1 ноября · записать первый снег». При отказе: напоминания нет"
+    }
+  ],
+  "screens": [
+    {
+      "id": "phone",
+      "title": "Вход в «Мураши»",
+      "type": "старт, без таб-бара",
+      "light": true,
+      "meta": "Номер телефона · без OTP",
+      "ui": {
+        "pattern": "auth",
+        "navigation": "push",
+        "purpose": "Войти по номеру и паролю или создать аккаунт",
+        "primaryAction": "Создать аккаунт",
+        "hierarchy": {
+          "primary": "Номер телефона и главное действие",
+          "secondary": "Регистрация, правовая строка и помощь"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error"
+        ],
+        "density": "low",
+        "contentCases": [
+          "Корректный номер, переход к паролю",
+          "Номер с кодом другой страны",
+          "Неверный пароль или нет сети"
+        ]
+      }
+    },
+    {
+      "id": "home",
+      "title": "Звуки",
+      "type": "tab (root, start)",
+      "light": false,
+      "meta": "Сетка мест и сегодняшняя запись",
+      "ui": {
+        "pattern": "collection",
+        "purpose": "Открыть свой звук по месту, где он записан",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Шесть мест с фото и длиной записи",
+          "Сегодняшняя запись без фото места",
+          "Звуков ещё нет — пустая сетка и «+»"
+        ],
+        "navigation": "root",
+        "hierarchy": {
+          "primary": "Заголовок «Звуки», поиск и сетка мест",
+          "secondary": "Сегодняшняя запись, напоминание и мини-плеер"
+        }
+      }
+    },
+    {
+      "id": "collections",
+      "title": "Коллекции",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Свои подборки",
+      "parent": "home",
+      "ui": {
+        "pattern": "collection",
+        "purpose": "Открыть свою подборку звуков",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Три коллекции и список на зиму",
+          "Коллекция из одного звука",
+          "Коллекций пока нет"
+        ],
+        "navigation": "root",
+        "hierarchy": {
+          "primary": "Свои коллекции с длиной",
+          "secondary": "Список «Зима 2026»"
+        }
+      }
+    },
+    {
+      "id": "profile",
+      "title": "Профиль",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Свои звуки, места и засыпания",
+      "parent": "home",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Увидеть свои звуки и места за всё время, засыпания недели, перейти к своим разделам и настройкам",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Девять звуков из восьми мест",
+          "Длинное имя и подпись",
+          "Новый аккаунт — звуков ещё нет"
+        ],
+        "navigation": "root",
+        "hierarchy": {
+          "primary": "Имя, счётчики и засыпания недели",
+          "secondary": "Любимый звук, последняя запись и свои разделы"
+        }
+      }
+    },
+    {
+      "id": "search",
+      "title": "Поиск",
+      "type": "push",
+      "light": false,
+      "meta": "Поиск по звукам и местам",
+      "parent": "home",
+      "ui": {
+        "pattern": "collection",
+        "purpose": "Найти звук или место по слову",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Запрос «дождь» находит два звука и дачу",
+          "Ничего не найдено по запросу",
+          "Пустой запрос — недавние"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Поле и звуки",
+          "secondary": "Места и очистить запрос"
+        }
+      }
+    },
+    {
+      "id": "player",
+      "title": "Сейчас играет",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Now Playing",
+      "parent": "son",
+      "ui": {
+        "pattern": "player",
+        "purpose": "Слушать свой звук с таймером сна",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Дождь на даче, таймер 30 минут",
+          "Звук без фото места — тёмный фон",
+          "Последний звук коллекции на повторе"
+        ],
+        "navigation": "fullscreen",
+        "hierarchy": {
+          "primary": "Волна записи поверх фото места и play",
+          "secondary": "Где записано, таймер сна и погашенный экран"
+        }
+      }
+    },
+    {
+      "id": "lock",
+      "title": "Экран погас",
+      "type": "system",
+      "light": false,
+      "meta": "Background audio",
+      "parent": "player",
+      "ui": {
+        "pattern": "system",
+        "purpose": "Управлять звуком с локскрина",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          "Дождь на даче, до тишины 18 минут",
+          "Длинное название звука на локскрине",
+          "Звук продолжился после звонка"
+        ],
+        "navigation": "system",
+        "hierarchy": {
+          "primary": "Now Playing и таймер сна",
+          "secondary": "Пауза, перемотка и возврат в плеер"
+        }
+      }
+    },
+    {
+      "id": "new",
+      "title": "Новый звук",
+      "type": "modal",
+      "light": false,
+      "meta": "Запись из «Диктофона» или «Файлов»",
+      "parent": "home",
+      "ui": {
+        "pattern": "editor",
+        "purpose": "Добавить свою запись с местом и фото",
+        "primaryAction": "Сохранить",
+        "states": [
+          "default",
+          "empty",
+          "error",
+          "success"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Запись из «Диктофона», место указано",
+          "Файл без названия из «Файлов»",
+          "Фото места не выбрано — значок звука"
+        ],
+        "navigation": "modal",
+        "hierarchy": {
+          "primary": "Запись, название и где записано",
+          "secondary": "Фото места и коллекция"
+        }
+      }
+    },
+    {
+      "id": "pick",
+      "title": "Фото того же дня",
+      "type": "system picker",
+      "light": false,
+      "meta": "Photo Library",
+      "parent": "new",
+      "ui": {
+        "pattern": "system",
+        "purpose": "Выбрать фото места, снятое в день записи",
+        "primaryAction": "Добавить",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Снимки 22 августа, выбран двор",
+          "В этот день снимков нет — вся медиатека",
+          "Отказ в доступе к «Фото»"
+        ],
+        "navigation": "system",
+        "hierarchy": {
+          "primary": "Снимки дня записи",
+          "secondary": "Отмена и «Добавить»"
+        }
+      }
+    },
+    {
+      "id": "capture",
+      "title": "Место · Утро в пекарне",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Camera",
+      "parent": "pekarnya",
+      "ui": {
+        "pattern": "capture",
+        "purpose": "Снять место, где записан звук",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          "Пекарня в рамке 4:5",
+          "Темно — снимок тусклый",
+          "Отказ в доступе к камере"
+        ],
+        "navigation": "fullscreen",
+        "hierarchy": {
+          "primary": "Видоискатель с рамкой",
+          "secondary": "Спуск и закрыть"
+        }
+      }
+    },
+    {
+      "id": "settings",
+      "title": "Настройки",
+      "type": "push",
+      "light": false,
+      "meta": "Уведомления, сон, записи, тема",
+      "parent": "profile",
+      "ui": {
+        "pattern": "settings",
+        "purpose": "Настроить напоминания, таймер сна, записи, тему и аккаунт",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Таймер 30 минут, 486 МБ загружено",
+          "Копия в iCloud выключена",
+          "Звуков ещё нет — загружено 0 МБ"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Уведомления, сон и воспроизведение",
+          "secondary": "Записи, тема, аккаунт и о приложении"
+        }
+      }
+    },
+    {
+      "id": "dacha",
+      "title": "Где записано",
+      "type": "push",
+      "light": false,
+      "meta": "Место и звуки отсюда",
+      "parent": "player",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Посмотреть место и все звуки, записанные там",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Дача, два звука за июль",
+          "Место с одной записью",
+          "Место без фото — значок"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото места и адрес",
+          "secondary": "Звуки отсюда"
+        }
+      }
+    },
+    {
+      "id": "zima",
+      "title": "Зима 2026",
+      "type": "push",
+      "light": false,
+      "meta": "Что записать зимой",
+      "parent": "collections",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Вести список звуков на зиму и поставить напоминание",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Четыре пункта, ни один не записан",
+          "Напоминание 1 ноября уже стоит",
+          "Список пуст"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Список «Записать»",
+          "secondary": "Напоминание про первый снег"
+        }
+      }
+    },
+    {
+      "id": "leto",
+      "title": "Лето 2026",
+      "type": "push",
+      "light": false,
+      "meta": "Своя коллекция",
+      "parent": "collections",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать коллекцию по порядку",
+        "primaryAction": "Слушать",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Пять звуков на 57 минут",
+          "Звук без фото в коллекции",
+          "Коллекция из одного звука"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото места, «Слушать» и звуки",
+          "secondary": "Длина и порядок"
+        }
+      }
+    },
+    {
+      "id": "goroda",
+      "title": "Города",
+      "type": "push",
+      "light": false,
+      "meta": "Своя коллекция",
+      "parent": "collections",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать коллекцию по порядку",
+        "primaryAction": "Слушать",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Четыре городских звука",
+          "Два звука без фото места",
+          "Сегодняшняя запись первой"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото места, «Слушать» и звуки",
+          "secondary": "Длина и порядок"
+        }
+      }
+    },
+    {
+      "id": "son",
+      "title": "Засыпать",
+      "type": "push",
+      "light": false,
+      "meta": "Своя коллекция",
+      "parent": "collections",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать коллекцию по порядку",
+        "primaryAction": "Слушать",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Три звука на 45 минут",
+          "Самый длинный — дождь на даче",
+          "Коллекция пуста"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото места, «Слушать» и звуки",
+          "secondary": "Длина и порядок"
+        }
+      }
+    },
+    {
+      "id": "dozhd",
+      "title": "Дождь на даче",
+      "type": "push",
+      "light": false,
+      "meta": "Свой звук",
+      "parent": "home",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать свой звук и вспомнить место",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Дождь на веранде, 24 минуты",
+          "Любимый звук на ночь",
+          "В двух коллекциях"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото места с волной, название и play",
+          "secondary": "Где, когда, файл и коллекции"
+        }
+      }
+    },
+    {
+      "id": "veter",
+      "title": "Ветер в шторах",
+      "type": "push",
+      "light": false,
+      "meta": "Свой звук",
+      "parent": "home",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать свой звук и вспомнить место",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Утро на даче, мансарда",
+          "Второй звук с дачи",
+          "Короткая запись, 5 минут"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото места с волной, название и play",
+          "secondary": "Где, когда, файл и коллекции"
+        }
+      }
+    },
+    {
+      "id": "les",
+      "title": "Лес под Звенигородом",
+      "type": "push",
+      "light": false,
+      "meta": "Свой звук",
+      "parent": "home",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать свой звук и вспомнить место",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Первая запись лета",
+          "Почти 12 минут леса",
+          "Только в «Лете 2026»"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото места с волной, название и play",
+          "secondary": "Где, когда, файл и коллекции"
+        }
+      }
+    },
+    {
+      "id": "priboy",
+      "title": "Прибой на молу",
+      "type": "push",
+      "light": false,
+      "meta": "Свой звук",
+      "parent": "home",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать свой звук и вспомнить место",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Файл из «Файлов», Кронштадт",
+          "Отмечен «нравится»",
+          "Фото с мола"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото места с волной, название и play",
+          "secondary": "Где, когда, файл и коллекции"
+        }
+      }
+    },
+    {
+      "id": "groza",
+      "title": "Гроза над заливом",
+      "type": "push",
+      "light": false,
+      "meta": "Свой звук",
+      "parent": "home",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать свой звук и вспомнить место",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Запись в 02:14 ночью",
+          "В коллекции «Засыпать»",
+          "Фото ночного залива"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото места с волной, название и play",
+          "secondary": "Где, когда, файл и коллекции"
+        }
+      }
+    },
+    {
+      "id": "okno",
+      "title": "Дождь в окно",
+      "type": "push",
+      "light": false,
+      "meta": "Свой звук",
+      "parent": "home",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать свой звук и вспомнить место",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Сокол, девятый этаж",
+          "Нашёлся поиском «дождь»",
+          "В «Городах» и «Засыпать»"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото места с волной, название и play",
+          "secondary": "Где, когда, файл и коллекции"
+        }
+      }
+    },
+    {
+      "id": "metro",
+      "title": "Метро в час пик",
+      "type": "push",
+      "light": false,
+      "meta": "Свой звук",
+      "parent": "home",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать свой звук и вспомнить место",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Запись без фото места",
+          "Самая короткая, 3:41",
+          "Только в «Городах»"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото места с волной, название и play",
+          "secondary": "Где, когда, файл и коллекции"
+        }
+      }
+    },
+    {
+      "id": "arbat",
+      "title": "Саксофон на Арбате",
+      "type": "push",
+      "light": false,
+      "meta": "Свой звук",
+      "parent": "home",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать свой звук и вспомнить место",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Запись без фото места",
+          "Уличный музыкант, 6 минут",
+          "Только в «Городах»"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото места с волной, название и play",
+          "secondary": "Где, когда, файл и коллекции"
+        }
+      }
+    },
+    {
+      "id": "pekarnya",
+      "title": "Утро в пекарне",
+      "type": "push",
+      "light": false,
+      "meta": "Свой звук",
+      "parent": "home",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать свой звук и вспомнить место",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Записано сегодня, без фото",
+          "Фото места снято камерой",
+          "Отказ в камере — пустое состояние"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото места с волной, название и play",
+          "secondary": "Где, когда, файл и коллекции"
+        }
+      }
+    },
+    {
+      "id": "kino",
+      "title": "Кино во дворе",
+      "type": "push",
+      "light": false,
+      "meta": "Свой звук",
+      "parent": "new",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать свой звук и вспомнить место",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Новый звук из формы",
+          "Фото того же дня из «Фото»",
+          "Без фото — значок звука"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото места с волной, название и play",
+          "secondary": "Где, когда, файл и коллекции"
+        }
+      }
+    }
+  ],
+  "prototypes": [
+    {
+      "id": "all",
+      "hero": true,
+      "label": "Весь продукт",
+      "note": "Сетка мест, коллекции, плеер с таймером сна и 4 доступа",
+      "start": "phone",
+      "screens": [
+        "phone",
+        "home",
+        "collections",
+        "profile",
+        "search",
+        "player",
+        "lock",
+        "new",
+        "pick",
+        "capture",
+        "settings",
+        "dacha",
+        "zima",
+        "leto",
+        "goroda",
+        "son",
+        "dozhd",
+        "veter",
+        "les",
+        "priboy",
+        "groza",
+        "okno",
+        "metro",
+        "arbat",
+        "pekarnya",
+        "kino"
+      ],
+      "stops": [],
+      "authTarget": "home"
+    },
+    {
+      "id": "core",
+      "label": "Засыпать под свой звук",
+      "note": "Открыть «Засыпать», включить с таймером и погасить экран",
+      "start": "son",
+      "screens": [
+        "son",
+        "player",
+        "lock",
+        "dacha",
+        "dozhd",
+        "okno",
+        "groza",
+        "veter"
+      ],
+      "stops": [
+        "dozhd",
+        "okno",
+        "groza",
+        "veter"
+      ]
+    },
+    {
+      "id": "create",
+      "label": "Новый звук",
+      "note": "Добавить запись из «Диктофона», выбрать фото того же дня и сохранить",
+      "start": "new",
+      "screens": [
+        "new",
+        "pick",
+        "kino"
+      ],
+      "stops": []
+    },
+    {
+      "id": "permissions",
+      "label": "Все доступы",
+      "note": "Снять место, фото того же дня, звук с погашенным экраном, напоминание про первый снег",
+      "start": "pekarnya",
+      "screens": [
+        "pekarnya",
+        "capture",
+        "new",
+        "pick",
+        "kino",
+        "player",
+        "lock",
+        "zima",
+        "son",
+        "dacha",
+        "dozhd",
+        "veter",
+        "okno",
+        "groza"
+      ],
+      "stops": [
+        "son",
+        "dacha",
+        "dozhd",
+        "veter",
+        "okno",
+        "groza"
+      ]
+    }
+  ],
+  "backendless": [
+    {
+      "needs": "Свои звуки",
+      "solution": "Файлы из «Диктофона» и «Файлов» на устройстве, копия в CloudKit private database"
+    },
+    {
+      "needs": "Места, коллекции и таймер",
+      "solution": "CoreData и CloudKit private database, таймер — на устройстве"
+    },
+    {
+      "needs": "Фото мест",
+      "solution": "Снимок камерой или из «Фото» хранится в звуке на устройстве и в CloudKit private database"
+    },
+    {
+      "needs": "Push",
+      "solution": "Локальное напоминание на дату из своего списка, регистрация APNs через SDK провайдера"
+    }
+  ],
+  "appStore": {
+    "name": "Мураши — звуки своих мест",
+    "subtitle": "Дождь, море и город на память",
+    "promo": "Записали дождь на даче или прибой в отпуске — сохраните звук с местом и фото и засыпайте под свой дождь с таймером сна.",
+    "keywords": "диктофон,запись,природа,прибой,сон,таймер сна,дневник,места,гроза,ливень,лес,метро,звук",
+    "category": {
+      "primary": "Music",
+      "secondary": "Lifestyle"
+    },
+    "ageRating": "13+",
+    "price": "Бесплатно",
+    "encryption": "ITSAppUsesNonExemptEncryption = NO",
+    "urls": {
+      "support": "https://murashi.app/support",
+      "marketing": "https://murashi.app",
+      "privacy": "https://murashi.app/privacy"
+    },
+    "description": [
+      "Свой звуковой дневник мест",
+      "Добавьте записи из «Диктофона» с местом, временем и фото места, соберите коллекции",
+      "Засыпайте под свой дождь: звук играет с погашенным экраном и затихает по таймеру"
+    ],
+    "whatsNew": "Первая версия.",
+    "reviewAccount": {
+      "email": "review@murashi.app",
+      "password": "review2026",
+      "note": "Тестовый аккаунт готов сразу; вход по номеру и паролю, OTP не используется."
+    },
+    "privacy": [
+      {
+        "type": "Фото и видео",
+        "apple": "User Content → Photos or Videos",
+        "purpose": "Работа приложения",
+        "linked": false,
+        "tracking": false,
+        "why": "Фото мест, снятые камерой или выбранные в «Фото», хранятся в звуке на устройстве и в своей iCloud"
+      },
+      {
+        "type": "Аудио",
+        "apple": "User Content → Audio Data",
+        "purpose": "Работа приложения",
+        "linked": false,
+        "tracking": false,
+        "why": "Свои записи из «Диктофона» и «Файлов» хранятся на устройстве и в своей iCloud"
+      }
+    ],
+    "assets": {
+      "locale": "ru-RU",
+      "template": "studio",
+      "screens": [
+        {
+          "screen": "home",
+          "headline": "Звуки своих мест",
+          "body": "Дождь, прибой и город с фото"
+        },
+        {
+          "screen": "player",
+          "headline": "Слушать как музыку",
+          "body": "Волна записи и где записано"
+        },
+        {
+          "screen": "son",
+          "headline": "Засыпать",
+          "body": "3 звука · 45 мин по порядку"
+        },
+        {
+          "screen": "dacha",
+          "headline": "Где записано",
+          "body": "Все звуки одного места"
+        },
+        {
+          "screen": "lock",
+          "headline": "С погашенным экраном",
+          "body": "Свой дождь до таймера сна"
+        }
+      ]
+    }
+  },
+  "docs": [
+    {
+      "file": "01-product-vision.md",
+      "label": "Вижен"
+    },
+    {
+      "file": "02-architecture.md",
+      "label": "Архитектура"
+    },
+    {
+      "file": "03-design-system.md",
+      "label": "Дизайн-система"
+    },
+    {
+      "file": "04-references.md",
+      "label": "Референсы"
+    },
+    {
+      "file": "05-visual-audit.md",
+      "label": "Визуальный аудит"
+    },
+    {
+      "file": "06-app-store.md",
+      "label": "App Store"
+    }
+  ],
+  "auth": {
+    "mode": "phone",
+    "confirmation": false,
+    "entryTarget": "home"
+  },
+  "readiness": {
+    "status": "draft",
+    "referenceResearch": [
+      {
+        "source": "Официальное приложение ВК Музыка для iOS",
+        "observation": "Тёмная оболочка, плейлист со «Слушать», мини-плеер над таб-баром и полноэкранный плеер",
+        "decision": "Та же грамматика для своих звуков: плейлист — коллекция, треки — записи мест"
+      },
+      {
+        "source": "Официальное приложение ВК Музыка для iOS, фоновое воспроизведение",
+        "observation": "Звук продолжается с погашенным экраном, на локскрине Now Playing",
+        "decision": "Свой дождь играет в фоне, на локскрине видно, сколько осталось до тишины"
+      },
+      {
+        "source": "«Диктофон» iOS",
+        "observation": "Записи называются «Новая запись 38», место и фото не хранятся",
+        "decision": "У каждого звука — место, время и фото места, главная собрана из мест"
+      }
+    ],
+    "productCritique": [
+      {
+        "objection": "Звуки дождя есть в любом приложении для сна",
+        "resolution": "Здесь звучит свой дождь — тот, что записан на даче 14 июля",
+        "evidenceScreens": [
+          "home",
+          "dozhd",
+          "player"
+        ]
+      },
+      {
+        "objection": "Записи и так лежат в «Диктофоне»",
+        "resolution": "Там они без места и фото; здесь у звука место, время, фото и коллекция",
+        "evidenceScreens": [
+          "new",
+          "dacha",
+          "son"
+        ]
+      },
+      {
+        "objection": "Плеер с экраном мешает уснуть",
+        "resolution": "Звук играет с погашенным экраном и затихает по таймеру сна",
+        "evidenceScreens": [
+          "player",
+          "lock"
+        ]
+      }
+    ]
+  }
+}
