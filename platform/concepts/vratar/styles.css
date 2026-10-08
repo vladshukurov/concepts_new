@@ -103,11 +103,6 @@
 .vr-spacer { width:48px; }
 
 /* Картинка в картинке поверх экрана «Домой» */
-.vr-pip { margin:calc(var(--safe-top) + 12px) 16px 0 auto; width:236px; }
-.vr-pip-frame { position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden; box-shadow:0 12px 32px rgba(0,0,0,.5); }
-.vr-pip-frame > .ui-icon-btn { position:absolute; left:4px; top:4px; z-index:2; }
-.vr-pip-controls { position:absolute; inset:0; z-index:1; display:flex; align-items:center; justify-content:center; gap:4px; color:#fff; }
-.vr-pip-frame > .ui-progress { position:absolute; left:10px; right:10px; bottom:8px; z-index:1; }
 
 /* Выбор из «Фото» — чёрный фон системного листа */
 .ui.vr-picker { background-color:#000; }

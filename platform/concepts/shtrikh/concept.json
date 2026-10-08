@@ -377,7 +377,8 @@
             "push",
             "commnotif",
             "mic",
-            "photos"
+            "photos",
+            "keychain"
           ]
         }
       ]

@@ -1873,7 +1873,9 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .ui-hs-pip > * { position:relative; }
 .ui-hs-pip-back { position:absolute!important; left:2px; top:2px; color:#fff; }
 .ui-hs-pip-back svg { width:18px; height:18px; }
-.ui-hs-pip-ctl { position:absolute!important; inset:0; display:flex; align-items:center; justify-content:center; gap:14px; }
+.ui-hs-pip-ctl { position:absolute!important; inset:0; display:flex; align-items:center; justify-content:center; gap:14px; pointer-events:none; }
+.ui-hs-pip-ctl .ui-icon-btn { pointer-events:auto; }
+.ui-hs-pip-back { z-index:2; }
 .ui-hs-pip-ctl .ui-icon-btn { color:#fff; }
 .ui-hs-pip-bar { position:absolute!important; left:10px; right:10px; bottom:8px; height:3px; border-radius:2px; background:rgba(255,255,255,.35); }
 .ui-hs-pip-bar > b { display:block; width:30%; height:100%; border-radius:2px; background:#fff; }

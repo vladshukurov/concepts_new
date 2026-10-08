@@ -13,8 +13,8 @@
 .m5 { background-position:50% 100%; }
 .m6 { background-position:100% 100%; }
 /* Широкие кадры 16:9 — середина фото, а не верхний край */
-:is(.ui-video-art,.ui-player,.ui-thumb.is-wide,.vy-banner,.vy-pip-frame):is(.m1,.m2,.m3) { background-size:300% auto; background-position-y:18%; }
-:is(.ui-video-art,.ui-player,.ui-thumb.is-wide,.vy-banner,.vy-pip-frame):is(.m4,.m5,.m6) { background-size:300% auto; background-position-y:82%; }
+:is(.ui-video-art,.ui-player,.ui-thumb.is-wide,.vy-banner,.ui-hs-pip):is(.m1,.m2,.m3) { background-size:300% auto; background-position-y:18%; }
+:is(.ui-video-art,.ui-player,.ui-thumb.is-wide,.vy-banner,.ui-hs-pip):is(.m4,.m5,.m6) { background-size:300% auto; background-position-y:82%; }
 /* Вертикальный кадр на весь экран: фото по высоте экрана */
 .vy-clip-frame:is(.m1,.m2,.m3,.m4,.m5,.m6) { background-size:auto 200%; }
 
@@ -102,11 +102,6 @@
 /* Выбор из «Фото» */
 
 /* Картинка в картинке поверх экрана «Домой» */
-.vy-pip { margin:calc(var(--safe-top) + 12px) 16px 0 auto; width:236px; }
-.vy-pip-frame { position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden; box-shadow:0 12px 32px rgba(0,0,0,.5); }
-.vy-pip-frame > .ui-icon-btn { position:absolute; left:4px; top:4px; z-index:2; }
-.vy-pip-controls { position:absolute; inset:0; z-index:1; display:flex; align-items:center; justify-content:center; gap:4px; color:#fff; }
-.vy-pip-frame > .ui-progress { position:absolute; left:10px; right:10px; bottom:8px; z-index:1; }
 
 /* Выбор из «Фото» — чёрный фон системного листа */
 .ui.vy-picker { background-color:#000; }

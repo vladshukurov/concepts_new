@@ -130,13 +130,6 @@
 .sk-saved-copy { display:flex; flex-direction:column; gap:4px; padding:20px 16px 0; text-align:center; }
 
 /* Картинка в картинке поверх экрана «Домой» */
-.sk-pip { margin:calc(var(--safe-top) + 12px) 16px 0 auto; width:236px; }
-.sk-pip-frame { position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden; box-shadow:0 12px 32px rgba(0,0,0,.5); }
-.sk-pip-frame::before { content:""; position:absolute; inset:0; background:rgba(0,0,0,.32); }
-.sk-pip-back { position:absolute; left:4px; top:4px; z-index:2; }
-.sk-pip-controls { position:absolute; inset:0; z-index:1; pointer-events:none; display:flex; align-items:center; justify-content:center; gap:4px; color:#fff; }
-.sk-pip-controls > * { pointer-events:auto; }
-.sk-pip-bar { position:absolute; left:10px; right:10px; bottom:8px; z-index:1; }
 
 /* Показ на телевизоре: телефон становится пультом */
 .sk-tv-player { background:#101215; }
