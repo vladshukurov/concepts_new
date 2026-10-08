@@ -219,3 +219,11 @@
 /* Просмотр кадра, кружка и документа */
 .sb-view { width:100%; aspect-ratio:1; border-radius:12px; }
 .sb-view.is-circle { width:76%; margin:0 auto; border-radius:50%; }
+/* Поездки года в профиле: плитки 2×2 по месяцам, текущая — акцентом */
+.sb-year { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; padding:0 16px; }
+.sb-year-i { display:flex; flex-direction:column; gap:2px; padding:10px 8px; border-radius:12px; border:1px solid var(--ui-line); min-width:0; }
+.sb-year-i small { font:400 12px/14px var(--ui-face); color:var(--ui-text-2); }
+.sb-year-i strong { font:600 14px/18px var(--ui-face); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.sb-year-i span { font:400 12px/14px var(--ui-face); color:var(--ui-text-2); }
+.sb-year-i.is-now { border-color:transparent; background:var(--ui-accent-soft); }
+.sb-year-i.is-now small { color:var(--ui-link); }

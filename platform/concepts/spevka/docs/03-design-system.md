@@ -29,7 +29,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×73, `section` ×69, `avatar` ×43, `leadIcon` ×35, `cell` ×35, `list` ×34, `bubble` ×22, `nav` ×16, `group` ×13, `button` ×10, `day` ×10, `iconButton` ×10, `actions` ×7, `chatNav` ×5, `chat` ×5, `denied` ×5, `tabBar` ×5, `voice` ×4, `composer` ×4, `textButton` ×4, `largeTitle` ×4, `search` ×4, `dialog` ×4, `segments` ×2, `lockScreen` ×2, `foot` ×1, `reminder` ×1, `callView` ×1, `chips` ×1, `adCard` ×1, `usersStack` ×1, `miniInfo` ×1, `miniPlayer` ×1, `top` ×1, `hue` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `section` ×74, `row` ×73, `avatar` ×43, `cell` ×43, `leadIcon` ×35, `list` ×34, `bubble` ×22, `nav` ×17, `group` ×16, `button` ×10, `day` ×10, `iconButton` ×10, `actions` ×7, `textButton` ×6, `chatNav` ×5, `chat` ×5, `denied` ×5, `tabBar` ×5, `voice` ×4, `composer` ×4, `largeTitle` ×4, `search` ×4, `dialog` ×4, `segments` ×2, `lockScreen` ×2, `foot` ×1, `reminder` ×1, `callView` ×1, `chips` ×1, `adCard` ×1, `usersStack` ×1, `miniInfo` ×1, `miniPlayer` ×1, `top` ×1, `stats` ×1, `hue` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Доменные компоненты
@@ -63,6 +63,7 @@
 | Ролик концерта: кто снимал | `.sp-tile-who` |
 | «Диктофон» под листом «Поделиться» | `.sp-memos` `.sp-memo` |
 | Поле формы: новая спевка и новый чат | `.sp-field` `.sp-bal-card` |
+| Спевки в профиле: была, пропуск, сегодня в зале, следующая | `.sp-season` `.sp-season-d` `.sp-season-ico` |
 <!-- @end -->
 
 Главные из них:

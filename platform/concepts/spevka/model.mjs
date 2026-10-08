@@ -124,3 +124,13 @@ export const entities = [
   { name: 'Звонок', what: 'аудио- и видеозвонок через системный экран звонка', states: ['идёт', 'пропущен', 'завершён'], screens: ['calls', 'call'] },
   { name: 'Видео концерта', what: 'ролики участников, собранные в одно видео ночью', states: ['ролики приходят', 'соберётся ночью', 'готово'], screens: ['video'] },
 ];
+
+/* Своё в профиле: спевки по датам — была, пропустила, сегодня; итог сезона с сентября */
+export const myRehearsals = [
+  { day: '29 сен', state: 'was' },
+  { day: '1 окт', state: 'missed' },
+  { day: '6 окт', state: 'was' },
+  { day: '8 окт', state: 'now' },
+  { day: '13 окт', state: 'next', time: '20:00' },
+];
+export const mine = { season: '9 из 10', recordings: parts.mine.length };

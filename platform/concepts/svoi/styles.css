@@ -271,3 +271,12 @@
 .sv-field { display:flex; flex-direction:column; gap:2px; margin:0 16px 12px; padding:8px 16px; border-radius:16px; background:var(--ui-card); box-shadow:inset 0 0 0 1px var(--ui-line); }
 .sv-field > span { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
 .sv-field > input { padding:0; border:0; outline:0; background:none; color:var(--ui-text); font:400 16px/22px var(--ui-face); }
+/* Неделя забираний в профиле: день, кто забирал; сегодня без забирающего — акцентом тревоги */
+.sv-week { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; padding:0 16px; }
+.sv-week-d { display:flex; flex-direction:column; align-items:center; gap:6px; padding:10px 4px; border-radius:12px; border:1px solid var(--ui-line); min-width:0; }
+.sv-week-d small, .sv-week-d > span:last-child { font:400 12px/14px var(--ui-face); color:var(--ui-text-2); }
+.sv-week-d .ui-avatar { width:32px; height:32px; font-size:12px; }
+.sv-week-q { display:grid; place-items:center; width:32px; height:32px; border-radius:50%; background:rgba(230,70,70,.12); color:#c62828; }
+.sv-week-q .ico-svg { width:18px; height:18px; }
+.sv-week-d.is-now { border-color:#e64646; }
+.sv-week-d.is-now > span:last-child { color:#c62828; }

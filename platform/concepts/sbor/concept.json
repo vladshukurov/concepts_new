@@ -1301,7 +1301,7 @@
       "title": "Настройки",
       "type": "tab (root)",
       "light": true,
-      "meta": "Профиль и настройки, как в Telegram",
+      "meta": "Своя карточка с итогом поездок и группы настроек, как в Telegram",
       "ui": {
         "states": [
           "default",
@@ -2198,6 +2198,26 @@
         "primaryAction": "Добавить"
       },
       "parent": "program"
+    },
+    {
+      "id": "meedit",
+      "title": "Изменить профиль",
+      "type": "push",
+      "light": true,
+      "meta": "Имя, ник и подпись",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": "Сохранить"
+      },
+      "parent": "settings"
     }
   ],
   "prototypes": [
@@ -2256,7 +2276,8 @@
         "tripedit",
         "contactnew",
         "expensenew",
-        "programnew"
+        "programnew",
+        "meedit"
       ],
       "stops": [],
       "authTarget": "chats"
@@ -2429,7 +2450,10 @@
         "expenses",
         "tripedit",
         "doc",
-        "chats"
+        "chats",
+        "meedit",
+        "trips",
+        "deleteaccount"
       ],
       "stops": [
         "rollcall",
@@ -2448,7 +2472,10 @@
         "expenses",
         "tripedit",
         "doc",
-        "chats"
+        "chats",
+        "meedit",
+        "trips",
+        "deleteaccount"
       ]
     },
     {

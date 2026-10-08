@@ -547,11 +547,11 @@
       "title": "Профиль",
       "type": "push",
       "light": false,
-      "meta": "Аккаунт и счётчики",
+      "meta": "Свои песни и записи, июль по дням, вход в настройки",
       "parent": "home",
       "ui": {
-        "pattern": "settings",
-        "purpose": "Посмотреть счётчики набросков и управлять аккаунтом",
+        "pattern": "collection",
+        "purpose": "Увидеть свои песни и записи за месяц, перейти к наброскам и настройкам",
         "primaryAction": null,
         "states": [
           "default",
@@ -563,9 +563,9 @@
         ],
         "density": "high",
         "contentCases": [
-          "41 набросок, 9 песен",
-          "Длинный номер телефона",
-          "Набросков ещё нет"
+          "9 песен, 14 записей без песни, 6 любимых версий",
+          "Июль: 7 записей по дням, 14 июля — две",
+          "Последняя запись — Без названия 14, сегодня"
         ],
         "navigation": "push",
         "hierarchy": {
@@ -1019,6 +1019,71 @@
           "secondary": "Метки частей и текст"
         }
       }
+    },
+    {
+      "id": "settings",
+      "title": "Настройки",
+      "type": "push",
+      "light": false,
+      "meta": "Уведомления своих набросков, запись, хранилище, тема и аккаунт",
+      "parent": "profile",
+      "ui": {
+        "pattern": "settings",
+        "purpose": "Настроить уведомления своих набросков, запись, хранилище, тему и аккаунт",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Напоминание дописать — завтра в 20:00",
+          "Загружено 1,4 ГБ, очистить фото текстов",
+          "Тема: как в системе, светлая или тёмная"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Номер и счётчики",
+          "secondary": "Профиль и аккаунт"
+        }
+      }
+    },
+    {
+      "id": "meedit",
+      "title": "Изменить профиль",
+      "type": "push",
+      "light": false,
+      "meta": "Имя и подпись",
+      "parent": "profile",
+      "ui": {
+        "pattern": "editor",
+        "purpose": "Изменить имя и подпись профиля",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "error",
+          "success",
+          "loading",
+          "empty",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Имя Влад и подпись про гитару",
+          "Длинная подпись в две строки и больше",
+          "Пустое имя — «Готово» неактивно"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Номер и счётчики",
+          "secondary": "Профиль и аккаунт"
+        }
+      }
     }
   ],
   "prototypes": [
@@ -1053,7 +1118,9 @@
         "riff78",
         "pv2",
         "pv1",
-        "prifd"
+        "prifd",
+        "settings",
+        "meedit"
       ],
       "stops": [],
       "authTarget": "home"

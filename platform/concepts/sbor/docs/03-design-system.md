@@ -29,7 +29,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×83, `section` ×75, `avatar` ×50, `list` ×39, `leadIcon` ×36, `cell` ×31, `bubble` ×29, `nav` ×17, `button` ×13, `iconButton` ×12, `day` ×11, `actions` ×10, `group` ×10, `dialog` ×8, `chatNav` ×7, `chat` ×7, `composer` ×6, `denied` ×5, `tabBar` ×5, `largeTitle` ×4, `segments` ×3, `search` ×3, `textButton` ×2, `voice` ×2, `usersStack` ×2, `callView` ×1, `chips` ×1, `adCard` ×1, `miniInfo` ×1, `lockScreen` ×1, `reminder` ×1, `top` ×1, `hue` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×83, `section` ×78, `avatar` ×50, `list` ×39, `cell` ×38, `leadIcon` ×36, `bubble` ×29, `nav` ×17, `button` ×13, `iconButton` ×12, `group` ×12, `day` ×11, `actions` ×10, `dialog` ×8, `chatNav` ×7, `chat` ×7, `composer` ×6, `denied` ×5, `tabBar` ×5, `largeTitle` ×4, `segments` ×3, `textButton` ×3, `search` ×3, `voice` ×2, `usersStack` ×2, `callView` ×1, `chips` ×1, `adCard` ×1, `miniInfo` ×1, `lockScreen` ×1, `reminder` ×1, `top` ×1, `stats` ×1, `hue` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Доменные компоненты
@@ -58,6 +58,7 @@
 | Пульт идущей поездки: что дальше и кто на месте — крупно, как карточка звонка в чате | `.sb-now` |
 | Сводка кошелька поездки | `.sb-money` `.ui-progress` |
 | Просмотр кадра, кружка и документа | `.sb-view` |
+| Поездки года в профиле: плитки 2×2 по месяцам, текущая — акцентом | `.sb-year` `.sb-year-i` |
 <!-- @end -->
 
 Главные из них:

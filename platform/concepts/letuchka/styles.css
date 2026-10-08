@@ -303,3 +303,13 @@
 .lt-add-btn { flex:none; }
 .screen:has(.lt-add-btn.is-on) .lt-added { display:block; }
 .screen:has(.lt-add-btn.is-on) .lt-add { display:none; }
+/* Апдейты недели в профиле: написан к сроку — галочка, сегодня — ещё пишется */
+.lt-week { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; padding:0 16px; }
+.lt-week-d { display:flex; flex-direction:column; align-items:center; gap:6px; padding:10px 4px; border-radius:12px; border:1px solid var(--ui-line); min-width:0; }
+.lt-week-d small, .lt-week-d > span:last-child { font:400 12px/14px var(--ui-face); color:var(--ui-text-2); }
+.lt-week-ico { display:grid; place-items:center; width:32px; height:32px; border-radius:50%; color:var(--ui-text-2); }
+.lt-week-ico .ico-svg { width:18px; height:18px; }
+.lt-week-d.is-done .lt-week-ico { background:var(--ui-accent-soft); color:var(--ui-link); }
+.lt-week-d.is-now { border-color:var(--ui-accent); }
+.lt-week-d.is-now .lt-week-ico { background:var(--ui-accent); color:#fff; }
+.lt-week-d.is-now > span:last-child { color:var(--ui-link); }

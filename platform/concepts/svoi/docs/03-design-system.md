@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `section` ×72, `row` ×72, `avatar` ×50, `list` ×35, `bubble` ×32, `leadIcon` ×29, `cell` ×28, `nav` ×16, `day` ×13, `button` ×12, `iconButton` ×10, `actions` ×9, `group` ×9, `chatNav` ×7, `chat` ×7, `dialog` ×6, `composer` ×6, `voice` ×6, `textButton` ×5, `denied` ×5, `tabBar` ×5, `largeTitle` ×4, `segments` ×3, `search` ×3, `foot` ×3, `callView` ×1, `chips` ×1, `adCard` ×1, `reminder` ×1, `usersStack` ×1, `miniInfo` ×1, `lockScreen` ×1, `top` ×1, `hue` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `section` ×77, `row` ×72, `avatar` ×51, `cell` ×36, `list` ×35, `bubble` ×32, `leadIcon` ×29, `nav` ×17, `day` ×13, `button` ×12, `group` ×12, `iconButton` ×10, `actions` ×9, `textButton` ×7, `chatNav` ×7, `chat` ×7, `dialog` ×6, `composer` ×6, `voice` ×6, `denied` ×5, `tabBar` ×5, `largeTitle` ×4, `segments` ×3, `search` ×3, `foot` ×3, `callView` ×1, `chips` ×1, `adCard` ×1, `reminder` ×1, `usersStack` ×1, `miniInfo` ×1, `lockScreen` ×1, `top` ×1, `stats` ×1, `hue` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Доменные компоненты
@@ -64,6 +64,7 @@
 | QR сети с роутера в камере | `.sv-qr-found` |
 | Форма «Все дома»: мягче и круглее «Сбора». Цвет и строки — ядра, меняются только скругления | `.ui` |
 | Поле формы: новый чат, занятие, покупка | `.sv-field` |
+| Неделя забираний в профиле: день, кто забирал; сегодня без забирающего — акцентом тревоги | `.sv-week` `.sv-week-d` `.sv-week-q` |
 <!-- @end -->
 
 - **Кто дома** `.sv-now` — первая карточка вкладки «Дом».

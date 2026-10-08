@@ -120,3 +120,13 @@ export const entities = [
   { name: 'Звонок', what: 'аудио- и видеозвонок через системный экран звонка', states: ['идёт', 'пропущен', 'завершён'], screens: ['calls', 'call'] },
   { name: 'Документ', what: 'паспорта, полисы и свидетельства семьи под Face ID', states: ['закрыт', 'открыт'], screens: ['docs'] },
 ];
+
+/* Своё в профиле: забирания недели по дням и итог сентября. Среда — сегодня, Милу пока никто не взял */
+export const week = [
+  { day: 'пн', by: 'me', what: 'Мила, рисование' },
+  { day: 'вт', by: 'oksana', what: 'Мила, английский' },
+  { day: 'ср', by: null, what: 'Мила, до 17:30', now: true },
+  { day: 'чт', by: 'oksana', what: 'Мила, английский' },
+  { day: 'пт', by: 'roza', what: 'Даня, бассейн' },
+];
+export const mine = { pickedSept: 14, coveredSept: '31 из 33' };

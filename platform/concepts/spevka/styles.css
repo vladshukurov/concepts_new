@@ -278,3 +278,15 @@
 .sp-field > input { min-height:28px; padding:0; border:0; outline:0; background:none; color:var(--ui-text); font:400 17px/22px var(--ui-face); }
 
 .sp-bal-card .sp-sum strong { font-size:24px; line-height:30px; }
+/* Спевки в профиле: была, пропуск, сегодня в зале, следующая */
+.sp-season { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; padding:0 16px; }
+.sp-season-d { display:flex; flex-direction:column; align-items:center; gap:6px; padding:10px 4px; border-radius:12px; border:1px solid var(--ui-line); min-width:0; }
+.sp-season-d small, .sp-season-d > span:last-child { font:400 12px/14px var(--ui-face); color:var(--ui-text-2); white-space:nowrap; }
+.sp-season-ico { display:grid; place-items:center; width:32px; height:32px; border-radius:50%; color:var(--ui-text-2); }
+.sp-season-ico .ico-svg { width:18px; height:18px; }
+.sp-season-d.is-was .sp-season-ico { background:var(--ui-accent-soft); color:var(--ui-link); }
+.sp-season-d.is-missed .sp-season-ico { background:rgba(230,70,70,.12); color:#c62828; }
+.sp-season-d.is-now { border-color:var(--ui-accent); }
+.sp-season-d.is-now .sp-season-ico { background:var(--ui-accent); color:#fff; }
+.sp-season-d.is-now > span:last-child { color:var(--ui-link); }
+.sp-season-d.is-next small { color:var(--ui-text); }

@@ -1357,7 +1357,7 @@
       "title": "Настройки",
       "type": "tab (root)",
       "light": true,
-      "meta": "Профиль и настройки, как в Telegram · App Groups",
+      "meta": "Своя карточка с забираниями недели и группы настроек, как в Telegram",
       "ui": {
         "states": [
           "default",
@@ -1910,6 +1910,26 @@
         "primaryAction": null
       },
       "parent": "settings"
+    },
+    {
+      "id": "meedit",
+      "title": "Изменить профиль",
+      "type": "push",
+      "light": true,
+      "meta": "Имя, ник и подпись",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "settings"
     }
   ],
   "prototypes": [
@@ -1952,7 +1972,8 @@
         "ads",
         "share",
         "lockscreen",
-        "widget"
+        "widget",
+        "meedit"
       ],
       "stops": [],
       "authTarget": "chats"
@@ -2091,7 +2112,12 @@
         "calls",
         "home",
         "chats",
-        "family"
+        "family",
+        "meedit",
+        "schedule",
+        "wifi",
+        "familyinfo",
+        "deleteaccount"
       ],
       "stops": [
         "account",
@@ -2099,7 +2125,12 @@
         "calls",
         "home",
         "chats",
-        "family"
+        "family",
+        "meedit",
+        "schedule",
+        "wifi",
+        "familyinfo",
+        "deleteaccount"
       ]
     },
     {

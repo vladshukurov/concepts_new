@@ -175,3 +175,13 @@ export const entities = [
   { name: 'Бронь переговорки', what: 'комната, время и кто занял', states: ['свободна', 'занята', 'идёт'], screens: ['rooms'] },
   { name: 'Звонок', what: 'аудио- и видеозвонок через системный экран звонка', states: ['идёт', 'пропущен', 'завершён'], screens: ['calls', 'call'] },
 ];
+
+/* Своё в профиле: апдейты недели к 10:30 и итог двух недель в студии. Сегодня апдейт ещё не написан */
+export const myWeek = [
+  { day: 'пн', at: '9:48' },
+  { day: 'вт', at: '10:12' },
+  { day: 'ср', at: null, now: true },
+  { day: 'чт', at: null },
+  { day: 'пт', at: null },
+];
+export const mine = { onTime: '7 из 7', decisions: agreed.filter((a) => a.value === 'Ира').length + recap.agreed.filter((a) => a.value === 'Ира').length };

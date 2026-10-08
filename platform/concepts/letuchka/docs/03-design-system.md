@@ -29,7 +29,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `section` ×75, `row` ×63, `list` ×38, `leadIcon` ×38, `cell` ×37, `avatar` ×32, `bubble` ×27, `nav` ×16, `group` ×14, `day` ×12, `button` ×8, `iconButton` ×8, `chatNav` ×6, `chat` ×6, `actions` ×5, `denied` ×5, `tabBar` ×5, `composer` ×5, `dialog` ×5, `textButton` ×4, `segments` ×4, `largeTitle` ×4, `voice` ×4, `search` ×4, `checklist` ×3, `callView` ×1, `chips` ×1, `adCard` ×1, `miniPlayer` ×1, `usersStack` ×1, `miniInfo` ×1, `lockScreen` ×1, `reminder` ×1, `top` ×1, `hue` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `section` ×80, `row` ×63, `cell` ×45, `list` ×38, `leadIcon` ×38, `avatar` ×32, `bubble` ×27, `nav` ×17, `group` ×17, `day` ×12, `button` ×8, `iconButton` ×8, `textButton` ×6, `chatNav` ×6, `chat` ×6, `actions` ×5, `denied` ×5, `tabBar` ×5, `composer` ×5, `dialog` ×5, `segments` ×4, `largeTitle` ×4, `voice` ×4, `search` ×4, `checklist` ×3, `callView` ×1, `chips` ×1, `adCard` ×1, `miniPlayer` ×1, `usersStack` ×1, `miniInfo` ×1, `lockScreen` ×1, `reminder` ×1, `top` ×1, `stats` ×1, `hue` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Доменные компоненты
@@ -63,6 +63,7 @@
 | Очередь говорящих: текущий — с таймером на 2 минуты, «Пауза» и «Дальше» на месте | `.lt-queue` `.lt-spk` `.lt-spk-head` `.lt-spk-n` `.lt-spk-done` `.lt-spk-live` |
 | Кто говорит сейчас: первый, кому ещё не сказали «Дальше» | `.lt-spk` `.lt-end` `.lt-queue` |
 | «Договорились»: новое решение с ответственным появляется в чек-листе на месте | `.lt-added` `.lt-add` `.lt-add-btn` `.screen` |
+| Апдейты недели в профиле: написан к сроку — галочка, сегодня — ещё пишется | `.lt-week` `.lt-week-d` `.lt-week-ico` |
 <!-- @end -->
 
 Главные из них:

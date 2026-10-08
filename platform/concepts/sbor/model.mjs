@@ -101,3 +101,17 @@ export const money = {
   ],
 };
 
+
+/* Свой итог в профиле: поездки года по месяцам, люди и кадры — те же числа, что в «Поездках» и альбомах */
+export const year = [
+  { month: 'мар', name: 'Выборг', photos: 96 },
+  { month: 'май', name: 'Калининград', photos: 402 },
+  { month: 'авг', name: 'Алтай', photos: 1312 },
+  { month: 'окт', name: 'Казань', photos: trip.photos, now: true },
+];
+export const mine = {
+  trips: year.length,
+  photos: year.reduce((n, t) => n + t.photos, 0).toLocaleString('ru-RU').replace(/\s/g, ' '),
+  /* Фильмы: Алтай 12:40, Калининград 5:18 и пятница Казани 3:42; Выборг без фильма */
+  films: 3,
+};

@@ -1342,7 +1342,7 @@
       "title": "Настройки",
       "type": "tab (root)",
       "light": true,
-      "meta": "Профиль и настройки, как в Telegram",
+      "meta": "Своя карточка со спевками сезона и группы настроек, как в Telegram",
       "ui": {
         "states": [
           "default",
@@ -1904,6 +1904,26 @@
         "primaryAction": null
       },
       "parent": "settings"
+    },
+    {
+      "id": "meedit",
+      "title": "Изменить профиль",
+      "type": "push",
+      "light": true,
+      "meta": "Имя, ник и партия в хоре",
+      "ui": {
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "navigation": "push",
+        "primaryAction": null
+      },
+      "parent": "settings"
     }
   ],
   "prototypes": [
@@ -1944,7 +1964,8 @@
         "nowplaying",
         "newrehearsal",
         "newchat",
-        "widget"
+        "widget",
+        "meedit"
       ],
       "stops": [],
       "authTarget": "chats",
@@ -2115,7 +2136,10 @@
         "geo",
         "attach",
         "contacts",
-        "chats"
+        "chats",
+        "meedit",
+        "repertoire",
+        "deleteaccount"
       ],
       "stops": [
         "call",
@@ -2133,7 +2157,10 @@
         "attach",
         "schedule",
         "contacts",
-        "chats"
+        "chats",
+        "meedit",
+        "repertoire",
+        "deleteaccount"
       ]
     }
   ],
