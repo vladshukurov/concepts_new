@@ -1,16 +1,22 @@
 import { THEME, TABS } from './_shared.mjs';
-import { people, own } from '../model.mjs';
+import { people, own, pts } from '../model.mjs';
+
+/* Свой профиль: что сыграно, сентябрь по дням, коллекция и с кем играю */
+const month = own.september.map(([day, res, win]) => `<span class="${win ? 'is-win' : ''}"><b>${day}</b><i>${res}</i></span>`).join('');
 
 export default (ui) => ui.screen({
   id: 'profile', theme: THEME,
   body: ui.scroll([
-    ui.top('<span></span>', ui.iconButton({ icon: 'settings', label: 'Настройки', go: 'settings' })),
-    `<div class="st-me">${ui.avatar(people.me.initial, { large: true })}<h1>${people.me.name}</h1><p class="ui-sub">Спокойный темп · Алматы · объясняю правила</p>${ui.stats([['24', 'партии'], ['17', 'коробок'], ['9', 'побед']])}</div>`,
-    ui.section({ title: 'Последние партии', children: ui.list([
-      ui.row({ lead: ui.leadIcon('dices', { accent: true }), title: 'Городские линии · 54 очка', sub: 'Третий из четырёх · вчера', go: 'post' }),
-      ui.row({ lead: ui.leadIcon('trophy'), title: 'Лесные союзы · 83 очка', sub: 'Победа · 9 сентября' }),
-      ui.row({ lead: ui.leadIcon('dices'), title: 'Архив острова', sub: 'Кооператив · не успели к рассвету · 6 сентября' }),
-      ui.row({ lead: ui.leadIcon('dices'), title: 'Маршруты Севера', sub: 'Второй из пяти · 3 сентября' }),
+    ui.top('<span></span>', [ui.textButton({ label: 'Изменить', go: 'account' }), ui.iconButton({ icon: 'settings', label: 'Настройки', go: 'settings' })]),
+    `<div class="st-me">${ui.avatar(people.me.initial, { large: true })}<h1>${people.me.name}</h1><p class="ui-sub">Спокойный темп · объясняю правила новичкам</p>${ui.stats([[String(own.stats.plays), 'партия'], [String(own.stats.boxes), 'коробок'], [String(own.stats.wins), 'побед']])}</div>`,
+    ui.section({ title: 'Сентябрь', meta: `${own.month.games} партий · ${own.month.wins} победы`, children: [
+      `<div class="st-month" aria-label="Партии сентября по дням">${month}</div>`,
+      ui.list([ui.row({ lead: ui.leadIcon('trophy', { round: true, accent: true }), title: `Лучший счёт сезона · ${pts(own.best.points)}`, sub: `${own.best.game} · ${own.best.when}` })]),
+    ] }),
+    ui.section({ children: ui.list([
+      ui.row({ lead: ui.leadIcon('book-open', { accent: true }), title: 'Дневник', sub: `Последняя: ${own.last.game} · ${own.last.when}`, go: 'feed' }),
+      ui.row({ lead: ui.leadIcon('dices'), title: 'Игры', sub: `${own.stats.boxes} коробок · 2 хочу сыграть`, go: 'games' }),
+      ui.row({ lead: ui.leadIcon('calendar'), title: 'Столы', sub: 'Сегодня «Лесные союзы» · в субботу ещё 2 места', go: 'tables' }),
     ]) }),
     ui.section({ title: 'С кем играю', children: ui.list([
       ui.row({ lead: ui.avatar('ИЛ'), title: 'Илья Левин', sub: '14 партий вместе · объясняет правила' }),

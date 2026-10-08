@@ -42,8 +42,6 @@
 .tl-pet-head .ui-actions { padding:8px 0 0; }
 
 /* Галерея фото питомца */
-.tl-gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
-.tl-gallery > button { aspect-ratio:1; min-height:44px; }
 
 /* Профиль пользователя */
 .tl-me { display:flex; align-items:center; gap:16px; padding:8px 16px 16px; background:var(--ui-card); }
@@ -117,3 +115,13 @@
 /* Выбор фото из ядра: iOS-синий на белом не проходит AA */
 .ui-pk-text:not(.is-off) { color:#0064d2; }
 .ui-pk-tile > i { background:#0064d2; }
+/* Профиль: неделя прогулок — километры над столбиком */
+.tl-week { display:grid; grid-template-columns:repeat(7, 1fr); gap:8px; align-items:end; padding:4px 16px 8px; }
+.tl-week span { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.tl-week small { font:500 12px/14px var(--ui-face); color:var(--ui-text); min-height:14px; }
+.tl-week i { display:block; width:100%; max-width:32px; border-radius:6px; background:var(--ui-accent); }
+.tl-week .is-next i { background:none; border:1px dashed var(--ui-line); }
+.tl-week b { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.tl-bar-0 { height:8px; } .tl-bar-2 { height:30px; } .tl-bar-3 { height:44px; }
+.tl-danger .ui-cell-text > strong, .tl-danger > svg:first-child { color:var(--ui-danger); }
+.tl-head-acts { display:flex; align-items:center; gap:4px; }

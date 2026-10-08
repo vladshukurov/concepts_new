@@ -38,6 +38,10 @@ export const own = {
   voice: { title: 'Что слышно на базаре', when: 'вчера, 09:52', dur: '0:41' },
   series: { done: 3, of: 4, next: 'зима — ждёт снега' },
   stats: { sketches: 36, series: 7, meets: 12 },
+  /* Неделя 14–20 сентября: зарисовок по дням, сегодня пятница */
+  week: [['пн', 1], ['вт', 0], ['ср', 2], ['чт', 2], ['пт', 1], ['сб', null], ['вс', null]],
+  drafts: 7,
+  offline: '1,2 ГБ',
 };
 
 export const entities = [

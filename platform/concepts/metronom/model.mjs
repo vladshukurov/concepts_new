@@ -42,6 +42,11 @@ for (const s of Object.values(sessions)) {
 }
 export const olderCount = 28;
 export const totals = { sessions: 32, hours: 14, pieces: 4 };
+/* Неделя 5–11 октября: минуты занятий по дням, сегодня четверг — сходится с занятиями */
+export const week = [['пн', 35], ['вт', sessions.eliseday.mins], ['ср', sessions.yesterday.mins], ['чт', sessions.today.mins], ['пт', null], ['сб', null], ['вс', null]];
+export const weekMins = week.reduce((n, [, m]) => n + (m || 0), 0);
+/* Откуда записи занятий и сколько места они занимают */
+export const records = { recorder: 24, files: 8, size: '1,4 ГБ' };
 
 /* Сейчас играет: сегодняшняя запись, остановились на 0:41 */
 export const playing = { at: '0:41', left: '−2:31', pct: 21 };

@@ -1074,7 +1074,7 @@
         "contentCases": [
           {
             "kind": "typical",
-            "example": "24 партии и 17 коробок"
+            "example": "41 партия и 17 коробок"
           },
           {
             "kind": "stress",
@@ -2211,7 +2211,14 @@
         "account",
         "widget",
         "fill",
-        "direct"
+        "direct",
+        "feed",
+        "games",
+        "tables",
+        "table",
+        "audio",
+        "cast",
+        "deleteaccount"
       ],
       "stops": [
         "post",
@@ -2220,7 +2227,15 @@
         "account",
         "widget",
         "fill",
-        "direct"
+        "direct",
+        "feed",
+        "games",
+        "tables",
+        "table",
+        "audio",
+        "cast",
+        "phone",
+        "deleteaccount"
       ]
     }
   ],

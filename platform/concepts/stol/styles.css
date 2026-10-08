@@ -49,3 +49,11 @@
 .st-field { display:flex; flex-direction:column; gap:4px; padding:8px 16px; }
 .st-field > span { font:600 13px/16px var(--ui-face); color:var(--ui-text-2); }
 .st-field > input, .st-field > textarea { width:100%; box-sizing:border-box; padding:10px 12px; border:0; border-radius:10px; background:var(--ui-card); color:var(--ui-text); font:400 16px/22px var(--ui-face); resize:none; }
+/* Профиль: сентябрь по дням — победы залиты акцентом */
+.st-month { display:grid; grid-template-columns:repeat(7, 1fr); gap:6px; padding:4px 16px 8px; }
+.st-month span { display:flex; flex-direction:column; align-items:center; gap:2px; padding:8px 2px; border-radius:10px; background:var(--ui-fill-2); }
+.st-month b { font:600 17px/22px var(--ui-face); }
+.st-month i { font:400 11px/13px var(--ui-face); font-style:normal; color:var(--ui-text-2); text-align:center; }
+.st-month .is-win { background:var(--ui-accent); color:var(--ui-on-accent); }
+.st-month .is-win i { color:var(--ui-on-accent); opacity:.85; }
+.st-danger .ui-cell-text > strong, .st-danger > svg:first-child { color:var(--ui-danger); }

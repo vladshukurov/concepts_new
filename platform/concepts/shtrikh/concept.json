@@ -1424,11 +1424,11 @@
     },
     {
       "id": "notif",
-      "title": "Уведомления",
+      "title": "Тихие часы",
       "type": "push",
       "light": true,
       "parent": "places",
-      "meta": "Уведомления о встречах и сообщениях",
+      "meta": "Ночью без звука",
       "ui": {
         "states": [
           "default",
@@ -1439,7 +1439,7 @@
           "denied"
         ],
         "primaryAction": null,
-        "purpose": "Включить уведомления о встречах и именные сообщения",
+        "purpose": "Ночью уведомления встреч и чатов приходят без звука",
         "hierarchy": {
           "primary": "Встречи и сообщения",
           "secondary": "Тихие часы"
@@ -2419,7 +2419,11 @@
         "compose",
         "lock",
         "chat",
-        "post"
+        "post",
+        "events",
+        "manual",
+        "ads",
+        "deleteaccount"
       ],
       "stops": [
         "profile",
@@ -2434,7 +2438,11 @@
         "compose",
         "lock",
         "chat",
-        "post"
+        "post",
+        "events",
+        "manual",
+        "ads",
+        "deleteaccount"
       ]
     }
   ],

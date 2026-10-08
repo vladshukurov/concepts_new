@@ -69,8 +69,19 @@
 .mt-page { margin:8px 16px 16px; aspect-ratio:3/4; border-radius:12px; }
 
 /* Профиль */
-.mt-me { display:flex; flex-direction:column; align-items:center; gap:4px; padding:12px 16px 24px; text-align:center; }
-.mt-me .ui-avatar { margin-bottom:8px; }
+.mt-me { display:flex; flex-direction:column; align-items:center; gap:4px; padding:4px 16px 16px; text-align:center; }
+.mt-me .ui-avatar { width:96px; height:96px; margin-bottom:8px; font-size:36px; }
+/* Неделя: минуты по дням, сегодня — акцент, впереди — пунктир */
+.mt-days { display:grid; grid-template-columns:repeat(7, 1fr); gap:8px; align-items:end; padding:4px 16px 12px; }
+.mt-days span { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.mt-days small { min-height:14px; font:500 12px/14px var(--ui-face); color:var(--ui-text-2); }
+.mt-days i { display:block; width:100%; max-width:32px; border-radius:6px; background:var(--ui-fill-2); }
+.mt-days .is-now i { background:var(--ui-accent); }
+.mt-days .is-now small { color:var(--ui-text); }
+.mt-days .is-next i { background:none; border:1px dashed var(--ui-line); }
+.mt-days b { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.mt-d0 { height:8px; } .mt-d20 { height:28px; } .mt-d25 { height:34px; } .mt-d30 { height:40px; } .mt-d35 { height:46px; }
+.mt-danger .ui-cell-text > strong, .mt-danger > svg:first-child { color:var(--ui-danger); }
 
 /* Выбор фото из ядра: iOS-синий на тёмном и белом знак не проходят AA */
 .ui-pk-text:not(.is-off) { color:#5aaaff; }
@@ -97,3 +108,4 @@
 .mt-h84 { height:37px; }
 .mt-h88 { height:43px; }
 .mt-h96 { height:55px; }
+.mt-head-acts { display:flex; align-items:center; justify-content:flex-end; gap:4px; }

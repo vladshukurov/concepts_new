@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `section` ×43, `row` ×41, `leadIcon` ×35, `list` ×20, `cell` ×16, `button` ×15, `nav` ×13, `bubble` ×10, `denied` ×10, `avatar` ×8, `actions` ×7, `dialog` ×7, `group` ×6, `iconButton` ×6, `entry` ×6, `tabBar` ×5, `chatNav` ×4, `chat` ×4, `day` ×4, `composer` ×4, `search` ×4, `largeTitle` ×3, `textButton` ×2, `top` ×2, `chips` ×2, `callView` ×1, `voice` ×1, `miniInfo` ×1, `usersStack` ×1, `reminder` ×1, `safariFill` ×1, `wordmark` ×1, `adCard` ×1, `lockScreen` ×1, `stats` ×1, `photoPicker` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `section` ×49, `row` ×43, `leadIcon` ×37, `cell` ×32, `list` ×21, `button` ×15, `nav` ×13, `group` ×11, `bubble` ×10, `denied` ×10, `avatar` ×8, `actions` ×7, `dialog` ×7, `iconButton` ×6, `entry` ×6, `tabBar` ×5, `chatNav` ×4, `chat` ×4, `day` ×4, `composer` ×4, `search` ×4, `largeTitle` ×3, `textButton` ×3, `top` ×2, `chips` ×2, `callView` ×1, `voice` ×1, `miniInfo` ×1, `usersStack` ×1, `reminder` ×1, `safariFill` ×1, `wordmark` ×1, `adCard` ×1, `lockScreen` ×1, `stats` ×1, `photoPicker` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -47,6 +47,7 @@
 | Системные поверхности: «Домой» с виджетом, Safari, замок | `.sh-lock` `.sh-lock-body` `.sh-text` `.sh-gap` |
 | Серия с подписями под кадрами; пустой кадр — той же формы, ждёт своей погоды | `.sh-series` `.sh-empty` |
 | Выбор фото из ядра: iOS-синий на белом не проходит AA | `.ui-pk-text` `.ui-pk-tile` |
+| Профиль: неделя по дням — столбик высотой по числу зарисовок | `.sh-week` `.sh-bar-0` `.sh-danger` |
 <!-- @end -->
 
 ## Актуальная навигация

@@ -62,3 +62,12 @@
 /* Выбор фото из ядра: iOS-синий на белом не проходит AA */
 .ui-pk-text:not(.is-off) { color:#0064d2; }
 .ui-pk-tile > i { background:#0064d2; }
+/* Профиль: неделя по дням — столбик высотой по числу зарисовок */
+.sh-week { display:grid; grid-template-columns:repeat(7, 1fr); gap:8px; align-items:end; padding:4px 16px 8px; }
+.sh-week span { display:flex; flex-direction:column; align-items:center; gap:6px; }
+.sh-week i { display:block; width:100%; max-width:32px; border-radius:6px; background:var(--ui-fill-2); }
+.sh-week .is-on i { background:var(--ui-accent); }
+.sh-week .is-next i { background:none; border:1px dashed var(--ui-line); }
+.sh-week b { font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.sh-bar-0 { height:6px; } .sh-bar-1 { height:24px; } .sh-bar-2 { height:44px; }
+.sh-danger .ui-cell-text > strong, .sh-danger > svg:first-child { color:var(--ui-danger); }

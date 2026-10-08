@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×53, `section` ×43, `leadIcon` ×41, `cell` ×30, `list` ×23, `button` ×15, `nav` ×13, `group` ×11, `denied` ×11, `actions` ×8, `iconButton` ×8, `bubble` ×7, `dialog` ×5, `tabBar` ×5, `entry` ×5, `largeTitle` ×4, `foot` ×4, `day` ×3, `search` ×3, `chatNav` ×2, `chat` ×2, `composer` ×2, `stats` ×2, `callView` ×1, `voice` ×1, `textButton` ×1, `safariFill` ×1, `top` ×1, `wordmark` ×1, `chips` ×1, `adCard` ×1, `lockScreen` ×1, `photoPicker` ×1, `avatar` ×1, `reminder` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×56, `section` ×44, `leadIcon` ×44, `cell` ×39, `list` ×24, `button` ×14, `nav` ×13, `group` ×12, `denied` ×11, `iconButton` ×8, `bubble` ×7, `actions` ×7, `dialog` ×5, `tabBar` ×5, `entry` ×5, `largeTitle` ×4, `day` ×3, `search` ×3, `foot` ×3, `chatNav` ×2, `chat` ×2, `composer` ×2, `textButton` ×2, `stats` ×2, `callView` ×1, `voice` ×1, `safariFill` ×1, `top` ×1, `wordmark` ×1, `chips` ×1, `adCard` ×1, `lockScreen` ×1, `photoPicker` ×1, `avatar` ×1, `reminder` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -44,7 +44,6 @@
 | Карточка прогулки: название, данные, кто идёт | `.tl-walk` `.tl-walk-head` `.tl-walk-time` `.tl-walk-sub` `.tl-walk-tags` `.tl-faces` |
 | Прогулка | `.tl-walk-page` |
 | Профиль питомца: фото во всю ширину | `.tl-hero` `.tl-hero-nav` `.tl-pet-head` |
-| Галерея фото питомца | `.tl-gallery` |
 | Профиль пользователя | `.tl-me` `.tl-me-ava` `.tl-me-block` |
 | Новая запись | `.tl-composer` `.tl-composer-who` `.tl-composer-field` `.tl-attach-row` `.tl-attach-btn` |
 | Камера и выбор фото — системные поверхности | `.tl-camera` `.tl-camera-view` `.tl-camera-shade` `.tl-shutter` |
@@ -52,6 +51,7 @@
 | Расшифровка наблюдения | `.tl-note-head` `.tl-wave` `.tl-ts` |
 | Мессенджер: фото и карточка прогулки внутри сообщения | `.tl-chat-photo` `.tl-walk` `.tl-call` |
 | Выбор фото из ядра: iOS-синий на белом не проходит AA | `.ui-pk-text` `.ui-pk-tile` |
+| Профиль: неделя прогулок — километры над столбиком | `.tl-week` `.tl-bar-0` `.tl-danger` `.tl-head-acts` |
 <!-- @end -->
 
 ## Актуальная навигация

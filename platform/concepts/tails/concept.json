@@ -1042,7 +1042,7 @@
       "ui": {
         "pattern": "settings",
         "purpose": "Показать счётчики, ближайшую прогулку и с кем гуляем",
-        "primaryAction": "Карточка Трюфеля",
+        "primaryAction": null,
         "states": [
           "default",
           "loading",
@@ -1074,7 +1074,7 @@
       "ui": {
         "pattern": "settings",
         "purpose": "Управлять уведомлениями и тем, что живёт вне приложения",
-        "primaryAction": "Без сети",
+        "primaryAction": null,
         "states": [
           "default",
           "loading",

@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×48, `section` ×42, `leadIcon` ×41, `list` ×26, `cell` ×13, `iconButton` ×11, `nav` ×9, `bubble` ×9, `avatar` ×9, `button` ×8, `denied` ×7, `actions` ×6, `dialog` ×6, `entry` ×6, `group` ×5, `tabBar` ×5, `day` ×4, `chatNav` ×3, `chat` ×3, `composer` ×3, `largeTitle` ×3, `top` ×2, `chips` ×2, `progress` ×1, `times` ×1, `callView` ×1, `voice` ×1, `search` ×1, `textButton` ×1, `wordmark` ×1, `safariFill` ×1, `lockScreen` ×1, `stats` ×1, `reminder` ×1, `segments` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×48, `section` ×46, `leadIcon` ×41, `list` ×27, `cell` ×26, `iconButton` ×11, `nav` ×9, `bubble` ×9, `avatar` ×9, `button` ×8, `group` ×8, `denied` ×7, `actions` ×6, `dialog` ×6, `entry` ×6, `tabBar` ×5, `day` ×4, `chatNav` ×3, `chat` ×3, `composer` ×3, `largeTitle` ×3, `textButton` ×2, `top` ×2, `chips` ×2, `progress` ×1, `times` ×1, `callView` ×1, `voice` ×1, `search` ×1, `wordmark` ×1, `safariFill` ×1, `lockScreen` ×1, `stats` ×1, `reminder` ×1, `segments` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -46,6 +46,7 @@
 | Общий экран клуба: что увидят игроки | `.st-screen` |
 | Профиль | `.st-me` |
 | Мессенджер и звонок стола | `.st-call` `.st-field` |
+| Профиль: сентябрь по дням — победы залиты акцентом | `.st-month` `.st-danger` |
 <!-- @end -->
 
 ## Актуальная навигация

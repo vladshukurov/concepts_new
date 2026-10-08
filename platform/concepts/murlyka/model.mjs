@@ -56,3 +56,8 @@ export const playing = { rec: recs.spyat, at: '1:12', left: '−3:28', pct: 26 }
 export const lock = { rec: recs.medved, time: '20:53', at: '3:20', left: '−1:50', status: 'Засыпаем · ещё 12 минут' };
 export const reminder = { time: '20:30' };
 export const totals = { records: 6, voices: 3, mins: 31 };
+/* Неделя 5–11 октября: сколько минут звучал вечер до тишины; сегодня таймер на 20 минут уже идёт */
+export const week = [['пн', 20], ['вт', 30], ['ср', 10], ['чт', 20], ['пт', null], ['сб', null], ['вс', null]];
+/* Любимая недели: чаще всего первой в «Вечере» */
+export const favourite = { rec: recs.spyat, times: 4 };
+export const storage = { recorder: 2, files: 4, size: '212 МБ' };
