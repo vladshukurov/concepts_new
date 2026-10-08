@@ -1025,7 +1025,7 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
   --ui-bubble-in:#232324; --ui-bubble-out:#264a73; --ui-bubble-out-text:#fff; --ui-chat-bg:#0a0a0a;
   --ui-play-bg:#fff; --ui-play-fg:#000; --ui-danger:#ff5c5c; --ui-seg-on:#626364; --ui-shadow:rgba(0,0,0,.45);
 }
-:root[data-app-theme="light"] .ui.vk-dark:not([class*="camera"]):not([class*="lock"]):not([class*="capture"]):not([class*="player"]):not(.ui-hs) {
+:root[data-app-theme="light"] .ui.vk-dark:not([class*="camera"]):not([class*="lock"]):not([class*="capture"]):not([class*="player"]):not(.ui-hs):not(.ui-clips) {
   /* Светлая тема Музыки и Видео — переключатель на странице (?theme=light). Разметка та же, меняются токены:
      нейтрали VKUI vkontakteIOS, карточки серые на белом, как в светлом ВК Видео. Камера, локскрин,
      полноэкранный плеер и экран «Домой» остаются тёмными, как в iOS */
@@ -1036,7 +1036,7 @@ body { margin:0; background:var(--page-bg); color:var(--page-ink); font:400 15px
   --ui-bubble-in:#ebedf0; --ui-bubble-out:#cce4ff; --ui-bubble-out-text:#000; --ui-chat-bg:#fff;
   --ui-play-bg:#0077ff; --ui-play-fg:#fff; --ui-danger:#c42b2b; --ui-seg-on:#fff; --ui-shadow:rgba(0,16,61,.16);
 }
-:root[data-app-theme="light"] .device:has(.screens > .screen.ui.vk-dark.is-on:not([class*="camera"]):not([class*="lock"]):not([class*="capture"]):not([class*="player"]):not(.ui-hs)) .status { color:#000; text-shadow:none; }
+:root[data-app-theme="light"] .device:has(.screens > .screen.ui.vk-dark.is-on:not([class*="camera"]):not([class*="lock"]):not([class*="capture"]):not([class*="player"]):not(.ui-hs):not(.ui-clips)) .status { color:#000; text-shadow:none; }
 /* Над кадром героя статус-бар остаётся белым */
 :root[data-app-theme="light"] .device:has(.screens > .screen.ui.vk-dark.is-on > .ui-scroll > .ui-hero:first-child) .status { color:#fff!important; text-shadow:0 1px 2px rgba(0,0,0,.45)!important; }
 /* Кадр героя в светлой теме не растворяется в белом: подпись поверх него держит затемнение снизу */
@@ -1879,3 +1879,32 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .ui-hs-pip-ctl .ui-icon-btn { color:#fff; }
 .ui-hs-pip-bar { position:absolute!important; left:10px; right:10px; bottom:8px; height:3px; border-radius:2px; background:rgba(255,255,255,.35); }
 .ui-hs-pip-bar > b { display:block; width:30%; height:100%; border-radius:2px; background:#fff; }
+
+/* ── Вертикальный клип (clip): как в ВК Клипах, тёмный в любой теме приложения ── */
+.ui.ui-clips { background:#000!important; color:#fff; }
+.ui-clip { position:absolute; inset:0; bottom:calc(var(--safe-bottom) + 49px); background-color:#111; background-size:cover; background-position:center; overflow:hidden; }
+.ui-clip::before { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.45) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 55%, rgba(0,0,0,.72) 100%); pointer-events:none; }
+.ui-clip.ph::after { position:absolute; inset:0; margin:auto; }
+.ui-clip > * { position:absolute; z-index:1; }
+.ui-clip-top { left:0; right:0; top:calc(var(--safe-top) + 6px); display:flex; flex-direction:column; align-items:center; text-align:center; }
+.ui-clip-top strong { font:600 17px/22px var(--ui-face); color:#fff; }
+.ui-clip-top span { font:400 13px/16px var(--ui-face); color:rgba(255,255,255,.72); }
+.ui-clip-rail { right:6px; bottom:96px; display:flex; flex-direction:column; align-items:center; gap:14px; }
+.ui-clip-act { display:flex; flex-direction:column; align-items:center; gap:3px; min-width:52px; color:#fff; }
+.ui-clip-act svg { width:30px; height:30px; stroke-width:1.9; filter:drop-shadow(0 1px 3px rgba(0,0,0,.5)); }
+.ui-clip-act span { font:600 12px/14px var(--ui-face); text-shadow:0 1px 3px rgba(0,0,0,.6); }
+.ui-clip-act.is-on svg { color:#ff3347; fill:#ff3347; }
+.ui-clip-info { left:16px; right:76px; bottom:18px; display:flex; flex-direction:column; gap:4px; }
+.ui-clip-who { display:flex; align-items:center; gap:8px; margin-bottom:2px; }
+.ui-clip-who .ui-avatar { width:32px; height:32px; font-size:13px; }
+.ui-clip-who b { font:600 15px/20px var(--ui-face); }
+.ui-clip-info > strong { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; font:600 15px/20px var(--ui-face); color:#fff; }
+.ui-clip-meta { font:400 13px/16px var(--ui-face); color:rgba(255,255,255,.72); }
+.ui-clip-info > p { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; margin:0; font:400 14px/18px var(--ui-face); color:rgba(255,255,255,.88); }
+.ui-clip-bar { left:0; right:0; bottom:0; height:2px; background:rgba(255,255,255,.25); }
+.ui-clip-bar > b { display:block; height:100%; background:#fff; }
+/* Таб-бар на клипах — тёмный и в светлой теме приложения, как в ВК */
+.ui.ui-clips .ui-tabs { background:#000!important; box-shadow:none!important; }
+.ui.ui-clips .ui-tab { color:rgba(255,255,255,.6)!important; }
+.ui.ui-clips .ui-tab.is-on { color:#fff!important; }
+.ui.ui-clips .ui-clip.ph { background:#1c1c1e!important; color:rgba(235,235,245,.28)!important; }

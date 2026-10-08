@@ -66,6 +66,9 @@ for (const r of C.required[set] || []) {
 const tf = new RegExp(C.toastForbidden.label, 'i');
 for (const a of acts) if (a.kind === 'toast' && !a.to && tf.test(a.label)) errors.push(`снекбар вместо состояния: ${a.from} «${a.label}» → «${a.toast}»`);
 
+/* PiP — маленькая иконка в плеере, а не большая кнопка под ним */
+if (/class="ui-btn[^"]*"[^>]*>(?:<svg>[\s\S]*?<\/svg>)?<span>Картинка в картинке/.test(page)) errors.push('«Картинка в картинке» большой кнопкой — нужна иконка в плеере (ui.player({ pip }))');
+
 /* 3. Категория и название */
 const cat = C.categories[set];
 if (cat && spec.appStore?.category?.primary !== cat) errors.push(`категория ${spec.appStore?.category?.primary}, нужна ${cat}`);

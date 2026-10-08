@@ -562,3 +562,15 @@ export const musicControls = ({ title, sub, at, left, pct = 0, mark, playing = t
  */
 export const checklist = (items) => `<div class="ui-checklist">${items.map(({ title, sub, value, done = false }) =>
   `<button class="${cls('ui-check', done && 'is-on')}" data-toggle="on" aria-pressed="${done}" aria-label="${String(title).replace(/<[^>]+>/g, '')}"><span class="ui-check-box">${icon('check')}</span><span class="ui-check-text"><strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}</span>${value ? `<span class="ui-check-value">${value}</span>` : ''}</button>`).join('')}</div>`;
+
+/**
+ * Вертикальный клип как в ВК Клипах: кадр во весь экран (всегда тёмный), сверху заголовок ленты,
+ * справа колонка действий, внизу автор, название, подпись и тонкий прогресс.
+ * Экран: ui.screen({ id, theme: 'vk-dark', className: 'ui-clips', body: ui.clip({...}), tabs }).
+ * rail: [{ icon, label, count?, toggle?, ...action }] — «нравится» и голос — переключатели на месте.
+ */
+export const clip = ({ art, top, sub, author, title, meta, text, rail = [], pct = 30 }) =>
+  `<div class="${cls('ui-clip', art || 'ph')}"><div class="ui-clip-top"><strong>${top}</strong>${sub ? `<span>${sub}</span>` : ''}</div>`
+  + `<div class="ui-clip-rail">${rail.map(({ icon: ic, label, count, ...a }) => `<button class="ui-clip-act"${act({ label, ...a })}>${icon(ic)}<span>${count ?? label}</span></button>`).join('')}</div>`
+  + `<div class="ui-clip-info">${author ? `<span class="ui-clip-who"><span class="${cls('ui-avatar', hue(author.initials))}">${author.initials}</span><b>${author.name}</b></span>` : ''}<strong>${title}</strong>${meta ? `<span class="ui-clip-meta">${meta}</span>` : ''}${text ? `<p>${text}</p>` : ''}</div>`
+  + `<i class="ui-clip-bar"><b style="width:${pct}%"></b></i></div>`;
