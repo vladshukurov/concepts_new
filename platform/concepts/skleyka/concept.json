@@ -50,7 +50,7 @@
   },
   "positioning": {
     "mode": "mimicry",
-    "categoryFit": "Съёмка, импорт, видеоредактор, просмотр и экспорт — ядро категории Photo & Video, как у ВК Видео",
+    "categoryFit": "Съёмка, импорт, видеоредактор, просмотр и экспорт — ядро категории Entertainment, как у ВК Видео",
     "familiarPatterns": [
       "Видеокарточки 16:9 с длительностью и прогрессом",
       "Страница проекта: баннер, название, материалы",
@@ -1461,6 +1461,46 @@
       }
     },
     {
+      "id": "clips",
+      "title": "Клипы",
+      "type": "push",
+      "light": false,
+      "parent": "projects",
+      "meta": "Вертикальные клипы из фрагментов",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "push",
+        "purpose": "Показать вертикальные клипы из фрагментов проекта и открыть любой в плеере",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Сетка вертикальных клипов с длительностью",
+          "secondary": "Название фрагмента на каждом клипе"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Шесть клипов из фрагментов проекта «Выходные у озера»"
+          },
+          {
+            "kind": "stress",
+            "example": "Клипов больше двадцати, список прокручивается"
+          },
+          {
+            "kind": "failure",
+            "example": "Фрагмент недоступен, клип не открывается"
+          }
+        ]
+      }
+    },
+    {
       "id": "viewer-lera",
       "title": "День рождения Леры",
       "type": "fullscreen",
@@ -1781,6 +1821,7 @@
         "lock",
         "export",
         "saved",
+        "clips",
         "viewer-lera",
         "viewer-final",
         "viewer-almaty",
@@ -1967,8 +2008,8 @@
     "promo": "Соберите фильм из видео друзей: получите ролики через AirDrop или сообщения, импортируйте из «Фото» и «Файлов», поправьте порядок и сохраните.",
     "keywords": "монтаж,событие,друзья,камера,черновик,видеопроект,поездка,праздник,экспорт",
     "category": {
-      "primary": "Photo & Video",
-      "secondary": "Lifestyle"
+      "primary": "Entertainment",
+      "secondary": "Photo & Video"
     },
     "ageRating": "13+",
     "price": "Бесплатно, с рекламой",

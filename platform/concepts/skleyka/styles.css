@@ -160,3 +160,9 @@
 /* Выбор фото из ядра: iOS-синий на тёмном и белом знак не проходят AA */
 .ui-pk-text:not(.is-off) { color:#5aaaff; }
 .ui-pk-tile > i { background:#0064d2; }
+
+.sk-clips-sub { margin:0; padding:4px 16px 12px; font:400 14px/20px var(--ui-face); color:var(--ui-text-2); }
+.sk-clips-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:0 16px 24px; }
+.sk-clip-tile { position:relative; aspect-ratio:9/16; border-radius:12px; overflow:hidden; background-size:300% auto; }
+.sk-clip-tile > strong { position:absolute; left:10px; bottom:10px; font:600 14px/18px var(--ui-face); color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.8); }
+.sk-clip-tile > .ui-duration { position:absolute; right:8px; top:8px; }

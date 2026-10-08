@@ -45,4 +45,7 @@
 .st-call .ui-call > span, .st-call .ui-call-ctl { color:rgba(255,255,255,.72); }
 .st-call .ui-call-btn:not(.is-end) { background:rgba(255,255,255,.16); color:#fff; }
 .st-call .ui-call-face { background:rgba(255,255,255,.16); color:#fff; }
-.st-text { padding:0 16px; font:400 17px/24px var(--ui-face); }
+
+.st-field { display:flex; flex-direction:column; gap:4px; padding:8px 16px; }
+.st-field > span { font:600 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.st-field > input, .st-field > textarea { width:100%; box-sizing:border-box; padding:10px 12px; border:0; border-radius:10px; background:var(--ui-card); color:var(--ui-text); font:400 16px/22px var(--ui-face); resize:none; }

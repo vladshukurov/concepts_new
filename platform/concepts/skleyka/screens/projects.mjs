@@ -13,6 +13,7 @@ export default (ui) => ui.screen({
       avatar: '<span class="ui-avatar sk-place-ava"><svg><use href="#i-map-pin"/></svg></span>',
       title: 'Выходные у озера', sub: 'Боровое · 14–16 августа · черновик собран',
     }),
+    ui.section({ children: ui.list([ui.row({ thumb: 'm2', title: 'Клипы', sub: '6 вертикальных из фрагментов «Выходных у озера»', go: 'clips' })]) }),
     ui.section({ title: 'Недавние', meta: '4 проекта', children: ui.list([
       ui.row({ thumb: 'm5', wide: true, duration: '2:46', title: 'День рождения Леры', sub: 'Фильм готов вчера · 1080p', go: 'viewer-lera', end: MORE }),
       ui.row({ thumb: 'm3', wide: true, duration: '5:18', title: 'Финал летнего концерта', sub: 'Фильм · 4K · 612 МБ', go: 'viewer-final', end: MORE }),

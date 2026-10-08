@@ -7,7 +7,7 @@ export default (ui) => ui.screen({
   body: [
     ui.nav({ title: 'Новая запись', back: 'cancel', trailing: ui.textButton({ label: 'Сохранить', strong: true, toast: 'Запись в дневнике|feed', primary: true }) }),
     ui.scroll([
-      ui.section({ children: `<p class="st-text">«${tonight.game}» вчетвером, Женя впервые. Илья объяснил за 10 минут, к четвёртому раунду я отстаю на 13</p>` }),
+      ui.section({ children: `<label class="st-field"><span>Заголовок</span><input value="${tonight.game} вчетвером" aria-label="Заголовок"></label><label class="st-field"><span>Что случилось за столом</span><textarea rows="4" aria-label="Текст записи">Женя впервые. Илья объяснил за 10 минут, к четвёртому раунду я отстаю на 13</textarea></label>` }),
       ui.section({ children: ui.group({ cells: [
         ui.cell({ icon: 'camera', title: 'Снять поле', sub: 'Расклад или итог партии', ask: 'camera|compose|compose' }),
         ui.cell({ icon: 'image', title: 'Фото', sub: 'Снимки с сегодняшней партии', ask: 'photos|compose|compose' }),

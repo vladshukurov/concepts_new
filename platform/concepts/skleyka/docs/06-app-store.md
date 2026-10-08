@@ -23,8 +23,8 @@ Review route:
 | Subtitle | Локальный фильм из ваших видео | 30 / 30 |
 | Promotional Text | Соберите фильм из видео друзей: получите ролики через AirDrop или сообщения, импортируйте из «Фото» и «Файлов», поправьте порядок и сохраните. | 142 / 170 |
 | Keywords | монтаж,событие,друзья,камера,черновик,видеопроект,поездка,праздник,экспорт | 74 / 100 |
-| Primary Category | Photo & Video | — |
-| Secondary Category | Lifestyle | — |
+| Primary Category | Entertainment | — |
+| Secondary Category | Photo & Video | — |
 | Age Rating | 13+ | — |
 | Price | Бесплатно, с рекламой | — |
 | Support URL | https://vstyk.app/support | — |

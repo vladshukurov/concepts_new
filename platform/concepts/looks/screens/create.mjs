@@ -22,7 +22,7 @@ export default (ui) => ui.screen({
       ui.denied('camera'),
       ui.denied('photos'),
       ui.section({ children: ui.group({ cells: [
-        ui.cell({ icon: 'tag', title: 'Отметить вещи', value: '4', toast: 'Отмечено 4 вещи' }),
+        ui.cell({ icon: 'tag', title: 'Отметить вещи', value: '4', toggle: 'on' }),
         ui.cell({ icon: 'cloud-sun', title: 'Погода здесь', sub: swapText('location', 'По текущему месту', `${own.weather.where} · сейчас`), value: swapText('location', '', own.weather.now), ask: 'location|create|create' }),
         `<div class="perm-hidden" data-show-denied="location">${ui.cell({ icon: 'map-pin', title: 'Район для погоды', value: 'Выбрать', menu: ['Петроградская', 'Васильевский', 'Центр', 'Купчино'] })}</div>`,
         ui.cell({ icon: 'calendar', title: 'Повод', value: 'Своп', menu: ['Работа', 'Своп', 'Встреча', 'Дом'] }),

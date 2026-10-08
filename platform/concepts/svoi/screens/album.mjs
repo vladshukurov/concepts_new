@@ -17,7 +17,7 @@ export default (ui) => ui.screen({
       ]) }),
       ui.section({ title: 'Видео недели', children: [
         ui.list([
-          ui.row({ lead: ui.leadIcon('film', { round: true, accent: true }), title: 'Прошлая неделя · готово', sub: `${video.last.dur} · ${video.last.frames} кадров · собрано в ${video.last.at}`, end: { icon: 'play', toast: `Видео недели ${video.last.dur}`, label: 'Смотреть видео прошлой недели' } }),
+          ui.row({ lead: ui.leadIcon('film', { round: true, accent: true }), title: 'Прошлая неделя · готово', sub: `${video.last.dur} · ${video.last.frames} кадров · собрано в ${video.last.at}`, end: { icon: 'play', toggle: 'play', label: 'Смотреть видео прошлой недели' } }),
           ui.row({ lead: ui.leadIcon('images', { round: true, accent: true }), title: 'Альбом «Гариповы» в «Фото»', sub: 'Фото недели сохранены в альбом ночью' }),
           ui.row({ lead: ui.leadIcon('film', { round: true }), title: 'Эта неделя · ещё снимаем', sub: `${video.week.frames} кадров и ${video.week.clips} видео · до воскресенья` }),
         ]),

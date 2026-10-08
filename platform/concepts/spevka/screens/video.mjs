@@ -10,7 +10,7 @@ export default (ui) => ui.screen({
     ui.scroll([
       ui.section({ title: 'Концерты', children: [
         ui.list([
-          ui.row({ lead: ui.leadIcon('film', { round: true, accent: true }), title: 'Летний концерт · готово', sub: `${video.past.dur} · ${video.past.clips} ролика · собрано 29 августа в 3:40`, end: { icon: 'play', toast: `${video.past.title}, ${video.past.dur}`, label: 'Смотреть летний концерт' } }),
+          ui.row({ lead: ui.leadIcon('film', { round: true, accent: true }), title: 'Летний концерт · готово', sub: `${video.past.dur} · ${video.past.clips} ролика · собрано 29 августа в 3:40`, end: { icon: 'play', toggle: 'play', label: 'Смотреть летний концерт' } }),
           ui.row({ lead: ui.leadIcon('film', { round: true }), title: `${video.title} · ролики приходят`, sub: `${video.clips} роликов от ${video.from} участников · до 23:00 ещё пришлют` }),
         ]),
         ui.actions([ui.button({ label: 'Собрать видео концерта ночью', icon: 'clapperboard', variant: 'secondary', block: true, activate: 'processing|video', primary: true })]),
