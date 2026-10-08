@@ -1,19 +1,22 @@
 import { THEME, TABS } from './_shared.mjs';
 import { clip, dog } from '../model.mjs';
 
-/* Клипы — короткие вертикальные ролики Рыжика, один на экран */
-const side = (ui, icon, label, a) => `<span class="vl-clip-act">${ui.iconButton({ icon, label, look: 'glass', ...a })}<small>${label}</small></span>`;
+/* Клипы — короткие вертикальные ролики Рыжика, один на экран, как в ВК Клипах */
+const cap = (s) => s[0].toUpperCase() + s.slice(1);
 
 export default (ui) => ui.screen({
-  id: 'clips', theme: THEME, className: 'vl-clips',
-  body: [
-    '<div class="vl-fill">',
-    `<div class="vl-clip-frame ${clip.art}"></div><div class="vl-clip-shade"></div>`,
-    `<header class="vl-clip-head"><strong>Клипы</strong><span>Сезон «Сейчас» · клип ${clip.n} из ${clip.of}</span></header>`,
-    `<div class="vl-clip-side">${side(ui, 'heart', 'Мило', { toggle: 'on' })}${side(ui, 'clapperboard', 'Сезон', { go: 'now', label: 'Сезон «Сейчас»' })}${side(ui, 'skip-forward', 'Дальше', { toast: 'Следующий клип: Рыжик ждёт папу у двери' })}</div>`,
-    `<div class="vl-clip-info">${ui.avatar(clip.by.initial)}<span class="ui-row-text"><strong>${clip.title}</strong><span>Снял ${clip.by.short} на вечерней прогулке · ${clip.dur}</span><span>😂 4 · ❤️ 6 · ${dog.name}, ${dog.age}</span></span></div>`,
-    '<div class="vl-clip-bar"><i class="vl-p45"></i></div>',
-    '</div>',
-  ],
+  id: 'clips', theme: THEME, className: 'ui-clips',
+  body: ui.clip({
+    art: clip.art, top: 'Клипы', sub: `Сезон «Сейчас» · клип ${clip.n} из ${clip.of}`,
+    author: { initials: clip.by.initial, name: cap(clip.by.short) },
+    title: clip.title, meta: `вечерняя прогулка · ${clip.dur}`, text: `${dog.name}, ${dog.age}`,
+    rail: [
+      { icon: 'heart', label: 'Мило', count: '6', toggle: 'on' },
+      { icon: 'sparkles', label: 'Смешно', count: '4', toggle: 'on' },
+      { icon: 'clapperboard', label: 'Сезон «Сейчас»', count: 'Сезон', go: 'now' },
+      { icon: 'share', label: 'Поделиться', menu: 'Скопировать ссылку=Ссылка скопирована|Отправить семье=Клип отправлен семье' },
+    ],
+    pct: 45,
+  }),
   tabs: ui.tabBar({ items: TABS, active: 'clips' }),
 });

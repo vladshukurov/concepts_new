@@ -1,20 +1,22 @@
 import { THEME, TABS } from './_shared.mjs';
-import { moments, mMeta, lastMatch } from '../model.mjs';
+import { moments, lastMatch } from '../model.mjs';
 
-/* Клипы — вертикальные моменты прошлого матча, один на экран */
+/* Клипы — вертикальные моменты прошлого матча, один на экран, как в ВК Клипах */
 const m = moments.win;
-const side = (ui, icon, label, a) => `<span class="vr-clip-act">${ui.iconButton({ icon, label, look: 'glass', ...a })}<small>${label}</small></span>`;
 
 export default (ui) => ui.screen({
-  id: 'clips', theme: THEME, className: 'vr-clips',
-  body: [
-    '<div class="vr-fill">',
-    `<div class="vr-clip-frame ${m.art}"></div><div class="vr-clip-shade"></div>`,
-    `<header class="vr-clip-head"><strong>Клипы</strong><span>${lastMatch.line} · момент 7 из ${lastMatch.moments}</span></header>`,
-    `<div class="vr-clip-side">${side(ui, 'sparkles', 'Лучший', { toggle: 'on' })}${side(ui, 'trophy', 'Матч', { go: 'match', label: lastMatch.title })}${side(ui, 'skip-forward', 'Дальше', { toast: 'Следующий момент: сейв Гоши на 87-й' })}</div>`,
-    `<div class="vr-clip-info">${ui.avatar(m.who.initial)}<span class="ui-row-text"><strong>${m.title}</strong><span>${mMeta(m)}</span><span>Снял ${m.by.short} со скамейки</span></span></div>`,
-    '<div class="vr-clip-bar"><i class="vr-p45"></i></div>',
-    '</div>',
-  ],
+  id: 'clips', theme: THEME, className: 'ui-clips',
+  body: ui.clip({
+    art: m.art, top: 'Клипы', sub: `${lastMatch.line} · момент 7 из ${lastMatch.moments}`,
+    author: { initials: m.who.initial, name: m.who.name },
+    title: m.title, meta: `${m.min}' · ${m.dur} · ${lastMatch.day}`, text: `Снял ${m.by.short} со скамейки`,
+    rail: [
+      { icon: 'heart', label: 'Нравится', count: '5', toggle: 'on' },
+      { icon: 'sparkles', label: 'Лучший момент', count: `${m.votes}`, toggle: 'on' },
+      { icon: 'trophy', label: lastMatch.title, count: 'Матч', go: 'match' },
+      { icon: 'share', label: 'Поделиться', menu: 'Скопировать ссылку=Ссылка скопирована|Отправить в чат команды=Клип отправлен в чат команды' },
+    ],
+    pct: 45,
+  }),
   tabs: ui.tabBar({ items: TABS, active: 'clips' }),
 });

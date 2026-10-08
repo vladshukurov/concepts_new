@@ -15,12 +15,12 @@ export const watchScreen = (ui, key, { pip = false, at = '0:04', fill = 'vr-p30'
         chapter: `${KIND[m.kind]} · ${m.min}-я минута`,
         collapse: { go: 'home', label: 'Свернуть в мини-плеер' },
         settings: { menu: 'Качество · 1080p=Качество 1080p|Скорость · 0,5×=Скорость 0,5×|Звук при погашенном экране>lock', label: 'Настройки просмотра' },
+        pip: pip ? { activate: 'audio|background' } : undefined,
         fullscreen: { toast: 'Во весь экран — поверните телефон' },
       }),
       ui.section({ children: [
         `<h1 class="ui-title vr-watch-title">${m.title}</h1>`,
         ui.foot(`${mMeta(m)} · снял ${m.by.short} · ${m.votes} голосов за лучший`, 'vr-watch-meta'),
-        pip ? ui.actions(ui.button({ label: 'Картинка в картинке', icon: 'picture-in-picture-2', variant: 'secondary', block: true, activate: 'audio|background' }), { className: 'vr-actions' }) : '',
       ] }),
       ui.section({ children: ui.list([
         ui.row({ lead: ui.avatar(m.who.initial), title: m.who.name, sub: `${m.who.role} · ${KIND[m.kind].toLowerCase()} на ${m.min}-й минуте` }),

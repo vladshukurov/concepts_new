@@ -11,12 +11,9 @@ export const TABS = [
   { id: 'profile', label: 'Профиль', icon: 'user' },
 ];
 
-/* Свёрнутый плеер: хайлайт досматривается над таб-баром */
+/* Свёрнутый плеер: окошко 16:9 справа над таб-баром, как в ВК Видео */
 const h = highlights.cat;
-export const MINI = ui.miniPlayer({
-  face: h.art, title: h.title, sub: `${h.who.short} · 0:04 из ${h.dur}`,
-  open: { go: 'watch' }, playAction: { toast: 'Продолжаем с 0:04', label: 'Продолжить' }, progressClass: 'vy-p33',
-});
+export const MINI = ui.videoMini({ art: h.art, title: h.title, open: { go: 'watch' }, pct: 33 });
 
 /** Пустой кадр — только там, где снимка ещё нет (ответ снимается, ищут в галерее) */
 export const frame = 'ph on-dark';

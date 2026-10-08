@@ -13,12 +13,12 @@
 .f5 { background-size:220% auto; background-position:100% 6%; }
 .f6 { background-size:350% auto; background-position:84% 83%; }
 /* Не 16:9 (квадрат, вертикаль): масштаб по высоте, чтобы кадр закрывал рамку */
-:is(.ui-mini-face,.ui-pk-tile,.ui-thumb:not(.is-wide),.vr-clip-frame,.vr-camera-view):is(.f2) { background-size:auto 250%; }
-:is(.ui-mini-face,.ui-pk-tile,.ui-thumb:not(.is-wide),.vr-clip-frame,.vr-camera-view):is(.f3) { background-size:auto 300%; }
-:is(.ui-mini-face,.ui-pk-tile,.ui-thumb:not(.is-wide),.vr-clip-frame,.vr-camera-view):is(.f4) { background-size:auto 280%; }
-:is(.ui-mini-face,.ui-pk-tile,.ui-thumb:not(.is-wide),.vr-clip-frame,.vr-camera-view):is(.f5) { background-size:auto 220%; }
-:is(.ui-mini-face,.ui-pk-tile,.ui-thumb:not(.is-wide),.vr-clip-frame,.vr-camera-view):is(.f6) { background-size:auto 350%; }
-:is(.vr-clip-frame,.vr-camera-view).f1 { background-size:auto 100%; background-position:62% 50%; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vr-camera-view):is(.f2) { background-size:auto 250%; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vr-camera-view):is(.f3) { background-size:auto 300%; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vr-camera-view):is(.f4) { background-size:auto 280%; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vr-camera-view):is(.f5) { background-size:auto 220%; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vr-camera-view):is(.f6) { background-size:auto 350%; }
+:is(.ui-clip,.vr-camera-view).f1 { background-size:auto 100%; background-position:62% 50%; }
 
 /* Доли прогресса */
 .vr-p0 { width:0; }
@@ -43,6 +43,7 @@
 
 /* Профиль */
 .vr-me { display:flex; align-items:center; gap:12px; min-width:0; }
+.vr-gap { margin-top:12px; }
 
 /* Табло матча: команды, счёт крупно, минута */
 .vr-score { display:flex; flex-direction:column; gap:8px; margin:0 16px; padding:16px; border-radius:16px; background-color:var(--ui-card); }
@@ -70,20 +71,7 @@
 /* Длинные подписи переносятся */
 .vr-wrap .ui-row-text > strong { white-space:normal; }
 
-/* Клипы: вертикальный момент на весь экран */
-.vr-clips { overflow:hidden; }
-.vr-clip-frame { position:absolute; inset:0; border-radius:0; }
-.vr-clip-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.55), transparent 20%, transparent 58%, rgba(0,0,0,.78)); }
-.vr-clip-head { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding:calc(var(--safe-top) + 8px) 16px 0; color:#fff; }
-.vr-clip-head strong { font:600 17px/22px var(--ui-face); }
-.vr-clip-head span { font:400 13px/16px var(--ui-face); color:rgba(255,255,255,.72); }
-.vr-clip-side { position:absolute; right:8px; bottom:120px; z-index:1; display:flex; flex-direction:column; gap:12px; }
-.vr-clip-act { display:flex; flex-direction:column; align-items:center; gap:2px; }
-.vr-clip-act small { font:500 12px/14px var(--ui-face); color:#fff; }
-.vr-clip-info { position:absolute; left:16px; right:72px; bottom:28px; z-index:1; display:flex; align-items:flex-start; gap:12px; color:#fff; }
-.vr-clip-info .ui-row-text > span { color:rgba(255,255,255,.78); white-space:normal; }
-.vr-clip-bar { position:absolute; left:0; right:0; bottom:0; z-index:1; height:2px; background-color:rgba(255,255,255,.3); }
-.vr-clip-bar i { display:block; height:100%; background-color:#fff; }
+/* Клип занимает всё место над таб-баром, таб-бар прижат к низу */
 
 /* Камера момента */
 .vr-camera { overflow:hidden; }

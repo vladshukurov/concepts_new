@@ -1,28 +1,29 @@
 /* «Виляй» — мимикрия ВК Видео. Оболочка, кегли и цвета — из слоя `.ui` ядра;
    здесь только своё: реакции семьи, вертикальный клип, камера, страница сезона как канал. */
 
-/* Кадры роликов — кадрирование трёх снимков (assets/media/photo-*.jpg):
-   d1 Рыжик бежит по парку · d2 морда крупно · d3 щенки знакомятся · d4 Уголёк на даче
-   d5 щенок крупно · d6 грудь и лапы на бегу · d7 деревья и дома над парком · d8 лапы в траве */
-.d1,.d2,.d6,.d7,.d8 { background-image:url(assets/media/photo-1.jpg); }
-.d3,.d5 { background-image:url(assets/media/photo-3.jpg); }
+/* Кадры роликов: Рыжик — всегда один и тот же ретривер (assets/media/photo-1.jpg),
+   чужие собаки — только под своими именами (Уголёк — photo-4.jpg):
+   d1 Рыжик бежит по парку · d2 морда крупно · d3 Рыжик в парке издалека · d4 Уголёк на даче
+   d5 лапа Рыжика в траве · d6 грудь и лапы на бегу · d7 деревья и дома над парком · d8 лапы в траве */
+.d1,.d2,.d3,.d5,.d6,.d7,.d8 { background-image:url(assets/media/photo-1.jpg); }
 .d4 { background-image:url(assets/media/photo-4.jpg); }
 .d1,.d2,.d3,.d4,.d5,.d6,.d7,.d8 { background-repeat:no-repeat; background-color:#2a2418; }
 .d1 { background-size:cover; background-position:50% 40%; }
 .d2 { background-size:250% auto; background-position:52% 28%; }
-.d3 { background-size:cover; background-position:50% 60%; }
+.d3 { background-size:125% auto; background-position:20% 75%; }
 .d4 { background-size:cover; background-position:50% 40%; }
-.d5 { background-size:200% auto; background-position:96% 43%; }
+.d5 { background-size:330% auto; background-position:48% 98%; }
 .d6 { background-size:180% auto; background-position:45% 75%; }
 .d7 { background-size:160% auto; background-position:37% 7%; }
 .d8 { background-size:170% auto; background-position:14% 100%; }
 /* Не 16:9 (квадрат, вертикаль): масштаб по высоте, чтобы кадр закрывал рамку */
-:is(.ui-mini-face,.ui-pk-tile,.ui-thumb:not(.is-wide),.vl-clip-frame,.vl-camera-view):is(.d1,.d3,.d4) { background-size:cover; background-position:50% 50%; }
-:is(.ui-mini-face,.ui-pk-tile,.ui-thumb:not(.is-wide),.vl-clip-frame,.vl-camera-view).d2 { background-size:auto 220%; background-position:52% 30%; }
-:is(.ui-mini-face,.ui-pk-tile,.ui-thumb:not(.is-wide),.vl-clip-frame,.vl-camera-view).d5 { background-size:auto 200%; background-position:90% 40%; }
-:is(.ui-mini-face,.ui-pk-tile,.ui-thumb:not(.is-wide),.vl-clip-frame,.vl-camera-view).d6 { background-size:auto 180%; background-position:45% 70%; }
-:is(.ui-mini-face,.ui-pk-tile,.ui-thumb:not(.is-wide),.vl-clip-frame,.vl-camera-view).d7 { background-size:auto 160%; background-position:30% 10%; }
-:is(.ui-mini-face,.ui-pk-tile,.ui-thumb:not(.is-wide),.vl-clip-frame,.vl-camera-view).d8 { background-size:auto 170%; background-position:20% 100%; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vl-camera-view):is(.d1,.d4) { background-size:cover; background-position:50% 50%; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vl-camera-view).d3 { background-size:auto 115%; background-position:25% 80%; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vl-camera-view).d2 { background-size:auto 220%; background-position:52% 30%; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vl-camera-view).d5 { background-size:auto 300%; background-position:48% 98%; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vl-camera-view).d6 { background-size:auto 180%; background-position:45% 70%; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vl-camera-view).d7 { background-size:auto 160%; background-position:30% 10%; }
+:is(.ui-pk-tile,.ui-thumb:not(.is-wide),.ui-clip,.vl-camera-view).d8 { background-size:auto 170%; background-position:20% 100%; }
 
 /* Доли прогресса */
 .vl-p0 { width:0; }
@@ -47,6 +48,7 @@
 
 /* Профиль */
 .vl-me { display:flex; align-items:center; gap:12px; min-width:0; }
+.vl-gap { margin-top:12px; }
 
 /* Страница сезона и сериала как канал */
 .vl-banner { height:132px; margin:0 16px; border-radius:12px; }
@@ -66,21 +68,7 @@
 /* Длинные подписи переносятся */
 .vl-wrap .ui-row-text > strong { white-space:normal; }
 
-/* Клипы: вертикальный момент на весь экран */
-.vl-clips { overflow:hidden; }
-.vl-clip-frame { position:absolute; inset:0; border-radius:0; }
-.vl-clip-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.55), transparent 20%, transparent 58%, rgba(0,0,0,.78)); }
-.vl-clip-head { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding:calc(var(--safe-top) + 8px) 16px 0; color:#fff; }
-.vl-clip-head strong { font:600 17px/22px var(--ui-face); }
-.vl-clip-head span { font:400 13px/16px var(--ui-face); color:rgba(255,255,255,.72); }
-.vl-clip-side { position:absolute; right:8px; bottom:120px; z-index:1; display:flex; flex-direction:column; gap:12px; }
-.vl-clip-act { display:flex; flex-direction:column; align-items:center; gap:2px; }
-.vl-clip-act small { font:500 12px/14px var(--ui-face); color:#fff; }
-.vl-clip-info { position:absolute; left:16px; right:72px; bottom:28px; z-index:1; display:flex; align-items:flex-start; gap:12px; color:#fff; }
-.vl-clip-info .ui-row-text > strong { white-space:normal; }
-.vl-clip-info .ui-row-text > span { color:rgba(255,255,255,.78); white-space:normal; }
-.vl-clip-bar { position:absolute; left:0; right:0; bottom:0; z-index:1; height:2px; background-color:rgba(255,255,255,.3); }
-.vl-clip-bar i { display:block; height:100%; background-color:#fff; }
+/* Клип занимает всё место над таб-баром, таб-бар прижат к низу */
 
 /* Камера момента */
 .vl-camera { overflow:hidden; }
@@ -107,7 +95,7 @@
 
 /* Плеер: ядро ставит cover и центр — кадрирование ролика сильнее */
 .ui-player.d2 { background-size:250% auto; background-position:52% 28%; }
-.ui-player.d5 { background-size:200% auto; background-position:96% 43%; }
+.ui-player.d5 { background-size:330% auto; background-position:48% 98%; }
 .ui-player.d6 { background-size:180% auto; background-position:45% 75%; }
 .ui-player.d7 { background-size:160% auto; background-position:37% 7%; }
 .ui-player.d1,.ui-player.d4 { background-position:50% 40%; }

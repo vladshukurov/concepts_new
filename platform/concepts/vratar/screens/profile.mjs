@@ -1,14 +1,21 @@
 import { THEME, TABS } from './_shared.mjs';
-import { people, season, moments, mMeta, team } from '../model.mjs';
-import { TEST_PHONE } from '../../../kernel/world.mjs';
+import { people, season, moments, mMeta, team, lastMatch, nextMatch } from '../model.mjs';
 
-/* Профиль игрока: свои голы и то, что снял со скамейки — чипсы фильтруют на месте */
+/* Профиль игрока в грамматике ВК Видео: шапка с «Изменить» и шестерёнкой, месяц, свои голы и то, что снял со скамейки — чипсы фильтруют на месте */
 const me = people.me;
 export default (ui) => ui.screen({
   id: 'profile', theme: THEME,
   body: ui.scroll([
-    ui.top(`<span class="vr-me">${ui.avatar(me.initial, { large: true })}<span class="ui-row-text"><strong>${me.name}</strong><span>${team.name} · ${me.role}</span></span></span>`),
-    ui.section({ children: ui.stats([[season.matches, 'матчей'], [season.goals, 'гола'], [season.filmed, 'снял']]) }),
+    ui.top(`<span class="vr-me">${ui.avatar(me.initial, { large: true })}<span class="ui-row-text"><strong>${me.name}</strong><span>${team.name} · ${me.role}</span></span></span>`,
+      ui.iconButton({ icon: 'settings', label: 'Настройки', go: 'settings' })),
+    ui.section({ children: [
+      ui.stats([[season.matches, 'матчей'], [season.goals, 'гола'], [season.filmed, 'снял']]),
+      ui.actions(ui.button({ label: 'Изменить', icon: 'pen-line', variant: 'secondary', block: true, go: 'account' }), { className: 'vr-gap' }),
+    ] }),
+    ui.section({ title: 'За месяц', children: ui.miniInfo([
+      { icon: 'trophy', text: `${lastMatch.title} с «${lastMatch.rival}» · ваш гол пяткой на ${moments.mine.min}'`, accent: true },
+      { icon: 'calendar', text: `Дальше — «${nextMatch.rival}», ${nextMatch.day}, ${nextMatch.time}`, go: 'nextmatch' },
+    ]) }),
     ui.section({ children: ui.chips([
       { label: 'Мои голы', on: true, filter: 'goals' },
       { label: 'Снял', filter: 'filmed' },
@@ -23,8 +30,6 @@ export default (ui) => ui.screen({
     ui.section({ children: ui.group({ cells: [
       ui.cell({ icon: 'sparkles', title: 'Лучшее за сезон', sub: `${season.best} моментов · ${season.total}`, go: 'season' }),
       ui.cell({ icon: 'users', title: 'Состав', sub: '9 игроков в команде', go: 'squad' }),
-      ui.cell({ icon: 'megaphone', title: 'Реклама', sub: 'Бесплатная версия', go: 'ads' }),
-      ui.cell({ icon: 'circle-user', title: 'Аккаунт', sub: TEST_PHONE, go: 'account' }),
     ] }) }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'profile' }),

@@ -16,10 +16,7 @@ export const frame = 'ph on-dark';
 
 /* Свёрнутый плеер: ролик с точки 3 досматривается над таб-баром */
 const v = videos.fountain;
-export const MINI = ui.miniPlayer({
-  face: v.art, title: v.title, sub: `${v.who.short} · 0:07 из ${v.dur}`,
-  open: { go: 'watch', label: v.title }, playAction: { toast: 'Продолжаем с 0:07', label: 'Продолжить' }, progressClass: 'vz-p33',
-});
+export const MINI = ui.videoMini({ art: v.art, title: v.title, open: { go: 'watch' }, pct: 33 });
 
 /** Видеокарточка ролика с точки: инициалы игрока, заголовок, «Квест «…» · точка · длительность · когда» */
 export const videoCard = (v) => ui.videoCard({

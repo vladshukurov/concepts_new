@@ -13,10 +13,11 @@
 .m5 { background-position:50% 100%; }
 .m6 { background-position:100% 100%; }
 /* Широкие кадры 16:9 — середина фото, а не верхний край */
-:is(.ui-video-art,.ui-player,.ui-thumb.is-wide,.vy-banner,.ui-hs-pip):is(.m1,.m2,.m3) { background-size:300% auto; background-position-y:18%; }
-:is(.ui-video-art,.ui-player,.ui-thumb.is-wide,.vy-banner,.ui-hs-pip):is(.m4,.m5,.m6) { background-size:300% auto; background-position-y:82%; }
+:is(.ui-video-art,.ui-player,.ui-thumb.is-wide,.vy-banner,.ui-hs-pip,.ui-vmini):is(.m1,.m2,.m3) { background-size:300% auto; background-position-y:18%; }
+:is(.ui-video-art,.ui-player,.ui-thumb.is-wide,.vy-banner,.ui-hs-pip,.ui-vmini):is(.m4,.m5,.m6) { background-size:300% auto; background-position-y:82%; }
 /* Вертикальный кадр на весь экран: фото по высоте экрана */
-.vy-clip-frame:is(.m1,.m2,.m3,.m4,.m5,.m6) { background-size:auto 200%; }
+.ui-clip:is(.m1,.m2,.m3,.m4,.m5,.m6) { background-size:auto 200%; }
+/* Клип занимает всё место над таб-баром, таб-бар прижат к низу */
 
 /* Доли прогресса */
 .vy-p0 { width:0; }
@@ -39,6 +40,7 @@
 
 /* Профиль */
 .vy-me { display:flex; align-items:center; gap:12px; min-width:0; }
+.vy-gap { margin-top:12px; }
 
 /* Карточка задания раунда */
 .vy-task { display:flex; flex-direction:column; gap:8px; margin:0 16px; padding:20px 16px; border-radius:16px; background-color:var(--ui-card); }
@@ -66,21 +68,6 @@
 
 /* Длинные задания и подписи переносятся */
 .vy-wrap .ui-row-text > strong { white-space:normal; }
-
-/* Клипы: вертикальный ответ игрока на весь экран */
-.vy-clips { overflow:hidden; }
-.vy-clip-frame { position:absolute; inset:0; border-radius:0; }
-.vy-clip-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.55), transparent 20%, transparent 58%, rgba(0,0,0,.78)); }
-.vy-clip-head { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding:calc(var(--safe-top) + 8px) 16px 0; color:#fff; }
-.vy-clip-head strong { font:600 17px/22px var(--ui-face); }
-.vy-clip-head span { font:400 13px/16px var(--ui-face); color:rgba(255,255,255,.72); }
-.vy-clip-side { position:absolute; right:8px; bottom:120px; z-index:1; display:flex; flex-direction:column; gap:12px; }
-.vy-clip-act { display:flex; flex-direction:column; align-items:center; gap:2px; }
-.vy-clip-act small { font:500 12px/14px var(--ui-face); color:#fff; }
-.vy-clip-info { position:absolute; left:16px; right:72px; bottom:28px; z-index:1; display:flex; align-items:flex-start; gap:12px; color:#fff; }
-.vy-clip-info .ui-row-text > span { color:rgba(255,255,255,.78); white-space:normal; }
-.vy-clip-bar { position:absolute; left:0; right:0; bottom:0; z-index:1; height:2px; background-color:rgba(255,255,255,.3); }
-.vy-clip-bar i { display:block; height:100%; background-color:#fff; }
 
 /* Камера ответа */
 .vy-camera { overflow:hidden; }

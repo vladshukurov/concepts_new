@@ -1882,7 +1882,7 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 
 /* ── Вертикальный клип (clip): как в ВК Клипах, тёмный в любой теме приложения ── */
 .ui.ui-clips { background:#000!important; color:#fff; }
-.ui-clip { position:absolute; inset:0; bottom:calc(var(--safe-bottom) + 49px); background-color:#111; background-size:cover; background-position:center; overflow:hidden; }
+.ui-clip { position:relative; flex:1; min-height:0; background-color:#111; background-size:cover; background-position:center; overflow:hidden; }
 .ui-clip::before { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.45) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 55%, rgba(0,0,0,.72) 100%); pointer-events:none; }
 .ui-clip.ph::after { position:absolute; inset:0; margin:auto; }
 .ui-clip > * { position:absolute; z-index:1; }

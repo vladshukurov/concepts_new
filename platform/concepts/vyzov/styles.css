@@ -14,7 +14,8 @@
 .m6 { background-position:100% 100%; }
 :is(.ui-video-art,.ui-player,.ui-thumb.is-wide,.vz-banner,.vz-tv):is(.m1,.m2,.m3) { background-size:300% auto; background-position-y:18%; }
 :is(.ui-video-art,.ui-player,.ui-thumb.is-wide,.vz-banner,.vz-tv):is(.m4,.m5,.m6) { background-size:300% auto; background-position-y:82%; }
-.vz-clip-frame:is(.m1,.m2,.m3,.m4,.m5,.m6) { background-size:auto 200%; }
+.ui-clip:is(.m1,.m2,.m3,.m4,.m5,.m6) { background-size:auto 200%; }
+/* Клип занимает всё место над таб-баром, таб-бар прижат к низу */
 .vz-yard,.vz-bakery,.vz-street,.vz-window,.vz-sea { background-repeat:no-repeat; background-color:#2a2b2c; }
 .vz-yard { background-image:url(assets/media/courtyard-cinema.jpg); background-size:cover; background-position:50% 60%; }
 .vz-bakery { background-image:url(assets/media/morning-bakery.jpg); background-size:cover; background-position:30% 50%; }
@@ -40,6 +41,7 @@
 
 /* Профиль */
 .vz-me { display:flex; align-items:center; gap:12px; min-width:0; }
+.vz-gap { margin-top:12px; }
 
 /* Карточка задания раунда */
 .vz-task { display:flex; flex-direction:column; gap:8px; margin:0 16px; padding:20px 16px; border-radius:16px; background-color:var(--ui-card); }
@@ -67,21 +69,6 @@
 
 /* Длинные задания и подписи переносятся */
 .vz-wrap .ui-row-text > strong { white-space:normal; }
-
-/* Клипы: вертикальный ответ игрока на весь экран */
-.vz-clips { overflow:hidden; }
-.vz-clip-frame { position:absolute; inset:0; border-radius:0; }
-.vz-clip-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.55), transparent 20%, transparent 58%, rgba(0,0,0,.78)); }
-.vz-clip-head { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding:calc(var(--safe-top) + 8px) 16px 0; color:#fff; }
-.vz-clip-head strong { font:600 17px/22px var(--ui-face); }
-.vz-clip-head span { font:400 13px/16px var(--ui-face); color:rgba(255,255,255,.72); }
-.vz-clip-side { position:absolute; right:8px; bottom:120px; z-index:1; display:flex; flex-direction:column; gap:12px; }
-.vz-clip-act { display:flex; flex-direction:column; align-items:center; gap:2px; }
-.vz-clip-act small { font:500 12px/14px var(--ui-face); color:#fff; }
-.vz-clip-info { position:absolute; left:16px; right:72px; bottom:28px; z-index:1; display:flex; align-items:flex-start; gap:12px; color:#fff; }
-.vz-clip-info .ui-row-text > span { color:rgba(255,255,255,.78); white-space:normal; }
-.vz-clip-bar { position:absolute; left:0; right:0; bottom:0; z-index:1; height:2px; background-color:rgba(255,255,255,.3); }
-.vz-clip-bar i { display:block; height:100%; background-color:#fff; }
 
 /* Камера ответа */
 .vz-camera { overflow:hidden; }

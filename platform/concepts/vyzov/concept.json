@@ -602,15 +602,15 @@
       "title": "Профиль",
       "type": "tab (root)",
       "light": false,
-      "meta": "Номер, счётчики, ролики команды и настройки",
+      "meta": "Своя команда и квесты за месяц, разделы и вход в настройки",
       "ui": {
         "pattern": "settings",
         "navigation": "root",
-        "purpose": "Номер, счётчики, ролики команды и настройки",
+        "purpose": "Своя команда и квесты за месяц, разделы и вход в настройки",
         "primaryAction": null,
         "hierarchy": {
-          "primary": "Номер и счётчики квестов и роликов",
-          "secondary": "Ролик команды, реклама, аккаунт"
+          "primary": "Имя, команда, счётчики квестов и роликов",
+          "secondary": "Месяц, ролик команды, квесты и уведомления"
         },
         "states": [
           "default",
@@ -624,7 +624,7 @@
         "contentCases": [
           {
             "kind": "typical",
-            "example": "3 квеста, 11 роликов"
+            "example": "3 квеста, 11 роликов, победа Совы в Сокольниках"
           },
           {
             "kind": "stress",
@@ -633,6 +633,47 @@
           {
             "kind": "failure",
             "example": "Ни одного своего ролика в квестах"
+          }
+        ]
+      }
+    },
+    {
+      "id": "settings",
+      "title": "Настройки",
+      "type": "push",
+      "light": false,
+      "meta": "Уведомления о квестах, ролики и маршрут, приватность, тема, аккаунт",
+      "parent": "profile",
+      "ui": {
+        "pattern": "settings",
+        "navigation": "push",
+        "purpose": "Уведомления о квестах, ролики и маршрут, приватность, тема, аккаунт",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Уведомления о своих событиях и настройки просмотра",
+          "secondary": "Конфиденциальность, тема, аккаунт и о приложении"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Два уведомления включены, качество авто"
+          },
+          {
+            "kind": "stress",
+            "example": "Все уведомления выключены, на iPhone 3,8 ГБ видео"
+          },
+          {
+            "kind": "failure",
+            "example": "Нет сети — изменения сохранятся позже"
           }
         ]
       }
@@ -1301,7 +1342,7 @@
       "id": "all",
       "hero": true,
       "label": "Весь продукт",
-      "note": "22 экрана и 9 доступов",
+      "note": "23 экрана и 9 доступов",
       "start": "phone",
       "screens": [
         "phone",
@@ -1310,6 +1351,7 @@
         "create",
         "quests",
         "profile",
+        "settings",
         "quest",
         "point",
         "camera",

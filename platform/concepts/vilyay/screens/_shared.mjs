@@ -12,10 +12,7 @@ export const TABS = [
 ];
 
 /* Свёрнутый плеер: серия про робот-пылесос досматривается над таб-баром */
-export const MINI = ui.miniPlayer({
-  face: best.art, title: 'Робот-пылесос', sub: `Серия 4 · 0:21 из ${best.dur}`,
-  open: { go: 'watch' }, playAction: { label: 'Продолжить' }, progressClass: 'vl-p30',
-});
+export const MINI = ui.videoMini({ art: best.art, title: best.title, open: { go: 'watch' }, pct: 30 });
 
 /** Реакции семьи под роликом: каждая — переключатель на месте, своя отметка подсвечивается */
 export const reactions = (c) => `<div class="vl-react" role="group" aria-label="Реакции семьи">${[
