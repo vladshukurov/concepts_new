@@ -1,0 +1,20 @@
+<!-- @overview:vision -->
+<p class="deck">Домашнее шоу детей в грамматике ВК Видео: {{INSIGHT}}.</p>
+<div class="utp-box"><strong>УТП.</strong> {{TAGLINE}}</div>
+{{FEAT_GRID}}
+<!-- @end -->
+
+<!-- @overview:arch -->
+<p class="deck">Выпуск снимается и сразу встаёт в рубрику; общее шоу семьи — Firebase, показ на ТВ — Google Cast и AirPlay в той же Wi‑Fi.</p>
+<div class="flow"><span class="chip">Новый выпуск</span><span class="arr">→</span><span class="chip">Рубрика</span><span class="arr">→</span><span class="chip">Реакции семьи</span><span class="arr">→</span><span class="chip">Выпуск недели</span><span class="arr">→</span><span class="chip">Премьера на ТВ</span></div>
+<div class="arch">
+  <div class="arch-layer"><h3>UI</h3><p>Главная · Клипы · Снять · Рубрики · Профиль · Рубрика · Выпуск недели · Камера · Вертикальный плеер.</p></div>
+  <div class="arch-layer"><h3>Domain</h3><p>Show · Rubric · Issue · WeeklyIssue · Reaction · FamilyMember.</p></div>
+  <div class="arch-layer"><h3>Services</h3><p>AVFoundation · PhotoKit · Google Cast/AirPlay · Core Location · UserNotifications · AVPictureInPicture.</p></div>
+  <div class="arch-layer"><h3>Data</h3><p>Выпуски и реакции — Firebase Storage и Firestore, доступ только членам семьи; выпуск недели склеивается на телефоне.</p></div>
+</div>
+<!-- @end -->
+
+<section class="section" id="perm-matrix"><h2>Матрица доступов</h2><p class="deck">Каждый доступ — одна кнопка в своей фиче, результат виден сразу.</p>{{PERM_MATRIX}}</section>
+<section class="section" id="no-backend"><h2>Без своего сервера</h2><p class="deck">Что обычно требует сервера и чем это заменено.</p>{{BACKENDLESS}}</section>
+<section class="section" id="screen-table"><h2>Экраны</h2><p class="deck">Корни — пять вкладок в грамматике ВК Видео; рубрики, выпуск недели, камера и вертикальный плеер — свои экраны продукта.</p>{{SCREEN_TABLE}}</section>

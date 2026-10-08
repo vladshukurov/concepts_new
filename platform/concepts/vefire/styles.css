@@ -1,0 +1,149 @@
+/* «В эфире» — мимикрия ВК Видео. Оболочка, кегли и цвета — из слоя `.ui` ядра;
+   здесь своё: шапка с логотипом по центру, вертикальные выпуски 9:16 в две колонки, вертикальный плеер. */
+
+/* Кадры выпусков (assets/media): что снимали дети, а не сами дети.
+   f-rain дождь за окном · f-eve вечер у окна · f-fog туман · f-yard двор вечером · f-dogs новый пёс во дворе
+   f-cat Муся на подоконнике (f-cat2, f-cat3 — другие кадры той же Муси) · f-pizza пицца на кухне
+   f-cake, f-kitchen, f-dinner — семейный атлас 3×2: бабушкин торт, кухня, ужин */
+.f-rain { background-image:url(assets/media/rain.jpg); }
+.f-eve { background-image:url(assets/media/evening.jpg); }
+.f-fog { background-image:url(assets/media/fog.jpg); }
+.f-yard { background-image:url(assets/media/yard.jpg); }
+.f-dogs { background-image:url(assets/media/dogs.jpg); }
+.f-cat,.f-cat2,.f-cat3 { background-image:url(assets/media/cat.jpg); }
+.f-pizza { background-image:url(assets/media/pizza.jpg); }
+.f-cake,.f-kitchen,.f-dinner { background-image:url(assets/media/family.jpg); }
+:is(.f-rain,.f-eve,.f-fog,.f-yard,.f-dogs,.f-cat,.f-cat2,.f-cat3,.f-pizza,.f-cake,.f-kitchen,.f-dinner) { background-repeat:no-repeat; background-color:#1c1c22; }
+.f-rain,.f-fog,.f-pizza { background-size:cover; background-position:50% 50%; }
+.f-eve { background-size:cover; background-position:30% 50%; }
+.f-yard { background-size:cover; background-position:40% 50%; }
+.f-dogs { background-size:cover; background-position:55% 65%; }
+.f-cat { background-size:cover; background-position:55% 50%; }
+.f-cat2 { background-size:190% auto; background-position:70% 75%; }
+.f-cat3 { background-size:230% auto; background-position:72% 30%; }
+/* Атлас 3×2: в широкой и квадратной рамке — по ширине, в вертикальной — по высоте */
+.f-cake,.f-kitchen,.f-dinner { background-size:300% auto; }
+.f-cake { background-position:50% 100%; }
+.f-kitchen { background-position:50% 0; }
+.f-dinner { background-position:100% 0; }
+:is(.vf-tall,.vf-v .ui-card-art,.vf-week .ui-video-art,.vf-player,.ui-clip,.vf-camera-view,.vf-behind-big,.vf-poster):is(.f-cake,.f-kitchen,.f-dinner) { background-size:auto 200%; }
+:is(.vf-tall,.vf-v .ui-card-art,.vf-week .ui-video-art,.vf-player,.ui-clip,.vf-camera-view,.vf-behind-big,.vf-poster).f-cat2 { background-size:auto 170%; }
+:is(.vf-tall,.vf-v .ui-card-art,.vf-week .ui-video-art,.vf-player,.ui-clip,.vf-camera-view,.vf-behind-big,.vf-poster).f-cat3 { background-size:auto 200%; }
+.ui-player.f-cake { background-size:auto 200%; background-position:50% 100%; }
+
+/* Доли прогресса */
+.vf-p30 { width:30%; }
+
+/* Шапка главной: логотип по центру, без аватара */
+.vf-home .ui-top { display:grid; grid-template-columns:44px 1fr 44px; padding:6px 8px; }
+.vf-home .ui-top > :first-child { margin:0; }
+.vf-home .ui-wordmark { justify-content:center; font-size:22px; }
+
+/* Бегущая строка новостей под шапкой */
+.vf-ticker { display:flex; align-items:center; gap:10px; margin:0 16px 4px; padding:6px 10px; border-radius:10px; background-color:var(--ui-fill-2); overflow:hidden; white-space:nowrap; font:500 13px/18px var(--ui-face); }
+.vf-ticker b { flex:none; padding:1px 6px; border-radius:5px; background-color:#d0202a; color:#fff; font:700 12px/16px var(--ui-face); }
+.vf-ticker span { min-width:0; color:var(--ui-text-2); }
+
+/* «Выпуск этой недели»: вертикальный кадр слева, премьера справа */
+.vf-week.ui-video { display:grid; grid-template-columns:128px 1fr; align-items:center; gap:14px; }
+.vf-week .ui-video-art { aspect-ratio:9/16; border-radius:14px; }
+.vf-week .ui-video-meta .ui-video-text strong { font:600 20px/25px var(--ui-face); white-space:normal; }
+.vf-week .ui-video-text > span { white-space:normal; }
+.vf-onair { position:absolute; left:8px; top:8px; padding:2px 7px; border-radius:6px; background-color:#d0202a; color:#fff; font:700 12px/16px var(--ui-face); letter-spacing:.02em; }
+
+/* Сетка выпусков 9:16 в две колонки */
+.vf-wrap .ui-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+.vf-v { min-width:0; }
+.vf-v > span { white-space:normal; }
+.vf-v .ui-card-art { aspect-ratio:9/16; border-radius:12px; }
+.vf-v > strong { white-space:normal; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; }
+
+/* Строка выпуска: вертикальный кадр */
+.ui-thumb.vf-tall { position:relative; width:44px; height:78px; border-radius:8px; }
+.ui-thumb.vf-tall .ui-duration { right:2px; bottom:2px; font-size:11px; }
+
+/* Вертикальный плеер: кадр 9:16 по центру на чёрном */
+.vf-watch .ui-scroll { background:linear-gradient(#000 0, #000 calc(var(--safe-top) + 452px), transparent calc(var(--safe-top) + 452px)); }
+.ui-player.vf-player { width:248px; aspect-ratio:9/16; margin:var(--safe-top) auto 0; border-radius:18px; }
+.vf-player .ui-player-mid { gap:16px; }
+.vf-player .ui-player-chapter { color:#fff; font-weight:600; white-space:normal; line-height:15px; }
+.vf-rubric { margin:12px 16px 0; font:600 13px/16px var(--ui-face); color:var(--ui-accent); }
+.vf-watch-title { margin:4px 16px 0; }
+.vf-watch-meta { padding:4px 16px 0; }
+.vf-chn { display:grid; place-items:center; min-width:40px; height:28px; padding:0 6px; border-radius:8px; background-color:var(--ui-fill-2); font:600 13px/16px var(--ui-face); font-variant-numeric:tabular-nums; color:var(--ui-text-2); }
+.vf-chn.is-now { background-color:var(--ui-accent); color:var(--ui-on-accent); }
+
+/* Реакции семьи: переключатели на месте */
+.vf-react { display:flex; gap:8px; padding:12px 16px 0; }
+.vf-react-btn { display:flex; align-items:center; gap:6px; min-height:44px; padding:0 14px; border-radius:22px; background-color:var(--ui-fill-2); font:500 15px/20px var(--ui-face); color:var(--ui-text); }
+.vf-react-btn b { font-weight:600; font-variant-numeric:tabular-nums; }
+.vf-react-btn.is-on { background-color:var(--ui-accent); color:var(--ui-on-accent); }
+
+/* Выпуск недели: постер премьеры */
+.vf-poster { position:relative; display:flex; flex-direction:column; justify-content:flex-end; gap:4px; height:300px; margin:0 16px; padding:16px; border-radius:16px; overflow:hidden; color:#fff; }
+.vf-poster::before { content:''; position:absolute; inset:0; background:linear-gradient(180deg, transparent 35%, rgba(0,0,0,.82)); }
+.vf-poster > * { position:relative; }
+.vf-poster .vf-onair { position:absolute; left:16px; top:16px; }
+.vf-poster strong { font:700 24px/29px var(--ui-face); }
+.vf-poster small { font:500 15px/20px var(--ui-face); color:rgba(255,255,255,.82); }
+.vf-actions { margin-top:12px; }
+
+/* Страница рубрики */
+.vf-banner { position:relative; display:flex; align-items:flex-end; height:132px; margin:0 16px; padding:12px 14px; border-radius:14px; overflow:hidden; }
+.vf-banner::before { content:''; position:absolute; inset:0; background:linear-gradient(180deg, transparent 30%, rgba(0,0,0,.7)); }
+.vf-banner span { position:relative; font:700 22px/26px var(--ui-face); color:#fff; }
+.vf-host { display:flex; align-items:center; gap:12px; padding:4px 16px 8px; }
+.vf-host .ui-row-text strong { font:600 20px/26px var(--ui-face); }
+
+/* Формы */
+.vf-bottom { margin-top:16px; }
+.vf-input { width:100%; min-width:0; padding:0; border:0; outline:0; background:none; color:var(--ui-text); font:500 17px/22px var(--ui-face); }
+.vf-input::placeholder { color:var(--ui-text-2); }
+.vf-form .ui-cell-text > span { order:-1; font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.vf-form .ui-cell-text { display:flex; flex-direction:column; }
+.vf-add { display:flex; align-items:center; gap:12px; min-height:48px; margin:8px 16px 0; padding:0 12px; border-radius:12px; background-color:var(--ui-card); color:var(--ui-text-2); }
+.vf-add .vf-input { flex:1; }
+.vf-add svg { width:20px; height:20px; flex:none; color:var(--ui-link); }
+
+/* Профиль */
+.vf-me { display:flex; align-items:center; gap:12px; min-width:0; }
+.vf-gap { margin-top:12px; }
+
+/* Лист «Снять» */
+.vf-create { overflow:hidden; }
+.vf-fill { position:relative; flex:1; min-height:0; overflow:hidden; }
+.vf-behind { display:flex; flex-direction:column; gap:12px; padding:calc(var(--safe-top) + 64px) 16px 0; }
+.vf-behind-big { display:block; width:128px; aspect-ratio:9/16; border-radius:14px; }
+.vf-behind-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.vf-behind-row i { display:block; aspect-ratio:9/16; border-radius:12px; }
+.vf-dim { position:absolute; inset:0; background-color:rgba(0,0,0,.6); }
+.vf-create-sheet { padding-bottom:16px; }
+.vf-sheet-head { display:flex; flex-direction:column; gap:4px; padding:0 16px 12px; }
+
+/* Длинные подписи переносятся */
+.vf-wrap .ui-row-text > strong { white-space:normal; }
+
+/* Камера выпуска: плашка «В эфире» и нижняя титровая строка, как в новостях */
+.vf-camera { overflow:hidden; }
+.vf-camera-view { position:absolute; inset:0; border-radius:0; }
+.vf-camera-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.5), transparent 30%, transparent 55%, rgba(0,0,0,.75)); }
+.vf-camera-head { position:relative; z-index:1; display:flex; align-items:center; justify-content:space-between; padding:var(--safe-top) 8px 0; }
+.vf-rec { padding:4px 10px; border-radius:8px; background-color:#c4001a; font:600 15px/20px var(--ui-face); font-variant-numeric:tabular-nums; color:#fff; }
+.vf-camera-lower { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 150px); z-index:1; display:flex; flex-direction:column; gap:2px; padding:10px 14px; border-left:4px solid #e6262f; border-radius:4px 12px 12px 4px; background-color:rgba(0,0,0,.66); color:#fff; }
+.vf-camera-lower small { font:600 12px/14px var(--ui-face); color:#ff8a8f; }
+.vf-camera-lower strong { font:600 17px/22px var(--ui-face); }
+.vf-camera-meta { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 112px); z-index:1; display:flex; justify-content:center; gap:16px; font:500 13px/16px var(--ui-face); color:rgba(255,255,255,.86); }
+.vf-camera-meta > span { display:flex; align-items:center; gap:4px; }
+.vf-camera-meta svg { width:14px; height:14px; }
+.vf-camera-bar { position:absolute; left:24px; right:24px; bottom:calc(var(--safe-bottom) + 16px); z-index:1; display:flex; align-items:center; justify-content:space-between; }
+.vf-shutter { position:relative; width:76px; height:76px; border-radius:50%; box-shadow:inset 0 0 0 4px #fff; }
+.vf-shutter > span { position:absolute; inset:9px; border-radius:50%; background-color:#ff3b30; }
+.vf-spacer { width:48px; }
+
+/* Выбор из «Фото» — чёрный фон системного листа */
+.ui.vf-picker { background-color:#000; }
+.ui-pk-text:not(.is-off) { color:#5aaaff; }
+.ui-pk-tile > i { background:#0064d2; }
+
+/* Отметки «в выпуск» и «придёт» — выбор, а не сделанное дело: без зачёркивания */
+.ui.vf-marks .ui-check.is-on .ui-check-text strong { color:var(--ui-text); text-decoration:none; }
