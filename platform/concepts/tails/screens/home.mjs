@@ -15,7 +15,7 @@ export default (ui) => ui.screen({
     ]) }),
     ui.entry({
       icon: 'paw-print', title: 'Спокойный круг у пруда · 18:40', meta: 'сегодня · Лопухинский сад · с Барни, Мятой и Локи', status: { label: 'сегодня', accent: true },
-      attach: faces(PET.barni, PET.mint, PET.loki), actions: [{ label: 'Открыть прогулку', icon: 'map-pin', go: 'walk', primary: true }], tags: ['walk'],
+      text: '6 участников · обновлено в 7:10', attach: faces(PET.barni, PET.mint, PET.loki), actions: [{ label: 'Открыть прогулку', icon: 'map-pin', go: 'walk', primary: true }], tags: ['walk'],
     }),
     ui.entry({ icon: 'route', title: own.walk.title, meta: `${own.walk.when} · ${own.walk.dur}`, text: own.walk.text, attach: `<span class="tl-chat-photo ${PET.truffle}"></span>`, menu: ['Изменить', 'Удалить'], tags: ['walk'] }),
     ui.entry({
@@ -23,10 +23,7 @@ export default (ui) => ui.screen({
       text: 'Обработку от клещей пропустили на 4 дня', actions: [{ label: 'Открыть здоровье', icon: 'stethoscope', go: 'vaccine' }], tags: ['health'],
     }),
     ui.entry({ icon: 'mic', title: own.note.title, meta: `${own.note.when} · наблюдение`, voice: { dur: own.note.dur }, open: { go: 'vetnote' }, tags: ['note', 'health'] }),
-    ui.entry({
-      icon: 'megaphone', title: 'Корм для активных собак −20 %', meta: 'зоомагазин на Большом · реклама',
-      text: 'Доставка в день заказа по Петроградской', actions: [{ label: 'Почему эта реклама', icon: 'sliders-horizontal', go: 'ads' }],
-    }),
+    ui.section({ children: ui.adCard({ icon: 'store', title: 'Корм для активных собак −20 %', sub: 'Реклама · доставка в день заказа по Петроградской', subGranted: 'Реклама · по интересам · корм для ретриверов 25–30 кг', go: 'ads' }) }),
     ui.entry({
       icon: 'map-pin', title: 'Кто гуляет рядом', meta: 'Петроградская · сейчас',
       text: 'Площадки и прогулки поблизости — по вашему месту', actions: [{ label: 'Показать рядом', icon: 'navigation', ask: 'location|nearby|home' }], tags: ['walk'],

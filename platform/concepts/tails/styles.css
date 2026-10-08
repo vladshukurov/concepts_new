@@ -98,11 +98,6 @@
 /* Курс */
 
 /* QR сети площадки */
-.tl-qr { display:flex; gap:16px; align-items:center; padding:0 16px; }
-.tl-qr-code { width:72px; height:72px; flex:none; display:grid; place-items:center; border-radius:12px; background:var(--ui-accent-soft); color:var(--ui-link); }
-.tl-qr-code svg { width:44px; height:44px; stroke-width:1.5; }
-.tl-qr strong { display:block; font:600 16px/20px var(--ui-face); }
-.tl-qr span { display:block; font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
 
 /* Поделиться в «Хвосты» — лист расширения */
 
@@ -111,7 +106,6 @@
 /* Системные поверхности iOS: локскрин и экран «Домой» */
 
 /* Доли прогресса */
-.tl-qr-actions { margin-top:12px; }
 
 /* Мессенджер: фото и карточка прогулки внутри сообщения */
 .tl-chat-photo { display:block; width:220px; height:160px; border-radius:14px; }

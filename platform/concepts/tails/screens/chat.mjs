@@ -14,6 +14,7 @@ export default (ui) => ui.screen({
       ui.bubble({ out: true, text: 'Идём, будем к 18:40', time: '9:34', read: true }),
       ui.voice({ dur: '0:18', time: '9:36' }),
       ui.bubble({ text: 'Заберу Барни в 19:15, если задержусь', time: '9:38' }),
+      `<div class="perm-hidden" data-show-granted="commnotif">${ui.bubble({ text: 'Ура, Барни будет ждать Трюфеля у входа', time: '9:43' })}</div>`,
     ])),
     ui.denied('voip'),
     ui.composer({ attach: { label: 'Прикрепить', menu: ['Фото>media'] }, mic: { toast: 'Запись голосового · отпустите, чтобы отправить' } }),

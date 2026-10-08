@@ -1,6 +1,6 @@
 import { THEME, TABS, PET } from './_shared.mjs';
 import { revaccination } from '../model.mjs';
-import { visit } from '../model.mjs';
+import { visit, chip } from '../model.mjs';
 
 export default (ui) => ui.screen({
   id: 'vaccine', theme: THEME,
@@ -28,7 +28,8 @@ export default (ui) => ui.screen({
     ui.section({ title: 'Клиника и врач', children: ui.list([
       ui.row({ lead: ui.leadIcon('', { text: 'МТ', round: true }), title: 'Мария Тенищева', sub: 'Ведёт Трюфеля с восьми месяцев · каб. 3' }),
       ui.row({ lead: ui.leadIcon('map-pin'), title: 'Большой проспект П. С., 74', sub: 'От парка 12 минут пешком' }),
-      ui.row({ lead: ui.leadIcon('id-card'), title: 'Чип 643094100128756', sub: 'AnimalID с 4 апреля 2024' }),
+      `<div data-hide-granted="faceid">${ui.row({ lead: ui.leadIcon('id-card'), title: `Чип ${chip.full}`, sub: `AnimalID с ${chip.since}` })}</div>`,
+      ui.row({ lead: ui.leadIcon('lock'), title: `Чип ${chip.masked}`, sub: 'Под Face ID · нажмите, чтобы открыть', toast: `Face ID · чип ${chip.full}`, shownAfter: 'faceid' }),
     ]) }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'vaccine' }),

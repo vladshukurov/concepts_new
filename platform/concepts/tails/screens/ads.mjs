@@ -1,19 +1,20 @@
 import { THEME } from './_shared.mjs';
 
+/* Реклама вместо подписки: ATT спрашивают до выбора «Без подбора», карточка меняется сразу */
 export default (ui) => ui.screen({
   id: 'ads', theme: THEME,
   body: [
-    ui.nav({ title: '', back: 'close' }),
+    ui.nav({ title: 'Реклама', back: 'close' }),
     ui.scroll([
-      `<div class="tl-note-head"><h2>Реклама вместо подписки</h2><p>Корма, ветклиники и зоомагазины между записями дневника</p></div>`,
+      ui.section({ title: 'В дневнике сейчас', children: [
+        `<div data-hide-granted="tracking">${ui.row({ lead: ui.leadIcon('store', { accent: true }), title: 'Корм для активных собак −20 %', sub: 'Реклама · для всех' })}</div>`,
+        ui.row({ shownAfter: 'tracking', lead: ui.leadIcon('store', { accent: true }), title: 'Корм для активных собак −20 %', sub: 'Реклама · по интересам · корм для ретриверов' }),
+      ] }),
       ui.section({ children: ui.group({ cells: [
-        ui.cell({ icon: 'badge-check', title: 'По интересам' }),
-        ui.cell({ icon: 'shield', title: 'Без подбора', value: '41 показ за неделю', check: true }),
+        ui.cell({ icon: 'badge-check', title: 'По интересам', sub: 'Корма и клиники под вашего питомца' }),
+        ui.cell({ icon: 'shield', title: 'Без подбора', sub: 'Одна и та же реклама для всех' }),
       ] }) }),
-      ui.section({ children: ui.actions([
-        ui.button({ label: 'Продолжить', block: true, primary: true, ask: 'tracking|home|ads' }),
-        ui.button({ label: 'Не сейчас', variant: 'tertiary', block: true, back: true }),
-      ]) }),
+      ui.section({ children: `<div class="ui-actions"><div data-hide-granted="tracking"><div data-hide-denied="tracking">${ui.button({ label: 'Подбирать по интересам', block: true, ask: 'tracking|ads|ads', primary: true })}</div>${ui.button({ label: 'Оставить без подбора', variant: 'tertiary', block: true, back: true })}</div><div class="perm-hidden" data-show-granted="tracking">${ui.button({ label: 'Готово', block: true, back: true })}</div></div>` }),
     ]),
   ],
 });

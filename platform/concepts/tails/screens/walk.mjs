@@ -11,15 +11,13 @@ export default (ui) => ui.screen({
           ui.cell({ icon: 'map-pin', title: 'Лопухинский сад', sub: 'Вход с Каменноостровского · сбор у пруда' }),
           ui.cell({ icon: 'clock', title: '18:40 — около 19:15', sub: 'Две остановки, вода на входе' }),
           ui.cell({ icon: 'route', title: 'От вас 12 минут пешком', sub: 'Через Съезжинскую' }),
+          ui.cell({ icon: 'users', title: 'Локи присоединился в 9:20', sub: 'Марат записался утром · 6 участников' }),
         ] }),
+        ui.list([ui.reminder({ title: 'Сообщить о переносе', titleGranted: 'Сообщим о переносе', sub: 'Перенос, отмена или новое место сбора', here: 'walk' })]),
       ] }),
-      ui.denied('push'),
       ui.section({ children: ui.actions([
-        ui.button({ label: 'Я иду', icon: 'check', block: true, toast: 'Следим за прогулкой' }),
-        ui.button({ label: 'Я на площадке', icon: 'map-pin', variant: 'secondary', block: true, activate: 'wifiinfo|walk' }),
-        ui.button({ label: 'Сеть площадки', icon: 'qr-code', variant: 'secondary', block: true, go: 'netqr' }),
+        ui.button({ label: 'Я иду', icon: 'check', block: true, primary: true, activate: 'commnotif|lockscreen' }),
       ]) }),
-      ui.section({ shownAfter: 'wifiinfo', children: ui.list([ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Вы на площадке', sub: 'Сеть Lopukhinka-Dog · отмечены в 18:38' })]) }),
     ]),
   ],
 });

@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×52, `section` ×43, `leadIcon` ×40, `cell` ×32, `list` ×22, `button` ×15, `denied` ×14, `nav` ×13, `group` ×12, `actions` ×9, `iconButton` ×8, `bubble` ×6, `entry` ×6, `dialog` ×5, `tabBar` ×5, `largeTitle` ×4, `foot` ×4, `day` ×3, `search` ×3, `chatNav` ×2, `chat` ×2, `composer` ×2, `stats` ×2, `callView` ×1, `voice` ×1, `textButton` ×1, `safariFill` ×1, `top` ×1, `wordmark` ×1, `chips` ×1, `photoPicker` ×1, `avatar` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×53, `section` ×43, `leadIcon` ×41, `cell` ×30, `list` ×23, `button` ×15, `nav` ×13, `group` ×11, `denied` ×11, `actions` ×8, `iconButton` ×8, `bubble` ×7, `dialog` ×5, `tabBar` ×5, `entry` ×5, `largeTitle` ×4, `foot` ×4, `day` ×3, `search` ×3, `chatNav` ×2, `chat` ×2, `composer` ×2, `stats` ×2, `callView` ×1, `voice` ×1, `textButton` ×1, `safariFill` ×1, `top` ×1, `wordmark` ×1, `chips` ×1, `adCard` ×1, `lockScreen` ×1, `photoPicker` ×1, `avatar` ×1, `reminder` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -50,8 +50,6 @@
 | Камера и выбор фото — системные поверхности | `.tl-camera` `.tl-camera-view` `.tl-camera-shade` `.tl-shutter` |
 | Ветпаспорт | `.tl-vet-head` `.tl-appt` `.tl-appt-when` `.tl-days` |
 | Расшифровка наблюдения | `.tl-note-head` `.tl-wave` `.tl-ts` |
-| QR сети площадки | `.tl-qr` `.tl-qr-code` |
-| Доли прогресса | `.tl-qr-actions` |
 | Мессенджер: фото и карточка прогулки внутри сообщения | `.tl-chat-photo` `.tl-walk` `.tl-call` |
 | Выбор фото из ядра: iOS-синий на белом не проходит AA | `.ui-pk-text` `.ui-pk-tile` |
 <!-- @end -->
