@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×49, `section` ×44, `leadIcon` ×29, `list` ×24, `nav` ×14, `cell` ×13, `iconButton` ×12, `avatar` ×12, `button` ×9, `actions` ×8, `bubble` ×8, `entry` ×8, `group` ×6, `tabBar` ×5, `denied` ×5, `day` ×3, `largeTitle` ×3, `search` ×3, `chatNav` ×2, `chat` ×2, `composer` ×2, `dialog` ×2, `top` ×2, `lockScreen` ×1, `callView` ×1, `progress` ×1, `voice` ×1, `textButton` ×1, `wordmark` ×1, `chips` ×1, `checklist` ×1, `safariFill` ×1, `photoPicker` ×1, `stats` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×50, `section` ×48, `leadIcon` ×29, `list` ×25, `nav` ×16, `iconButton` ×14, `cell` ×13, `avatar` ×13, `button` ×10, `actions` ×9, `bubble` ×8, `entry` ×8, `group` ×6, `tabBar` ×5, `denied` ×5, `search` ×4, `day` ×3, `largeTitle` ×3, `chatNav` ×2, `chat` ×2, `composer` ×2, `dialog` ×2, `top` ×2, `lockScreen` ×1, `callView` ×1, `progress` ×1, `voice` ×1, `textButton` ×1, `wordmark` ×1, `chips` ×1, `checklist` ×1, `safariFill` ×1, `photoPicker` ×1, `stats` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -49,6 +49,7 @@
 | Тёмные поверхности: звонок, показ на ТВ, экран блокировки | `.ry-dark` `.ry-tv` `.ry-tv-copy` `.ry-gap` `.ry-chat-map` `.ry-text` |
 | Уведомление о сообщении на экране блокировки: инициалы отправителя и значок приложения | `.ry-moved` `.ry-glass-controls` |
 | Выбор фото из ядра: iOS-синий на белом не проходит AA | `.ui-pk-text` `.ui-pk-tile` |
+| Формы: новая тренировка и новое сообщение | `.ry-field` |
 <!-- @end -->
 
 ## Актуальная навигация

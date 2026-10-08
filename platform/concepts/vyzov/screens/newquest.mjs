@@ -11,8 +11,8 @@ export default (ui) => ui.screen({
     ui.scroll([
       ui.section({ children: ui.group({ className: 'vz-form', cells: [
         ui.cell({ title: input(e.title, 'Название квеста'), sub: 'Название' }),
-        ui.cell({ icon: 'calendar', title: `Суббота, ${e.time}`, sub: 'Старт', toast: 'Старт: суббота, 12:00' }),
-        ui.cell({ icon: 'users', title: '2 команды по 3 игрока', sub: 'Команды', toast: 'Команды: Сова и Ёж' }),
+        ui.cell({ icon: 'calendar', title: input(`Суббота, ${e.time}`, 'Старт квеста'), sub: 'Старт' }),
+        ui.cell({ icon: 'users', title: input('2 команды по 3 игрока', 'Команды'), sub: 'Команды' }),
       ] }) }),
       ui.group({ label: `Точки · ${e.points.length}`, cells: e.points.map((p) =>
         ui.cell({ lead: ui.leadIcon('', { round: true, text: String(p.n) }), title: p.task, sub: p.place })) }),

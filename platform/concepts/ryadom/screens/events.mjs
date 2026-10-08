@@ -4,7 +4,7 @@ import { longrun, recovery, technique } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'events', theme: THEME,
   body: ui.scroll([
-    ui.largeTitle('Тренировки'),
+    ui.largeTitle('Тренировки', ui.iconButton({ icon: 'plus', label: 'Новая тренировка', go: 'newrun' })),
     ui.section({ title: 'Сегодня', meta: longrun.synced, children: ui.list([
       ui.row({ lead: ui.leadIcon('', { text: longrun.start }), title: `${longrun.title} · ${longrun.km} км`, sub: `Темп ${longrun.pace} · ${longrun.confirmed} из ${longrun.spots} подтвердили`, end: { badge: 'скоро' }, go: 'meetup', primary: true }),
       ui.row({ lead: ui.leadIcon('', { text: recovery.start }), title: `${recovery.title} · ${recovery.km} км`, sub: `${recovery.from} · темп ${recovery.pace} · нужен ведущий` }),

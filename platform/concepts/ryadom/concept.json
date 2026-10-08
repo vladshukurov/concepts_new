@@ -2010,6 +2010,86 @@
           }
         ]
       }
+    },
+    {
+      "id": "newrun",
+      "title": "Новая тренировка",
+      "type": "modal",
+      "light": true,
+      "meta": "Название, старт, дистанция, темп и места",
+      "ui": {
+        "pattern": "task",
+        "navigation": "modal",
+        "purpose": "Завести свою тренировку клуба",
+        "primaryAction": "Создать тренировку",
+        "hierarchy": {
+          "primary": "Поля тренировки: название, старт, дистанция",
+          "secondary": "Темп и число мест; создание внизу"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Воскресная пробежка 5 км, старт в 09:00, темп 6:30–6:50, 10 мест"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное название тренировки в две строки"
+          },
+          {
+            "kind": "failure",
+            "example": "Пустое название — тренировка не создаётся"
+          }
+        ]
+      }
+    },
+    {
+      "id": "newmsg",
+      "title": "Новое сообщение",
+      "type": "modal",
+      "light": true,
+      "meta": "Люди клуба и поиск",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "modal",
+        "purpose": "Написать человеку из клуба",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Список людей клуба",
+          "secondary": "Поиск человека по имени или фамилии"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Пять человек из клуба: Даша, Илья, Алина, Роман, Лера"
+          },
+          {
+            "kind": "stress",
+            "example": "Поиск по части фамилии среди сорока семи участников"
+          },
+          {
+            "kind": "failure",
+            "example": "Никого не нашли по запросу"
+          }
+        ]
+      }
     }
   ],
   "prototypes": [
@@ -2047,7 +2127,9 @@
         "settings",
         "invite",
         "widget",
-        "fill"
+        "fill",
+        "newrun",
+        "newmsg"
       ]
     },
     {
@@ -2169,12 +2251,14 @@
         "call",
         "friends",
         "picker",
-        "player"
+        "player",
+        "newmsg"
       ],
       "stops": [
         "friends",
         "picker",
-        "player"
+        "player",
+        "newmsg"
       ]
     }
   ],

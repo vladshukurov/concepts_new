@@ -7,7 +7,7 @@ export default (ui) => ui.screen({
     ui.scroll([
       ui.section({ children: [ui.group({ cells: [
         ui.cell({ icon: 'user', title: 'Профиль и аккаунт', sub: '+7 900 123-45-67', go: 'account' }),
-        ui.cell({ icon: 'bell', title: 'Уведомления', value: 'Тренировки', go: 'notif' }),
+        ui.cell({ icon: 'bell', title: 'Оповещения', value: 'Тренировки', go: 'notif' }),
       ] })] }),
       ui.section({ children: ui.group({ label: 'Вне приложения', cells: [
         ui.cell({ icon: 'layout-grid', title: 'Виджет на экран «Домой»', sub: 'Неделя и ближайшая тренировка', activate: 'appgroups|widget' }),

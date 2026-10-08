@@ -4,7 +4,7 @@ import { people, longrun } from '../model.mjs';
 export default (ui) => ui.screen({
   id: 'notif', theme: THEME,
   body: [
-    ui.nav({ title: 'Уведомления' }),
+    ui.nav({ title: 'Оповещения' }),
     ui.scroll([
       ui.section({ title: 'Сегодня', children: ui.list([
         ui.row({ lead: ui.avatar(people.ilya.initial), title: `${people.ilya.first} перенёс старт ко входу`, sub: `${longrun.title} · 06:40`, go: 'meetup' }),

@@ -7,7 +7,7 @@ export default (ui) => ui.screen({
   id: 'feed', theme: THEME,
   body: ui.scroll([
     ui.top(ui.wordmark({ name: 'Выбег' }), [
-      ui.iconButton({ icon: 'bell', label: 'Уведомления', go: 'notif' }),
+      ui.iconButton({ icon: 'bell', label: 'Оповещения', go: 'notif' }),
       ui.iconButton({ icon: 'plus', label: 'Новая запись', go: 'compose' }),
     ]),
     ui.section({ children: ui.chips([

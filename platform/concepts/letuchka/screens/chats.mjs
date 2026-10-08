@@ -22,5 +22,5 @@ export default (ui) => ui.screen({
     ] }),
     ui.section({ children: ui.adCard({ icon: 'utensils', title: ad.title, sub: `Реклама · ${ad.text}`, subGranted: 'Реклама · подобрано по интересам: обеды рядом с офисом', go: 'ads' }) }),
   ], { root: true }),
-  tabs: ui.tabBar({ items: TABS, active: 'chats', mini: `<div class="perm-hidden" data-show-granted="audio">${ui.miniPlayer({ face: 'lt-mini-face', title: `Запись летучки ${standup.yesterday.dur}`, sub: `${standup.yesterday.label} · 6:12 из 18:00`, open: { toast: 'Запись летучки 18 мин, 6:12 из 18:00', label: 'Запись летучки' }, playAction: { label: 'Пауза', toast: 'Пауза на 6:12' }, progressClass: 'lt-mini-fill' })}</div>` }),
+  tabs: ui.tabBar({ items: TABS, active: 'chats', mini: `<div class="perm-hidden" data-show-granted="audio">${ui.miniPlayer({ face: 'lt-mini-face', title: `Запись летучки ${standup.yesterday.dur}`, sub: `${standup.yesterday.label} · 6:12 из 18:00`, open: { go: 'recap', label: 'Запись летучки' }, playAction: { label: 'Пауза', toast: 'Пауза на 6:12' }, progressClass: 'lt-mini-fill' })}</div>` }),
 });
