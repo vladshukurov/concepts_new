@@ -1,0 +1,58 @@
+/* «Вазон» — мимикрия ВКонтакте, светлая тема `.ui.vk-light`.
+   Оболочка, записи и мессенджер — из ядра. Своё: шапка растения, профиль,
+   съёмка кадра месяца, поле записи, карточка растения в чате. Фото нет — кадры `.ph`. */
+
+/* Шапка растения, полива и пересадки */
+.vz-head { display:flex; gap:12px; align-items:flex-start; padding:4px 16px 16px; background:var(--ui-card); }
+.vz-head > div { display:flex; flex-direction:column; gap:2px; min-width:0; }
+.vz-head small { font:600 13px/16px var(--ui-face); color:var(--ui-link); }
+.vz-head h1 { font:600 24px/30px var(--ui-face); }
+
+/* Профиль */
+.vz-me { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 16px 16px; background:var(--ui-card); text-align:center; }
+.vz-me .ui-avatar { width:88px; height:88px; margin-bottom:8px; font-size:30px; background:var(--ui-accent-soft); color:var(--ui-link); }
+.vz-me h1 { font:600 22px/28px var(--ui-face); }
+.vz-me .ui-stats { width:100%; padding:12px 0 0; }
+
+/* Поле новой записи */
+.vz-note { display:block; padding:0 16px; }
+.vz-note textarea { width:100%; min-height:120px; border:0; resize:none; background:none; font:400 17px/24px var(--ui-face); color:var(--ui-text); }
+
+/* Голосовая заметка */
+.vz-rec { display:flex; flex-direction:column; gap:4px; padding:0 16px; }
+.vz-rec small { font:600 13px/16px var(--ui-face); color:var(--ui-danger); }
+.vz-rec h1 { font:600 24px/30px var(--ui-face); }
+
+/* Съёмка растения */
+.vz-cam { overflow:hidden; background:#000!important; color:#fff; }
+.vz-cam .ui-nav { background:none!important; color:#fff; }
+.vz-cam .ui-icon-btn { color:#fff; }
+.vz-viewfinder { position:absolute; left:0; right:0; top:calc(var(--safe-top) + 56px); bottom:180px; }
+.vz-cam-caption { position:absolute; left:16px; right:16px; bottom:150px; text-align:center; font:500 15px/20px var(--ui-face); }
+.vz-shutter { position:absolute; left:50%; bottom:calc(var(--safe-bottom) + 24px); width:76px; height:76px; margin-left:-38px; border-radius:50%; box-shadow:inset 0 0 0 4px #fff; }
+.vz-shutter > span:first-child { position:absolute; inset:8px; border-radius:50%; background:#fff; }
+
+/* Мессенджер: карточка растения и фото в сообщении */
+.vz-chat-card { display:flex; align-items:center; gap:10px; width:230px; padding:10px 12px; border-radius:14px; background:var(--ui-card); text-align:left; }
+.vz-chat-card > b { width:36px; height:36px; flex:none; display:grid; place-items:center; border-radius:50%; background:var(--ui-accent-soft); color:var(--ui-link); }
+.vz-chat-card > b svg { width:20px; height:20px; }
+.vz-chat-card strong { display:block; font:600 15px/20px var(--ui-face); color:var(--ui-text); }
+.vz-chat-card small { display:block; font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.vz-photos { display:grid; grid-template-columns:1fr 1fr; gap:2px; width:230px; }
+.vz-photos > span { height:120px; border-radius:10px; }
+
+/* Выбор фото из ядра: iOS-синий на белом не проходит AA */
+.ui-pk-text:not(.is-off) { color:#0064d2; }
+.ui-pk-tile > i { background:#0064d2; }
+
+/* Подоконник: свет и полоса недели — полить, подкормить, пропустить */
+.vz-light { display:flex; gap:6px; align-items:center; padding:0 16px 8px; font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
+.vz-light svg { width:16px; height:16px; color:var(--ui-link); }
+.vz-week { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:4px; padding:0 16px 8px; }
+.vz-week > span { display:flex; flex-direction:column; align-items:center; gap:2px; padding:6px 0; border-radius:10px; box-shadow:inset 0 0 0 1px var(--ui-line); }
+.vz-week b { font:600 12px/16px var(--ui-face); color:var(--ui-text-2); }
+.vz-week i { font:500 11px/14px var(--ui-face); font-style:normal; color:var(--ui-text-2); }
+.vz-week .is-w { background:var(--ui-accent-soft); box-shadow:none; }
+.vz-week .is-w i { color:var(--ui-link); }
+.vz-week .is-f i { color:#1a7f37; }
+.vz-week .is-today { box-shadow:inset 0 0 0 2px var(--ui-accent); }
