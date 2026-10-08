@@ -1910,3 +1910,19 @@ button.ui-mini-info-cell { min-height:44px; align-items:center; }
 .ui.ui-clips .ui-clip.ph { background:#1c1c1e!important; color:rgba(235,235,245,.28)!important; }
 /* Экран начинается с героя-обложки: обложка уходит под статус-бар, отступ не нужен */
 .ui-scroll.is-root:has(> .ui-hero:first-child) { padding-top:0; }
+
+/* ── Свёрнутое видео (videoMini): окошко справа снизу над таб-баром, как в ВК Видео ── */
+.ui-tabs:has(> .ui-vmini) { position:relative; }
+.ui-vmini { position:absolute; right:8px; bottom:calc(100% + 8px); z-index:25; width:176px; aspect-ratio:16/9; border-radius:10px; overflow:hidden; background-color:#1c1c1e; background-size:cover; background-position:center; box-shadow:0 8px 24px rgba(0,0,0,.45); }
+.ui-vmini::before { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,0) 45%, rgba(0,0,0,.35)); pointer-events:none; }
+.ui-vmini.ph::after { position:absolute; inset:0; margin:auto; }
+.ui-vmini-open { position:absolute; inset:0; }
+.ui-vmini-x, .ui-vmini-play { position:absolute; width:32px; height:32px; display:grid; place-items:center; color:#fff; }
+.ui-vmini-x { top:0; right:0; }
+.ui-vmini-x svg { width:16px; height:16px; stroke-width:2.5; filter:drop-shadow(0 1px 2px rgba(0,0,0,.6)); }
+.ui-vmini-play { left:50%; top:50%; margin:-16px 0 0 -16px; }
+.ui-vmini-play svg { width:22px; height:22px; filter:drop-shadow(0 1px 3px rgba(0,0,0,.6)); }
+.ui-vmini-x.is-on { display:none; }
+.ui-vmini:has(.ui-vmini-x.is-on) { display:none; }
+.ui-vmini-bar { position:absolute; left:0; right:0; bottom:0; height:2px; background:rgba(255,255,255,.3); }
+.ui-vmini-bar > b { display:block; height:100%; background:var(--ui-accent); }

@@ -574,3 +574,13 @@ export const clip = ({ art, top, sub, author, title, meta, text, rail = [], pct 
   + `<div class="ui-clip-rail">${rail.map(({ icon: ic, label, count, ...a }) => `<button class="ui-clip-act"${act({ label, ...a })}>${icon(ic)}<span>${count ?? label}</span></button>`).join('')}</div>`
   + `<div class="ui-clip-info">${author ? `<span class="ui-clip-who"><span class="${cls('ui-avatar', hue(author.initials))}">${author.initials}</span><b>${author.name}</b></span>` : ''}<strong>${title}</strong>${meta ? `<span class="ui-clip-meta">${meta}</span>` : ''}${text ? `<p>${text}</p>` : ''}</div>`
   + `<i class="ui-clip-bar"><b style="width:${pct}%"></b></i></div>`;
+
+/**
+ * Свёрнутое видео как в ВК Видео: окошко 16:9 справа снизу над таб-баром, а не полоса мини-плеера музыки.
+ * Кладётся в ui.tabBar({ mini: ui.videoMini({...}) }). open — развернуть плеер; close — закрыть окошко.
+ */
+export const videoMini = ({ art, title, open = {}, close = {}, pct = 30 }) =>
+  `<div class="${cls('ui-vmini', art || 'ph')}"><button class="ui-vmini-open"${act({ label: `Развернуть: ${title}`, ...open })}></button>`
+  + `<button class="ui-vmini-x"${act({ label: 'Закрыть', toggle: 'on', ...close })}>${icon('x')}</button>`
+  + `<button class="ui-vmini-play"${act({ label: 'Пауза', toggle: 'play' })}>${icon('pause', { fill: true })}</button>`
+  + `<i class="ui-vmini-bar"><b style="width:${pct}%"></b></i></div>`;
