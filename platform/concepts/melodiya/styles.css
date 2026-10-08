@@ -1,0 +1,98 @@
+/* «Мелодия» — мимикрия ВК Музыки. Оболочка, кегли и цвета — из слоя `.ui`
+   в ядре; здесь только своё: строка мелодии с play и галочкой, волна с ручками
+   обрезки, плеер-редактор без обложки, карточка звонящего, будильник и камера. */
+
+/* Фото только у карточек контактов: кадры с выходных из assets/media */
+.md-ph { background-size:cover; background-position:center; background-repeat:no-repeat; background-color:#1b2127; }
+.md-katya { background-image:url(assets/media/katya.jpg); }
+.md-andrey { background-image:url(assets/media/andrey.jpg); }
+.md-lyosha { background-image:url(assets/media/lyosha.jpg); }
+.md-a1, .md-a2, .md-a3, .md-a4, .md-a5, .md-a6 { background-image:url(assets/media/weekend-atlas.png); background-size:300% auto; }
+.md-a1 { background-position:0 0; } .md-a2 { background-position:50% 0; } .md-a3 { background-position:100% 0; }
+.md-a4 { background-position:0 100%; } .md-a5 { background-position:50% 100%; } .md-a6 { background-position:100% 100%; }
+
+/* Значок на мягкой заливке вместо обложки */
+.md-ico { display:grid; place-items:center; background-color:var(--ui-card-2); color:var(--ui-text-2); }
+.md-ico > svg { width:24px; height:24px; }
+.md-ico.is-accent { background-color:var(--ui-accent-soft); color:var(--ui-link); }
+
+/* Лицо мини-плеера: без обложки, мягкий градиент ВК */
+.md-face { background-color:#2b5fd9; background-image:linear-gradient(135deg, #4a8dff, #7a3cff); }
+
+/* Строка мелодии: play 44 слева, название, галочка выбранной справа */
+.md-tone { gap:12px; padding-left:16px; }
+.md-tone > .ui-play { flex:none; }
+.md-tone .ui-row-main { gap:0; }
+.md-check { width:24px; color:var(--ui-link); }
+.md-check > svg { width:22px; height:22px; stroke-width:2.5; }
+.md-tone.is-picked .ui-row-text > strong { color:var(--ui-link); }
+
+/* Плеер-редактор: волна с ручками обрезки сверху, управление под ней, без перемешать и повтора */
+.md-trim { padding:8px 16px 4px; }
+.md-wave { display:flex; align-items:center; gap:3px; height:120px; padding:0 4px; border-radius:12px; background-color:var(--ui-card); }
+.md-wave > b { flex:1; min-width:2px; border-radius:2px; background-color:var(--ui-text-3); }
+.md-wave > b.is-in { background-color:var(--ui-accent); }
+.md-handle { position:relative; flex:none; width:4px; height:104px; border-radius:2px; background-color:#fff; }
+.md-handle::before { content:""; position:absolute; left:-6px; top:50%; width:16px; height:28px; margin-top:-14px; border-radius:6px; background-color:#fff; }
+.md-w1 { height:10%; } .md-w2 { height:20%; } .md-w3 { height:30%; } .md-w4 { height:42%; }
+.md-w5 { height:54%; } .md-w6 { height:66%; } .md-w7 { height:76%; } .md-w8 { height:86%; }
+.md-trim-times { display:flex; justify-content:space-between; align-items:baseline; padding:8px 4px 0; font:400 14px/18px var(--ui-face); color:var(--ui-text-2); font-variant-numeric:tabular-nums; }
+.md-trim-times > b { font:600 15px/18px var(--ui-face); color:var(--ui-text); }
+.md-editor .ui-np { padding:0 16px; }
+.md-editor .ui-np-side, .md-editor .ui-np-bottom { display:none; }
+.md-editor .ui-np-row { justify-content:center; gap:32px; }
+.md-p35 { width:35%; }
+.md-p25 { width:25%; }
+
+/* Карточка звонящего: фото или инициалы крупно, как на экране звонка */
+.md-caller { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 16px 16px; text-align:center; }
+.md-caller .md-ava.is-large { width:132px; height:132px; margin-bottom:12px; font-size:48px; }
+.md-ava.md-ph { background-color:#1b2127; }
+
+/* Будильник: время крупно */
+.md-clock { display:flex; flex-direction:column; align-items:center; gap:4px; padding:16px 16px 20px; text-align:center; }
+.md-clock > strong { font:300 88px/96px var(--ui-face); letter-spacing:-.02em; color:var(--ui-text); font-variant-numeric:tabular-nums; }
+.md-clock > span { font:400 15px/20px var(--ui-face); color:var(--ui-text-2); }
+
+/* Формы */
+.md-input { width:100%; min-height:24px; padding:0; border:0; background:none; color:var(--ui-text); font:400 17px/22px var(--ui-face); }
+
+/* Камера: тот, кто будет звонить, в круглой рамке */
+.md-capture { overflow:hidden; }
+.md-camera { position:absolute; inset:0; }
+.md-camera-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,.7)); }
+.md-cam-label { position:relative; z-index:1; margin-top:72px; padding:0 32px; text-align:center; font:400 14px/18px var(--ui-face); color:rgba(255,255,255,.9); }
+.md-capture-foot { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 24px); z-index:1; display:flex; justify-content:center; }
+
+/* Профиль */
+.md-me { display:flex; flex-direction:column; align-items:center; gap:4px; padding:4px 16px 16px; text-align:center; }
+.md-me .ui-avatar { width:96px; height:96px; margin-bottom:8px; font-size:36px; }
+.md-danger .ui-cell-text > strong, .md-danger > svg:first-child { color:var(--ui-danger); }
+
+/* Выбор фото из ядра: iOS-синий на тёмном и белом знак не проходят AA */
+.ui-pk-text:not(.is-off) { color:#5aaaff; }
+.ui-pk-tile > i { background:#0064d2; }
+
+/* Подпись-сноска внутри секции — на поле 16 */
+.ui-sec > .ui-foot { padding:0 16px; }
+
+/* «Назначить»: отмеченное — назначено, а не сделано, поэтому без зачёркивания */
+.ui.md-editor .ui-check.is-on .ui-check-text strong { color:var(--ui-text); text-decoration:none; }
+
+/* Постер звонка: кадр во весь экран, имя крупно поверх, мелодия звучит, кнопки звонка — превью */
+.md-poster { overflow:hidden; }
+.md-poster-bg { position:absolute; inset:0; }
+.md-poster-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.05) 38%, rgba(0,0,0,.2) 58%, rgba(0,0,0,.85)); }
+.md-poster-name { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding-top:calc(var(--safe-top) + 72px); text-align:center; color:#fff; }
+.md-poster-name > span { font:400 15px/20px var(--ui-face); color:rgba(255,255,255,.85); }
+.md-poster-name > strong { font:700 56px/60px var(--ui-face); letter-spacing:-.02em; text-shadow:0 2px 16px rgba(0,0,0,.4); }
+.md-poster-tone { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 220px); z-index:1; display:flex; align-items:center; gap:12px; padding:8px 12px; border-radius:16px; background-color:rgba(0,0,0,.45); color:#fff; }
+.md-poster-tone > span { display:flex; flex-direction:column; }
+.md-poster-tone b { font:600 15px/20px var(--ui-face); }
+.md-poster-tone small { font:400 13px/16px var(--ui-face); color:rgba(255,255,255,.8); }
+.md-poster-foot { position:absolute; left:40px; right:40px; bottom:calc(var(--safe-bottom) + 96px); z-index:1; display:flex; justify-content:space-between; }
+.md-call-btn { display:flex; flex-direction:column; align-items:center; gap:6px; color:#fff; }
+.md-call-btn > svg { box-sizing:content-box; width:28px; height:28px; padding:18px; border-radius:50%; background-color:#e64646; }
+.md-call-btn.is-ok > svg { background-color:#34c759; }
+.md-call-btn > small { font:400 13px/16px var(--ui-face); }
+.md-poster-done { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 16px); z-index:1; }

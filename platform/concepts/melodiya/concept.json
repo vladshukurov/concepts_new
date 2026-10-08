@@ -1,0 +1,1237 @@
+{
+  "slug": "melodiya",
+  "name": "Мелодия",
+  "targetSet": "vk-music",
+  "qualityContractVersion": 4,
+  "uiContractVersion": 2,
+  "brand": {
+    "accent": "#0077FF",
+    "accentDark": "#0077FF",
+    "theme": "vk-dark",
+    "fonts": "Inter:wght@400;500;600;700"
+  },
+  "deck": "Свои рингтоны и мелодии будильника из своих записей в грамматике ВК Музыки: обрезка, затухание, назначение на контакт, 4 доступа набора, без своего сервера.",
+  "eyebrow": "Мелодия · Рингтоны из своих записей · iOS",
+  "heroTitle": "Мелодия — рингтоны из своих записей",
+  "heroDeck": "Смех дочки на звонок мамы, «Мама, подъём!» голосом сына на будильник, свист чайника на сообщения. Вырезать 20 секунд из записи, включить затухание и назначить — как в музыкальном приложении.",
+  "tagline": "Рингтоны и будильник из своих записей: смех, голоса, репетиции",
+  "insight": "самые дорогие звуки — голоса своих — лежат в «Диктофоне» как «Новая запись 48», а телефон звонит одинаковой системной мелодией; из записи нужен короткий фрагмент, который узнаёшь с первой секунды",
+  "domain": "melodiya.app",
+  "start": "phone",
+  "tabs": [
+    {
+      "id": "home",
+      "label": "Мелодии",
+      "role": "home"
+    },
+    {
+      "id": "contacts",
+      "label": "Контакты",
+      "role": "contacts"
+    },
+    {
+      "id": "records",
+      "label": "Записи",
+      "role": "library"
+    }
+  ],
+  "positioning": {
+    "mode": "mimicry",
+    "categoryFit": "Свои записи, которые слушают, обрезают и ставят на звонок и будильник, с мини-плеером и звуком с погашенным экраном — музыкальное приложение, как ВК Музыка, поэтому категория Music",
+    "familiarPatterns": [
+      "Тёмная оболочка ВК Музыки, мини-плеер над таб-баром",
+      "Список звуков с play в строке, как треки в «Моей музыке»",
+      "Полноэкранный плеер с прогрессом, «нравится», предыдущей и следующей"
+    ],
+    "distinctions": [
+      "Шапка — крупный заголовок «Мелодии» и сегменты «Звонок · Будильник · Сообщения», без аватара и обложки-героя",
+      "Главная — компактный список, как звуки в настройках iOS: галочка у выбранной",
+      "Плеер-редактор: волна с ручками обрезки, затухание и «Назначить», без обложек, перемешивания и повтора; постер звонка с камеры — как будет выглядеть входящий"
+    ],
+    "evidenceScreens": [
+      "home",
+      "laugh",
+      "records",
+      "alarm",
+      "lock"
+    ],
+    "referencePatterns": [
+      "own-recordings",
+      "audio-player",
+      "background-playback",
+      "playlists"
+    ],
+    "referenceEvidence": [
+      {
+        "pattern": "own-recordings",
+        "screen": "records",
+        "behavior": "Записи из «Диктофона» и «Файлов»: из каждой вырезана своя мелодия, сегодняшняя ещё нет"
+      },
+      {
+        "pattern": "audio-player",
+        "screen": "laugh",
+        "behavior": "Плеер-редактор «Смех Сони»: фрагмент 0:12–0:32 на волне, предыдущая и следующая мелодия"
+      },
+      {
+        "pattern": "background-playback",
+        "screen": "lock",
+        "behavior": "Будильник звучит с погашенным экраном, на локскрине «7:00 · Подъём голосом Тёмы»"
+      },
+      {
+        "pattern": "playlists",
+        "screen": "home",
+        "behavior": "Свои мелодии по видам: звонок, будильник, сообщения — с галочкой выбранной"
+      }
+    ]
+  },
+  "product": {
+    "audience": "Родители и все, у кого в «Диктофоне» лежат голоса своих: смех ребёнка, голос сына, кусок с репетиции группы",
+    "situation": "Записи копятся в «Диктофоне» как «Новая запись 48», а телефон звонит и будит одинаковой системной мелодией; сделать рингтон из своей записи — квест через компьютер",
+    "problem": "Из длинной записи нельзя быстро вырезать 20 секунд, послушать их как трек и поставить на звонок мамы или на будильник",
+    "promise": "Выбрал запись — вырезал фрагмент на волне — включил затухание — назначил на звонок, будильник, сообщения или контакт",
+    "differentiator": "Единица продукта — своя мелодия из своей записи с назначением, а не трек из каталога",
+    "returnReasons": [
+      "Сделать мелодию из новой записи, пока смешной момент свежий",
+      "Поставить своему человеку свою мелодию перед днём рождения",
+      "Сменить голос будильника, когда дети записали новый"
+    ],
+    "verticalSlice": {
+      "entry": "phone",
+      "action": "newtone",
+      "result": "song"
+    },
+    "coreLoop": [
+      "Записать смешное или родное в «Диктофон»",
+      "Вырезать фрагмент на волне и включить затухание",
+      "Назначить на звонок, будильник, сообщения или контакт"
+    ],
+    "nonGoals": [
+      "Каталог готовых рингтонов и чужих треков",
+      "Публикация и обмен мелодиями",
+      "Монтаж из нескольких записей и эффекты"
+    ],
+    "content": {
+      "kind": "av-notes",
+      "what": "Свои записи из «Диктофона» и «Файлов», вырезанные из них мелодии с затуханием и назначениями, фото на карточках своих контактов",
+      "library": false,
+      "feed": false,
+      "sharing": false
+    }
+  },
+  "permissions": [
+    {
+      "key": "camera",
+      "plist": "NSCameraUsageDescription",
+      "alert": {
+        "title": "«Мелодия» запрашивает доступ к камере",
+        "text": "Снять постер звонка — фото во весь экран, когда звонит этот человек"
+      },
+      "feature": "Постер звонка Андрея: кадр во весь экран, имя и его мелодия",
+      "gesture": "«Снять постер» в карточке Андрея",
+      "screen": "andrey",
+      "target": "capture",
+      "fallback": "Звонок с инициалами, мелодия звонка работает",
+      "snack": "Нет доступа к камере",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "AVCaptureSession, фото; кадр хранится в постере контакта на устройстве и в CloudKit private database, показывается на превью входящего с мелодией",
+      "rationale": {
+        "who": "Человек, который поставил мужу мелодию «Дождь на даче» и хочет собрать ему весь входящий звонок",
+        "moment": "В карточке Андрея нажимает «Снять постер», пока муж сидит рядом",
+        "need": "Постер — это свежий кадр во весь экран под имя; его снимают сейчас и сразу видят, как будет выглядеть звонок с мелодией",
+        "without": "Звонок остаётся с инициалами, мелодия звонка работает как прежде"
+      },
+      "reviewNote": "Камера открывается только по «Снять постер» в карточке контакта (Контакты → Андрей). После снимка открывается «Так будет выглядеть звонок»: кадр во весь экран, имя крупно, звучит мелодия Андрея с паузой на месте; кнопки «Принять» и «Отклонить» — превью. В карточке появляется строка «Постер звонка». При отказе: пустое состояние в карточке, мелодия звонка работает",
+      "result": "Постер звонка Андрея во весь экран"
+    },
+    {
+      "key": "photos",
+      "plist": "NSPhotoLibraryUsageDescription",
+      "alert": {
+        "title": "«Мелодия» запрашивает доступ к «Фото»",
+        "text": "Выбрать фото человека для его карточки и экрана звонка"
+      },
+      "feature": "Фото из «Фото» на карточке контакта",
+      "gesture": "«Фото из «Фото»» в карточке Кати",
+      "screen": "katya",
+      "target": "photopick",
+      "fallback": "Карточка остаётся с инициалами",
+      "snack": "Нет доступа к «Фото»",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "PhotoKit: недавние снимки сверху; выбранный кадр копируется в карточку контакта",
+      "rationale": {
+        "who": "Человек, у которого сестра Катя есть только на снимках с выходных",
+        "moment": "В карточке Кати нажимает «Фото из «Фото»»",
+        "need": "Хороший кадр Кати уже лежит в медиатеке среди снимков с выходных — снять заново его не получится",
+        "without": "Карточка остаётся с инициалами, мелодия звонка работает"
+      },
+      "reviewNote": "Доступ вызывается только строкой «Фото из «Фото»» в карточке контакта (Контакты → Катя). После «Добавить» карточка Кати показывает выбранное фото вместо инициалов. При отказе: пустое состояние в карточке, остальное работает",
+      "result": "Фото Кати на её карточке"
+    },
+    {
+      "key": "audio",
+      "plist": "UIBackgroundModes: audio",
+      "alert": {
+        "title": "Фоновое аудио",
+        "text": "Будильник и мелодии звучат с погашенным экраном"
+      },
+      "activate": true,
+      "feature": "Будильник голосом Тёмы с погашенным экраном",
+      "gesture": "«Будить с погашенным экраном» в будильнике",
+      "screen": "alarm",
+      "target": "lock",
+      "fallback": "Без фонового режима мелодии звучат только с открытым экраном",
+      "risk": "high",
+      "anchor": true,
+      "conditional": true,
+      "requires": "AVAudioSession .playback + Now Playing + remote commands",
+      "grounding": "AVPlayer для мелодий и будильника, MPNowPlayingInfoCenter + MPRemoteCommandCenter",
+      "rationale": {
+        "who": "Мама, которую по будням будит голос сына «Мама, подъём!»",
+        "moment": "Вечером в будильнике нажимает «Будить с погашенным экраном» и кладёт телефон",
+        "need": "В 7:00 экран погашен, а мелодия должна зазвучать и управляться с локскрина; без фонового звука приложение молчит",
+        "without": "Мелодии звучат только с открытым экраном, будильник — системный"
+      },
+      "reviewNote": "«Будить с погашенным экраном» в будильнике (Мелодии → Будильник → 7:00): в 7:00 мелодия «Мама, подъём!» звучит с погашенным экраном, на локскрине «7:00 · Подъём голосом Тёмы» с паузой и переходом в будильник. Мелодии из мини-плеера звучат в фоне так же. При отказе: звук только с открытым экраном",
+      "result": "7:00 · Подъём голосом Тёмы на локскрине"
+    },
+    {
+      "key": "push",
+      "plist": "aps-environment",
+      "alert": {
+        "title": "«Мелодия» запрашивает разрешение на уведомления",
+        "text": "Напомним поставить мелодию к дню рождения"
+      },
+      "feature": "Напоминание поставить мелодию ко дню рождения бабушки",
+      "gesture": "«Напомнить поставить мелодию» в карточке бабушки",
+      "screen": "babushka",
+      "target": "babushka",
+      "fallback": "Напоминания нет, карточка бабушки остаётся в контактах",
+      "snack": "Уведомления выключены",
+      "risk": "low",
+      "anchor": false,
+      "conditional": true,
+      "requires": "Локальное уведомление UNUserNotificationCenter",
+      "grounding": "UNUserNotificationCenter, локальное уведомление накануне дня рождения; своего сервера нет",
+      "rationale": {
+        "who": "Внучка, которая хочет, чтобы в день рождения бабушки её звонок звучал по-особенному",
+        "moment": "В карточке бабушки нажимает «Напомнить поставить мелодию»",
+        "need": "Напоминание приходит 13 октября в 19:00, когда приложение закрыто, — без уведомлений его не доставить",
+        "without": "Напоминания нет, карточка бабушки остаётся как есть"
+      },
+      "reviewNote": "Уведомления запрашиваются только строкой «Напомнить поставить мелодию» в карточке бабушки (Контакты → Бабушка). После разрешения там стоит «Напомним 13 октября в 19:00». При отказе: напоминания нет",
+      "result": "Напомним 13 октября в 19:00"
+    }
+  ],
+  "screens": [
+    {
+      "id": "phone",
+      "title": "Вход в «Мелодию»",
+      "type": "старт, без таб-бара",
+      "light": true,
+      "meta": "Номер телефона · без OTP",
+      "ui": {
+        "pattern": "auth",
+        "navigation": "push",
+        "purpose": "Войти по номеру и паролю или создать аккаунт",
+        "primaryAction": "Создать аккаунт",
+        "hierarchy": {
+          "primary": "Номер телефона и главное действие",
+          "secondary": "Регистрация, правовая строка и помощь"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error"
+        ],
+        "density": "low",
+        "contentCases": [
+          "Корректный номер, переход к паролю",
+          "Номер с кодом другой страны",
+          "Неверный пароль или нет сети"
+        ]
+      }
+    },
+    {
+      "id": "home",
+      "title": "Мелодии",
+      "type": "tab (root, start)",
+      "light": false,
+      "meta": "Звонок, будильник, сообщения",
+      "ui": {
+        "pattern": "collection",
+        "purpose": "Послушать свои мелодии и увидеть, какая стоит на звонке, будильнике и сообщениях",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Звонок — «Репетиция · припев», будильник — «Мама, подъём!»",
+          "Сегмент «Будильник»: 7:00 по будням и список с галочкой",
+          "Мелодий ещё нет — «+» открывает новую"
+        ],
+        "navigation": "root",
+        "hierarchy": {
+          "primary": "Сегменты и список мелодий с галочкой",
+          "secondary": "Контакты со своей мелодией и мини-плеер"
+        }
+      }
+    },
+    {
+      "id": "contacts",
+      "title": "Контакты",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Своя мелодия и общая",
+      "parent": "home",
+      "ui": {
+        "pattern": "collection",
+        "purpose": "Найти человека и открыть его мелодию звонка",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Трое со своей мелодией, двое под общую",
+          "Контакт без фото — инициалы",
+          "Контактов со своей мелодией ещё нет"
+        ],
+        "navigation": "root",
+        "hierarchy": {
+          "primary": "Контакты со своей мелодией",
+          "secondary": "Кто звонит под общую"
+        }
+      }
+    },
+    {
+      "id": "records",
+      "title": "Записи",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Диктофон и Файлы",
+      "parent": "home",
+      "ui": {
+        "pattern": "collection",
+        "purpose": "Найти запись, из которой ещё не сделана мелодия",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Сегодняшняя запись 52 ещё не мелодия",
+          "Длинная репетиция 14:22 из «Файлов»",
+          "Записей нет — «Диктофон» пуст"
+        ],
+        "navigation": "root",
+        "hierarchy": {
+          "primary": "Записи с длительностью и мелодией из них",
+          "secondary": "Чипсы источника и «+»"
+        }
+      }
+    },
+    {
+      "id": "laugh",
+      "title": "Смех Сони",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "0:12–0:32 · мама",
+      "parent": "home",
+      "ui": {
+        "pattern": "player",
+        "purpose": "Послушать «Смех Сони», поправить фрагмент и затухание и назначить",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "«Смех Сони»: фрагмент 0:12–0:32 на волне",
+          "Запись длиннее 10 минут — волна сжата",
+          "Звук прервался звонком"
+        ],
+        "navigation": "fullscreen",
+        "hierarchy": {
+          "primary": "Волна с ручками обрезки и управление",
+          "secondary": "Затухание и «Назначить»"
+        }
+      }
+    },
+    {
+      "id": "podyom",
+      "title": "Мама, подъём!",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "0:03–0:19 · будильник",
+      "parent": "home",
+      "ui": {
+        "pattern": "player",
+        "purpose": "Послушать «Мама, подъём!», поправить фрагмент и затухание и назначить",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "«Мама, подъём!»: фрагмент 0:03–0:19 на волне",
+          "Запись длиннее 10 минут — волна сжата",
+          "Звук прервался звонком"
+        ],
+        "navigation": "fullscreen",
+        "hierarchy": {
+          "primary": "Волна с ручками обрезки и управление",
+          "secondary": "Затухание и «Назначить»"
+        }
+      }
+    },
+    {
+      "id": "repet",
+      "title": "Репетиция · припев",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "3:41–4:01 · звонок",
+      "parent": "home",
+      "ui": {
+        "pattern": "player",
+        "purpose": "Послушать «Репетиция · припев», поправить фрагмент и затухание и назначить",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "«Репетиция · припев»: фрагмент 3:41–4:01 на волне",
+          "Запись длиннее 10 минут — волна сжата",
+          "Звук прервался звонком"
+        ],
+        "navigation": "fullscreen",
+        "hierarchy": {
+          "primary": "Волна с ручками обрезки и управление",
+          "secondary": "Затухание и «Назначить»"
+        }
+      }
+    },
+    {
+      "id": "kettle",
+      "title": "Свист чайника",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "0:08–0:12 · сообщения",
+      "parent": "home",
+      "ui": {
+        "pattern": "player",
+        "purpose": "Послушать «Свист чайника», поправить фрагмент и затухание и назначить",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "«Свист чайника»: фрагмент 0:08–0:12 на волне",
+          "Запись длиннее 10 минут — волна сжата",
+          "Звук прервался звонком"
+        ],
+        "navigation": "fullscreen",
+        "hierarchy": {
+          "primary": "Волна с ручками обрезки и управление",
+          "secondary": "Затухание и «Назначить»"
+        }
+      }
+    },
+    {
+      "id": "rain",
+      "title": "Дождь на даче",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "0:40–1:10 · Андрей",
+      "parent": "home",
+      "ui": {
+        "pattern": "player",
+        "purpose": "Послушать «Дождь на даче», поправить фрагмент и затухание и назначить",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "«Дождь на даче»: фрагмент 0:40–1:10 на волне",
+          "Запись длиннее 10 минут — волна сжата",
+          "Звук прервался звонком"
+        ],
+        "navigation": "fullscreen",
+        "hierarchy": {
+          "primary": "Волна с ручками обрезки и управление",
+          "secondary": "Затухание и «Назначить»"
+        }
+      }
+    },
+    {
+      "id": "newtone",
+      "title": "Новая мелодия",
+      "type": "modal",
+      "light": false,
+      "meta": "Форма мелодии",
+      "parent": "home",
+      "ui": {
+        "pattern": "editor",
+        "purpose": "Выбрать запись и назвать мелодию",
+        "primaryAction": "Вырезать мелодию",
+        "states": [
+          "default",
+          "empty",
+          "error",
+          "success"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Новая запись 52, 0:41 → «Сонина песенка»",
+          "Источник из «Файлов» — длинная репетиция",
+          "Пустое название — кнопка неактивна"
+        ],
+        "navigation": "modal",
+        "hierarchy": {
+          "primary": "Запись и название",
+          "secondary": "Фрагмент"
+        }
+      }
+    },
+    {
+      "id": "song",
+      "title": "Сонина песенка",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Только что вырезана",
+      "parent": "newtone",
+      "ui": {
+        "pattern": "player",
+        "purpose": "Послушать новую мелодию и назначить её",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Сонина песенка 0:05–0:25, ещё никуда",
+          "Назначена сразу на звонок",
+          "Запись короче 20 секунд"
+        ],
+        "navigation": "fullscreen",
+        "hierarchy": {
+          "primary": "Волна и управление",
+          "secondary": "Затухание и «Назначить»"
+        }
+      }
+    },
+    {
+      "id": "mama",
+      "title": "Мама",
+      "type": "push",
+      "light": false,
+      "meta": "Смех Сони",
+      "parent": "contacts",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Увидеть, какая мелодия звучит, когда звонит мама",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Мама · Смех Сони с 3 октября",
+          "Длинное имя контакта",
+          "Мелодию сняли — общая"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Кто звонит и мелодия",
+          "secondary": "Последний звонок"
+        }
+      }
+    },
+    {
+      "id": "andrey",
+      "title": "Андрей",
+      "type": "push",
+      "light": false,
+      "meta": "Дождь на даче",
+      "parent": "contacts",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Снять постер звонка Андрея",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Андрей с инициалами до снимка, с постером после",
+          "Постер пересняли вечером",
+          "Отказ в доступе к камере"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото или инициалы и мелодия",
+          "secondary": "«Снять постер» и постер звонка"
+        }
+      }
+    },
+    {
+      "id": "lyosha",
+      "title": "Лёша · группа",
+      "type": "push",
+      "light": false,
+      "meta": "Репетиция · припев",
+      "parent": "contacts",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Увидеть мелодию звонка Лёши с репетиции",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Лёша · Репетиция · припев с 6 октября",
+          "Фото с выходных",
+          "Мелодию сняли — общая"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото и мелодия",
+          "secondary": "Последний звонок"
+        }
+      }
+    },
+    {
+      "id": "katya",
+      "title": "Катя",
+      "type": "push",
+      "light": false,
+      "meta": "Общая мелодия",
+      "parent": "contacts",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Поставить фото Кати из «Фото»",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Катя с инициалами до выбора, с фото после",
+          "В медиатеке нет подходящего кадра",
+          "Отказ в доступе к «Фото»"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Фото или инициалы",
+          "secondary": "«Фото из «Фото»» и мелодия"
+        }
+      }
+    },
+    {
+      "id": "babushka",
+      "title": "Бабушка",
+      "type": "push",
+      "light": false,
+      "meta": "День рождения 14 октября",
+      "parent": "contacts",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Напомнить себе поставить мелодию ко дню рождения бабушки",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Бабушка, день рождения 14 октября, напоминание 13-го",
+          "Напоминание уже стоит",
+          "Уведомления выключены"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Кто звонит и напоминание",
+          "secondary": "День рождения и последний звонок"
+        }
+      }
+    },
+    {
+      "id": "alarm",
+      "title": "Будильник",
+      "type": "push",
+      "light": false,
+      "meta": "7:00 по будням",
+      "parent": "home",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Настроить будильник голосом Тёмы и будить с погашенным экраном",
+        "primaryAction": "Будить с погашенным экраном",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "7:00 по будням, «Мама, подъём!», громче постепенно",
+          "Будильник выключен",
+          "Повтор через 15 минут"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Время и мелодия",
+          "secondary": "Громкость, повтор и погашенный экран"
+        }
+      }
+    },
+    {
+      "id": "lock",
+      "title": "Экран погас",
+      "type": "system",
+      "light": false,
+      "meta": "Background audio",
+      "parent": "alarm",
+      "ui": {
+        "pattern": "system",
+        "purpose": "Остановить или отложить будильник с локскрина",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          "7:00 · Подъём голосом Тёмы",
+          "Длинное название мелодии",
+          "Будильник продолжился после звонка"
+        ],
+        "navigation": "system",
+        "hierarchy": {
+          "primary": "Сейчас играет: будильник",
+          "secondary": "Пауза и переход в будильник"
+        }
+      }
+    },
+    {
+      "id": "capture",
+      "title": "Постер · Андрей",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Camera",
+      "parent": "andrey",
+      "ui": {
+        "pattern": "capture",
+        "purpose": "Снять кадр Андрея для постера звонка",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          "Андрей в кадре во весь экран",
+          "Темно — лицо плохо видно",
+          "Отказ в доступе к камере"
+        ],
+        "navigation": "fullscreen",
+        "hierarchy": {
+          "primary": "Видоискатель с рамкой",
+          "secondary": "Спуск"
+        }
+      }
+    },
+    {
+      "id": "poster",
+      "title": "Так будет выглядеть звонок",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Постер звонка",
+      "parent": "capture",
+      "ui": {
+        "pattern": "player",
+        "purpose": "Увидеть входящий звонок Андрея с постером и услышать его мелодию",
+        "primaryAction": "Сохранить постер",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          "Андрей во весь экран, «Дождь на даче» звучит",
+          "Длинное имя в две строки",
+          "Мелодия не задана — звучит общая"
+        ],
+        "navigation": "fullscreen",
+        "hierarchy": {
+          "primary": "Кадр во весь экран и имя",
+          "secondary": "Мелодия с паузой и превью кнопок звонка"
+        }
+      }
+    },
+    {
+      "id": "photopick",
+      "title": "Фото из «Фото»",
+      "type": "system picker",
+      "light": false,
+      "meta": "Photo Library",
+      "parent": "katya",
+      "ui": {
+        "pattern": "system",
+        "purpose": "Выбрать фото Кати для её карточки",
+        "primaryAction": "Добавить",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Снимки с выходных, выбран кадр с Катей",
+          "Медиатека пустая",
+          "Отказ в доступе к «Фото»"
+        ],
+        "navigation": "system",
+        "hierarchy": {
+          "primary": "Недавние снимки",
+          "secondary": "Отмена и «Добавить»"
+        }
+      }
+    },
+    {
+      "id": "profile",
+      "title": "Профиль",
+      "type": "push",
+      "light": false,
+      "meta": "Что сейчас стоит",
+      "parent": "home",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Увидеть, что стоит на звонке, будильнике и сообщениях, и перейти к своим разделам и настройкам",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "5 мелодий, 3 контакта, 35 записей",
+          "Длинное имя",
+          "Мелодий ещё нет"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Имя, счётчики и что сейчас стоит",
+          "secondary": "Свои разделы и настройки"
+        }
+      }
+    },
+    {
+      "id": "settings",
+      "title": "Настройки",
+      "type": "push",
+      "light": false,
+      "meta": "Звук, уведомления, записи, тема",
+      "parent": "profile",
+      "ui": {
+        "pattern": "settings",
+        "purpose": "Настроить затухание и длину фрагмента, уведомления, записи, тему и аккаунт",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Затухание 2 с, фрагмент 20 с, 86 МБ",
+          "Копия в iCloud выключена",
+          "Записей ещё нет — загружено 0 МБ"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Звук и уведомления о своих событиях",
+          "secondary": "Записи, тема, аккаунт и о приложении"
+        }
+      }
+    }
+  ],
+  "prototypes": [
+    {
+      "id": "all",
+      "hero": true,
+      "label": "Весь продукт",
+      "note": "Мелодии, контакты, записи, плеер-редактор, будильник и 4 доступа",
+      "start": "phone",
+      "screens": [
+        "phone",
+        "home",
+        "contacts",
+        "records",
+        "laugh",
+        "podyom",
+        "repet",
+        "kettle",
+        "rain",
+        "newtone",
+        "song",
+        "mama",
+        "andrey",
+        "lyosha",
+        "katya",
+        "babushka",
+        "alarm",
+        "lock",
+        "capture",
+        "poster",
+        "photopick",
+        "profile",
+        "settings"
+      ],
+      "stops": [],
+      "authTarget": "home"
+    },
+    {
+      "id": "create",
+      "label": "Новая мелодия",
+      "note": "Из сегодняшней записи вырезать «Сонину песенку» и назначить",
+      "start": "newtone",
+      "screens": [
+        "newtone",
+        "song",
+        "rain",
+        "laugh"
+      ],
+      "stops": [
+        "rain",
+        "laugh"
+      ]
+    },
+    {
+      "id": "alarm",
+      "label": "Будильник голосом сына",
+      "note": "Будить «Мама, подъём!» с погашенным экраном",
+      "start": "alarm",
+      "screens": [
+        "alarm",
+        "podyom",
+        "lock",
+        "laugh",
+        "repet"
+      ],
+      "stops": [
+        "laugh",
+        "repet"
+      ]
+    },
+    {
+      "id": "permissions",
+      "label": "Все доступы",
+      "note": "Постер звонка Андрея камерой, фото Кати из «Фото», будильник с погашенным экраном, напоминание ко дню рождения",
+      "start": "contacts",
+      "screens": [
+        "contacts",
+        "andrey",
+        "capture",
+        "poster",
+        "katya",
+        "photopick",
+        "babushka",
+        "mama",
+        "lyosha",
+        "laugh",
+        "rain",
+        "repet",
+        "kettle",
+        "podyom"
+      ],
+      "stops": [
+        "mama",
+        "lyosha",
+        "laugh",
+        "rain",
+        "repet",
+        "kettle",
+        "podyom"
+      ]
+    }
+  ],
+  "backendless": [
+    {
+      "needs": "Записи-источники",
+      "solution": "Файлы из «Диктофона» и «Файлов» на устройстве, копия в CloudKit private database"
+    },
+    {
+      "needs": "Мелодии и назначения",
+      "solution": "Фрагменты .m4r и настройки затухания в CoreData и CloudKit private database"
+    },
+    {
+      "needs": "Фото контактов",
+      "solution": "Снимок камеры или кадр из «Фото» хранится в карточке на устройстве"
+    },
+    {
+      "needs": "Напоминания",
+      "solution": "Локальные уведомления UNUserNotificationCenter на выбранную дату"
+    }
+  ],
+  "appStore": {
+    "name": "Мелодия — рингтоны из записей",
+    "subtitle": "Смех, голоса и свои звуки",
+    "promo": "Смех дочки на звонок мамы, «Мама, подъём!» голосом сына на будильник. Вырежьте 20 секунд из своей записи, включите затухание и назначьте.",
+    "keywords": "рингтон,будильник,звонок,диктофон,обрезать,голос,звук,сообщения,контакт,запись,ребёнок,нарезка",
+    "category": {
+      "primary": "Music",
+      "secondary": "Utilities"
+    },
+    "ageRating": "13+",
+    "price": "Бесплатно",
+    "encryption": "ITSAppUsesNonExemptEncryption = NO",
+    "urls": {
+      "support": "https://melodiya.app/support",
+      "marketing": "https://melodiya.app",
+      "privacy": "https://melodiya.app/privacy"
+    },
+    "description": [
+      "Свои мелодии на звонок, будильник и сообщения",
+      "Выберите запись из «Диктофона» или «Файлов», вырежьте фрагмент на волне и включите затухание",
+      "Назначьте мелодию контакту, поставьте фото того, кто звонит, и просыпайтесь под голоса своих с погашенным экраном"
+    ],
+    "whatsNew": "Первая версия.",
+    "reviewAccount": {
+      "email": "review@melodiya.app",
+      "password": "review2026",
+      "note": "Тестовый аккаунт готов сразу; вход по номеру и паролю, OTP не используется."
+    },
+    "privacy": [
+      {
+        "type": "Фото и видео",
+        "apple": "User Content → Photos or Videos",
+        "purpose": "Работа приложения",
+        "linked": false,
+        "tracking": false,
+        "why": "Постер звонка с камеры или фото из «Фото» хранится в карточке контакта на устройстве"
+      },
+      {
+        "type": "Аудио",
+        "apple": "User Content → Audio Data",
+        "purpose": "Работа приложения",
+        "linked": false,
+        "tracking": false,
+        "why": "Свои записи и вырезанные из них мелодии хранятся на устройстве и в своей iCloud"
+      }
+    ],
+    "assets": {
+      "locale": "ru-RU",
+      "template": "studio",
+      "screens": [
+        {
+          "screen": "home",
+          "headline": "Звонит — и сразу ясно",
+          "body": "Свои мелодии на звонок и сообщения"
+        },
+        {
+          "screen": "laugh",
+          "headline": "20 секунд смеха",
+          "body": "Вырежьте фрагмент прямо на волне"
+        },
+        {
+          "screen": "alarm",
+          "headline": "Будит голос сына",
+          "body": "«Мама, подъём!» в 7:00"
+        },
+        {
+          "screen": "poster",
+          "headline": "Видно, кто звонит",
+          "body": "Постер во весь экран и своя мелодия"
+        },
+        {
+          "screen": "lock",
+          "headline": "Звучит и в темноте",
+          "body": "Будильник с погашенным экраном"
+        }
+      ]
+    }
+  },
+  "docs": [
+    {
+      "file": "01-product-vision.md",
+      "label": "Вижен"
+    },
+    {
+      "file": "02-architecture.md",
+      "label": "Архитектура"
+    },
+    {
+      "file": "03-design-system.md",
+      "label": "Дизайн-система"
+    },
+    {
+      "file": "04-references.md",
+      "label": "Референсы"
+    },
+    {
+      "file": "05-visual-audit.md",
+      "label": "Визуальный аудит"
+    },
+    {
+      "file": "06-app-store.md",
+      "label": "App Store"
+    }
+  ],
+  "auth": {
+    "mode": "phone",
+    "confirmation": false,
+    "entryTarget": "home"
+  },
+  "readiness": {
+    "status": "draft",
+    "referenceResearch": [
+      {
+        "source": "Официальное приложение ВК Музыка для iOS",
+        "observation": "Тёмная оболочка, мини-плеер над таб-баром, список треков с play и полный плеер",
+        "decision": "Та же грамматика для своих мелодий, но шапка — заголовок и сегменты, а плеер — редактор фрагмента"
+      },
+      {
+        "source": "Настройки iOS → Звуки, рингтоны",
+        "observation": "Компактный список звуков с галочкой выбранного",
+        "decision": "Главная — такой же список с play в строке и галочкой для звонка, будильника и сообщений"
+      },
+      {
+        "source": "GarageBand и конвертеры рингтонов из App Store",
+        "observation": "Рингтон из своей записи делается через проект и экспорт, назначается в настройках",
+        "decision": "Обрезка на волне и назначение в одном экране, без проектов"
+      }
+    ],
+    "productCritique": [
+      {
+        "objection": "Рингтоны можно скачать готовые",
+        "resolution": "Готовые не узнаёшь как свои: здесь звучит смех дочки или голос сына",
+        "evidenceScreens": [
+          "home",
+          "laugh",
+          "records"
+        ]
+      },
+      {
+        "objection": "Зачем приложению будильник",
+        "resolution": "Голос сына будит в 7:00 с погашенным экраном, на локскрине видно, кто будит",
+        "evidenceScreens": [
+          "alarm",
+          "lock",
+          "podyom"
+        ]
+      },
+      {
+        "objection": "Фото контакта есть в «Контактах»",
+        "resolution": "Здесь фото и мелодия — одна карточка звонящего, снятая или выбранная прямо в ней",
+        "evidenceScreens": [
+          "andrey",
+          "katya",
+          "mama"
+        ]
+      }
+    ]
+  }
+}
