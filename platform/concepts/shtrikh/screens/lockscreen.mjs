@@ -1,0 +1,13 @@
+import { THEME } from './_shared.mjs';
+import { now, people, leraReply } from '../model.mjs';
+
+/* Системная поверхность: экран блокировки. Ответ Леры приходит с её именем и инициалами (commnotif) */
+export default (ui) => ui.screen({
+  id: 'lockscreen', theme: THEME, className: 'ui-lock',
+  body: ui.lockScreen({
+    time: leraReply.time, date: now.date[0].toUpperCase() + now.date.slice(1),
+    notifications: [
+      { initials: people.lera.initial, title: people.lera.name, text: leraReply.text, time: 'сейчас', go: 'direct-lera', label: `Уведомление: ${people.lera.name}` },
+    ],
+  }),
+});

@@ -1,12 +1,13 @@
 import { THEME, TABS } from './_shared.mjs';
-import { people, pleinair, walk, places, exhibit } from '../model.mjs';
+import { people, pleinair, walk, places, indoor } from '../model.mjs';
 
 /* Встречи: ближайшая — как событие ВК (когда, где, что взять, кто идёт);
-   дальше — выставка и будущие встречи */
+   сверху — встреча в помещении, которая идёт сейчас; дальше — будущие встречи */
 export default (ui) => ui.screen({
   id: 'events', theme: THEME,
   body: ui.scroll([
     ui.largeTitle('Встречи', ui.iconButton({ icon: 'message-circle', label: 'Чат встречи', go: 'chat' })),
+    ui.section({ title: 'Сейчас', children: ui.list([ui.row({ lead: ui.leadIcon('', { text: indoor.start }), title: indoor.title, sub: `идёт до ${indoor.end} · ${indoor.place}`, go: 'indoor' })]) }),
     ui.section({ title: pleinair.title, children: [
       ui.miniInfo([
         { icon: 'calendar', text: `Завтра, ${pleinair.day}, ${pleinair.start}`, accent: true },
@@ -21,10 +22,11 @@ export default (ui) => ui.screen({
       ui.denied('calendar'),
       ui.list([
         ui.row({ lead: ui.leadIcon('calendar-check', { round: true, accent: true }), title: 'Встреча в календаре', sub: 'Завтра, 09:00 · напоминание за час', shownAfter: 'calendar' }),
-        ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Схема базара на телефоне', sub: 'Точка сбора у часов · откроется без сети' }),
+        ui.row({ lead: ui.leadIcon('map-pin', { round: true, accent: true }), title: 'Точка сбора — у часов', sub: 'Марина перенесла в 17:52 · пришло тихо' }),
+        ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: 'Схема базара на телефоне', sub: 'Скачана заранее · 2,1 МБ · без сети' }),
+        ui.reminder({ title: 'Сообщить, если встречу перенесут', titleGranted: 'Сообщим, если встречу перенесут', sub: 'Перенос и новая точка сбора', here: 'events' }),
       ]),
     ] }),
-    ui.section({ title: 'Выставка', children: ui.list([ui.row({ lead: ui.leadIcon('image', { accent: true }), title: exhibit.title, sub: `Свои работы на общем экране · до ${exhibit.until}`, go: 'exhibit' })]) }),
     ui.section({ title: 'Потом', children: ui.list([
       ui.row({ lead: ui.leadIcon('', { text: walk.start }), title: walk.title, sub: `${walk.day} · ${walk.where} · ${walk.people} идут`, go: 'chatwalk' }),
       ui.row({ lead: ui.leadIcon('', { text: '10:00' }), title: 'Мост на Терренкуре', sub: '3 октября · вход в парк' }),

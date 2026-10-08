@@ -14,7 +14,7 @@ export default (ui) => ui.screen({
       { label: 'Заметки', filter: 'note' },
     ]) }),
     ui.entry({
-      icon: 'calendar', title: pleinair.title, meta: `${pleinair.start} · ${pleinair.where} · ${pleinair.people} идут`, status: { label: 'завтра', accent: true },
+      icon: 'calendar', title: pleinair.title, meta: `${pleinair.start} · ${pleinair.people} идут · обновлено в 17:40`, status: { label: 'завтра', accent: true },
       text: 'Взять линер, складной стул и бумагу потолще', actions: [{ label: 'Открыть встречу', icon: 'calendar', go: 'events', primary: true }],
     }),
     ui.entry({ icon: 'pen-line', title: own.today.title, meta: own.today.when, text: own.today.text, photos: 1, attach: tools(...own.today.tools), open: { go: 'post' }, menu: ['Изменить', 'Удалить'], tags: ['sketch'] }),
@@ -28,10 +28,7 @@ export default (ui) => ui.screen({
       ]), open: { go: 'series' }, tags: ['series'],
     }),
     ui.entry({ icon: 'mic', title: own.voice.title, meta: `${own.voice.when} · ${places.bazar.name}`, voice: { dur: own.voice.dur }, tags: ['note'] }),
-    ui.entry({
-      icon: 'megaphone', title: 'Бумага для скетчей −15 %', meta: 'художественная лавка · реклама',
-      text: 'Блоки 160 г и линеры на Панфилова, 90', actions: [{ label: 'Почему эта реклама', icon: 'sliders-horizontal', go: 'ads' }],
-    }),
+    ui.section({ children: ui.adCard({ icon: 'store', title: 'Бумага для скетчей −15 %', sub: 'Реклама · блоки 160 г и линеры на Панфилова, 90', subGranted: 'Реклама · по интересам · акварельная бумага, вы рисуете акварелью', go: 'ads' }) }),
     ui.entry({ icon: 'pen-line', title: own.apples.title, meta: `${own.apples.when} · ${places.bazar.name}`, text: own.apples.text, photos: 1, attach: tools(...own.apples.tools), tags: ['sketch'] }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'home' }),

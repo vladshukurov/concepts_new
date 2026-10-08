@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `section` ×42, `row` ×38, `leadIcon` ×35, `list` ×20, `cell` ×18, `nav` ×14, `button` ×14, `denied` ×13, `bubble` ×9, `actions` ×8, `iconButton` ×7, `dialog` ×7, `entry` ×7, `group` ×6, `avatar` ×5, `tabBar` ×5, `chatNav` ×4, `chat` ×4, `day` ×4, `composer` ×4, `search` ×4, `largeTitle` ×3, `textButton` ×2, `top` ×2, `chips` ×2, `callView` ×1, `voice` ×1, `miniInfo` ×1, `usersStack` ×1, `safariFill` ×1, `wordmark` ×1, `stats` ×1, `photoPicker` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `section` ×43, `row` ×41, `leadIcon` ×35, `list` ×20, `cell` ×16, `button` ×15, `nav` ×13, `bubble` ×10, `denied` ×10, `avatar` ×8, `actions` ×7, `dialog` ×7, `group` ×6, `iconButton` ×6, `entry` ×6, `tabBar` ×5, `chatNav` ×4, `chat` ×4, `day` ×4, `composer` ×4, `search` ×4, `largeTitle` ×3, `textButton` ×2, `top` ×2, `chips` ×2, `callView` ×1, `voice` ×1, `miniInfo` ×1, `usersStack` ×1, `reminder` ×1, `safariFill` ×1, `wordmark` ×1, `adCard` ×1, `lockScreen` ×1, `stats` ×1, `photoPicker` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
