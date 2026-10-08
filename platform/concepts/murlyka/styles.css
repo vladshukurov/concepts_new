@@ -1,0 +1,84 @@
+/* «Мурлыка» — мимикрия ВК Музыки. Оболочка, кегли и цвета — из слоя `.ui`
+   в ядре; здесь только своё: обложки, карточка-микс «Вечер», таймер сна,
+   плеер вечера и камера для обложки. */
+
+/* Обложки — кадры атласа assets/media/session-covers-atlas.png (3×2) */
+.mr-art { background-image:url(assets/media/session-covers-atlas.png); background-size:300% 200%; background-repeat:no-repeat; background-color:#1b2127; }
+.mr-c1 { background-position:0 0; }
+.mr-c2 { background-position:50% 0; }
+.mr-c3 { background-position:100% 0; }
+.mr-c4 { background-position:0 100%; }
+.mr-c5 { background-position:50% 100%; }
+.mr-c6 { background-position:100% 100%; }
+
+/* Плитка без обложки: месяц или книжка на мягкой заливке */
+.mr-ico { display:grid; place-items:center; background-color:var(--ui-card-2); color:var(--ui-text-2); }
+.mr-ico > svg { width:24px; height:24px; }
+.mr-ico.is-accent { background-color:var(--ui-accent-soft); color:var(--ui-link); }
+.mr-ico.is-lg > svg { width:72px; height:72px; stroke-width:1.5; }
+.mr-num { width:20px; flex:none; margin-right:-4px; font:500 15px/20px var(--ui-face); color:var(--ui-text-2); text-align:center; }
+
+/* Карточка-микс «Вечер» на главной: веер из трёх обложек, подпись, play */
+.mr-evening { position:relative; margin:8px 16px 4px; padding:16px; min-height:176px; border-radius:16px; overflow:hidden; background:linear-gradient(135deg, #24264a, #121320 70%); }
+.mr-evening > .mr-stack { position:absolute; right:12px; top:16px; }
+.mr-evening-copy { position:relative; z-index:1; display:flex; flex-direction:column; gap:4px; max-width:190px; margin-top:52px; min-height:44px; text-align:left; }
+.mr-evening-copy > small { font:500 13px/16px var(--ui-face); color:#9fa8ff; }
+.mr-evening-copy > strong { font:600 22px/26px var(--ui-face); color:#fff; }
+.mr-evening-copy > span { font:400 14px/18px var(--ui-face); color:rgba(255,255,255,.72); }
+.mr-evening > .ui-play { position:absolute; right:16px; top:112px; z-index:1; }
+.mr-stack { position:relative; display:block; width:132px; height:100px; }
+.mr-stack > i { position:absolute; width:80px; height:80px; border-radius:12px; border:2px solid #15162a; transform:rotate(-6deg); }
+.mr-stack > i:nth-child(2) { left:26px; top:8px; transform:rotate(3deg); }
+.mr-stack > i:nth-child(3) { left:52px; top:18px; transform:rotate(9deg); }
+.mr-stack > i.mr-ico > svg { width:32px; height:32px; }
+.mr-stack.is-lg { width:200px; height:170px; margin-bottom:12px; }
+.mr-stack.is-lg > i { width:130px; height:130px; }
+.mr-stack.is-lg > i:nth-child(2) { left:34px; top:10px; }
+.mr-stack.is-lg > i:nth-child(3) { left:68px; top:26px; }
+
+/* Таймер сна: строка «Тихо затухнет в …» под сегментами */
+.mr-timer { padding:0 16px 4px; font:400 15px/20px var(--ui-face); color:var(--ui-text-2); }
+.mr-timer.is-center { padding:0; text-align:center; }
+.mr-timer-head { display:flex; align-items:center; justify-content:center; gap:6px; margin-bottom:4px; font:500 14px/18px var(--ui-face); color:var(--ui-text-2); }
+.mr-timer-head > svg { width:16px; height:16px; }
+
+/* Запись и вечер как альбом */
+.mr-album { display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 16px 16px; text-align:center; }
+.mr-album-art { width:200px; height:200px; margin-bottom:16px; border-radius:12px; }
+.mr-album .ui-avatar { margin-bottom:8px; }
+.mr-album-play { margin-top:12px; }
+
+/* Плеер вечера */
+.mr-player { overflow:hidden; }
+.mr-player-main { position:relative; flex:1; min-height:0; display:flex; flex-direction:column; padding:4px 24px calc(var(--safe-bottom) + 8px); }
+.mr-player-art { width:76%; aspect-ratio:1; margin:0 auto; border-radius:12px; }
+.mr-player-timer { margin-top:4px; }
+.mr-player-timer .ui-seg { margin:0 0 6px; }
+.mr-p26 { width:26%; }
+.mr-p64 { width:64%; }
+
+/* Форма */
+.mr-input { width:100%; min-height:24px; padding:0; border:0; background:none; color:var(--ui-text); font:400 17px/22px var(--ui-face); }
+.mr-search { padding:0 16px 8px; }
+
+/* Камера: снимок во весь экран и квадратная рамка под обложку */
+.mr-capture { overflow:hidden; }
+.mr-camera { position:absolute; inset:0; }
+.mr-camera-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,.7)); }
+.mr-frame { position:relative; z-index:1; width:280px; aspect-ratio:1; margin:120px auto 0; border-radius:16px; box-shadow:0 0 0 2px rgba(255,255,255,.85), 0 0 0 999px rgba(0,0,0,.3); }
+.mr-cam-label { position:relative; z-index:1; margin-top:16px; text-align:center; font:400 14px/18px var(--ui-face); color:rgba(255,255,255,.86); }
+.mr-capture-foot { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 24px); z-index:1; display:flex; justify-content:center; }
+
+/* Профиль */
+.mr-me { display:flex; flex-direction:column; align-items:center; gap:4px; padding:12px 16px 24px; text-align:center; }
+.mr-me .ui-avatar { margin-bottom:8px; }
+
+/* Выбор фото из ядра: iOS-синий на тёмном и белом знак не проходят AA */
+.ui-pk-text:not(.is-off) { color:#5aaaff; }
+.ui-pk-tile > i { background:#0064d2; }
+
+/* Таймер сна внутри карточки «Вечер» */
+.mr-evening-timer { position:relative; z-index:1; margin-top:16px; padding-top:12px; border-top:1px solid rgba(255,255,255,.12); }
+.mr-evening-timer .mr-timer-head { justify-content:flex-start; color:rgba(255,255,255,.72); }
+.mr-evening-timer .ui-seg { margin:0 0 6px; background:rgba(255,255,255,.1); }
+.mr-timer.is-card { padding:0; color:rgba(255,255,255,.8); }

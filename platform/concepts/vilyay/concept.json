@@ -1,0 +1,1574 @@
+{
+  "slug": "vilyay",
+  "name": "Виляй",
+  "eyebrow": "Виляй · iOS",
+  "targetSet": "vk-video",
+  "domain": "vilyay.app",
+  "heroTitle": "Канал своего пса, как в ВК Видео",
+  "heroDeck": "Смешные ролики про Рыжика, которые снимает вся семья: сезоны от щенка до сейчас, сериалы вроде «Рыжик против пылесоса», реакции мамы и папы под каждым роликом, «Год назад сегодня», а вечером — всё на телевизоре в гостиной.",
+  "tagline": "Сезоны и серии про своего пса, снятые семьёй, — с реакциями родных и вечерним показом на ТВ",
+  "insight": "у семьи сотни роликов про пса, но они раскиданы по пяти телефонам, и щенячьи видео уже никто не найдёт",
+  "deck": "Снимают всей семьёй, ролик сразу в сезоне «Сейчас», сериалы идут через сезоны, вечером — на телевизоре в гостиной.",
+  "qualityContractVersion": 4,
+  "uiContractVersion": 3,
+  "start": "phone",
+  "product": {
+    "audience": "Семья с собакой, где все снимают пса на телефоны: хозяйка, родители, младший брат и бабушка на даче",
+    "situation": "Прогулка в парке, дача, пылесос в гостиной — ролик снят за минуту, а вечером семья собирается у телевизора",
+    "problem": "Ролики про пса лежат в разных телефонах и семейном чате, щенячьи видео теряются, а смешное уже не пересмотреть вместе",
+    "promise": "Снятый ролик сразу встаёт в сезон «Сейчас», семья ставит реакции, а вечером весь сериал идёт на телевизоре",
+    "differentiator": "Весь контент — ролики своего пса, снятые своей семьёй: сезоны по возрасту, сериалы и «Год назад сегодня» вместо ленты чужих",
+    "returnReasons": [
+      "Посмотреть, над чем смеялась мама",
+      "«Год назад сегодня» — каким Рыжик был щенком",
+      "Снять новую серию «Рыжик против пылесоса»"
+    ],
+    "verticalSlice": {
+      "entry": "phone",
+      "action": "now",
+      "result": "moment"
+    },
+    "coreLoop": [
+      "Снять Рыжика — ролик сразу в сезоне «Сейчас»",
+      "Семья ставит реакции под роликом",
+      "Вечером смотреть сериал на телевизоре в гостиной"
+    ],
+    "nonGoals": [
+      "Лента чужих питомцев, подписки, публикация для всех",
+      "Ветеринария, дрессировка и каталоги пород"
+    ],
+    "content": {
+      "kind": "own-media",
+      "what": "Ролики своего пса, снятые семьёй, и старые видео щенка из «Фото»",
+      "library": false,
+      "feed": false,
+      "sharing": false
+    }
+  },
+  "positioning": {
+    "mode": "mimicry",
+    "categoryFit": "Съёмка, плеер, клипы, сезоны и показ на телевизоре — грамматика ВК Видео, но ролики свои: семейный канал одного пса",
+    "familiarPatterns": [
+      "Тёмная главная с чипсами и крупными кадрами 16:9 с длительностью",
+      "Таб-бар с «Клипами» и «Создать»",
+      "Плеер со сворачиванием в мини-плеер и картинкой в картинке",
+      "Страница сезона как страница канала"
+    ],
+    "distinctions": [
+      "Вместо ленты чужих — сезоны своего пса: щенок, первый год, сейчас",
+      "Вместо лайков чужих — реакции семьи с именами",
+      "«Год назад сегодня» и напоминание о годовщине «первого раза»"
+    ],
+    "evidenceScreens": [
+      "home",
+      "watch",
+      "clips",
+      "now",
+      "series",
+      "seasons"
+    ],
+    "referencePatterns": [
+      "own-library",
+      "capture",
+      "immersive-player",
+      "cast"
+    ],
+    "referenceEvidence": [
+      {
+        "pattern": "own-library",
+        "screen": "home",
+        "behavior": "Главная: чипсы «Все · Сейчас · Первый год · Щенок · Первый раз», ролики Рыжика крупными кадрами с длительностью и реакциями семьи"
+      },
+      {
+        "pattern": "capture",
+        "screen": "now",
+        "behavior": "«Снять Рыжика» на странице сезона «Сейчас» открывает камеру со звуком, ролик сразу встаёт первым в сезон"
+      },
+      {
+        "pattern": "immersive-player",
+        "screen": "watch",
+        "behavior": "Плеер ролика сворачивается в мини-плеер над таб-баром и уходит в картинку в картинке"
+      },
+      {
+        "pattern": "cast",
+        "screen": "series",
+        "behavior": "«Смотреть на телевизоре» находит ТВ в гостиной в той же Wi‑Fi, серии идут подряд"
+      }
+    ]
+  },
+  "readiness": {
+    "status": "draft",
+    "referenceResearch": [
+      {
+        "source": "ВК Видео, iOS",
+        "observation": "Тёмная главная, чипсы разделов, кадр 16:9 во всю ширину с длительностью, под ним аватар, заголовок и мета, таб-бар с «Клипами» и «Создать»",
+        "decision": "Главная и плеер повторяют эту грамматику, мета под кадром своя: «сняла мама · 0:31 · 😂 6 · ❤️ 4»"
+      },
+      {
+        "source": "Семейные чаты владельцев собак",
+        "observation": "Ролики про пса шлют в чат, через месяц их не найти, а щенячьи видео остаются в телефоне того, кто снимал",
+        "decision": "Ролик сразу встаёт в сезон по возрасту пса, старые видео щенка добавляются из «Фото»"
+      }
+    ],
+    "productCritique": [
+      {
+        "objection": "Видеосервис может превратиться в ленту чужих питомцев",
+        "resolution": "Канал видит только семья, ролики снимают свои; публикации для всех нет",
+        "evidenceScreens": [
+          "home",
+          "clips",
+          "seasons"
+        ]
+      },
+      {
+        "objection": "Локальная сеть может выглядеть натяжкой",
+        "resolution": "Семья смотрит сериал вечером на телевизоре в гостиной; найти ТВ в той же Wi‑Fi можно только поиском в локальной сети",
+        "evidenceScreens": [
+          "series"
+        ]
+      }
+    ],
+    "visualPasses": []
+  },
+  "brand": {
+    "accent": "#0077FF",
+    "accentDark": "#0077FF",
+    "theme": "vk-dark",
+    "fonts": "Inter:wght@400;500;600;700"
+  },
+  "tabs": [
+    {
+      "id": "home",
+      "label": "Главная",
+      "role": "home"
+    },
+    {
+      "id": "clips",
+      "label": "Клипы",
+      "role": "library"
+    },
+    {
+      "id": "create",
+      "label": "Создать",
+      "role": "create"
+    },
+    {
+      "id": "seasons",
+      "label": "Сезоны",
+      "role": "library"
+    },
+    {
+      "id": "profile",
+      "label": "Профиль",
+      "role": "profile"
+    }
+  ],
+  "permissions": [
+    {
+      "key": "localnetwork",
+      "plist": "NSLocalNetworkUsageDescription (+ NSBonjourServices: _googlecast._tcp, _airplay._tcp)",
+      "alert": {
+        "title": "«Виляй» запрашивает доступ к локальной сети",
+        "text": "Найти телевизор в гостиной и показать на нём серии про Рыжика"
+      },
+      "feature": "Сериал на телевизоре всей семьёй",
+      "gesture": "«Смотреть на телевизоре» на странице сериала",
+      "screen": "series",
+      "target": "series",
+      "fallback": "Серии смотрят на телефоне",
+      "snack": "Телевизор не найден",
+      "risk": "medium",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "Bonjour: поиск телевизоров (_googlecast._tcp, _airplay._tcp) в той же Wi‑Fi сети, Google Cast отправляет серии подряд",
+      "rationale": {
+        "who": "Хозяйка вечером, когда семья собралась в гостиной",
+        "moment": "На странице сериала «Рыжик против пылесоса» нажимает «Смотреть на телевизоре»",
+        "need": "Телевизор находится только поиском в домашней Wi‑Fi; после этого серии идут на нём подряд",
+        "without": "Серии смотрят на одном телефоне, передавая его по кругу"
+      },
+      "reviewNote": "Доступ вызывается действием «Смотреть на телевизоре» на странице сериала на экране «series». При отказе: Серии смотрят на телефоне",
+      "result": "Телевизор в гостиной · идут 4 серии подряд"
+    },
+    {
+      "key": "camera",
+      "plist": "NSCameraUsageDescription",
+      "alert": {
+        "title": "«Виляй» запрашивает доступ к камере",
+        "text": "Снять Рыжика — ролик сразу встанет в сезон «Сейчас»"
+      },
+      "feature": "Ролик в сезоне «Сейчас»",
+      "gesture": "«Снять Рыжика» на странице сезона «Сейчас»",
+      "screen": "now",
+      "target": "camera",
+      "fallback": "Снятое системной камерой видео можно добавить из «Фото»",
+      "snack": "Камера выключена",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "AVCaptureSession, основная камера, запись до остановки",
+      "rationale": {
+        "who": "Хозяйка или кто-то из семьи рядом с псом",
+        "moment": "Рыжик снова нападает на пылесос — нажимает «Снять Рыжика»",
+        "need": "Ролик — это видео, которое снимают прямо сейчас; без камеры его нечем снять",
+        "without": "Снимает системной камерой и добавляет ролик из «Фото»"
+      },
+      "reviewNote": "Доступ вызывается действием «Снять Рыжика» на странице сезона «Сейчас» на экране «now». При отказе: Снятое системной камерой видео можно добавить из «Фото»"
+    },
+    {
+      "key": "mic",
+      "plist": "NSMicrophoneUsageDescription",
+      "alert": {
+        "title": "«Виляй» запрашивает доступ к микрофону",
+        "text": "Записать звук ролика: лай, смех и команды"
+      },
+      "feature": "Звук в ролике",
+      "gesture": "«Снять Рыжика» на странице сезона «Сейчас»",
+      "screen": "now",
+      "target": "camera",
+      "fallback": "Ролик на камеру не снимается, видео можно добавить из «Фото»",
+      "snack": "Микрофон выключен",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "AVAudioSession только во время записи ролика",
+      "rationale": {
+        "who": "Тот, кто снимает Рыжика",
+        "moment": "Сразу за камерой, по той же кнопке «Снять Рыжика»",
+        "need": "Видео пишется со звуком: лай на пылесос и смех семьи — половина ролика, без микрофона запись со звуком не идёт",
+        "without": "Ролик на камеру не снимается, остаётся видео из «Фото»"
+      },
+      "reviewNote": "Доступ вызывается действием «Снять Рыжика» на странице сезона «Сейчас» на экране «now». При отказе: Ролик на камеру не снимается, видео можно добавить из «Фото»"
+    },
+    {
+      "key": "photos",
+      "plist": "NSPhotoLibraryUsageDescription",
+      "alert": {
+        "title": "«Виляй» запрашивает доступ к «Фото»",
+        "text": "Добавить в сезон «Щенок» видео, снятые до приложения"
+      },
+      "feature": "Видео щенка в сезоне «Щенок»",
+      "gesture": "«Добавить видео щенка из «Фото»» на странице сезона «Щенок»",
+      "screen": "puppy",
+      "target": "picker",
+      "fallback": "Сезон «Щенок» остаётся с роликами, снятыми в приложении",
+      "snack": "Галерея недоступна",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "PHPicker с отбором по весне 2025, видео загружается в исходном качестве",
+      "rationale": {
+        "who": "Хозяйка, которая заводит канал",
+        "moment": "На странице сезона «Щенок» нажимает «Добавить видео щенка из «Фото»»",
+        "need": "Первые ролики щенка сняты до приложения и лежат в медиатеке; без доступа их не выбрать",
+        "without": "Сезон «Щенок» остаётся с роликами из приложения"
+      },
+      "reviewNote": "Доступ вызывается действием «Добавить видео щенка из «Фото»» на странице сезона «Щенок» на экране «puppy». При отказе: Сезон «Щенок» остаётся с роликами, снятыми в приложении"
+    },
+    {
+      "key": "photosadd",
+      "plist": "NSPhotoLibraryAddUsageDescription",
+      "alert": {
+        "title": "«Виляй» запрашивает доступ к сохранению в «Фото»",
+        "text": "Сохранить сезон «Первый год» одним фильмом"
+      },
+      "feature": "Сезон «Первый год» в «Фото»",
+      "gesture": "«Сохранить сезон «Первый год» в «Фото»» на странице сезона",
+      "screen": "firstyear",
+      "target": "firstyear",
+      "fallback": "Сезон смотрят в приложении",
+      "snack": "Фильм остался в приложении",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "PHPhotoLibrary performChanges: только запись готового фильма",
+      "rationale": {
+        "who": "Хозяйка к годовщине Рыжика",
+        "moment": "На странице сезона «Первый год» нажимает «Сохранить сезон «Первый год» в «Фото»»",
+        "need": "Фильм попадает в медиатеку, чтобы отправить его бабушке или оставить на память, только с этим доступом",
+        "without": "Сезон смотрят в приложении"
+      },
+      "reviewNote": "Доступ вызывается действием «Сохранить сезон «Первый год» в «Фото»» на странице сезона на экране «firstyear». При отказе: Сезон смотрят в приложении"
+    },
+    {
+      "key": "push",
+      "plist": "aps-environment (Push Notifications capability)",
+      "alert": {
+        "title": "«Виляй» запрашивает разрешение на уведомления",
+        "text": "Напомним о годовщине первого снега Рыжика"
+      },
+      "feature": "Напоминание о годовщине «первого раза»",
+      "gesture": "«Напомнить: год назад Рыжик впервые увидел снег» на экране «Год назад сегодня»",
+      "screen": "memory",
+      "target": "memory",
+      "fallback": "Годовщина видна в «Год назад сегодня» в тот же день",
+      "snack": "Уведомления выключены",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "UNUserNotificationCenter: локальное уведомление 14 ноября в 19:00",
+      "rationale": {
+        "who": "Хозяйка, которая пересматривает воспоминание дня",
+        "moment": "На экране «Год назад сегодня» видит, что через 37 дней год с первого снега, и нажимает «Напомнить»",
+        "need": "Годовщина через месяц; напоминание приходит вечером, когда приложение закрыто",
+        "without": "Воспоминание видно, только если открыть «Год назад сегодня» в этот день"
+      },
+      "reviewNote": "Доступ вызывается действием «Напомнить: год назад Рыжик впервые увидел снег» на экране «Год назад сегодня» на экране «memory». При отказе: Годовщина видна в «Год назад сегодня» в тот же день"
+    },
+    {
+      "key": "location",
+      "plist": "NSLocationWhenInUseUsageDescription",
+      "alert": {
+        "title": "«Виляй» запрашивает доступ к геопозиции",
+        "text": "Отметить, где снят ролик: парк, двор или дача"
+      },
+      "feature": "Где снято",
+      "gesture": "«Отметить, где снято» у нового ролика",
+      "screen": "moment",
+      "target": "moment",
+      "fallback": "Место можно не отмечать, ролик сохраняется без него",
+      "snack": "Ролик сохранён без места",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "Core Location when in use, один запрос; название места — MapKit",
+      "rationale": {
+        "who": "Тот, кто только что снял Рыжика на прогулке",
+        "moment": "У нового ролика нажимает «Отметить, где снято»",
+        "need": "Место определяется по точке, где снят ролик; потом видно, в каком парке или на даче это было",
+        "without": "Ролик сохраняется без места"
+      },
+      "reviewNote": "Доступ вызывается действием «Отметить, где снято» у нового ролика на экране «moment». При отказе: Место можно не отмечать, ролик сохраняется без него"
+    },
+    {
+      "key": "audio",
+      "plist": "UIBackgroundModes: audio",
+      "alert": {
+        "title": "Фоновое воспроизведение",
+        "text": "Ролик продолжит играть в окне поверх других приложений и при погашенном экране"
+      },
+      "feature": "Ролики в картинке в картинке и при погашенном экране",
+      "gesture": "«Картинка в картинке» в плеере ролика",
+      "screen": "watch",
+      "target": "background",
+      "fallback": "Ролик встаёт на паузу при выходе из приложения",
+      "snack": "Ролик на паузе",
+      "risk": "high",
+      "anchor": false,
+      "conditional": true,
+      "grounding": "AVPictureInPictureController, категория playback, MPNowPlayingInfoCenter",
+      "rationale": {
+        "who": "Кто-то из семьи, кто пересматривает серию",
+        "moment": "В плеере нажимает «Картинка в картинке» и уходит в семейный чат или гасит экран",
+        "need": "Без фонового режима iOS останавливает видео и звук",
+        "without": "Ролик встаёт на паузу"
+      },
+      "reviewNote": "Доступ вызывается действием «Картинка в картинке» в плеере ролика на экране «watch». При отказе: Ролик встаёт на паузу при выходе из приложения",
+      "activate": true,
+      "requires": "AVPictureInPictureController и воспроизведение при блокировке с Now Playing"
+    },
+    {
+      "key": "tracking",
+      "plist": "NSUserTrackingUsageDescription",
+      "alert": {
+        "title": "Разрешить «Виляй» отслеживать ваши действия в приложениях и на сайтах других компаний?",
+        "text": "Данные будут использоваться для показа релевантной рекламы",
+        "deny": "Запретить отслеживание",
+        "grant": "Разрешить"
+      },
+      "feature": "Реклама между роликами по интересам",
+      "gesture": "«Подбирать по интересам» на экране «Реклама»",
+      "screen": "ads",
+      "target": "ads",
+      "fallback": "Реклама остаётся без подбора, приложение работает полностью",
+      "snack": "Реклама останется без подбора",
+      "risk": "medium",
+      "anchor": false,
+      "conditional": true,
+      "grounding": "Рекламный SDK, контекстная реклама без IDFA при отказе",
+      "rationale": {
+        "who": "Семья в бесплатной версии",
+        "moment": "Из карточки корма на главной открывает «Реклама» и нажимает «Подбирать по интересам»",
+        "need": "Без разрешения сеть не знает интересов из других приложений: корм и игрушки показываются всем одинаково",
+        "without": "Реклама без подбора"
+      },
+      "reviewNote": "Доступ вызывается действием «Подбирать по интересам» на экране «ads». При отказе: Реклама остаётся без подбора, приложение работает полностью",
+      "requires": "ATT показывается до выбора «Без подбора»",
+      "snackOnce": true
+    }
+  ],
+  "screens": [
+    {
+      "id": "phone",
+      "title": "Вход по номеру",
+      "type": "старт, без таб-бара",
+      "light": false,
+      "meta": "Номер и пароль · без OTP",
+      "ui": {
+        "pattern": "auth",
+        "navigation": "push",
+        "purpose": "Войти по номеру телефона или продолжить без аккаунта",
+        "primaryAction": "Далее",
+        "hierarchy": {
+          "primary": "Номер телефона и вход",
+          "secondary": "Регистрация, гостевой проход, правовая строка и поддержка"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error"
+        ],
+        "density": "low",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Номер введён полностью, дальше пароль"
+          },
+          {
+            "kind": "stress",
+            "example": "Номер с кодом другой страны"
+          },
+          {
+            "kind": "failure",
+            "example": "Номер введён неверно или сеть недоступна"
+          }
+        ]
+      }
+    },
+    {
+      "id": "home",
+      "title": "Главная",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Ролики Рыжика, «Год назад сегодня» и сезоны",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "root",
+        "purpose": "Ролики Рыжика, «Год назад сегодня» и сезоны",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Крупные кадры роликов 16:9 с длительностью",
+          "secondary": "Чипсы, реклама, сезоны и мини-плеер"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Робот-пылесос, первый снег и дача"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное название ролика в две строки"
+          },
+          {
+            "kind": "failure",
+            "example": "Роликов ещё нет — главная зовёт снять первый"
+          }
+        ]
+      }
+    },
+    {
+      "id": "clips",
+      "title": "Клипы",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Смотреть короткие ролики Рыжика вертикально подряд",
+      "ui": {
+        "pattern": "player",
+        "navigation": "root",
+        "purpose": "Смотреть короткие ролики Рыжика вертикально подряд",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Вертикальный клип на весь экран",
+          "secondary": "«Мило», сезон, следующий клип"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Палка через весь парк, клип 3 из 12"
+          },
+          {
+            "kind": "stress",
+            "example": "Клип длиннее минуты"
+          },
+          {
+            "kind": "failure",
+            "example": "Клипов пока нет — снимите первый"
+          }
+        ]
+      }
+    },
+    {
+      "id": "create",
+      "title": "Создать",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Снять Рыжика, завести серию или добавить видео щенка",
+      "ui": {
+        "pattern": "task",
+        "navigation": "root",
+        "purpose": "Снять Рыжика, завести серию или добавить видео щенка",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Лист с тремя действиями",
+          "secondary": "Ролики главной под затемнением"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Снять Рыжика в сезон «Сейчас»"
+          },
+          {
+            "kind": "stress",
+            "example": "Серия с длинным названием"
+          },
+          {
+            "kind": "failure",
+            "example": "Камера недоступна — остаётся «Фото»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "seasons",
+      "title": "Сезоны",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Сезоны Рыжика и сериалы через сезоны",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "root",
+        "purpose": "Сезоны Рыжика и сериалы через сезоны",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Три сезона крупными кадрами",
+          "secondary": "Сериалы и «Год назад сегодня»"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Щенок, первый год, сейчас"
+          },
+          {
+            "kind": "stress",
+            "example": "Сезон на 58 роликов"
+          },
+          {
+            "kind": "failure",
+            "example": "Сезон пуст — первый ролик впереди"
+          }
+        ]
+      }
+    },
+    {
+      "id": "profile",
+      "title": "Профиль",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Что сняла Катя, реакции семьи и настройки",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "root",
+        "purpose": "Что сняла Катя, реакции семьи и настройки",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Счётчики и свои ролики",
+          "secondary": "Пёс, семья, реклама и аккаунт"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "47 роликов, 312 реакций"
+          },
+          {
+            "kind": "stress",
+            "example": "Ролик с реакциями всей семьи"
+          },
+          {
+            "kind": "failure",
+            "example": "Роликов ещё нет — профиль зовёт снять первый"
+          }
+        ]
+      }
+    },
+    {
+      "id": "watch",
+      "title": "Рыжик против робота-пылесоса",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Смотреть серию 4, ставить реакции, свернуть или увести в картинку в картинке",
+      "parent": "home",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Смотреть серию 4, ставить реакции, свернуть или увести в картинку в картинке",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Плеер ролика во всю ширину",
+          "secondary": "Реакции семьи, сезон, место и ещё ролики"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Серия 4, 1:12, 😂 8"
+          },
+          {
+            "kind": "stress",
+            "example": "Ролик 5 минут с дачи"
+          },
+          {
+            "kind": "failure",
+            "example": "Ролик не загрузился"
+          }
+        ]
+      }
+    },
+    {
+      "id": "watchsnow",
+      "title": "Рыжик впервые видит снег",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Смотреть первый снег Рыжика и реакции семьи",
+      "parent": "home",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Смотреть первый снег Рыжика и реакции семьи",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Плеер ролика во всю ширину",
+          "secondary": "Реакции семьи, сезон, место и ещё ролики"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Первый снег, 0:48, бабушка ❤️×3"
+          },
+          {
+            "kind": "stress",
+            "example": "Ролик из «Фото» в другом формате"
+          },
+          {
+            "kind": "failure",
+            "example": "Ролик не загрузился"
+          }
+        ]
+      }
+    },
+    {
+      "id": "watchpuddle",
+      "title": "Первая лужа",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Смотреть, как щенок Рыжик пробует лужу",
+      "parent": "home",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Смотреть, как щенок Рыжик пробует лужу",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Плеер ролика во всю ширину",
+          "secondary": "Реакции семьи, сезон, место и ещё ролики"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Первая лужа, 0:31, папа 😂×3"
+          },
+          {
+            "kind": "stress",
+            "example": "Вертикальное видео со старого телефона"
+          },
+          {
+            "kind": "failure",
+            "example": "Ролик не загрузился"
+          }
+        ]
+      }
+    },
+    {
+      "id": "watchdacha",
+      "title": "Рыжик и Уголёк на даче",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Смотреть, как Рыжик и Уголёк делят палку",
+      "parent": "home",
+      "ui": {
+        "pattern": "player",
+        "navigation": "fullscreen",
+        "purpose": "Смотреть, как Рыжик и Уголёк делят палку",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Плеер ролика во всю ширину",
+          "secondary": "Реакции семьи, сезон, место и ещё ролики"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Дача, 2:05, снял Тёма"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинный ролик на 6 минут"
+          },
+          {
+            "kind": "failure",
+            "example": "Ролик не загрузился"
+          }
+        ]
+      }
+    },
+    {
+      "id": "background",
+      "title": "Картинка в картинке",
+      "type": "system",
+      "light": false,
+      "meta": "Досматривать серию в окне поверх других приложений",
+      "ui": {
+        "pattern": "system",
+        "navigation": "system",
+        "purpose": "Досматривать серию в окне поверх других приложений",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Окно ролика поверх экрана «Домой»",
+          "secondary": "Перемотка на 10 секунд и пауза"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Серия 4 в окне поверх семейного чата"
+          },
+          {
+            "kind": "stress",
+            "example": "Окно поверх звонка"
+          },
+          {
+            "kind": "failure",
+            "example": "Ролик закончился, окно предлагает следующий"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lock",
+      "title": "Экран блокировки",
+      "type": "system",
+      "light": false,
+      "meta": "Слушать серию с погашенным экраном",
+      "ui": {
+        "pattern": "system",
+        "navigation": "system",
+        "purpose": "Слушать серию с погашенным экраном",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Сейчас играет: серия и шкала",
+          "secondary": "Открыть «Виляй» и время до конца"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Серия 4 при погашенном экране"
+          },
+          {
+            "kind": "stress",
+            "example": "Длинное название серии"
+          },
+          {
+            "kind": "failure",
+            "example": "Ролик на паузе, шкала остановилась"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ads",
+      "title": "Реклама",
+      "type": "push",
+      "light": false,
+      "meta": "Выбрать рекламу бесплатной версии",
+      "ui": {
+        "pattern": "settings",
+        "navigation": "push",
+        "purpose": "Выбрать рекламу бесплатной версии",
+        "primaryAction": "Подбирать по интересам",
+        "hierarchy": {
+          "primary": "Реклама между роликами",
+          "secondary": "По интересам или без подбора"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Корм и игрушка по интересам"
+          },
+          {
+            "kind": "stress",
+            "example": "Реклама без подбора"
+          },
+          {
+            "kind": "failure",
+            "example": "Реклама не загрузилась"
+          }
+        ]
+      }
+    },
+    {
+      "id": "search",
+      "title": "Поиск",
+      "type": "push",
+      "light": false,
+      "meta": "Найти ролик, серию или место по слову",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "push",
+        "purpose": "Найти ролик, серию или место по слову",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Найденные ролики с кадрами 16:9",
+          "secondary": "Сериалы, где встречается запрос"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "«пылесос» — 2 ролика и сериал"
+          },
+          {
+            "kind": "stress",
+            "example": "Запрос из трёх слов"
+          },
+          {
+            "kind": "failure",
+            "example": "Ничего не найдено — предлагаем другой запрос"
+          }
+        ]
+      }
+    },
+    {
+      "id": "newseries",
+      "title": "Новая серия",
+      "type": "modal",
+      "light": false,
+      "meta": "Завести серию: название, описание и сезон",
+      "ui": {
+        "pattern": "task",
+        "navigation": "modal",
+        "purpose": "Завести серию: название, описание и сезон",
+        "primaryAction": "Создать серию",
+        "hierarchy": {
+          "primary": "Название и описание",
+          "secondary": "Сезон и кто из семьи видит серию"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "«Рыжик против пакета» в сезоне «Сейчас»"
+          },
+          {
+            "kind": "stress",
+            "example": "Название в две строки"
+          },
+          {
+            "kind": "failure",
+            "example": "Название пустое — кнопка неактивна"
+          }
+        ]
+      }
+    },
+    {
+      "id": "family",
+      "title": "Семья",
+      "type": "push",
+      "light": false,
+      "meta": "Кто смотрит канал и кого звать на вечерний показ",
+      "ui": {
+        "pattern": "settings",
+        "navigation": "push",
+        "purpose": "Кто смотрит канал и кого звать на вечерний показ",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Члены семьи с отметками",
+          "secondary": "Позвать нового члена семьи по номеру"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "4 из 5 на вечернем показе"
+          },
+          {
+            "kind": "stress",
+            "example": "Бабушка смотрит с дачи"
+          },
+          {
+            "kind": "failure",
+            "example": "Номер введён неверно"
+          }
+        ]
+      }
+    },
+    {
+      "id": "now",
+      "title": "Сейчас",
+      "type": "push",
+      "light": false,
+      "meta": "Сезон «Сейчас»: снять Рыжика, ролики и сериалы сезона",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "push",
+        "purpose": "Сезон «Сейчас»: снять Рыжика, ролики и сериалы сезона",
+        "primaryAction": "Снять Рыжика",
+        "hierarchy": {
+          "primary": "Шапка сезона и «Снять Рыжика»",
+          "secondary": "Ролики и сериалы сезона"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "21 ролик, новый сверху"
+          },
+          {
+            "kind": "stress",
+            "example": "Ролик снимается дольше минуты"
+          },
+          {
+            "kind": "failure",
+            "example": "Нет доступа к камере"
+          }
+        ]
+      }
+    },
+    {
+      "id": "camera",
+      "title": "Съёмка Рыжика",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Снять Рыжика со звуком",
+      "parent": "now",
+      "ui": {
+        "pattern": "capture",
+        "navigation": "fullscreen",
+        "purpose": "Снять Рыжика со звуком",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Видоискатель и кнопка записи",
+          "secondary": "Куда уйдёт ролик и звук"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Рыжик и пакет, 0:24"
+          },
+          {
+            "kind": "stress",
+            "example": "Запись на три минуты"
+          },
+          {
+            "kind": "failure",
+            "example": "Камера занята другим приложением"
+          }
+        ]
+      }
+    },
+    {
+      "id": "moment",
+      "title": "Новый ролик",
+      "type": "push",
+      "light": false,
+      "meta": "Только что снятый ролик: название, серия, где снято и «первый раз»",
+      "ui": {
+        "pattern": "task",
+        "navigation": "push",
+        "purpose": "Только что снятый ролик: название, серия, где снято и «первый раз»",
+        "primaryAction": "Готово",
+        "hierarchy": {
+          "primary": "Кадр ролика и название",
+          "secondary": "Серия, место и отметки"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Рыжик и пакет из магазина в парке"
+          },
+          {
+            "kind": "stress",
+            "example": "Название в две строки"
+          },
+          {
+            "kind": "failure",
+            "example": "Место не определилось"
+          }
+        ]
+      }
+    },
+    {
+      "id": "series",
+      "title": "Рыжик против пылесоса",
+      "type": "push",
+      "light": false,
+      "meta": "Сериал через сезоны: серии и показ на телевизоре",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "push",
+        "purpose": "Сериал через сезоны: серии и показ на телевизоре",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Шапка сериала и серии",
+          "secondary": "Показ на телевизоре"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "4 серии от щенка до сейчас"
+          },
+          {
+            "kind": "stress",
+            "example": "Сериал на 12 серий"
+          },
+          {
+            "kind": "failure",
+            "example": "Телевизор не найден"
+          }
+        ]
+      }
+    },
+    {
+      "id": "picker",
+      "title": "Выбор из «Фото»",
+      "type": "system",
+      "light": false,
+      "meta": "Выбрать видео щенка для сезона «Щенок»",
+      "ui": {
+        "pattern": "system",
+        "navigation": "system",
+        "purpose": "Выбрать видео щенка для сезона «Щенок»",
+        "primaryAction": "Добавить",
+        "hierarchy": {
+          "primary": "Сетка видео весны 2025",
+          "secondary": "Кнопка «Добавить» с числом выбранных"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Выбраны два видео щенка за апрель"
+          },
+          {
+            "kind": "stress",
+            "example": "Сотни видео за весну"
+          },
+          {
+            "kind": "failure",
+            "example": "Видео за весну нет"
+          }
+        ]
+      }
+    },
+    {
+      "id": "puppy",
+      "title": "Щенок",
+      "type": "push",
+      "light": false,
+      "meta": "Сезон «Щенок»: ролики и видео из «Фото»",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "push",
+        "purpose": "Сезон «Щенок»: ролики и видео из «Фото»",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Шапка сезона и видео из «Фото»",
+          "secondary": "Ролики сезона с реакциями семьи"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "34 ролика, первая лужа"
+          },
+          {
+            "kind": "stress",
+            "example": "Видео со старого телефона"
+          },
+          {
+            "kind": "failure",
+            "example": "Нет доступа к «Фото»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "firstyear",
+      "title": "Первый год",
+      "type": "push",
+      "light": false,
+      "meta": "Сезон «Первый год»: «первые разы» и фильм в «Фото»",
+      "ui": {
+        "pattern": "collection",
+        "navigation": "push",
+        "purpose": "Сезон «Первый год»: «первые разы» и фильм в «Фото»",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Шапка сезона и сохранение в «Фото»",
+          "secondary": "«Первый раз» и сериалы"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "58 роликов, первый снег"
+          },
+          {
+            "kind": "stress",
+            "example": "Фильм на 684 МБ при почти полном телефоне"
+          },
+          {
+            "kind": "failure",
+            "example": "Сохранение не удалось"
+          }
+        ]
+      }
+    },
+    {
+      "id": "memory",
+      "title": "Год назад сегодня",
+      "type": "push",
+      "light": false,
+      "meta": "Воспоминание дня и напоминание о годовщине первого снега",
+      "ui": {
+        "pattern": "detail",
+        "navigation": "push",
+        "purpose": "Воспоминание дня и напоминание о годовщине первого снега",
+        "primaryAction": null,
+        "hierarchy": {
+          "primary": "Ролик ровно годовой давности",
+          "secondary": "Скоро год и напоминание"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          {
+            "kind": "typical",
+            "example": "Листья 8 октября 2025"
+          },
+          {
+            "kind": "stress",
+            "example": "Два воспоминания в один день"
+          },
+          {
+            "kind": "failure",
+            "example": "Год назад роликов нет"
+          }
+        ]
+      }
+    }
+  ],
+  "prototypes": [
+    {
+      "id": "all",
+      "hero": true,
+      "label": "Весь продукт",
+      "note": "24 экранов и 9 доступов",
+      "start": "phone",
+      "screens": [
+        "phone",
+        "home",
+        "clips",
+        "create",
+        "seasons",
+        "profile",
+        "watch",
+        "watchsnow",
+        "watchpuddle",
+        "watchdacha",
+        "background",
+        "lock",
+        "ads",
+        "search",
+        "newseries",
+        "family",
+        "now",
+        "camera",
+        "moment",
+        "series",
+        "picker",
+        "puppy",
+        "firstyear",
+        "memory"
+      ],
+      "stops": [],
+      "authTarget": "home"
+    },
+    {
+      "id": "film",
+      "label": "Снять Рыжика",
+      "note": "Сезон «Сейчас», камера, новый ролик и место",
+      "start": "now",
+      "screens": [
+        "now",
+        "camera",
+        "moment",
+        "series",
+        "watch",
+        "watchdacha",
+        "clips",
+        "family"
+      ],
+      "stops": [
+        "watch",
+        "watchdacha",
+        "clips",
+        "series",
+        "family"
+      ]
+    },
+    {
+      "id": "evening",
+      "label": "Вечер у телевизора",
+      "note": "Сериал на ТВ, реакции, плеер и картинка в картинке",
+      "start": "series",
+      "screens": [
+        "series",
+        "watch",
+        "watchsnow",
+        "watchpuddle",
+        "watchdacha",
+        "background",
+        "lock",
+        "home",
+        "now",
+        "firstyear",
+        "puppy"
+      ],
+      "stops": [
+        "home",
+        "now",
+        "firstyear",
+        "puppy"
+      ]
+    },
+    {
+      "id": "memories",
+      "label": "Год назад сегодня",
+      "note": "Воспоминание, напоминание, видео щенка и фильм сезона",
+      "start": "memory",
+      "screens": [
+        "memory",
+        "watchsnow",
+        "puppy",
+        "picker",
+        "firstyear",
+        "series",
+        "family",
+        "watchpuddle"
+      ],
+      "stops": [
+        "watchsnow",
+        "series",
+        "family",
+        "watchpuddle"
+      ]
+    }
+  ],
+  "backendless": [
+    {
+      "needs": "Общий канал семьи",
+      "solution": "Firebase Storage и Firestore: ролик загружается сразу после съёмки, security rules пускают только членов семьи"
+    },
+    {
+      "needs": "Показ на телевизоре",
+      "solution": "Google Cast SDK и AirPlay отправляют серии подряд на ТВ в той же Wi‑Fi"
+    },
+    {
+      "needs": "Фильм сезона",
+      "solution": "Склейка на телефоне через AVMutableComposition, без сервера"
+    }
+  ],
+  "docs": [
+    {
+      "file": "01-product-vision.md",
+      "label": "Вижен"
+    },
+    {
+      "file": "02-architecture.md",
+      "label": "Архитектура"
+    },
+    {
+      "file": "03-design-system.md",
+      "label": "Дизайн-токены"
+    },
+    {
+      "file": "04-references.md",
+      "label": "Референсы"
+    },
+    {
+      "file": "05-visual-audit.md",
+      "label": "Визуальный аудит"
+    },
+    {
+      "file": "06-app-store.md",
+      "label": "Карточка App Store"
+    }
+  ],
+  "appStore": {
+    "name": "Виляй: канал своего пса",
+    "subtitle": "Сезоны и серии для семьи",
+    "promo": "Снимайте своего пса всей семьёй — ролик сразу в сезоне «Сейчас». Реакции родных, «Год назад сегодня» и вечерний показ сериала на телевизоре.",
+    "keywords": "собака,пёс,щенок,питомец,семья,видео,ролики,клипы,воспоминания,смешное",
+    "category": {
+      "primary": "Entertainment",
+      "secondary": "Photo & Video"
+    },
+    "ageRating": "13+",
+    "price": "Бесплатно, с рекламой",
+    "encryption": "ITSAppUsesNonExemptEncryption = NO — только HTTPS для входа, загрузки роликов и рекламы",
+    "urls": {
+      "support": "https://vilyay.app/support",
+      "marketing": "https://vilyay.app",
+      "privacy": "https://vilyay.app/privacy"
+    },
+    "description": [
+      "Виляй — семейный канал вашего пса.",
+      "СНИМАЙТЕ ВСЕЙ СЕМЬЁЙ\\nОдно касание — и ролик сразу в сезоне «Сейчас».",
+      "СЕЗОНЫ И СЕРИАЛЫ\\nЩенок, первый год, сейчас — и серии вроде «Рыжик против пылесоса».",
+      "СМОТРИТЕ ВЕЧЕРОМ НА ТВ\\nРеакции родных под каждым роликом, «Год назад сегодня» и показ на телевизоре.",
+      "Бесплатная версия показывает рекламу."
+    ],
+    "whatsNew": "Первая версия: сезоны, сериалы, реакции семьи, «Год назад сегодня» и показ на ТВ.",
+    "privacy": [
+      {
+        "type": "Фото и видео",
+        "apple": "User Content → Photos or Videos",
+        "purpose": "Работа приложения",
+        "linked": true,
+        "tracking": false,
+        "why": "Ролики видит только семья"
+      },
+      {
+        "type": "Геопозиция",
+        "apple": "Location → Coarse Location",
+        "purpose": "Функциональность",
+        "linked": false,
+        "tracking": false,
+        "why": "Где снят ролик; только по кнопке"
+      },
+      {
+        "type": "Идентификатор устройства",
+        "apple": "Identifiers → Device ID",
+        "purpose": "Реклама",
+        "linked": false,
+        "tracking": true,
+        "why": "Рекламному SDK только после согласия в ATT"
+      }
+    ],
+    "reviewAccount": {
+      "email": "review@vilyay.app",
+      "password": "review2026",
+      "note": "Вход по номеру и паролю, OTP не используется. Можно продолжить без аккаунта. Для показа на ТВ нужен Chromecast или Apple TV в той же сети."
+    }
+  },
+  "auth": {
+    "mode": "phone",
+    "confirmation": false,
+    "entryTarget": "home"
+  }
+}

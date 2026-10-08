@@ -1,0 +1,1220 @@
+{
+  "slug": "murlyka",
+  "name": "Мурлыка",
+  "targetSet": "vk-music",
+  "qualityContractVersion": 4,
+  "uiContractVersion": 2,
+  "brand": {
+    "accent": "#0077FF",
+    "accentDark": "#0077FF",
+    "theme": "vk-dark",
+    "fonts": "Inter:wght@400;500;600;700"
+  },
+  "deck": "Колыбельные и сказки своим голосом в грамматике ВК Музыки: 4 доступа набора, ни одного своего сервера.",
+  "eyebrow": "Мурлыка · Колыбельные своим голосом · iOS",
+  "heroTitle": "Мурлыка — колыбельные голосом семьи",
+  "heroDeck": "Мама, папа и бабушка записывают колыбельные и сказки в «Диктофоне» и присылают файлы — вечером из них собирается плейлист «на сон», а таймер тихо затухает, когда ребёнок уснул.",
+  "tagline": "Колыбельные и сказки голосом мамы, папы и бабушки, вечер на сон и таймер",
+  "insight": "ребёнок засыпает лучше под знакомый голос, а записи бабушки и папы теряются в переписке и диктофоне — их некому собрать в вечер",
+  "domain": "murlyka.app",
+  "start": "phone",
+  "tabs": [
+    {
+      "id": "home",
+      "label": "Сегодня",
+      "role": "home"
+    },
+    {
+      "id": "lullabies",
+      "label": "Колыбельные",
+      "role": "playlists"
+    },
+    {
+      "id": "voices",
+      "label": "Голоса",
+      "role": "library"
+    }
+  ],
+  "positioning": {
+    "mode": "mimicry",
+    "categoryFit": "Своя аудиотека с плейлистом, мини-плеером и звуком в фоне — музыкальное приложение, как ВК Музыка, поэтому категория Music",
+    "familiarPatterns": [
+      "Главная с карточкой-миксом и мини-плеером над таб-баром",
+      "Плейлист со «Слушать» и треками по порядку",
+      "Полноэкранный плеер и Now Playing на локскрине"
+    ],
+    "distinctions": [
+      "Все записи свои: голос мамы, папы и бабушки, без каталога",
+      "«Вечер» — плейлист на сон, собранный на сегодня",
+      "Таймер сна прямо на главной и в плеере: звук тихо затухает"
+    ],
+    "evidenceScreens": [
+      "home",
+      "evening",
+      "player",
+      "voices",
+      "lock"
+    ],
+    "referencePatterns": [
+      "own-recordings",
+      "audio-player",
+      "background-playback",
+      "playlists"
+    ],
+    "referenceEvidence": [
+      {
+        "pattern": "own-recordings",
+        "screen": "lullabies",
+        "behavior": "Свои колыбельные и сказки: кто записал, длина, фильтр «колыбельные / сказки»"
+      },
+      {
+        "pattern": "audio-player",
+        "screen": "player",
+        "behavior": "Плеер вечера: обложка, перемотка, следующая колыбельная, таймер сна 10 / 20 / 30"
+      },
+      {
+        "pattern": "background-playback",
+        "screen": "lock",
+        "behavior": "Вечер звучит с погашенным экраном, на локскрине «Засыпаем · ещё 12 минут»"
+      },
+      {
+        "pattern": "playlists",
+        "screen": "evening",
+        "behavior": "«Вечер · на сон»: 3 колыбельные · 14 минут по порядку"
+      }
+    ]
+  },
+  "product": {
+    "audience": "Родители малышей и их семья: мама, папа, бабушки и дедушки, которые поют колыбельные и читают сказки",
+    "situation": "Вечером ребёнка укладывают, а бабушка далеко и прислала колыбельную файлом, папа записал сказку в «Диктофоне» ещё на прошлой неделе",
+    "problem": "Записи лежат в переписке и «Диктофоне» вразнобой, плейлиста на вечер нет, а музыка играет, пока её не выключат и не разбудят ребёнка",
+    "promise": "Собрать колыбельные семьи в «Вечер» на сегодня и включить его с таймером сна, который тихо затухает",
+    "differentiator": "Единица продукта — колыбельная своим голосом, а вечер собирается из записей семьи, а не из каталога",
+    "returnReasons": [
+      "Каждый вечер включить «Вечер · на сон» с таймером",
+      "Добавить новую запись, которую прислала бабушка",
+      "Напоминание начать укладывание в 20:30"
+    ],
+    "verticalSlice": {
+      "entry": "phone",
+      "action": "evening",
+      "result": "player"
+    },
+    "coreLoop": [
+      "Добавить колыбельную из «Файлов» или «Диктофона» и отметить, чей голос",
+      "Собрать её в «Вечер» на сегодня",
+      "Включить вечер с таймером сна и погасить экран"
+    ],
+    "nonGoals": [
+      "Каталог чужих колыбельных и аудиокниг",
+      "Публикация, лайки и подписки",
+      "Запись и обработка звука внутри приложения"
+    ],
+    "content": {
+      "kind": "av-notes",
+      "what": "Свои колыбельные и сказки: записи мамы, папы и бабушки из «Диктофона» и «Файлов», вечерний плейлист на сон, обложки — снимки ребёнка и игрушек",
+      "library": false,
+      "feed": false,
+      "sharing": false
+    }
+  },
+  "permissions": [
+    {
+      "key": "camera",
+      "plist": "NSCameraUsageDescription",
+      "alert": {
+        "title": "«Мурлыка» запрашивает доступ к камере",
+        "text": "Снять обложку для колыбельной — игрушку или ребёнка"
+      },
+      "feature": "Обложка колыбельной — снимок игрушки или ребёнка",
+      "gesture": "«Снять обложку» в колыбельной без обложки",
+      "screen": "kotya",
+      "target": "capture",
+      "fallback": "Колыбельная остаётся со значком, обложку можно выбрать из «Фото» при добавлении",
+      "snack": "Нет доступа к камере",
+      "risk": "low",
+      "anchor": true,
+      "conditional": false,
+      "grounding": "AVCaptureSession, фото; снимок сохраняется обложкой записи на устройстве и в CloudKit private database",
+      "rationale": {
+        "who": "Мама, у которой папина «Котя-коток» висит в списке без обложки",
+        "moment": "В колыбельной нажимает «Снять обложку»",
+        "need": "Снимок любимой игрушки Сони делается сейчас, в детской, — без камеры его не получить",
+        "without": "Колыбельная остаётся со значком месяца, играет как прежде"
+      },
+      "reviewNote": "Камера открывается только по «Снять обложку» в колыбельной «Котя-коток» (Колыбельные → Котя-коток). После снимка колыбельная сразу показывает новую обложку. При отказе: пустое состояние в колыбельной, запись играет со значком"
+    },
+    {
+      "key": "photos",
+      "plist": "NSPhotoLibraryUsageDescription",
+      "alert": {
+        "title": "«Мурлыка» запрашивает доступ к «Фото»",
+        "text": "Выбрать обложку для колыбельной из альбома с ребёнком"
+      },
+      "feature": "Обложка новой колыбельной из альбома «Соня»",
+      "gesture": "«Обложка из «Фото»» в новой колыбельной",
+      "screen": "new",
+      "target": "pick",
+      "fallback": "Колыбельная сохраняется со значком",
+      "snack": "Нет доступа к «Фото»",
+      "risk": "low",
+      "anchor": false,
+      "conditional": false,
+      "grounding": "PhotoKit: альбомы медиатеки; выбранный снимок копируется обложкой записи",
+      "rationale": {
+        "who": "Мама, которая добавляет сказку, присланную бабушкой",
+        "moment": "В новой колыбельной нажимает «Обложка из «Фото»»",
+        "need": "Наверху — альбом «Соня» из медиатеки, а не вся лента; отобрать альбом без доступа нельзя",
+        "without": "Колыбельная сохраняется со значком книжки"
+      },
+      "reviewNote": "Доступ вызывается строкой «Обложка из «Фото»» в форме «Новая колыбельная» (Колыбельные → +). Наверху пикера — альбом «Соня». После «Добавить» в форме стоит «Обложка выбрана», у сохранённой «Сказки про снеговика» — эта обложка. При отказе: пустое состояние в разделе «Обложка»"
+    },
+    {
+      "key": "audio",
+      "plist": "UIBackgroundModes: audio",
+      "alert": {
+        "title": "Фоновое аудио",
+        "text": "Колыбельные продолжатся при погашенном экране"
+      },
+      "activate": true,
+      "feature": "Вечер звучит с погашенным экраном до конца таймера сна",
+      "gesture": "Значок замка внизу плеера — слушать с погашенным экраном",
+      "screen": "player",
+      "target": "lock",
+      "fallback": "Без фонового режима звук останавливается при блокировке, слушать можно с включённым экраном",
+      "risk": "high",
+      "anchor": true,
+      "conditional": true,
+      "requires": "AVAudioSession .playback + Now Playing + remote commands",
+      "grounding": "AVPlayer + MPNowPlayingInfoCenter + MPRemoteCommandCenter, затухание громкости по таймеру",
+      "rationale": {
+        "who": "Мама, которая укладывает Соню в темноте",
+        "moment": "В плеере нажимает значок замка — слушать с погашенным экраном",
+        "need": "Свет экрана будит ребёнка: колыбельные должны играть с погашенным экраном и затухнуть по таймеру",
+        "without": "Звук останавливается при блокировке"
+      },
+      "reviewNote": "Значок замка внизу плеера: вечер звучит при погашенном экране, на локскрине Now Playing и «Засыпаем · ещё 12 минут»; тап по карточке возвращает в плеер. При отказе: звук только с включённым экраном"
+    },
+    {
+      "key": "push",
+      "plist": "aps-environment",
+      "alert": {
+        "title": "«Мурлыка» запрашивает разрешение на уведомления",
+        "text": "Напомним начать укладывание в выбранное время"
+      },
+      "feature": "Напоминание начать укладывание в 20:30",
+      "gesture": "«Напомнить начать укладывание» в «Вечере»",
+      "screen": "evening",
+      "target": "evening",
+      "fallback": "Напоминания нет, «Вечер» остаётся на главной",
+      "snack": "Уведомления выключены",
+      "risk": "low",
+      "anchor": false,
+      "conditional": true,
+      "requires": "Регистрация APNs через SDK провайдера",
+      "grounding": "UNUserNotificationCenter, локальное напоминание на выбранное время; своего сервера нет",
+      "rationale": {
+        "who": "Родитель, у которого вечер съезжает и Соня засыпает за полночь",
+        "moment": "В «Вечере · на сон» нажимает «Напомнить начать укладывание»",
+        "need": "Напоминание приходит в 20:30, когда приложение закрыто, — без уведомлений его не доставить",
+        "without": "Напоминания нет, «Вечер» остаётся на главной"
+      },
+      "reviewNote": "Уведомления запрашиваются только строкой «Напомнить начать укладывание» (в 20:30) в «Вечере · на сон». После разрешения там стоит «Напомним в 20:30 · укладывание», на главной — «Сегодня в 20:30 · начать укладывание». При отказе: напоминания нет"
+    }
+  ],
+  "screens": [
+    {
+      "id": "phone",
+      "title": "Вход в «Мурлыка»",
+      "type": "старт, без таб-бара",
+      "light": true,
+      "meta": "Номер телефона · без OTP",
+      "ui": {
+        "pattern": "auth",
+        "navigation": "push",
+        "purpose": "Войти по номеру и паролю или создать аккаунт",
+        "primaryAction": "Создать аккаунт",
+        "hierarchy": {
+          "primary": "Номер телефона и главное действие",
+          "secondary": "Регистрация, правовая строка и помощь"
+        },
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error"
+        ],
+        "density": "low",
+        "contentCases": [
+          "Корректный номер, переход к паролю",
+          "Номер с кодом другой страны",
+          "Неверный пароль или нет сети"
+        ]
+      }
+    },
+    {
+      "id": "home",
+      "title": "Сегодня",
+      "type": "tab (root, start)",
+      "light": false,
+      "meta": "Вечер, таймер сна и голоса семьи",
+      "ui": {
+        "pattern": "collection",
+        "purpose": "Включить вечер на сон с таймером",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Вечер из трёх колыбельных на 14 минут",
+          "Напоминание сегодня в 20:30 после разрешения",
+          "Записей ещё нет — пустой вечер и «+»"
+        ],
+        "navigation": "root",
+        "hierarchy": {
+          "primary": "Карточка «Вечер · на сон» и таймер сна",
+          "secondary": "В вечере, голоса семьи и мини-плеер"
+        }
+      }
+    },
+    {
+      "id": "lullabies",
+      "title": "Колыбельные",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Все свои записи",
+      "parent": "home",
+      "ui": {
+        "pattern": "collection",
+        "purpose": "Найти свою колыбельную или сказку",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "high",
+        "contentCases": [
+          "Шесть записей трёх голосов, четыре колыбельные",
+          "Фильтр «Сказки» оставляет две записи",
+          "Ни одной сказки — пусто под фильтром"
+        ],
+        "navigation": "root",
+        "hierarchy": {
+          "primary": "Свои записи с голосом и длиной",
+          "secondary": "Фильтр и «+»"
+        }
+      }
+    },
+    {
+      "id": "voices",
+      "title": "Голоса",
+      "type": "tab (root)",
+      "light": false,
+      "meta": "Голоса семьи",
+      "parent": "home",
+      "ui": {
+        "pattern": "collection",
+        "purpose": "Посмотреть, чьи записи есть",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Мама, папа и бабушка Нина по две записи",
+          "Голос с одной записью месячной давности",
+          "Пока только мамины записи"
+        ],
+        "navigation": "root",
+        "hierarchy": {
+          "primary": "Голоса семьи",
+          "secondary": "Как прислать запись"
+        }
+      }
+    },
+    {
+      "id": "evening",
+      "title": "Вечер · на сон",
+      "type": "push",
+      "light": false,
+      "meta": "Плейлист на сегодня",
+      "parent": "home",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать вечер и поставить напоминание",
+        "primaryAction": "Слушать",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Три колыбельные на 14 минут по порядку",
+          "Напоминание в 20:30 уже стоит",
+          "Вечер пуст — добавить из своих записей"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Обложка-веер, «Слушать» и колыбельные",
+          "secondary": "Напоминание и что можно добавить"
+        }
+      }
+    },
+    {
+      "id": "player",
+      "title": "Сейчас играет",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Now Playing",
+      "parent": "evening",
+      "ui": {
+        "pattern": "player",
+        "purpose": "Слушать вечер и выбрать таймер сна",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Первая колыбельная, таймер 20 минут",
+          "Таймер 10 минут — затухнет на второй",
+          "Последняя колыбельная вечера на повторе"
+        ],
+        "navigation": "fullscreen",
+        "hierarchy": {
+          "primary": "Обложка, перемотка и play",
+          "secondary": "Таймер сна и погашенный экран"
+        }
+      }
+    },
+    {
+      "id": "lock",
+      "title": "Экран погас",
+      "type": "system",
+      "light": false,
+      "meta": "Background audio",
+      "parent": "player",
+      "ui": {
+        "pattern": "system",
+        "purpose": "Управлять вечером с локскрина",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          "Вторая колыбельная, до тишины 12 минут",
+          "Длинное название сказки на локскрине",
+          "Вечер продолжился после звонка"
+        ],
+        "navigation": "system",
+        "hierarchy": {
+          "primary": "Now Playing и таймер сна",
+          "secondary": "Пауза, перемотка и возврат в плеер"
+        }
+      }
+    },
+    {
+      "id": "new",
+      "title": "Новая колыбельная",
+      "type": "modal",
+      "light": false,
+      "meta": "Запись из «Файлов» или «Диктофона»",
+      "parent": "lullabies",
+      "ui": {
+        "pattern": "editor",
+        "purpose": "Добавить присланную запись",
+        "primaryAction": "Сохранить",
+        "states": [
+          "default",
+          "empty",
+          "error",
+          "success"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Файл от бабушки Нины, голос отмечен",
+          "Запись из «Диктофона» без названия",
+          "Обложка не выбрана — значок книжки"
+        ],
+        "navigation": "modal",
+        "hierarchy": {
+          "primary": "Файл, название и голос",
+          "secondary": "Обложка и «в сегодняшний вечер»"
+        }
+      }
+    },
+    {
+      "id": "pick",
+      "title": "Обложка из «Фото»",
+      "type": "system picker",
+      "light": false,
+      "meta": "Photo Library",
+      "parent": "new",
+      "ui": {
+        "pattern": "system",
+        "purpose": "Выбрать обложку из альбома «Соня»",
+        "primaryAction": "Добавить",
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Альбом «Соня», выбран один снимок",
+          "Альбома с ребёнком нет — вся медиатека",
+          "Отказ в доступе к «Фото»"
+        ],
+        "navigation": "system",
+        "hierarchy": {
+          "primary": "Альбом «Соня»",
+          "secondary": "Отмена и «Добавить»"
+        }
+      }
+    },
+    {
+      "id": "snow",
+      "title": "Сказка про снеговика",
+      "type": "push",
+      "light": false,
+      "meta": "Новая запись из формы",
+      "parent": "nina",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать новую запись и добавить в вечер",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Сказка с обложкой из альбома «Соня»",
+          "Без обложки — значок книжки",
+          "Сказка ещё не в вечере"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Обложка, кто прислал и «Слушать»",
+          "secondary": "В вечере и другие записи бабушки"
+        }
+      }
+    },
+    {
+      "id": "capture",
+      "title": "Обложка · Котя-коток",
+      "type": "fullscreen",
+      "light": false,
+      "meta": "Camera",
+      "parent": "kotya",
+      "ui": {
+        "pattern": "capture",
+        "purpose": "Снять игрушку или ребёнка для обложки",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "low",
+        "contentCases": [
+          "Игрушка в квадратной рамке",
+          "Темно в детской — снимок тусклый",
+          "Отказ в доступе к камере"
+        ],
+        "navigation": "fullscreen",
+        "hierarchy": {
+          "primary": "Видоискатель с рамкой",
+          "secondary": "Спуск и закрыть"
+        }
+      }
+    },
+    {
+      "id": "search",
+      "title": "Поиск",
+      "type": "push",
+      "light": false,
+      "meta": "Поиск по своим записям",
+      "parent": "home",
+      "ui": {
+        "pattern": "collection",
+        "purpose": "Найти запись по названию",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Запрос «сказ» находит две сказки",
+          "Ничего не найдено по запросу",
+          "Пустой запрос — недавние"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Поле и результаты",
+          "secondary": "Очистить запрос"
+        }
+      }
+    },
+    {
+      "id": "profile",
+      "title": "Профиль",
+      "type": "push",
+      "light": false,
+      "meta": "Аккаунт и счётчики",
+      "parent": "home",
+      "ui": {
+        "pattern": "settings",
+        "purpose": "Посмотреть счётчики и аккаунт",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Шесть записей трёх голосов",
+          "Копия в iCloud выключена",
+          "Новый аккаунт без записей"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Имя и счётчики",
+          "secondary": "Откуда записи и аккаунт"
+        }
+      }
+    },
+    {
+      "id": "mama",
+      "title": "Мама",
+      "type": "push",
+      "light": false,
+      "meta": "Записи одного голоса",
+      "parent": "voices",
+      "ui": {
+        "pattern": "collection",
+        "purpose": "Открыть записи одного человека из семьи",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Две записи мамы, колыбельная и сказка",
+          "Мама записала только вчера",
+          "У голоса ещё нет записей"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Инициалы и имя",
+          "secondary": "Список его записей"
+        }
+      }
+    },
+    {
+      "id": "papa",
+      "title": "Папа",
+      "type": "push",
+      "light": false,
+      "meta": "Записи одного голоса",
+      "parent": "voices",
+      "ui": {
+        "pattern": "collection",
+        "purpose": "Открыть записи одного человека из семьи",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Две записи папы, одна без обложки",
+          "Сказка длиннее шести минут",
+          "У голоса ещё нет записей"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Инициалы и имя",
+          "secondary": "Список его записей"
+        }
+      }
+    },
+    {
+      "id": "nina",
+      "title": "Бабушка Нина",
+      "type": "push",
+      "light": false,
+      "meta": "Записи одного голоса",
+      "parent": "voices",
+      "ui": {
+        "pattern": "collection",
+        "purpose": "Открыть записи одного человека из семьи",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Две записи бабушки из «Файлов»",
+          "Новая сказка про снеговика сегодня",
+          "У голоса ещё нет записей"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Инициалы и имя",
+          "secondary": "Список его записей"
+        }
+      }
+    },
+    {
+      "id": "spyat",
+      "title": "Спят усталые игрушки",
+      "type": "push",
+      "light": false,
+      "meta": "Своя запись",
+      "parent": "lullabies",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать запись, включить её в вечер",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Колыбельная бабушки с обложкой",
+          "Играет первой в сегодняшнем вечере",
+          "Файл не найден в «Файлах»"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Обложка, кто записал и «Слушать»",
+          "secondary": "В вечере, файл и другие записи этого голоса"
+        }
+      }
+    },
+    {
+      "id": "medved",
+      "title": "Колыбельная медведицы",
+      "type": "push",
+      "light": false,
+      "meta": "Своя запись",
+      "parent": "lullabies",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать запись, включить её в вечер",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Мамина колыбельная из «Диктофона»",
+          "Вторая в сегодняшнем вечере",
+          "Запись без обложки"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Обложка, кто записал и «Слушать»",
+          "secondary": "В вечере, файл и другие записи этого голоса"
+        }
+      }
+    },
+    {
+      "id": "kotya",
+      "title": "Котя-коток",
+      "type": "push",
+      "light": false,
+      "meta": "Своя запись",
+      "parent": "lullabies",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать запись, включить её в вечер",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Папина колыбельная без обложки",
+          "Обложка снята камерой после разрешения",
+          "Отказ в камере — пустое состояние"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Обложка, кто записал и «Слушать»",
+          "secondary": "В вечере, файл и другие записи этого голоса"
+        }
+      }
+    },
+    {
+      "id": "kolobok",
+      "title": "Колобок",
+      "type": "push",
+      "light": false,
+      "meta": "Своя запись",
+      "parent": "lullabies",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать запись, включить её в вечер",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Папина сказка на шесть минут",
+          "Сказка не в сегодняшнем вечере",
+          "Длинное имя файла из «Файлов»"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Обложка, кто записал и «Слушать»",
+          "secondary": "В вечере, файл и другие записи этого голоса"
+        }
+      }
+    },
+    {
+      "id": "bayu",
+      "title": "Баю-баюшки-баю",
+      "type": "push",
+      "light": false,
+      "meta": "Своя запись",
+      "parent": "lullabies",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать запись, включить её в вечер",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Короткая колыбельная бабушки",
+          "Можно добавить в сегодняшний вечер",
+          "Запись без обложки, значок месяца"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Обложка, кто записал и «Слушать»",
+          "secondary": "В вечере, файл и другие записи этого голоса"
+        }
+      }
+    },
+    {
+      "id": "ezhik",
+      "title": "Сказка про ёжика",
+      "type": "push",
+      "light": false,
+      "meta": "Своя запись",
+      "parent": "lullabies",
+      "ui": {
+        "pattern": "detail",
+        "purpose": "Послушать запись, включить её в вечер",
+        "primaryAction": null,
+        "states": [
+          "default",
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "denied"
+        ],
+        "density": "medium",
+        "contentCases": [
+          "Мамина сказка почти на восемь минут",
+          "Нашлась поиском по слову «сказ»",
+          "Запись без обложки, значок книжки"
+        ],
+        "navigation": "push",
+        "hierarchy": {
+          "primary": "Обложка, кто записал и «Слушать»",
+          "secondary": "В вечере, файл и другие записи этого голоса"
+        }
+      }
+    }
+  ],
+  "prototypes": [
+    {
+      "id": "all",
+      "hero": true,
+      "label": "Весь продукт",
+      "note": "Вечер, таймер сна, голоса семьи и 4 доступа",
+      "start": "phone",
+      "screens": [
+        "phone",
+        "home",
+        "lullabies",
+        "voices",
+        "evening",
+        "player",
+        "lock",
+        "new",
+        "pick",
+        "snow",
+        "capture",
+        "search",
+        "profile",
+        "mama",
+        "papa",
+        "nina",
+        "spyat",
+        "medved",
+        "kotya",
+        "kolobok",
+        "bayu",
+        "ezhik"
+      ],
+      "stops": [],
+      "authTarget": "home"
+    },
+    {
+      "id": "core",
+      "label": "Главный цикл",
+      "note": "Открыть вечер, включить с таймером сна и погасить экран",
+      "start": "evening",
+      "screens": [
+        "evening",
+        "player",
+        "lock",
+        "spyat",
+        "medved",
+        "kotya",
+        "bayu",
+        "ezhik"
+      ],
+      "stops": [
+        "spyat",
+        "medved",
+        "kotya",
+        "bayu",
+        "ezhik"
+      ]
+    },
+    {
+      "id": "create",
+      "label": "Новая колыбельная",
+      "note": "Добавить файл от бабушки, выбрать обложку из «Фото» и сохранить",
+      "start": "new",
+      "screens": [
+        "new",
+        "pick",
+        "snow",
+        "nina",
+        "spyat",
+        "bayu",
+        "lullabies",
+        "voices"
+      ],
+      "stops": [
+        "spyat",
+        "bayu",
+        "lullabies",
+        "voices"
+      ]
+    },
+    {
+      "id": "permissions",
+      "label": "Все доступы",
+      "note": "Обложка камерой, обложка из «Фото», вечер с погашенным экраном, напоминание об укладывании",
+      "start": "kotya",
+      "screens": [
+        "kotya",
+        "evening",
+        "player",
+        "lock",
+        "capture",
+        "new",
+        "pick",
+        "snow",
+        "home",
+        "lullabies",
+        "voices",
+        "spyat",
+        "medved",
+        "bayu",
+        "ezhik",
+        "papa",
+        "kolobok",
+        "nina",
+        "mama"
+      ],
+      "stops": [
+        "home",
+        "lullabies",
+        "voices",
+        "spyat",
+        "medved",
+        "bayu",
+        "ezhik",
+        "papa",
+        "kolobok",
+        "nina",
+        "mama"
+      ]
+    }
+  ],
+  "backendless": [
+    {
+      "needs": "Свои записи",
+      "solution": "Файлы из «Диктофона» и «Файлов» на устройстве, копия в CloudKit private database"
+    },
+    {
+      "needs": "Вечер, голоса и таймер",
+      "solution": "CoreData и CloudKit private database, таймер — на устройстве"
+    },
+    {
+      "needs": "Обложки",
+      "solution": "Снимок камерой или из «Фото» хранится в записи на устройстве и в CloudKit private database"
+    },
+    {
+      "needs": "Push",
+      "solution": "Напоминание на выбранное время, регистрация APNs через SDK провайдера"
+    }
+  ],
+  "appStore": {
+    "name": "Мурлыка — колыбельные семьи",
+    "subtitle": "Голос мамы, папы и бабушки",
+    "promo": "Бабушка прислала колыбельную, папа записал сказку — соберите вечер на сон и включите таймер, который тихо затухнет, когда малыш уснёт.",
+    "keywords": "колыбельная,сказка,сон,таймер сна,укладывание,малыш,ребенок,диктофон,плейлист,на ночь",
+    "category": {
+      "primary": "Music",
+      "secondary": "Lifestyle"
+    },
+    "ageRating": "13+",
+    "price": "Бесплатно",
+    "encryption": "ITSAppUsesNonExemptEncryption = NO",
+    "urls": {
+      "support": "https://murlyka.app/support",
+      "marketing": "https://murlyka.app",
+      "privacy": "https://murlyka.app/privacy"
+    },
+    "description": [
+      "Колыбельные и сказки голосом семьи",
+      "Добавьте записи мамы, папы и бабушки из «Диктофона» и «Файлов» и соберите вечер на сон",
+      "Таймер сна тихо затухает, вечер играет с погашенным экраном"
+    ],
+    "whatsNew": "Первая версия.",
+    "reviewAccount": {
+      "email": "review@murlyka.app",
+      "password": "review2026",
+      "note": "Тестовый аккаунт готов сразу; вход по номеру и паролю, OTP не используется."
+    },
+    "privacy": [
+      {
+        "type": "Фото и видео",
+        "apple": "User Content → Photos or Videos",
+        "purpose": "Работа приложения",
+        "linked": false,
+        "tracking": false,
+        "why": "Обложки, снятые камерой или выбранные в «Фото», хранятся в записи на устройстве и в своей iCloud"
+      },
+      {
+        "type": "Аудио",
+        "apple": "User Content → Audio Data",
+        "purpose": "Работа приложения",
+        "linked": false,
+        "tracking": false,
+        "why": "Свои записи из «Диктофона» и «Файлов» хранятся на устройстве и в своей iCloud"
+      }
+    ],
+    "assets": {
+      "locale": "ru-RU",
+      "template": "studio",
+      "screens": [
+        {
+          "screen": "home",
+          "headline": "Вечер на сон",
+          "body": "Колыбельные семьи на сегодня"
+        },
+        {
+          "screen": "evening",
+          "headline": "3 колыбельные · 14 минут",
+          "body": "Бабушка, мама и папа по порядку"
+        },
+        {
+          "screen": "player",
+          "headline": "Таймер сна",
+          "body": "Через 20 минут звук тихо затухнет"
+        },
+        {
+          "screen": "voices",
+          "headline": "Голоса семьи",
+          "body": "Кто что записал"
+        },
+        {
+          "screen": "lock",
+          "headline": "С погашенным экраном",
+          "body": "Свет не разбудит малыша"
+        }
+      ]
+    }
+  },
+  "docs": [
+    {
+      "file": "01-product-vision.md",
+      "label": "Вижен"
+    },
+    {
+      "file": "02-architecture.md",
+      "label": "Архитектура"
+    },
+    {
+      "file": "03-design-system.md",
+      "label": "Дизайн-система"
+    },
+    {
+      "file": "04-references.md",
+      "label": "Референсы"
+    },
+    {
+      "file": "05-visual-audit.md",
+      "label": "Визуальный аудит"
+    },
+    {
+      "file": "06-app-store.md",
+      "label": "App Store"
+    }
+  ],
+  "auth": {
+    "mode": "phone",
+    "confirmation": false,
+    "entryTarget": "home"
+  },
+  "readiness": {
+    "status": "draft",
+    "referenceResearch": [
+      {
+        "source": "Официальное приложение ВК Музыка для iOS",
+        "observation": "Главная с карточкой-миксом, плейлист со «Слушать», мини-плеер над таб-баром и плеер с обложкой",
+        "decision": "Та же грамматика для своих записей: микс — «Вечер · на сон», треки — колыбельные семьи"
+      },
+      {
+        "source": "Официальное приложение ВК Музыка для iOS, фоновое воспроизведение",
+        "observation": "Звук продолжается с погашенным экраном, на локскрине Now Playing",
+        "decision": "Вечер звучит в фоне, на локскрине видно, сколько осталось до тишины"
+      },
+      {
+        "source": "Таймер сна в подкаст-приложениях",
+        "observation": "Таймер спрятан в меню плеера",
+        "decision": "Таймер 10 / 20 / 30 вынесен на главную и в плеер и переключается на месте"
+      }
+    ],
+    "productCritique": [
+      {
+        "objection": "Колыбельные есть в любом музыкальном сервисе",
+        "resolution": "Ребёнок засыпает под знакомый голос: здесь поют мама, папа и бабушка",
+        "evidenceScreens": [
+          "home",
+          "voices",
+          "evening"
+        ]
+      },
+      {
+        "objection": "Записи и так лежат в «Диктофоне» и переписке",
+        "resolution": "Там они вразнобой; здесь из них собран вечер на сегодня с таймером",
+        "evidenceScreens": [
+          "new",
+          "evening",
+          "player"
+        ]
+      },
+      {
+        "objection": "Музыку можно просто выключить",
+        "resolution": "Свет экрана будит ребёнка — вечер играет с погашенным экраном и затухает сам",
+        "evidenceScreens": [
+          "player",
+          "lock"
+        ]
+      }
+    ]
+  }
+}

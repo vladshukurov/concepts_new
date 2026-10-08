@@ -1,0 +1,122 @@
+/* «Виляй» — мимикрия ВК Видео. Оболочка, кегли и цвета — из слоя `.ui` ядра;
+   здесь только своё: реакции семьи, вертикальный клип, камера, страница сезона как канал. */
+
+/* Кадры роликов — кадрирование трёх снимков (assets/media/photo-*.jpg):
+   d1 Рыжик бежит по парку · d2 морда крупно · d3 щенки знакомятся · d4 Уголёк на даче
+   d5 щенок крупно · d6 грудь и лапы на бегу · d7 деревья и дома над парком · d8 лапы в траве */
+.d1,.d2,.d6,.d7,.d8 { background-image:url(assets/media/photo-1.jpg); }
+.d3,.d5 { background-image:url(assets/media/photo-3.jpg); }
+.d4 { background-image:url(assets/media/photo-4.jpg); }
+.d1,.d2,.d3,.d4,.d5,.d6,.d7,.d8 { background-repeat:no-repeat; background-color:#2a2418; }
+.d1 { background-size:cover; background-position:50% 40%; }
+.d2 { background-size:250% auto; background-position:52% 28%; }
+.d3 { background-size:cover; background-position:50% 60%; }
+.d4 { background-size:cover; background-position:50% 40%; }
+.d5 { background-size:200% auto; background-position:96% 43%; }
+.d6 { background-size:180% auto; background-position:45% 75%; }
+.d7 { background-size:160% auto; background-position:37% 7%; }
+.d8 { background-size:170% auto; background-position:14% 100%; }
+/* Не 16:9 (квадрат, вертикаль): масштаб по высоте, чтобы кадр закрывал рамку */
+:is(.ui-mini-face,.ui-pk-tile,.ui-thumb:not(.is-wide),.vl-clip-frame,.vl-camera-view):is(.d1,.d3,.d4) { background-size:cover; background-position:50% 50%; }
+:is(.ui-mini-face,.ui-pk-tile,.ui-thumb:not(.is-wide),.vl-clip-frame,.vl-camera-view).d2 { background-size:auto 220%; background-position:52% 30%; }
+:is(.ui-mini-face,.ui-pk-tile,.ui-thumb:not(.is-wide),.vl-clip-frame,.vl-camera-view).d5 { background-size:auto 200%; background-position:90% 40%; }
+:is(.ui-mini-face,.ui-pk-tile,.ui-thumb:not(.is-wide),.vl-clip-frame,.vl-camera-view).d6 { background-size:auto 180%; background-position:45% 70%; }
+:is(.ui-mini-face,.ui-pk-tile,.ui-thumb:not(.is-wide),.vl-clip-frame,.vl-camera-view).d7 { background-size:auto 160%; background-position:30% 10%; }
+:is(.ui-mini-face,.ui-pk-tile,.ui-thumb:not(.is-wide),.vl-clip-frame,.vl-camera-view).d8 { background-size:auto 170%; background-position:20% 100%; }
+
+/* Доли прогресса */
+.vl-p0 { width:0; }
+.vl-p30 { width:30%; }
+.vl-p45 { width:45%; }
+.vl-p70 { width:70%; }
+
+/* Плеер момента */
+.vl-watch-title { margin:4px 16px 0; }
+.vl-watch-meta { padding:4px 16px 0; }
+.vl-actions { margin-top:12px; }
+
+/* Формы */
+.vl-bottom { margin-top:16px; }
+.vl-input { width:100%; min-width:0; padding:0; border:0; outline:0; background:none; color:var(--ui-text); font:500 17px/22px var(--ui-face); }
+.vl-input::placeholder { color:var(--ui-text-2); }
+.vl-form .ui-cell-text > span { order:-1; font:400 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.vl-form .ui-cell-text { display:flex; flex-direction:column; }
+.vl-add { display:flex; align-items:center; gap:12px; min-height:48px; margin:8px 16px 0; padding:0 12px; border-radius:12px; background-color:var(--ui-card); color:var(--ui-text-2); }
+.vl-add .vl-input { flex:1; }
+.vl-add svg { width:20px; height:20px; flex:none; color:var(--ui-link); }
+
+/* Профиль */
+.vl-me { display:flex; align-items:center; gap:12px; min-width:0; }
+
+/* Страница сезона и сериала как канал */
+.vl-banner { height:132px; margin:0 16px; border-radius:12px; }
+.vl-channel { display:flex; align-items:center; gap:12px; padding:4px 16px 8px; }
+.vl-channel .ui-row-text strong { font:600 20px/26px var(--ui-face); }
+
+/* Лист «Создать» */
+.vl-create { overflow:hidden; }
+.vl-behind { display:flex; flex-direction:column; gap:20px; padding:calc(var(--safe-top) + 16px) 16px 0; }
+.vl-dim { position:absolute; inset:0; background-color:rgba(0,0,0,.6); }
+.vl-create-sheet { padding-bottom:16px; }
+.vl-sheet-head { display:flex; flex-direction:column; gap:4px; padding:0 16px 12px; }
+
+/* Заполнитель над таб-баром для экранов без прокрутки */
+.vl-fill { position:relative; flex:1; min-height:0; overflow:hidden; }
+
+/* Длинные подписи переносятся */
+.vl-wrap .ui-row-text > strong { white-space:normal; }
+
+/* Клипы: вертикальный момент на весь экран */
+.vl-clips { overflow:hidden; }
+.vl-clip-frame { position:absolute; inset:0; border-radius:0; }
+.vl-clip-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.55), transparent 20%, transparent 58%, rgba(0,0,0,.78)); }
+.vl-clip-head { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding:calc(var(--safe-top) + 8px) 16px 0; color:#fff; }
+.vl-clip-head strong { font:600 17px/22px var(--ui-face); }
+.vl-clip-head span { font:400 13px/16px var(--ui-face); color:rgba(255,255,255,.72); }
+.vl-clip-side { position:absolute; right:8px; bottom:120px; z-index:1; display:flex; flex-direction:column; gap:12px; }
+.vl-clip-act { display:flex; flex-direction:column; align-items:center; gap:2px; }
+.vl-clip-act small { font:500 12px/14px var(--ui-face); color:#fff; }
+.vl-clip-info { position:absolute; left:16px; right:72px; bottom:28px; z-index:1; display:flex; align-items:flex-start; gap:12px; color:#fff; }
+.vl-clip-info .ui-row-text > strong { white-space:normal; }
+.vl-clip-info .ui-row-text > span { color:rgba(255,255,255,.78); white-space:normal; }
+.vl-clip-bar { position:absolute; left:0; right:0; bottom:0; z-index:1; height:2px; background-color:rgba(255,255,255,.3); }
+.vl-clip-bar i { display:block; height:100%; background-color:#fff; }
+
+/* Камера момента */
+.vl-camera { overflow:hidden; }
+.vl-camera-view { position:absolute; inset:0; border-radius:0; }
+.vl-camera-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.5), transparent 30%, transparent 62%, rgba(0,0,0,.72)); }
+.vl-camera-head { position:relative; z-index:1; display:flex; align-items:center; justify-content:space-between; padding:var(--safe-top) 8px 0; }
+.vl-rec { padding:4px 10px; border-radius:8px; background-color:#c4001a; font:600 15px/20px var(--ui-face); font-variant-numeric:tabular-nums; color:#fff; }
+.vl-camera-match { position:relative; z-index:1; display:flex; flex-direction:column; gap:4px; margin:12px 16px 0; padding:12px 14px; border-radius:14px; background-color:rgba(0,0,0,.55); color:#fff; }
+.vl-camera-match small { font:500 12px/14px var(--ui-face); color:rgba(255,255,255,.72); }
+.vl-camera-match strong { font:600 17px/22px var(--ui-face); }
+.vl-camera-meta { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 112px); z-index:1; display:flex; justify-content:center; gap:16px; font:500 13px/16px var(--ui-face); color:rgba(255,255,255,.86); }
+.vl-camera-meta > span { display:flex; align-items:center; gap:4px; }
+.vl-camera-meta svg { width:14px; height:14px; }
+.vl-camera-bar { position:absolute; left:24px; right:24px; bottom:calc(var(--safe-bottom) + 16px); z-index:1; display:flex; align-items:center; justify-content:space-between; }
+.vl-shutter { position:relative; width:76px; height:76px; border-radius:50%; box-shadow:inset 0 0 0 4px #fff; }
+.vl-shutter > span { position:absolute; inset:9px; border-radius:50%; background-color:#ff3b30; }
+.vl-spacer { width:48px; }
+
+/* Выбор из «Фото» — чёрный фон системного листа */
+.ui.vl-picker { background-color:#000; }
+/* Выбор фото из ядра: iOS-синий на тёмном и белом знак не проходят AA */
+.ui-pk-text:not(.is-off) { color:#5aaaff; }
+.ui-pk-tile > i { background:#0064d2; }
+
+/* Плеер: ядро ставит cover и центр — кадрирование ролика сильнее */
+.ui-player.d2 { background-size:250% auto; background-position:52% 28%; }
+.ui-player.d5 { background-size:200% auto; background-position:96% 43%; }
+.ui-player.d6 { background-size:180% auto; background-position:45% 75%; }
+.ui-player.d7 { background-size:160% auto; background-position:37% 7%; }
+.ui-player.d1,.ui-player.d4 { background-position:50% 40%; }
+
+/* Реакции семьи: переключатели на месте */
+.vl-react { display:flex; gap:8px; padding:12px 16px 0; }
+.vl-react-btn { display:flex; align-items:center; gap:6px; min-height:44px; padding:0 14px; border-radius:22px; background-color:var(--ui-fill-2); font:500 15px/20px var(--ui-face); color:var(--ui-text); }
+.vl-react-btn b { font-weight:600; font-variant-numeric:tabular-nums; }
+.vl-react-btn.is-on { background-color:var(--ui-accent); color:var(--ui-on-accent); }
+
+/* Отметка «придёт» и «что в кадре» — выбор, а не сделанное дело: без зачёркивания */
+.ui.vl-marks .ui-check.is-on .ui-check-text strong { color:var(--ui-text); text-decoration:none; }
