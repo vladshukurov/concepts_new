@@ -16,6 +16,7 @@ export default (ui) => ui.screen({
       ] }),
       ui.section({ title: 'На телефоне', children: ui.list([
         ui.row({ lead: ui.leadIcon('circle-check', { round: true, accent: true }), title: `Шаги скачаны · ${cookalong.steps} из ${cookalong.steps}`, sub: 'С таймерами — готовить можно без сети' }),
+        ui.row({ lead: ui.leadIcon('layout-grid'), title: 'Таймер на экране «Домой»', sub: `Шаг ${step.n} и ${step.timer} — видно, не открывая приложение`, activate: 'appgroups|widget' }),
         ui.row({ lead: ui.leadIcon('users'), title: 'Участники', sub: 'Амина, вы, Тимур, Жанна и ещё 4 · у всех шаг 2' }),
       ]) }),
     ]),

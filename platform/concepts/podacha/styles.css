@@ -81,3 +81,4 @@
 /* Выбор фото из ядра: iOS-синий на белом не проходит AA */
 .ui-pk-text:not(.is-off) { color:#0064d2; }
 .ui-pk-tile > i { background:#0064d2; }
+.ui-progress > i.pd-fill-40 { width:40%; }

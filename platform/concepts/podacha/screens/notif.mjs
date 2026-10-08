@@ -7,7 +7,7 @@ export default (ui) => ui.screen({
     ui.nav({ title: 'Уведомления' }),
     ui.scroll([
       ui.section({ title: 'Сегодня', children: ui.list([
-        ui.row({ lead: ui.avatar('АР'), title: 'Амина в чате ужина', sub: 'Голосовое · 0:12 · 19:18', go: 'conversation' }),
+        ui.row({ lead: ui.avatar('АР'), title: 'Амина в чате ужина', sub: 'Голосовое 0:12 уже в чате · 19:18', go: 'conversation' }),
         ui.row({ lead: ui.leadIcon('chef-hat', { accent: true }), title: cookalong.title, sub: `Начало в ${cookalong.start} · шаги скачаны`, go: 'cookalong', primary: true }),
       ]) }),
       ui.section({ title: 'Вчера', children: ui.list([

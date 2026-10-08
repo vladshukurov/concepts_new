@@ -31,7 +31,7 @@
 ## Компоненты ядра
 
 <!-- @generated:kernel-components -->
-Экраны собраны из компонентов `kernel/components.mjs`: `row` ×60, `section` ×55, `leadIcon` ×50, `list` ×25, `cell` ×25, `denied` ×19, `nav` ×18, `button` ×18, `bubble` ×16, `actions` ×14, `avatar` ×12, `group` ×11, `iconButton` ×11, `entry` ×8, `day` ×7, `tabBar` ×5, `search` ×4, `chatNav` ×3, `chat` ×3, `composer` ×3, `largeTitle` ×3, `dialog` ×3, `voice` ×3, `chips` ×3, `top` ×2, `checklist` ×2, `callView` ×1, `textButton` ×1, `wordmark` ×1, `safariFill` ×1, `sheet` ×1, `photoPicker` ×1, `stats` ×1, `homeScreen` ×1.
+Экраны собраны из компонентов `kernel/components.mjs`: `row` ×62, `section` ×59, `leadIcon` ×51, `list` ×26, `button` ×23, `cell` ×22, `nav` ×19, `actions` ×17, `bubble` ×17, `avatar` ×13, `denied` ×12, `iconButton` ×11, `group` ×9, `day` ×8, `entry` ×7, `tabBar` ×5, `chat` ×4, `search` ×4, `voice` ×4, `chatNav` ×3, `composer` ×3, `largeTitle` ×3, `dialog` ×3, `chips` ×3, `top` ×2, `checklist` ×2, `callView` ×1, `textButton` ×1, `wordmark` ×1, `adCard` ×1, `safariFill` ×1, `sheet` ×1, `lockScreen` ×1, `reminder` ×1, `photoPicker` ×1, `stats` ×1, `homeScreen` ×1.
 <!-- @end -->
 
 ## Свои компоненты
@@ -47,7 +47,7 @@
 | Съёмка блюда | `.pd-cam` `.pd-viewfinder` `.pd-cam-caption` `.pd-shutter` |
 | Мессенджер и звонок | `.pd-chat-card` `.pd-call` |
 | Приглашение: системный лист «Поделиться» | `.pd-share` `.pd-link` `.pd-gap` `.pd-text` `.pd-call` `.pd-chat-card` |
-| Выбор фото из ядра: iOS-синий на белом не проходит AA | `.ui-pk-text` `.ui-pk-tile` |
+| Выбор фото из ядра: iOS-синий на белом не проходит AA | `.ui-pk-text` `.ui-pk-tile` `.ui-progress` |
 <!-- @end -->
 
 ## Актуальная навигация

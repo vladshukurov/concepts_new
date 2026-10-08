@@ -14,7 +14,10 @@ export default (ui) => ui.screen({
         { title: 'Сметана', sub: '20 % · 2 банки' },
         { title: 'Лавровый лист' },
       ]) }),
+      ui.section({ children: ui.actions([ui.button({ label: 'Заказать в «Грядке»', icon: 'shopping-basket', variant: 'secondary', block: true, activate: 'autofill|fill' })]) }),
       ui.section({ title: 'Не пропустить', children: [
+        ui.list([ui.reminder({ title: 'Напомнить купить фарш в четверг', titleGranted: 'Напомним в четверг в 18:00 — фарш и сметана', sub: 'Жанна советует фарш пополам со свининой', here: 'pelmeni' })]),
+        ui.denied('push'),
         ui.group({ cells: [
           ui.cell({ icon: 'calendar-plus', title: 'Добавить в календарь', sub: 'Пятница, 19:30–21:30', ask: 'calendar|pelmeni|pelmeni' }),
         ] }),

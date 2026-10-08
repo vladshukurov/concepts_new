@@ -1,5 +1,5 @@
 import { THEME, TABS, dish } from './_shared.mjs';
-import { own, cookalong } from '../model.mjs';
+import { own, cookalong, ad } from '../model.mjs';
 
 /* Свой дневник готовки: всё на главной приготовила и записала сама Саша. Чужих
    публикаций и подписок нет — с людьми готовят вместе по звонку и пишут в чат */
@@ -23,13 +23,10 @@ export default (ui) => ui.screen({
     ui.entry({ icon: 'utensils', title: own.dish.title, meta: `${own.dish.when} · готовила ${own.dish.times} раз`, text: own.dish.text, photos: own.dish.photos, open: { go: 'post' }, menu: ['Изменить', 'Удалить'], tags: ['dish'] }),
     ui.entry({ icon: 'mic', title: own.voice.title, meta: `${own.voice.when} · заметка у плиты`, voice: { dur: own.voice.dur }, tags: ['recipe'] }),
     ui.entry({
-      icon: 'shopping-basket', title: own.list.title, meta: `осталось ${own.list.left} из ${own.list.left + own.list.done}`,
+      icon: 'shopping-basket', title: own.list.title, meta: `${own.list.synced} · осталось ${own.list.left} из ${own.list.left + own.list.done}`,
       attach: ui.checklist(own.list.items.map((t) => ({ title: t }))), tags: ['list'],
     }),
-    ui.entry({
-      icon: 'megaphone', title: 'Лавка «Грядка» · сезонные овощи', meta: 'доставка по городу · реклама',
-      text: 'Печёный перец и тыква по утрам, доставка от 3 000 ₸', actions: [{ label: 'Почему эта реклама', icon: 'sliders-horizontal', go: 'privacy' }],
-    }),
+    ui.section({ children: ui.adCard({ icon: 'store', title: ad.title, sub: `Реклама · ${ad.text}`, subGranted: `Реклама · по интересам · ${ad.near}`, go: 'privacy' }) }),
     ui.entry({ icon: 'book-open', title: own.recipe.title, meta: `${own.recipe.when} · ${own.recipe.change}`, tags: ['recipe'] }),
   ], { root: true }),
   tabs: ui.tabBar({ items: TABS, active: 'feed' }),

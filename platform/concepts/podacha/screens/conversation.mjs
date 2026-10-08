@@ -14,7 +14,6 @@ export default (ui) => ui.screen({
     ])),
     ui.denied('voip'),
     ui.denied('mic'),
-    ui.denied('photos'),
-    ui.composer({ attach: { ask: 'photos|conversation|conversation' }, mic: { ask: 'mic|conversation|conversation' } }),
+    ui.composer({ attach: { go: 'picker', label: 'Фото из медиатеки' }, mic: { ask: 'mic|voice|conversation' } }),
   ],
 });

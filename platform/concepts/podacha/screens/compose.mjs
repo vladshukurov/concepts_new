@@ -7,8 +7,8 @@ export default (ui) => ui.screen({
     ui.scroll([
       ui.section({ children: '<p class="pd-text">Грушевый пирог, седьмой раз: груш взяла пять, как и хотела — сочнее, но середина чуть сырая. В следующий раз 45 минут</p>' }),
       ui.section({ children: ui.group({ cells: [
-        ui.cell({ icon: 'camera', title: 'Снять блюдо', sub: 'Фото или короткое видео со звуком', ask: 'camera|camera|compose' }),
-        ui.cell({ icon: 'image', title: 'Из медиатеки', sub: 'Выбрать готовые кадры', ask: 'photos|picker|compose' }),
+        ui.cell({ icon: 'camera', title: 'Снять блюдо', sub: 'Фото или короткое видео', ask: 'camera|camera|compose' }),
+        ui.cell({ icon: 'image', title: 'Из медиатеки', sub: 'Снимки блюд за неделю', ask: 'photos|picker|compose' }),
         ui.cell({ icon: 'map-pin', title: 'Место', sub: 'Кухня, рынок или кафе рядом', ask: 'location|place|place' }),
         ui.cell({ icon: 'book-open', title: 'Свой рецепт', sub: 'Ингредиенты, замены и шаги', go: 'recipenew' }),
       ] }) }),
