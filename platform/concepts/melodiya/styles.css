@@ -28,19 +28,33 @@
 .md-tone.is-picked .ui-row-text > strong { color:var(--ui-link); }
 
 /* Плеер-редактор: волна с ручками обрезки сверху, управление под ней, без перемешать и повтора */
-.md-trim { padding:8px 16px 4px; }
-.md-wave { display:flex; align-items:center; gap:3px; height:120px; padding:0 4px; border-radius:12px; background-color:var(--ui-card); }
+.md-head-text { padding:4px 16px 16px; }
+.md-head-text > h1 { font:700 24px/30px var(--ui-face); color:var(--ui-text); }
+.md-head-text > p { margin-top:2px; font:400 14px/18px var(--ui-face); color:var(--ui-text-2); }
+.md-trim { padding:0 16px; }
+.md-wave { display:flex; align-items:center; gap:3px; height:96px; padding:0 4px; border-radius:12px; background-color:var(--ui-card); }
 .md-wave > b { flex:1; min-width:2px; border-radius:2px; background-color:var(--ui-text-3); }
 .md-wave > b.is-in { background-color:var(--ui-accent); }
-.md-handle { position:relative; flex:none; width:4px; height:104px; border-radius:2px; background-color:#fff; }
+.md-handle { position:relative; flex:none; width:4px; height:84px; border-radius:2px; background-color:#fff; }
 .md-handle::before { content:""; position:absolute; left:-6px; top:50%; width:16px; height:28px; margin-top:-14px; border-radius:6px; background-color:#fff; }
+.md-head { flex:none; width:2px; height:96px; margin:0 -1px; background-color:#fff; box-shadow:0 0 6px rgba(0,0,0,.5); }
 .md-w1 { height:10%; } .md-w2 { height:20%; } .md-w3 { height:30%; } .md-w4 { height:42%; }
 .md-w5 { height:54%; } .md-w6 { height:66%; } .md-w7 { height:76%; } .md-w8 { height:86%; }
-.md-trim-times { display:flex; justify-content:space-between; align-items:baseline; padding:8px 4px 0; font:400 14px/18px var(--ui-face); color:var(--ui-text-2); font-variant-numeric:tabular-nums; }
-.md-trim-times > b { font:600 15px/18px var(--ui-face); color:var(--ui-text); }
-.md-editor .ui-np { padding:0 16px; }
-.md-editor .ui-np-side, .md-editor .ui-np-bottom { display:none; }
-.md-editor .ui-np-row { justify-content:center; gap:32px; }
+.md-trim-times { padding:8px 0 0; text-align:center; font:400 14px/18px var(--ui-face); color:var(--ui-text-2); font-variant-numeric:tabular-nums; }
+.md-trim-times > b { font-weight:600; color:var(--ui-text); }
+.md-listen { display:flex; flex-direction:column; align-items:center; gap:6px; padding:20px 16px 12px; font:500 13px/16px var(--ui-face); color:var(--ui-text-2); }
+.md-editor .ui-chips { justify-content:center; }
+/* Низ, над индикатором «Домой»: вид, одна кнопка и контакт */
+.md-dock { flex:none; padding:8px 0 calc(var(--safe-bottom) + 4px); border-top:1px solid var(--ui-separator, rgba(255,255,255,.08)); background-color:var(--ui-bg); }
+.md-dock .ui-seg { margin-top:4px; }
+.md-set-wrap { padding:4px 16px 0; }
+.md-set-wrap.is-filtered-out { display:none; }
+.md-set .md-set-on { display:none; align-items:center; gap:6px; }
+.md-set .md-set-on > svg { width:18px; height:18px; stroke-width:2.5; }
+.md-set.is-on { background-color:var(--ui-fill-2); color:var(--ui-text); }
+.md-set.is-on .md-set-off { display:none; }
+.md-set.is-on .md-set-on { display:inline-flex; }
+.md-to-contact { display:flex; justify-content:center; padding-top:4px; }
 .md-p35 { width:35%; }
 .md-p25 { width:25%; }
 
@@ -76,8 +90,6 @@
 /* Подпись-сноска внутри секции — на поле 16 */
 .ui-sec > .ui-foot { padding:0 16px; }
 
-/* «Назначить»: отмеченное — назначено, а не сделано, поэтому без зачёркивания */
-.ui.md-editor .ui-check.is-on .ui-check-text strong { color:var(--ui-text); text-decoration:none; }
 
 /* Постер звонка: кадр во весь экран, имя крупно поверх, мелодия звучит, кнопки звонка — превью */
 .md-poster { overflow:hidden; }

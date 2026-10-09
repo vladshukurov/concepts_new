@@ -35,65 +35,66 @@ export const toneList = (kind) => ui.list(ORDER.map((id) => toneRow(tones[id], {
 /* Секунды из «3:41» */
 const sec = (s) => s.split(':').reduce((n, x) => n * 60 + Number(x), 0);
 /**
- * Волна записи с ручками обрезки: столбики внутри фрагмента — акцентом,
- * ручки стоят прямо в ряду столбиков, под ними «от — до» и длина.
+ * Одна дорожка, как обрезка рингтона в GarageBand: волна записи, ручки обрезки в ряду столбиков,
+ * внутри фрагмента — тонкая белая линия «где играет», под волной «от · длина · до».
  */
 export const wave = (t) => {
   const N = 46;
   const total = sec(t.total);
   const a = Math.round((sec(t.from) / total) * N);
   const b = Math.max(a + 2, Math.round((sec(t.to) / total) * N));
+  const at = t.id === playing.tone ? a + Math.round(((b - a) * playing.pct) / 100) : a;
   let seed = [...t.title].reduce((n, c) => n + c.codePointAt(0), 0);
   const bars = [];
   for (let i = 0; i < N; i += 1) {
     seed = (seed * 9301 + 49297) % 233280;
     const h = 1 + Math.floor((seed / 233280) * 8);
     if (i === a) bars.push('<i class="md-handle" aria-hidden="true"></i>');
+    if (i === at) bars.push('<i class="md-head" aria-hidden="true"></i>');
     bars.push(`<b class="md-w${h}${i >= a && i < b ? ' is-in' : ''}"></b>`);
     if (i === b - 1) bars.push('<i class="md-handle" aria-hidden="true"></i>');
   }
   return `<div class="md-trim"><div class="md-wave" role="img" aria-label="Фрагмент от ${t.from} до ${t.to} из ${t.total}">${bars.join('')}</div>`
-    + `<p class="md-trim-times"><span>от ${t.from}</span><b>${t.len} секунд</b><span>до ${t.to}</span></p></div>`;
+    + `<p class="md-trim-times">от ${t.from} · <b>${t.len} секунд</b> · до ${t.to}</p></div>`;
 };
 
-/* Кому назначена мелодия: общие виды и контакты */
-const assigned = (t) => [
-  ...KINDS.map((k) => ({ title: k.title, done: picks[k.id] === t.id })),
-  ...Object.values(contacts).filter((c) => c.tone === t.id).map((c) => ({ title: `Когда звонит ${c.who}`, done: true })),
-];
+/* «из «Диктофона»», «из «Файлов»» */
+const FROM = { 'Диктофон': 'Диктофона', 'Файлы': 'Файлов' };
+/* Куда ставят мелодию и как это звучит после нажатия */
+const SET = { call: ['на звонок', 'на звонке'], alarm: ['на будильник', 'на будильнике'], msg: ['на сообщения', 'на сообщениях'] };
 
 /**
- * Плеер-редактор мелодии: волна с ручками обрезки сверху, под ней управление
- * (без перемешивания и повтора — у мелодии их нет), затухание и «Назначить».
+ * Редактор мелодии как обрезка рингтона в iOS: название и запись-источник, одна дорожка
+ * с ручками и линией воспроизведения, «Прослушать», два чипса затухания, а внизу, над
+ * индикатором «Домой», — вид («Звонок · Будильник · Сообщения») и одна кнопка «Поставить…».
  */
 export const toneScreen = (ui, t, { fresh = false, extra = [] } = {}) => {
-  const i = ORDER.indexOf(t.id);
-  const prev = tones[ORDER[i > 0 ? i - 1 : ORDER.length - 1]];
-  const next = tones[ORDER[i >= 0 && i < ORDER.length - 1 ? i + 1 : 0]];
   const isPlaying = t.id === playing.tone;
   return ui.screen({
     id: t.id, theme: THEME, className: 'md-editor',
     body: [
       ui.nav({ title: fresh ? 'Новая мелодия' : 'Мелодия', back: 'down' }),
       ui.scroll([
-        ui.section({ children: wave(t) }),
-        ui.section({ children: ui.musicControls({
-          title: t.title, sub: `${t.rec} · ${t.when}`,
-          at: isPlaying ? playing.at : '0:00', left: isPlaying ? playing.left : `−0:${String(t.len).padStart(2, '0')}`, pct: isPlaying ? playing.pct : 0,
-          playing: isPlaying,
-          mark: `${t.fade ? 'затухание 2 с' : 'без затухания'} · из «${t.source}», ${t.total}`,
-          like: { label: `Нравится · ${t.title}` },
-          prev: { label: `Предыдущая · ${prev.title}`, go: prev.id, toast: undefined },
-          next: { label: `Следующая · ${next.title}`, go: next.id, toast: undefined },
-        }) }),
-        ui.section({ children: ui.group({ cells: [
-          ui.cell({ icon: 'activity', title: 'Затухание в конце', sub: 'последние 2 секунды тише', toggle: t.fade }),
-          ui.cell({ icon: 'volume-2', title: 'Громче постепенно', sub: 'первые 5 секунд', toggle: t.id === 'podyom' }),
-        ] }) }),
-        ui.section({ title: 'Назначить', meta: fresh ? 'ещё никуда' : undefined, children: ui.checklist(assigned(t)) }),
-        ui.section({ children: ui.list([ui.row({ title: 'Кому назначена', sub: 'мелодии контактов', go: 'contacts' })]) }),
+        `<div class="md-head-text"><h1>${t.title}</h1><p>${t.rec} · ${t.when} · из «${FROM[t.source] || t.source}»</p></div>`,
+        wave(t),
+        `<div class="md-listen"><button class="ui-np-play${isPlaying ? ' is-pause' : ''}"${ui.act({ label: isPlaying ? 'Пауза' : 'Слушать', toggle: 'play' })}>${ui.icon(isPlaying ? 'pause' : 'play', { fill: true })}</button><span>Прослушать</span></div>`,
+        ui.chips([
+          { label: 'Затухание 2 с', on: t.fade, toggle: 'on' },
+          { label: 'Нарастание 5 с', on: t.id === 'podyom', toggle: 'on' },
+        ]),
         ...extra,
       ]),
+      `<div class="md-dock">`
+        + ui.segments(KINDS.map((k, i) => ({ label: k.label, on: i === 0, filter: k.id })))
+        + KINDS.map((k, i) => {
+          const on = picks[k.id] === t.id;
+          return `<div class="md-set-wrap${i ? ' is-filtered-out' : ''}" data-tags="${k.id}">${ui.button({
+            label: `<span class="md-set-off">Поставить ${SET[k.id][0]}</span><span class="md-set-on">${ui.icon('check')}Стоит ${SET[k.id][1]}</span>`,
+            block: true, className: `md-set${on ? ' is-on' : ''}`, toggle: 'on',
+          })}</div>`;
+        }).join('')
+        + `<div class="md-to-contact">${ui.textButton({ label: 'Назначить контакту…', go: 'contacts' })}</div>`
+        + `</div>`,
     ],
   });
 };
