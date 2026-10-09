@@ -7,11 +7,10 @@ const kind = (id) => KINDS.find((k) => k.id === id);
 export default (ui) => ui.screen({
   id: 'home', theme: THEME,
   body: ui.scroll([
-    ui.largeTitle('Мелодии', [
+    ui.largeTitle('Мелодии', `<div class="md-actions">${[
       ui.iconButton({ icon: 'alarm-clock', label: `Будильник ${alarm.time}`, go: 'alarm' }),
       ui.iconButton({ icon: 'plus', label: 'Новая мелодия', go: 'newtone' }),
-      ui.iconButton({ icon: 'circle-user', label: 'Профиль', go: 'profile' }),
-    ]),
+    ].join('')}</div>`),
     ui.segments(KINDS.map((k, i) => ({ label: k.label, on: i === 0, filter: k.id }))),
     /* Звонок */
     ui.section({ title: kind('call').title, meta: tones[picks.call].title, tags: ['call'], children: toneList('call') }),

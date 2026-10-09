@@ -96,3 +96,5 @@
 .md-call-btn.is-ok > svg { background-color:#34c759; }
 .md-call-btn > small { font:400 13px/16px var(--ui-face); }
 .md-poster-done { position:absolute; left:16px; right:16px; bottom:calc(var(--safe-bottom) + 16px); z-index:1; }
+
+.md-actions { display:flex; align-items:center; gap:0; }

@@ -1,4 +1,4 @@
-import { THEME, ico } from './_shared.mjs';
+import { THEME, TABS, MINI, ico } from './_shared.mjs';
 import { me, tones, picks, alarm, records, ORDER } from '../model.mjs';
 
 /* Профиль: что сейчас стоит на звонке, будильнике и сообщениях, свои разделы и настройки */
@@ -8,8 +8,8 @@ const msg = tones[picks.msg];
 export default (ui) => ui.screen({
   id: 'profile', theme: THEME,
   body: [
-    ui.nav({ title: '', trailing: ui.iconButton({ icon: 'settings', label: 'Настройки', go: 'settings' }) }),
     ui.scroll([
+      ui.largeTitle('Профиль', ui.iconButton({ icon: 'settings', label: 'Настройки', go: 'settings' })),
       `<div class="md-me">${ui.avatar(me.initial, { large: true })}<h1 class="ui-title">${me.name}</h1><p class="ui-sub">свои мелодии с августа</p></div>`,
       ui.stats([[ORDER.length, 'мелодий'], [3, 'контакта'], [records.recorder + records.files, 'записей']]),
       ui.section({ title: 'Сейчас стоит', children: ui.list([
@@ -22,6 +22,7 @@ export default (ui) => ui.screen({
         ui.row({ lead: ico('mic'), title: 'Записи', sub: `${records.recorder} из «Диктофона», ${records.files} из «Файлов»`, go: 'records' }),
         ui.row({ lead: ico('alarm-clock'), title: 'Будильник', sub: `${alarm.time} · ${alarm.days}`, go: 'alarm' }),
       ]) }),
-    ]),
+    ], { root: true }),
   ],
+  tabs: ui.tabBar({ items: TABS, active: 'profile', mini: MINI }),
 });

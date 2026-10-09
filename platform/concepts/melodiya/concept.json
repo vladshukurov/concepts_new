@@ -25,14 +25,14 @@
       "role": "home"
     },
     {
-      "id": "contacts",
-      "label": "Контакты",
-      "role": "contacts"
-    },
-    {
       "id": "records",
       "label": "Записи",
       "role": "library"
+    },
+    {
+      "id": "profile",
+      "label": "Профиль",
+      "role": "profile"
     }
   ],
   "positioning": {
@@ -290,9 +290,9 @@
     {
       "id": "contacts",
       "title": "Контакты",
-      "type": "tab (root)",
+      "type": "push",
       "light": false,
-      "meta": "Своя мелодия и общая",
+      "meta": "Своя мелодия и общая, из «Кому назначена»",
       "parent": "home",
       "ui": {
         "pattern": "collection",
@@ -312,7 +312,7 @@
           "Контакт без фото — инициалы",
           "Контактов со своей мелодией ещё нет"
         ],
-        "navigation": "root",
+        "navigation": "push",
         "hierarchy": {
           "primary": "Контакты со своей мелодией",
           "secondary": "Кто звонит под общую"
@@ -896,7 +896,7 @@
     {
       "id": "profile",
       "title": "Профиль",
-      "type": "push",
+      "type": "tab (root)",
       "light": false,
       "meta": "Что сейчас стоит",
       "parent": "home",
@@ -918,7 +918,7 @@
           "Длинное имя",
           "Мелодий ещё нет"
         ],
-        "navigation": "push",
+        "navigation": "root",
         "hierarchy": {
           "primary": "Имя, счётчики и что сейчас стоит",
           "secondary": "Свои разделы и настройки"
@@ -963,7 +963,7 @@
       "id": "all",
       "hero": true,
       "label": "Весь продукт",
-      "note": "Мелодии, контакты, записи, плеер-редактор, будильник и 4 доступа",
+      "note": "Мелодии, записи, профиль, контакты у мелодии, плеер-редактор, будильник и 4 доступа",
       "start": "phone",
       "screens": [
         "phone",
@@ -1002,11 +1002,13 @@
         "newtone",
         "song",
         "rain",
-        "laugh"
+        "laugh",
+        "contacts"
       ],
       "stops": [
         "rain",
-        "laugh"
+        "laugh",
+        "contacts"
       ]
     },
     {
@@ -1019,11 +1021,13 @@
         "podyom",
         "lock",
         "laugh",
-        "repet"
+        "repet",
+        "contacts"
       ],
       "stops": [
         "laugh",
-        "repet"
+        "repet",
+        "contacts"
       ]
     },
     {

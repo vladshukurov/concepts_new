@@ -5,8 +5,8 @@ import { tones, ORDER, picks, KINDS, contacts, playing, alarm } from '../model.m
 export const THEME = 'vk-dark';
 export const TABS = [
   { id: 'home', label: 'Мелодии', icon: 'audio-lines' },
-  { id: 'contacts', label: 'Контакты', icon: 'users' },
   { id: 'records', label: 'Записи', icon: 'mic' },
+  { id: 'profile', label: 'Профиль', icon: 'circle-user' },
 ];
 
 /* Плитка-значок: у мелодий нет обложек, как у звуков в настройках iOS */
@@ -91,6 +91,7 @@ export const toneScreen = (ui, t, { fresh = false, extra = [] } = {}) => {
           ui.cell({ icon: 'volume-2', title: 'Громче постепенно', sub: 'первые 5 секунд', toggle: t.id === 'podyom' }),
         ] }) }),
         ui.section({ title: 'Назначить', meta: fresh ? 'ещё никуда' : undefined, children: ui.checklist(assigned(t)) }),
+        ui.section({ children: ui.list([ui.row({ title: 'Кому назначена', sub: 'мелодии контактов', go: 'contacts' })]) }),
         ...extra,
       ]),
     ],
